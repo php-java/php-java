@@ -2,6 +2,9 @@
 
 class JavaStatement_aaload extends JavaStatement {
 
+    /**
+     * load onto the stack a reference from an array
+     */
     public function execute () {
     
         $index = $this->getStack();

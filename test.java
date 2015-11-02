@@ -108,6 +108,13 @@ class Test {
             System.out.println("ぬるぷっぷー");
 
         }
+        
+        String[] test = {"1", "2", "3"};
+        for (String i : test) {
+            
+            System.out.println(i);
+
+        }
 
     }
 
