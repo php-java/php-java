@@ -13,10 +13,10 @@ class JavaStatement_anewarray extends JavaStatement {
         $this->getByteCodeStream()->readUnsignedShort();
         
         // 配列の数を読み込む (これもPHPでは不要なのでスルー)
-        $this->getStack();
+        $count = $this->getStack();
         
         // 空の配列を渡す
-        $this->pushStack(array());
+        $this->pushStack(array_fill(0, $count, null));
 
     }
 
