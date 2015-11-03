@@ -12,12 +12,12 @@ class JavaStatement_anewarray extends JavaStatement {
         // 配列のサイズを調べる (PHPでは不要なので実行するだけ)
         $this->getByteCodeStream()->readUnsignedShort();
         
-        // 配列の数を読み込む (これもPHPでは不要なのでスルー)
+        // 空の配列を渡す (nullで埋める)
         $count = $this->getStack();
+        // need reference
+        $ref = new ArrayIterator(array_fill(0, $count, null));
+        $this->pushStackByReference($ref);
         
-        // 空の配列を渡す
-        $this->pushStack(array_fill(0, $count, null));
-
     }
 
 }   

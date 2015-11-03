@@ -11,7 +11,7 @@ class JavaStatement_aaload extends JavaStatement {
         $arrayref = $this->getStack();
         
         if (!isset($arrayref[$index])) {
-            
+
             throw new JavaArrayIndexOutOfBoundsException($this->getMethodName() . ': ' . $index . ' of array index');
             
         }

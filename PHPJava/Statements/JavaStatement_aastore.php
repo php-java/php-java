@@ -7,9 +7,11 @@ class JavaStatement_aastore extends JavaStatement {
      */
     public function execute () {
 
-        $value = $this->getStack();
+        $value = $this->getStack();        
         $index = $this->getStack();
         $arrayref = $this->getStack();
+        
+        $arrayref[$index] = $value;
         
     }
 
