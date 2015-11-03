@@ -4,7 +4,10 @@ class JavaStatement_dsub extends JavaStatement {
 
     public function execute () {
     
-        throw new JavaStatementException(__CLASS__ . ' hasnot statement.');
+        $leftValue = $this->getStack();
+        $rightValue = $this->getStack();
+
+        $this->pushStack(BinaryTools::sub($leftValue, $rightValue, 8));
 
     }
 

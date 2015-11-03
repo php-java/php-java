@@ -2,10 +2,14 @@
 
 class JavaStatement_dstore extends JavaStatement {
 
+    /**
+     * store a double value into a local variable #index
+     */
     public function execute () {
     
-        throw new JavaStatementException(__CLASS__ . ' hasnot statement.');
-
+        $index = $this->getByteCodeStream()->readUnsignedByte();
+        $this->setLocalstorage($index, $this->getStack());
+        
     }
 
 }   

@@ -78,9 +78,6 @@ class JavaMethodInvoker extends JavaInvoker {
 
                         $stacks = array();
 
-                        // code
-                        // var_dump(implode(' ', str_split(bin2hex($attributeData->getCode()), 2)));
-
                         $mnemonic = new JavaMnemonicEnum();
 
                         for (; $byteCodeStream->getOffset() < $attributeData->getOpCodeLength(); ) {

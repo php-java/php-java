@@ -2,10 +2,17 @@
 
 class JavaStatement_dastore extends JavaStatement {
 
+    /**
+     * store a double into an array
+     */
     public function execute () {
     
-        throw new JavaStatementException(__CLASS__ . ' hasnot statement.');
-
+        $value = $this->getStack();        
+        $index = $this->getStack();
+        $arrayref = $this->getStack();
+        
+        $arrayref[$index] = $value;
+        
     }
 
 }   

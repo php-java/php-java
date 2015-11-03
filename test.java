@@ -36,7 +36,7 @@ class Test {
         System.out.println(t);
         t = 345321;
         System.out.println((short) t);
-/*
+
         long t1 = 111;
         t1 *= 1;
         t1 = ~1;
@@ -49,14 +49,14 @@ class Test {
         t1 |= 1;
         t1 &= 1;
 
-        double t2 = 111;
+        double t2 = 2;
         t2 *= 1;
         t2 = ~1;
         t2 -= 1;
         t2 += 1;
         t2 = 1;
 
-        boolean _b = false;
+        /*boolean _b = false;
         _b = true && true;
         _b = true && false;
         _b = true || true;
@@ -115,6 +115,28 @@ class Test {
             System.out.println(i);
 
         }
+        
+        int[] test2 = {1, 2, 3};
+        for (int i : test2) {
+            
+            System.out.println(i);
+
+        }
+        
+        long[] test3 = {1L, 2L, 3L};
+        for (long i : test3) {
+            
+            System.out.println(i);
+
+        }
+        
+        double[] test4 = {3.4, 3.5, 3.6};
+        for (double i : test4) {
+            
+            System.out.println(i);
+
+        }
+        
 
     }
 

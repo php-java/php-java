@@ -144,7 +144,7 @@ class BinaryTools {
 
         } else {
 
-            throw new BinaryToolsException('Cannot multiply values.');
+            throw new BinaryToolsException('Cannot add values.');
 
         }
 
@@ -165,7 +165,7 @@ class BinaryTools {
 
         } else {
 
-            throw new BinaryToolsException('Cannot multiply values.');
+            throw new BinaryToolsException('Cannot sub values.');
 
         }
 
@@ -186,7 +186,7 @@ class BinaryTools {
 
         } else {
 
-            throw new BinaryToolsException('Cannot multiply values.');
+            throw new BinaryToolsException('Cannot div values.');
 
         }
 

@@ -2,9 +2,15 @@
 
 class JavaStatement_daload extends JavaStatement {
 
+    /**
+     * load a double from an array
+     */
     public function execute () {
     
-        throw new JavaStatementException(__CLASS__ . ' hasnot statement.');
+        $index = $this->getStack();
+        $arrayref = $this->getStack();
+
+        $this->pushStack($arrayref[$index]);
 
     }
 
