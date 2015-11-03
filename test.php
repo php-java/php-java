@@ -21,6 +21,7 @@ try {
 
     $invoker->getMethodInvoker()->main(array(999, 888));
 
+    $invoker->trace();
 
 /*
     // $a = new JavaArchive('JavaTest/dist/JavaTest.jar');

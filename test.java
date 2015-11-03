@@ -109,7 +109,7 @@ class Test {
 
         }
         
-        String[] test = {"1", "2", "3"};
+        String[] test = {"4", "5", "6"};
         for (String i : test) {
             
             System.out.println(i);
