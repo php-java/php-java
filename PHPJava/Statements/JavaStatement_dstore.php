@@ -8,7 +8,9 @@ class JavaStatement_dstore extends JavaStatement {
     public function execute () {
     
         $index = $this->getByteCodeStream()->readUnsignedByte();
-        $this->setLocalstorage($index, $this->getStack());
+        $value = $this->getStack();
+        
+        $this->setLocalstorage($index, BinaryTools::convertDoubleToIEEE754($value));
         
     }
 

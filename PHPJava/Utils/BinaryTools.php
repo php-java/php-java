@@ -296,5 +296,34 @@ class BinaryTools {
         return base_convert($build, 2, 10);
 
     }
+    
+    public final static function convertDoubleToIEEE754 ($doubleValue, $rounded = 8) {
+
+        $doubleValue = base_convert($doubleValue, 10, 2);
+ 
+        $sign = $doubleValue[0];
+        $exponent = substr($doubleValue, 1, 10);
+        $fraction = substr($doubleValue, 11);
+       
+        // double scale
+        $scale = 52;
+        
+        $fractionData = 0;
+        for ($i = 0; $i < 52; $i++) {
+            $fractionData = bcadd($fractionData, bcmul($fraction[$i], bcpow(2, -1 * ($i + 1), $scale), $scale), $scale);
+        }
+        
+        // calc sign
+        $operand1 = -1 * $sign;
+        
+        // calc fraction 
+        $operand2 = bcadd(1, $fractionData, $scale);
+        
+        // calc exponent and bias(?)
+        $operand3 = bcpow(2, bindec($exponent), $scale);
+        
+        return bcmul(-2, bcmul(bcmul($operand1, $operand2, $scale), $operand3, $scale), $rounded);
+        
+    }
 
 }
