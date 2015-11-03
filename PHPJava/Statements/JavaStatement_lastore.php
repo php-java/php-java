@@ -2,10 +2,17 @@
 
 class JavaStatement_lastore extends JavaStatement {
 
+    /**
+     * store a long to an array
+     */
     public function execute () {
     
-        throw new JavaStatementException(__CLASS__ . ' hasnot statement.');
-
+        $value = $this->getStack();        
+        $index = $this->getStack();
+        $arrayref = $this->getStack();
+        
+        $arrayref[$index] = $value;
+        
     }
 
 }   
