@@ -299,8 +299,8 @@ class BinaryTools {
     
     public final static function convertDoubleToIEEE754 ($doubleValue, $rounded = 8) {
 
-        $doubleValue = base_convert($doubleValue, 10, 2);
- 
+        $doubleValue = sprintf('%063s', base_convert($doubleValue, 10, 2));
+        
         $sign = $doubleValue[0];
         $exponent = substr($doubleValue, 1, 10);
         $fraction = substr($doubleValue, 11);
