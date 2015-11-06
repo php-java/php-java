@@ -51,6 +51,10 @@ class String {
     // php magic method
     public function __toString () {
 
+        if (!($this->Object instanceof \JavaStructureUtf8)) {
+            return (string) $this->Object;
+        }
+        
         return $this->Object->getString();
 
     }

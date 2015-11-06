@@ -25,6 +25,7 @@ class JavaMethodInvoker extends JavaInvoker {
 
                 }
 
+                // メソッドのシグネチャを取得する
                 $javaArguments = JavaClass::parseSignature($cpInfo[$methodInfo->getDescriptorIndex()]->getString());
 
                 if (sizeof($arguments) !== $javaArguments['argumentsCount']) {
@@ -68,7 +69,7 @@ class JavaMethodInvoker extends JavaInvoker {
                             3 => null
                         );
 
-                        $i = 0;
+                        $i = 1;
                         foreach ($arguments as $argument) {
 
                             $localstorage[$i] = $argument;
@@ -92,14 +93,23 @@ class JavaMethodInvoker extends JavaInvoker {
 
                             $statement = new $name($methodName, $this, $byteCodeStream, $stacks, $localstorage, $cpInfo, $attributeData, $pointer);
                             $returnValue = $statement->execute();
-
+                            
                             // write trace
                             $this->getClass()->appendTrace($opcode, $pointer, $stacks, $byteCodeStream->getOperands());
 
                             if ($returnValue !== null) {
 
                                 $this->getClass()->traceCompletion();
-                                return $returnValue;
+                                if ($javaArguments[0]['type'] !== 'class') {
+                                    // java typeの取得
+                                    $javaType = 'JavaType' . ucfirst($javaArguments[0]['type']);
+                                    return new $javaType($returnValue);
+                                }
+                                
+                                // javaのオブジェクトの場合
+
+                                $javaType = '\\' . str_replace('/', '\\', $javaArguments[0]['className']);
+                                return new $javaType($returnValue);
 
                             }
 
@@ -118,7 +128,7 @@ class JavaMethodInvoker extends JavaInvoker {
 
         }
 
-        throw new JavaInvokerException('Unknown Error');
+        throw new JavaInvokerException('undefined method "' . $methodName . '"');
 
     }
 

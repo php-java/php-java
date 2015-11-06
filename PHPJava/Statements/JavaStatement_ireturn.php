@@ -2,9 +2,12 @@
 
 class JavaStatement_ireturn extends JavaStatement {
 
+    /***
+     * return an integer from a method
+     */
     public function execute () {
     
-        throw new JavaStatementException(__CLASS__ . ' hasnot statement.');
+        return $this->getStack();
 
     }
 

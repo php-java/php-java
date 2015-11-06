@@ -13,7 +13,7 @@ class JavaType {
      * 
      * @param mixed $value 値を指定します
      */
-    public function setValue ($value) {
+    public function __construct ($value) {
         $this->value = $value;
     }
     
@@ -29,10 +29,10 @@ class JavaType {
     /**
      * 値を出力します。
      * 
-     * @return mixed
+     * @return string
      */
     public function __toString() {
-        return $this->getValue();
+        return (string) $this->getValue();
     }
     
 }

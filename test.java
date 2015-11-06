@@ -3,7 +3,102 @@ class Test {
     long z = -22222222222222222L;
     static int c = 100;
     static String b = "Hello World";
+    
+    /**
+     * test for "Integer" value
+     * 
+     * @param value 
+     * @return 
+     */
+    public int testInt (int value) {
+        return value;
+    }
+    
+    /**
+     * test for "Short" value
+     * 
+     * @param value 
+     * @return 
+     */
+    public short testShort (short value) {
+        return value;
+    }
+    
+    /**
+     * test for "Long" value
+     * 
+     * @param value 
+     * @return 
+     */
+    public long testLong (long value) {
+        return value;
+    }
+    
+    /**
+     * test for "Float" value
+     * 
+     * @param value 
+     * @return 
+     */
+    public float testLong (float value) {
+        return value;
+    }
+    
+    /**
+     * test for "Double" value
+     * 
+     * @param value 
+     * @return 
+     */
+    public double testLong (double value) {
+        return value;
+    }
+    
+    /**
+     * test for "Char" value
+     * 
+     * @param value 
+     * @return 
+     */
+    public char testChar (char value) {
+        return value;
+    }
+    
+    /**
+     * test for "Byte" value
+     * 
+     * @param value 
+     * @return 
+     */
+    public byte testByte (byte value) {
+        return value;
+    }
+    
+    /**
+     * test for "Boolean" value
+     * 
+     * @param value 
+     * @return 
+     */
+    public boolean testBoolean (boolean value) {
+        return value;
+    }
+    
+    /**
+     * test for "String" value
+     * 
+     * @param value 
+     * @return 
+     */
+    public String testString (String value) {
+        return value;
+    }
 
+    /**
+     * main method
+     * 
+     * @param args 
+     */
     public static void main (String[] args) {
 
         String x = "String";
@@ -130,7 +225,7 @@ class Test {
 
         }
         
-        double[] test4 = {3.4, 3.5, 3.6};
+        double[] test4 = {3.4, 3.5, 3.6, 81263.12312321, -99};
         for (double i : test4) {
             
             System.out.println(i);

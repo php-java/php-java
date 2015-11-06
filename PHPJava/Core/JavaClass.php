@@ -136,7 +136,7 @@ class JavaClass {
 
         $this->ClassFile = $file;
 
-        foreach (glob(__DIR__ . '/../{Common,Exceptions,Enums,Stream,Invoker,Attributes,Structures,Utils}/*.php', GLOB_BRACE) as $loadFile) {
+        foreach (glob(__DIR__ . '/../{Common,Exceptions,Enums,Stream,Invoker,Attributes,Structures,Types,Utils}/*.php', GLOB_BRACE) as $loadFile) {
 
             require_once($loadFile);
 

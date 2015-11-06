@@ -14,12 +14,26 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline, $errcontext) {
 });
 
 try {
+    // ini_set('memory_limit', '1024M');
     system('rm test.class');
     system('javac -encoding UTF8 test.java');
 
     $invoker = new JavaClass('test.class');
 
-    $invoker->getMethodInvoker()->main(array(999, 888));
+    // メインメソッドを呼ぶ
+    // $invoker->getMethodInvoker()->main(array(999, 888));
+    
+    // testIntを呼ぶ
+    var_dump($invoker->getMethodInvoker()->testInt(1111));
+    
+    // testIntを呼ぶ
+    var_dump((string) $invoker->getMethodInvoker()->testInt(1111));
+    
+    // testString(java/lang/String)を呼ぶ
+    var_dump($invoker->getMethodInvoker()->testString("8888"));
+    // 
+    // testString(java/lang/String)を呼ぶ
+    var_dump((string) $invoker->getMethodInvoker()->testString("8888"));
 
     $invoker->trace();
 
