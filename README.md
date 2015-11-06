@@ -48,7 +48,7 @@ null以外の全ての値は`JavaType*`オブジェクトとして適切に扱�
 |Javaの型        |PHPの型         |
 |:-------------:|:-------------:|
 |null |null |
-|boolean |JavaTypeBool |
+|boolean |JavaTypeBoolean |
 |char |JavaTypeChar |
 |byte |JavaTypeByte |
 |short |JavaTypeShort |
