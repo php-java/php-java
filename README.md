@@ -12,6 +12,7 @@ PHPJavaを使うことにより、Javaのモジュールを活用した拡張性
 下記を参考に作りました。
 
 The Java® Virtual Machine Specification : https://docs.oracle.com/javase/specs/jvms/se8/html/
+
 Java Bytecode Instruction Listings : https://en.wikipedia.org/wiki/Java_bytecode_instruction_listings
 
 
@@ -40,6 +41,7 @@ PHPJavaでは、呼び出すメソッドが静的、あるいは動的かを区�
 (優先的に`bcmath関数`を使用するようにしており利用できなければ、`gmp関数`を使用するようにしています。)
 
 bcmath関数: http://php.net/manual/ja/book.bc.php
+
 gmp関数: http://php.net/manual/ja/ref.gmp.php
 
 なお、下記はJavaのメソッドを実行した際に返却される型の情報です。
