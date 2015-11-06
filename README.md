@@ -42,18 +42,20 @@ PHPJavaでは、呼び出すメソッドが静的、あるいは動的かを区�
 bcmath関数: http://php.net/manual/ja/book.bc.php
 gmp関数: http://php.net/manual/ja/ref.gmp.php
 
-なお、下記はJavaから受け取った値をPHPの型に当てはめた場合の表となります。
+なお、下記はJavaのメソッドを実行した際に返却される型の情報です。
+null以外の全ての値は`JavaType*`オブジェクトとして適切に扱われます。
 
 |Javaの型        |PHPの型         |
 |:-------------:|:-------------:|
-|boolean |bool |
-|char |string |
-|byte |string |
-|short |int |
-|int |int |
-|long |string |
-|float |string |
-|double |string |
+|null |null |
+|boolean |JavaTypeBool |
+|char |JavaTypeChar |
+|byte |JavaTypeByte |
+|short |JavaTypeShort |
+|int |JavaTypeInt |
+|long |JavaTypeLong |
+|float |JavaTypeFloat |
+|double |JavaTypeDouble |
 
 ## エミュレーションについて
 
