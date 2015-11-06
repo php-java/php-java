@@ -7,7 +7,7 @@ class JavaStatement_ireturn extends JavaStatement {
      */
     public function execute () {
     
-        return $this->getStack();
+        return new JavaTypeInt($this->getStack());
 
     }
 

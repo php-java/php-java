@@ -98,19 +98,7 @@ class JavaMethodInvoker extends JavaInvoker {
                             $this->getClass()->appendTrace($opcode, $pointer, $stacks, $byteCodeStream->getOperands());
 
                             if ($returnValue !== null) {
-
-                                $this->getClass()->traceCompletion();
-                                if ($javaArguments[0]['type'] !== 'class') {
-                                    // java typeの取得
-                                    $javaType = 'JavaType' . ucfirst($javaArguments[0]['type']);
-                                    return new $javaType($returnValue);
-                                }
-                                
-                                // javaのオブジェクトの場合
-
-                                $javaType = '\\' . str_replace('/', '\\', $javaArguments[0]['className']);
-                                return new $javaType($returnValue);
-
+                                return $returnValue;
                             }
 
                         }

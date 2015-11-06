@@ -4,7 +4,7 @@ class JavaStatement_lreturn extends JavaStatement {
 
     public function execute () {
     
-        throw new JavaStatementException(__CLASS__ . ' hasnot statement.');
+        return new JavaTypeLong($this->getStack());
 
     }
 
