@@ -164,7 +164,13 @@ class JavaMethodInvoker extends JavaInvoker {
 
                             $name = 'JavaStatement_' . preg_replace('/^MNEMONIC_/', '', $mnemonic->getName($opcode));
 
-                            require_once dirname(__DIR__) . '/Statements/' . $name . '.php';
+                            $mnemonicExecutor = dirname(__DIR__) . '/Statements/' . $name . '.php';
+                            
+                            if (!is_file($mnemonicExecutor)) {
+                                throw new JavaInvokerException('"' . $name . ' (' . sprintf('0x02X', $opcode) . ')" of mnemonic is not implemented. please report this message to administrator.');
+                            }
+                            
+                            require_once $mnemonicExecutor;
 
                             $statement = new $name($methodName, $this, $byteCodeStream, $stacks, $localstorage, $cpInfo, $attributeData, $pointer);
                             $returnValue = $statement->execute();
