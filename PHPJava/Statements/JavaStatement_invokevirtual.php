@@ -14,7 +14,6 @@ class JavaStatement_invokevirtual extends JavaStatement {
 
         // signature
         $signature = JavaClass::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
-
         $arguments = array();
 
         for ($i = 0; $i < $signature['argumentsCount']; $i++) {
@@ -39,16 +38,15 @@ class JavaStatement_invokevirtual extends JavaStatement {
 
             // load platform
             $this->getInvoker()->loadPlatform($class);
+            $cp->getClass()->traceDump();
 
-            $invokeClassName = '\\' . str_replace('/', '\\', $class);
-            
             $result = call_user_func_array(array(
 
                 $invokerClass,
                 $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
 
             ), $arguments);
-
+            
             // empty to array
             // $stacks = array();
 

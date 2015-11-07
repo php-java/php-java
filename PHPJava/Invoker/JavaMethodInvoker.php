@@ -1,7 +1,93 @@
 <?php
 
 class JavaMethodInvoker extends JavaInvoker {
+    
+    /**
+     * @var bool コンストラクターが実行されているかどうかを判定します。
+     */
+    private $_constructed = false;
+    
+    /**
+     * 
+     * @access private
+     * @var bool インスタンス化されているかどうか判定します
+     */
+    public function __construct(\JavaClass &$Class, $constructed = false) {
+        parent::__construct($Class);
+        $this->_constructed = $constructed;
+    }
+    
+    /**
+     * Javaのメンバをコールします。
+     * 
+     * @param $fieldName フィールド名
+     * @return mixed
+     */
+    public function __get ($fieldName) {
+        
+        $cpInfo = $this->getClass()->getCpInfo();
 
+        foreach ($this->getClass()->getFields() as $fieldInfo) {
+
+            $cpFieldName = $cpInfo[$fieldInfo->getNameIndex()]->getString();
+
+            if ($fieldName === $cpFieldName) {
+                
+                $accessibility = $this->_getAccessiblity($fieldInfo);
+                $fieldSignature = JavaClass::parseSignature($cpInfo[$fieldInfo->getDescriptorIndex()]->getString());
+                
+                // 静的メンバの場合
+                if (in_array('static', $accessibility)) {
+                    return $this->getClass()->getStatic($fieldName);
+                }
+                $type = 'JavaType' . ucfirst($fieldSignature[0]['type']);
+                return new $type($this->getClass()->getInstance($fieldName));
+            }
+        }
+        
+        throw new JavaInvokerException('undefined field "' . $fieldName . '"');
+        
+    }
+    
+    /**
+     * Javaのメンバの値を設定します。
+     * 
+     * @param string $fieldName フィールド名
+     * @param mixed $value 書き換える値
+     * @return mixed
+     */
+    public function __set($fieldName, $value) {
+        
+        $cpInfo = $this->getClass()->getCpInfo();
+
+        foreach ($this->getClass()->getFields() as $fieldInfo) {
+
+            $cpFieldName = $cpInfo[$fieldInfo->getNameIndex()]->getString();
+
+            if ($fieldName === $cpFieldName) {
+                
+                $accessibility = $this->_getAccessiblity($fieldInfo);
+                $fieldSignature = JavaClass::parseSignature($cpInfo[$fieldInfo->getDescriptorIndex()]->getString());
+                
+                // 静的メンバの場合
+                if (in_array('static', $accessibility)) {
+                    $this->getClass()->setStatic($fieldName, $value);
+                    return;
+                }
+                $this->getClass()->setInstance($fieldName, $value);
+                return;
+            }
+        }
+        
+        throw new JavaInvokerException('undefined field "' . $fieldName . '"');
+    }
+    
+    /**
+     * Javaのメソッドをエミュレートします。
+     * 
+     * @param $fieldName フィールド名
+     * @return mixed
+     */
     public function __call ($methodName, $arguments) {
 
         $cpInfo = $this->getClass()->getCpInfo();
@@ -12,18 +98,7 @@ class JavaMethodInvoker extends JavaInvoker {
 
             if ($methodName === $cpMethodName) {
 
-                $accessFlag = new JavaMethodAccessFlagEnum();
-                $accessibility = array();
-
-                foreach ($accessFlag->getValues() as $value) {
-
-                    if (($methodInfo->getAccessFlag() & $value) != 0) {
-
-                        $accessibility[] = strtolower(preg_replace('/^CONSTANT_/', '', $accessFlag->getName($value)));
-
-                    }
-
-                }
+                $accessibility = $this->_getAccessiblity($methodInfo);
 
                 // メソッドのシグネチャを取得する
                 $javaArguments = JavaClass::parseSignature($cpInfo[$methodInfo->getDescriptorIndex()]->getString());
@@ -98,13 +173,13 @@ class JavaMethodInvoker extends JavaInvoker {
                             $this->getClass()->appendTrace($opcode, $pointer, $stacks, $byteCodeStream->getOperands());
 
                             if ($returnValue !== null) {
+                                $this->getClass()->traceCompletion();
                                 return $returnValue;
                             }
 
                         }
 
                         $this->getClass()->traceCompletion();
-
                         return;
 
                     }
@@ -120,10 +195,40 @@ class JavaMethodInvoker extends JavaInvoker {
 
     }
 
+    /**
+     * 型の変換を行います
+     * 
+     * @param mixed $value 変換対象を指定
+     * @return int 変換された型を返します。
+     */
     public function valueOf ($value) {
 
         return (int) $value;
 
+    }
+
+    /**
+     * アクセス修飾子を取得します。
+     * 
+     * @param JavaMethodInfo|JavaFieldInfo $info アクセス修飾子を取得したいストラクチャを指定
+     * @return array アクセス修飾子を返します。
+     */
+    private function _getAccessiblity ($info) {
+        
+        $accessFlag = new JavaAccessFlagEnum();
+        $accessibility = array();
+
+        foreach ($accessFlag->getValues() as $value) {
+
+            if (($info->getAccessFlag() & $value) != 0) {
+
+                $accessibility[] = strtolower(preg_replace('/^CONSTANT_/', '', $accessFlag->getName($value)));
+
+            }
+
+        }
+        
+        return $accessibility;
     }
 
 }

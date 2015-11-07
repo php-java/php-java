@@ -1,6 +1,6 @@
 <?php
 
-class JavaMethodAccessFlagEnum extends JavaEnum {
+class JavaAccessFlagEnum extends JavaEnum {
 
   const CONSTANT_Public     = 0x0001;
   const CONSTANT_Private    = 0x0002;

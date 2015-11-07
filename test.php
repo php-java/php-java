@@ -18,24 +18,44 @@ try {
     system('rm test.class');
     system('javac -encoding UTF8 test.java');
 
-    $invoker = new JavaClass('test.class');
 
+    $javaClass = new JavaClass('test.class');
+    $invoker = $javaClass->construct();
+    
+    // 動的メンバコールテスト
+    var_dump(get_class($invoker->z));
+    
+    // 動的メンバ値変更&コールテスト
+    $invoker->z = 9999;
+    
+    // 格納されている値
+    var_dump($invoker->z->getValue());
+    
+    // 実際の値
+    var_dump((string) $invoker->z);
+    
+    // 静的メンバコールテスト
+    var_dump(get_class($invoker->b));
+    
+    // toString
+    var_dump((string) $invoker->b);
+    
     // メインメソッドを呼ぶ
     // $invoker->getMethodInvoker()->main(array(999, 888));
     
     // testIntを呼ぶ
-    var_dump($invoker->getMethodInvoker()->testInt(1111));
+    var_dump($invoker->testInt(1111));
     
     // testIntを呼ぶ
-    var_dump((string) $invoker->getMethodInvoker()->testInt(1111));
+    var_dump((string) $invoker->testInt(1111));
     
     // testString(java/lang/String)を呼ぶ
-    var_dump($invoker->getMethodInvoker()->testString("8888"));
+    var_dump($invoker->testString("8888"));
     // 
     // testString(java/lang/String)を呼ぶ
-    var_dump((string) $invoker->getMethodInvoker()->testString("8888"));
+    var_dump((string) $invoker->testString("8888"));
 
-    $invoker->trace();
+    $javaClass->trace();
 
 /*
     // $a = new JavaArchive('JavaTest/dist/JavaTest.jar');
@@ -54,6 +74,8 @@ try {
 
 } catch (Exception $e) {
 
-    var_dump($e);
+    $javaClass->trace();
+
+    var_dump($e->getMessage(), $e->getFile(), $e->getLine());
 
 }

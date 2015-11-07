@@ -32,12 +32,12 @@ class JavaStatement_getstatic extends JavaStatement {
             $className = str_replace('/', '\\', $signature[0]['className']);
             
             $this->pushStack(new $className());
-
-        } else {
-            
-            throw new JavaStatementException('Has not class or field');
+            return;
             
         }
+            
+        throw new JavaStatementException('Has not class or field');
+
         
     }
 

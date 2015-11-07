@@ -575,6 +575,22 @@ class JavaClass {
         $this->Trace .= '#' . $programCounter . "\t" . sprintf('0x%02X', $opcode) . "\t" . $mnemonicName . (strlen($mnemonicName) < 8 ? "\t" : '') . "\t" . sizeof($stacks) . "\t" . implode("\t", $operands) . "\n";
 
     }
+    
+    /**
+     * トレースのヘッダー情報を定義します。
+     * 
+     * @return string
+     */
+    private function traceHeader () {
+        
+        $trace = '';
+
+        $trace .= $this->TraceHeader;
+        $trace .= "PC\tOPCODE\tMNEMONIC\tSTACKS\tOPERAND(s)\n";
+        $trace .= "----------------------------------------------------------------\n";
+        return $trace;
+        
+    }
 
     /**
      * トレース情報を別の変数に移し替えます。
@@ -582,18 +598,23 @@ class JavaClass {
      */
     public function traceCompletion () {
 
-        $trace = '';
-
-        $trace .= $this->TraceHeader;
-        $trace .= "PC\tOPCODE\tMNEMONIC\tSTACKS\tOPERAND(s)\n";
-        $trace .= "----------------------------------------------------------------\n";
-
+        $trace = $this->traceHeader();
         $this->TraceBuffering[] = $trace . $this->Trace;
 
         $this->TraceHeader = '';
         $this->Trace = '';
 
 
+    }
+    
+    /**
+     * 現時点までに実行されたオペコードのトレース情報を出力します。
+     * 
+     * @return string
+     */
+    public function traceDump () {
+        echo $this->traceHeader();
+        echo $this->Trace;
     }
 
     /**
@@ -709,6 +730,7 @@ class JavaClass {
     /**
      * このクラスにおける静的なメンバを返します
      * 
+     * @param mixed $key Javaで定義されている変数名を指定
      * @return mixed
      */
     public function getStatic ($key) {
@@ -720,12 +742,44 @@ class JavaClass {
     /**
      * このクラスにおける動的なメンバを返します
      * 
+     * @param mixed $key Javaで定義されている変数名を指定
      * @return mixed
      */
     public function getInstance ($key) {
 
         return isset($this->ClassFields->Instances->{$key}) ? $this->ClassFields->Instances->{$key} : null;
 
+    }
+    
+    /**
+     * Javaのコンストラクタを呼びます。
+     * 
+     * @param mixed $... コンストラクタに渡す引数を指定します。
+     * @return JavaMethodInvoker
+     */
+    public function construct () {
+        $instance = new JavaMethodInvoker($this, true);
+        
+        $args = func_get_args();
+ 
+        // find init
+        foreach ($this->getMethods() as $method) {
+
+            if ($this->cpInfo[$method->getNameIndex()]->getString() === '<init>') {
+
+                // call init
+                call_user_func_array(array(
+                    $instance,
+                    '<init>'
+                ), $args);
+                break;
+
+            }
+
+        }
+        
+        return $instance;
+        
     }
 
 }

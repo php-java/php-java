@@ -12,7 +12,10 @@ class PrintStream {
             // print stream
             echo $arg->getString() . "\n";
 
-        } else if (is_string($arg) || is_int($arg) || $arg instanceof \java\lang\String) {
+        } else if (is_string($arg) ||
+                is_int($arg) ||
+                $arg instanceof \JavaType ||
+                $arg instanceof \java\lang\String) {
 
             echo $arg . "\n";
 

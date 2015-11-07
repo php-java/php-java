@@ -11,6 +11,8 @@ class Test {
      * @return 
      */
     public int testInt (int value) {
+                
+        System.out.println(this.testPrivateInteger(value));
         return value;
     }
     
@@ -231,7 +233,6 @@ class Test {
             System.out.println(i);
 
         }
-        
 
     }
 
@@ -249,6 +250,10 @@ class Test {
 
     }
 
+    private int testPrivateInteger (int value) {
+        return value + 1 * 2 + 3;
+    }
+    
     /*public void javaTest () {
 
         testClass _c = new testClass();
