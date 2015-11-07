@@ -28,6 +28,52 @@ $javaClass->getMethodInvoker()->main(array(999, 888));
 上記のようにして、 `test.class` のmainメソッドを呼び出すことが可能となります。
 (mainメソッドの引数はString[]を取るため、配列型を渡しています。)
 
+また、Javaのバイトコードではコンストラクタの定義は`<init>`とされており、PHPで呼び出すのは
+`call_user_func`や`$javaClass->{'<init>'}()`等としないと表現が難しいですが、
+PHPJavaでは、下記の方法でJavaのコンストラクタを簡易的に呼び出す方法を提供しています。
+
+```php
+<?php
+$javaClass = new JavaClass('test.class');
+$invoker = $javaClass->construct();
+
+// 静的なメソッド
+$invoker->main(array(999, 888));
+// または
+$javaClass->getMethodInvoker()->main(array(999, 888));
+
+
+// 動的なメソッド
+$invoker->abc(1234);
+```
+
+
+
+## メンバの呼び出しについて
+PHPJavaではstaticであるかどうかを区別しません。
+メンバの呼び出しは非常に単純で、下記のように実行すると、Javaのクラスで定義されているメンバを取得することが可能です。
+
+```php
+<?php
+$javaClass = new JavaClass('test.class');
+
+// Java側で `String stringValue="Hello World"` と定義されていた場合、
+// HelloWorldと出力をします。
+var_dump((string) $javaClass->getMethodInvoker()->stringValue);
+
+// クラスを調べるとjava\lang\Stringという扱いになります。
+var_dump(get_class($javaClass->getMethodInvoker()->stringValue));
+
+// プリミティブな型の場合JavaType*が出力されます。
+// Java側で`int intvalue=1111`と定義されていた場合下記の例ではJavaTypeIntが出力されます。
+var_dump(get_class($javaClass->getMethodInvoker()->intValue));
+
+// なお、値を取得すると1111となります。
+var_dump((string) $javaClass->getMethodInvoker()->intValue);
+var_dump($javaClass->getMethodInvoker()->intValue->getValue());
+
+```
+
 
 ## 型の定義について
 PHPJavaでは、呼び出すメソッドが静的、あるいは動的かを区別しません。
