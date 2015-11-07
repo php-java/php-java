@@ -56,21 +56,22 @@ PHPJavaではstaticであるかどうかを区別しません。
 ```php
 <?php
 $javaClass = new JavaClass('test.class');
+$invoker = $javaClass->construct();
 
 // Java側で `String stringValue="Hello World"` と定義されていた場合、
-// HelloWorldと出力をします。
-var_dump((string) $javaClass->getMethodInvoker()->stringValue);
+// Hello Worldと出力をします。
+var_dump((string) $invoker->stringValue);
 
 // クラスを調べるとjava\lang\Stringという扱いになります。
-var_dump(get_class($javaClass->getMethodInvoker()->stringValue));
+var_dump(get_class($invoker->stringValue));
 
 // プリミティブな型の場合JavaType*が出力されます。
 // Java側で`int intvalue=1111`と定義されていた場合下記の例ではJavaTypeIntが出力されます。
-var_dump(get_class($javaClass->getMethodInvoker()->intValue));
+var_dump(get_class($invoker->intValue));
 
 // なお、値を取得すると1111となります。
-var_dump((string) $javaClass->getMethodInvoker()->intValue);
-var_dump($javaClass->getMethodInvoker()->intValue->getValue());
+var_dump((string) $invoker>intValue);
+var_dump($invoker->intValue->getValue());
 
 ```
 
