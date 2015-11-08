@@ -19,8 +19,11 @@ class JavaStackMapTableAttribute extends JavaAttribute {
             
         }
         
-        // $this->AttributeData = new $classAttributeName($Class);
+    }
+    
+    public function getStackMapFrames () {
         
+        return $this->StackMapFrames;
         
     }
     

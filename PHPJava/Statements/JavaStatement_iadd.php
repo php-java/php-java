@@ -6,7 +6,7 @@ class JavaStatement_iadd extends JavaStatement {
 
         $leftValue = $this->getStack();
         $rightValue = $this->getStack();
-
+        
         $this->pushStack(BinaryTools::add($leftValue, $rightValue, 4));
 
     }

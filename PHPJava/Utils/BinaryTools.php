@@ -130,7 +130,7 @@ class BinaryTools {
     }
 
     public final static function add ($value1, $value2, $bytes) {
-
+        
         if (function_exists('gmp_add')) {
 
             $a = gmp_init($value1);

@@ -95,7 +95,7 @@ class JavaMethodInvoker extends JavaInvoker {
         foreach ($this->getClass()->getMethods() as $methodInfo) {
 
             $cpMethodName = $cpInfo[$methodInfo->getNameIndex()]->getString();
-
+            
             if ($methodName === $cpMethodName) {
 
                 $accessibility = $this->_getAccessiblity($methodInfo);
@@ -103,7 +103,9 @@ class JavaMethodInvoker extends JavaInvoker {
                 // メソッドのシグネチャを取得する
                 $javaArguments = JavaClass::parseSignature($cpInfo[$methodInfo->getDescriptorIndex()]->getString());
 
-                if (sizeof($arguments) !== $javaArguments['argumentsCount']) {
+                $argumentsCount = sizeof($arguments);
+                
+                if ($argumentsCount !== $javaArguments['argumentsCount']) {
 
                     // 引数の配列の大きさが違う
                     continue;
@@ -127,9 +129,6 @@ class JavaMethodInvoker extends JavaInvoker {
 
                     if ($attributeData instanceof \JavaCodeAttribute) {
 
-                        // runnable code
-                        $opCodes = $attributeData->getOpCodes();
-
                         $handle = fopen('php://memory', 'rw');
                         fwrite($handle, $attributeData->getCode());
                         rewind($handle);
@@ -138,13 +137,18 @@ class JavaMethodInvoker extends JavaInvoker {
 
                         // 局所変数格納用
                         $localstorage = array(
-                            0 => $this->getClass(),
+                            0 => null,
                             1 => null,
                             2 => null,
                             3 => null
                         );
+                        
+                        $i = 0;
+                        if ($this->_constructed) {
+                            $localstorage[0] = $this->getClass();
+                            $i = 1;
+                        }
 
-                        $i = 1;
                         foreach ($arguments as $argument) {
 
                             $localstorage[$i] = $argument;
@@ -191,12 +195,14 @@ class JavaMethodInvoker extends JavaInvoker {
                     }
 
                 }
+                
+                return;
 
             }
 
 
         }
-
+        
         throw new JavaInvokerException('undefined method "' . $methodName . '"');
 
     }

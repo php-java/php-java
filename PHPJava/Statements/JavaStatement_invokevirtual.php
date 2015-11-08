@@ -21,9 +21,9 @@ class JavaStatement_invokevirtual extends JavaStatement {
             $arguments[] = $this->getStack();
 
         }
-
+        
         $invokerClass = $this->getStack();
-
+        
         if ($invokerClass instanceof \JavaClass) {
 
             $result = call_user_func_array(array(
@@ -38,18 +38,14 @@ class JavaStatement_invokevirtual extends JavaStatement {
 
             // load platform
             $this->getInvoker()->loadPlatform($class);
-            $cp->getClass()->traceDump();
+            $invokerClassName = '\\' . str_replace('/', '\\', $class);
 
             $result = call_user_func_array(array(
-
+                
                 $invokerClass,
                 $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
 
             ), $arguments);
-            
-            // empty to array
-            // $stacks = array();
-
 
         }
 
