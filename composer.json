@@ -1,0 +1,20 @@
+{
+    "name": "memory/php-java",
+    "description": "JVM emulator by PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "memory"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "PHPJava\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    }
+}
