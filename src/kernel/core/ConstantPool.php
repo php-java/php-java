@@ -8,6 +8,7 @@ trait ConstantPool
     public function setConstantPool(\PHPJava\Core\JVM\ConstantPool $constantPool)
     {
         $this->constantPool = $constantPool;
+        return $this;
     }
 
     public function getConstantPool(): \PHPJava\Core\JVM\ConstantPool

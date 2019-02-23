@@ -26,14 +26,14 @@ class JavaClassInvoker
             /**
              * @var _MethodInfo $methodInfo
              */
-            $cpMethodName = $cpInfo[$methodInfo->getNameIndex()]->getString();
+            $methodName = $cpInfo[$methodInfo->getNameIndex()]->getString();
 
             if ($methodInfo->getAccessFlag() === 0) {
-                $this->hiddenMethods[] = $methodInfo;
+                $this->hiddenMethods[$methodName] = $methodInfo;
             } elseif (($methodInfo->getAccessFlag() & AccessFlag::_Public) !== 0) {
-                $this->dynamicMethods[] = $methodInfo;
+                $this->dynamicMethods[$methodName] = $methodInfo;
             } elseif (($methodInfo->getAccessFlag() & AccessFlag::_Static) !== 0) {
-                $this->staticMethods[] = $methodInfo;
+                $this->staticMethods[$methodName] = $methodInfo;
             }
         }
     }

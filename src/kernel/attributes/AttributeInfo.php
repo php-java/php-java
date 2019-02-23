@@ -23,6 +23,7 @@ final class AttributeInfo implements AttributeInterface
         $this->attributeData->setConstantPool($this->getConstantPool());
         $this->attributeData->execute();
     }
+
     public function getAttributeData()
     {
         return $this->attributeData;

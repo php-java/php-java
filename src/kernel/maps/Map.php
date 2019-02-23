@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Maps;
 
 class Map
 {
-    public function getName(string $value): ?string
+    public function getName(int $value): ?string
     {
         try {
             if (($key = array_search($value, (new \ReflectionClass($this))->getConstants(), true)) !== false) {
