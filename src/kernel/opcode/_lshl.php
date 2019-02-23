@@ -2,11 +2,12 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _lshl implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     public function execute(): void
     {
@@ -14,7 +15,5 @@ final class _lshl implements OpCodeInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::shiftLeft($value1, $value2, 8));
-
     }
-
 }

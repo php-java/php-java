@@ -2,15 +2,16 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _invokestatic implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     public function execute(): void
-    {    
-        $cpInfo = $this->getCpInfo();
+    {
+        $cpInfo = $this->getConstantPool()->getEntries();
         
         $cp = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
         
@@ -21,9 +22,7 @@ final class _invokestatic implements OpCodeInterface
         $arguments = array();
         
         for ($i = 0; $i < $signature['argumentsCount']; $i++) {
-            
             $arguments[] = $this->getStack();
-            
         }
         
         krsort($arguments);
@@ -35,11 +34,7 @@ final class _invokestatic implements OpCodeInterface
         ), $arguments);
         
         if ($signature[0]['type'] !== 'void') {
-            
             $this->pushStack($return);
-            
         }
-
     }
-
-}   
+}

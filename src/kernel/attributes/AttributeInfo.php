@@ -2,20 +2,21 @@
 namespace PHPJava\Kernel\Attributes;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class AttributeInfo implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     private $AttributeNameIndex = null;
     private $AttributeLength = null;
     private $AttributeData = null;
     public function execute(): void
     {
-        $this->AttributeNameIndex = $this->getCurrentClass()->readUnsignedShort();
-        $this->AttributeLength = $this->getCurrentClass()->readUnsignedInt();
-        $cpInfo = $this->getCurrentClass()->getCpInfo();
+        $this->AttributeNameIndex = $this->readUnsignedShort();
+        $this->AttributeLength = $this->readUnsignedInt();
+        $cpInfo = $this->getConstantPool()->getEntries();
         $classAttributeName = 'Java' . $cpInfo[$this->AttributeNameIndex]->getString() . 'Attribute';
         $this->AttributeData = new $classAttributeName($Class);
     }

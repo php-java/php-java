@@ -9,10 +9,10 @@ class JavaClassReader
     public function __construct(string $file)
     {
         $this->handle = fopen($file, 'r');
-        $this->binaryReader = new \PHPJava\Core\JVM\Stream\BinaryReader($this->handle);
+        $this->binaryReader = new JVM\Stream\BinaryReader($this->handle);
     }
 
-    public function getBinaryReader(): \PHPJava\Core\JVM\Stream\BinaryReader
+    public function getBinaryReader(): JVM\Stream\BinaryReader
     {
         return $this->binaryReader;
     }

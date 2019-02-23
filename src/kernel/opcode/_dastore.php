@@ -2,23 +2,22 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _dastore implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     /**
      * store a double into an array
      */
     public function execute(): void
-    {    
-        $value = $this->getStack();        
+    {
+        $value = $this->getStack();
         $index = $this->getStack();
         $arrayref = $this->getStack();
         
         $arrayref[$index] = $value;
-        
     }
-
-}   
+}

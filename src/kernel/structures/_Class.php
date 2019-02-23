@@ -2,18 +2,19 @@
 namespace PHPJava\Kernel\Structures;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 class _Class implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
 
-    private $this->getClass()Index = null;
+    private $ClassIndex = null;
     public function execute(): void
     {
-        $this->ClassIndex = $this->Class->readUnsignedShort();
+        $this->ClassIndex = $this->readUnsignedShort();
     }
-    public function getClassIndex () {
+    public function getClassIndex()
+    {
         return $this->ClassIndex;
     }
 }

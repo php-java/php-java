@@ -2,11 +2,12 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _anewarray implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     /**
      * create a new array of references of length count and component
@@ -14,7 +15,7 @@ final class _anewarray implements OpCodeInterface
      * in the constant pool
      */
     public function execute(): void
-    {    
+    {
         // 配列のサイズを調べる (PHPでは不要なので実行するだけ)
         $this->getByteCodeStream()->readUnsignedShort();
         
@@ -23,7 +24,5 @@ final class _anewarray implements OpCodeInterface
         // need reference
         $ref = new ArrayIterator(array_fill(0, $count, null));
         $this->pushStackByReference($ref);
-        
     }
-
-}   
+}

@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Structures;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 class _UninitializedVariableInfo implements StructureInterface
 {

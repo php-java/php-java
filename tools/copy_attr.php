@@ -8,12 +8,13 @@ foreach (glob(__DIR__ . '/../old/PHPJava/Attributes/*') as $file) {
     $a = str_replace('class Java', 'class ', $a);
     $a = str_replace('throw new JavaAttributeException(__CLASS__ . \' is not defined.\');', 'throw new NotImplementedException(__CLASS__);', $a);
     $a = preg_replace("/\s*[\\n]+/", "\n", $a);
-    $a = str_replace('extends JavaAttribute {', "implements AttributeInterface\n{\n    use \\PHPJava\\Kernel\\Core\\BinaryReader;\n", $a);
+    $a = str_replace('extends JavaAttribute {', "implements AttributeInterface\n{\n    use \\PHPJava\\Kernel\\Core\\BinaryReader;\n    use \\PHPJava\\Kernel\\Core\\ConstantPool;\n", $a);
     $a = str_replace('class ', 'final class ', $a);
-    $a = str_replace('<?php', "<?php\nnamespace PHPJava\\Kernel\\Attributes;\n\nuse \\PHPJava\\Exceptions\NotImplementedException;\nuse \\PHPJava\\Utilities\\BinaryTool;\n", $a);
-    $a = str_replace('$this->Class', '$this->getCurrentClass()', $a);
+    $a = str_replace('<?php', "<?php\nnamespace PHPJava\\Kernel\\Attributes;\n\nuse \\PHPJava\\Exceptions\NotImplementedException;\nuse PHPJava\\Utilities\\BinaryTool;\n", $a);
+    $a = str_replace('$this->Class', '$this', $a);
     $a = str_replace('BinaryTools::', 'BinaryTool::', $a);
     $a = str_replace('getJavaBinaryStream()->', '', $a);
+    $a = str_replace('getCpInfo()', 'getConstantPool()->getEntries()', $a);
     var_dump($class, $a);
     file_put_contents(__DIR__ . '/../src/kernel/attributes/' . $class, $a . "\n");
 }

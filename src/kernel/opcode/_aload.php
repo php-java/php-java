@@ -2,11 +2,12 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _aload implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     /**
      * load a reference onto the stack from a local variable #index
@@ -16,7 +17,5 @@ final class _aload implements OpCodeInterface
         $index = $this->getByteCodeStream()->readByte();
 
         $this->pushStack($this->getLocalstorage($index));
-
     }
-
 }

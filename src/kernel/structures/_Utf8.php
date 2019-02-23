@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Structures;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 class _Utf8 implements StructureInterface
 {
@@ -12,9 +12,9 @@ class _Utf8 implements StructureInterface
     private $String = '';
     public function execute(): void
     {
-        $this->Length = $this->Class->readUnsignedShort();
+        $this->Length = $this->readUnsignedShort();
         for ($i = 0; $i < $this->Length; $i++) {
-            $this->String .= chr($this->Class->readUnsignedByte());
+            $this->String .= chr($this->readUnsignedByte());
         }
     }
     public function getLength()

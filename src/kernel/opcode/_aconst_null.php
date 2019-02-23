@@ -2,11 +2,12 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _aconst_null implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     /**
      * store into a reference in an array
@@ -14,7 +15,5 @@ final class _aconst_null implements OpCodeInterface
     public function execute(): void
     {
         $this->pushStack(null);
-        
     }
-
-}   
+}

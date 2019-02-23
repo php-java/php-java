@@ -2,11 +2,12 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _land implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     public function execute(): void
     {
@@ -14,7 +15,5 @@ final class _land implements OpCodeInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::andBits($value1, $value2, 8));
-
     }
-
 }

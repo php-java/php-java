@@ -19,13 +19,26 @@ use PHPJava\Kernel\Structures\StructureInterface;
 class ConstantPool
 {
     private $entries = [];
-    private $reader = null;
+    private $reader;
 
+    /**
+     * @param JavaClassReader $reader
+     * @param int $entries
+     * @throws ReadEntryException
+     */
     public function __construct(JavaClassReader $reader, int $entries)
     {
         $this->reader = $reader;
+
         for ($i = 1; $i < $entries; $i++) {
-            $this->entries[$i] = $this->readEntry($reader->getBinaryReader()->readUnsignedByte());
+            $this->entries[$i] = $this->read(
+                $reader->getBinaryReader()->readUnsignedByte()
+            );
+
+            // execute
+            $this->entries[$i]->execute();
+
+            // Java's Long and Double problem.
             if ($this->entries[$i] instanceof _Long ||
                 $this->entries[$i] instanceof _Double) {
                 $i++;
@@ -38,7 +51,7 @@ class ConstantPool
         return $this->entries;
     }
 
-    private function readEntry($entryTag): StructureInterface
+    private function read($entryTag): ?StructureInterface
     {
         switch ($entryTag) {
             case ConstantPoolTag::CONSTANT_Class:
@@ -61,10 +74,10 @@ class ConstantPool
                 return new _NameAndType($this->reader);
             case ConstantPoolTag::CONSTANT_Utf8:
                 return new _Utf8($this->reader);
-            CASE ConstantPoolTag::CONSTANT_MethodHandle:
-            CASE ConstantPoolTag::CONSTANT_MethodType:
-            CASE ConstantPoolTag::CONSTANT_Module:
-            CASE ConstantPoolTag::CONSTANT_Package:
+            case ConstantPoolTag::CONSTANT_MethodHandle:
+            case ConstantPoolTag::CONSTANT_MethodType:
+            case ConstantPoolTag::CONSTANT_Module:
+            case ConstantPoolTag::CONSTANT_Package:
                 throw new ReadEntryException('Entry tag ' . sprintf('%x', $entryTag) . ' is not implemented.');
         }
         throw new ReadEntryException('Entry tag ' . sprintf('%x', $entryTag) . ' is not defined.');

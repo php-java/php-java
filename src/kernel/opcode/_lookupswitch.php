@@ -2,11 +2,12 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _lookupswitch implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     public function execute(): void
     {
@@ -21,11 +22,9 @@ final class _lookupswitch implements OpCodeInterface
 
 
         for ($i = 0; $i < $switchSize; $i++) {
-
             $label = $this->getByteCodeStream()->readInt();
 
             $offsets[(string) $label] = $this->getByteCodeStream()->readInt();
-
         }
 
         if (isset($offsets[$key])) {
@@ -33,12 +32,9 @@ final class _lookupswitch implements OpCodeInterface
             // goto PC
             $this->getByteCodeStream()->setOffset($this->getPointer() + $offsets[$key]);
             return;
-
         }
 
         // goto default
         $this->getByteCodeStream()->setOffset($this->getPointer() + $offsets['default']);
-
     }
-
 }

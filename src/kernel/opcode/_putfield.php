@@ -2,15 +2,16 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _putfield implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     public function execute(): void
-    {    
-        $cpInfo = $this->getCpInfo();
+    {
+        $cpInfo = $this->getConstantPool()->getEntries();
         
         $cp = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
@@ -22,5 +23,4 @@ final class _putfield implements OpCodeInterface
         
         $objectref->setInstance($name, $value);
     }
-
-}   
+}

@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Structures;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 class _NameAndType implements StructureInterface
 {
@@ -12,8 +12,8 @@ class _NameAndType implements StructureInterface
     private $DescriptorIndex = null;
     public function execute(): void
     {
-        $this->NameIndex = $this->Class->readUnsignedShort();
-        $this->DescriptorIndex = $this->Class->readUnsignedShort();
+        $this->NameIndex = $this->readUnsignedShort();
+        $this->DescriptorIndex = $this->readUnsignedShort();
     }
     public function getNameIndex()
     {

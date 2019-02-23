@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Structures;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 class _Methodref implements StructureInterface
 {
@@ -12,13 +12,15 @@ class _Methodref implements StructureInterface
     private $NameAndTypeIndex = null;
     public function execute(): void
     {
-        $this->ClassIndex = $this->Class->readUnsignedShort();
-        $this->NameAndTypeIndex = $this->Class->readUnsignedShort();
+        $this->ClassIndex = $this->readUnsignedShort();
+        $this->NameAndTypeIndex = $this->readUnsignedShort();
     }
-    public function getClassIndex () {
+    public function getClassIndex()
+    {
         return $this->ClassIndex;
     }
-    public function getNameAndTypeIndex () {
+    public function getNameAndTypeIndex()
+    {
         return $this->NameAndTypeIndex;
     }
 }

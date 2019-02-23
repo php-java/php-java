@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Structures;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 class _FieldInfo implements StructureInterface
 {
@@ -15,12 +15,12 @@ class _FieldInfo implements StructureInterface
     private $Attributes = array();
     public function execute(): void
     {
-        $this->AccessFlag = $this->Class->readUnsignedShort();
-        $this->NameIndex = $this->Class->readUnsignedShort();
-        $this->DescriptorIndex = $this->Class->readUnsignedShort();
-        $this->AttributeCount = $this->Class->readUnsignedShort();
+        $this->AccessFlag = $this->readUnsignedShort();
+        $this->NameIndex = $this->readUnsignedShort();
+        $this->DescriptorIndex = $this->readUnsignedShort();
+        $this->AttributeCount = $this->readUnsignedShort();
         for ($i = 0; $i < $this->AttributeCount; $i++) {
-            $this->Attributes[$i] = new JavaAttributeInfo($this->getClass());
+            $this->Attributes[$i] = new \PHPJava\Kernel\Attributes\AttributeInfo($this->getClass());
         }
     }
     public function getAccessFlag()

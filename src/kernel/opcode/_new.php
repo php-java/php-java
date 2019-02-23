@@ -2,15 +2,16 @@
 namespace PHPJava\Kernel\OpCode;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 final class _new implements OpCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     public function execute(): void
     {
-        $cpInfo = $this->getCpInfo();
+        $cpInfo = $this->getConstantPool()->getEntries();
 
         $class = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
 
@@ -29,26 +30,19 @@ final class _new implements OpCodeInterface
             );
 
             $this->pushStack($this->getInvoker()->getClass()->getManipulator()->$className);
-
         } else {
-
             if (($this->getInvoker()->getClass()->getManipulator() !== null &&
                     $this->getInvoker()->getClass()->getManipulator()->$className->getArchive() !== null &&
                     $this->getInvoker()->getClass()->getManipulator()->$className->getArchive()->hasClass($className)) ||
                     is_file(dirname($this->getInvoker()->getClass()->getClassFile()) . '/' . $className . '.class')) {
-
                 $javaClass = null;
 
                 if ($this->getInvoker()->getClass()->getManipulator() !== null &&
                         $this->getInvoker()->getClass()->getManipulator()->$className->getArchive() !== null &&
                         $this->getInvoker()->getClass()->getManipulator()->$className->getArchive()->hasClass($className)) {
-
                     $javaClass = new JavaClass($className . '.class', $this->getInvoker()->getClass()->getManipulator()->$className->getArchive()->getClassBytecode($className));
-
                 } else {
-
                     $javaClass = new JavaClass(dirname($this->getInvoker()->getClass()->getClassFile()) . '/' . $className . '.class');
-
                 }
 
                 $outerClasses = explode('$', $className);
@@ -56,10 +50,7 @@ final class _new implements OpCodeInterface
                 $javaClass->setInstance('this', $javaClass);
 
                 for ($i = 1, $size = sizeof($outerClasses); $i < $size; $i++) {
-
                     $javaClass->setInstance('this$' . ($i - 1), $this->getInvoker()->getClass()->getManipulator()->{implode('$', array_slice($outerClasses, 0, $i))});
-
-
                 }
 
                 if (method_exists($javaClass->getMethodInvoker(), '<init>')) {
@@ -74,19 +65,16 @@ final class _new implements OpCodeInterface
                             $this->getInvoker()->getClass()
                         )
                     );
-
                 }
 
                 if ($this->getInvoker()->getClass()->getManipulator() !== null) {
 
                     // regist to manipulator
                     $this->getInvoker()->getClass()->getManipulator()->registerClass($javaClass);
-
                 }
 
                 // push to stack
                 $this->pushStack($javaClass);
-
             } else {
 
                 // load platform
@@ -95,11 +83,7 @@ final class _new implements OpCodeInterface
                 $invokeClassName = '\\' . str_replace('/', '\\', $className);
 
                 $this->pushStack(new $invokeClassName());
-
             }
-
         }
-
     }
-
 }

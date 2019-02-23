@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Structures;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 class _String implements StructureInterface
 {
@@ -11,7 +11,7 @@ class _String implements StructureInterface
     private $StringIndex = null;
     public function execute(): void
     {
-        $this->StringIndex = $this->Class->readUnsignedShort();
+        $this->StringIndex = $this->readUnsignedShort();
     }
     public function getStringIndex()
     {

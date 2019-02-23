@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Core\JVM\Stream;
 
-use PHPJava\Kernel\Utilities\BinaryTool;
-
 class BinaryReader
 {
     private $handle;
