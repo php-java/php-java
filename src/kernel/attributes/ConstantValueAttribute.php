@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Kernel\Utilities\BinaryTool;
+use \PHPJava\Utilities\BinaryTool;
 
 final class ConstantValueAttribute implements AttributeInterface
 {

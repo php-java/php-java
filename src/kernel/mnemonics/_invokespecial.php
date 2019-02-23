@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Kernel\Utilities\BinaryTool;
+use \PHPJava\Utilities\BinaryTool;
 
 final class _invokespecial implements MnemonicInterface
 {

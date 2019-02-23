@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM\Validations;
 
-use PHPJava\Kernel\Utilities\BinaryTool;
+use PHPJava\Utilities\BinaryTool;
 
 class MagicByte implements ValidatorInterface
 {

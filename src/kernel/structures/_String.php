@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Structures;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Kernel\Utilities\BinaryTool;
+use \PHPJava\Utilities\BinaryTool;
 
 class _String implements StructureInterface
 {

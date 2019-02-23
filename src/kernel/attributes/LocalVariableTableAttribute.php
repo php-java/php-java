@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use \PHPJava\Exceptions\NotImplementedException;
-use \PHPJava\Kernel\Utilities\BinaryTool;
+use \PHPJava\Utilities\BinaryTool;
 
 final class LocalVariableTableAttribute implements AttributeInterface
 {
@@ -12,7 +12,7 @@ final class LocalVariableTableAttribute implements AttributeInterface
     private $LocalVariableTables = array();
     public function execute(): void
     {
-        $this->LocalVariableTableLength = $this->readUnsignedShort();
+        $this->LocalVariableTableLength = $this->getCurrentClass()->readUnsignedShort();
         for ($i = 0; $i < $this->LocalVariableTableLength; $i++) {
             $this->LocalVariableTables[] = new JavaStructureLocalVariableTable($Class);
         }

@@ -10,7 +10,7 @@ foreach (glob(__DIR__ . '/../old/PHPJava/Attributes/*') as $file) {
     $a = preg_replace("/\s*[\\n]+/", "\n", $a);
     $a = str_replace('extends JavaAttribute {', "implements AttributeInterface\n{\n    use \\PHPJava\\Kernel\\Core\\BinaryReader;\n", $a);
     $a = str_replace('class ', 'final class ', $a);
-    $a = str_replace('<?php', "<?php\nnamespace PHPJava\\Kernel\\Attributes;\n\nuse \\PHPJava\\Exceptions\NotImplementedException;\nuse \\PHPJava\\Kernel\\Utilities\\BinaryTool;\n", $a);
+    $a = str_replace('<?php', "<?php\nnamespace PHPJava\\Kernel\\Attributes;\n\nuse \\PHPJava\\Exceptions\NotImplementedException;\nuse \\PHPJava\\Utilities\\BinaryTool;\n", $a);
     $a = str_replace('$this->Class', '$this->getCurrentClass()', $a);
     $a = str_replace('BinaryTools::', 'BinaryTool::', $a);
     $a = str_replace('getJavaBinaryStream()->', '', $a);

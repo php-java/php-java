@@ -11,7 +11,7 @@ foreach (glob(__DIR__ . '/../old/PHPJava/Structures/*') as $file) {
     $a = str_replace('public function __construct (&$this->getClass()) {', "public function execute(): void\n    {", $a);
     $a = str_replace('parent::__construct($this->getClass());', '', $a);
     $a = preg_replace("/\s*[\\n]+/", "\n", $a);
-    $a = str_replace('<?php', "<?php\nnamespace PHPJava\\Kernel\\Structures;\n\nuse \\PHPJava\\Exceptions\NotImplementedException;\nuse \\PHPJava\\Kernel\\Utilities\\BinaryTool;\n", $a);
+    $a = str_replace('<?php', "<?php\nnamespace PHPJava\\Kernel\\Structures;\n\nuse \\PHPJava\\Exceptions\NotImplementedException;\nuse \\PHPJava\\Utilities\\BinaryTool;\n", $a);
     $a = str_replace('[LB]', "\n", $a);
     $a = str_replace('$this->getClass()->read', '$this->read', $a);
     var_dump($class, $a);
