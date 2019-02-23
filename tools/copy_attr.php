@@ -13,5 +13,5 @@ foreach (glob(__DIR__ . '/../old/PHPJava/Attributes/*') as $file) {
     $a = str_replace('<?php', "<?php\nnamespace PHPJava\\Kernel\\Attributes;\n\nuse \\PHPJava\\Exceptions\NotImplementedException;\n", $a);
     $a = str_replace('$this->Class', '$this', $a);
     var_dump($class, $a);
-    file_put_contents(__DIR__ . '/../src/kernel/attributes/' . $class, $a);
+    file_put_contents(__DIR__ . '/../src/kernel/attributes/' . $class, $a . "\n");
 }
