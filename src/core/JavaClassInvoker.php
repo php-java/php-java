@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Core;
 
-use PHPJava\Core\JVM\Field\GetFieldInterface;
+use PHPJava\Core\JVM\Field\FieldInterface;
 use PHPJava\Core\JVM\Invoker\Invokable;
 use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Kernel\Maps\AccessFlag;
@@ -55,6 +55,9 @@ class JavaClassInvoker
                 $this->staticFields[$fieldName] = $fieldInfo;
             }
         }
+
+        // call <clinit>
+        $this->getStaticMethods()->{'<clinit>'}();
     }
 
     public function getJavaClass(): JavaClass
@@ -69,16 +72,16 @@ class JavaClassInvoker
 
     public function getStaticMethods(): InvokerInterface
     {
-        return new JVM\Invoker\StaticMethodInvoker($this, $this->dynamicMethods);
+        return new JVM\Invoker\StaticMethodInvoker($this, $this->staticMethods);
     }
 
-    public function getDynamicFields(): GetFieldInterface
+    public function getDynamicFields(): FieldInterface
     {
-        return new JVM\Field\DynamicFieldGetter($this, $this->dynamicFields);
+        return new JVM\Field\DynamicField($this, $this->dynamicFields);
     }
 
-    public function getStaticFields(): GetFieldInterface
+    public function getStaticFields(): JVM\Field\StaticField
     {
-        return new JVM\Field\StaticFieldGetter($this, $this->staticFields);
+        return new JVM\Field\StaticField();
     }
 }

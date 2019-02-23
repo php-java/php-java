@@ -10,6 +10,9 @@ class StringBuilder
         if ($arg instanceof _String) {
             $this->sequence .= $arg->toString();
         } else {
+            if (is_array($arg)) {
+                $arg = implode($arg);
+            }
             $this->sequence .= $arg;
         }
         return $this;

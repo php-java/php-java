@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Utilities;
 
+use PHPJava\Exceptions\FormatterException;
+
 class Formatter
 {
     public static function parseSignature($signature, $i = 0)
@@ -17,7 +19,7 @@ class Formatter
                 case 'V': return 'void';
                 case 'Z': return 'boolean';
             }
-            return 'Undefined';
+            throw new FormatterException('Passed undefined signature ' . $signature);
         };
         $data = [];
         $deepArray = 0;
@@ -68,7 +70,7 @@ class Formatter
                     for ($i++; $i < $size && $signature[$i] !== ')'; $i++) {
                         $build .= $signature[$i];
                     }
-                    $data['arguments'] = ($build !== '') ? $getMappedSignatureType($build) : [];
+                    $data['arguments'] = ($build !== '') ? static::parseSignature($build) : [];
                     $data['argumentsCount'] = ($data['argumentsCount'] ?? 0) + 1;
                     break;
             }

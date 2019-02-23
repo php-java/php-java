@@ -16,11 +16,8 @@ final class _putstatic implements OpCodeInterface
         $cp = $cpInfo[$this->readUnsignedShort()];
         
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
-        $name = $cpInfo[$class->getNameIndex()]->getString();
-        
-        $value = $this->getStack();
-        
-        // set field
-        $this->getInvoker()->getClass()->setStatic($name, $value);
+        $fieldName = $cpInfo[$class->getNameIndex()]->getString();
+
+        ($this->javaClassInvoker->getStaticFields())->$fieldName = $this->getStack();
     }
 }

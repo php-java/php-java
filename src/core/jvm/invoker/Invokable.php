@@ -83,8 +83,7 @@ trait Invokable
             }
         }
 
-        var_dump($codeAttribute);
-        exit();
+        return null;
     }
 
     private function getCodeAttribute(array $attributes): ?CodeAttribute

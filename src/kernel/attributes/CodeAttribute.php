@@ -67,6 +67,6 @@ final class CodeAttribute implements AttributeInterface
     }
     public function getOpCodeLength()
     {
-        return $this->codeLength;
+        return (int) $this->codeLength;
     }
 }

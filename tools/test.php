@@ -8,4 +8,4 @@ $javaClass = new \PHPJava\Core\JavaClass(
     new \PHPJava\Core\JavaClassReader(__DIR__ . '/Test.class')
 );
 $invoker = new JavaClassInvoker($javaClass);
-var_dump($invoker->getDynamicMethods()->main([1, 2, 3]));
+var_dump($invoker->getDynamicMethods()->main([999, 222, 3333]));

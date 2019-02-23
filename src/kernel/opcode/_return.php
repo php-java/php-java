@@ -11,6 +11,5 @@ final class _return implements OpCodeInterface
 
     public function execute(): void
     {
-        return null;
     }
 }
