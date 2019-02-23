@@ -1,12 +1,13 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use \PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
 class _MethodInfo implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     private $AccessFlag = null;
     private $NameIndex = null;

@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\OpCode;
 
-use \PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
 final class _l2i implements OpCodeInterface

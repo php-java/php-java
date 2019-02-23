@@ -1,12 +1,13 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use \PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
 class _ExceptionTable implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
+    use \PHPJava\Kernel\Core\ConstantPool;
 
     private $StartPc = null;
     private $EndPc = null;
