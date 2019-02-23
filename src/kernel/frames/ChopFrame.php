@@ -11,6 +11,7 @@ class ChopFrame implements FrameInterface
 
     private $frameType = null;
     private $offsetDelta = null;
+    
     public function execute(): void
     {
         $this->frameType = $this->readUnsignedByte();

@@ -11,7 +11,8 @@ class AppendFrame implements FrameInterface
 
     private $frameType = null;
     private $offsetDelta = null;
-    private $locals = array();
+    private $locals = [];
+
     public function execute(): void
     {
         $this->frameType = $this->readUnsignedByte();
