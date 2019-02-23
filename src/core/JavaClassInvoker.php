@@ -2,6 +2,7 @@
 namespace PHPJava\Core;
 
 use PHPJava\Core\JVM\Invoker\Invokable;
+use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Kernel\Maps\AccessFlag;
 use PHPJava\Kernel\Structures\_MethodInfo;
 
@@ -37,14 +38,13 @@ class JavaClassInvoker
         }
     }
 
-    public function getDynamicMethods(): Invokable
+    public function getDynamicMethods(): InvokerInterface
     {
-        return new JVM\Invoker\DynamicMethodInvoker($this, $this->dynamicMethods);
+        return new JVM\Invoker\DynamicMethodInvoker($this->javaClass, $this->dynamicMethods);
     }
 
-    public function getStaticMethods(): Invokable
+    public function getStaticMethods(): InvokerInterface
     {
-
-        return new JVM\Invoker\StaticMethodInvoker($this, $this->dynamicMethods);
+        return new JVM\Invoker\StaticMethodInvoker($this->javaClass, $this->dynamicMethods);
     }
 }
