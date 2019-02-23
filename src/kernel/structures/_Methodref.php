@@ -8,7 +8,7 @@ class _Methodref implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
 
-    private $this->getClass()Index = null;
+    private $ClassIndex = null;
     private $NameAndTypeIndex = null;
     public function execute(): void
     {

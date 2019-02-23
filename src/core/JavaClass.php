@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Exceptions\ValidatorException;
 
@@ -10,6 +11,9 @@ class JavaClass
         'minor' => null,
         'major' => null,
     ];
+
+
+    private $constantPool;
 
     public function __construct(JavaClassReader $reader)
     {
@@ -25,8 +29,11 @@ class JavaClass
         $this->versions['major'] = $reader->getBinaryReader()->readUnsignedShort();
 
         // read constant pool size
-        $constantPoolSize = $reader->getBinaryReader()->readUnsignedShort();
+        $this->constantPool = new ConstantPool(
+            $reader,
+            $reader->getBinaryReader()->readUnsignedShort()
+        );
 
-        var_dump($this->versions['minor'], $this->versions['major']);
+        var_dump($this->constantPool);
     }
 }
