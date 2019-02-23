@@ -13,12 +13,10 @@ final class _aastore implements MnemonicInterface
      */
     public function execute(): void
     {
-        $value = $this->getStack();        
+        $value = $this->getStack();
         $index = $this->getStack();
         $arrayref = $this->getStack();
         
         $arrayref[$index] = $value;
-        
     }
-
-}   
+}

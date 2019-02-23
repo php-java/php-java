@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Maps;
 
 class ClassConstantEnum extends Map
 {
-    const _Class =              0x0007;  
+    const _Class =              0x0007;
     const _Fieldref =           0x0009;
     const _Methodref =          0x000A;
     const _InterfaceMethodref = 0x000B;

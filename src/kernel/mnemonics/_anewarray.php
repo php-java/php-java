@@ -14,7 +14,7 @@ final class _anewarray implements MnemonicInterface
      * in the constant pool
      */
     public function execute(): void
-    {    
+    {
         // 配列のサイズを調べる (PHPでは不要なので実行するだけ)
         $this->getByteCodeStream()->readUnsignedShort();
         
@@ -23,7 +23,5 @@ final class _anewarray implements MnemonicInterface
         // need reference
         $ref = new ArrayIterator(array_fill(0, $count, null));
         $this->pushStackByReference($ref);
-        
     }
-
-}   
+}

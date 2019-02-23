@@ -9,7 +9,7 @@ final class _putstatic implements MnemonicInterface
     use \PHPJava\Kernel\Core\Accumulator;
 
     public function execute(): void
-    {    
+    {
         $cpInfo = $this->getCpInfo();
         
         $cp = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
@@ -21,7 +21,5 @@ final class _putstatic implements MnemonicInterface
         
         // set field
         $this->getInvoker()->getClass()->setStatic($name, $value);
-        
     }
-
-}   
+}

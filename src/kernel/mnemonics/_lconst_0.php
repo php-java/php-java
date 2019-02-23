@@ -11,7 +11,5 @@ final class _lconst_0 implements MnemonicInterface
     public function execute(): void
     {
         $this->pushStack(0);
-
     }
-
 }

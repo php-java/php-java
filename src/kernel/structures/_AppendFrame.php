@@ -20,4 +20,3 @@ class _AppendFrame implements StructureInterface
         }
     }
 }
-

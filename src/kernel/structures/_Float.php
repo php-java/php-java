@@ -13,8 +13,8 @@ class _Float implements StructureInterface
     {
         $this->Bytes = $this->readUnsignedInt();
     }
-    public function getBytes () {
+    public function getBytes()
+    {
         return $this->Bytes;
     }
 }
-

@@ -15,8 +15,8 @@ class _Double implements StructureInterface
         $this->HighBytes = $this->readUnsignedInt();
         $this->LowBytes = $this->readUnsignedInt();
     }
-    public function getBytes () {
+    public function getBytes()
+    {
         return ($this->HighBytes << 32) + $this->LowBytes;
     }
 }
-

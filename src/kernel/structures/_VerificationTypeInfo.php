@@ -15,23 +15,22 @@ class _VerificationTypeInfo implements StructureInterface
         $this->getClass()->seek(-1);
         if ($this->Tag == 0) {
             $this->TopVariableInfo = new _TopVariableInfo($this->getClass());
-        } else if ($this->Tag == 1) {
+        } elseif ($this->Tag == 1) {
             $this->IntegerVariableInfo = new _IntegerVariableInfo($this->getClass());
-        } else if ($this->Tag == 2) {
+        } elseif ($this->Tag == 2) {
             $this->FloatVariableInfo = new _FloatVariableInfo($this->getClass());
-        } else if ($this->Tag == 4) {
+        } elseif ($this->Tag == 4) {
             $this->LongVariableInfo = new _LongVariableInfo($this->getClass());
-        } else if ($this->Tag == 3) {
+        } elseif ($this->Tag == 3) {
             $this->DoubleVariableInfo = new _DoubleVariableInfo($this->getClass());
-        } else if ($this->Tag == 5) {
+        } elseif ($this->Tag == 5) {
             $this->NullVariableInfo = new _NullVariableInfo($this->getClass());
-        } else if ($this->Tag == 6) {
+        } elseif ($this->Tag == 6) {
             $this->UninitializedThisVariableInfo = new _UninitializedThisVariableInfo($this->getClass());
-        } else if ($this->Tag == 7) {
+        } elseif ($this->Tag == 7) {
             $this->ObjectVariableInfo = new _ObjectVariableInfo($this->getClass());
-        } else if ($this->Tag == 8) {
+        } elseif ($this->Tag == 8) {
             $this->UninitializedVariableInfo = new _UninitializedVariableInfo($this->getClass());
         }
+    }
 }
-}
-

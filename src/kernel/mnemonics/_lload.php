@@ -13,7 +13,5 @@ final class _lload implements MnemonicInterface
         $index = $this->getByteCodeStream()->readUnsignedByte();
 
         $this->pushStack($this->getLocalstorage($index));
-
     }
-
 }

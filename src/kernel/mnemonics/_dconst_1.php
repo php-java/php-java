@@ -11,7 +11,5 @@ final class _dconst_1 implements MnemonicInterface
     public function execute(): void
     {
         $this->pushStack(1);
-        
     }
-
-}   
+}

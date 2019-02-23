@@ -14,7 +14,5 @@ final class _ixor implements MnemonicInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::xorBits($value1, $value2, 4));
-
     }
-
 }

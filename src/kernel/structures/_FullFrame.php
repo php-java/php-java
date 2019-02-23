@@ -28,4 +28,3 @@ class _FullFrame implements StructureInterface
         }
     }
 }
-

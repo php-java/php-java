@@ -21,11 +21,9 @@ final class _lookupswitch implements MnemonicInterface
 
 
         for ($i = 0; $i < $switchSize; $i++) {
-
             $label = $this->getByteCodeStream()->readInt();
 
             $offsets[(string) $label] = $this->getByteCodeStream()->readInt();
-
         }
 
         if (isset($offsets[$key])) {
@@ -33,12 +31,9 @@ final class _lookupswitch implements MnemonicInterface
             // goto PC
             $this->getByteCodeStream()->setOffset($this->getPointer() + $offsets[$key]);
             return;
-
         }
 
         // goto default
         $this->getByteCodeStream()->setOffset($this->getPointer() + $offsets['default']);
-
     }
-
 }

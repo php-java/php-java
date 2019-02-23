@@ -14,7 +14,5 @@ final class _iand implements MnemonicInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::andBits($value1, $value2, 4));
-
     }
-
 }

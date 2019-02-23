@@ -14,7 +14,5 @@ final class _ladd implements MnemonicInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::add($value1, $value2, 8));
-
     }
-
 }

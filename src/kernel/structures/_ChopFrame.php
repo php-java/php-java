@@ -16,4 +16,3 @@ class _ChopFrame implements StructureInterface
         $this->OffsetDelta = $this->readUnsignedShort();
     }
 }
-

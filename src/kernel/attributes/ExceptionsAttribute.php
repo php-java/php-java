@@ -10,7 +10,6 @@ final class ExceptionsAttribute implements AttributeInterface
 
     public function execute(): void
     {
-        
         throw new NotImplementedException(__CLASS__);
     }
 }

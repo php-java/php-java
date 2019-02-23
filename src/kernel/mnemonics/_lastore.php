@@ -12,13 +12,11 @@ final class _lastore implements MnemonicInterface
      * store a long to an array
      */
     public function execute(): void
-    {    
-        $value = $this->getStack();        
+    {
+        $value = $this->getStack();
         $index = $this->getStack();
         $arrayref = $this->getStack();
         
         $arrayref[$index] = $value;
-        
     }
-
-}   
+}

@@ -12,7 +12,6 @@ final class LocalVariableTableAttribute implements AttributeInterface
     private $LocalVariableTables = array();
     public function execute(): void
     {
-        
         $this->LocalVariableTableLength = $this->readUnsignedShort();
         for ($i = 0; $i < $this->LocalVariableTableLength; $i++) {
             $this->LocalVariableTables[] = new JavaStructureLocalVariableTable($Class);

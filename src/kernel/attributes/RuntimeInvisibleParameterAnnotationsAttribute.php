@@ -10,7 +10,6 @@ final class RuntimeInvisibleParameterAnnotationsAttribute implements AttributeIn
 
     public function execute(): void
     {
-        
         throw new NotImplementedException(__CLASS__);
     }
 }

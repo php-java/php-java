@@ -16,7 +16,6 @@ class Map
 
     public function getValues(): array
     {
-
         try {
             $reflectionClass = new \ReflectionClass($this);
             return array_values($reflectionClass->getConstants());

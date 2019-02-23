@@ -16,7 +16,5 @@ final class _aload implements MnemonicInterface
         $index = $this->getByteCodeStream()->readByte();
 
         $this->pushStack($this->getLocalstorage($index));
-
     }
-
 }

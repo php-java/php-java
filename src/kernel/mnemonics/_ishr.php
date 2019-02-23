@@ -10,12 +10,9 @@ final class _ishr implements MnemonicInterface
 
     public function execute(): void
     {
-
         $value1 = $this->getStack();
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::shiftRight($value1, $value2, 4));
-
     }
-
 }

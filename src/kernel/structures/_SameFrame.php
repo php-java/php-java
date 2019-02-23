@@ -14,4 +14,3 @@ class _SameFrame implements StructureInterface
         $this->FrameType = $this->readUnsignedByte();
     }
 }
-

@@ -11,7 +11,5 @@ final class _pop implements MnemonicInterface
     public function execute(): void
     {
         $this->popStack();
-
     }
-
 }

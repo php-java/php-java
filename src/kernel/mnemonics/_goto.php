@@ -13,7 +13,5 @@ final class _goto implements MnemonicInterface
         $offset = $this->getByteCodeStream()->readShort();
 
         $this->getByteCodeStream()->setOffset($this->getPointer() + $offset);
-
     }
-
-}   
+}

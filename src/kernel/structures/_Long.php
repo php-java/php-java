@@ -17,9 +17,9 @@ class _Long implements StructureInterface
         //$this->LowBytes = $this->readUnsignedInt();
         $this->Bytes = $this->readLong();
     }
-    public function getBytes () {
+    public function getBytes()
+    {
         //return ($this->HighBytes << 32) + $this->LowBytes;
         return $this->Bytes;
     }
 }
-

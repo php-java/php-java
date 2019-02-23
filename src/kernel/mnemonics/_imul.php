@@ -14,7 +14,5 @@ final class _imul implements MnemonicInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::multiply($value1, $value2, 4));
-
     }
-
 }

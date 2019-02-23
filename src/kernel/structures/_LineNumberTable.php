@@ -10,16 +10,20 @@ class _LineNumberTable implements StructureInterface
 
     private $StartPc = null;
     private $LineNumber = null;
-    public function setStartPc ($StartPc) {
+    public function setStartPc($StartPc)
+    {
         $this->StartPc = $StartPc;
     }
-    public function setLineNumber ($LineNumber) {
+    public function setLineNumber($LineNumber)
+    {
         $this->LineNumber = $LineNumber;
     }
-    public function getStartPc () {
+    public function getStartPc()
+    {
         return $this->StartPc;
     }
-    public function getLineNumber () {
+    public function getLineNumber()
+    {
         return $this->LineNumber;
     }
 }

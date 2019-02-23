@@ -12,9 +12,7 @@ final class _ireturn implements MnemonicInterface
      * return an integer from a method
      */
     public function execute(): void
-    {    
+    {
         return new JavaTypeInt($this->getStack());
-
     }
-
-}   
+}

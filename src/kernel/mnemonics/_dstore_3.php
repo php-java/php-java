@@ -11,7 +11,5 @@ final class _dstore_3 implements MnemonicInterface
     public function execute(): void
     {
         $this->setLocalstorage(3, $this->getStack());
-
     }
-
-}   
+}

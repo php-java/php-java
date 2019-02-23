@@ -14,27 +14,18 @@ final class LineNumberTableAttribute implements AttributeInterface
     
     public function execute(): void
     {
-        
-        
-        
         $this->LineNumberTableLength = $this->readUnsignedShort();
         
         for ($i = 0; $i < $this->LineNumberTableLength; $i++) {
-            
             $this->LineNumberTables[$i] = new JavaStructureLineNumberTable($Class);
             
             $this->LineNumberTables[$i]->setStartPc($this->readUnsignedShort());
             $this->LineNumberTables[$i]->setLineNumber($this->readUnsignedShort());
-            
         }
-        
     }
     
-    public function getLineNumberTables () {
-        
+    public function getLineNumberTables()
+    {
         return $this->LineNumberTables;
-        
     }
-    
-    
 }

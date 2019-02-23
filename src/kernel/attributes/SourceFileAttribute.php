@@ -13,19 +13,11 @@ final class SourceFileAttribute implements AttributeInterface
     
     public function execute(): void
     {
-        
-        
-        
         $this->SourceFileIndex = $this->readUnsignedShort();
-        
-        
     }
     
-    public function getSourceFileIndex () {
-        
+    public function getSourceFileIndex()
+    {
         return $this->SourceFileIndex;
-        
     }
-    
-    
 }

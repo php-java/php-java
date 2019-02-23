@@ -14,7 +14,5 @@ final class _lushr implements MnemonicInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::unsignedShiftRight($value1, $value2, 8));
-
     }
-
 }

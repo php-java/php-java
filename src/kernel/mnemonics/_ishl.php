@@ -14,7 +14,5 @@ final class _ishl implements MnemonicInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::shiftLeft($value1, $value2, 4));
-
     }
-
 }

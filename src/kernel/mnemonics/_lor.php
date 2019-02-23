@@ -14,7 +14,5 @@ final class _lor implements MnemonicInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::orBits($value1, $value2, 8));
-
     }
-
 }

@@ -11,7 +11,5 @@ final class _iload_3 implements MnemonicInterface
     public function execute(): void
     {
         $this->pushStack($this->getLocalstorage(3));
-        
     }
-
-}   
+}

@@ -11,7 +11,5 @@ final class _sipush implements MnemonicInterface
     public function execute(): void
     {
         $this->pushStack($this->getByteCodeStream()->readShort());
-
     }
-
 }

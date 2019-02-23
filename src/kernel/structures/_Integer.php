@@ -13,8 +13,8 @@ class _Integer implements StructureInterface
     {
         $this->Bytes = $this->readInt();
     }
-    public function getBytes () {
+    public function getBytes()
+    {
         return $this->Bytes;
     }
 }
-

@@ -16,12 +16,7 @@ final class _if_icmpgt implements MnemonicInterface
         $rightOperand = $this->getStack();
 
         if ($leftOperand < $rightOperand) {
-
             $this->getByteCodeStream()->setOffset($this->getPointer() + $offset);
-
         }
-
-
     }
-
-}   
+}

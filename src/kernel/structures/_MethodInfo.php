@@ -23,16 +23,20 @@ class _MethodInfo implements StructureInterface
             $this->Attributes[$i] = new JavaAttributeInfo($this->getClass());
         }
     }
-    public function getAccessFlag () {
+    public function getAccessFlag()
+    {
         return $this->AccessFlag;
     }
-    public function getNameIndex () {
+    public function getNameIndex()
+    {
         return $this->NameIndex;
     }
-    public function getDescriptorIndex () {
+    public function getDescriptorIndex()
+    {
         return $this->DescriptorIndex;
     }
-    public function getAttributes () {
+    public function getAttributes()
+    {
         return $this->Attributes;
     }
 }

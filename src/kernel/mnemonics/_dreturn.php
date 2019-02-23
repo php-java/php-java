@@ -9,9 +9,7 @@ final class _dreturn implements MnemonicInterface
     use \PHPJava\Kernel\Core\Accumulator;
 
     public function execute(): void
-    {    
+    {
         return new JavaTypeDouble($this->getStack());
-
     }
-
-}   
+}

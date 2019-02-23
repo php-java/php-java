@@ -9,7 +9,7 @@ final class _putfield implements MnemonicInterface
     use \PHPJava\Kernel\Core\Accumulator;
 
     public function execute(): void
-    {    
+    {
         $cpInfo = $this->getCpInfo();
         
         $cp = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
@@ -22,5 +22,4 @@ final class _putfield implements MnemonicInterface
         
         $objectref->setInstance($name, $value);
     }
-
-}   
+}

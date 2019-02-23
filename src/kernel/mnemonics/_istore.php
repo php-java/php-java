@@ -12,7 +12,5 @@ final class _istore implements MnemonicInterface
     {
         $index = $this->getByteCodeStream()->readUnsignedByte();
         $this->setLocalstorage($index, $this->getStack());
-
     }
-
-}   
+}

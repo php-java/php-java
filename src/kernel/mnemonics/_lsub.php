@@ -14,7 +14,5 @@ final class _lsub implements MnemonicInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::sub($value1, $value2, 8));
-
     }
-
 }

@@ -9,8 +9,7 @@ final class _l2d implements MnemonicInterface
     use \PHPJava\Kernel\Core\Accumulator;
 
     public function execute(): void
-    {    
+    {
         throw new NotImplementedException(__CLASS__);
     }
-
-}   
+}

@@ -15,28 +15,36 @@ class _Classes implements StructureInterface
     public function execute(): void
     {
     }
-    public function setInnerClassInfoIndex ($InnerClassInfoIndex) {
+    public function setInnerClassInfoIndex($InnerClassInfoIndex)
+    {
         $this->InnerClassInfoIndex = $InnerClassInfoIndex;
     }
-    public function setOuterClassInfoIndex ($OuterClassInfoIndex) {
+    public function setOuterClassInfoIndex($OuterClassInfoIndex)
+    {
         $this->OuterClassInfoIndex = $OuterClassInfoIndex;
     }
-    public function setInnerNameIndex ($InnerNameIndex) {
+    public function setInnerNameIndex($InnerNameIndex)
+    {
         $this->InnerNameIndex = $InnerNameIndex;
     }
-    public function setInnerClassAccessFlag ($InnerClassAccessFlag) {
+    public function setInnerClassAccessFlag($InnerClassAccessFlag)
+    {
         $this->InnerClassAccessFlag = $InnerClassAccessFlag;
     }
-    public function getInnerClassInfoIndex () {
+    public function getInnerClassInfoIndex()
+    {
         return $this->InnerClassInfoIndex;
     }
-    public function getOuterClassInfoIndex () {
+    public function getOuterClassInfoIndex()
+    {
         return $this->OuterClassInfoIndex;
     }
-    public function getInnerNameIndex () {
+    public function getInnerNameIndex()
+    {
         return $this->InnerNameIndex;
     }
-    public function getInnerClassAccessFlag () {
+    public function getInnerClassAccessFlag()
+    {
         return $this->InnerClassAccessFlag;
     }
 }

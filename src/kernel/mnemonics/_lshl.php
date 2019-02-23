@@ -14,7 +14,5 @@ final class _lshl implements MnemonicInterface
         $value2 = $this->getStack();
 
         $this->pushStack(BinaryTool::shiftLeft($value1, $value2, 8));
-
     }
-
 }

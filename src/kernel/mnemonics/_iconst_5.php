@@ -9,9 +9,7 @@ final class _iconst_5 implements MnemonicInterface
     use \PHPJava\Kernel\Core\Accumulator;
 
     public function execute(): void
-    {    
+    {
         $this->pushStack(5);
-
     }
-
-}   
+}

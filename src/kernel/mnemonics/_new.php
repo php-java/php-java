@@ -29,26 +29,19 @@ final class _new implements MnemonicInterface
             );
 
             $this->pushStack($this->getInvoker()->getClass()->getManipulator()->$className);
-
         } else {
-
             if (($this->getInvoker()->getClass()->getManipulator() !== null &&
                     $this->getInvoker()->getClass()->getManipulator()->$className->getArchive() !== null &&
                     $this->getInvoker()->getClass()->getManipulator()->$className->getArchive()->hasClass($className)) ||
                     is_file(dirname($this->getInvoker()->getClass()->getClassFile()) . '/' . $className . '.class')) {
-
                 $javaClass = null;
 
                 if ($this->getInvoker()->getClass()->getManipulator() !== null &&
                         $this->getInvoker()->getClass()->getManipulator()->$className->getArchive() !== null &&
                         $this->getInvoker()->getClass()->getManipulator()->$className->getArchive()->hasClass($className)) {
-
                     $javaClass = new JavaClass($className . '.class', $this->getInvoker()->getClass()->getManipulator()->$className->getArchive()->getClassBytecode($className));
-
                 } else {
-
                     $javaClass = new JavaClass(dirname($this->getInvoker()->getClass()->getClassFile()) . '/' . $className . '.class');
-
                 }
 
                 $outerClasses = explode('$', $className);
@@ -56,10 +49,7 @@ final class _new implements MnemonicInterface
                 $javaClass->setInstance('this', $javaClass);
 
                 for ($i = 1, $size = sizeof($outerClasses); $i < $size; $i++) {
-
                     $javaClass->setInstance('this$' . ($i - 1), $this->getInvoker()->getClass()->getManipulator()->{implode('$', array_slice($outerClasses, 0, $i))});
-
-
                 }
 
                 if (method_exists($javaClass->getMethodInvoker(), '<init>')) {
@@ -74,19 +64,16 @@ final class _new implements MnemonicInterface
                             $this->getInvoker()->getClass()
                         )
                     );
-
                 }
 
                 if ($this->getInvoker()->getClass()->getManipulator() !== null) {
 
                     // regist to manipulator
                     $this->getInvoker()->getClass()->getManipulator()->registerClass($javaClass);
-
                 }
 
                 // push to stack
                 $this->pushStack($javaClass);
-
             } else {
 
                 // load platform
@@ -95,11 +82,7 @@ final class _new implements MnemonicInterface
                 $invokeClassName = '\\' . str_replace('/', '\\', $className);
 
                 $this->pushStack(new $invokeClassName());
-
             }
-
         }
-
     }
-
 }

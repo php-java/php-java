@@ -16,4 +16,3 @@ class _SameLocals1StackItemFrame implements StructureInterface
         $this->Stack[] = new _VerificationTypeInfo($this->getClass());
     }
 }
-

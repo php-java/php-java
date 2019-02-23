@@ -19,15 +19,9 @@ final class _getfield implements MnemonicInterface
         $return = $get->getInstance($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString());
 
         if ($return !== null) {
-
             $this->pushStack($return);
-
         } else {
-
             throw new Exception('Cannot get ' . $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString() . '');
-
         }
-
     }
-
 }

@@ -12,12 +12,10 @@ final class _dstore implements MnemonicInterface
      * store a double value into a local variable #index
      */
     public function execute(): void
-    {    
+    {
         $index = $this->getByteCodeStream()->readUnsignedByte();
         $value = $this->getStack();
         
         $this->setLocalstorage($index, BinaryTool::convertDoubleToIEEE754($value));
-        
     }
-
-}   
+}

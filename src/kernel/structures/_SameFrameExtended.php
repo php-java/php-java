@@ -16,4 +16,3 @@ class _SameFrameExtended implements StructureInterface
         $this->OffsetDelta = $this->readUnsignedShort();
     }
 }
-

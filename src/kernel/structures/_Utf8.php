@@ -17,10 +17,12 @@ class _Utf8 implements StructureInterface
             $this->String .= chr($this->Class->readUnsignedByte());
         }
     }
-    public function getLength () {
+    public function getLength()
+    {
         return $this->Length;
     }
-    public function getString () {
+    public function getString()
+    {
         return $this->String;
     }
 }

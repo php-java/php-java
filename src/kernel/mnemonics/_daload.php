@@ -12,12 +12,10 @@ final class _daload implements MnemonicInterface
      * load a double from an array
      */
     public function execute(): void
-    {    
+    {
         $index = $this->getStack();
         $arrayref = $this->getStack();
 
         $this->pushStack($arrayref[$index]);
-
     }
-
-}   
+}

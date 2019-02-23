@@ -14,7 +14,5 @@ final class _iadd implements MnemonicInterface
         $rightValue = $this->getStack();
         
         $this->pushStack(BinaryTool::add($leftValue, $rightValue, 4));
-
     }
-
 }

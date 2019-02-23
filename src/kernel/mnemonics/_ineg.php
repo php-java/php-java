@@ -13,7 +13,5 @@ final class _ineg implements MnemonicInterface
         $value = $this->getStack();
 
         $this->pushStack(BinaryTool::negate($value, 4));
-
     }
-
 }

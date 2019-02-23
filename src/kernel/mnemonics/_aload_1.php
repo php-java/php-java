@@ -12,10 +12,7 @@ final class _aload_1 implements MnemonicInterface
      * load a reference onto the stack from local variable 1
      */
     public function execute(): void
-    {    
+    {
         $this->pushStack($this->getLocalstorage(1));
-        
-
     }
-
-}   
+}

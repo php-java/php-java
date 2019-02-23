@@ -9,7 +9,7 @@ final class _invokespecial implements MnemonicInterface
     use \PHPJava\Kernel\Core\Accumulator;
 
     public function execute(): void
-    {            
+    {
         $cpInfo = $this->getCpInfo();
         
         
@@ -28,12 +28,7 @@ final class _invokespecial implements MnemonicInterface
         $arguments = array();
 
         for ($i = 0; $i < $signature['argumentsCount']; $i++) {
-
             $arguments[] = $this->getStack();
-
         }
-        
-        
     }
-
-}   
+}

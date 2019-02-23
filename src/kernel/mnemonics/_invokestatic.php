@@ -9,7 +9,7 @@ final class _invokestatic implements MnemonicInterface
     use \PHPJava\Kernel\Core\Accumulator;
 
     public function execute(): void
-    {    
+    {
         $cpInfo = $this->getCpInfo();
         
         $cp = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
@@ -21,9 +21,7 @@ final class _invokestatic implements MnemonicInterface
         $arguments = array();
         
         for ($i = 0; $i < $signature['argumentsCount']; $i++) {
-            
             $arguments[] = $this->getStack();
-            
         }
         
         krsort($arguments);
@@ -35,11 +33,7 @@ final class _invokestatic implements MnemonicInterface
         ), $arguments);
         
         if ($signature[0]['type'] !== 'void') {
-            
             $this->pushStack($return);
-            
         }
-
     }
-
-}   
+}

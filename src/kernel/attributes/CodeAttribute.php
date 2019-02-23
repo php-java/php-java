@@ -18,7 +18,6 @@ final class CodeAttribute implements AttributeInterface
     private $AttributeInfo = array();
     public function execute(): void
     {
-        
         $this->MaxStack = $this->readUnsignedShort();
         $this->MaxLocals = $this->readUnsignedShort();
         $this->CodeLength = $this->readUnsignedInt();
@@ -42,16 +41,20 @@ final class CodeAttribute implements AttributeInterface
             $this->AttributeInfo[] = new JavaAttributeInfo($this);
         }
     }
-    public function getExceptionTables () {
+    public function getExceptionTables()
+    {
         return $this->ExceptionTables;
     }
-    public function getCode () {
+    public function getCode()
+    {
         return $this->RawCode;
     }
-    public function getOpCodes () {
+    public function getOpCodes()
+    {
         return $this->Code;
     }
-    public function getOpCodeLength () {
+    public function getOpCodeLength()
+    {
         return $this->CodeLength;
     }
 }

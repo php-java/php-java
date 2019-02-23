@@ -15,10 +15,12 @@ class _NameAndType implements StructureInterface
         $this->NameIndex = $this->Class->readUnsignedShort();
         $this->DescriptorIndex = $this->Class->readUnsignedShort();
     }
-    public function getNameIndex () {
+    public function getNameIndex()
+    {
         return $this->NameIndex;
     }
-    public function getDescriptorIndex () {
+    public function getDescriptorIndex()
+    {
         return $this->DescriptorIndex;
     }
 }

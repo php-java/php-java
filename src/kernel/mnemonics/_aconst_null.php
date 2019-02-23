@@ -14,7 +14,5 @@ final class _aconst_null implements MnemonicInterface
     public function execute(): void
     {
         $this->pushStack(null);
-        
     }
-
-}   
+}

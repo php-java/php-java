@@ -11,7 +11,5 @@ final class _freturn implements MnemonicInterface
     public function execute(): void
     {
         return new JavaTypeFloat($this->getStack());
-
     }
-
-}   
+}
