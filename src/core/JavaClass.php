@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Core\JVM\ActiveAttributes;
 use PHPJava\Core\JVM\ActiveFields;
 use PHPJava\Core\JVM\ActiveInterface;
 use PHPJava\Core\JVM\ActiveMethods;
@@ -19,6 +20,7 @@ class JavaClass
     private $activeInterfaces;
     private $activeFields;
     private $activeMethods;
+    private $activeAttributes;
 
     private $accessFlag = 0;
     private $thisClass = 0;
@@ -71,6 +73,13 @@ class JavaClass
             $reader->getBinaryReader()->readUnsignedShort(),
             $this->constantPool
         );
-        var_dump($this->activeFields);
+
+        // read attributes
+        $this->activeAttributes = new ActiveAttributes(
+            $reader,
+            $reader->getBinaryReader()->readUnsignedShort(),
+            $this->constantPool
+        );
+        var_dump($this->activeAttributes);
     }
 }
