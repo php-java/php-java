@@ -9,11 +9,11 @@ class _SameFrameExtended implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $FrameType = null;
-    private $OffsetDelta = null;
+    private $frameType = null;
+    private $offsetDelta = null;
     public function execute(): void
     {
-        $this->FrameType = $this->readUnsignedByte();
-        $this->OffsetDelta = $this->readUnsignedShort();
+        $this->frameType = $this->readUnsignedByte();
+        $this->offsetDelta = $this->readUnsignedShort();
     }
 }

@@ -9,9 +9,9 @@ class _DoubleVariableInfo implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $Tag = null;
+    private $tag = null;
     public function execute(): void
     {
-        $this->Tag = $this->readUnsignedByte();
+        $this->tag = $this->readUnsignedByte();
     }
 }

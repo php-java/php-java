@@ -9,53 +9,53 @@ final class CodeAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $MaxStack = null;
-    private $MaxLocals = null;
-    private $CodeLength = null;
-    private $RawCode = '';
-    private $Code = array();
-    private $ExceptionTableLength = null;
-    private $ExceptionTables = array();
-    private $AttributeInfo = array();
+    private $maxStack = null;
+    private $maxLocals = null;
+    private $codeLength = null;
+    private $rawCode = '';
+    private $code = array();
+    private $exceptionTableLength = null;
+    private $exceptionTables = array();
+    private $attributeInfo = array();
     public function execute(): void
     {
-        $this->MaxStack = $this->readUnsignedShort();
-        $this->MaxLocals = $this->readUnsignedShort();
-        $this->CodeLength = $this->readUnsignedInt();
+        $this->maxStack = $this->readUnsignedShort();
+        $this->maxLocals = $this->readUnsignedShort();
+        $this->codeLength = $this->readUnsignedInt();
         // read opcode
-        $this->Code = array();
-        for ($i = 0; $i < $this->CodeLength; $i++) {
-            $this->Code[$i] = $this->readUnsignedByte();
-            $this->RawCode .= chr($this->Code[$i]);
+        $this->code = array();
+        for ($i = 0; $i < $this->codeLength; $i++) {
+            $this->code[$i] = $this->readUnsignedByte();
+            $this->rawCode .= chr($this->code[$i]);
         }
         // read exception table
-        $this->ExceptionTableLength = $this->readUnsignedShort();
-        for ($i = 0; $i < $this->ExceptionTableLength; $i++) {
-            $this->ExceptionTables[$i] = new JavaStructureExceptionTable($this);
-            $this->ExceptionTables[$i]->setStartPc($this->readUnsignedShort());
-            $this->ExceptionTables[$i]->setEndPc($this->readUnsignedShort());
-            $this->ExceptionTables[$i]->setHandlerPc($this->readUnsignedShort());
-            $this->ExceptionTables[$i]->setCatchType($this->readUnsignedShort());
+        $this->exceptionTableLength = $this->readUnsignedShort();
+        for ($i = 0; $i < $this->exceptionTableLength; $i++) {
+            $this->exceptionTables[$i] = new JavaStructureExceptionTable($this);
+            $this->exceptionTables[$i]->setStartPc($this->readUnsignedShort());
+            $this->exceptionTables[$i]->setEndPc($this->readUnsignedShort());
+            $this->exceptionTables[$i]->setHandlerPc($this->readUnsignedShort());
+            $this->exceptionTables[$i]->setCatchType($this->readUnsignedShort());
         }
-        $this->AttributesCount = $this->readUnsignedShort();
-        for ($i = 0; $i < $this->AttributesCount; $i++) {
-            $this->AttributeInfo[] = new JavaAttributeInfo($this);
+        $this->attributesCount = $this->readUnsignedShort();
+        for ($i = 0; $i < $this->attributesCount; $i++) {
+            $this->attributeInfo[] = new \PHPJava\Kernel\Attributes\AttributeInfo($this);
         }
     }
     public function getExceptionTables()
     {
-        return $this->ExceptionTables;
+        return $this->exceptionTables;
     }
     public function getCode()
     {
-        return $this->RawCode;
+        return $this->rawCode;
     }
     public function getOpCodes()
     {
-        return $this->Code;
+        return $this->code;
     }
     public function getOpCodeLength()
     {
-        return $this->CodeLength;
+        return $this->codeLength;
     }
 }

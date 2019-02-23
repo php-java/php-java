@@ -9,13 +9,13 @@ final class SourceFileAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $SourceFileIndex = null;
+    private $sourceFileIndex = null;
     public function execute(): void
     {
-        $this->SourceFileIndex = $this->readUnsignedShort();
+        $this->sourceFileIndex = $this->readUnsignedShort();
     }
     public function getSourceFileIndex()
     {
-        return $this->SourceFileIndex;
+        return $this->sourceFileIndex;
     }
 }

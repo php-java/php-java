@@ -9,19 +9,19 @@ final class LineNumberTableAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $LineNumberTableLength = null;
-    private $LineNumberTables = null;
+    private $lineNumberTableLength = null;
+    private $lineNumberTables = null;
     public function execute(): void
     {
-        $this->LineNumberTableLength = $this->readUnsignedShort();
-        for ($i = 0; $i < $this->LineNumberTableLength; $i++) {
-            $this->LineNumberTables[$i] = new JavaStructureLineNumberTable($Class);
-            $this->LineNumberTables[$i]->setStartPc($this->readUnsignedShort());
-            $this->LineNumberTables[$i]->setLineNumber($this->readUnsignedShort());
+        $this->lineNumberTableLength = $this->readUnsignedShort();
+        for ($i = 0; $i < $this->lineNumberTableLength; $i++) {
+            $this->lineNumberTables[$i] = new JavaStructureLineNumberTable($class);
+            $this->lineNumberTables[$i]->setStartPc($this->readUnsignedShort());
+            $this->lineNumberTables[$i]->setLineNumber($this->readUnsignedShort());
         }
     }
     public function getLineNumberTables()
     {
-        return $this->LineNumberTables;
+        return $this->lineNumberTables;
     }
 }

@@ -15,6 +15,19 @@ foreach (glob(__DIR__ . '/../old/PHPJava/Attributes/*') as $file) {
     $a = str_replace('BinaryTools::', 'BinaryTool::', $a);
     $a = str_replace('getJavaBinaryStream()->', '', $a);
     $a = str_replace('getCpInfo()', 'getConstantPool()->getEntries()', $a);
+
+
+    $a = str_replace('JavaAttributeInfo', '\\PHPJava\\Kernel\\Attributes\\AttributeInfo', $a);
+    $a = str_replace('JavaAttribute', '\\PHPJava\\Kernel\\Attributes\\', $a);
+
+    $a = preg_replace_callback('/\$([A-Z])([a-z0-9_]*)/', function ($arg) {
+        return '$' . strtolower($arg[1]) . $arg[2];
+    }, $a);
+
+    $a = preg_replace_callback('/\$this->([A-Z])/', function ($arg) {
+        return '$this->' . strtolower($arg[1]);
+    }, $a);
+
     var_dump($class, $a);
     file_put_contents(__DIR__ . '/../src/kernel/attributes/' . $class, $a . "\n");
 }

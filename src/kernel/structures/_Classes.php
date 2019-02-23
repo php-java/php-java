@@ -9,43 +9,43 @@ class _Classes implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $InnerClassInfoIndex = 0;
-    private $OuterClassInfoIndex = 0;
-    private $InnerNameIndex = 0;
-    private $InnerClassAccessFlag = 0;
+    private $innerClassInfoIndex = 0;
+    private $outerClassInfoIndex = 0;
+    private $innerNameIndex = 0;
+    private $innerClassAccessFlag = 0;
     public function execute(): void
     {
     }
-    public function setInnerClassInfoIndex($InnerClassInfoIndex)
+    public function setInnerClassInfoIndex($innerClassInfoIndex)
     {
-        $this->InnerClassInfoIndex = $InnerClassInfoIndex;
+        $this->innerClassInfoIndex = $innerClassInfoIndex;
     }
-    public function setOuterClassInfoIndex($OuterClassInfoIndex)
+    public function setOuterClassInfoIndex($outerClassInfoIndex)
     {
-        $this->OuterClassInfoIndex = $OuterClassInfoIndex;
+        $this->outerClassInfoIndex = $outerClassInfoIndex;
     }
-    public function setInnerNameIndex($InnerNameIndex)
+    public function setInnerNameIndex($innerNameIndex)
     {
-        $this->InnerNameIndex = $InnerNameIndex;
+        $this->innerNameIndex = $innerNameIndex;
     }
-    public function setInnerClassAccessFlag($InnerClassAccessFlag)
+    public function setInnerClassAccessFlag($innerClassAccessFlag)
     {
-        $this->InnerClassAccessFlag = $InnerClassAccessFlag;
+        $this->innerClassAccessFlag = $innerClassAccessFlag;
     }
     public function getInnerClassInfoIndex()
     {
-        return $this->InnerClassInfoIndex;
+        return $this->innerClassInfoIndex;
     }
     public function getOuterClassInfoIndex()
     {
-        return $this->OuterClassInfoIndex;
+        return $this->outerClassInfoIndex;
     }
     public function getInnerNameIndex()
     {
-        return $this->InnerNameIndex;
+        return $this->innerNameIndex;
     }
     public function getInnerClassAccessFlag()
     {
-        return $this->InnerClassAccessFlag;
+        return $this->innerClassAccessFlag;
     }
 }

@@ -9,40 +9,40 @@ class _ExceptionTable implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $StartPc = null;
-    private $EndPc = null;
-    private $HandlerPc = null;
-    private $CatchType = null;
-    public function setStartPc($StartPc)
+    private $startPc = null;
+    private $endPc = null;
+    private $handlerPc = null;
+    private $catchType = null;
+    public function setStartPc($startPc)
     {
-        $this->StartPc = $StartPc;
+        $this->startPc = $startPc;
     }
-    public function setEndPc($EndPc)
+    public function setEndPc($endPc)
     {
-        $this->EndPc = $EndPc;
+        $this->endPc = $endPc;
     }
-    public function setHandlerPc($HandlerPc)
+    public function setHandlerPc($handlerPc)
     {
-        $this->HandlerPc = $HandlerPc;
+        $this->handlerPc = $handlerPc;
     }
-    public function setCatchType($CatchType)
+    public function setCatchType($catchType)
     {
-        $this->CatchType = $CatchType;
+        $this->catchType = $catchType;
     }
     public function getStartPc()
     {
-        return $this->StartPc;
+        return $this->startPc;
     }
     public function getEndPc()
     {
-        return $this->EndPc;
+        return $this->endPc;
     }
     public function getHandlerPc()
     {
-        return $this->HandlerPc;
+        return $this->handlerPc;
     }
     public function getCatchType()
     {
-        return $this->CatchType;
+        return $this->catchType;
     }
 }

@@ -9,11 +9,11 @@ class _ObjectVariableInfo implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $Tag = null;
+    private $tag = null;
     private $cpoolIndex = null;
     public function execute(): void
     {
-        $this->Tag = $this->readUnsignedByte();
+        $this->tag = $this->readUnsignedByte();
         $this->cpoolIndex = $this->readUnsignedShort();
     }
 }

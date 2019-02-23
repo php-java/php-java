@@ -9,12 +9,12 @@ final class InnerClassesAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $NumberOfClasses = 0;
-    private $Classes = array();
+    private $numberOfClasses = 0;
+    private $classes = array();
     public function execute(): void
     {
-        $this->NumberOfClasses = $this->readUnsignedShort();
-        for ($i = 0; $i < $this->NumberOfClasses; $i++) {
+        $this->numberOfClasses = $this->readUnsignedShort();
+        for ($i = 0; $i < $this->numberOfClasses; $i++) {
             $thises[$i] = new JavaStructureClasses($this);
             $thises[$i]->setInnerClassInfoIndex($this->readUnsignedShort());
             $thises[$i]->setOuterClassInfoIndex($this->readUnsignedShort());

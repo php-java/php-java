@@ -9,13 +9,13 @@ class _String implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $StringIndex = null;
+    private $stringIndex = null;
     public function execute(): void
     {
-        $this->StringIndex = $this->readUnsignedShort();
+        $this->stringIndex = $this->readUnsignedShort();
     }
     public function getStringIndex()
     {
-        return $this->StringIndex;
+        return $this->stringIndex;
     }
 }

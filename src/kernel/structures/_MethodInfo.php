@@ -9,35 +9,35 @@ class _MethodInfo implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $AccessFlag = null;
-    private $NameIndex = null;
-    private $DescriptorIndex = null;
-    private $AttributeCount = 0;
-    private $Attributes = array();
+    private $accessFlag = null;
+    private $nameIndex = null;
+    private $descriptorIndex = null;
+    private $attributeCount = 0;
+    private $attributes = array();
     public function execute(): void
     {
-        $this->AccessFlag = $this->readUnsignedShort();
-        $this->NameIndex = $this->readUnsignedShort();
-        $this->DescriptorIndex = $this->readUnsignedShort();
-        $this->AttributeCount = $this->readUnsignedShort();
-        for ($i = 0; $i < $this->AttributeCount; $i++) {
-            $this->Attributes[$i] = new \PHPJava\Kernel\Attributes\AttributeInfo($this->getClass());
+        $this->accessFlag = $this->readUnsignedShort();
+        $this->nameIndex = $this->readUnsignedShort();
+        $this->descriptorIndex = $this->readUnsignedShort();
+        $this->attributeCount = $this->readUnsignedShort();
+        for ($i = 0; $i < $this->attributeCount; $i++) {
+            $this->attributes[$i] = new \PHPJava\Kernel\Attributes\AttributeInfo($this->getClass());
         }
     }
     public function getAccessFlag()
     {
-        return $this->AccessFlag;
+        return $this->accessFlag;
     }
     public function getNameIndex()
     {
-        return $this->NameIndex;
+        return $this->nameIndex;
     }
     public function getDescriptorIndex()
     {
-        return $this->DescriptorIndex;
+        return $this->descriptorIndex;
     }
     public function getAttributes()
     {
-        return $this->Attributes;
+        return $this->attributes;
     }
 }

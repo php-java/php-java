@@ -9,22 +9,22 @@ class _LineNumberTable implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $StartPc = null;
-    private $LineNumber = null;
-    public function setStartPc($StartPc)
+    private $startPc = null;
+    private $lineNumber = null;
+    public function setStartPc($startPc)
     {
-        $this->StartPc = $StartPc;
+        $this->startPc = $startPc;
     }
-    public function setLineNumber($LineNumber)
+    public function setLineNumber($lineNumber)
     {
-        $this->LineNumber = $LineNumber;
+        $this->lineNumber = $lineNumber;
     }
     public function getStartPc()
     {
-        return $this->StartPc;
+        return $this->startPc;
     }
     public function getLineNumber()
     {
-        return $this->LineNumber;
+        return $this->lineNumber;
     }
 }

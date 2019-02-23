@@ -9,13 +9,13 @@ class _Class implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $ClassIndex = null;
+    private $classIndex = null;
     public function execute(): void
     {
-        $this->ClassIndex = $this->readUnsignedShort();
+        $this->classIndex = $this->readUnsignedShort();
     }
     public function getClassIndex()
     {
-        return $this->ClassIndex;
+        return $this->classIndex;
     }
 }

@@ -9,19 +9,19 @@ class _NameAndType implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $NameIndex = null;
-    private $DescriptorIndex = null;
+    private $nameIndex = null;
+    private $descriptorIndex = null;
     public function execute(): void
     {
-        $this->NameIndex = $this->readUnsignedShort();
-        $this->DescriptorIndex = $this->readUnsignedShort();
+        $this->nameIndex = $this->readUnsignedShort();
+        $this->descriptorIndex = $this->readUnsignedShort();
     }
     public function getNameIndex()
     {
-        return $this->NameIndex;
+        return $this->nameIndex;
     }
     public function getDescriptorIndex()
     {
-        return $this->DescriptorIndex;
+        return $this->descriptorIndex;
     }
 }

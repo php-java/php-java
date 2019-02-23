@@ -9,15 +9,15 @@ class _Double implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $HighBytes = null;
-    private $LowBytes = null;
+    private $highBytes = null;
+    private $lowBytes = null;
     public function execute(): void
     {
-        $this->HighBytes = $this->readUnsignedInt();
-        $this->LowBytes = $this->readUnsignedInt();
+        $this->highBytes = $this->readUnsignedInt();
+        $this->lowBytes = $this->readUnsignedInt();
     }
     public function getBytes()
     {
-        return ($this->HighBytes << 32) + $this->LowBytes;
+        return ($this->highBytes << 32) + $this->lowBytes;
     }
 }

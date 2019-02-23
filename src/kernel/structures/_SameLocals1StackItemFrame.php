@@ -9,11 +9,11 @@ class _SameLocals1StackItemFrame implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $FrameType = null;
-    private $Stack = array();
+    private $frameType = null;
+    private $stack = array();
     public function execute(): void
     {
-        $this->FrameType = $this->readUnsignedByte();
-        $this->Stack[] = new _VerificationTypeInfo($this->getClass());
+        $this->frameType = $this->readUnsignedByte();
+        $this->stack[] = new _VerificationTypeInfo($this->getClass());
     }
 }

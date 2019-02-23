@@ -9,17 +9,17 @@ final class StackMapTableAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $NumberOfEntries = null;
-    private $StackMapFrames = array();
+    private $numberOfEntries = null;
+    private $stackMapFrames = array();
     public function execute(): void
     {
-        $this->NumberOfEntries = $this->readUnsignedShort();
-        for ($i = 0; $i < $this->NumberOfEntries; $i++) {
-            $this->StackMapFrames[] = new JavaStructureStackMapFrame($Class);
+        $this->numberOfEntries = $this->readUnsignedShort();
+        for ($i = 0; $i < $this->numberOfEntries; $i++) {
+            $this->stackMapFrames[] = new JavaStructureStackMapFrame($class);
         }
     }
     public function getStackMapFrames()
     {
-        return $this->StackMapFrames;
+        return $this->stackMapFrames;
     }
 }

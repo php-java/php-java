@@ -9,9 +9,9 @@ class _SameFrame implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $FrameType = null;
+    private $frameType = null;
     public function execute(): void
     {
-        $this->FrameType = $this->readUnsignedByte();
+        $this->frameType = $this->readUnsignedByte();
     }
 }

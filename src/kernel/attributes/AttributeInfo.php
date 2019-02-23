@@ -9,27 +9,27 @@ final class AttributeInfo implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $AttributeNameIndex = null;
-    private $AttributeLength = null;
-    private $AttributeData = null;
+    private $attributeNameIndex = null;
+    private $attributeLength = null;
+    private $attributeData = null;
     public function execute(): void
     {
-        $this->AttributeNameIndex = $this->readUnsignedShort();
-        $this->AttributeLength = $this->readUnsignedInt();
+        $this->attributeNameIndex = $this->readUnsignedShort();
+        $this->attributeLength = $this->readUnsignedInt();
         $cpInfo = $this->getConstantPool()->getEntries();
-        $classAttributeName = 'Java' . $cpInfo[$this->AttributeNameIndex]->getString() . 'Attribute';
-        $this->AttributeData = new $classAttributeName($Class);
+        $classAttributeName = 'Java' . $cpInfo[$this->attributeNameIndex]->getString() . 'Attribute';
+        $this->attributeData = new $classAttributeName($class);
     }
     public function getAttributeData()
     {
-        return $this->AttributeData;
+        return $this->attributeData;
     }
     public function getAttributeNameIndex()
     {
-        return $this->AttributeNameIndex;
+        return $this->attributeNameIndex;
     }
     public function getAttributeLength()
     {
-        return $this->AttributeLength;
+        return $this->attributeLength;
     }
 }

@@ -9,13 +9,13 @@ class _Integer implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $Bytes = null;
+    private $bytes = null;
     public function execute(): void
     {
-        $this->Bytes = $this->readInt();
+        $this->bytes = $this->readInt();
     }
     public function getBytes()
     {
-        return $this->Bytes;
+        return $this->bytes;
     }
 }

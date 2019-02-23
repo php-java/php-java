@@ -9,19 +9,19 @@ class _Methodref implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $ClassIndex = null;
-    private $NameAndTypeIndex = null;
+    private $classIndex = null;
+    private $nameAndTypeIndex = null;
     public function execute(): void
     {
-        $this->ClassIndex = $this->readUnsignedShort();
-        $this->NameAndTypeIndex = $this->readUnsignedShort();
+        $this->classIndex = $this->readUnsignedShort();
+        $this->nameAndTypeIndex = $this->readUnsignedShort();
     }
     public function getClassIndex()
     {
-        return $this->ClassIndex;
+        return $this->classIndex;
     }
     public function getNameAndTypeIndex()
     {
-        return $this->NameAndTypeIndex;
+        return $this->nameAndTypeIndex;
     }
 }

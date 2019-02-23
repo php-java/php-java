@@ -9,11 +9,11 @@ class _UninitializedVariableInfo implements StructureInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $Tag = null;
-    private $Offset = null;
+    private $tag = null;
+    private $offset = null;
     public function execute(): void
     {
-        $this->Tag = $this->readUnsignedByte();
-        $this->Offset = $this->readUnsignedShort();
+        $this->tag = $this->readUnsignedByte();
+        $this->offset = $this->readUnsignedShort();
     }
 }

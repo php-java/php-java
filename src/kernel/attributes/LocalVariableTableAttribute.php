@@ -9,13 +9,13 @@ final class LocalVariableTableAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $LocalVariableTableLength;
-    private $LocalVariableTables = array();
+    private $localVariableTableLength;
+    private $localVariableTables = array();
     public function execute(): void
     {
-        $this->LocalVariableTableLength = $this->readUnsignedShort();
-        for ($i = 0; $i < $this->LocalVariableTableLength; $i++) {
-            $this->LocalVariableTables[] = new JavaStructureLocalVariableTable($Class);
+        $this->localVariableTableLength = $this->readUnsignedShort();
+        for ($i = 0; $i < $this->localVariableTableLength; $i++) {
+            $this->localVariableTables[] = new JavaStructureLocalVariableTable($class);
         }
     }
 }
