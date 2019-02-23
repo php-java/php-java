@@ -6,9 +6,7 @@ class Map
     public function getName(string $value): ?string
     {
         try {
-            $reflectionClass = new \ReflectionClass($this);
-            $constants = $reflectionClass->getConstants();
-            if (($key = array_search($value, $constants, true)) !== false) {
+            if (($key = array_search($value, (new \ReflectionClass($this))->getConstants(), true)) !== false) {
                 return $key;
             }
         } catch (\ReflectionException $e) {
