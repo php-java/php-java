@@ -8,6 +8,7 @@ use PHPJava\Core\JVM\ActiveMethods;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Exceptions\ValidatorException;
+use PHPJava\Kernel\Structures\_Utf8;
 
 class JavaClass
 {
@@ -48,6 +49,11 @@ class JavaClass
     private $superClass = 0;
 
     /**
+     * @var _Utf8|null
+     */
+    private $className = null;
+
+    /**
      * JavaClass constructor.
      * @param JavaClassReader $reader
      * @throws ValidatorException
@@ -77,6 +83,9 @@ class JavaClass
 
         // read this class
         $this->thisClass = $reader->getBinaryReader()->readUnsignedShort();
+
+        $constantPoolEntries = $this->constantPool->getEntries();
+        $this->className = $constantPoolEntries[$constantPoolEntries[$this->thisClass]->getClassIndex()];
 
         // read super class
         $this->superClass = $reader->getBinaryReader()->readUnsignedShort();
@@ -108,6 +117,11 @@ class JavaClass
             $reader->getBinaryReader()->readUnsignedShort(),
             $this->constantPool
         );
+    }
+
+    public function getClassName(): string
+    {
+        return $this->className->getString();
     }
 
     public function getFields(): array

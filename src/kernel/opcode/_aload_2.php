@@ -14,6 +14,6 @@ final class _aload_2 implements OpCodeInterface
      */
     public function execute(): void
     {
-        $this->pushStack($this->getLocalstorage(2));
+        $this->pushStack($this->getLocalStorage(2));
     }
 }

@@ -53,6 +53,7 @@ class BinaryTool
 
     final public static function toSigned($value, $bytes)
     {
+        $value = (int) $value;
         $convert = base_convert((string) $value, 10, 2);
         $bitSize = strlen($convert);
 
@@ -65,6 +66,7 @@ class BinaryTool
 
     final public static function negate($value, $bytes)
     {
+        $value = (int) $value;
         $value = base_convert((string) $value, 10, 2);
 
         if (sprintf('%0' . $bytes . 's', $value) === str_repeat('0', $bytes)) {
@@ -86,6 +88,8 @@ class BinaryTool
 
     final public static function multiply($value1, $value2, $bytes)
     {
+        $value1 = (int) $value1;
+        $value2 = (int) $value2;
         if (function_exists('gmp_mul')) {
             $a = gmp_init($value1);
             $b = gmp_init($value2);
@@ -100,6 +104,8 @@ class BinaryTool
 
     final public static function add($value1, $value2, $bytes)
     {
+        $value1 = (int) $value1;
+        $value2 = (int) $value2;
         if (function_exists('gmp_add')) {
             $a = gmp_init($value1);
             $b = gmp_init($value2);
@@ -114,6 +120,8 @@ class BinaryTool
 
     final public static function sub($value1, $value2, $bytes)
     {
+        $value1 = (int) $value1;
+        $value2 = (int) $value2;
         if (function_exists('gmp_sub')) {
             $a = gmp_init($value1);
             $b = gmp_init($value2);
@@ -128,6 +136,8 @@ class BinaryTool
 
     final public static function div($value1, $value2, $bytes)
     {
+        $value1 = (int) $value1;
+        $value2 = (int) $value2;
         if (function_exists('gmp_div')) {
             $a = gmp_init($value1);
             $b = gmp_init($value2);
@@ -142,6 +152,8 @@ class BinaryTool
 
     final public static function shiftLeft($value1, $value2, $bytes)
     {
+        $value1 = (int) $value1;
+        $value2 = (int) $value2;
         $bits = base_convert($value1, 10, 2);
 
         $bits = sprintf('%0' . ($bytes * 8) . 's', $bits . str_repeat('0', $value2));
@@ -151,6 +163,8 @@ class BinaryTool
 
     final public static function unsignedShiftRight($value1, $value2, $bytes)
     {
+        $value1 = (int) $value1;
+        $value2 = (int) $value2;
         $bits = sprintf('%0' . ($bytes * 8) . 's', base_convert($value2, 10, 2));
 
         $bits = sprintf('%0' . ($bytes * 8) . 's', substr($bits, 0, strlen($bits) - $value1));
@@ -169,6 +183,8 @@ class BinaryTool
 
     final public static function orBits($value1, $value2, $bytes)
     {
+        $value1 = (int) $value1;
+        $value2 = (int) $value2;
         $value1 = sprintf('%0' . ($bytes * 8) . 's', base_convert($value1, 10, 2));
         $value2 = sprintf('%0' . ($bytes * 8) . 's', base_convert($value2, 10, 2));
 
@@ -186,6 +202,8 @@ class BinaryTool
 
     final public static function xorBits($value1, $value2, $bytes)
     {
+        $value1 = (int) $value1;
+        $value2 = (int) $value2;
         $value1 = sprintf('%0' . ($bytes * 8) . 's', base_convert($value1, 10, 2));
         $value2 = sprintf('%0' . ($bytes * 8) . 's', base_convert($value2, 10, 2));
 
@@ -204,6 +222,8 @@ class BinaryTool
 
     final public static function andBits($value1, $value2, $bytes)
     {
+        $value1 = (int) $value1;
+        $value2 = (int) $value2;
         $value1 = sprintf('%0' . ($bytes * 8) . 's', base_convert($value1, 10, 2));
         $value2 = sprintf('%0' . ($bytes * 8) . 's', base_convert($value2, 10, 2));
 

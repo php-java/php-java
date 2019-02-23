@@ -2,6 +2,10 @@
 namespace PHPJava\Kernel\OpCode;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Structures\_Float;
+use PHPJava\Kernel\Structures\_Integer;
+use PHPJava\Kernel\Structures\_String;
+use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\BinaryTool;
 
 final class _ldc implements OpCodeInterface
@@ -17,20 +21,16 @@ final class _ldc implements OpCodeInterface
 
         $value = null;
 
-        if ($data instanceof \JavaStructureString) {
+        if ($data instanceof _String) {
             $value = $cpInfo[$data->getStringIndex()];
 
-            if ($value instanceof \JavaStructureUtf8) {
-
-                // convert java string
-                $this->getInvoker()->loadPlatform('java.lang.String');
-
-                $value = new \java\lang\String($value);
+            if ($value instanceof _Utf8) {
+                $value = new \PHPJava\Bridge\java\lang\_String($value);
             }
-        } elseif (($data instanceof \JavaStructureInteger) || ($data instanceof \JavaStructureFloat)) {
+        } elseif (($data instanceof _Integer) || ($data instanceof _Float)) {
             $value = $data->getBytes();
         } else {
-            $value = $cpInfo[$cpInfo[$this->readUnsignedByte()]->getStringIndex()];
+            $value = $cpInfo[$data->getStringIndex()];
         }
 
         $this->pushStack($value);

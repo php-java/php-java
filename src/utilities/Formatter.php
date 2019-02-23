@@ -69,7 +69,7 @@ class Formatter
                         $build .= $signature[$i];
                     }
                     $data['arguments'] = ($build !== '') ? $getMappedSignatureType($build) : [];
-                    $data['argumentsCount'] = sizeof($data['arguments']);
+                    $data['argumentsCount'] = ($data['argumentsCount'] ?? 0) + 1;
                     break;
             }
             $i++;

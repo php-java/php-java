@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\OpCode;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Formatter;
 
 final class _invokevirtual implements OpCodeInterface
 {
@@ -12,23 +13,21 @@ final class _invokevirtual implements OpCodeInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool()->getEntries();
-
         $cp = $cpInfo[$this->readUnsignedShort()];
-
         $class = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
-
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
 
         // signature
-        $signature = JavaClass::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
-        $arguments = array();
+        $signature = Formatter::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
+        $arguments = [];
 
         for ($i = 0; $i < $signature['argumentsCount']; $i++) {
             $arguments[] = $this->getStack();
         }
         
         $invokerClass = $this->getStack();
-        
+        var_dump($invokerClass);
+
         if ($invokerClass instanceof \JavaClass) {
             $result = call_user_func_array(array(
 
@@ -37,10 +36,7 @@ final class _invokevirtual implements OpCodeInterface
 
             ), $arguments);
         } else {
-
-            // load platform
-            $this->getInvoker()->loadPlatform($class);
-            $invokerClassName = '\\' . str_replace('/', '\\', $class);
+            $invokerClassName = '\\PHPJava\\Bridge\\' . str_replace('/', '\\', $class);
 
             $result = call_user_func_array(array(
                 

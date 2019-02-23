@@ -11,6 +11,6 @@ final class _iload_1 implements OpCodeInterface
 
     public function execute(): void
     {
-        $this->pushStack($this->getLocalstorage(1));
+        $this->pushStack($this->getLocalStorage(1));
     }
 }

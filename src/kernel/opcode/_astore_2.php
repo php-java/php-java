@@ -11,6 +11,6 @@ final class _astore_2 implements OpCodeInterface
 
     public function execute(): void
     {
-        $this->setLocalstorage(2, $this->getStack());
+        $this->setLocalStorage(2, $this->getStack());
     }
 }

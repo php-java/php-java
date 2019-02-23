@@ -12,6 +12,6 @@ final class _astore implements OpCodeInterface
     public function execute(): void
     {
         $index = $this->readUnsignedByte();
-        $this->setLocalstorage($index, $this->getStack());
+        $this->setLocalStorage($index, $this->getStack());
     }
 }

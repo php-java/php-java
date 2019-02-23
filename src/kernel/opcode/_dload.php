@@ -15,6 +15,6 @@ final class _dload implements OpCodeInterface
     public function execute(): void
     {
         $index = $this->readUnsignedByte();
-        $this->pushStack($this->getLocalstorage($index));
+        $this->pushStack($this->getLocalStorage($index));
     }
 }

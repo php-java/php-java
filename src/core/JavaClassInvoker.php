@@ -1,9 +1,11 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Core\JVM\Field\GetFieldInterface;
 use PHPJava\Core\JVM\Invoker\Invokable;
 use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Kernel\Maps\AccessFlag;
+use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
 
 class JavaClassInvoker
@@ -16,6 +18,10 @@ class JavaClassInvoker
     private $hiddenMethods = [];
     private $dynamicMethods = [];
     private $staticMethods = [];
+
+    private $hiddenFields = [];
+    private $dynamicFields = [];
+    private $staticFields = [];
 
     public function __construct(JavaClass $javaClass)
     {
@@ -36,15 +42,43 @@ class JavaClassInvoker
                 $this->staticMethods[$methodName] = $methodInfo;
             }
         }
+
+        foreach ($javaClass->getFields() as $fieldInfo) {
+            /**
+             * @var _FieldInfo $fieldInfo
+             */
+            $fieldName = $cpInfo[$fieldInfo->getNameIndex()]->getString();
+
+            if ($fieldInfo->getAccessFlag() === 0) {
+                $this->dynamicFields[$fieldName] = $fieldInfo;
+            } elseif (($fieldInfo->getAccessFlag() & AccessFlag::_Static) !== 0) {
+                $this->staticFields[$fieldName] = $fieldInfo;
+            }
+        }
+    }
+
+    public function getJavaClass(): JavaClass
+    {
+        return $this->javaClass;
     }
 
     public function getDynamicMethods(): InvokerInterface
     {
-        return new JVM\Invoker\DynamicMethodInvoker($this->javaClass, $this->dynamicMethods);
+        return new JVM\Invoker\DynamicMethodInvoker($this, $this->dynamicMethods);
     }
 
     public function getStaticMethods(): InvokerInterface
     {
-        return new JVM\Invoker\StaticMethodInvoker($this->javaClass, $this->dynamicMethods);
+        return new JVM\Invoker\StaticMethodInvoker($this, $this->dynamicMethods);
+    }
+
+    public function getDynamicFields(): GetFieldInterface
+    {
+        return new JVM\Field\DynamicFieldGetter($this, $this->dynamicFields);
+    }
+
+    public function getStaticFields(): GetFieldInterface
+    {
+        return new JVM\Field\StaticFieldGetter($this, $this->staticFields);
     }
 }

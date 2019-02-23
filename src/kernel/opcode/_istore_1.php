@@ -11,6 +11,6 @@ final class _istore_1 implements OpCodeInterface
 
     public function execute(): void
     {
-        $this->setLocalstorage(1, $this->getStack());
+        $this->setLocalStorage(1, $this->getStack());
     }
 }

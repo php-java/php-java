@@ -16,6 +16,6 @@ final class _aload implements OpCodeInterface
     {
         $index = $this->readByte();
 
-        $this->pushStack($this->getLocalstorage($index));
+        $this->pushStack($this->getLocalStorage($index));
     }
 }

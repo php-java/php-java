@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\OpCode;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Formatter;
 
 final class _invokespecial implements OpCodeInterface
 {
@@ -22,11 +23,11 @@ final class _invokespecial implements OpCodeInterface
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
         
         // signature
-        $signature = JavaClass::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
+        $signature = Formatter::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
         
         $invokeClassName = $this->getStack();
 
-        $arguments = array();
+        $arguments = [];
 
         for ($i = 0; $i < $signature['argumentsCount']; $i++) {
             $arguments[] = $this->getStack();

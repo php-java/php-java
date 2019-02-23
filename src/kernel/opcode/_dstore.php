@@ -17,6 +17,6 @@ final class _dstore implements OpCodeInterface
         $index = $this->readUnsignedByte();
         $value = $this->getStack();
         
-        $this->setLocalstorage($index, BinaryTool::convertDoubleToIEEE754($value));
+        $this->setLocalStorage($index, BinaryTool::convertDoubleToIEEE754($value));
     }
 }

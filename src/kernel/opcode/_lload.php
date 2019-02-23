@@ -13,6 +13,6 @@ final class _lload implements OpCodeInterface
     {
         $index = $this->readUnsignedByte();
 
-        $this->pushStack($this->getLocalstorage($index));
+        $this->pushStack($this->getLocalStorage($index));
     }
 }

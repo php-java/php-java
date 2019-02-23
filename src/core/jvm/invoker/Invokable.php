@@ -2,6 +2,7 @@
 namespace PHPJava\Core\JVM\Invoker;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\UndefinedMethodException;
@@ -17,12 +18,12 @@ use PHPJava\Kernel\Structures\_MethodInfo;
 
 trait Invokable
 {
-    private $javaClass;
+    private $javaClassInvoker;
     private $methods = [];
 
-    public function __construct(JavaClass $javaClass, array $methods)
+    public function __construct(JavaClassInvoker $javaClassInvoker, array $methods)
     {
-        $this->javaClass = $javaClass;
+        $this->javaClassInvoker = $javaClassInvoker;
         $this->methods = $methods;
     }
 
@@ -49,12 +50,13 @@ trait Invokable
         $reader = new BinaryReader($handle);
 
         $localStorage = [
-            $this->javaClass,
+            $this->javaClassInvoker->getJavaClass(),
             $arguments[0] ?? null,
             $arguments[1] ?? null,
             $arguments[2] ?? null,
         ];
 
+        $stacks = [];
         $opcodeMap = new OpCode();
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             $cursor = $reader->readUnsignedByte();
@@ -66,15 +68,19 @@ trait Invokable
 
             $fullName = '\\PHPJava\\Kernel\\OpCode\\' . $opcode;
 
+            echo $opcode . "\n";
+
             /**
              * @var OpCodeInterface|Accumulator|ConstantPool $executor
              */
             $executor = new $fullName();
-            $executor->setConstantPool($this->javaClass->getConstantPool());
-            $executor->setParameters($this->javaClass, $reader, $localStorage, $pointer);
-            $executor->execute();
-            var_dump($executor);
-            exit();
+            $executor->setConstantPool($this->javaClassInvoker->getJavaClass()->getConstantPool());
+            $executor->setParameters($this->javaClassInvoker, $reader, $localStorage, $stacks, $pointer);
+            $returnValue = $executor->execute();
+
+            if ($returnValue !== null) {
+                return $returnValue;
+            }
         }
 
         var_dump($codeAttribute);

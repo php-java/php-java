@@ -2,10 +2,20 @@
 namespace PHPJava\Kernel\Core;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInvoker;
 
 trait Accumulator
 {
+
+    /**
+     * @var JavaClass|null
+     */
     private $javaClass;
+
+    /**
+     * @var JavaClassInvoker
+     */
+    private $javaClassInvoker;
     
     /**
      * @var \PHPJava\Core\JVM\Stream\BinaryReader
@@ -13,16 +23,20 @@ trait Accumulator
     private $reader;
     private $localStorage;
     private $pointer;
+    private $stacks = [];
 
     public function setParameters(
-        JavaClass $javaClass,
+        JavaClassInvoker $javaClassInvoker,
         \PHPJava\Core\JVM\Stream\BinaryReader $reader,
-        array $localStorage,
+        array &$localStorage,
+        array &$stacks,
         int $pointer
     ): self {
-        $this->javaClass = $javaClass;
+        $this->javaClassInvoker = $javaClassInvoker;
+        $this->javaClass = $javaClassInvoker->getJavaClass();
         $this->reader = $reader;
         $this->localStorage = $localStorage;
+        $this->stacks = &$stacks;
         $this->pointer = $pointer;
         return $this;
     }
@@ -86,4 +100,59 @@ trait Accumulator
     {
         return $this->reader->getOffset();
     }
+
+
+    public function pushStack($value)
+    {
+        $this->stacks[] = $value;
+    }
+
+    public function pushStackByReference(&$value)
+    {
+        $this->stacks[] = &$value;
+    }
+
+    public function dupStack()
+    {
+        $stack = $this->stacks[sizeof($this->stacks) - 1] ?? null;
+        if ($stack === null) {
+            throw new \Exception('Stack overflow');
+        }
+        $this->pushStack($stack);
+    }
+
+    public function getStack()
+    {
+        return array_pop($this->stacks);
+    }
+
+    public function popStack()
+    {
+        array_pop($this->stacks);
+    }
+
+    public function getStacks()
+    {
+        return $this->stacks;
+    }
+
+    public function setLocalStorage($index, $value)
+    {
+        $this->localStorage[(int) $index] = $value;
+    }
+
+
+    public function getLocalStorage($index)
+    {
+        if (!isset($this->localStorage[(int) $index])) {
+            $this->localStorage[(int) $index] = null;
+        }
+        return $this->localStorage[(int) $index];
+    }
+
+    public function getLocalStorages()
+    {
+        return $this->localStorage;
+    }
+
 }
