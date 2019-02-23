@@ -11,6 +11,7 @@ foreach (glob(__DIR__ . '/../old/PHPJava/Statements/*') as $file) {
     $a = str_replace('class _', 'final class _', $a);
     $a = str_replace('getJavaBinaryStream', 'getStream', $a);
     $a = str_replace('getCpInfo()', 'getConstantPool()->getEntries()', $a);
+    $a = str_replace('$this->getByteCodeStream()', '$this', $a);
     var_dump($class, $a);
     file_put_contents(__DIR__ . '/../src/kernel/opcode/' . $class, $a);
 }

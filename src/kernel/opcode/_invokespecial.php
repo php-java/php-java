@@ -14,7 +14,7 @@ final class _invokespecial implements OpCodeInterface
         $cpInfo = $this->getConstantPool()->getEntries();
         
         
-        $cp = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
+        $cp = $cpInfo[$this->readUnsignedShort()];
 
         // $invokeClassName = '\\' . str_replace('/', '\\', $cpList[$class->getClassIndex()]->getString());
 

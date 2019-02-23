@@ -22,7 +22,7 @@ class Formatter
         $data = [];
         $deepArray = 0;
 
-        for ($size = strlen($signature); $i < $size; ) {
+        for ($size = strlen($signature); $i < $size;) {
             switch ($signature[$i]) {
                 case 'B':
                 case 'C':
@@ -45,7 +45,6 @@ class Formatter
                     // read to ;
                     for ($i++; $i < $size && $signature[$i] !== ';'; $i++) {
                         $build .= $signature[$i];
-
                     }
                     $data[] = [
                         'type' => 'class',

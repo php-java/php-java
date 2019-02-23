@@ -11,12 +11,12 @@ final class _ifne implements OpCodeInterface
 
     public function execute(): void
     {
-        $offset = $this->getByteCodeStream()->readShort();
+        $offset = $this->readShort();
 
         $operand = $this->getStack();
 
         if ($operand != 0) {
-            $this->getByteCodeStream()->setOffset($this->getPointer() + $offset);
+            $this->setOffset($this->getPointer() + $offset);
         }
     }
 }

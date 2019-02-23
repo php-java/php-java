@@ -13,7 +13,7 @@ final class _ldc implements OpCodeInterface
     {
         $cpInfo = $this->getConstantPool()->getEntries();
 
-        $data = $cpInfo[$this->getByteCodeStream()->readUnsignedByte()];
+        $data = $cpInfo[$this->readUnsignedByte()];
 
         $value = null;
 
@@ -30,7 +30,7 @@ final class _ldc implements OpCodeInterface
         } elseif (($data instanceof \JavaStructureInteger) || ($data instanceof \JavaStructureFloat)) {
             $value = $data->getBytes();
         } else {
-            $value = $cpInfo[$cpInfo[$this->getByteCodeStream()->readUnsignedByte()]->getStringIndex()];
+            $value = $cpInfo[$cpInfo[$this->readUnsignedByte()]->getStringIndex()];
         }
 
         $this->pushStack($value);

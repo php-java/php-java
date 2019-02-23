@@ -13,28 +13,28 @@ final class _lookupswitch implements OpCodeInterface
     {
         $key = $this->getStack();
 
-        $paddingData = $this->getByteCodeStream()->readByte() + $this->getByteCodeStream()->readByte() + $this->getByteCodeStream()->readByte();
+        $paddingData = $this->readByte() + $this->readByte() + $this->readByte();
 
         $offsets = array();
 
-        $offsets['default'] = $this->getByteCodeStream()->readInt();
-        $switchSize = $this->getByteCodeStream()->readUnsignedInt();
+        $offsets['default'] = $this->readInt();
+        $switchSize = $this->readUnsignedInt();
 
 
         for ($i = 0; $i < $switchSize; $i++) {
-            $label = $this->getByteCodeStream()->readInt();
+            $label = $this->readInt();
 
-            $offsets[(string) $label] = $this->getByteCodeStream()->readInt();
+            $offsets[(string) $label] = $this->readInt();
         }
 
         if (isset($offsets[$key])) {
 
             // goto PC
-            $this->getByteCodeStream()->setOffset($this->getPointer() + $offsets[$key]);
+            $this->setOffset($this->getPointer() + $offsets[$key]);
             return;
         }
 
         // goto default
-        $this->getByteCodeStream()->setOffset($this->getPointer() + $offsets['default']);
+        $this->setOffset($this->getPointer() + $offsets['default']);
     }
 }

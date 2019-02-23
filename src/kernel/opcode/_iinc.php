@@ -11,8 +11,8 @@ final class _iinc implements OpCodeInterface
 
     public function execute(): void
     {
-        $index = $this->getByteCodeStream()->readUnsignedByte();
-        $const = $this->getByteCodeStream()->readByte();
+        $index = $this->readUnsignedByte();
+        $const = $this->readByte();
 
         $this->setLocalstorage($index, $this->getLocalstorage($index) + $const);
     }

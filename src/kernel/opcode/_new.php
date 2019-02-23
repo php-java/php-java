@@ -13,7 +13,7 @@ final class _new implements OpCodeInterface
     {
         $cpInfo = $this->getConstantPool()->getEntries();
 
-        $class = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
+        $class = $cpInfo[$this->readUnsignedShort()];
 
         $className = $cpInfo[$class->getClassIndex()]->getString();
 

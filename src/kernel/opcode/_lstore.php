@@ -11,7 +11,7 @@ final class _lstore implements OpCodeInterface
 
     public function execute(): void
     {
-        $index = $this->getByteCodeStream()->readUnsignedByte();
+        $index = $this->readUnsignedByte();
         $this->setLocalstorage($index, $this->getStack());
     }
 }

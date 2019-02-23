@@ -11,8 +11,8 @@ final class _goto implements OpCodeInterface
 
     public function execute(): void
     {
-        $offset = $this->getByteCodeStream()->readShort();
+        $offset = $this->readShort();
 
-        $this->getByteCodeStream()->setOffset($this->getPointer() + $offset);
+        $this->setOffset($this->getPointer() + $offset);
     }
 }

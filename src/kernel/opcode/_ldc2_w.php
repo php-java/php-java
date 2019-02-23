@@ -13,7 +13,7 @@ final class _ldc2_w implements OpCodeInterface
     {
         $cpInfo = $this->getConstantPool()->getEntries();
 
-        $data = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
+        $data = $cpInfo[$this->readUnsignedShort()];
 
         $this->pushStack($data->getBytes());
     }

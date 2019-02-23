@@ -11,13 +11,13 @@ final class _if_icmpge implements OpCodeInterface
 
     public function execute(): void
     {
-        $offset = $this->getByteCodeStream()->readShort();
+        $offset = $this->readShort();
 
         $leftOperand = $this->getStack();
         $rightOperand = $this->getStack();
 
         if ($leftOperand <= $rightOperand) {
-            $this->getByteCodeStream()->setOffset($this->getPointer() + $offset);
+            $this->setOffset($this->getPointer() + $offset);
         }
     }
 }

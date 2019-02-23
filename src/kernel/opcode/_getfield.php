@@ -13,7 +13,7 @@ final class _getfield implements OpCodeInterface
     {
         $cpInfo = $this->getConstantPool()->getEntries();
 
-        $cp = $cpInfo[$this->getByteCodeStream()->readUnsignedShort()];
+        $cp = $cpInfo[$this->readUnsignedShort()];
 
         $get = $this->getStack();
 

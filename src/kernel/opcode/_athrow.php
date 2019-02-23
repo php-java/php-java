@@ -21,7 +21,7 @@ final class _athrow implements OpCodeInterface
             if ($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString() === $className &&
                     $exception->getStartPc() <= $this->getPointer() &&
                     $exception->getEndPc() >= $this->getPointer()) {
-                $this->getByteCodeStream()->setOffset($exception->getHandlerPc());
+                $this->setOffset($exception->getHandlerPc());
                 return;
             }
         }

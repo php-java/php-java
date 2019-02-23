@@ -11,6 +11,6 @@ final class _bipush implements OpCodeInterface
 
     public function execute(): void
     {
-        $this->pushStack($this->getByteCodeStream()->readByte());
+        $this->pushStack($this->readByte());
     }
 }

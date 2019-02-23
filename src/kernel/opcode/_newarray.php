@@ -11,7 +11,7 @@ final class _newarray implements OpCodeInterface
 
     public function execute(): void
     {
-        $atype = $this->getByteCodeStream()->readUnsignedByte();
+        $atype = $this->readUnsignedByte();
         $count = $this->getStack();
         
         // need reference

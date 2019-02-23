@@ -11,6 +11,6 @@ final class _sipush implements OpCodeInterface
 
     public function execute(): void
     {
-        $this->pushStack($this->getByteCodeStream()->readShort());
+        $this->pushStack($this->readShort());
     }
 }

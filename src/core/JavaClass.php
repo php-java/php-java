@@ -11,7 +11,6 @@ use PHPJava\Exceptions\ValidatorException;
 
 class JavaClass
 {
-
     use \PHPJava\Kernel\Core\ConstantPool;
 
     private $versions = [

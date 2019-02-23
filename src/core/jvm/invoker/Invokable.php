@@ -73,10 +73,12 @@ trait Invokable
             $executor->setConstantPool($this->javaClass->getConstantPool());
             $executor->setParameters($this->javaClass, $reader, $localStorage, $pointer);
             $executor->execute();
-            var_dump($executor);exit();
+            var_dump($executor);
+            exit();
         }
 
-        var_dump($codeAttribute);exit();
+        var_dump($codeAttribute);
+        exit();
     }
 
     private function getCodeAttribute(array $attributes): ?CodeAttribute

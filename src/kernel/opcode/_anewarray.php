@@ -17,7 +17,7 @@ final class _anewarray implements OpCodeInterface
     public function execute(): void
     {
         // 配列のサイズを調べる (PHPでは不要なので実行するだけ)
-        $this->getByteCodeStream()->readUnsignedShort();
+        $this->readUnsignedShort();
         
         // 空の配列を渡す (nullで埋める)
         $count = $this->getStack();

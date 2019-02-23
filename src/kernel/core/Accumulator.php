@@ -5,6 +5,8 @@ use PHPJava\Core\JavaClass;
 
 trait Accumulator
 {
+    use BinaryReader;
+
     private $javaClass;
     private $reader;
     private $localStorage;
