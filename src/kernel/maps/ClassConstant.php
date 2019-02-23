@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Maps;
 
-class ClassConstantEnum extends Map
+class ClassConstant extends Map
 {
     const _Class =              0x0007;
     const _Fieldref =           0x0009;

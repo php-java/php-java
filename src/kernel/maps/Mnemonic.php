@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Maps;
 
-class Mnemonics extends Map
+class Mnemonic extends Map
 {
     const _nop               = 0x00;
     const _aconst_null       = 0x01;

@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Maps;
 
-class ClassAccessFlagEnum extends Map
+class ClassAccessFlag extends Map
 {
     const _Public     = 0x0001;
     const _Final      = 0x0010;
