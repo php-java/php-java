@@ -13,7 +13,7 @@ final class _iadd implements OpCodeInterface
     {
         $leftValue = $this->getStack();
         $rightValue = $this->getStack();
-        
+
         $this->pushStack(BinaryTool::add($leftValue, $rightValue, 4));
     }
 }

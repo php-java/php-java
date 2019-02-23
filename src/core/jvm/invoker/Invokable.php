@@ -49,12 +49,7 @@ trait Invokable
 
         $reader = new BinaryReader($handle);
 
-        $localStorage = [
-            $this->javaClassInvoker->getJavaClass(),
-            $arguments[0] ?? null,
-            $arguments[1] ?? null,
-            $arguments[2] ?? null,
-        ];
+        $localStorage = array_slice($arguments, 0, 4);
 
         $stacks = [];
         $opcodeMap = new OpCode();
@@ -68,7 +63,7 @@ trait Invokable
 
             $fullName = '\\PHPJava\\Kernel\\OpCode\\' . $opcode;
 
-            echo $opcode . "\n";
+            echo 'Mnemonic: ' . $opcode . "\n";
 
             /**
              * @var OpCodeInterface|Accumulator|ConstantPool $executor

@@ -13,24 +13,31 @@ final class _invokespecial implements OpCodeInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool()->getEntries();
-        
-        
+
         $cp = $cpInfo[$this->readUnsignedShort()];
 
-        // $invokeClassName = '\\' . str_replace('/', '\\', $cpList[$class->getClassIndex()]->getString());
-
-        
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
         
         // signature
         $signature = Formatter::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
         
-        $invokeClassName = $this->getStack();
+        $invokerClassName = $this->getStack();
 
         $arguments = [];
 
         for ($i = 0; $i < $signature['argumentsCount']; $i++) {
             $arguments[] = $this->getStack();
         }
+
+        $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
+
+//        $result = call_user_func_array(
+//            [$this->javaClassInvoker->getDynamicMethods(), $methodName],
+//            $arguments
+//        );
+//
+//        if ($signature[0]['type'] !== 'void') {
+//            $this->pushStack($result);
+//        }
     }
 }

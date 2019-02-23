@@ -33,6 +33,7 @@ final class _tableswitch implements OpCodeInterface
             return;
         }
 
+
         // goto default
         $this->setOffset($this->getPointer() + $offsets['default']);
     }

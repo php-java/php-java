@@ -5,7 +5,7 @@ class TestEmulates {
 class Test {
 
     long z = -22222222222222222L;
-    static int c = 100;
+    static int c = 5;
     static String b = "Hello World";
     
     /**
@@ -157,6 +157,11 @@ class Test {
         t2 += 1;
         t2 = 1;
 
+
+        System.out.println(args[0]);
+        System.out.println(args[1]);
+        System.out.println(args[2]);
+
         /*boolean _b = false;
         _b = true && true;
         _b = true && false;
@@ -209,31 +214,24 @@ class Test {
             System.out.println("ぬるぷっぷー");
 
         }
-        
+
         String[] test = {"4", "5", "6"};
         for (String i : test) {
-            
+
             System.out.println(i);
 
         }
-        
+
         int[] test2 = {1, 2, 3};
         for (int i : test2) {
-            
+
             System.out.println(i);
 
         }
-        
+
         long[] test3 = {1L, 2L, 3L};
         for (long i : test3) {
-            
-            System.out.println(i);
 
-        }
-        
-        double[] test4 = {3.4, 3.5, 3.6, 81263.12312321, -99};
-        for (double i : test4) {
-            
             System.out.println(i);
 
         }

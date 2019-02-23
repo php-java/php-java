@@ -16,9 +16,9 @@ final class _aaload implements OpCodeInterface
     {
         $index = $this->getStack();
         $arrayref = $this->getStack();
-        
+
         if (!isset($arrayref[$index])) {
-            throw new JavaArrayIndexOutOfBoundsException($this->getMethodName() . ': ' . $index . ' of array index');
+            throw new \PHPJava\Bridge\java\lang\ArrayIndexOutOfBoundsException('Array Index ' . $index . ' out of bounds.');
         }
         
         $this->pushStack($arrayref[$index]);
