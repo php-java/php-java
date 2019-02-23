@@ -10,32 +10,38 @@ class _StackMapFrame implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
 
     private $frameType = null;
-    private $sameFrame = null;
-    private $sameLocals1StackItemFrame = null;
-    private $sameLocals1StackItemFrameExtended = null;
-    private $chopFrame = null;
-    private $sameFrameExtended = null;
-    private $appendFrame = null;
-    private $fullFrame = null;
+
+    /**
+     * @var StructureInterface|null
+     */
+    private $frame = null;
+
     public function execute(): void
     {
         $this->frameType = $this->readUnsignedByte();
         // back by frametype
-        $this->getClass()->seek(-1);
+        $this->reader->getBinaryReader()->seek(-1);
+
         if ($this->frameType >= 0 && $this->frameType <= 63) {
-            $this->sameFrame = new _SameFrame($this->getClass());
+            $this->frame = new \PHPJava\Kernel\Frames\SameFrame($this->reader);
         } elseif ($this->frameType >= 64 && $this->frameType <= 127) {
-            $this->sameLocals1StackItemFrame = new _SameLocals1StackItemFrame($this->getClass());
+            $this->frame = new \PHPJava\Kernel\Frames\SameLocals1StackItemFrame($this->reader);
         } elseif ($this->frameType == 247) {
-            $this->sameLocals1StackItemFrameExtended = new _SameLocals1StackItemFrameExtended($this->getClass());
+            $this->frame = new \PHPJava\Kernel\Frames\SameLocals1StackItemFrameExtended($this->reader);
         } elseif ($this->frameType >= 248 && $this->frameType <= 250) {
-            $this->chopFrame = new _ChopFrame($this->getClass());
+            $this->frame = new \PHPJava\Kernel\Frames\ChopFrame($this->reader);
         } elseif ($this->frameType == 251) {
-            $this->sameFrameExtended = new _SameFrameExtended($this->getClass());
+            $this->frame = new \PHPJava\Kernel\Frames\SameFrameExtended($this->reader);
         } elseif ($this->frameType >= 252 && $this->frameType <= 254) {
-            $this->appendFrame = new _AppendFrame($this->getClass());
+            $this->frame = new \PHPJava\Kernel\Frames\AppendFrame($this->reader);
         } elseif ($this->frameType == 255) {
-            $this->fullFrame = new _FullFrame($this->getClass());
+            $this->frame = new \PHPJava\Kernel\Frames\FullFrame($this->reader);
         }
+        $this->frame->execute();
+    }
+
+    public function getFrame(): StructureInterface
+    {
+        return $this->frame;
     }
 }

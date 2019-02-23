@@ -13,33 +13,44 @@ final class CodeAttribute implements AttributeInterface
     private $maxLocals = null;
     private $codeLength = null;
     private $rawCode = '';
-    private $code = array();
+    private $code = [];
     private $exceptionTableLength = null;
-    private $exceptionTables = array();
-    private $attributeInfo = array();
+    private $exceptionTables = [];
+    private $attributeInfo = [];
+    private $attributeCount = 0;
+
     public function execute(): void
     {
         $this->maxStack = $this->readUnsignedShort();
         $this->maxLocals = $this->readUnsignedShort();
         $this->codeLength = $this->readUnsignedInt();
+
         // read opcode
-        $this->code = array();
+        $this->code = [];
         for ($i = 0; $i < $this->codeLength; $i++) {
             $this->code[$i] = $this->readUnsignedByte();
             $this->rawCode .= chr($this->code[$i]);
         }
+
         // read exception table
         $this->exceptionTableLength = $this->readUnsignedShort();
         for ($i = 0; $i < $this->exceptionTableLength; $i++) {
-            $this->exceptionTables[$i] = new JavaStructureExceptionTable($this);
-            $this->exceptionTables[$i]->setStartPc($this->readUnsignedShort());
-            $this->exceptionTables[$i]->setEndPc($this->readUnsignedShort());
-            $this->exceptionTables[$i]->setHandlerPc($this->readUnsignedShort());
-            $this->exceptionTables[$i]->setCatchType($this->readUnsignedShort());
+            $exceptionTable = new \PHPJava\Kernel\Structures\_ExceptionTable($this->reader);
+            $exceptionTable->setConstantPool($this->getConstantPool());
+            $exceptionTable->setStartPc($this->readUnsignedShort())
+                ->setEndPc($this->readUnsignedShort())
+                ->setHandlerPc($this->readUnsignedShort())
+                ->setCatchType($this->readUnsignedShort())
+                ->execute();
+            $this->exceptionTables[] = $exceptionTable;
         }
-        $this->attributesCount = $this->readUnsignedShort();
-        for ($i = 0; $i < $this->attributesCount; $i++) {
-            $this->attributeInfo[] = new \PHPJava\Kernel\Attributes\AttributeInfo($this);
+
+        $this->attributeCount = $this->readUnsignedShort();
+        for ($i = 0; $i < $this->attributeCount; $i++) {
+            $attributeInfo = new \PHPJava\Kernel\Attributes\AttributeInfo($this->reader);
+            $attributeInfo->setConstantPool($this->getConstantPool());
+            $attributeInfo->execute();
+            $this->attributeInfo[] = $attributeInfo;
         }
     }
     public function getExceptionTables()

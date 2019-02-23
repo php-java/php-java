@@ -1,10 +1,10 @@
 <?php
-namespace PHPJava\Kernel\Structures;
+namespace PHPJava\Kernel\Frames;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
-class _ChopFrame implements StructureInterface
+class ChopFrame implements FrameInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;

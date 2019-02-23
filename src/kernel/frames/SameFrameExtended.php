@@ -1,19 +1,20 @@
 <?php
-namespace PHPJava\Kernel\Structures;
+namespace PHPJava\Kernel\Frames;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
-class _SameLocals1StackItemFrame implements StructureInterface
+class SameFrameExtended implements FrameInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
     private $frameType = null;
-    private $stack = array();
+    private $offsetDelta = null;
+
     public function execute(): void
     {
         $this->frameType = $this->readUnsignedByte();
-        $this->stack[] = new _VerificationTypeInfo($this->getClass());
+        $this->offsetDelta = $this->readUnsignedShort();
     }
 }

@@ -1,19 +1,17 @@
 <?php
-namespace PHPJava\Kernel\Structures;
+namespace PHPJava\Kernel\Variables;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
-class _UninitializedVariableInfo implements StructureInterface
+class LongVariableInfo implements VariableInfoInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
     private $tag = null;
-    private $offset = null;
     public function execute(): void
     {
         $this->tag = $this->readUnsignedByte();
-        $this->offset = $this->readUnsignedShort();
     }
 }

@@ -5,70 +5,70 @@ use PHPJava\Core\JavaClassReader;
 
 trait BinaryReader
 {
-    private $binaryReader;
+    private $reader;
 
     public function __construct(JavaClassReader $reader)
     {
-        $this->binaryReader = $reader->getBinaryReader();
+        $this->reader = $reader;
     }
 
     final public function read($bytes = 1)
     {
-        return $this->binaryReader->read($bytes);
+        return $this->reader->getBinaryReader()->read($bytes);
     }
 
     public function readByte()
     {
-        return $this->binaryReader->readByte();
+        return $this->reader->getBinaryReader()->readByte();
     }
 
     public function readUnsignedByte()
     {
-        return $this->binaryReader->readUnsignedByte();
+        return $this->reader->getBinaryReader()->readUnsignedByte();
     }
 
     public function readUnsignedInt()
     {
-        return $this->binaryReader->readUnsignedInt();
+        return $this->reader->getBinaryReader()->readUnsignedInt();
     }
 
     public function readUnsignedShort()
     {
-        return $this->binaryReader->readUnsignedShort();
+        return $this->reader->getBinaryReader()->readUnsignedShort();
     }
 
     public function readInt()
     {
-        return $this->binaryReader->readInt();
+        return $this->reader->getBinaryReader()->readInt();
     }
 
     public function readShort()
     {
-        return $this->binaryReader->readShort();
+        return $this->reader->getBinaryReader()->readShort();
     }
 
     public function readUnsignedLong()
     {
-        return $this->binaryReader->readUnsignedLong();
+        return $this->reader->getBinaryReader()->readUnsignedLong();
     }
 
     public function readLong()
     {
-        return $this->binaryReader->readLong();
+        return $this->reader->getBinaryReader()->readLong();
     }
 
     public function seek($bytes)
     {
-        $this->binaryReader->seek($bytes);
+        $this->reader->getBinaryReader()->seek($bytes);
     }
 
     public function setOffset($pointer)
     {
-        $this->binaryReader->setOffset($pointer);
+        $this->reader->getBinaryReader()->setOffset($pointer);
     }
 
     public function getOffset()
     {
-        return $this->binaryReader->getOffset();
+        return $this->reader->getBinaryReader()->getOffset();
     }
 }

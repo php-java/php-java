@@ -13,7 +13,8 @@ class _MethodInfo implements StructureInterface
     private $nameIndex = null;
     private $descriptorIndex = null;
     private $attributeCount = 0;
-    private $attributes = array();
+    private $attributes = [];
+
     public function execute(): void
     {
         $this->accessFlag = $this->readUnsignedShort();
@@ -21,7 +22,11 @@ class _MethodInfo implements StructureInterface
         $this->descriptorIndex = $this->readUnsignedShort();
         $this->attributeCount = $this->readUnsignedShort();
         for ($i = 0; $i < $this->attributeCount; $i++) {
-            $this->attributes[$i] = new \PHPJava\Kernel\Attributes\AttributeInfo($this->getClass());
+            $attribute = new \PHPJava\Kernel\Attributes\AttributeInfo($this->reader);
+            $attribute->setConstantPool($this->getConstantPool());
+            $attribute->execute();
+
+            $this->attributes[] = $attribute;
         }
     }
     public function getAccessFlag()

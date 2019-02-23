@@ -1,10 +1,10 @@
 <?php
-namespace PHPJava\Kernel\Structures;
+namespace PHPJava\Kernel\Variables;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
-class _FloatVariableInfo implements StructureInterface
+class TopVariableInfo implements VariableInfoInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
