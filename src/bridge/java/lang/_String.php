@@ -7,7 +7,7 @@ class _String
 {
     private $object = null;
 
-    public function __construct($object)
+    public function __construct($object = null)
     {
         $this->object = $object;
     }

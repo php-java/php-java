@@ -155,4 +155,9 @@ trait Accumulator
         return $this->localStorage;
     }
 
+    public function getPointer()
+    {
+        return $this->pointer;
+    }
+
 }

@@ -17,6 +17,10 @@ final class _new implements OpCodeInterface
         if ($className === $this->javaClass->getClassName()) {
             // will be called <init>
             $this->pushStack($this->javaClass);
+            return;
         }
+
+        $invokeClassName = '\\PHPJava\\Bridge\\' . str_replace('/', '\\', $className);
+        $this->pushStack(new $invokeClassName());
     }
 }

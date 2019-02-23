@@ -26,25 +26,22 @@ final class _invokevirtual implements OpCodeInterface
         }
         
         $invokerClass = $this->getStack();
-        var_dump($invokerClass);
 
-        if ($invokerClass instanceof \JavaClass) {
-            $result = call_user_func_array(array(
+        $javaObjectName = str_replace('/', '\\', $class);
 
-                $invokerClass->getMethodInvoker(),
-                $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
-
-            ), $arguments);
-        } else {
-            $invokerClassName = '\\PHPJava\\Bridge\\' . str_replace('/', '\\', $class);
-
-            $result = call_user_func_array(array(
-                
-                $invokerClass,
-                $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
-
-            ), $arguments);
+        if ($javaObjectName === 'java\\lang\\String') {
+            // For PHP
+            $javaObjectName = 'java\\lang\\_String';
         }
+
+        $invokerClassName = '\\PHPJava\\Bridge\\' . $javaObjectName;
+        var_dump($invokerClassName);
+
+        $result = call_user_func_array([
+            NEW $invokerClassName,
+            $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
+
+        ], $arguments);
 
         if ($signature[0]['type'] !== 'void') {
             $this->pushStack($result);
