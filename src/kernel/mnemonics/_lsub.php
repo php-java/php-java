@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class _lsub implements MnemonicInterface
 {
@@ -12,7 +13,7 @@ final class _lsub implements MnemonicInterface
         $value1 = $this->getStack();
         $value2 = $this->getStack();
 
-        $this->pushStack(BinaryTools::sub($value1, $value2, 8));
+        $this->pushStack(BinaryTool::sub($value1, $value2, 8));
 
     }
 

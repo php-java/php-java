@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class _fstore_2 implements MnemonicInterface
 {

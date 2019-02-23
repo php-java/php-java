@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class RuntimeInvisibleAnnotationsAttribute implements AttributeInterface
 {

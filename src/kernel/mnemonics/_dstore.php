@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class _dstore implements MnemonicInterface
 {
@@ -15,7 +16,7 @@ final class _dstore implements MnemonicInterface
         $index = $this->getByteCodeStream()->readUnsignedByte();
         $value = $this->getStack();
         
-        $this->setLocalstorage($index, BinaryTools::convertDoubleToIEEE754($value));
+        $this->setLocalstorage($index, BinaryTool::convertDoubleToIEEE754($value));
         
     }
 

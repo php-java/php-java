@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class LineNumberTableAttribute implements AttributeInterface
 {
@@ -16,14 +17,14 @@ final class LineNumberTableAttribute implements AttributeInterface
         
         
         
-        $this->LineNumberTableLength = $this->getJavaBinaryStream()->readUnsignedShort();
+        $this->LineNumberTableLength = $this->readUnsignedShort();
         
         for ($i = 0; $i < $this->LineNumberTableLength; $i++) {
             
             $this->LineNumberTables[$i] = new JavaStructureLineNumberTable($Class);
             
-            $this->LineNumberTables[$i]->setStartPc($this->getJavaBinaryStream()->readUnsignedShort());
-            $this->LineNumberTables[$i]->setLineNumber($this->getJavaBinaryStream()->readUnsignedShort());
+            $this->LineNumberTables[$i]->setStartPc($this->readUnsignedShort());
+            $this->LineNumberTables[$i]->setLineNumber($this->readUnsignedShort());
             
         }
         

@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class CodeAttribute implements AttributeInterface
 {
@@ -18,25 +19,25 @@ final class CodeAttribute implements AttributeInterface
     public function execute(): void
     {
         
-        $this->MaxStack = $this->getJavaBinaryStream()->readUnsignedShort();
-        $this->MaxLocals = $this->getJavaBinaryStream()->readUnsignedShort();
-        $this->CodeLength = $this->getJavaBinaryStream()->readUnsignedInt();
+        $this->MaxStack = $this->readUnsignedShort();
+        $this->MaxLocals = $this->readUnsignedShort();
+        $this->CodeLength = $this->readUnsignedInt();
         // read opcode
         $this->Code = array();
         for ($i = 0; $i < $this->CodeLength; $i++) {
-            $this->Code[$i] = $this->getJavaBinaryStream()->readUnsignedByte();
+            $this->Code[$i] = $this->readUnsignedByte();
             $this->RawCode .= chr($this->Code[$i]);
         }
         // read exception table
-        $this->ExceptionTableLength = $this->getJavaBinaryStream()->readUnsignedShort();
+        $this->ExceptionTableLength = $this->readUnsignedShort();
         for ($i = 0; $i < $this->ExceptionTableLength; $i++) {
             $this->ExceptionTables[$i] = new JavaStructureExceptionTable($this);
-            $this->ExceptionTables[$i]->setStartPc($this->getJavaBinaryStream()->readUnsignedShort());
-            $this->ExceptionTables[$i]->setEndPc($this->getJavaBinaryStream()->readUnsignedShort());
-            $this->ExceptionTables[$i]->setHandlerPc($this->getJavaBinaryStream()->readUnsignedShort());
-            $this->ExceptionTables[$i]->setCatchType($this->getJavaBinaryStream()->readUnsignedShort());
+            $this->ExceptionTables[$i]->setStartPc($this->readUnsignedShort());
+            $this->ExceptionTables[$i]->setEndPc($this->readUnsignedShort());
+            $this->ExceptionTables[$i]->setHandlerPc($this->readUnsignedShort());
+            $this->ExceptionTables[$i]->setCatchType($this->readUnsignedShort());
         }
-        $this->AttributesCount = $this->getJavaBinaryStream()->readUnsignedShort();
+        $this->AttributesCount = $this->readUnsignedShort();
         for ($i = 0; $i < $this->AttributesCount; $i++) {
             $this->AttributeInfo[] = new JavaAttributeInfo($this);
         }

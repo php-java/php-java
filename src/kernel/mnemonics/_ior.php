@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class _ior implements MnemonicInterface
 {
@@ -12,7 +13,7 @@ final class _ior implements MnemonicInterface
         $value1 = $this->getStack();
         $value2 = $this->getStack();
 
-        $this->pushStack(BinaryTools::orBits($value1, $value2, 4));
+        $this->pushStack(BinaryTool::orBits($value1, $value2, 4));
 
     }
 

@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class InnerClassesAttribute implements AttributeInterface
 {
@@ -16,16 +17,16 @@ final class InnerClassesAttribute implements AttributeInterface
         
         
         
-        $this->NumberOfClasses = $this->getJavaBinaryStream()->readUnsignedShort();
+        $this->NumberOfClasses = $this->readUnsignedShort();
         
         for ($i = 0; $i < $this->NumberOfClasses; $i++) {
             
             $thises[$i] = new JavaStructureClasses($this);
             
-            $thises[$i]->setInnerClassInfoIndex($this->getJavaBinaryStream()->readUnsignedShort());
-            $thises[$i]->setOuterClassInfoIndex($this->getJavaBinaryStream()->readUnsignedShort());
-            $thises[$i]->setInnerNameIndex($this->getJavaBinaryStream()->readUnsignedShort());
-            $thises[$i]->setInnerClassAccessFlag($this->getJavaBinaryStream()->readUnsignedShort());
+            $thises[$i]->setInnerClassInfoIndex($this->readUnsignedShort());
+            $thises[$i]->setOuterClassInfoIndex($this->readUnsignedShort());
+            $thises[$i]->setInnerNameIndex($this->readUnsignedShort());
+            $thises[$i]->setInnerClassAccessFlag($this->readUnsignedShort());
             
         }
         

@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class _ineg implements MnemonicInterface
 {
@@ -11,7 +12,7 @@ final class _ineg implements MnemonicInterface
     {
         $value = $this->getStack();
 
-        $this->pushStack(BinaryTools::negate($value, 4));
+        $this->pushStack(BinaryTool::negate($value, 4));
 
     }
 

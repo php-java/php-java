@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class StackMapTableAttribute implements AttributeInterface
 {
@@ -17,7 +18,7 @@ final class StackMapTableAttribute implements AttributeInterface
         
         
         
-        $this->NumberOfEntries = $this->getJavaBinaryStream()->readUnsignedShort();
+        $this->NumberOfEntries = $this->readUnsignedShort();
         
         for ($i = 0; $i < $this->NumberOfEntries; $i++) {
             

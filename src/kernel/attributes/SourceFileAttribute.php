@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class SourceFileAttribute implements AttributeInterface
 {
@@ -15,7 +16,7 @@ final class SourceFileAttribute implements AttributeInterface
         
         
         
-        $this->SourceFileIndex = $this->getJavaBinaryStream()->readUnsignedShort();
+        $this->SourceFileIndex = $this->readUnsignedShort();
         
         
     }

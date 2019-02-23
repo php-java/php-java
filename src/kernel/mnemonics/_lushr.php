@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class _lushr implements MnemonicInterface
 {
@@ -12,7 +13,7 @@ final class _lushr implements MnemonicInterface
         $value1 = $this->getStack();
         $value2 = $this->getStack();
 
-        $this->pushStack(BinaryTools::unsignedShiftRight($value1, $value2, 8));
+        $this->pushStack(BinaryTool::unsignedShiftRight($value1, $value2, 8));
 
     }
 

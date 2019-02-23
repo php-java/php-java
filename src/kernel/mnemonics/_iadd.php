@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use \PHPJava\Exceptions\NotImplementedException;
+use \PHPJava\Kernel\Utilities\BinaryTool;
 
 final class _iadd implements MnemonicInterface
 {
@@ -12,7 +13,7 @@ final class _iadd implements MnemonicInterface
         $leftValue = $this->getStack();
         $rightValue = $this->getStack();
         
-        $this->pushStack(BinaryTools::add($leftValue, $rightValue, 4));
+        $this->pushStack(BinaryTool::add($leftValue, $rightValue, 4));
 
     }
 
