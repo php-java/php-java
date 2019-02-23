@@ -18,4 +18,9 @@ class ActiveFields
             $this->entries[$i]->execute();
         }
     }
+
+    public function getEntries()
+    {
+        return $this->entries;
+    }
 }

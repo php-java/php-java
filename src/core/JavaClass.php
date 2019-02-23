@@ -11,21 +11,49 @@ use PHPJava\Exceptions\ValidatorException;
 
 class JavaClass
 {
+
+    use \PHPJava\Kernel\Core\ConstantPool;
+
     private $versions = [
         'minor' => null,
         'major' => null,
     ];
 
+    /**
+     * @var ConstantPool
+     */
     private $constantPool;
+
+    /**
+     * @var ActiveInterface
+     */
     private $activeInterfaces;
+
+    /**
+     * @var ActiveFields
+     */
     private $activeFields;
+
+    /**
+     * @var ActiveMethods
+     */
     private $activeMethods;
+
+    /**
+     * @var ActiveAttributes
+     */
     private $activeAttributes;
 
     private $accessFlag = 0;
     private $thisClass = 0;
     private $superClass = 0;
 
+    /**
+     * JavaClass constructor.
+     * @param JavaClassReader $reader
+     * @throws ValidatorException
+     * @throws \PHPJava\Exceptions\ReadEntryException
+     */
     public function __construct(JavaClassReader $reader)
     {
         // Validate Java file
@@ -57,7 +85,8 @@ class JavaClass
         // read interfaces
         $this->activeInterfaces = new ActiveInterface(
             $reader,
-            $reader->getBinaryReader()->readUnsignedShort()
+            $reader->getBinaryReader()->readUnsignedShort(),
+            $this->constantPool
         );
 
         // read fields
@@ -80,6 +109,15 @@ class JavaClass
             $reader->getBinaryReader()->readUnsignedShort(),
             $this->constantPool
         );
-        var_dump($this->activeAttributes);
+    }
+
+    public function getFields(): array
+    {
+        return $this->activeFields->getEntries();
+    }
+
+    public function getMethods(): array
+    {
+        return $this->activeMethods->getEntries();
     }
 }

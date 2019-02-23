@@ -1,8 +1,11 @@
 <?php
 
+use PHPJava\Core\JavaClassInvoker;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $javaClass = new \PHPJava\Core\JavaClass(
     new \PHPJava\Core\JavaClassReader(__DIR__ . '/Test.class')
 );
-var_dump($javaClass);
+$invoker = new JavaClassInvoker($javaClass);
+var_dump($invoker->getDynamicMethods()->main([1, 2, 3]));
