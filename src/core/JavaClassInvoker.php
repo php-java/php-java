@@ -38,10 +38,10 @@ class JavaClassInvoker
              */
             $methodName = $cpInfo[$methodInfo->getNameIndex()]->getString();
 
-            if ($methodInfo->getAccessFlag() === 0 || ($methodInfo->getAccessFlag() & AccessFlag::_Public) !== 0) {
-                $this->dynamicMethods[$methodName] = $methodInfo;
-            } elseif (($methodInfo->getAccessFlag() & AccessFlag::_Static) !== 0) {
+            if (($methodInfo->getAccessFlag() & AccessFlag::_Static) !== 0) {
                 $this->staticMethods[$methodName] = $methodInfo;
+            } elseif ($methodInfo->getAccessFlag() === 0 || ($methodInfo->getAccessFlag() & AccessFlag::_Public) !== 0) {
+                $this->dynamicMethods[$methodName] = $methodInfo;
             }
         }
 

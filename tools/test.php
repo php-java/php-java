@@ -8,5 +8,5 @@ $javaClass = new \PHPJava\Core\JavaClass(
     new \PHPJava\Core\JavaClassReader(__DIR__ . '/Test.class')
 );
 $invoker = new JavaClassInvoker($javaClass);
-$invoker->getDynamicMethods()->main([999, 222, 3333]);
+$invoker->getStaticMethods()->main([999, 222, 3333]);
 $invoker->debug();
