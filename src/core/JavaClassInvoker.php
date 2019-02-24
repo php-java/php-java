@@ -25,9 +25,7 @@ class JavaClassInvoker
     private $dynamicFields = [];
     private $staticFields = [];
 
-    private $debugTraces = [];
-
-    private static $singleton = [];
+    private $debugTraces ;
 
     public function __construct(JavaClass $javaClass)
     {
@@ -75,8 +73,7 @@ class JavaClassInvoker
     {
         return new JVM\Invoker\DynamicMethodInvoker(
             $this,
-            $this->dynamicMethods,
-            $this->debugTraces
+            $this->dynamicMethods
         );
     }
 
@@ -84,16 +81,14 @@ class JavaClassInvoker
     {
         return new JVM\Invoker\StaticMethodInvoker(
             $this,
-            $this->staticMethods,
-            $this->debugTraces
+            $this->staticMethods
         );
     }
 
     public function getDynamicFields(): FieldInterface
     {
         return new JVM\Field\DynamicField(
-            $this,
-            $this->dynamicFields
+            $this
         );
     }
 
@@ -102,112 +97,4 @@ class JavaClassInvoker
         return new JVM\Field\StaticField();
     }
 
-    public function debug(): void
-    {
-        $cpInfo = $this->getJavaClass()->getConstantPool()->getEntries();
-
-        foreach ($this->debugTraces as $debugTraces) {
-            $methodAccessFlags = $debugTraces['method']->getAccessFlag();
-            $accessFlags = [];
-            $accessFlag = new AccessFlag();
-            foreach ($accessFlag->getValues() as $value) {
-                if (($methodAccessFlags & $value) !== 0) {
-                    $accessFlags[] = strtolower(str_replace('_', '', $accessFlag->getName($value)));
-                }
-            }
-
-            $methodName = $cpInfo[$debugTraces['method']->getNameIndex()]->getString();
-            $descriptor = Formatter::parseSignature($cpInfo[$debugTraces['method']->getDescriptorIndex()]->getString());
-            $formattedArguments = str_replace(
-                '/',
-                '.',
-                implode(
-                    ', ',
-                    array_map(
-                        function ($argument) {
-                            $arrayBrackets = str_repeat('[]', $argument['deep_array']);
-                            if ($argument['type'] === 'class') {
-                                return $argument['class_name'] . $arrayBrackets;
-                            }
-                            return $argument['type'] . $arrayBrackets;
-                        },
-                        $descriptor['arguments']
-                    )
-                )
-            );
-
-
-            $type = $descriptor[0]['type'];
-            if ($type === 'class') {
-                $type = $descriptor[0]['class_name'];
-            }
-
-            $methodAccessibility = implode(' ', $accessFlags);
-
-            printf("[method]\n");
-            printf(ltrim("$methodAccessibility $type $methodName($formattedArguments)\n", ' '));
-            printf("\n");
-            printf("[code]\n");
-
-            $codeCounter = 0;
-            printf(
-                "%s\n",
-                implode(
-                    "\n",
-                    array_map(
-                        function ($codes) use (&$codeCounter, &$debugTraces) {
-                            return implode(
-                                ' ',
-                                array_map(
-                                    function ($code) use (&$codeCounter, &$debugTraces) {
-                                        $isMnemonic = in_array($codeCounter, $debugTraces['mnemonic_indexes']);
-                                        $codeCounter++;
-                                        return ($isMnemonic ? "\e[1m\e[35m" : "") . "<0x{$code}>" . ($isMnemonic ? "\e[m" : "");
-                                    },
-                                    $codes
-                                )
-                            );
-                        },
-                        array_chunk(str_split(bin2hex($debugTraces['raw_code']), 2), 20)
-                    )
-                )
-            );
-            printf("\n");
-            printf("[executed]\n");
-
-            printf(
-                "% 8s | %-6.6s | %-20.20s | %-10.10s | %-15.15s\n",
-                "PC",
-                "OPCODE",
-                "MNEMONIC",
-                "OPERANDS",
-                "LOCAL STORAGE"
-            );
-
-            $line = sprintf(
-                "%8s+%8s+%22s+%12s+%17s\n",
-                "---------",
-                "--------",
-                "----------------------",
-                "------------",
-                "-----------------"
-            );
-
-            printf($line);
-
-            foreach ($debugTraces['executed'] as [$opcode, $mnemonic, $localStorage, $stacks, $pointer]) {
-                printf(
-                    "% 8s | 0x%02X   | %-20.20s | %-10.10s | %-15.15s\n",
-                    (int) $pointer,
-                    $opcode,
-                    // Remove prefix
-                    ltrim($mnemonic, '_'),
-                    count($stacks),
-                    count($localStorage)
-                );
-            }
-
-            printf($line);
-        }
-    }
 }

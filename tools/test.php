@@ -10,4 +10,4 @@ $javaClass = new \PHPJava\Core\JavaClass(
 );
 $javaClass->getInvoker()->getStaticMethods()->main([111, 222, 333]);
 
-$javaClass->getInvoker()->debug();
+$javaClass->debug();

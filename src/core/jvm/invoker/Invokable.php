@@ -21,13 +21,11 @@ trait Invokable
 {
     private $javaClassInvoker;
     private $methods = [];
-    private $debugTraces;
 
-    public function __construct(JavaClassInvoker $javaClassInvoker, array $methods, array &$debugTraces)
+    public function __construct(JavaClassInvoker $javaClassInvoker, array $methods)
     {
         $this->javaClassInvoker = $javaClassInvoker;
         $this->methods = $methods;
-        $this->debugTraces = &$debugTraces;
     }
 
     public function __call($name, $arguments)
@@ -102,12 +100,12 @@ trait Invokable
             $returnValue = $executor->execute();
 
             if ($returnValue !== null) {
-                $this->debugTraces[] = $debugTraces;
+                $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
                 return $returnValue;
             }
         }
 
-        $this->debugTraces[] = $debugTraces;
+        $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
         return null;
     }
 }
