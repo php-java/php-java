@@ -6,7 +6,7 @@ use PHPJava\Kernel\Types\Type;
 
 class PrintStream
 {
-
+    private $sequence = '';
     public function println($arg)
     {
         if ($arg instanceof _Utf8) {
@@ -21,6 +21,12 @@ class PrintStream
         } elseif ($arg === null) {
             echo "\n";
         }
+    }
+
+    public function append($string)
+    {
+        $this->sequence .= $string;
+        return $this;
     }
 
 }

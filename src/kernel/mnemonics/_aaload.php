@@ -20,7 +20,6 @@ final class _aaload implements OperationInterface
         if (!isset($arrayref[$index])) {
             throw new \PHPJava\Bridge\java\lang\ArrayIndexOutOfBoundsException('Array Index ' . $index . ' out of bounds.');
         }
-        
         $this->pushStack($arrayref[$index]);
     }
 }

@@ -71,7 +71,7 @@ class Formatter
                         $build .= $signature[$i];
                     }
                     $data['arguments'] = ($build !== '') ? static::parseSignature($build) : [];
-                    $data['arguments_count'] = ($data['arguments_count'] ?? 0) + 1;
+                    $data['arguments_count'] = count($data['arguments']);
                     break;
             }
             $i++;

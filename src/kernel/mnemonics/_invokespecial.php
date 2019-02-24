@@ -30,7 +30,7 @@ final class _invokespecial implements OperationInterface
         }
 
         $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
-        var_dump($methodName);
+//        var_dump($methodName);
 
 //        $result = call_user_func_array(
 //            [$this->javaClassInvoker->getDynamicMethods(), $methodName],

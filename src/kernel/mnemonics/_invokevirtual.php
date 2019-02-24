@@ -24,7 +24,6 @@ final class _invokevirtual implements OperationInterface
         for ($i = 0; $i < $signature['arguments_count']; $i++) {
             $arguments[] = $this->getStack();
         }
-        
         $invokerClass = $this->getStack();
 
         $javaObjectName = str_replace('/', '\\', $class);
@@ -35,10 +34,13 @@ final class _invokevirtual implements OperationInterface
         }
 
         $invokerClassName = '\\PHPJava\\Bridge\\' . $javaObjectName;
-        $result = call_user_func_array([
-            new $invokerClassName,
-            $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
-        ], $arguments);
+        $result = call_user_func_array(
+            [
+                $invokerClass,
+                $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
+            ],
+            $arguments
+        );
 
         if ($signature[0]['type'] !== 'void') {
             $this->pushStack($result);
