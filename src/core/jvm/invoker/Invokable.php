@@ -55,7 +55,7 @@ trait Invokable
          */
         $method = $this->methods[$name] ?? null;
         if ($method === null) {
-            throw new UndefinedMethodException('Undefined ' . $name . ' method.');
+            throw new UndefinedMethodException('Call to undefined ' . $name . ' method.');
         }
 
         $codeAttribute = $getCodeAttribute($method->getAttributes());
@@ -95,7 +95,7 @@ trait Invokable
             $mnemonic = $mnemonicMap->getName($opcode);
 
             if ($mnemonic === null) {
-                throw new UndefinedOpCodeException('Undefined OpCode ' . sprintf('0x%X', $cursor) . '.');
+                throw new UndefinedOpCodeException('Call to undefined OpCode ' . sprintf('0x%X', $cursor) . '.');
             }
             $pointer = $reader->getOffset() - 1;
 

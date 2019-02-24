@@ -14,4 +14,7 @@ $javaClass->getInvoker()->getStaticMethods()->call(
     [99999, 55555, 333333]
 );
 
+var_dump($javaClass->getInvoker()->getStaticFields()->get('c'));
+var_dump($javaClass->getInvoker()->getStaticFields()->get('b'));
+
 $javaClass->debug();

@@ -32,7 +32,7 @@ final class _getstatic implements OperationInterface
 
                 // push stack
                 $fieldName = $cpInfo[$field->getNameIndex()]->getString();
-                $this->pushStack($this->javaClassInvoker->getStaticFields()->$fieldName);
+                $this->pushStack($this->javaClassInvoker->getStaticFields()->get($fieldName));
                 return;
             }
         }
