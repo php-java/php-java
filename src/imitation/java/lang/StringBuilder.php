@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPJava\Bridge\java\lang;
+namespace PHPJava\Imitation\java\lang;
 
 class StringBuilder
 {

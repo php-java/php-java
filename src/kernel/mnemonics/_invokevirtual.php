@@ -33,7 +33,7 @@ final class _invokevirtual implements OperationInterface
             $javaObjectName = 'java\\lang\\_String';
         }
 
-        $invokerClassName = '\\PHPJava\\Bridge\\' . $javaObjectName;
+        $invokerClassName = '\\PHPJava\\Imitation\\' . $javaObjectName;
         $result = call_user_func_array(
             [
                 $invokerClass,

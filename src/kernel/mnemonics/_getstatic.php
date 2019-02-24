@@ -27,7 +27,7 @@ final class _getstatic implements OperationInterface
                 // For PHP
                 $javaObjectName = 'java\\lang\\_String';
             }
-            $className = '\\PHPJava\\Bridge\\' . $javaObjectName;
+            $className = '\\PHPJava\\Imitation\\' . $javaObjectName;
             $this->pushStack(new $className());
             return;
         }

@@ -25,7 +25,7 @@ final class _ldc implements OperationInterface
             $value = $cpInfo[$data->getStringIndex()];
 
             if ($value instanceof _Utf8) {
-                $value = new \PHPJava\Bridge\java\lang\_String($value);
+                $value = new \PHPJava\Imitation\java\lang\_String($value);
             }
         } elseif (($data instanceof _Integer) || ($data instanceof _Float)) {
             $value = $data->getBytes();

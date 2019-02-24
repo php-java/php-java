@@ -20,7 +20,7 @@ final class _new implements OperationInterface
             return;
         }
 
-        $invokeClassName = '\\PHPJava\\Bridge\\' . str_replace('/', '\\', $className);
+        $invokeClassName = '\\PHPJava\\Imitation\\' . str_replace('/', '\\', $className);
         $this->pushStack(new $invokeClassName());
     }
 }

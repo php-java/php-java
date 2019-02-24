@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Bridge\java\lang;
+namespace PHPJava\Imitation\java\lang;
 
 use PHPJava\Kernel\Structures\_Utf8;
 
