@@ -92,7 +92,7 @@ trait Invokable
             $this->debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
 
             /**
-             * @var OperationInterface\|Accumulator|ConstantPool $executor
+             * @var OperationInterface|Accumulator|ConstantPool $executor
              */
             $executor = new $fullName();
             $executor->setConstantPool($this->javaClassInvoker->getJavaClass()->getConstantPool());
