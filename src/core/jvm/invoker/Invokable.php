@@ -14,18 +14,20 @@ use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Core\Accumulator;
 use PHPJava\Kernel\Core\ConstantPool;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\OpCode\OpCodeInterface;
+use PHPJava\Kernel\Mnemonics\OperationInterface;
 use PHPJava\Kernel\Structures\_MethodInfo;
 
 trait Invokable
 {
     private $javaClassInvoker;
     private $methods = [];
+    private $debugTraces;
 
-    public function __construct(JavaClassInvoker $javaClassInvoker, array $methods)
+    public function __construct(JavaClassInvoker $javaClassInvoker, array $methods, array &$debugTraces)
     {
         $this->javaClassInvoker = $javaClassInvoker;
         $this->methods = $methods;
+        $this->debugTraces = &$debugTraces;
     }
 
     public function __call($name, $arguments)
@@ -60,10 +62,11 @@ trait Invokable
         rewind($handle);
 
         // debug code attribution with HEX
-        // var_dump(implode(' ', str_split(bin2hex($codeAttribute->getCode()), 2)));
+        $this->debugTraces['raw_code'] = $codeAttribute->getCode();
+        $this->debugTraces['method'] = $method;
+        $this->debugTraces['executed'] = [];
 
         $reader = new BinaryReader($handle);
-
         $localStorage = [
             $arguments[0] ?? null,
             $arguments[1] ?? null,
@@ -72,27 +75,24 @@ trait Invokable
         ];
 
         $stacks = [];
-        $opcodeMap = new OpCode();
+        $mnemonicMap = new OpCode();
         $executedCounter = 0;
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > \PHPJava\Core\JVM\Parameters\Invoker::MAX_STACK_EXCEEDED) {
                 throw new RuntimeException('Max stack exceeded. PHPJava has been stopped by safety guard. Maybe Java class has illegal program counter, stacks, or OpCode.');
             }
-            $cursor = $reader->readUnsignedByte();
-            $opcode = $opcodeMap->getName($cursor);
-            if ($opcode === null) {
+            $opcode = $reader->readUnsignedByte();
+            $mnemonic = $mnemonicMap->getName($opcode);
+            if ($mnemonic === null) {
                 throw new UndefinedOpCodeException('Undefined OpCode ' . sprintf('0x%X', $cursor) . '.');
             }
             $pointer = $reader->getOffset() - 1;
 
-            var_dump($cursor, $pointer);
-
-            $fullName = '\\PHPJava\\Kernel\\OpCode\\' . $opcode;
-
-            echo 'Mnemonic: ' . $opcode . "\n";
+            $fullName = '\\PHPJava\\Kernel\\Mnemonics\\' . $mnemonic;
+            $this->debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
 
             /**
-             * @var OpCodeInterface|Accumulator|ConstantPool $executor
+             * @var OperationInterface\|Accumulator|ConstantPool $executor
              */
             $executor = new $fullName();
             $executor->setConstantPool($this->javaClassInvoker->getJavaClass()->getConstantPool());

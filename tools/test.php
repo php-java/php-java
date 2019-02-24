@@ -9,3 +9,4 @@ $javaClass = new \PHPJava\Core\JavaClass(
 );
 $invoker = new JavaClassInvoker($javaClass);
 $invoker->getDynamicMethods()->main([999, 222, 3333]);
+$invoker->debug();

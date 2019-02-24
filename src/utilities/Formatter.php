@@ -37,7 +37,7 @@ class Formatter
                 case 'Z':
                     $data[] = [
                         'type' => $getMappedSignatureType($signature[$i]),
-                        'deepArray' => $deepArray,
+                        'deep_array' => $deepArray,
                     ];
                     $deepArray = 0;
                     break;
@@ -50,8 +50,8 @@ class Formatter
                     }
                     $data[] = [
                         'type' => 'class',
-                        'deepArray' => $deepArray,
-                        'className' => $build,
+                        'deep_array' => $deepArray,
+                        'class_name' => $build,
                     ];
                     $deepArray = 0;
 
@@ -71,7 +71,7 @@ class Formatter
                         $build .= $signature[$i];
                     }
                     $data['arguments'] = ($build !== '') ? static::parseSignature($build) : [];
-                    $data['argumentsCount'] = ($data['argumentsCount'] ?? 0) + 1;
+                    $data['arguments_count'] = ($data['arguments_count'] ?? 0) + 1;
                     break;
             }
             $i++;
