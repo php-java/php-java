@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Formatter;
@@ -13,15 +14,10 @@ final class _invokespecial implements OperationInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool()->getEntries();
-
         $cp = $cpInfo[$this->readUnsignedShort()];
-
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
-        
-        // signature
         $signature = Formatter::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
-        
-        $invokerClassName = $this->getStack();
+        $invokerClass = $this->getStack();
 
         $arguments = [];
 
@@ -29,16 +25,25 @@ final class _invokespecial implements OperationInterface
             $arguments[] = $this->getStack();
         }
 
-        $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
-//        var_dump($methodName);
+        krsort($arguments);
 
-//        $result = call_user_func_array(
-//            [$this->javaClassInvoker->getDynamicMethods(), $methodName],
-//            $arguments
-//        );
-//
-//        if ($signature[0]['type'] !== 'void') {
-//            $this->pushStack($result);
-//        }
+        $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
+
+        if ($invokerClass instanceof JavaClass) {
+//            $result = $invokerClass->getInvoker()->getDynamicMethods()
+//                ->call($methodName, ...$arguments);
+        } else {
+            $result = call_user_func_array(
+                [
+                    $invokerClass,
+                    $methodName
+                ],
+                $arguments
+            );
+        }
+
+        if ($signature[0]['type'] !== 'void') {
+            $this->pushStack($result);
+        }
     }
 }

@@ -30,16 +30,19 @@ final class _invokevirtual implements OperationInterface
         krsort($arguments);
         $invokerClass = $this->getStack();
         $invokerClassName = ClassResolver::resolve($class);
+        $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
-        $result = call_user_func_array(
-            [
-                $invokerClass instanceof JavaClass
-                    ? $invokerClass->getInvoker()->getDynamicMethods()
-                    : $invokerClass,
-                $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
-            ],
-            $arguments
-        );
+        if ($invokerClass instanceof JavaClass) {
+            $result = $invokerClass->getInvoker()->getDynamicMethods()->call($methodName, ...$arguments);
+        } else {
+            $result = call_user_func_array(
+                [
+                    $invokerClass,
+                    $methodName
+                ],
+                $arguments
+            );
+        }
 
         if ($signature[0]['type'] !== 'void') {
             $this->pushStack($result);

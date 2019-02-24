@@ -25,7 +25,7 @@ class JavaClassInvoker
     private $dynamicFields = [];
     private $staticFields = [];
 
-    private $debugTraces ;
+    private $debugTraces;
 
     public function __construct(JavaClass $javaClass)
     {
@@ -60,7 +60,7 @@ class JavaClassInvoker
 
         // call <clinit>
         if (isset($this->staticMethods['<clinit>'])) {
-            $this->getStaticMethods()->{'<clinit>'}();
+            $this->getStaticMethods()->call('<clinit>');
         }
     }
 

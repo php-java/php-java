@@ -28,7 +28,16 @@ trait Invokable
         $this->methods = $methods;
     }
 
-    public function __call($name, $arguments)
+    /**
+     * @param string $name
+     * @param mixed ...$arguments
+     * @return null
+     * @throws IllegalJavaClassException
+     * @throws RuntimeException
+     * @throws UndefinedMethodException
+     * @throws UndefinedOpCodeException
+     */
+    public function call(string $name, ...$arguments)
     {
         $getCodeAttribute = function ($attributes): ?CodeAttribute {
             foreach ($attributes as $attribute) {
@@ -84,6 +93,7 @@ trait Invokable
             }
             $opcode = $reader->readUnsignedByte();
             $mnemonic = $mnemonicMap->getName($opcode);
+
             if ($mnemonic === null) {
                 throw new UndefinedOpCodeException('Undefined OpCode ' . sprintf('0x%X', $cursor) . '.');
             }
@@ -98,7 +108,13 @@ trait Invokable
              */
             $executor = new $fullName();
             $executor->setConstantPool($this->javaClassInvoker->getJavaClass()->getConstantPool());
-            $executor->setParameters($this->javaClassInvoker, $reader, $localStorage, $stacks, $pointer);
+            $executor->setParameters(
+                $this->javaClassInvoker,
+                $reader,
+                $localStorage,
+                $stacks,
+                $pointer
+            );
             $returnValue = $executor->execute();
 
             if ($returnValue !== null) {

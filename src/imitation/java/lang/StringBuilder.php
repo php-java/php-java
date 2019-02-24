@@ -2,7 +2,7 @@
 
 namespace PHPJava\Imitation\java\lang;
 
-class StringBuilder
+class StringBuilder extends _Object
 {
     private $sequence = '';
 
@@ -19,12 +19,12 @@ class StringBuilder
         return $this;
     }
 
-    public function toString()
+    public function toString(): string
     {
         return $this->sequence;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->sequence;
     }
