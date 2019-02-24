@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Core\JVM\Stream;
 
+use PHPJava\Utilities\BinaryTool;
+
 class BinaryReader
 {
     private $handle;
@@ -39,12 +41,12 @@ class BinaryReader
 
     public function readInt()
     {
-        return hexdec(bin2hex($this->read(4)));
+        return current(unpack('l', $this->read(4)));
     }
 
     public function readShort()
     {
-        $short = (int) sprintf('%u', hexdec(bin2hex($this->read(2))));
+        $short = $this->readUnsignedShort();
         return (($short & 0x8000) > 0) ? ($short - 0xFFFF - 1) : $short ;
     }
 

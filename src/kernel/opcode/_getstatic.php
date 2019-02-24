@@ -20,6 +20,18 @@ final class _getstatic implements OpCodeInterface
 
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
 
+        if (isset($signature[0]['className'])) {
+            $javaObjectName = str_replace('/', '\\', $signature[0]['className']);
+
+            if ($javaObjectName === 'java\\lang\\String') {
+                // For PHP
+                $javaObjectName = 'java\\lang\\_String';
+            }
+            $className = '\\PHPJava\\Bridge\\' . $javaObjectName;
+            $this->pushStack(new $className());
+            return;
+        }
+
         foreach ($this->javaClass->getFields() as $field) {
             if ($cpInfo[$field->getNameIndex()]->getString() === $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()) {
 
@@ -28,12 +40,6 @@ final class _getstatic implements OpCodeInterface
                 $this->pushStack($this->javaClassInvoker->getStaticFields()->$fieldName);
                 return;
             }
-        }
-
-        if (isset($signature[0]['className'])) {
-            $className = '\\PHPJava\\Bridge\\' . str_replace('/', '\\', $signature[0]['className']);
-            $this->pushStack(new $className());
-            return;
         }
             
         throw new \Exception('にゃ〜ん');

@@ -35,7 +35,7 @@ trait Accumulator
         $this->javaClassInvoker = $javaClassInvoker;
         $this->javaClass = $javaClassInvoker->getJavaClass();
         $this->reader = $reader;
-        $this->localStorage = $localStorage;
+        $this->localStorage = &$localStorage;
         $this->stacks = &$stacks;
         $this->pointer = $pointer;
         return $this;
@@ -144,9 +144,6 @@ trait Accumulator
 
     public function getLocalStorage($index)
     {
-        if (!isset($this->localStorage[(int) $index])) {
-            $this->localStorage[(int) $index] = null;
-        }
         return $this->localStorage[(int) $index];
     }
 

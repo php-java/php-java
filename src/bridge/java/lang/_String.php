@@ -28,8 +28,7 @@ class _String
 
     public function toString()
     {
-
-        return $this->object->getString();
+        return $this->__toString();
 
     }
 

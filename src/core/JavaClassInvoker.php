@@ -55,7 +55,9 @@ class JavaClassInvoker
         }
 
         // call <clinit>
-        $this->getStaticMethods()->{'<clinit>'}();
+        if (isset($this->staticMethods['<clinit>'])) {
+            $this->getStaticMethods()->{'<clinit>'}();
+        }
     }
 
     public function getJavaClass(): JavaClass

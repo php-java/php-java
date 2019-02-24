@@ -13,18 +13,21 @@ final class _tableswitch implements OpCodeInterface
     {
         $key = $this->getStack();
 
-        $paddingData = $this->readByte() + $this->readByte() + $this->readByte();
+        // padding data
+        $this->read(3);
 
-        $offsets = array();
-
+        $offsets = [];
         $offsets['default'] = $this->readInt();
-
         $lowByte = $this->readInt();
         $highByte = $this->readInt();
+
+        var_dump($lowByte, $highByte, $offsets);exit();
 
         for ($i = $lowByte; $i <= $highByte; $i++) {
             $offsets[$i] = $this->readInt();
         }
+
+        var_dump($offsets, $lowByte, $highByte);
 
         if (isset($offsets[$key])) {
 

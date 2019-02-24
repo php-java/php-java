@@ -35,11 +35,9 @@ final class _invokevirtual implements OpCodeInterface
         }
 
         $invokerClassName = '\\PHPJava\\Bridge\\' . $javaObjectName;
-
         $result = call_user_func_array([
             new $invokerClassName,
             $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
-
         ], $arguments);
 
         if ($signature[0]['type'] !== 'void') {
