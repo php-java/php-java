@@ -30,7 +30,7 @@ trait Invokable
 
     public function __call($name, $arguments)
     {
-        $getCodeAttribute = function ($attributes) {
+        $getCodeAttribute = function ($attributes): ?CodeAttribute {
             foreach ($attributes as $attribute) {
                 /**
                  * @var AttributeInfo $attribute
