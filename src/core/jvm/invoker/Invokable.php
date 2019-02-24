@@ -64,6 +64,7 @@ trait Invokable
         // debug code attribution with HEX
         $this->debugTraces['raw_code'] = $codeAttribute->getCode();
         $this->debugTraces['method'] = $method;
+        $this->debugTraces['mnemonic_indexes'] = [];
         $this->debugTraces['executed'] = [];
 
         $reader = new BinaryReader($handle);
@@ -90,6 +91,7 @@ trait Invokable
 
             $fullName = '\\PHPJava\\Kernel\\Mnemonics\\' . $mnemonic;
             $this->debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
+            $this->debugTraces['mnemonic_indexes'][] = $pointer;
 
             /**
              * @var OperationInterface|Accumulator|ConstantPool $executor

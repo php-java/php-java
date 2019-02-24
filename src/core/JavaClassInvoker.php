@@ -115,17 +115,21 @@ class JavaClassInvoker
 
         $methodName = $cpInfo[$this->debugTraces['method']->getNameIndex()]->getString();
         $descriptor = Formatter::parseSignature($cpInfo[$this->debugTraces['method']->getDescriptorIndex()]->getString());
-        $formattedArguments = implode(
-            ', ',
-            array_map(
-                function ($argument) {
-                    $arrayBrackets = str_repeat('[]', $argument['deep_array']);
-                    if ($argument['type'] === 'class') {
-                        return $argument['class_name'] . $arrayBrackets;
-                    }
-                    return $argument['type'] . $arrayBrackets;
-                },
-                $descriptor['arguments']
+        $formattedArguments = str_replace(
+            '/',
+            '.',
+                implode(
+                ', ',
+                array_map(
+                    function ($argument) {
+                        $arrayBrackets = str_repeat('[]', $argument['deep_array']);
+                        if ($argument['type'] === 'class') {
+                            return $argument['class_name'] . $arrayBrackets;
+                        }
+                        return $argument['type'] . $arrayBrackets;
+                    },
+                    $descriptor['arguments']
+                )
             )
         );
 
@@ -141,13 +145,25 @@ class JavaClassInvoker
         printf(ltrim("$methodAccessibility $type $methodName($formattedArguments)\n", ' '));
         printf("\n");
         printf("[code]\n");
+
+        $codeCounter = 0;
         printf(
             "%s\n",
             implode(
                 "\n",
                 array_map(
-                    function ($code) {
-                        return '<0x' . implode('> <0x', $code) . '>';
+                    function ($codes) use (&$codeCounter) {
+                        return implode(
+                            ' ',
+                            array_map(
+                                function ($code) use (&$codeCounter) {
+                                    $isMnemonic = in_array($codeCounter, $this->debugTraces['mnemonic_indexes']);
+                                    $codeCounter++;
+                                    return ($isMnemonic ? "\e[1m\e[35m" : "") . "<0x{$code}>" . ($isMnemonic ? "\e[m" : "");
+                                },
+                                $codes
+                            )
+                        );
                     },
                     array_chunk(str_split(bin2hex($this->debugTraces['raw_code']), 2), 20)
                 )
