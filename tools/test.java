@@ -294,6 +294,10 @@ class Test {
 
     }
 
+    public static void main (int[] args) {
+        System.out.println("Called int type main " + args[0]);
+    }
+
     private int testPrivateInteger (int value) {
         return value + 1 * 2 + 3;
     }

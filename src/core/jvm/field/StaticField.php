@@ -9,6 +9,13 @@ class StaticField
 {
     private static $fields = [];
 
+    private $javaClassInvoker;
+
+    public function __construct(JavaClassInvoker $javaClassInvoker)
+    {
+        $this->javaClassInvoker = $javaClassInvoker;
+    }
+
     /**
      * @param $name
      * @return mixed

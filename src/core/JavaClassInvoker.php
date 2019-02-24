@@ -39,9 +39,9 @@ class JavaClassInvoker
             $methodName = $cpInfo[$methodInfo->getNameIndex()]->getString();
 
             if (($methodInfo->getAccessFlag() & AccessFlag::_Static) !== 0) {
-                $this->staticMethods[$methodName] = $methodInfo;
+                $this->staticMethods[$methodName][] = $methodInfo;
             } elseif ($methodInfo->getAccessFlag() === 0 || ($methodInfo->getAccessFlag() & AccessFlag::_Public) !== 0) {
-                $this->dynamicMethods[$methodName] = $methodInfo;
+                $this->dynamicMethods[$methodName][] = $methodInfo;
             }
         }
 
@@ -88,13 +88,16 @@ class JavaClassInvoker
     public function getDynamicFields(): FieldInterface
     {
         return new JVM\Field\DynamicField(
-            $this
+            $this,
+            []
         );
     }
 
     public function getStaticFields(): JVM\Field\StaticField
     {
-        return new JVM\Field\StaticField();
+        return new JVM\Field\StaticField(
+            $this
+        );
     }
 
 }

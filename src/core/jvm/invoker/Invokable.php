@@ -16,6 +16,7 @@ use PHPJava\Kernel\Core\ConstantPool;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Mnemonics\OperationInterface;
 use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Utilities\Formatter;
 
 trait Invokable
 {
@@ -50,12 +51,43 @@ trait Invokable
             }
             return null;
         };
+
         /**
          * @var _MethodInfo|null $method
          */
-        $method = $this->methods[$name] ?? null;
-        if ($method === null) {
+        $methods = $this->methods[$name] ?? null;
+        if ($methods === null) {
             throw new UndefinedMethodException('Call to undefined ' . $name . ' method.');
+        }
+
+        $constantPool = $this->javaClassInvoker
+            ->getJavaClass()
+            ->getConstantPool()
+            ->getEntries();
+
+        $method = $methods[0];
+
+        // TODO: Refactor find to valid method.
+        // will implement to be compatible to multiple variable arguments size.
+        // And will be applied NoSuchMethodException when cannot find method.
+        if ($name === 'main') {
+            // Find same method
+            foreach ($methods as $method) {
+                $signature = Formatter::parseSignature($constantPool[$method->getDescriptorIndex()]->getString());
+
+                // compare passed arguments
+                foreach ($signature['arguments'] as $signatureArgument) {
+                    foreach ($arguments as $argument) {
+                        var_dump(gettype($argument), $signatureArgument);
+                        if ($argument === $signatureArgument) {
+
+                        }
+                    }
+                }
+                var_dump();
+            }
+
+            exit();
         }
 
         $codeAttribute = $getCodeAttribute($method->getAttributes());
