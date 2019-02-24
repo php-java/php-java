@@ -66,12 +66,11 @@ trait Invokable
         $debugTraces['executed'] = [];
 
         $reader = new BinaryReader($handle);
-        $localStorage = [
-            $arguments[0] ?? null,
-            $arguments[1] ?? null,
-            $arguments[2] ?? null,
-            $arguments[3] ?? null,
-        ];
+        $localStorage = $arguments;
+        array_unshift(
+            $localStorage,
+            $this->javaClassInvoker->getJavaClass()
+        );
 
         $stacks = [];
         $mnemonicMap = new OpCode();
