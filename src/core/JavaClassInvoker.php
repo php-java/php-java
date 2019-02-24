@@ -176,7 +176,6 @@ class JavaClassInvoker
 
         printf($line);
 
-        // [$mnemonic, $localStorage, $stacks, $pointer]
         foreach ($this->debugTraces['executed'] as [$opcode, $mnemonic, $localStorage, $stacks, $pointer]) {
             printf(
                 "% 8s | 0x%02X   | %-20.20s | %-10.10s | %-15.15s\n",
