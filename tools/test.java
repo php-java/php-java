@@ -106,7 +106,7 @@ class Test {
      * @param args 
      */
     public static void main (String[] args) {
-
+        System.out.println((new java.lang.Object()).toString());
         System.out.println("かるびぃ" + args[2]);
         String x = "String";
 

@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\ClassResolver;
 
 final class _new implements OperationInterface
 {
@@ -20,7 +21,7 @@ final class _new implements OperationInterface
             return;
         }
 
-        $invokeClassName = '\\PHPJava\\Imitation\\' . str_replace('/', '\\', $className);
+        $invokeClassName = ClassResolver::resolve($className);
         $this->pushStack(new $invokeClassName());
     }
 }

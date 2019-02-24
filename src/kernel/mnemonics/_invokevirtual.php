@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
 
 final class _invokevirtual implements OperationInterface
@@ -25,15 +26,7 @@ final class _invokevirtual implements OperationInterface
             $arguments[] = $this->getStack();
         }
         $invokerClass = $this->getStack();
-
-        $javaObjectName = str_replace('/', '\\', $class);
-
-        if ($javaObjectName === 'java\\lang\\String') {
-            // For PHP
-            $javaObjectName = 'java\\lang\\_String';
-        }
-
-        $invokerClassName = '\\PHPJava\\Imitation\\' . $javaObjectName;
+        $invokerClassName = ClassResolver::resolve($class);
         $result = call_user_func_array(
             [
                 $invokerClass,

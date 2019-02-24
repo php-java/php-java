@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
 
 final class _getstatic implements OperationInterface
@@ -21,13 +22,7 @@ final class _getstatic implements OperationInterface
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
 
         if (isset($signature[0]['class_name'])) {
-            $javaObjectName = str_replace('/', '\\', $signature[0]['class_name']);
-
-            if ($javaObjectName === 'java\\lang\\String') {
-                // For PHP
-                $javaObjectName = 'java\\lang\\_String';
-            }
-            $className = '\\PHPJava\\Imitation\\' . $javaObjectName;
+            $className = ClassResolver::resolve($signature[0]['class_name']);
             $this->pushStack(new $className());
             return;
         }
