@@ -67,10 +67,13 @@ trait Invokable
 
         $reader = new BinaryReader($handle);
         $localStorage = $arguments;
-        array_unshift(
-            $localStorage,
-            $this->javaClassInvoker->getJavaClass()
-        );
+
+        if ($this->isDynamic()) {
+            array_unshift(
+                $localStorage,
+                $this->javaClassInvoker->getJavaClass()
+            );
+        }
 
         $stacks = [];
         $mnemonicMap = new OpCode();

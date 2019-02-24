@@ -27,6 +27,7 @@ final class _invokevirtual implements OperationInterface
         for ($i = 0; $i < $signature['arguments_count']; $i++) {
             $arguments[] = $this->getStack();
         }
+        krsort($arguments);
         $invokerClass = $this->getStack();
         $invokerClassName = ClassResolver::resolve($class);
 
