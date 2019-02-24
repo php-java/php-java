@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Core\JVM\Parameter;
+namespace PHPJava\Core\JVM\Parameters;
 
 final class Invoker
 {

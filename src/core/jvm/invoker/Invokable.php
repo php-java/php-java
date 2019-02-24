@@ -75,7 +75,7 @@ trait Invokable
         $opcodeMap = new OpCode();
         $executedCounter = 0;
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
-            if (++$executedCounter > \PHPJava\Core\JVM\Parameter\Invoker::MAX_STACK_EXCEEDED) {
+            if (++$executedCounter > \PHPJava\Core\JVM\Parameters\Invoker::MAX_STACK_EXCEEDED) {
                 throw new RuntimeException('Max stack exceeded. PHPJava has been stopped by safety guard. Maybe Java class has illegal program counter, stacks, or OpCode.');
             }
             $cursor = $reader->readUnsignedByte();
