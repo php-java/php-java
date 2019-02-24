@@ -144,6 +144,9 @@ trait Accumulator
 
     public function getLocalStorage($index)
     {
+        if (!isset($this->localStorage[(int) $index])) {
+            $this->localStorage[(int) $index] = null;
+        }
         return $this->localStorage[(int) $index];
     }
 

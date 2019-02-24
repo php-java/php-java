@@ -1,12 +1,13 @@
 <?php
 
 use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Imitation\java\lang\ArrayIndexOutOfBoundsException;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $javaClass = new \PHPJava\Core\JavaClass(
     new \PHPJava\Core\JavaClassReader(__DIR__ . '/Test.class')
 );
-$invoker = new JavaClassInvoker($javaClass);
-$invoker->getStaticMethods()->main([999, 222, 3333]);
-$invoker->debug();
+$javaClass->getInvoker()->getStaticMethods()->main([111, 222, 333]);
+
+$javaClass->getInvoker()->debug();

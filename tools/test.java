@@ -112,7 +112,8 @@ class Test {
 
         // new instance
         Test _a = new Test();
-
+        System.out.println(_a.testMe(Integer.parseInt(args[1]), "Text", 1, 2, 3, Integer.parseInt(args[2])));
+        System.out.println("なんでや〜〜〜〜〜〜〜〜");
         // test call
         // _a.javaTest();
 
@@ -279,7 +280,7 @@ class Test {
 
     }
 
-    public static String test (int n, String m, int l, int i, int v, int k) {
+    public String testMe (int n, String m, int l, int i, int v, int k) {
 
         int j = 1;
 

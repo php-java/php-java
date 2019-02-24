@@ -18,7 +18,7 @@ final class _aaload implements OperationInterface
         $arrayref = $this->getStack();
 
         if (!isset($arrayref[$index])) {
-            throw new \PHPJava\Imitation\java\lang\ArrayIndexOutOfBoundsException('Array Index ' . $index . ' out of bounds.');
+            throw new \PHPJava\Imitation\java\lang\ArrayIndexOutOfBoundsException('Array index ' . $index . ' out of bounds. (Program Counter: ' . $this->getPointer() . ')');
         }
         $this->pushStack($arrayref[$index]);
     }

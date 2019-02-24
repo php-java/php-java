@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
@@ -27,9 +29,12 @@ final class _invokevirtual implements OperationInterface
         }
         $invokerClass = $this->getStack();
         $invokerClassName = ClassResolver::resolve($class);
+
         $result = call_user_func_array(
             [
-                $invokerClass,
+                $invokerClass instanceof JavaClass
+                    ? $invokerClass->getInvoker()->getDynamicMethods()
+                    : $invokerClass,
                 $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()
             ],
             $arguments

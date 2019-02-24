@@ -62,10 +62,10 @@ trait Invokable
         rewind($handle);
 
         // debug code attribution with HEX
-        $this->debugTraces['raw_code'] = $codeAttribute->getCode();
-        $this->debugTraces['method'] = $method;
-        $this->debugTraces['mnemonic_indexes'] = [];
-        $this->debugTraces['executed'] = [];
+        $debugTraces['raw_code'] = $codeAttribute->getCode();
+        $debugTraces['method'] = $method;
+        $debugTraces['mnemonic_indexes'] = [];
+        $debugTraces['executed'] = [];
 
         $reader = new BinaryReader($handle);
         $localStorage = [
@@ -90,8 +90,8 @@ trait Invokable
             $pointer = $reader->getOffset() - 1;
 
             $fullName = '\\PHPJava\\Kernel\\Mnemonics\\' . $mnemonic;
-            $this->debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
-            $this->debugTraces['mnemonic_indexes'][] = $pointer;
+            $debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
+            $debugTraces['mnemonic_indexes'][] = $pointer;
 
             /**
              * @var OperationInterface|Accumulator|ConstantPool $executor
@@ -102,10 +102,12 @@ trait Invokable
             $returnValue = $executor->execute();
 
             if ($returnValue !== null) {
+                $this->debugTraces[] = $debugTraces;
                 return $returnValue;
             }
         }
 
+        $this->debugTraces[] = $debugTraces;
         return null;
     }
 }

@@ -9,8 +9,8 @@ final class _areturn implements OperationInterface
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    public function execute(): void
+    public function execute()
     {
-        return new \java\lang\String((string) $this->getStack());
+        return new \PHPJava\Imitation\java\lang\_String((string) $this->getStack());
     }
 }

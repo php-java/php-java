@@ -133,4 +133,9 @@ class JavaClass
     {
         return $this->activeMethods->getEntries();
     }
+
+    public function getInvoker(): JavaClassInvoker
+    {
+        return new JavaClassInvoker($this);
+    }
 }
