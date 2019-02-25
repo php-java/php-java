@@ -5,22 +5,14 @@ use PHPJava\Exceptions\FormatterException;
 
 class Formatter
 {
-    public static function parseSignature($signature, $i = 0)
+    /**
+     * @param $signature
+     * @param int $i
+     * @return array
+     * @throws \PHPJava\Exceptions\TypeException
+     */
+    public static function parseSignature($signature, $i = 0): array
     {
-        $getMappedSignatureType = function ($signature) {
-            switch ($signature) {
-                case 'B': return 'byte';
-                case 'C': return 'char';
-                case 'D': return 'double';
-                case 'F': return 'float';
-                case 'I': return 'int';
-                case 'J': return 'long';
-                case 'S': return 'short';
-                case 'V': return 'void';
-                case 'Z': return 'boolean';
-            }
-            throw new FormatterException('Passed undefined signature ' . $signature);
-        };
         $data = [];
         $deepArray = 0;
 
@@ -36,7 +28,7 @@ class Formatter
                 case 'V':
                 case 'Z':
                     $data[] = [
-                        'type' => $getMappedSignatureType($signature[$i]),
+                        'type' => TypeResolver::getMappedSignatureType($signature[$i]),
                         'deep_array' => $deepArray,
                     ];
                     $deepArray = 0;
@@ -77,5 +69,20 @@ class Formatter
             $i++;
         }
         return $data;
+    }
+
+    public static function buildArgumentsSignature($signatures): string
+    {
+        $string = '';
+        foreach ($signatures as $signature) {
+            $build = str_repeat('[', $signature['deep_array']);
+            if ($signature['type'] === 'class') {
+                $build .= 'L' . $signature['class_name'];
+            } else {
+                $build .= TypeResolver::resolveType($signature['type']);
+            }
+            $string .= $build . ';';
+        }
+        return $string;
     }
 }

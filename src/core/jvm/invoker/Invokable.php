@@ -8,6 +8,7 @@ use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Exceptions\UndefinedMethodException;
 use PHPJava\Exceptions\UndefinedOpCodeException;
+use PHPJava\Imitation\java\lang\NoSuchMethodException;
 use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\CodeAttribute;
@@ -17,6 +18,7 @@ use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Mnemonics\OperationInterface;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\TypeResolver;
 
 trait Invokable
 {
@@ -55,8 +57,8 @@ trait Invokable
         /**
          * @var _MethodInfo|null $method
          */
-        $methods = $this->methods[$name] ?? null;
-        if ($methods === null) {
+        $methodReferences = $this->methods[$name] ?? null;
+        if ($methodReferences === null) {
             throw new UndefinedMethodException('Call to undefined ' . $name . ' method.');
         }
 
@@ -65,29 +67,29 @@ trait Invokable
             ->getConstantPool()
             ->getEntries();
 
-        $method = $methods[0];
+        // Find same method
+        $convertedPassedArguments = Formatter::buildArgumentsSignature(
+            array_map(
+                function ($argument) {
+                    return TypeResolver::convertPHPtoJava($argument);
+                },
+                $arguments
+            )
+        );
 
-        // TODO: Refactor find to valid method.
-        // will implement to be compatible to multiple variable arguments size.
-        // And will be applied NoSuchMethodException when cannot find method.
-        if ($name === 'main') {
-            // Find same method
-            foreach ($methods as $method) {
-                $signature = Formatter::parseSignature($constantPool[$method->getDescriptorIndex()]->getString());
-
-                // compare passed arguments
-                foreach ($signature['arguments'] as $signatureArgument) {
-                    foreach ($arguments as $argument) {
-                        var_dump(gettype($argument), $signatureArgument);
-                        if ($argument === $signatureArgument) {
-
-                        }
-                    }
-                }
-                var_dump();
+        $method = null;
+        foreach ($methodReferences as $methodReference) {
+            $methodSignature = Formatter::buildArgumentsSignature(
+                Formatter::parseSignature($constantPool[$methodReference->getDescriptorIndex()]->getString())['arguments']
+            );
+            if ($methodSignature === $convertedPassedArguments) {
+                $method = $methodReference;
+                break;
             }
+        }
 
-            exit();
+        if ($method === null) {
+            throw new NoSuchMethodException('Call to undefined method ' . $name . '.');
         }
 
         $codeAttribute = $getCodeAttribute($method->getAttributes());
