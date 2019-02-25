@@ -5,7 +5,7 @@ use PHPJava\Core\JavaClassInvoker;
 
 trait FieldGettable
 {
-    public function __get($name)
+    public function get(string $name)
     {
         return $this->fields[$name];
     }

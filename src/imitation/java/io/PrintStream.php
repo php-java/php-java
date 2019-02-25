@@ -11,16 +11,19 @@ class PrintStream
     {
         if ($arg instanceof _Utf8) {
             echo $arg->getString() . "\n";
-        } elseif (
+            return;
+        }
+        if (
             is_string($arg) ||
             is_int($arg) ||
             $arg instanceof Type ||
             $arg instanceof \PHPJava\Imitation\java\lang\_String
         ) {
             echo $arg . "\n";
-        } elseif ($arg === null) {
-            echo "\n";
+            return;
         }
+
+        echo "\n";
     }
 
     public function append($string)

@@ -58,6 +58,11 @@ class JavaClass
     private $debugTraces = [];
 
     /**
+     * @var JavaClassInvoker
+     */
+    private $invoker;
+
+    /**
      * JavaClass constructor.
      * @param JavaClassReader $reader
      * @throws ValidatorException
@@ -121,6 +126,8 @@ class JavaClass
             $reader->getBinaryReader()->readUnsignedShort(),
             $this->constantPool
         );
+
+        $this->invoker = new JavaClassInvoker($this);
     }
 
     public function getClassName(): string
@@ -140,7 +147,7 @@ class JavaClass
 
     public function getInvoker(): JavaClassInvoker
     {
-        return new JavaClassInvoker($this);
+        return $this->invoker;
     }
 
     public function appendDebug($log)

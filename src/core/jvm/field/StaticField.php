@@ -7,7 +7,7 @@ use PHPJava\Imitation\java\lang\NoSuchFieldException;
 
 class StaticField
 {
-    private static $fields = [];
+    public $fields = [];
 
     private $javaClassInvoker;
 
@@ -21,18 +21,20 @@ class StaticField
      * @return mixed
      * @throws NoSuchFieldException
      */
-    public function get($name)
+    public function get(string $name)
     {
-        if (!isset(static::$fields[$name])) {
+        if (!isset($this->fields[$name])) {
             throw new NoSuchFieldException('Get to undefined static field ' . $name);
         }
-        if (static::$fields[$name] instanceof _String) {
-            return (string) static::$fields[$name];
+        if ($this->fields[$name] instanceof _String) {
+            return (string) $this->fields[$name];
         }
-        return static::$fields[$name];
+        return $this->fields[$name];
     }
-    public function set($name, $value)
+
+    public function set(string $name, $value)
     {
-        static::$fields[$name] = $value;
+        $this->fields[$name] = $value;
+        return $this;
     }
 }

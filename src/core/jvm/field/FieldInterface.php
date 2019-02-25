@@ -6,5 +6,6 @@ use PHPJava\Core\JavaClassInvoker;
 interface FieldInterface
 {
     public function __construct(JavaClassInvoker $javaClassInvoker, array $fields);
-    public function __get($name);
+    public function get(string $name);
+    public function set(string $name, $value);
 }

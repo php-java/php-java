@@ -296,6 +296,8 @@ class Test {
 
     public static void main (int[] args) {
         System.out.println("Called int type main " + args[0]);
+        System.out.println(c);
+        System.out.println(Test.b);
     }
 
     private int testPrivateInteger (int value) {

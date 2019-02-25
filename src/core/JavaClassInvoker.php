@@ -27,6 +27,26 @@ class JavaClassInvoker
 
     private $debugTraces;
 
+    /**
+     * @var JVM\Invoker\DynamicMethodInvoker
+     */
+    private $dynamicMethodAccessor;
+
+    /**
+     * @var JVM\Invoker\StaticMethodInvoker
+     */
+    private $staticMethodAccessor;
+
+    /**
+     * @var JVM\Field\DynamicField
+     */
+    private $dynamicFieldAccessor;
+
+    /**
+     * @var JVM\Field\StaticField
+     */
+    private $staticFieldAccessor;
+
     public function __construct(JavaClass $javaClass)
     {
         $this->javaClass = $javaClass;
@@ -58,6 +78,25 @@ class JavaClassInvoker
             }
         }
 
+        $this->dynamicMethodAccessor = new JVM\Invoker\DynamicMethodInvoker(
+            $this,
+            $this->dynamicMethods
+        );
+
+        $this->staticMethodAccessor = new JVM\Invoker\StaticMethodInvoker(
+            $this,
+            $this->staticMethods
+        );
+
+        $this->dynamicFieldAccessor = new JVM\Field\DynamicField(
+            $this,
+            []
+        );
+
+        $this->staticFieldAccessor = new JVM\Field\StaticField(
+            $this
+        );
+
         // call <clinit>
         if (isset($this->staticMethods['<clinit>'])) {
             $this->getStaticMethods()->call('<clinit>');
@@ -71,33 +110,22 @@ class JavaClassInvoker
 
     public function getDynamicMethods(): InvokerInterface
     {
-        return new JVM\Invoker\DynamicMethodInvoker(
-            $this,
-            $this->dynamicMethods
-        );
+        return $this->dynamicMethodAccessor;
     }
 
     public function getStaticMethods(): InvokerInterface
     {
-        return new JVM\Invoker\StaticMethodInvoker(
-            $this,
-            $this->staticMethods
-        );
+        return $this->staticMethodAccessor;
     }
 
     public function getDynamicFields(): FieldInterface
     {
-        return new JVM\Field\DynamicField(
-            $this,
-            []
-        );
+        return $this->dynamicFieldAccessor;
     }
 
     public function getStaticFields(): JVM\Field\StaticField
     {
-        return new JVM\Field\StaticField(
-            $this
-        );
+        return $this->staticFieldAccessor;
     }
 
 }

@@ -21,8 +21,8 @@ final class _getfield implements OperationInterface
 
         if ($return !== null) {
             $this->pushStack($return);
-        } else {
-            throw new Exception('Cannot get ' . $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString() . '');
+            return;
         }
+        throw new Exception('Cannot get to undefined field ' . $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString() . '');
     }
 }

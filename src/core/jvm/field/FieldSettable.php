@@ -5,7 +5,7 @@ use PHPJava\Core\JavaClassInvoker;
 
 trait FieldSettable
 {
-    public function __set($name, $value)
+    public function set(string $name, $value)
     {
         $this->fields[$name] = $value;
     }
