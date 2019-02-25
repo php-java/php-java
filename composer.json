@@ -16,6 +16,9 @@
             "PHPJava\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": { "PHPJava\\Tests\\": "tests/" }
+    },
     "require-dev": {
         "phpunit/phpunit": "^8.0"
     }

@@ -4,3 +4,6 @@ old
 vendor
 composer.lock
 .php_cs.cache
+.phpunit.result.cache
+tests/caches/
+!tests/caches/.gitkeep
