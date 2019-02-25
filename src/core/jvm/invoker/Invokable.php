@@ -36,9 +36,11 @@ trait Invokable
      * @param mixed ...$arguments
      * @return null
      * @throws IllegalJavaClassException
+     * @throws NoSuchMethodException
      * @throws RuntimeException
      * @throws UndefinedMethodException
      * @throws UndefinedOpCodeException
+     * @throws \PHPJava\Exceptions\TypeException
      */
     public function call(string $name, ...$arguments)
     {
@@ -59,7 +61,7 @@ trait Invokable
          */
         $methodReferences = $this->methods[$name] ?? null;
         if ($methodReferences === null) {
-            throw new UndefinedMethodException('Call to undefined ' . $name . ' method.');
+            throw new UndefinedMethodException('Call to undefined method ' . $name . '.');
         }
 
         $constantPool = $this->javaClassInvoker

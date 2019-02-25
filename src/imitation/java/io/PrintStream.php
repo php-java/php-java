@@ -26,6 +26,24 @@ class PrintStream
         echo "\n";
     }
 
+    public function print($arg)
+    {
+        if ($arg instanceof _Utf8) {
+            echo $arg->getString();
+            return;
+        }
+        if (
+            is_string($arg) ||
+            is_int($arg) ||
+            $arg instanceof Type ||
+            $arg instanceof \PHPJava\Imitation\java\lang\_String
+        ) {
+            echo $arg;
+            return;
+        }
+
+    }
+
     public function append($string)
     {
         $this->sequence .= $string;
