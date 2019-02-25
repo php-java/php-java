@@ -13,17 +13,19 @@ final class _lookupswitch implements OperationInterface
     {
         $key = $this->getStack();
 
-        $paddingData = $this->readByte() + $this->readByte() + $this->readByte();
+        // padding data
+        $paddingData = 4 - (($this->getOffset()) % 4);
+        if ($paddingData != 4) {
+            $this->read($paddingData);
+        }
 
-        $offsets = array();
-
+        $offsets = [];
         $offsets['default'] = $this->readInt();
         $switchSize = $this->readUnsignedInt();
 
 
         for ($i = 0; $i < $switchSize; $i++) {
             $label = $this->readInt();
-
             $offsets[(string) $label] = $this->readInt();
         }
 

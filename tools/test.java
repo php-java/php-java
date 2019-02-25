@@ -295,6 +295,43 @@ class Test {
     }
 
     public static void main (int[] args) {
+
+
+        switch (3) {
+
+            case -20:
+
+                System.out.println("ねこ");
+
+                break;
+            case -1111:
+
+                System.out.println("ねこ");
+
+                break;
+            case 999:
+
+                System.out.println("こねこね");
+
+                break;
+            case 3333:
+
+                System.out.println("こねこね");
+
+                break;
+            case 929292:
+
+                System.out.println("うさぎ");
+
+                break;
+            case 3:
+
+                System.out.println("うさぎ");
+
+                break;
+
+        }
+
         System.out.println("Called int type main " + args[0]);
         System.out.println(c);
         System.out.println(Test.b);
