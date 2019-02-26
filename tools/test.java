@@ -8,6 +8,10 @@ class Test {
     static int c = 5;
     static String b = "Hello World";
 
+    public Test() {
+
+    }
+
     /**
      * test for "Integer" value
      *

@@ -36,7 +36,7 @@ class TypeResolver
         throw new TypeException('Passed undefined signature ' . $signature);
     }
 
-    public static function resolveType($type): string
+    public static function resolve($type): string
     {
         $flipped = array_flip(static::SIGNATURE_MAP);
         if (isset($flipped[$type])) {
@@ -57,7 +57,7 @@ class TypeResolver
             }
             if (empty($getNestedValues)) {
                 $flipped = array_flip(static::PHP_TYPE_MAP);
-                $resolveType = static::SIGNATURE_MAP[static::resolveType($defaultJavaArgumentType)];
+                $resolveType = static::SIGNATURE_MAP[static::resolve($defaultJavaArgumentType)];
                 if ($resolveType === 'class') {
                     return [
                         'type' => $resolveType,

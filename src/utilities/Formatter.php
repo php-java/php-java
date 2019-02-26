@@ -79,7 +79,7 @@ class Formatter
             if ($signature['type'] === 'class') {
                 $build .= 'L' . str_replace('/', '.', $signature['class_name']);
             } else {
-                $build .= TypeResolver::resolveType($signature['type']);
+                $build .= TypeResolver::resolve($signature['type']);
             }
             $string .= $build . ';';
         }

@@ -5,6 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\MethodNameResolver;
 
 final class _invokespecial implements OperationInterface
 {
@@ -16,33 +17,43 @@ final class _invokespecial implements OperationInterface
         $cpInfo = $this->getConstantPool()->getEntries();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
-        $signature = Formatter::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
+        $signature = $cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString();
+        $parsedSignature = Formatter::parseSignature($signature);
         $invokerClass = $this->getStack();
 
         $arguments = [];
 
-        for ($i = 0; $i < $signature['arguments_count']; $i++) {
+        for ($i = 0; $i < $parsedSignature['arguments_count']; $i++) {
             $arguments[] = $this->getStack();
         }
 
         krsort($arguments);
 
         $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
+        if ($this->javaClassInvoker->isInvoked($methodName, $signature)) {
+            return;
+        }
 
         if ($invokerClass instanceof JavaClass) {
-//            $result = $invokerClass->getInvoker()->getDynamicMethods()
-//                ->call($methodName, ...$arguments);
+            $result = $invokerClass->getInvoker()->getDynamicMethods()
+                ->call(
+                    $methodName,
+                    ...$arguments
+                );
         } else {
             $result = call_user_func_array(
                 [
                     $invokerClass,
-                    $methodName
+                    MethodNameResolver::resolve($methodName),
                 ],
                 $arguments
             );
         }
 
-        if ($signature[0]['type'] !== 'void') {
+        $this->javaClassInvoker
+            ->addToSpecialInvokedList($methodName, $signature);
+
+        if ($parsedSignature[0]['type'] !== 'void') {
             $this->pushStack($result);
         }
     }

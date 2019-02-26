@@ -47,6 +47,8 @@ class JavaClassInvoker
      */
     private $staticFieldAccessor;
 
+    private $specialInvoked = [];
+
     public function __construct(JavaClass $javaClass)
     {
         $this->javaClass = $javaClass;
@@ -126,6 +128,17 @@ class JavaClassInvoker
     public function getStaticFields(): JVM\Field\StaticField
     {
         return $this->staticFieldAccessor;
+    }
+
+    public function isInvoked(string $name, string $signature): bool
+    {
+        return in_array($signature, $this->specialInvoked[$name] ?? [], true);
+    }
+
+    public function addToSpecialInvokedList(string $name, string $signature): self
+    {
+        $this->specialInvoked[$name][] = $signature;
+        return $this;
     }
 
 }

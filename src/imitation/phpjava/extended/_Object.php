@@ -6,11 +6,12 @@ use PHPJava\Imitation\java\lang\NoSuchMethodException;
 trait _Object
 {
 
+    public function __construct(...$parameters)
+    {
+    }
+
     public function __call($name, $arguments)
     {
-        if ($name === '<init>') {
-            return;
-        }
         throw new NoSuchMethodException($name . ' does not exist on ' . get_class($this));
     }
 
