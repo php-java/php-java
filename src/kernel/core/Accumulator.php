@@ -155,7 +155,7 @@ trait Accumulator
         return $this->localStorage;
     }
 
-    public function getPointer()
+    public function getProgramCounter()
     {
         return $this->pointer;
     }

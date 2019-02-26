@@ -17,7 +17,7 @@ final class _if_icmplt implements OperationInterface
         $rightOperand = $this->getStack();
 
         if ($rightOperand < $leftOperand) {
-            $this->setOffset($this->getPointer() + $offset);
+            $this->setOffset($this->getProgramCounter() + $offset);
         }
     }
 }

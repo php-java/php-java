@@ -13,6 +13,6 @@ final class _goto implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $this->setOffset($this->getPointer() + $offset);
+        $this->setOffset($this->getProgramCounter() + $offset);
     }
 }

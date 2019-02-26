@@ -16,7 +16,7 @@ final class _ifne implements OperationInterface
         $operand = $this->getStack();
 
         if ($operand != 0) {
-            $this->setOffset($this->getPointer() + $offset);
+            $this->setOffset($this->getProgramCounter() + $offset);
         }
     }
 }

@@ -19,8 +19,8 @@ final class _athrow implements OperationInterface
 
         foreach ($this->getAttributeData()->getExceptionTables() as $exception) {
             if ($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString() === $className &&
-                    $exception->getStartPc() <= $this->getPointer() &&
-                    $exception->getEndPc() >= $this->getPointer()) {
+                    $exception->getStartPc() <= $this->getProgramCounter() &&
+                    $exception->getEndPc() >= $this->getProgramCounter()) {
                 $this->setOffset($exception->getHandlerPc());
                 return;
             }

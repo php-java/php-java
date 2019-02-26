@@ -17,7 +17,7 @@ final class _if_acmpeq implements OperationInterface
         $rightOperand = $this->getStack();
 
         if ($leftOperand === $rightOperand) {
-            $this->setOffset($this->getPointer() + $offset);
+            $this->setOffset($this->getProgramCounter() + $offset);
         }
     }
 }
