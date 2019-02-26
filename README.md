@@ -1,3 +1,3 @@
 # PHPJava
-<p align="center"><img src="./docs/img/phpjava.png"></p>
+<p align="center"><img src="./docs/img/phpjava.jpg"></p>
 
