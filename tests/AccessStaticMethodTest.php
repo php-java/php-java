@@ -33,7 +33,7 @@ class AccessStaticMethodTest extends Base
         );
         $result = ob_get_clean();
 
-        $this->assertEquals(246811356, $result);
+        $this->assertEquals("HelloWorld", $result);
     }
 
     public function testCallMainHavingIntegerArguments()

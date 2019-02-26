@@ -84,6 +84,7 @@ trait Invokable
             $methodSignature = Formatter::buildArgumentsSignature(
                 Formatter::parseSignature($constantPool[$methodReference->getDescriptorIndex()]->getString())['arguments']
             );
+
             if ($methodSignature === $convertedPassedArguments) {
                 $method = $methodReference;
                 break;

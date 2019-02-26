@@ -77,7 +77,7 @@ class Formatter
         foreach ($signatures as $signature) {
             $build = str_repeat('[', $signature['deep_array']);
             if ($signature['type'] === 'class') {
-                $build .= 'L' . $signature['class_name'];
+                $build .= 'L' . str_replace('/', '.', $signature['class_name']);
             } else {
                 $build .= TypeResolver::resolveType($signature['type']);
             }

@@ -76,11 +76,11 @@ class TypeResolver
             $firstParameter['deep_array'] += $deepArray;
             return $firstParameter;
         }
-        $resolveType = static::SIGNATURE_MAP[static::PHP_TYPE_MAP[$phpType]] ?? null;
+        $resolveType = static::SIGNATURE_MAP[static::PHP_TYPE_MAP[$phpType][0]] ?? null;
         if ($resolveType === 'class') {
             return [
                 'type' => $resolveType,
-                'class_name' => $defaultJavaArgumentType,
+                'class_name' => substr(static::PHP_TYPE_MAP[$phpType], 1),
                 'deep_array' => $deepArray,
             ];
         }
