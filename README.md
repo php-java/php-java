@@ -98,7 +98,7 @@ $staticAccessor->set('fieldName', 'value');
 echo $staticAccessor->get('fieldName');
 ```
 
-### Call a static method
+### Call to a static method
 
 - ex) Call to static method as follows.
 
@@ -124,7 +124,7 @@ use PHPJava\Core\JavaClassReader;
 ### Get/Set a dynamic fields
 TBD
 
-### Call a dynamic method
+### Call to a dynamic method
 TBD
 
 ### Output PHPJava operations
