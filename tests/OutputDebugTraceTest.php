@@ -9,27 +9,17 @@ class OutputDebugTraceTest extends Base
         'OutputDebugTraceTest',
     ];
 
-    /**
-     * @var \PHPJava\Core\JavaClass
-     */
-    private $javaClass;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->javaClass = new \PHPJava\Core\JavaClass(
-            new \PHPJava\Core\JavaClassReader($this->getClassName('OutputDebugTraceTest'))
-        );
-    }
-
     public function testCallMain()
     {
         ob_start();
-        $this->javaClass->getInvoker()->getStaticMethods()->call(
-            'main',
-            ["Hello", " ", "World"]
-        );
+
+        $calculatedValue = $this->initiatedJavaClasses['OutputDebugTraceTest']
+            ->getInvoker()
+            ->getStaticMethods()
+            ->call(
+                'main',
+                ["Hello", " ", "World"]
+            );
         ob_end_clean();
 
         ob_start();
