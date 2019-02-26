@@ -118,6 +118,22 @@ use PHPJava\Core\JavaClassReader;
         $thirdArgument,
         ...
     );
+
+// Or if called method have return value then you can store to variable.
+$result = (new JavaClass(new JavaClassReader('/path/to/HelloWorld.class')))
+   ->getInvoker()
+   ->getStatic()
+   ->getMethods()
+   ->call(
+       'methodWithSomethingReturn',
+       $firstArgument,
+       $secondArgument,
+       $thirdArgument,
+       ...
+   );
+
+// The $result you want is output.
+echo $result;
 ```
 
 
