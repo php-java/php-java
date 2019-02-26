@@ -17,8 +17,8 @@ class AccessStaticFieldTest extends Base
 
     public function testOverwriteField()
     {
-        $this->javaClass->getInvoker()->getStaticFields()->set('number', 1000);
-        $this->javaClass->getInvoker()->getStaticFields()->set('string', 'New String!');
+        $this->initiatedJavaClasses['AccessStaticFieldTest']->getInvoker()->getStaticFields()->set('number', 1000);
+        $this->initiatedJavaClasses['AccessStaticFieldTest']->getInvoker()->getStaticFields()->set('string', 'New String!');
         $this->assertEquals(1000, $this->initiatedJavaClasses['AccessStaticFieldTest']->getInvoker()->getStaticFields()->get('number'));
         $this->assertEquals('New String!', $this->initiatedJavaClasses['AccessStaticFieldTest']->getInvoker()->getStaticFields()->get('string'));
     }
