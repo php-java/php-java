@@ -34,6 +34,9 @@ final class _invokespecial implements OperationInterface
             return;
         }
 
+        $this->javaClassInvoker
+            ->addToSpecialInvokedList($methodName, $signature);
+
         if ($invokerClass instanceof JavaClass) {
             $result = $invokerClass->getInvoker()->getDynamicMethods()
                 ->call(
@@ -49,9 +52,6 @@ final class _invokespecial implements OperationInterface
                 $arguments
             );
         }
-
-        $this->javaClassInvoker
-            ->addToSpecialInvokedList($methodName, $signature);
 
         if ($parsedSignature[0]['type'] !== 'void') {
             $this->pushStack($result);

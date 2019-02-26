@@ -107,9 +107,6 @@ class JavaClassInvoker
 
     public function construct(): self
     {
-        if (isset($this->staticMethods['<init>'])) {
-            $this->getStaticMethods()->call('<init>');
-        }
 
         // reset dynamic fields
         $this->dynamicFieldAccessor = new JVM\Field\DynamicField(
@@ -121,6 +118,12 @@ class JavaClassInvoker
             $this,
             $this->dynamicMethods
         );
+
+        if (isset($this->dynamicMethods['<init>'])) {
+            $this->getDynamicMethods()->call(
+                '<init>'
+            );
+        }
 
         return $this;
     }

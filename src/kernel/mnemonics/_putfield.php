@@ -12,15 +12,13 @@ final class _putfield implements OperationInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool()->getEntries();
-        
         $cp = $cpInfo[$this->readUnsignedShort()];
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
-        
+
         $value = $this->getStack();
         $name = $cpInfo[$class->getNameIndex()]->getString();
-        
         $objectref = $this->getStack();
-        
-        $objectref->setInstance($name, $value);
+
+        $objectref->getInvoker()->getDynamicFields()->set($name, $value);
     }
 }
