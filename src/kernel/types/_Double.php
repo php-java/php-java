@@ -2,6 +2,6 @@
 
 namespace PHPJava\Kernel\Types;
 
-class Float extends Type
+class _Double extends Type
 {
 }

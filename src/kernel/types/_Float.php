@@ -2,6 +2,6 @@
 
 namespace PHPJava\Kernel\Types;
 
-class Short extends Type
+class _Float extends Type
 {
 }

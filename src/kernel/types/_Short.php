@@ -2,6 +2,6 @@
 
 namespace PHPJava\Kernel\Types;
 
-class Long extends Type
+class _Short extends Type
 {
 }

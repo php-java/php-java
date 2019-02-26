@@ -2,6 +2,6 @@
 
 namespace PHPJava\Kernel\Types;
 
-class Double extends Type
+class _Long extends Type
 {
 }

@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
 
 final class _ireturn implements OperationInterface
@@ -12,8 +13,8 @@ final class _ireturn implements OperationInterface
     /***
      * return an integer from a method
      */
-    public function execute(): void
+    public function execute()
     {
-        return new JavaTypeInt($this->getStack());
+        return new _Int($this->getStack());
     }
 }

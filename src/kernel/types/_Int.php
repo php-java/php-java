@@ -2,6 +2,6 @@
 
 namespace PHPJava\Kernel\Types;
 
-class Boolean extends Type
+class _Int extends Type
 {
 }
