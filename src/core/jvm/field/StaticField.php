@@ -10,7 +10,7 @@ class StaticField
     use FieldSettable;
 
     private $javaClassInvoker;
-    public $fields = [];
+    private $fields = [];
 
     public function __construct(JavaClassInvoker $javaClassInvoker)
     {

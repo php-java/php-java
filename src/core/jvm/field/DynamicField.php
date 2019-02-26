@@ -9,7 +9,7 @@ class DynamicField implements FieldInterface
     use FieldSettable;
 
     private $javaClassInvoker;
-    public $fields = [];
+    private $fields = [];
 
     public function __construct(JavaClassInvoker $javaClassInvoker, array $fields)
     {
