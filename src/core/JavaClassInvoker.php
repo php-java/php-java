@@ -105,6 +105,26 @@ class JavaClassInvoker
         }
     }
 
+    public function construct(): self
+    {
+        if (isset($this->staticMethods['<init>'])) {
+            $this->getStaticMethods()->call('<init>');
+        }
+
+        // reset dynamic fields
+        $this->dynamicFieldAccessor = new JVM\Field\DynamicField(
+            $this,
+            []
+        );
+
+        $this->dynamicMethodAccessor = new JVM\Invoker\DynamicMethodInvoker(
+            $this,
+            $this->dynamicMethods
+        );
+
+        return $this;
+    }
+
     public function getJavaClass(): JavaClass
     {
         return $this->javaClass;

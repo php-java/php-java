@@ -9,6 +9,14 @@ $javaClass = new \PHPJava\Core\JavaClass(
     new \PHPJava\Core\JavaClassReader(__DIR__ . '/Test.class')
 );
 
+
+var_dump(
+    $javaClass->getInvoker()
+    ->construct()
+    ->getDynamicFields()
+    ->get('z')
+);
+
 $javaClass->getInvoker()->getStaticFields()
     ->set('c', 100)
     ->set('b', 'New String');

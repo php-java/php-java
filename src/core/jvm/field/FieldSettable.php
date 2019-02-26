@@ -8,5 +8,6 @@ trait FieldSettable
     public function set(string $name, $value)
     {
         $this->fields[$name] = $value;
+        return $this;
     }
 }
