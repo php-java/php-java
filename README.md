@@ -86,16 +86,16 @@ Hello World
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassReader;
 
-$staticAccessor = (new JavaClass(new JavaClassReader('/path/to/HelloWorld.class')))
+$staticFieldAccessor = (new JavaClass(new JavaClassReader('/path/to/HelloWorld.class')))
     ->getInvoker()
     ->getStatic()
     ->getFields();
 
 // Set
-$staticAccessor->set('fieldName', 'value');
+$staticFieldAccessor->set('fieldName', 'value');
 
 // Get
-echo $staticAccessor->get('fieldName');
+echo $staticFieldAccessor->get('fieldName');
 ```
 
 ### Call to a static method
@@ -138,13 +138,95 @@ echo $result;
 
 
 ### Get/Set a dynamic fields
-TBD
+If you want to get/set dynamic fields, you need call to `construct` method on Java by PHPJava.
+
+- ex) Call dynamic field as following.
+
+```php
+<?php
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassReader;
+
+$javaClass = new JavaClass(new JavaClassReader('/path/to/HelloWorld.class'));
+
+$javaClass->getInvoker()->construct();
+
+$dynamicFieldAccessor = $javaClass
+    ->getInvoker()
+    ->getDynamic()
+    ->getFields();
+
+// Set
+$dynamicFieldAccessor->set('fieldName', 'value');
+
+// Get
+echo $dynamicFieldAccessor->get('fieldName');
+```
 
 ### Call to a dynamic method
-TBD
+If you want to get/set dynamic method (same as field), you need call to `construct` method on Java by PHPJava.
+
+- ex) Call dynamic method as following.
+
+```php
+<?php
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassReader;
+
+$dynamicMethodAccessor = (new JavaClass(new JavaClassReader('/path/to/HelloWorld.class')))
+     ->getInvoker()
+     ->construct()
+     ->getDynamic()
+     ->getMethods(); 
+
+$dynamicMethodAccessor
+    ->call(
+        'methodName',
+        $firstArgument,
+        $secondArgument,
+        $thirdArgument,
+        ...
+    );
+
+// Or if called method have return value then you can store to variable.
+$dynamicMethodAccessor
+   ->call(
+       'methodWithSomethingReturn',
+       $firstArgument,
+       $secondArgument,
+       $thirdArgument,
+       ...
+   );
+
+// The $result you want is output.
+echo $result;
+```
 
 ### Output PHPJava operations
-TBD
+
+- Output debug trace as following if you want to show operated log.
+
+```php
+<?php
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassReader;
+
+$javaClass = new JavaClass(new JavaClassReader('/path/to/HelloWorld.class'));
+
+$javaClass
+    ->getInvoker()
+    ->getStatic()
+    ->getMethods()
+    ->call(
+        'main',
+        ["Hello", 'World']
+    );
+
+// Show debug traces.
+$javaClass->debug();
+```
+
+ 
 
 ## PHP problems
 TBD
