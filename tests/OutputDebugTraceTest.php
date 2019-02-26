@@ -23,7 +23,7 @@ class OutputDebugTraceTest extends Base
         ob_end_clean();
 
         ob_start();
-        $this->javaClass->debug();
+        $this->initiatedJavaClasses['OutputDebugTraceTest']->debug();
         $result = ob_get_clean();
         $this->assertEquals(
             file_get_contents(__DIR__ . '/templates/DebugTraceTest.txt'),

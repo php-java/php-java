@@ -23,9 +23,8 @@ final class _lookupswitch implements OperationInterface
         $offsets['default'] = $this->readInt();
         $switchSize = $this->readUnsignedInt();
 
-
         for ($i = 0; $i < $switchSize; $i++) {
-            $label = $this->readInt();
+            $label = $this->readUnsignedInt();
             $offsets[(string) $label] = $this->readInt();
         }
 
