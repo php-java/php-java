@@ -291,13 +291,19 @@ public static void main(java.lang.String[])
 
 - PHPUnit test is below.
 ```
-./vendor/bin/phpunit tests
+$ ./vendor/bin/phpunit tests
 ```
 
 - PHP Coding standards testing is below.
 
 ```
-./vendor/bin/phpcs --standard=phpcs.xml src
+$ ./vendor/bin/phpcs --standard=phpcs.xml src
+```
+
+- All testing is below.
+
+```
+$ composer run tests
 ```
 
 ## Reference
