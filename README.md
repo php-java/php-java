@@ -261,14 +261,20 @@ public static void main(java.lang.String[])
 - **[method]** is showing called method.
 - **[code]** is showing JVM's real programs.
 - **[executed]** is showing executed programs.
-  - **PC** is showing Program Counter
+  - **PC** is showing Program Counter.
   - **OPCODE** is showing Operation Codes.
   - **MNEMONIC** is naming Operation Codes.
   - **OPERANDS** is showing stacked items on memory.
   - **LOCAL STORAGE** is showing stacked items on a method.
 
 ## PHP problems
-TBD
+- PHP is cannot calculate big numbers because of PHP is different to the Java.
+  But PHPJava use `bcmath` functions and `gmp` functions to a certain extent to cover to calculate.
+  PHPJava return valued is mixed why therefore We recommend to cast to `string` on PHPJava.
+
+- PHPとJavaは型が異なる問題を抱えており、PHPJavaでは完全にカバーすることはできません。
+下記はPHP, PHPJavaとJavaの型の比較表です。
+
 
 ## Run unit tests
 
