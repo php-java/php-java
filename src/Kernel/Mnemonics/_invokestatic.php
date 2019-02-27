@@ -26,26 +26,29 @@ final class _invokestatic implements OperationInterface
         krsort($arguments);
 
         $return = null;
-        if ($resourceType === ClassResolver::RESOLVED_TYPE_CLASS) {
-            /**
-             * @var \PHPJava\Core\JavaClass $classObject
-             */
-            $return = $classObject
-                ->getInvoker()
-                ->getStatic()
-                ->getMethods()
-                ->call(
-                    $methodName,
-                    ...$arguments
+        switch ($resourceType) {
+            case ClassResolver::RESOLVED_TYPE_CLASS:
+                /**
+                 * @var \PHPJava\Core\JavaClass $classObject
+                 */
+                $return = $classObject
+                    ->getInvoker()
+                    ->getStatic()
+                    ->getMethods()
+                    ->call(
+                        $methodName,
+                        ...$arguments
+                    );
+                break;
+            case ClassResolver::RESOLVED_TYPE_IMITATION:
+                $return = forward_static_call_array(
+                    [
+                        $classObject,
+                        $methodName
+                    ],
+                    $arguments
                 );
-        } elseif ($resourceType === ClassResolver::RESOLVED_TYPE_IMITATION && class_exists($classObject)) {
-            $return = forward_static_call_array(
-                [
-                    $classObject,
-                    $methodName
-                ],
-                $arguments
-            );
+                break;
         }
         
         if ($signature[0]['type'] !== 'void') {
