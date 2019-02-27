@@ -48,9 +48,15 @@ class ClassResolver
             }
         }
 
+        $className = '\\PHPJava\\Imitation\\' . implode('\\', $buildClassPath);
+
+        if (!class_exists($className)) {
+            throw new \PHPJava\Imitation\java\lang\ClassNotFoundException(str_replace(['\\PHPJava\\Imitation\\', '\\'], ['', '.'], $className) . ' class does not exist.');
+        }
+
         return [
             static::RESOLVED_TYPE_IMITATION,
-            '\\PHPJava\\Imitation\\' . implode('\\', $buildClassPath),
+            $className,
         ];
     }
 
