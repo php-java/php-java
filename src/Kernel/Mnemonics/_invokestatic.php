@@ -26,7 +26,7 @@ final class _invokestatic implements OperationInterface
         krsort($arguments);
 
         if (!class_exists($className)) {
-            throw new \PHPJava\Imitation\java\lang\ClassNotFoundException($className . ' class does not exist.');
+            throw new \PHPJava\Imitation\java\lang\ClassNotFoundException(str_replace('\\PHPJava\\Imitation\\', '', $className) . ' class does not exist.');
         }
 
         // call Invoker
