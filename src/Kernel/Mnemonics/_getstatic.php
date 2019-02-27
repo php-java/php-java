@@ -37,7 +37,6 @@ final class _getstatic implements OperationInterface
                 /**
                  * @var \PHPJava\Core\JavaClass $className
                  */
-                $this->pushStack($classObject);
                 return;
             }
             $this->pushStack(new $classObject());
