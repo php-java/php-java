@@ -4,4 +4,4 @@ php:
 before_install:
   - composer install
 script:
-  - composer run
+  - composer run tests
