@@ -41,7 +41,6 @@ class PrintStream
             echo $arg;
             return;
         }
-
     }
 
     public function append($string)
@@ -49,5 +48,4 @@ class PrintStream
         $this->sequence .= $string;
         return $this;
     }
-
 }

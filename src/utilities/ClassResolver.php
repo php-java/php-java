@@ -15,6 +15,6 @@ class ClassResolver
         foreach ($namespaces as $namespace) {
             $buildClassPath[] = static::MAPS[$namespace] ?? $namespace;
         }
-        return '\\PHPJava\\Imitation\\' . implode('\\',  $buildClassPath);
+        return '\\PHPJava\\Imitation\\' . implode('\\', $buildClassPath);
     }
 }

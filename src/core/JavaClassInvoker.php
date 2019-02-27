@@ -163,5 +163,4 @@ class JavaClassInvoker
         $this->specialInvoked[$name][] = $signature;
         return $this;
     }
-
 }

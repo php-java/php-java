@@ -5,5 +5,4 @@ use PHPJava\Kernel\Structures\_Utf8;
 
 class ArrayIndexOutOfBoundsException extends IndexOutOfBoundsException
 {
-
 }

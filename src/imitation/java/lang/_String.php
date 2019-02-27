@@ -35,5 +35,4 @@ class _String extends _Object
         }
         return $this->object->getString();
     }
-
 }

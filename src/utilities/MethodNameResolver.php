@@ -3,7 +3,6 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Exceptions\TypeException;
 
-
 class MethodNameResolver
 {
     const PHP_METHOD_MAP = [
@@ -19,5 +18,4 @@ class MethodNameResolver
         }
         return $name;
     }
-
 }

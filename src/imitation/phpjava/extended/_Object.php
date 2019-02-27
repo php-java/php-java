@@ -5,7 +5,6 @@ use PHPJava\Imitation\java\lang\NoSuchMethodException;
 
 trait _Object
 {
-
     public function __construct(...$parameters)
     {
     }

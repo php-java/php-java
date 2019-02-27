@@ -159,5 +159,4 @@ trait Accumulator
     {
         return $this->pointer;
     }
-
 }

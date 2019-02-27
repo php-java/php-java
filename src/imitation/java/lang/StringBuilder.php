@@ -28,5 +28,4 @@ class StringBuilder extends _Object
     {
         return $this->sequence;
     }
-
 }
