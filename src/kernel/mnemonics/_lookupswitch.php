@@ -29,7 +29,6 @@ final class _lookupswitch implements OperationInterface
         }
 
         if (isset($offsets[$key])) {
-
             // goto PC
             $this->setOffset($this->getProgramCounter() + $offsets[$key]);
             return;

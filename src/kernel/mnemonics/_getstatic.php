@@ -23,7 +23,6 @@ final class _getstatic implements OperationInterface
         if ($cp instanceof _Fieldref) {
             foreach ($this->javaClass->getFields() as $field) {
                 if ($cpInfo[$field->getNameIndex()]->getString() === $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()) {
-
                     // push stack
                     $fieldName = $cpInfo[$field->getNameIndex()]->getString();
                     $this->pushStack($this->javaClassInvoker->getStaticFields()->get($fieldName));

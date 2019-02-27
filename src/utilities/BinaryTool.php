@@ -33,7 +33,6 @@ class BinaryTool
         $bitSize = strlen($bits);
 
         for ($index = $bitSize - 1; $index >= 0 && $bits[$index] === '1'; $index--) {
-
             // nop
         }
 
@@ -70,7 +69,6 @@ class BinaryTool
         $value = base_convert((string) $value, 10, 2);
 
         if (sprintf('%0' . $bytes . 's', $value) === str_repeat('0', $bytes)) {
-
             // zero number was overflow
             return '0';
         }

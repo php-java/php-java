@@ -28,12 +28,10 @@ final class _tableswitch implements OperationInterface
         }
 
         if (isset($offsets[$key])) {
-
             // goto PC
             $this->setOffset($this->getProgramCounter() + $offsets[$key]);
             return;
         }
-
 
         // goto default
         $this->setOffset($this->getProgramCounter() + $offsets['default']);

@@ -294,7 +294,11 @@ public static void main(java.lang.String[])
 ./vendor/bin/phpunit tests
 ```
 
-- PHPCS is below.
+- PHP Coding standards testing is below.
+
+```
+./vendor/bin/phpcs --standard=phpcs.xml src
+```
 
 ## Reference
 - [Java Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se11/html/index.html)

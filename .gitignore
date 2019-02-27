@@ -7,4 +7,3 @@ composer.lock
 .phpunit.result.cache
 tests/caches/
 !tests/caches/.gitkeep
-.php_cs.cache
