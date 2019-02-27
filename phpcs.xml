@@ -1,0 +1,27 @@
+<ruleset name="PHPJava Standards">
+    <description>The PHPJava Coding Standards</description>
+
+    <exclude-pattern>./tests</exclude-pattern>
+
+    <rule ref="PSR2">
+        <exclude name="Generic.Files.LineLength.TooLong"/>
+    </rule>
+
+    <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
+        <exclude-pattern>./src/kernel/types</exclude-pattern>
+        <exclude-pattern>./src/kernel/mnemonics</exclude-pattern>
+        <exclude-pattern>./src/kernel/structures</exclude-pattern>
+        <exclude-pattern>./src/imitation/java/lang/_Object.php</exclude-pattern>
+        <exclude-pattern>./src/imitation/java/lang/_String.php</exclude-pattern>
+        <exclude-pattern>./src/imitation/phpjava/extended/_Object</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase">
+        <exclude-pattern>./src/kernel/maps</exclude-pattern>
+    </rule>
+
+    <arg name="colors"/>
+    <arg value="p"/>
+
+    <ini name="memory_limit" value="128M"/>
+</ruleset>
