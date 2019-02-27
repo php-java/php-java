@@ -226,7 +226,46 @@ $javaClass
 $javaClass->debug();
 ```
 
- 
+- Get a debug trace is below.
+
+```
+[method]
+public static void main(java.lang.String[])
+
+[code]
+<0xb2> <0x00> <0x02> <0x2a> <0x03> <0x32> <0xb6> <0x00> <0x03> <0xb2> <0x00> <0x02> <0x2a> <0x04> <0x32> <0xb6> <0x00> <0x03> <0xb2> <0x00>
+<0x02> <0x2a> <0x05> <0x32> <0xb6> <0x00> <0x03> <0xb1>
+
+[executed]
+      PC | OPCODE | MNEMONIC             | OPERANDS   | LOCAL STORAGE  
+---------+--------+----------------------+------------+-----------------
+       0 | 0xB2   | getstatic            | 0          | 1              
+       3 | 0x2A   | aload_0              | 1          | 1              
+       4 | 0x03   | iconst_0             | 2          | 1              
+       5 | 0x32   | aaload               | 3          | 1              
+       6 | 0xB6   | invokevirtual        | 2          | 1              
+       9 | 0xB2   | getstatic            | 0          | 1              
+      12 | 0x2A   | aload_0              | 1          | 1              
+      13 | 0x04   | iconst_1             | 2          | 1              
+      14 | 0x32   | aaload               | 3          | 1              
+      15 | 0xB6   | invokevirtual        | 2          | 1              
+      18 | 0xB2   | getstatic            | 0          | 1              
+      21 | 0x2A   | aload_0              | 1          | 1              
+      22 | 0x05   | iconst_2             | 2          | 1              
+      23 | 0x32   | aaload               | 3          | 1              
+      24 | 0xB6   | invokevirtual        | 2          | 1              
+      27 | 0xB1   | return               | 0          | 1              
+---------+--------+----------------------+------------+-----------------
+```
+
+- **[method]** is showing called method.
+- **[code]** is showing JVM's real programs.
+- **[executed]** is showing executed programs.
+  - **PC** is showing Program Counter
+  - **OPCODE** is showing Operation Codes.
+  - **MNEMONIC** is naming Operation Codes.
+  - **OPERANDS** is showing stacked items on memory.
+  - **LOCAL STORAGE** is showing stacked items on a method.
 
 ## PHP problems
 TBD
