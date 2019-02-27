@@ -272,9 +272,6 @@ public static void main(java.lang.String[])
   But PHPJava use `bcmath` functions and `gmp` functions to a certain extent to cover to calculate.
   PHPJava return valued is mixed why therefore We recommend to cast to `string` on PHPJava.
 
-- PHPとJavaは型が異なる問題を抱えており、PHPJavaでは完全にカバーすることはできません。
-下記はPHP, PHPJavaとJavaの型の比較表です。
-
 - PHPJava cannot cover to Java's types completely because of PHP is different to the Java.
   Java and PHPJava comparison table is below.
   
