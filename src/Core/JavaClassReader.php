@@ -15,8 +15,10 @@ class JavaClassReader
 
         // Add resolving path
         ClassResolver::add(
-            ClassResolver::RESOURCE_TYPE_FILE,
-            dirname($file)
+            [
+                [ClassResolver::RESOURCE_TYPE_FILE, dirname($file)],
+                [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
+            ]
         );
     }
 
