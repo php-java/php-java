@@ -3,19 +3,20 @@ namespace PHPJava\Tests;
 
 use PHPUnit\Framework\TestCase;
 
-class AccessStaticMethodTest extends Base
+class AccessDynamicMethodTest extends Base
 {
     protected $fixtures = [
-        'AccessStaticMethodTest',
+        'AccessDynamicMethodTest',
     ];
 
     public function testCallMainHavingStringArguments()
     {
         ob_start();
         // call main
-        $this->initiatedJavaClasses['AccessStaticMethodTest']
+        $this->initiatedJavaClasses['AccessDynamicMethodTest']
             ->getInvoker()
-            ->getStatic()
+            ->construct()
+            ->getDynamic()
             ->getMethods()
             ->call(
                 'main',
@@ -30,9 +31,10 @@ class AccessStaticMethodTest extends Base
     {
         ob_start();
         // call main
-        $this->initiatedJavaClasses['AccessStaticMethodTest']
+        $this->initiatedJavaClasses['AccessDynamicMethodTest']
             ->getInvoker()
-            ->getStatic()
+            ->construct()
+            ->getDynamic()
             ->getMethods()
             ->call(
                 'main',
@@ -46,9 +48,10 @@ class AccessStaticMethodTest extends Base
     public function testCallReturnTest()
     {
         // call main
-        $result = $this->initiatedJavaClasses['AccessStaticMethodTest']
+        $result = $this->initiatedJavaClasses['AccessDynamicMethodTest']
             ->getInvoker()
-            ->getStatic()
+            ->construct()
+            ->getDynamic()
             ->getMethods()
             ->call('returnTest');
 
