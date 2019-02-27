@@ -14,14 +14,16 @@ class ConstructTest extends Base
         $text = $this->initiatedJavaClasses['ConstructTest']
             ->getInvoker()
             ->construct()
-            ->getDynamicFields()
+            ->getDynamic()
+            ->getFields()
             ->get('text');
 
         $this->assertEquals('Default Text', $text);
 
         $text = $this->initiatedJavaClasses['ConstructTest']
             ->getInvoker()
-            ->getDynamicFields()
+            ->getDynamic()
+            ->getFields()
             ->set('text', 'New Text')
             ->get('text');
 
@@ -32,7 +34,8 @@ class ConstructTest extends Base
         $text = $this->initiatedJavaClasses['ConstructTest']
             ->getInvoker()
             ->construct()
-            ->getDynamicFields()
+            ->getDynamic()
+            ->getFields()
             ->get('text');
 
         $this->assertEquals('Default Text', $text);

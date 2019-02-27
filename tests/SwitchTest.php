@@ -14,7 +14,8 @@ class SwitchTest extends Base
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call(
                 'tableswitch',
                 -1
@@ -32,7 +33,8 @@ class SwitchTest extends Base
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call(
                 'tableswitch',
                 0
@@ -50,7 +52,8 @@ class SwitchTest extends Base
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call(
                 'tableswitch',
                 1
@@ -69,7 +72,8 @@ class SwitchTest extends Base
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call(
                 'lookupswitch',
                 1234
@@ -87,7 +91,8 @@ class SwitchTest extends Base
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call(
                 'lookupswitch',
                 5678
@@ -105,7 +110,8 @@ class SwitchTest extends Base
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call(
                 'lookupswitch',
                 9999

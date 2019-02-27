@@ -38,7 +38,7 @@ final class _invokespecial implements OperationInterface
             ->addToSpecialInvokedList($methodName, $signature);
 
         if ($invokerClass instanceof JavaClass) {
-            $result = $invokerClass->getInvoker()->getDynamicMethods()
+            $result = $invokerClass->getInvoker()->getDynamic()->getMethods()
                 ->call(
                     $methodName,
                     ...$arguments

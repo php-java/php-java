@@ -1,9 +1,11 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Core\JVM\DynamicAccessor;
 use PHPJava\Core\JVM\Field\FieldInterface;
 use PHPJava\Core\JVM\Invoker\Invokable;
 use PHPJava\Core\JVM\Invoker\InvokerInterface;
+use PHPJava\Core\JVM\StaticAccessor;
 use PHPJava\Kernel\Maps\AccessFlag;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Structures\_FieldInfo;
@@ -28,27 +30,21 @@ class JavaClassInvoker
     private $debugTraces;
 
     /**
-     * @var JVM\Invoker\DynamicMethodInvoker
+     * @var DynamicAccessor
      */
-    private $dynamicMethodAccessor;
+    private $dynamicAccessor;
 
     /**
-     * @var JVM\Invoker\StaticMethodInvoker
+     * @var StaticAccessor
      */
-    private $staticMethodAccessor;
-
-    /**
-     * @var JVM\Field\DynamicField
-     */
-    private $dynamicFieldAccessor;
-
-    /**
-     * @var JVM\Field\StaticField
-     */
-    private $staticFieldAccessor;
+    private $staticAccessor;
 
     private $specialInvoked = [];
 
+    /**
+     * JavaClassInvoker constructor.
+     * @param JavaClass $javaClass
+     */
     public function __construct(JavaClass $javaClass)
     {
         $this->javaClass = $javaClass;
@@ -80,84 +76,78 @@ class JavaClassInvoker
             }
         }
 
-        $this->dynamicMethodAccessor = new JVM\Invoker\DynamicMethodInvoker(
+        $this->dynamicAccessor = new DynamicAccessor(
             $this,
             $this->dynamicMethods
         );
 
-        $this->staticMethodAccessor = new JVM\Invoker\StaticMethodInvoker(
+        $this->staticAccessor = new StaticAccessor(
             $this,
             $this->staticMethods
         );
 
-        $this->dynamicFieldAccessor = new JVM\Field\DynamicField(
-            $this,
-            []
-        );
-
-        $this->staticFieldAccessor = new JVM\Field\StaticField(
-            $this
-        );
-
         // call <clinit>
         if (isset($this->staticMethods['<clinit>'])) {
-            $this->getStaticMethods()->call('<clinit>');
+            $this->getStatic()->getMethods()->call('<clinit>');
         }
     }
 
+    /**
+     * @return JavaClassInvoker
+     */
     public function construct(): self
     {
-
-        // reset dynamic fields
-        $this->dynamicFieldAccessor = new JVM\Field\DynamicField(
-            $this,
-            []
-        );
-
-        $this->dynamicMethodAccessor = new JVM\Invoker\DynamicMethodInvoker(
+        $this->dynamicAccessor = new DynamicAccessor(
             $this,
             $this->dynamicMethods
         );
 
         if (isset($this->dynamicMethods['<init>'])) {
-            $this->getDynamicMethods()->call(
-                '<init>'
-            );
+            $this->getDynamic()->getMethods()->call('<init>');
         }
 
         return $this;
     }
 
+    /**
+     * @return JavaClass
+     */
     public function getJavaClass(): JavaClass
     {
         return $this->javaClass;
     }
 
-    public function getDynamicMethods(): InvokerInterface
+    /**
+     * @return DynamicAccessor
+     */
+    public function getDynamic(): DynamicAccessor
     {
-        return $this->dynamicMethodAccessor;
+        return $this->dynamicAccessor;
     }
 
-    public function getStaticMethods(): InvokerInterface
+    /**
+     * @return StaticAccessor
+     */
+    public function getStatic(): StaticAccessor
     {
-        return $this->staticMethodAccessor;
+        return $this->staticAccessor;
     }
 
-    public function getDynamicFields(): FieldInterface
-    {
-        return $this->dynamicFieldAccessor;
-    }
-
-    public function getStaticFields(): JVM\Field\StaticField
-    {
-        return $this->staticFieldAccessor;
-    }
-
+    /**
+     * @param string $name
+     * @param string $signature
+     * @return bool
+     */
     public function isInvoked(string $name, string $signature): bool
     {
         return in_array($signature, $this->specialInvoked[$name] ?? [], true);
     }
 
+    /**
+     * @param string $name
+     * @param string $signature
+     * @return JavaClassInvoker
+     */
     public function addToSpecialInvokedList(string $name, string $signature): self
     {
         $this->specialInvoked[$name][] = $signature;

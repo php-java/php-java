@@ -15,7 +15,8 @@ class OutputDebugTraceTest extends Base
 
         $calculatedValue = $this->initiatedJavaClasses['OutputDebugTraceTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call(
                 'main',
                 ["Hello", " ", "World"]

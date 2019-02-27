@@ -13,7 +13,8 @@ class LoopTest extends Base
     {
         $calculatedValue = $this->initiatedJavaClasses['LoopTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call('calculateByFor', 10);
         $this->assertEquals(
             "45",
@@ -22,7 +23,8 @@ class LoopTest extends Base
 
         $calculatedValue = $this->initiatedJavaClasses['LoopTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call('calculateByFor', 20);
         $this->assertEquals(
             "190",
@@ -34,7 +36,8 @@ class LoopTest extends Base
     {
         $calculatedValue = $this->initiatedJavaClasses['LoopTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call('calculateByWhile', 10);
         $this->assertEquals(
             "45",
@@ -43,7 +46,8 @@ class LoopTest extends Base
 
         $calculatedValue = $this->initiatedJavaClasses['LoopTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call('calculateByWhile', 20);
         $this->assertEquals(
             "190",

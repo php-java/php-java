@@ -25,7 +25,7 @@ final class _getstatic implements OperationInterface
                 if ($cpInfo[$field->getNameIndex()]->getString() === $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()) {
                     // push stack
                     $fieldName = $cpInfo[$field->getNameIndex()]->getString();
-                    $this->pushStack($this->javaClassInvoker->getStaticFields()->get($fieldName));
+                    $this->pushStack($this->javaClassInvoker->getStatic()->getFields()->get($fieldName));
                     return;
                 }
             }

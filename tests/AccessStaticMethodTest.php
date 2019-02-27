@@ -15,7 +15,8 @@ class AccessStaticMethodTest extends Base
         // call main
         $this->initiatedJavaClasses['AccessStaticMethodTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call(
                 'main',
                 ["Hello", "World"]
@@ -31,7 +32,8 @@ class AccessStaticMethodTest extends Base
         // call main
         $this->initiatedJavaClasses['AccessStaticMethodTest']
             ->getInvoker()
-            ->getStaticMethods()
+            ->getStatic()
+            ->getMethods()
             ->call(
                 'main',
                 [1234, 5678]
