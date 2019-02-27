@@ -23,6 +23,6 @@ final class _getfield implements OperationInterface
             $this->pushStack($return);
             return;
         }
-        throw new Exception('Cannot get to undefined field ' . $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString() . '');
+        throw new Exception('Cannot get to undefined Field ' . $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString() . '');
     }
 }
