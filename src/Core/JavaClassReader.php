@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Utilities\ClassResolver;
+
 class JavaClassReader
 {
     private $handle;
@@ -10,6 +12,14 @@ class JavaClassReader
     {
         $this->handle = fopen($file, 'r');
         $this->binaryReader = new JVM\Stream\BinaryReader($this->handle);
+
+        // Add resolving path
+        ClassResolver::add(
+            [
+                [ClassResolver::RESOURCE_TYPE_FILE, dirname($file)],
+                [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
+            ]
+        );
     }
 
     public function getBinaryReader(): JVM\Stream\BinaryReader

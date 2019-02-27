@@ -13,8 +13,10 @@ class Base extends TestCase
         parent::setUp();
         // build fixtures
 
+        $pathRoot = __DIR__ . '/fixtures/java/';
+
         foreach ($this->fixtures as $fixture) {
-            exec('javac -encoding UTF8 ' . __DIR__ . '/fixtures/java/' . str_replace(['../', './'], '', $fixture) . '.java -d ' . __DIR__ . '/caches');
+            exec('javac -classpath ' . $pathRoot . ':' . $pathRoot . 'caches -encoding UTF8 ' . $pathRoot . str_replace(['../', './'], '', $fixture) . '.java -d ' . __DIR__ . '/caches');
             $this->initiatedJavaClasses[$fixture] = new \PHPJava\Core\JavaClass(
                 new \PHPJava\Core\JavaClassReader(
                     $this->getClassName($fixture)

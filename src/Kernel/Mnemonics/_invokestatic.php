@@ -18,25 +18,38 @@ final class _invokestatic implements OperationInterface
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
         $arguments = [];
-        $className = ClassResolver::resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
+        [$resourceType, $classObject] = ClassResolver::resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
         for ($i = 0; $i < $signature['arguments_count']; $i++) {
             $arguments[] = $this->getStack();
         }
         
         krsort($arguments);
 
-        if (!class_exists($className)) {
-            throw new \PHPJava\Imitation\java\lang\ClassNotFoundException(str_replace('\\PHPJava\\Imitation\\', '', $className) . ' class does not exist.');
+        $return = null;
+        switch ($resourceType) {
+            case ClassResolver::RESOLVED_TYPE_CLASS:
+                /**
+                 * @var \PHPJava\Core\JavaClass $classObject
+                 */
+                $return = $classObject
+                    ->getInvoker()
+                    ->getStatic()
+                    ->getMethods()
+                    ->call(
+                        $methodName,
+                        ...$arguments
+                    );
+                break;
+            case ClassResolver::RESOLVED_TYPE_IMITATION:
+                $return = forward_static_call_array(
+                    [
+                        $classObject,
+                        $methodName
+                    ],
+                    $arguments
+                );
+                break;
         }
-
-        // call Invoker
-        $return = forward_static_call_array(
-            [
-                $className,
-                $methodName
-            ],
-            $arguments
-        );
         
         if ($signature[0]['type'] !== 'void') {
             $this->pushStack($return);

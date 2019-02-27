@@ -57,7 +57,7 @@ class TypeResolver
             }
             if (empty($getNestedValues)) {
                 $flipped = array_flip(static::PHP_TYPE_MAP);
-                $resolveType = static::SIGNATURE_MAP[static::resolve($defaultJavaArgumentType)];
+                $resolveType = static::SIGNATURE_MAP[static::resolve($defaultJavaArgumentType)[0]];
                 if ($resolveType === 'class') {
                     return [
                         'type' => $resolveType,
