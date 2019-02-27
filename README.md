@@ -268,12 +268,12 @@ public static void main(java.lang.String[])
   - **LOCAL STORAGE** is showing stacked items on a method.
 
 ## PHP problems
-- PHP is cannot calculating big numbers because of PHP is different to the Java.
-  But PHPJava use `bcmath` functions and `gmp` functions to a certain extent to cover to calculate.
-  PHPJava return valued is mixed why therefore We recommend to cast to `string` on PHPJava.
+- The PHP is cannot calculating big numbers because of PHP is different to the Java.
+  But the PHPJava use `bcmath` functions and `gmp` functions to a certain extent to cover to calculate.
+  The PHPJava return valued is mixed why therefore We recommend to cast to `string` on the PHPJava.
 
-- PHPJava cannot cover to Java's types completely because of PHP is different to the Java.
-  Java and PHPJava comparison table is below.
+- The PHPJava cannot cover to Java's types completely because of PHP is different to the Java.
+  The Java and the PHPJava comparison table is below.
   
 |Java        |PHPJava         |
 |:-------------:|:-------------:|
