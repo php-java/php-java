@@ -278,14 +278,14 @@ public static void main(java.lang.String[])
 |Java        |PHPJava         |
 |:-------------:|:-------------:|
 |null |null |
-|boolean |\PHPJava\Kernel\Types\_Boolean (including `__toString`) |
-|char |\PHPJava\Kernel\Types\_Char (including `__toString`), string |
-|byte |\PHPJava\Kernel\Types\_Byte (including `__toString`), string |
-|short |\PHPJava\Kernel\Types\_Short (including `__toString`), string, int |
-|int |\PHPJava\Kernel\Types\_Int (including `__toString`), string, int |
-|long |\PHPJava\Kernel\Types\_Long (including `__toString`), string, int |
-|float |\PHPJava\Kernel\Types\_Float (including `__toString`), string, float |
-|double |\PHPJava\Kernel\Types\_Char (including `__toString`), string, float |
+|boolean |\PHPJava\Kernel\Types\\_Boolean (including `__toString`) |
+|char |\PHPJava\Kernel\Types\\_Char (including `__toString`), string |
+|byte |\PHPJava\Kernel\Types\\_Byte (including `__toString`), string |
+|short |\PHPJava\Kernel\Types\\_Short (including `__toString`), string, int |
+|int |\PHPJava\Kernel\Types\\_Int (including `__toString`), string, int |
+|long |\PHPJava\Kernel\Types\\_Long (including `__toString`), string, int |
+|float |\PHPJava\Kernel\Types\\_Float (including `__toString`), string, float |
+|double |\PHPJava\Kernel\Types\\_Char (including `__toString`), string, float |
 
 ## Run unit tests
 
