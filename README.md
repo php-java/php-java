@@ -275,12 +275,29 @@ public static void main(java.lang.String[])
 - PHPとJavaは型が異なる問題を抱えており、PHPJavaでは完全にカバーすることはできません。
 下記はPHP, PHPJavaとJavaの型の比較表です。
 
+- PHPJava cannot cover to Java's types completely because of PHP is different to the Java.
+  Java and PHPJava comparison table is below.
+  
+|Java        |PHPJava         |
+|:-------------:|:-------------:|
+|null |null |
+|boolean |\PHPJava\Kernel\Types\_Boolean (including `__toString`) |
+|char |\PHPJava\Kernel\Types\_Char (including `__toString`), string |
+|byte |\PHPJava\Kernel\Types\_Byte (including `__toString`), string |
+|short |\PHPJava\Kernel\Types\_Short (including `__toString`), string, int |
+|int |\PHPJava\Kernel\Types\_Int (including `__toString`), string, int |
+|long |\PHPJava\Kernel\Types\_Long (including `__toString`), string, int |
+|float |\PHPJava\Kernel\Types\_Float (including `__toString`), string, float |
+|double |\PHPJava\Kernel\Types\_Char (including `__toString`), string, float |
 
 ## Run unit tests
 
+- PHPUnit test is below.
 ```
 ./vendor/bin/phpunit tests
 ```
+
+- PHPCS is below.
 
 ## Reference
 - [Java Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se11/html/index.html)
