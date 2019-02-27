@@ -1,0 +1,7 @@
+language: php
+php:
+  - 7.2
+before_install:
+  - composer install
+script:
+  - composer run
