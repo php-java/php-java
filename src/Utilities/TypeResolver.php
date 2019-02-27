@@ -72,7 +72,7 @@ class TypeResolver
             }
             $firstParameter = $getNestedValues[0];
 
-            // TODO: Validate parameters
+            // TODO: Validate Parameters
             $firstParameter['deep_array'] += $deepArray;
             return $firstParameter;
         }

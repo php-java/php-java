@@ -29,7 +29,7 @@ final class _invokestatic implements OperationInterface
             throw new \PHPJava\Imitation\java\lang\ClassNotFoundException($className . ' class does not exist.');
         }
 
-        // call invoker
+        // call Invoker
         $return = forward_static_call_array(
             [
                 $className,

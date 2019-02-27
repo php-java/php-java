@@ -120,7 +120,7 @@ class JavaClass
             $this->constantPool
         );
 
-        // read attributes
+        // read Attributes
         $this->activeAttributes = new ActiveAttributes(
             $reader,
             $reader->getBinaryReader()->readUnsignedShort(),

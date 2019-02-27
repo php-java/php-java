@@ -25,7 +25,7 @@ final class CodeAttribute implements AttributeInterface
         $this->maxLocals = $this->readUnsignedShort();
         $this->codeLength = $this->readUnsignedInt();
 
-        // read mnemonics
+        // read Mnemonics
         $this->code = [];
         for ($i = 0; $i < $this->codeLength; $i++) {
             $this->code[$i] = $this->readUnsignedByte();
