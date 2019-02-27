@@ -226,7 +226,7 @@ $javaClass
 $javaClass->debug();
 ```
 
-- Get a debug trace is below.
+- Outputted debug trace is below.
 
 ```
 [method]
