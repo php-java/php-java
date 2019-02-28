@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Utilities;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\TypeException;
 
 class TypeResolver
@@ -75,6 +76,16 @@ class TypeResolver
             // TODO: Validate Parameters
             $firstParameter['deep_array'] += $deepArray;
             return $firstParameter;
+        }
+        if ($phpType === 'object') {
+            if ($arguments instanceof JavaClass) {
+                return [
+                    'type' => 'class',
+                    'class_name' => $arguments->getClassName(false),
+                    'deep_array' => $deepArray,
+                ];
+            }
+            throw new TypeException(get_class($arguments) . ' does not supported to convert to Java\'s argument.');
         }
         $resolveType = static::SIGNATURE_MAP[static::PHP_TYPE_MAP[$phpType][0]] ?? null;
         if ($resolveType === 'class') {

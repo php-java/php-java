@@ -80,6 +80,8 @@ trait Invokable
         );
 
         $method = null;
+
+        // the special method
         foreach ($methodReferences as $methodReference) {
             $methodSignature = Formatter::buildArgumentsSignature(
                 Formatter::parseSignature($constantPool[$methodReference->getDescriptorIndex()]->getString())['arguments']
@@ -92,6 +94,8 @@ trait Invokable
         }
 
         if ($method === null) {
+            // var_dump($convertedPassedArguments);
+            // debug_print_backtrace();
             throw new NoSuchMethodException('Call to undefined method ' . $name . '.');
         }
 

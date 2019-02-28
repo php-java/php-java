@@ -34,7 +34,8 @@ class ClassResolver
         foreach (static::$resolves as [$resourceType, $value]) {
             switch ($resourceType) {
                 case static::RESOURCE_TYPE_FILE:
-                    $path = realpath($value . '/' . $relativePath . '.class');
+                    $relativePathByMainClass = explode('$', $relativePath, 2)[0];
+                    $path = realpath($value . '/' . $relativePathByMainClass . '.class');
                     if (($key = array_search($path, static::$resolvedPaths, true)) !== false) {
                         return static::$resolvedPaths[$key];
                     }
