@@ -3,6 +3,7 @@ namespace PHPJava\Core\JVM\Invoker;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Core\JVM\FlexibleMethod;
 use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
@@ -97,6 +98,11 @@ trait Invokable
         $method = null;
 
         foreach ($methodReferences as $methodReference) {
+            // If flexible method is available then Invoker use it all time.
+            if ($methodReference instanceof FlexibleMethod) {
+                $method = $methodReference;
+                break;
+            }
             $constantPool = ($currentConstantPool = $methodReference->getConstantPool())->getEntries();
             /**
              * @var _MethodInfo $methodReference
@@ -112,6 +118,14 @@ trait Invokable
 
         if ($method === null) {
             throw new NoSuchMethodException('Call to undefined method ' . $name . '.');
+        }
+
+        if ($method instanceof FlexibleMethod) {
+            /**
+             * @var FlexibleMethod $method
+             */
+            // TODO: will implement invocation for flexible method
+            return $method->invoke();
         }
 
         $codeAttribute = $getCodeAttribute($method->getAttributes());

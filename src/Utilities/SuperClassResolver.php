@@ -3,6 +3,7 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
+use PHPJava\Core\JVM\FlexibleMethod;
 use PHPJava\Imitation\java\lang\_Object;
 
 class SuperClassResolver
@@ -25,22 +26,18 @@ class SuperClassResolver
             }
             return $this->resolveMethod($methodName, $class->getSuperClass());
         }
-// TODO: Will implement extends imitation classes
-//        elseif (!($class->getSuperClass() instanceof _Object)) {
-//            $this->classes = array_merge($this->classes, array_map(
-//                function ($method) use ($class) {
-//                    return static::convertToCallable($method, $class->getSuperClass());
-//                },
-//                (new \ReflectionClass($class->getSuperClass()))->getMethods()
-//            ));
-//            return $this->resolveAll($class->getSuperClass());
-//        }
-//        $this->classes = array_merge($this->classes, array_map(
-//            function ($method) use ($class) {
-//                return static::convertToCallable($method, $class->getSuperClass());
-//            },
-//            (new \ReflectionClass($class->getSuperClass()))->getMethods()
-//        ));
-        return $this->classes;
+
+        $prependItems = [];
+        foreach ((new \ReflectionClass($class->getSuperClass()))->getMethods() as $callee) {
+            $resolvedMethodName = $callee->getName();
+            if (!isset($prependItems[$resolvedMethodName])) {
+                $prependItems[$resolvedMethodName] = [];
+            }
+            $prependItems[$resolvedMethodName] = array_merge(
+                $prependItems[$resolvedMethodName],
+                [new FlexibleMethod($callee)]
+            );
+        }
+        return array_merge($prependItems, $this->classes);
     }
 }

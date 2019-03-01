@@ -9,6 +9,7 @@ class TypeResolver
     const PHP_TYPE_MAP = [
         'integer' => 'I',
         'string' => 'Ljava.lang.String',
+        'NULL' => '#',
     ];
 
     const SIGNATURE_MAP = [
@@ -22,6 +23,9 @@ class TypeResolver
         'V' => 'void',
         'Z' => 'boolean',
         'L' => 'class',
+
+        // TEMP: various type
+        '#' => 'none',
     ];
 
     /**
