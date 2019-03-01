@@ -96,7 +96,7 @@ class JavaClassInvoker
      * @param array $arguments
      * @return JavaClassInvoker
      */
-    public function construct(array $arguments = []): self
+    public function construct(...$arguments): self
     {
         $this->dynamicAccessor = new DynamicAccessor(
             $this,

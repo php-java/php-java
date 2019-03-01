@@ -21,7 +21,7 @@ class ClassResolver
     private static $resolves = [];
     private static $resolvedPaths = [];
 
-    public static function resolve($javaPath): array
+    public static function resolve(string $javaPath, JavaClass $class = null): array
     {
         $namespaces = explode('.', str_replace('/', '.', $javaPath));
         $buildClassPath = [];
@@ -39,9 +39,13 @@ class ClassResolver
                         return static::$resolvedPaths[$key];
                     }
                     if (is_file($path)) {
+                        $initiatedClass = new JavaClass(new JavaClassReader($path));
+                        if ($class !== null) {
+                            $initiatedClass->setParentClass($class);
+                        }
                         return $resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
-                            (new JavaClass(new JavaClassReader($path)))
+                            $initiatedClass,
                         ];
                     }
                     break;

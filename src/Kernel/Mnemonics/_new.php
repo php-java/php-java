@@ -21,18 +21,13 @@ final class _new implements OperationInterface
             return;
         }
 
-        [$resourceType, $classObject] = ClassResolver::resolve($className);
+        [$resourceType, $classObject] = ClassResolver::resolve($className, $this->javaClass);
         if ($resourceType === ClassResolver::RESOLVED_TYPE_CLASS) {
             /**
              * @var \PHPJava\Core\JavaClass $classObject
              */
 
-            $classObjectInvoker = $classObject->getInvoker();
-            $arguments = [];
-            if ($classObject->hasParentClass()) {
-                $arguments[] = $this->javaClass;
-            }
-            $this->pushStack($classObjectInvoker->construct(...$arguments)->getJavaClass());
+            $this->pushStack($classObject->getInvoker()->construct()->getJavaClass());
             return;
         }
         $this->pushStack(new $classObject());
