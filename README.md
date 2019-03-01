@@ -21,8 +21,6 @@ We welcoming to contributions this project 💪
 ## Not currently supported
 Sorry, I do not have enough time (T_T) 
 
-- Annotations
-- Extends other class
 - Implements
 - Event
 - Java Archive
