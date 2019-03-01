@@ -8,6 +8,8 @@ use PHPJava\Core\JVM\ActiveMethods;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Exceptions\ValidatorException;
+use PHPJava\Kernel\Attributes\AttributeInterface;
+use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Maps\AccessFlag;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\Formatter;
@@ -62,6 +64,10 @@ class JavaClass
      */
     private $invoker;
 
+    private $innerClasses = [];
+
+    private $parentClass;
+
     /**
      * JavaClass constructor.
      * @param JavaClassReader $reader
@@ -94,6 +100,7 @@ class JavaClass
         $this->thisClass = $reader->getBinaryReader()->readUnsignedShort();
 
         $constantPoolEntries = $this->constantPool->getEntries();
+
         $this->className = $constantPoolEntries[$constantPoolEntries[$this->thisClass]->getClassIndex()];
 
         // read super class
@@ -127,12 +134,30 @@ class JavaClass
             $this->constantPool
         );
 
+        foreach ($this->activeAttributes->getEntries() as $entry) {
+            if ($entry->getAttributeData() instanceof InnerClassesAttribute) {
+                $this->innerClasses = array_merge(
+                    $this->innerClasses,
+                    $entry->getAttributeData()->getClasses()
+                );
+            }
+        }
+
         $this->invoker = new JavaClassInvoker($this);
     }
 
-    public function getClassName(): string
+    public function getClassName(bool $shortName = false): string
     {
+        if ($shortName === true) {
+            $split = explode('$', $this->className->getString());
+            return $split[count($split) - 1];
+        }
         return $this->className->getString();
+    }
+
+    public function getInnerClasses(): array
+    {
+        return $this->innerClasses;
     }
 
     public function getFields(): array
@@ -154,6 +179,22 @@ class JavaClass
     {
         $this->debugTraces[] = $log;
         return $this;
+    }
+
+    public function hasParentClass(): bool
+    {
+        return isset($this->parentClass);
+    }
+
+    public function setParentClass(JavaClass $class): self
+    {
+        $this->parentClass = $class;
+        return $this;
+    }
+
+    public function getParentClass(): JavaClass
+    {
+        return $this->parentClass;
     }
 
     public function debug(): void

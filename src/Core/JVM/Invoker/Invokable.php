@@ -69,6 +69,13 @@ trait Invokable
             ->getConstantPool()
             ->getEntries();
 
+        if ($name === '<init>' && $this->javaClassInvoker->getJavaClass()->hasParentClass()) {
+            array_unshift(
+                $arguments,
+                $this->javaClassInvoker->getJavaClass()->getParentClass()
+            );
+        }
+
         // Find same method
         $convertedPassedArguments = Formatter::buildArgumentsSignature(
             array_map(
@@ -80,11 +87,12 @@ trait Invokable
         );
 
         $method = null;
+
+        // the special method
         foreach ($methodReferences as $methodReference) {
             $methodSignature = Formatter::buildArgumentsSignature(
                 Formatter::parseSignature($constantPool[$methodReference->getDescriptorIndex()]->getString())['arguments']
             );
-
             if ($methodSignature === $convertedPassedArguments) {
                 $method = $methodReference;
                 break;

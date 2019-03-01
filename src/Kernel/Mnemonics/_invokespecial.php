@@ -30,6 +30,7 @@ final class _invokespecial implements OperationInterface
         krsort($arguments);
 
         $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
+
         if ($this->javaClassInvoker->isInvoked($methodName, $signature)) {
             return;
         }
@@ -38,7 +39,18 @@ final class _invokespecial implements OperationInterface
             ->addToSpecialInvokedList($methodName, $signature);
 
         if ($invokerClass instanceof JavaClass) {
-            $result = $invokerClass->getInvoker()->getDynamic()->getMethods()
+            if ($invokerClass->getInvoker()->isInvoked($methodName, $signature)) {
+                return;
+            }
+
+            $invokerClass
+                ->getInvoker()
+                ->addToSpecialInvokedList($methodName, $signature);
+
+            $result = $invokerClass
+                ->getInvoker()
+                ->getDynamic()
+                ->getMethods()
                 ->call(
                     $methodName,
                     ...$arguments

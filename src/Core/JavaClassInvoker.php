@@ -93,9 +93,10 @@ class JavaClassInvoker
     }
 
     /**
+     * @param array $arguments
      * @return JavaClassInvoker
      */
-    public function construct(): self
+    public function construct(...$arguments): self
     {
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
@@ -103,7 +104,7 @@ class JavaClassInvoker
         );
 
         if (isset($this->dynamicMethods['<init>'])) {
-            $this->getDynamic()->getMethods()->call('<init>');
+            $this->getDynamic()->getMethods()->call('<init>', ...$arguments);
         }
 
         return $this;
