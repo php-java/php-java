@@ -124,8 +124,7 @@ trait Invokable
             /**
              * @var FlexibleMethod $method
              */
-            // TODO: will implement invocation for flexible method
-            return $method->invoke();
+            return $method(...$arguments);
         }
 
         $codeAttribute = $getCodeAttribute($method->getAttributes());

@@ -35,7 +35,7 @@ class SuperClassResolver
             }
             $prependItems[$resolvedMethodName] = array_merge(
                 $prependItems[$resolvedMethodName],
-                [new FlexibleMethod($callee)]
+                [new FlexibleMethod($class->getSuperClass(), $callee)]
             );
         }
         return array_merge($prependItems, $this->classes);
