@@ -9,8 +9,8 @@ final class DeprecatedAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
     }
 }
