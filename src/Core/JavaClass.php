@@ -66,6 +66,8 @@ class JavaClass
 
     private $innerClasses = [];
 
+    private $parentClass;
+
     /**
      * JavaClass constructor.
      * @param JavaClassReader $reader
@@ -177,6 +179,22 @@ class JavaClass
     {
         $this->debugTraces[] = $log;
         return $this;
+    }
+
+    public function hasParentClass(): bool
+    {
+        return isset($this->parentClass);
+    }
+
+    public function setParentClass(JavaClass $class): self
+    {
+        $this->parentClass = $class;
+        return $this;
+    }
+
+    public function getParentClass(): JavaClass
+    {
+        return $this->parentClass;
     }
 
     public function debug(): void

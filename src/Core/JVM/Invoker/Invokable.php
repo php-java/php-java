@@ -87,6 +87,8 @@ trait Invokable
                 Formatter::parseSignature($constantPool[$methodReference->getDescriptorIndex()]->getString())['arguments']
             );
 
+            var_dump($methodSignature, $convertedPassedArguments);
+
             if ($methodSignature === $convertedPassedArguments) {
                 $method = $methodReference;
                 break;
@@ -94,8 +96,8 @@ trait Invokable
         }
 
         if ($method === null) {
-            // var_dump($convertedPassedArguments);
-            // debug_print_backtrace();
+
+            debug_print_backtrace();
             throw new NoSuchMethodException('Call to undefined method ' . $name . '.');
         }
 

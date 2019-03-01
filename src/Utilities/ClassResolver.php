@@ -34,15 +34,14 @@ class ClassResolver
         foreach (static::$resolves as [$resourceType, $value]) {
             switch ($resourceType) {
                 case static::RESOURCE_TYPE_FILE:
-                    $relativePathByMainClass = explode('$', $relativePath, 2)[0];
-                    $path = realpath($value . '/' . $relativePathByMainClass . '.class');
+                    $path = realpath($value . '/' . $relativePath . '.class');
                     if (($key = array_search($path, static::$resolvedPaths, true)) !== false) {
                         return static::$resolvedPaths[$key];
                     }
                     if (is_file($path)) {
                         return $resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
-                            new JavaClass(new JavaClassReader($path)),
+                            (new JavaClass(new JavaClassReader($path)))
                         ];
                     }
                     break;
