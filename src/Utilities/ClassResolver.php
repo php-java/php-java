@@ -40,7 +40,7 @@ class ClassResolver
                     }
                     if (is_file($path)) {
                         $initiatedClass = new JavaClass(new JavaClassReader($path));
-                        if ($class !== null) {
+                        if (strpos($relativePath, '$') !== false && $class !== null) {
                             $initiatedClass->setParentClass($class);
                         }
                         return $resolvedPaths[] = [
