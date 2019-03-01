@@ -14,10 +14,6 @@ final class ElementValuePairs implements AnnotationInterface
 
     public function execute(): void
     {
-        $this->elementNameIndex = $this->readUnsignedShort();
-        $this->tag = $this->readByte();
-
-        var_dump($this->elementNameIndex, $this->tag);
-        exit();
+        throw new NotImplementedException(__CLASS__);
     }
 }

@@ -18,6 +18,7 @@ use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Mnemonics\OperationInterface;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\SuperClassResolver;
 use PHPJava\Utilities\TypeResolver;
 
 trait Invokable
@@ -59,15 +60,22 @@ trait Invokable
         /**
          * @var _MethodInfo|null $method
          */
-        $methodReferences = $this->methods[$name] ?? null;
-        if ($methodReferences === null) {
-            throw new UndefinedMethodException('Call to undefined method ' . $name . '.');
+        $methodReferences = array_merge(
+            $this->methods[$name] ?? [],
+            (new SuperClassResolver())->resolveMethod($name, $this->javaClassInvoker->getJavaClass())[$name] ?? []
+        );
+
+        if (empty($methodReferences)) {
+            if (!isset($methodReferences)) {
+                throw new UndefinedMethodException('Call to undefined method ' . $name . '.');
+            }
         }
 
-        $constantPool = $this->javaClassInvoker
+        $currentConstantPool = $this->javaClassInvoker
             ->getJavaClass()
-            ->getConstantPool()
-            ->getEntries();
+            ->getConstantPool();
+
+        $constantPool = $currentConstantPool->getEntries();
 
         if ($name === '<init>' && $this->javaClassInvoker->getJavaClass()->hasParentClass()) {
             array_unshift(
@@ -88,8 +96,11 @@ trait Invokable
 
         $method = null;
 
-        // the special method
         foreach ($methodReferences as $methodReference) {
+            $constantPool = ($currentConstantPool = $methodReference->getConstantPool())->getEntries();
+            /**
+             * @var _MethodInfo $methodReference
+             */
             $methodSignature = Formatter::buildArgumentsSignature(
                 Formatter::parseSignature($constantPool[$methodReference->getDescriptorIndex()]->getString())['arguments']
             );
@@ -140,7 +151,7 @@ trait Invokable
             $mnemonic = $mnemonicMap->getName($opcode);
 
             if ($mnemonic === null) {
-                throw new UndefinedOpCodeException('Call to undefined OpCode ' . sprintf('0x%X', $cursor) . '.');
+                throw new UndefinedOpCodeException('Call to undefined OpCode ' . sprintf('0x%X', $opcode) . '.');
             }
             $pointer = $reader->getOffset() - 1;
 
@@ -152,7 +163,7 @@ trait Invokable
              * @var OperationInterface|Accumulator|ConstantPool $executor
              */
             $executor = new $fullName();
-            $executor->setConstantPool($this->javaClassInvoker->getJavaClass()->getConstantPool());
+            $executor->setConstantPool($currentConstantPool);
             $executor->setParameters(
                 $this->javaClassInvoker,
                 $reader,
@@ -170,5 +181,10 @@ trait Invokable
 
         $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
         return null;
+    }
+
+    public function getList(): array
+    {
+        return $this->methods;
     }
 }

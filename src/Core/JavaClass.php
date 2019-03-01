@@ -12,6 +12,7 @@ use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Maps\AccessFlag;
 use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
 
 class JavaClass
@@ -50,7 +51,7 @@ class JavaClass
 
     private $accessFlag = 0;
     private $thisClass = 0;
-    private $superClass = 0;
+    private $superClassIndex = 0;
 
     /**
      * @var _Utf8|null
@@ -68,11 +69,14 @@ class JavaClass
 
     private $parentClass;
 
+    private $superClass;
+
     /**
      * JavaClass constructor.
      * @param JavaClassReader $reader
      * @throws ValidatorException
      * @throws \PHPJava\Exceptions\ReadEntryException
+     * @throws \PHPJava\Imitation\java\lang\ClassNotFoundException
      */
     public function __construct(JavaClassReader $reader)
     {
@@ -104,7 +108,22 @@ class JavaClass
         $this->className = $constantPoolEntries[$constantPoolEntries[$this->thisClass]->getClassIndex()];
 
         // read super class
-        $this->superClass = $reader->getBinaryReader()->readUnsignedShort();
+        $this->superClassIndex = $reader->getBinaryReader()->readUnsignedShort();
+
+        $cpInfo = $this->getConstantPool()->getEntries();
+        [$resolvedType, $superClass] = ClassResolver::resolve(
+            $cpInfo[$cpInfo[$this->superClassIndex]->getClassIndex()]->getString(),
+            $this
+        );
+
+        switch ($resolvedType) {
+            case ClassResolver::RESOLVED_TYPE_IMITATION:
+                $this->superClass = new $superClass();
+                break;
+            default:
+                $this->superClass = $superClass;
+                break;
+        }
 
         // read interfaces
         $this->activeInterfaces = new ActiveInterface(
@@ -195,6 +214,11 @@ class JavaClass
     public function getParentClass(): JavaClass
     {
         return $this->parentClass;
+    }
+
+    public function getSuperClass()
+    {
+        return $this->superClass;
     }
 
     public function debug(): void
