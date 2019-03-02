@@ -2,6 +2,7 @@
 namespace PHPJava\Core;
 
 use PHPJava\Imitation\java\io\FileNotFoundException;
+use PHPJava\Imitation\java\lang\ClassNotFoundException;
 
 class JavaArchive
 {
@@ -13,7 +14,15 @@ class JavaArchive
     private $files = [];
     private $classes = [];
 
-    public function __construct(string $jarFile)
+    /**
+     * @param string $jarFile
+     * @param string|null $entryPoint
+     * @throws FileNotFoundException
+     * @throws \PHPJava\Exceptions\ReadEntryException
+     * @throws \PHPJava\Exceptions\ValidatorException
+     * @throws \PHPJava\Imitation\java\lang\ClassNotFoundException
+     */
+    public function __construct(string $jarFile, string $entryPoint = null)
     {
         $this->jarFile = $jarFile;
         $archive = new \ZipArchive();
@@ -49,13 +58,11 @@ class JavaArchive
         );
 
         foreach ($this->files as $className => $code) {
-            $this->classes[$className] = new JavaClass(new JavaClassInlineFileReader(
+            $this->classes[str_replace('/', '.', $className)] = new JavaClass(new JavaClassInlineFileReader(
                 $className,
                 $code
             ));
         }
-
-        var_dump($this->classes);
     }
 
     public function __debugInfo()
@@ -63,23 +70,36 @@ class JavaArchive
         return [
             'version' => $this->getVersion(),
             'createdBy' => $this->getCreatedBy(),
-            'entrypoint' => $this->getEntryPoint(),
+            'entryPointName' => $this->getEntryPointName(),
             'file' => $this->jarFile,
         ];
     }
 
-    public function getVersion()
+    public function getVersion(): ?string
     {
         return $this->manifestData['manifest-version'] ?? null;
     }
 
-    public function getCreatedBy()
+    public function getCreatedBy(): ?string
     {
         return $this->manifestData['created-by'] ?? null;
     }
 
-    public function getEntryPoint()
+    public function getEntryPointName(): ?string
     {
         return $this->manifestData['main-class'] ?? null;
+    }
+
+    public function getClasses(): array
+    {
+        return $this->classes;
+    }
+
+    public function getClassByName(string $name): JavaClass
+    {
+        if (!isset($this->classes[$name])) {
+            throw new ClassNotFoundException($name . ' does not found on ' . $this->jarFile . '.');
+        }
+        return $this->classes[$name];
     }
 }
