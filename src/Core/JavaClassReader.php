@@ -10,6 +10,10 @@ class JavaClassReader
 
     public function __construct(string $file)
     {
+        if (!preg_match('/\.class$/', $file, $matches)) {
+            // Add extension
+            $file = $file . '.class';
+        }
         $this->handle = fopen($file, 'r');
         $this->binaryReader = new JVM\Stream\BinaryReader($this->handle);
 
