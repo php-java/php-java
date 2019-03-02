@@ -31,6 +31,16 @@ class JavaArchive
         $archive = new \ZipArchive();
         $archive->open($jarFile);
         $this->expandedHArchive = $archive;
+
+        // Add resolving path
+        ClassResolver::add(
+            [
+                [ClassResolver::RESOURCE_TYPE_FILE, dirname($jarFile)],
+                [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
+                [ClassResolver::RESOURCE_TYPE_JAR, $this],
+            ]
+        );
+
         for ($i = 0; $i < $this->expandedHArchive->numFiles; $i++) {
             $name = $archive->getNameIndex($i);
             if ($name[strlen($name) - 1] === '/') {
@@ -66,15 +76,6 @@ class JavaArchive
                 $code
             ));
         }
-
-        // Add resolving path
-        ClassResolver::add(
-            [
-                [ClassResolver::RESOURCE_TYPE_FILE, dirname($jarFile)],
-                [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
-                [ClassResolver::RESOURCE_TYPE_JAR, $this],
-            ]
-        );
     }
 
     /**
