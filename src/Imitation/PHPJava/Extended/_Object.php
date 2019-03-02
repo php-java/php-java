@@ -9,6 +9,11 @@ trait _Object
     {
     }
 
+    public function __destruct()
+    {
+        $this->finalize();
+    }
+
     public function __call($name, $arguments)
     {
         throw new NoSuchMethodException($name . ' does not exist on ' . get_class($this));
@@ -61,5 +66,9 @@ trait _Object
     public function wait(int $timeout = null, int $nanos = null): void
     {
         // not implemented.
+    }
+
+    public function finalize(): void
+    {
     }
 }

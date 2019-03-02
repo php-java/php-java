@@ -165,6 +165,18 @@ class JavaClass
         $this->invoker = new JavaClassInvoker($this);
     }
 
+    public function __debugInfo()
+    {
+        return [
+            'className' => $this->getClassName(),
+            'superClass' => get_class($this->getSuperClass()),
+            'methods' => [
+                'static' => array_keys($this->invoker->getStatic()->getMethods()->getList()),
+                'dynamic' => array_keys($this->invoker->getDynamic()->getMethods()->getList()),
+            ],
+        ];
+    }
+
     public function getClassName(bool $shortName = false): string
     {
         if ($shortName === true) {
