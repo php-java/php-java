@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Imitation\java\io\FileNotFoundException;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
 use PHPJava\Utilities\ClassResolver;
@@ -76,6 +77,24 @@ class JavaArchive
         );
     }
 
+    /**
+     * Execute jar file.
+     *
+     * @return mixed
+     * @throws ClassNotFoundException
+     */
+    public function execute()
+    {
+        return $this->getClassByName($this->getEntryPointName())
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                static::DEFAULT_ENTRYPOINT_NAME,
+                []
+            );
+    }
+
     public function __debugInfo()
     {
         return [
@@ -84,6 +103,7 @@ class JavaArchive
             'entryPointName' => $this->getEntryPointName(),
             'file' => $this->jarFile,
             'classes' => $this->getClasses(),
+            'classPaths' => $this->getClassPaths(),
         ];
     }
 
@@ -102,6 +122,18 @@ class JavaArchive
         return $this->manifestData['main-class'] ?? null;
     }
 
+    public function getClassPaths(): array
+    {
+        $classPaths = [];
+        foreach (explode(' ',  $this->manifestData['class-path'] ?? []) as $path) {
+            if (empty($path)) {
+                continue;
+            }
+            $classPaths[] = $path;
+        }
+        return $classPaths;
+    }
+
     public function getClasses(): array
     {
         return $this->classes;
@@ -113,20 +145,5 @@ class JavaArchive
             throw new ClassNotFoundException(str_replace('/', '.', $name) . ' does not found on ' . $this->jarFile . '.');
         }
         return $this->classes[$name];
-    }
-
-    private function getEntryPointFinderPath(): array
-    {
-        if (strpos('.', $this->getEntryPointName()) === false) {
-            return [
-                [$this->getEntryPointName(), static::DEFAULT_ENTRYPOINT_NAME],
-            ];
-        }
-        $splitEntryPoint = explode('.', $this->getEntryPointName());
-        $methodOrClassName = array_pop($splitEntryPoint);
-        return [
-            [implode('.', $splitEntryPoint), $methodOrClassName],
-            [$this->getEntryPointName(), static::DEFAULT_ENTRYPOINT_NAME],
-        ];
     }
 }
