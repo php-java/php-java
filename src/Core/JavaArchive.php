@@ -8,6 +8,7 @@ use PHPJava\Utilities\ClassResolver;
 class JavaArchive
 {
     const MANIFEST_FILE_NAME = 'META-INF/MANIFEST.MF';
+    const DEFAULT_ENTRYPOINT_NAME = 'main';
 
     private $manifestData = [];
     private $jarFile;
@@ -112,5 +113,20 @@ class JavaArchive
             throw new ClassNotFoundException(str_replace('/', '.', $name) . ' does not found on ' . $this->jarFile . '.');
         }
         return $this->classes[$name];
+    }
+
+    private function getEntryPointFinderPath(): array
+    {
+        if (strpos('.', $this->getEntryPointName()) === false) {
+            return [
+                [$this->getEntryPointName(), static::DEFAULT_ENTRYPOINT_NAME],
+            ];
+        }
+        $splitEntryPoint = explode('.', $this->getEntryPointName());
+        $methodOrClassName = array_pop($splitEntryPoint);
+        return [
+            [implode('.', $splitEntryPoint), $methodOrClassName],
+            [$this->getEntryPointName(), static::DEFAULT_ENTRYPOINT_NAME],
+        ];
     }
 }
