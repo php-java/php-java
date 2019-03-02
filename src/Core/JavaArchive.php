@@ -78,14 +78,17 @@ class JavaArchive
     }
 
     /**
-     * Execute jar file.
-     *
      * @return mixed
      * @throws ClassNotFoundException
+     * @throws UndefinedEntrypointException
      */
     public function execute()
     {
-        return $this->getClassByName($this->getEntryPointName())
+        if ($this->getEntryPointName() === null) {
+            throw new UndefinedEntrypointException('No entrypoint.');
+        }
+        return $this
+            ->getClassByName($this->getEntryPointName())
             ->getInvoker()
             ->getStatic()
             ->getMethods()
