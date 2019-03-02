@@ -128,7 +128,7 @@ class JavaArchive
     public function getClassPaths(): array
     {
         $classPaths = [];
-        foreach (explode(' ',  $this->manifestData['class-path'] ?? []) as $path) {
+        foreach (explode(' ', $this->manifestData['class-path'] ?? []) as $path) {
             if (empty($path)) {
                 continue;
             }
