@@ -23,7 +23,6 @@ Sorry, I do not have enough time (T_T)
 
 - Implements
 - Event
-- Java Archive
 - double/float calculation.
 - Many built-in libraries (ex. java.lang.xxx, java.io.xxx and so on) 
 - etc...
@@ -55,9 +54,9 @@ $ javac -UTF8 /path/to/HelloWorld.java
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassFileReader;
 
-(new JavaClass(new JavaClassReader('/path/to/HelloWorld.class')))
+(new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -73,6 +72,33 @@ $ php /path/to/HelloWorld.php
 Hello World
 ```
 
+## Java Archive (Execute to *.jar file)
+
+- 1) Build your java files to class. Building example is below.
+```
+$ javac -encoding UTF8 -d build src/*
+$ cd build && jar -cvfe ../Test.jar Test *
+```
+
+- 2) execute jar on PHPJava with enrtypoint or your targeted method.
+```php
+<?php
+use PHPJava\Core\JavaArchive;
+
+(new JavaArchive('Test.jar'))->execute();
+
+// or
+(new JavaArchive('Test.jar'))
+    ->getClassByName('Test')
+    ->getInvoker()
+    ->getStatic()
+    ->getMethods()
+    ->call(
+        'main',
+        []
+    );
+```
+
 ### Get/Set a static fields
 
 - ex) Set or Get a static fields as follows.
@@ -80,9 +106,9 @@ Hello World
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassFileReader;
 
-$staticFieldAccessor = (new JavaClass(new JavaClassReader('/path/to/HelloWorld.class')))
+$staticFieldAccessor = (new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
     ->getInvoker()
     ->getStatic()
     ->getFields();
@@ -101,9 +127,9 @@ echo $staticFieldAccessor->get('fieldName');
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassFileReader;
 
-(new JavaClass(new JavaClassReader('/path/to/HelloWorld.class')))
+(new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -116,7 +142,7 @@ use PHPJava\Core\JavaClassReader;
     );
 
 // Or if called method have return value then you can store to variable.
-$result = (new JavaClass(new JavaClassReader('/path/to/HelloWorld.class')))
+$result = (new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
    ->getInvoker()
    ->getStatic()
    ->getMethods()
@@ -141,9 +167,9 @@ If you want to get/set dynamic fields, you need call to `construct` method on Ja
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassFileReader;
 
-$javaClass = new JavaClass(new JavaClassReader('/path/to/HelloWorld.class'));
+$javaClass = new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class'));
 
 $javaClass->getInvoker()->construct();
 
@@ -167,9 +193,9 @@ If you want to get/set dynamic method (same as field), you need call to `constru
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassFileReader;
 
-$dynamicMethodAccessor = (new JavaClass(new JavaClassReader('/path/to/HelloWorld.class')))
+$dynamicMethodAccessor = (new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
      ->getInvoker()
      ->construct()
      ->getDynamic()
@@ -205,9 +231,9 @@ echo $result;
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassFileReader;
 
-$javaClass = new JavaClass(new JavaClassReader('/path/to/HelloWorld.class'));
+$javaClass = new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class'));
 
 $javaClass
     ->getInvoker()
