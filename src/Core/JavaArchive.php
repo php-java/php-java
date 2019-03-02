@@ -3,6 +3,7 @@ namespace PHPJava\Core;
 
 use PHPJava\Imitation\java\io\FileNotFoundException;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
+use PHPJava\Utilities\ClassResolver;
 
 class JavaArchive
 {
@@ -63,6 +64,15 @@ class JavaArchive
                 $code
             ));
         }
+
+        // Add resolving path
+        ClassResolver::add(
+            [
+                [ClassResolver::RESOURCE_TYPE_FILE, dirname($jarFile)],
+                [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
+                [ClassResolver::RESOURCE_TYPE_JAR, $this],
+            ]
+        );
     }
 
     public function __debugInfo()
@@ -72,6 +82,7 @@ class JavaArchive
             'createdBy' => $this->getCreatedBy(),
             'entryPointName' => $this->getEntryPointName(),
             'file' => $this->jarFile,
+            'classes' => $this->getClasses(),
         ];
     }
 
@@ -98,7 +109,7 @@ class JavaArchive
     public function getClassByName(string $name): JavaClass
     {
         if (!isset($this->classes[$name])) {
-            throw new ClassNotFoundException($name . ' does not found on ' . $this->jarFile . '.');
+            throw new ClassNotFoundException(str_replace('/', '.', $name) . ' does not found on ' . $this->jarFile . '.');
         }
         return $this->classes[$name];
     }

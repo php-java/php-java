@@ -1,8 +1,10 @@
 <?php
 namespace PHPJava\Utilities;
 
+use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Imitation\java\lang\ClassNotFoundException;
 
 class ClassResolver
 {
@@ -13,6 +15,7 @@ class ClassResolver
 
     // resource types
     const RESOURCE_TYPE_FILE = 'RESOURCE_TYPE_FILE';
+    const RESOURCE_TYPE_JAR = 'RESOLVED_TYPE_JAR';
 
     // resolved types
     const RESOLVED_TYPE_CLASS = 'RESOLVED_TYPE_CLASS';
@@ -49,13 +52,25 @@ class ClassResolver
                         ];
                     }
                     break;
+                case static::RESOURCE_TYPE_JAR:
+                    /**
+                     * @var JavaArchive $value
+                     */
+                    try {
+                        return $resolvedPaths[] = [
+                            static::RESOLVED_TYPE_CLASS,
+                            $value->getClassByName($relativePath),
+                        ];
+                    } catch (ClassNotFoundException $e) {
+                    }
+                    break;
             }
         }
 
         $className = '\\PHPJava\\Imitation\\' . implode('\\', $buildClassPath);
 
         if (!class_exists($className)) {
-            throw new \PHPJava\Imitation\java\lang\ClassNotFoundException(str_replace(['\\PHPJava\\Imitation\\', '\\'], ['', '.'], $className) . ' class does not exist.');
+            throw new ClassNotFoundException(str_replace(['\\PHPJava\\Imitation\\', '\\'], ['', '.'], $className) . ' class does not exist.');
         }
 
         return [
@@ -70,7 +85,6 @@ class ClassResolver
             foreach ($valuesOrResourceType as [$resourceType, $value]) {
                 static::add($resourceType, $value);
             }
-
             return;
         }
 
