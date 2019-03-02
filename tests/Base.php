@@ -18,7 +18,7 @@ class Base extends TestCase
         foreach ($this->fixtures as $fixture) {
             exec('javac -classpath ' . $pathRoot . ':' . $pathRoot . 'caches -encoding UTF8 ' . $pathRoot . str_replace(['../', './'], '', $fixture) . '.java -d ' . __DIR__ . '/caches');
             $this->initiatedJavaClasses[$fixture] = new \PHPJava\Core\JavaClass(
-                new \PHPJava\Core\JavaClassReader(
+                new \PHPJava\Core\JavaClassFileReader(
                     $this->getClassName($fixture)
                 )
             );

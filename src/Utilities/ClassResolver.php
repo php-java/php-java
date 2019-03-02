@@ -2,7 +2,7 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassFileReader;
 
 class ClassResolver
 {
@@ -39,7 +39,7 @@ class ClassResolver
                         return static::$resolvedPaths[$key];
                     }
                     if (is_file($path)) {
-                        $initiatedClass = new JavaClass(new JavaClassReader($path));
+                        $initiatedClass = new JavaClass(new JavaClassFileReader($path));
                         if (strpos($relativePath, '$') !== false && $class !== null) {
                             $initiatedClass->setParentClass($class);
                         }
