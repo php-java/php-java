@@ -71,7 +71,7 @@ class JavaArchive
         );
 
         foreach ($this->files as $className => $code) {
-            $this->classes[str_replace('/', '.', $className)] = new JavaClass(new JavaClassInlineReader(
+            $this->classes[str_replace('/', '.', $className)] = new JavaClass(new JavaClassInlineReaderInterface(
                 $className,
                 $code
             ));

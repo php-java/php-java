@@ -1,13 +1,13 @@
 <?php
 namespace PHPJava\Kernel\Core;
 
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassReaderInterface;
 
 trait BinaryReader
 {
     private $reader;
 
-    public function __construct(JavaClassReader $reader)
+    public function __construct(JavaClassReaderInterface $reader)
     {
         $this->reader = $reader;
     }

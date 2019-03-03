@@ -73,12 +73,12 @@ class JavaClass
 
     /**
      * JavaClass constructor.
-     * @param JavaClassReader $reader
+     * @param JavaClassReaderInterface $reader
      * @throws ValidatorException
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Imitation\java\lang\ClassNotFoundException
      */
-    public function __construct(JavaClassReader $reader)
+    public function __construct(JavaClassReaderInterface $reader)
     {
         // Validate Java file
         if (!(new MagicByte($reader->getBinaryReader()->readUnsignedInt()))->isValid()) {

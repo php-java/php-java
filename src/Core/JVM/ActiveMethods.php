@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM;
 
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassReaderInterface;
 use PHPJava\Kernel\Structures\_MethodInfo;
 
 class ActiveMethods
@@ -9,7 +9,7 @@ class ActiveMethods
     private $entries = [];
     private $reader;
 
-    public function __construct(JavaClassReader $reader, int $entries, ConstantPool $constantPool)
+    public function __construct(JavaClassReaderInterface $reader, int $entries, ConstantPool $constantPool)
     {
         $this->reader = $reader;
         for ($i = 0; $i < $entries; $i++) {

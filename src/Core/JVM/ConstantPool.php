@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM;
 
-use PHPJava\Core\JavaClassReader;
+use PHPJava\Core\JavaClassReaderInterface;
 use PHPJava\Exceptions\ReadEntryException;
 use PHPJava\Kernel\Maps\ConstantPoolTag;
 use PHPJava\Kernel\Structures\_Class;
@@ -22,11 +22,11 @@ class ConstantPool
     private $reader;
 
     /**
-     * @param JavaClassReader $reader
+     * @param JavaClassReaderInterface $reader
      * @param int $entries
      * @throws ReadEntryException
      */
-    public function __construct(JavaClassReader $reader, int $entries)
+    public function __construct(JavaClassReaderInterface $reader, int $entries)
     {
         $this->reader = $reader;
 
