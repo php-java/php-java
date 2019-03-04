@@ -196,7 +196,7 @@ class BinaryTool
         return base_convert($build, 2, 10);
     }
 
-    final public static function convertDoubleToIEEE754($doubleValue, $rounded = 8)
+    final public static function convertDoubleToIEEE754($doubleValue)
     {
         $bits = $doubleValue;
         $s = ($bits >> 63) == 0 ? 1 : -1;
@@ -205,12 +205,12 @@ class BinaryTool
         return $s * $m * pow(2, $e - 1075);
     }
 
-    final public static function convertFloatToIEEE754($floatValue, $rounded = 8)
+    final public static function convertFloatToIEEE754($floatValue)
     {
         $bits = $floatValue;
         $s = ($bits >> 31) == 0 ? 1 : -1;
         $e = ($bits >> 23) & 0xff;
-        $m = ($e == 0) ? ($bits & 0x7fffff) << 1 : ($bits & 0x7fffff) | 0x800000;;
+        $m = ($e == 0) ? (($bits & 0x7fffff) << 1) : ($bits & 0x7fffff) | 0x800000;
         return $s * $m * pow(2, $e - 150);
     }
 }
