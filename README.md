@@ -308,8 +308,8 @@ public static void main(java.lang.String[])
 |float |\PHPJava\Kernel\Types\\_Float (including `__toString`), string, float |
 |double |\PHPJava\Kernel\Types\\_Char (including `__toString`), string, float |
 
-- **Problem 3:** PHPJava cannot calculate big numbered double and float values because of `gmp_pow` cannot calculate negative exponents.
-  So PHPJava use built-in functions which is `pow`.
+- **Problem 3:** The PHPJava cannot calculate big numbered `double` and `float` values because of `gmp_pow` cannot calculate negative exponents.
+  So the PHPJava use built-in functions which is `pow`.
 
 ## Run unit tests
 
