@@ -8,7 +8,6 @@ class BinaryTool
         if (is_int($data)) {
             return sprintf('%X', $data);
         }
-
         return strtoupper(base_convert($data, 10, 16));
     }
 
@@ -18,11 +17,7 @@ class BinaryTool
 
         // reverse
         for ($i = 0; $i < $bitSize; $i++) {
-            if ($bits[$i] === '0') {
-                $bits[$i] = '1';
-            } else {
-                $bits[$i] = '0';
-            }
+            $bits[$i] = $bits[$i] === '0' ? '1' : '0';
         }
 
         return $bits;
@@ -36,16 +31,10 @@ class BinaryTool
             // nop
         }
 
-        if ($index === -1) {
-            throw new BinaryToolsException('Passed parameter was overflow');
-        }
-
         $bits[$index] = '1';
-
         for ($i = $index + 1; $i < $bitSize; $i++) {
             $bits[$i] = '0';
         }
-
 
         return $bits;
     }
@@ -74,14 +63,7 @@ class BinaryTool
         }
 
         $convert = self::addOneBit(self::reverseBits($value));
-
-        if ($convert[0] === '1') {
-            $convert = '-' . base_convert($convert, 2, 10);
-        } else {
-            $convert = base_convert($convert, 2, 10);
-        }
-
-        return $convert;
+        return ($convert[0] === '1' ? '-' : '') . base_convert($convert, 2, 10);
     }
 
     final public static function multiply($value1, $value2, $bytes)
@@ -91,16 +73,13 @@ class BinaryTool
         if (function_exists('gmp_mul')) {
             $a = gmp_init($value1);
             $b = gmp_init($value2);
-
             return gmp_strval(gmp_mul($a, $b));
-        } elseif (function_exists('bcmul')) {
-            return bcmul($value1, $value2);
-        } else {
-            throw new BinaryToolsException('Cannot multiply values.');
         }
+
+        return $value1 * $value2;
     }
 
-    final public static function add($value1, $value2, $bytes)
+    final public static function add($value1, $value2)
     {
         $value1 = (int) $value1;
         $value2 = (int) $value2;
@@ -109,11 +88,8 @@ class BinaryTool
             $b = gmp_init($value2);
 
             return gmp_strval(gmp_add($a, $b));
-        } elseif (function_exists('bcadd')) {
-            return bcadd($value1, $value2);
-        } else {
-            throw new BinaryToolsException('Cannot add values.');
         }
+        return $value1 + $value2;
     }
 
     final public static function sub($value1, $value2, $bytes)
@@ -125,11 +101,8 @@ class BinaryTool
             $b = gmp_init($value2);
 
             return gmp_strval(gmp_sub($a, $b));
-        } elseif (function_exists('bcsub')) {
-            return bcsub($value1, $value2);
-        } else {
-            throw new BinaryToolsException('Cannot sub values.');
         }
+        return $value1 - $value2;
     }
 
     final public static function div($value1, $value2, $bytes)
@@ -141,22 +114,21 @@ class BinaryTool
             $b = gmp_init($value2);
 
             return gmp_strval(gmp_div($a, $b));
-        } elseif (function_exists('bcdiv')) {
-            return bcdiv($value1, $value2);
-        } else {
-            throw new BinaryToolsException('Cannot div values.');
         }
+
+        return $value1 / $value2;
     }
 
-    final public static function shiftLeft($value1, $value2, $bytes)
+    final public static function shiftLeft($value1, $value2)
     {
         $value1 = (int) $value1;
         $value2 = (int) $value2;
-        $bits = base_convert($value1, 10, 2);
 
-        $bits = sprintf('%0' . ($bytes * 8) . 's', $bits . str_repeat('0', $value2));
+        if (function_exists('gmp_mul')) {
+            return gmp_strval(gmp_mul($value1, gmp_pow(2, $value2)));
+        }
 
-        return base_convert($bits, 2, 10);
+        return $value1 << $value2;
     }
 
     final public static function unsignedShiftRight($value1, $value2, $bytes)
@@ -188,11 +160,7 @@ class BinaryTool
 
         $build = '';
         for ($i = 0; $i < $bytes * 8; $i++) {
-            if ($value1[$i] === '1' || $value2[$i] == '1') {
-                $build .= '1';
-            } else {
-                $build .= '0';
-            }
+            $build .= ($value1[$i] === '1' || $value2[$i] == '1') ? '1' : '0';
         }
 
         return base_convert($build, 2, 10);
@@ -207,12 +175,7 @@ class BinaryTool
 
         $build = '';
         for ($i = 0; $i < $bytes * 8; $i++) {
-            if (($value1[$i] === '1' && $value2[$i] === '0') ||
-                ($value1[$i] === '0' && $value2[$i] === '1')) {
-                $build .= '1';
-            } else {
-                $build .= '0';
-            }
+                $build .= (($value1[$i] === '1' && $value2[$i] === '0') || ($value1[$i] === '0' && $value2[$i] === '1')) ? '1' : 0;
         }
 
         return base_convert($build, 2, 10);
@@ -227,41 +190,27 @@ class BinaryTool
 
         $build = '';
         for ($i = 0; $i < $bytes * 8; $i++) {
-            if ($value1[$i] === '1' && $value2[$i] === '1') {
-                $build .= '1';
-            } else {
-                $build .= '0';
-            }
+            $build .= $value1[$i] === '1' && $value2[$i] === '1' ? '1' : '0';
         }
 
         return base_convert($build, 2, 10);
     }
 
-    final public static function convertDoubleToIEEE754($doubleValue, $rounded = 8)
+    final public static function convertDoubleToIEEE754($doubleValue)
     {
-        $doubleValue = sprintf('%063s', base_convert($doubleValue, 10, 2));
+        $bits = $doubleValue;
+        $s = ($bits >> 63) == 0 ? 1 : -1;
+        $e = ($bits >> 52) & 0x7ff;
+        $m = ($e == 0) ? (($bits & 0xfffffffffffff) << 1) : ($bits & 0xfffffffffffff) | 0x10000000000000;
+        return $s * $m * pow(2, $e - 1075);
+    }
 
-        $sign = $doubleValue[0];
-        $exponent = substr($doubleValue, 1, 10);
-        $fraction = substr($doubleValue, 11);
-
-        // double scale
-        $scale = 52;
-
-        $fractionData = 0;
-        for ($i = 0; $i < 52; $i++) {
-            $fractionData = bcadd($fractionData, bcmul($fraction[$i], bcpow(2, -1 * ($i + 1), $scale), $scale), $scale);
-        }
-
-        // calc sign
-        $operand1 = -1 * $sign;
-
-        // calc fraction
-        $operand2 = bcadd(1, $fractionData, $scale);
-
-        // calc exponent and bias(?)
-        $operand3 = bcpow(2, bindec($exponent), $scale);
-
-        return bcmul(-2, bcmul(bcmul($operand1, $operand2, $scale), $operand3, $scale), $rounded);
+    final public static function convertFloatToIEEE754($floatValue)
+    {
+        $bits = $floatValue;
+        $s = ($bits >> 31) == 0 ? 1 : -1;
+        $e = ($bits >> 23) & 0xff;
+        $m = ($e == 0) ? (($bits & 0x7fffff) << 1) : ($bits & 0x7fffff) | 0x800000;
+        return $s * $m * pow(2, $e - 150);
     }
 }

@@ -14,6 +14,6 @@ final class _iadd implements OperationInterface
         $leftValue = $this->getStack();
         $rightValue = $this->getStack();
 
-        $this->pushStack(BinaryTool::add($leftValue, $rightValue, 4));
+        $this->pushStack(BinaryTool::add($leftValue, $rightValue));
     }
 }

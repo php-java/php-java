@@ -14,6 +14,6 @@ final class _ishl implements OperationInterface
         $value1 = $this->getStack();
         $value2 = $this->getStack();
 
-        $this->pushStack(BinaryTool::shiftLeft($value1, $value2, 4));
+        $this->pushStack(BinaryTool::shiftLeft($value1, $value2));
     }
 }

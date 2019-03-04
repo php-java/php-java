@@ -16,8 +16,11 @@ class _Double implements StructureInterface
         $this->highBytes = $this->readUnsignedInt();
         $this->lowBytes = $this->readUnsignedInt();
     }
+
     public function getBytes()
     {
-        return ($this->highBytes << 32) + $this->lowBytes;
+        return BinaryTool::convertDoubleToIEEE754(
+            ($this->highBytes << 32) + $this->lowBytes
+        );
     }
 }
