@@ -18,5 +18,4 @@ class FileTypeResolver
             return ClassResolver::RESOURCE_TYPE_FILE;
         }
     }
-
 }
