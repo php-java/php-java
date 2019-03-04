@@ -289,11 +289,11 @@ public static void main(java.lang.String[])
   - **LOCAL STORAGE** is showing stacked items on a method.
 
 ## PHP problems
-- The PHP is cannot calculating big numbers because of PHP is different to the Java.
+- **Problem 1:** The PHP is cannot calculating big numbers because of PHP is different to the Java.
   But the PHPJava use `bcmath` functions and `gmp` functions to a certain extent to cover to calculate.
   The PHPJava return valued is mixed why therefore We recommend to cast to `string` on the PHPJava.
 
-- The PHPJava cannot cover to Java's types completely because of PHP is different to the Java.
+- **Problem 2:** The PHPJava cannot cover to Java's types completely because of PHP is different to the Java.
   The Java and the PHPJava comparison table is below.
   
 |Java        |PHPJava         |
@@ -307,6 +307,9 @@ public static void main(java.lang.String[])
 |long |\PHPJava\Kernel\Types\\_Long (including `__toString`), string, int |
 |float |\PHPJava\Kernel\Types\\_Float (including `__toString`), string, float |
 |double |\PHPJava\Kernel\Types\\_Char (including `__toString`), string, float |
+
+- **Problem 3:** PHPJava cannot calculate big numbered double and float values because of `gmp_pow` cannot calculate negative exponents.
+  So PHPJava use built-in functions which is `pow`.
 
 ## Run unit tests
 

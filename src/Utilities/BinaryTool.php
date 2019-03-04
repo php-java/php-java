@@ -201,8 +201,7 @@ class BinaryTool
         $bits = $doubleValue;
         $s = ($bits >> 63) == 0 ? 1 : -1;
         $e = ($bits >> 52) & 0x7ff;
-        $m = ($e == 0) ?
-            (($bits & 0xfffffffffffff) << 1) : ($bits & 0xfffffffffffff) | 0x10000000000000;
+        $m = ($e == 0) ? (($bits & 0xfffffffffffff) << 1) : ($bits & 0xfffffffffffff) | 0x10000000000000;
         return $s * $m * pow(2, $e - 1075);
     }
 
