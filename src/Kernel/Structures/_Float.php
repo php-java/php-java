@@ -16,6 +16,6 @@ class _Float implements StructureInterface
     }
     public function getBytes()
     {
-        return $this->bytes;
+        return BinaryTool::convertFloatToIEEE754($this->bytes);
     }
 }

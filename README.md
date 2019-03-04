@@ -23,7 +23,6 @@ Sorry, I do not have enough time (T_T)
 
 - Implements
 - Event
-- double/float calculation.
 - Many built-in libraries (ex. java.lang.xxx, java.io.xxx and so on) 
 - etc...
 
