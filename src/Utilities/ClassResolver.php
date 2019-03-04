@@ -4,6 +4,7 @@ namespace PHPJava\Utilities;
 use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Core\JavaClassReaderInterface;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
 
 class ClassResolver
@@ -15,7 +16,8 @@ class ClassResolver
 
     // resource types
     const RESOURCE_TYPE_FILE = 'RESOURCE_TYPE_FILE';
-    const RESOURCE_TYPE_JAR = 'RESOLVED_TYPE_JAR';
+    const RESOURCE_TYPE_JAR = 'RESOURCE_TYPE_JAR';
+    const RESOURCE_TYPE_CLASS = 'RESOURCE_TYPE_CLASS';
 
     // resolved types
     const RESOLVED_TYPE_CLASS = 'RESOLVED_TYPE_CLASS';
@@ -60,6 +62,18 @@ class ClassResolver
                         return $resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
                             $value->getClassByName($relativePath),
+                        ];
+                    } catch (ClassNotFoundException $e) {
+                    }
+                    break;
+                case static::RESOLVED_TYPE_CLASS:
+                    /**
+                     * @var JavaClassReaderInterface $value
+                     */
+                    try {
+                        return $resolvedPaths[] = [
+                            static::RESOLVED_TYPE_CLASS,
+                            new JavaClass($value),
                         ];
                     } catch (ClassNotFoundException $e) {
                     }

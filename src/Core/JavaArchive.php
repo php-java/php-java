@@ -5,6 +5,7 @@ use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Imitation\java\io\FileNotFoundException;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
 use PHPJava\Utilities\ClassResolver;
+use PHPJava\Utilities\FileTypeResolver;
 
 class JavaArchive
 {
@@ -76,6 +77,29 @@ class JavaArchive
                 $code
             ));
         }
+
+        $currentDirectory = getcwd();
+        foreach ($this->getClassPaths() as $classPath) {
+            $resolvePath = $classPath[0] === '/' ? $classPath : ($currentDirectory . '/' . $classPath);
+            $realpath = realpath($resolvePath);
+            if ($realpath === false) {
+                throw new FileNotFoundException($classPath . ' does not exist.');
+            }
+
+            $value = $realpath;
+
+            switch ($fileType = FileTypeResolver::resolve($resolvePath)) {
+                case ClassResolver::RESOLVED_TYPE_CLASS:
+                    $value = new JavaClassFileReader($value);
+                    break;
+                case ClassResolver::RESOURCE_TYPE_JAR:
+                    $value = new JavaArchive($value);
+                    break;
+                case ClassResolver::RESOURCE_TYPE_FILE:
+                    break;
+            }
+            ClassResolver::add($fileType, $value);
+        }
     }
 
     /**
@@ -129,7 +153,7 @@ class JavaArchive
     public function getClassPaths(): array
     {
         $classPaths = [];
-        foreach (explode(' ', $this->manifestData['class-path'] ?? []) as $path) {
+        foreach (explode(' ', $this->manifestData['class-path'] ?? '') as $path) {
             if (empty($path)) {
                 continue;
             }
