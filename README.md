@@ -7,11 +7,11 @@
 <p align="center"><img src="./docs/img/phpjava.jpg" height="300"></p>
 
 # What is the PHPJava?
-The PHPJava is experimental library which emulate JVM (a.k.a. Java Virtual Machine) by PHP 🐘
-The PHPJava proceed to read binary from pre-compiled Java file(s) ☕
-This project reference to [Java Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se11/html/index.html) documentation when We makes.
+The PHPJava is an experimental library which emulates JVM (a.k.a. Java Virtual Machine) by PHP 🐘
+The PHPJava reads binary from pre-compiled Java file(s) ☕
+This project referred to [Java Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se11/html/index.html) documentation at the time we made it.
 
-We welcoming to contributions this project 💪
+We are welcoming any contributions to this project 💪
 
 ## Requirements
 - PHP >= 7.2
@@ -27,12 +27,12 @@ Sorry, I do not have enough time (T_T)
 - etc...
 
 ## Quick start
-- 1) Install the PHPJava into your project.
+- 1) Install the PHPJava into your project:
 ```
 $ composer require memory-agape/php-java
 ```
 
-- 2) Write Java
+- 2) Write Java:
 ```java
 class HelloWorld 
 {
@@ -43,12 +43,12 @@ class HelloWorld
 }
 ```
 
-- 3) Compile Java
+- 3) Compile Java:
 ```
 $ javac -UTF8 /path/to/HelloWorld.java
 ```
 
-- 4) Call to main method as following.
+- 4) Call the main method as follows:
 
 ```php
 <?php
@@ -65,7 +65,7 @@ use PHPJava\Core\JavaClassFileReader;
     );
 ```
 
-- 5) Get a result
+- 5) Get the result
 ```
 $ php /path/to/HelloWorld.php
 Hello World
@@ -73,13 +73,13 @@ Hello World
 
 ## Java Archive (Execute to *.jar file)
 
-- 1) Build your java files to class. Building example is below.
+- 1) Build your Java files to class. An example is shown below:
 ```
 $ javac -encoding UTF8 -d build src/*
 $ cd build && jar -cvfe ../Test.jar Test *
 ```
 
-- 2) execute jar on PHPJava with enrtypoint or your targeted method.
+- 2) Execute jar on PHPJava with either an enrtypoint or your targeted method.
 ```php
 <?php
 use PHPJava\Core\JavaArchive;
@@ -98,9 +98,9 @@ use PHPJava\Core\JavaArchive;
     );
 ```
 
-### Get/Set a static fields
+### Get/Set static fields
 
-- ex) Set or Get a static fields as follows.
+- ex) Set or Get static fields as follows:
 
 ```php
 <?php
@@ -119,9 +119,9 @@ $staticFieldAccessor->set('fieldName', 'value');
 echo $staticFieldAccessor->get('fieldName');
 ```
 
-### Call to a static method
+### Call a static method
 
-- ex) Call to static method as follows.
+- ex) Call a static method as follows:
 
 ```php
 <?php
@@ -158,10 +158,10 @@ echo $result;
 ```
 
 
-### Get/Set a dynamic fields
-If you want to get/set dynamic fields, you need call to `construct` method on Java by PHPJava.
+### Get/Set dynamic fields
+If you want to get/set dynamic fields, you need to call the `construct` method on Java by PHPJava.
 
-- ex) Call dynamic field as following.
+- ex) Call dynamic field as follows:
 
 ```php
 <?php
@@ -184,10 +184,10 @@ $dynamicFieldAccessor->set('fieldName', 'value');
 echo $dynamicFieldAccessor->get('fieldName');
 ```
 
-### Call to a dynamic method
-If you want to get/set dynamic method (same as field), you need call to `construct` method on Java by PHPJava.
+### Call a dynamic method
+If you want to get/set dynamic method (same as a field), you need to call the `construct` method on Java by PHPJava.
 
-- ex) Call dynamic method as following.
+- ex) Call dynamic method as follows:
 
 ```php
 <?php
@@ -225,7 +225,7 @@ echo $result;
 
 ### Output PHPJava operations
 
-- Output debug trace as following if you want to show operated log.
+- Output debug trace as follows if you want to show operation log:
 
 ```php
 <?php
@@ -247,7 +247,7 @@ $javaClass
 $javaClass->debug();
 ```
 
-- Outputted debug trace is below.
+- Output debug trace is shown below:
 
 ```
 [method]
@@ -279,22 +279,22 @@ public static void main(java.lang.String[])
 ---------+--------+----------------------+------------+-----------------
 ```
 
-- **[method]** is showing called method.
-- **[code]** is showing JVM's real programs.
-- **[executed]** is showing executed programs.
-  - **PC** is showing Program Counter.
-  - **OPCODE** is showing Operation Codes.
-  - **MNEMONIC** is naming Operation Codes.
-  - **OPERANDS** is showing stacked items on memory.
-  - **LOCAL STORAGE** is showing stacked items on a method.
+- **[method]** shows the called method.
+- **[code]** shows the JVM's real programs.
+- **[executed]** shows the executed programs.
+  - **PC** shows the Program Counter.
+  - **OPCODE** shows the Operation Codes.
+  - **MNEMONIC** shows the names of the Operation Codes.
+  - **OPERANDS** shows the stacked items on memory.
+  - **LOCAL STORAGE** shows the stacked items on a method.
 
 ## PHP problems
-- **Problem 1:** The PHP is cannot calculating big numbers because of PHP is different to the Java.
-  But the PHPJava use `bcmath` functions and `gmp` functions to a certain extent to cover to calculate.
-  The PHPJava return valued is mixed why therefore We recommend to cast to `string` on the PHPJava.
+- **Problem 1:** PHP cannot calculate big numbers because PHP is different from Java.
+  But PHPJava uses `bcmath` functions and `gmp` functions to a certain extent to cover such calculations.
+  Therefore, PHPJava returns a mixed value and we recommend to cast them to `string` on PHPJava.
 
-- **Problem 2:** The PHPJava cannot cover to Java's types completely because of PHP is different to the Java.
-  The Java and the PHPJava comparison table is below.
+- **Problem 2:** PHPJava cannot completely cover Java types because PHP is different from Java.
+  The comparison table of Java and PHPJava is shown below:
   
 |Java        |PHPJava         |
 |:-------------:|:-------------:|
@@ -308,23 +308,22 @@ public static void main(java.lang.String[])
 |float |\PHPJava\Kernel\Types\\_Float (including `__toString`), string, float |
 |double |\PHPJava\Kernel\Types\\_Char (including `__toString`), string, float |
 
-- **Problem 3:** The PHPJava cannot calculate big numbered `double` and `float` values because of `gmp_pow` cannot calculate negative exponents.
-  So the PHPJava use built-in functions which is `pow`.
+- **Problem 3:** PHPJava cannot calculate big number of `double` and `float` because `gmp_pow` cannot calculate negative exponents. So, PHPJavas use built-in function `pow`.
 
 ## Run unit tests
 
-- PHPUnit test is below.
+- To run a PHPUnit test:
 ```
 $ ./vendor/bin/phpunit tests
 ```
 
-- PHP Coding standards testing is below.
+- To run PHP Coding standards test:
 
 ```
 $ ./vendor/bin/phpcs --standard=phpcs.xml src
 ```
 
-- All testing is below.
+- To run all tests:
 
 ```
 $ composer run tests
