@@ -3,7 +3,7 @@ namespace PHPJava\Core;
 
 use PHPJava\Utilities\ClassResolver;
 
-class JavaClassInlineReaderInterface implements JavaClassReaderInterface
+class JavaClassInlineReader implements JavaClassReaderInterface
 {
     private $fileName;
     private $handle;
