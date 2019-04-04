@@ -13,10 +13,10 @@ final class _if_icmpge implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $leftOperand = $this->getStack();
         $rightOperand = $this->getStack();
+        $leftOperand = $this->getStack();
 
-        if ($leftOperand <= $rightOperand) {
+        if ($leftOperand >= $rightOperand) {
             $this->setOffset($this->getProgramCounter() + $offset);
         }
     }

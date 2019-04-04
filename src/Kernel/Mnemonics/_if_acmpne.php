@@ -13,8 +13,8 @@ final class _if_acmpne implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $leftOperand = $this->getStack();
         $rightOperand = $this->getStack();
+        $leftOperand = $this->getStack();
 
         if ($leftOperand !== $rightOperand) {
             $this->setOffset($this->getProgramCounter() + $offset);
