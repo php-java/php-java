@@ -16,4 +16,16 @@ class Math extends _Object
     {
         return abs($number);
     }
+
+    /**
+     * This decrease 1 from parameters
+     *
+     * @see https://docs.oracle.com/javase/jp/8/docs/api/java/lang/Math.html#decrementExact-int-
+     * @param int $a
+     * @return int
+     */
+    public static function decrementExact($a)
+    {
+        return $a - 1;
+    }
 }

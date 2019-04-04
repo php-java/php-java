@@ -135,9 +135,9 @@ class BinaryTool
     {
         $value1 = (int) $value1;
         $value2 = (int) $value2;
-        $bits = sprintf('%0' . ($bytes * 8) . 's', base_convert($value2, 10, 2));
+        $bits = sprintf('%0' . ($bytes * 8) . 's', base_convert($value1, 10, 2));
 
-        $bits = sprintf('%0' . ($bytes * 8) . 's', substr($bits, 0, strlen($bits) - $value1));
+        $bits = sprintf('%0' . ($bytes * 8) . 's', substr($bits, 0, strlen($bits) - $value2));
 
         if ($bits === '') {
             $bits = '0';
