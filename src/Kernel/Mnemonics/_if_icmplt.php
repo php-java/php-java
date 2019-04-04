@@ -13,10 +13,10 @@ final class _if_icmplt implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $leftOperand = $this->getStack();
         $rightOperand = $this->getStack();
+        $leftOperand = $this->getStack();
 
-        if ($rightOperand < $leftOperand) {
+        if ($leftOperand < $rightOperand) {
             $this->setOffset($this->getProgramCounter() + $offset);
         }
     }
