@@ -9,8 +9,15 @@ final class SignatureAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    private $signatureIndex = 0;
+
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->signatureIndex = $this->readUnsignedShort();
+    }
+
+    public function getSignatureIndex()
+    {
+        return $this->signatureIndex;
     }
 }

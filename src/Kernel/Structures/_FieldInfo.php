@@ -22,7 +22,11 @@ class _FieldInfo implements StructureInterface
         $this->descriptorIndex = $this->readUnsignedShort();
         $this->attributeCount = $this->readUnsignedShort();
         for ($i = 0; $i < $this->attributeCount; $i++) {
-            $this->attributes[$i] = new \PHPJava\Kernel\Attributes\AttributeInfo($this->reader);
+            $attribute = new \PHPJava\Kernel\Attributes\AttributeInfo($this->reader);
+            $attribute->setConstantPool($this->getConstantPool());
+            $attribute->execute();
+
+            $this->attributes[] = $attribute;
         }
     }
 

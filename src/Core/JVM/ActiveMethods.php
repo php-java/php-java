@@ -13,7 +13,6 @@ class ActiveMethods
     {
         $this->reader = $reader;
         for ($i = 0; $i < $entries; $i++) {
-            // not implemented, read only
             $this->entries[$i] = new _MethodInfo($reader);
             $this->entries[$i]->setConstantPool($constantPool);
             $this->entries[$i]->execute();

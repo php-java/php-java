@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Structures\_Methodref;
 use PHPJava\Utilities\BinaryTool;
 
 final class AttributeInfo implements AttributeInterface
@@ -18,9 +19,6 @@ final class AttributeInfo implements AttributeInterface
         $this->attributeNameIndex = $this->readUnsignedShort();
         $this->attributeLength = $this->readUnsignedInt();
         $cpInfo = $this->getConstantPool()->getEntries();
-        if ($this->attributeNameIndex == 0) {
-            return;
-        }
         $classAttributeName = '\\PHPJava\\Kernel\\Attributes\\' . $cpInfo[$this->attributeNameIndex]->getString() . 'Attribute';
         $this->attributeData = new $classAttributeName($this->reader);
         $this->attributeData->setConstantPool($this->getConstantPool());
