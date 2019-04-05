@@ -7,7 +7,7 @@ use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Kernel\Attributes\RuntimeVisibleAnnotationsAttribute;
 use PHPJava\Utilities\BinaryTool;
 
-final class ElementValuePairs implements AnnotationInterface
+final class ElementValue implements AnnotationInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;

@@ -20,7 +20,7 @@ final class Annotation implements AnnotationInterface
 
         for ($i = 0; $i < $this->numElementValuePairs; $i++) {
             $elementNameIndex = $this->readUnsignedShort();
-            $elementValuePair = (new ElementValuePairs($this->reader))
+            $elementValuePair = (new ElementValue($this->reader))
                 ->setConstantPool($this->getConstantPool());
             $elementValuePair->execute();
             $this->elementValuePairs[] = [
