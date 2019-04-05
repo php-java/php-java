@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _tableswitch implements OperationInterface
 {
@@ -11,7 +12,9 @@ final class _tableswitch implements OperationInterface
 
     public function execute(): void
     {
-        $key = $this->getStack();
+        $key = Extractor::realValue(
+            $this->getStack()
+        );
 
         // padding data
         $paddingData = 4 - (($this->getOffset()) % 4);

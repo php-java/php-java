@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Double;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _idiv implements OperationInterface
 {
@@ -11,6 +13,16 @@ final class _idiv implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value2 = $this->getStack();
+        $value1 = $this->getStack();
+
+        $this->pushStack(
+            new _Double(
+                BinaryTool::div(
+                    Extractor::realValue($value1),
+                    Extractor::realValue($value2)
+                )
+            )
+        );
     }
 }

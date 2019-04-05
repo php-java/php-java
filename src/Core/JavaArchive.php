@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Imitation\java\io\FileNotFoundException;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
@@ -17,21 +18,25 @@ class JavaArchive
     private $expandedHArchive;
     private $files = [];
     private $classes = [];
+    private $options = [];
 
     /**
      * @param string $jarFile
-     * @param string|null $entryPoint
+     * @param array $options
      * @throws FileNotFoundException
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\ValidatorException
      * @throws \PHPJava\Imitation\java\lang\ClassNotFoundException
      */
-    public function __construct(string $jarFile, string $entryPoint = null)
+    public function __construct(string $jarFile, array $options = [])
     {
         $this->jarFile = $jarFile;
         $archive = new \ZipArchive();
         $archive->open($jarFile);
         $this->expandedHArchive = $archive;
+        $this->options = $options;
+
+        $this->manifestData['main-class'] = $options['entrypoint'] ?? Runtime::ENTRYPOINT;
 
         // Add resolving path
         ClassResolver::add(
@@ -72,10 +77,13 @@ class JavaArchive
         );
 
         foreach ($this->files as $className => $code) {
-            $this->classes[str_replace('/', '.', $className)] = new JavaClass(new JavaClassInlineReader(
-                $className,
-                $code
-            ));
+            $this->classes[str_replace('/', '.', $className)] = new JavaClass(
+                new JavaClassInlineReader(
+                    $className,
+                    $code
+                ),
+                $this->options
+            );
         }
 
         $currentDirectory = getcwd();

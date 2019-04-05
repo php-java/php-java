@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _isub implements OperationInterface
 {
@@ -14,6 +16,13 @@ final class _isub implements OperationInterface
         $rightValue = $this->getStack();
         $leftValue = $this->getStack();
 
-        $this->pushStack(BinaryTool::sub($leftValue, $rightValue, 4));
+        $this->pushStack(
+            new _Int(
+                BinaryTool::sub(
+                    Extractor::realValue($leftValue),
+                    Extractor::realValue($rightValue)
+                )
+            )
+        );
     }
 }

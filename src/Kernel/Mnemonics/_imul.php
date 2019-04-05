@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _imul implements OperationInterface
 {
@@ -14,6 +16,13 @@ final class _imul implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(BinaryTool::multiply($value1, $value2, 4));
+        $this->pushStack(
+            new _Int(
+                BinaryTool::multiply(
+                    Extractor::realValue($value1),
+                    Extractor::realValue($value2)
+                )
+            )
+        );
     }
 }

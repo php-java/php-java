@@ -71,14 +71,17 @@ class JavaClass
 
     private $superClass;
 
+    private $options = [];
+
     /**
      * JavaClass constructor.
      * @param JavaClassReaderInterface $reader
+     * @param array $options
      * @throws ValidatorException
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Imitation\java\lang\ClassNotFoundException
      */
-    public function __construct(JavaClassReaderInterface $reader)
+    public function __construct(JavaClassReaderInterface $reader, array $options = [])
     {
         // Validate Java file
         if (!(new MagicByte($reader->getBinaryReader()->readUnsignedInt()))->isValid()) {
@@ -162,7 +165,10 @@ class JavaClass
             }
         }
 
-        $this->invoker = new JavaClassInvoker($this);
+        $this->invoker = new JavaClassInvoker(
+            $this,
+            $options
+        );
     }
 
     public function __debugInfo()

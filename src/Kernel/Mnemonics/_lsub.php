@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Long;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _lsub implements OperationInterface
 {
@@ -14,6 +16,13 @@ final class _lsub implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(BinaryTool::sub($value1, $value2, 8));
+        $this->pushStack(
+            new _Long(
+                BinaryTool::sub(
+                    Extractor::realValue($value1),
+                    Extractor::realValue($value2)
+                )
+            )
+        );
     }
 }

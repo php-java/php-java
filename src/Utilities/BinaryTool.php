@@ -66,10 +66,8 @@ class BinaryTool
         return ($convert[0] === '1' ? '-' : '') . base_convert($convert, 2, 10);
     }
 
-    final public static function multiply($value1, $value2, $bytes)
+    final public static function multiply($value1, $value2)
     {
-        $value1 = (int) $value1;
-        $value2 = (int) $value2;
         if (function_exists('gmp_mul')) {
             $a = gmp_init($value1);
             $b = gmp_init($value2);
@@ -81,8 +79,6 @@ class BinaryTool
 
     final public static function add($value1, $value2)
     {
-        $value1 = (int) $value1;
-        $value2 = (int) $value2;
         if (function_exists('gmp_add')) {
             $a = gmp_init($value1);
             $b = gmp_init($value2);
@@ -92,10 +88,8 @@ class BinaryTool
         return $value1 + $value2;
     }
 
-    final public static function sub($value1, $value2, $bytes)
+    final public static function sub($value1, $value2)
     {
-        $value1 = (int) $value1;
-        $value2 = (int) $value2;
         if (function_exists('gmp_sub')) {
             $a = gmp_init($value1);
             $b = gmp_init($value2);
@@ -105,10 +99,8 @@ class BinaryTool
         return $value1 - $value2;
     }
 
-    final public static function div($value1, $value2, $bytes)
+    final public static function div($value1, $value2)
     {
-        $value1 = (int) $value1;
-        $value2 = (int) $value2;
         if (function_exists('gmp_div')) {
             $a = gmp_init($value1);
             $b = gmp_init($value2);
