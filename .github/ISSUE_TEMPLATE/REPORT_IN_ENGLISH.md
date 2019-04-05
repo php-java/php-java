@@ -1,5 +1,6 @@
 ---
-name: Report a bug (In English)
+name: Report a bug
+description: Report a bug in English
 
 ---
 
