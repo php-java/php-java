@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Attributes;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Structures\_ParameterAnnotation;
 use PHPJava\Utilities\BinaryTool;
 
 final class RuntimeInvisibleParameterAnnotationsAttribute implements AttributeInterface
@@ -9,8 +10,18 @@ final class RuntimeInvisibleParameterAnnotationsAttribute implements AttributeIn
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    private $numParameters;
+    private $annotations = [];
+
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->numParameters = $this->readUnsignedByte();
+
+        for ($i = 0; $i < $this->numParameters; $i++) {
+            $annotation = new _ParameterAnnotation($this->reader);
+            $annotation->setConstantPool($this->getConstantPool());
+            $annotation->execute();
+            $this->annotations[] = $annotation;
+        }
     }
 }

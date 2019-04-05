@@ -12,6 +12,9 @@ class JavaArchive
 {
     const MANIFEST_FILE_NAME = 'META-INF/MANIFEST.MF';
     const DEFAULT_ENTRYPOINT_NAME = 'main';
+    const IGNORE_FILES = [
+        'META-INF/main.kotlin_module',
+    ];
 
     private $manifestData = [];
     private $jarFile;
@@ -77,6 +80,9 @@ class JavaArchive
         );
 
         foreach ($this->files as $className => $code) {
+            if (in_array($className, static::IGNORE_FILES)) {
+                continue;
+            }
             $this->classes[str_replace('/', '.', $className)] = new JavaClass(
                 new JavaClassInlineReader(
                     $className,

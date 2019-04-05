@@ -14,6 +14,7 @@ class _LocalVariableTable implements StructureInterface
     private $nameIndex = 0;
     private $descriptorIndex = 0;
     private $index = 0;
+
     public function execute(): void
     {
         $this->startPc = $this->readUnsignedShort();

@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Kernel\Annotations;
+namespace PHPJava\Kernel\Structures\Annotations;
 
 interface AnnotationInterface
 {

@@ -78,8 +78,8 @@ class ConstantPool
             case ConstantPoolTag::CONSTANT_MethodType:
             case ConstantPoolTag::CONSTANT_Module:
             case ConstantPoolTag::CONSTANT_Package:
-                throw new ReadEntryException('Entry tag ' . sprintf('%x', $entryTag) . ' is not implemented.');
+                throw new ReadEntryException('Entry tag ' . sprintf('0x%06X', $entryTag) . ' is not implemented.');
         }
-        throw new ReadEntryException('Entry tag ' . sprintf('%x', $entryTag) . ' is not defined.');
+        throw new ReadEntryException('Entry tag ' . sprintf('0x%06X', $entryTag) . ' is not defined.');
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Kernel\Annotations;
+namespace PHPJava\Kernel\Structures\Annotations;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
@@ -9,11 +9,10 @@ final class ElementValuePairs implements AnnotationInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $elementNameIndex = 0;
-    private $tag;
+    private $elementNameIndex = null;
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->elementNameIndex = $this->readUnsignedShort();
     }
 }
