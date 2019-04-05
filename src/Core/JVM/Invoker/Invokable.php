@@ -111,7 +111,7 @@ trait Invokable
             )['arguments'];
 
             // does not strict mode can be PHP types
-            if ((!$this->options['strict'] ?? false)) {
+            if (!($this->options['strict'] ?? true)) {
                 $formattedArguments = Formatter::signatureConvertToAmbiguousForPHP($formattedArguments);
             }
 
