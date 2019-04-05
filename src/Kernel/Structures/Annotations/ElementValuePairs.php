@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Structures\Annotations;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Kernel\Attributes\RuntimeVisibleAnnotationsAttribute;
 use PHPJava\Utilities\BinaryTool;
 
@@ -11,12 +12,10 @@ final class ElementValuePairs implements AnnotationInterface
     use \PHPJava\Kernel\Core\ConstantPool;
 
     private $tag;
-    private $elementNameIndex = null;
 
     public function execute(): void
     {
-        $this->elementNameIndex = $this->readUnsignedShort();
-        $this->tag = $this->readByte();
+        $this->tag = chr($this->readByte());
 
         $this->constValueIndex = $this->readUnsignedShort();
 
@@ -28,20 +27,24 @@ final class ElementValuePairs implements AnnotationInterface
 
         $this->classInfoIndex = $this->readUnsignedShort();
 
-        $this->annotationValue = new RuntimeVisibleAnnotationsAttribute($this->reader);
-        $this->annotationValue->setConstantPool($this->getConstantPool());
-        $this->annotationValue->execute();
+        $cpInfo = $this->getConstantPool()->getEntries();
 
-        $this->arrayValue = [
-            'num_values' => $this->readUnsignedShort(),
+        if ($this->tag === '@') {
+            $this->annotationValue = new AttributeInfo($this->reader);
+            $this->annotationValue->setConstantPool($this->getConstantPool());
+            $this->annotationValue->execute();
+        }
 
-        ];
+        if ($this->tag === '[') {
+            $this->arrayValue = [
+                'num_values' => $this->readUnsignedShort(),
+
+            ];
+        }
 //
 //        for ($i = 0; $i < $this->arrayValue['num_values']; $i++) {
 //
 //        }
 
-        var_dump($this->arrayValue);
-        exit();
     }
 }

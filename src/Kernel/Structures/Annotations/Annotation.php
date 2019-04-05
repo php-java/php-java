@@ -19,10 +19,14 @@ final class Annotation implements AnnotationInterface
         $this->numElementValuePairs = $this->readUnsignedShort();
 
         for ($i = 0; $i < $this->numElementValuePairs; $i++) {
+            $elementNameIndex = $this->readUnsignedShort();
             $elementValuePair = (new ElementValuePairs($this->reader))
                 ->setConstantPool($this->getConstantPool());
             $elementValuePair->execute();
-            $this->elementValuePairs[] = $elementValuePair;
+            $this->elementValuePairs[] = [
+                'element_name_index' => $elementNameIndex,
+                'element_value_pair' => $elementValuePair,
+            ];
         }
     }
 }
