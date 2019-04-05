@@ -11,6 +11,6 @@ final class _lload_2 implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->pushStack($this->getLocalStorage(2));
     }
 }

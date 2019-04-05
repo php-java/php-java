@@ -19,9 +19,9 @@ class DynamicAccessor implements AccessorInterface
      */
     private $methodAccessor;
 
-    public function __construct(JavaClassInvoker $invoker, array $methods)
+    public function __construct(JavaClassInvoker $invoker, array $methods, array $options = [])
     {
-        $this->methodAccessor = new DynamicMethodInvoker($invoker, $methods);
+        $this->methodAccessor = new DynamicMethodInvoker($invoker, $methods, $options);
         $this->fieldAccessor = new DynamicField($invoker, []);
     }
 

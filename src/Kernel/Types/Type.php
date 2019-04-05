@@ -6,6 +6,8 @@ use PHPJava\Exceptions\TypeException;
 class Type
 {
     private $value = null;
+    protected $nameInJava = null;
+    protected $nameInPHP = null;
 
     public function __construct($value)
     {
@@ -25,6 +27,17 @@ class Type
     public function getValue()
     {
         return $this->value;
+    }
+
+    public function getTypeNameInJava()
+    {
+        return $this->nameInJava;
+    }
+
+
+    public function getTypeNameInPHP()
+    {
+        return $this->nameInPHP;
     }
 
     public function __toString()
