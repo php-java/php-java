@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
 
 final class _iload_1 implements OperationInterface
@@ -11,6 +12,10 @@ final class _iload_1 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack($this->getLocalStorage(1));
+        $this->pushStack(
+            new _Int(
+                $this->getLocalStorage(1)
+            )
+        );
     }
 }

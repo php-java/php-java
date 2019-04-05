@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Double;
 use PHPJava\Utilities\BinaryTool;
 
 final class _dload implements OperationInterface
@@ -15,6 +16,10 @@ final class _dload implements OperationInterface
     public function execute(): void
     {
         $index = $this->readUnsignedByte();
-        $this->pushStack($this->getLocalStorage($index));
+        $this->pushStack(
+            new _Double(
+                $this->getLocalStorage($index)
+            )
+        );
     }
 }

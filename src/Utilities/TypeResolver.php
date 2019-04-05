@@ -9,6 +9,8 @@ class TypeResolver
 {
     const PHP_TYPE_MAP = [
         'integer' => 'I',
+        'float' => 'F',
+        'double' => 'F',
         'string' => 'Ljava.lang.String',
     ];
 
@@ -16,7 +18,7 @@ class TypeResolver
         'long'   => 'int',
         'double' => 'float',
         'char'   => 'java.lang.String',
-        'byte'   => 'java.lang.String',
+        'byte'   => 'int',
         'short'  => 'int',
     ];
 

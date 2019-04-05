@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Imitation\java\io;
 
+use PHPJava\Imitation\java\util\IllegalFormatException;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Kernel\Types\Type;
 
@@ -22,7 +23,7 @@ class PrintStream
             return;
         }
 
-        echo "\n";
+        throw new IllegalFormatException('Cannot pass "' . gettype($arg) . '" in ' . __METHOD__);
     }
 
     public function print($arg)
@@ -39,6 +40,8 @@ class PrintStream
             echo $arg;
             return;
         }
+
+        throw new IllegalFormatException('Cannot pass "' . gettype($arg) . '" in ' . __METHOD__);
     }
 
     public function append($string)
