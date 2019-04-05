@@ -9,6 +9,7 @@ final class RuntimeInvisibleParameterAnnotationsAttribute implements AttributeIn
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\AttributeReference;
 
     private $numParameters;
     private $annotations = [];

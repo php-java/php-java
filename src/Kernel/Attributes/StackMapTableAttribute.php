@@ -8,6 +8,7 @@ final class StackMapTableAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\AttributeReference;
 
     private $numberOfEntries = null;
     private $stackMapFrames = array();

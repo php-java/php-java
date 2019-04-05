@@ -8,6 +8,7 @@ final class SignatureAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\AttributeReference;
 
     private $signatureIndex = 0;
 

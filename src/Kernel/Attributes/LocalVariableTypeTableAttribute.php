@@ -8,6 +8,7 @@ final class LocalVariableTypeTableAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\AttributeReference;
 
     public function execute(): void
     {

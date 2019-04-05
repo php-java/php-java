@@ -14,7 +14,7 @@ class BinaryReader
         $this->handle = $handle;
     }
 
-    final public function read($bytes = 1)
+    final public function read(int $bytes = 1)
     {
         $this->offset += $bytes;
         $read = fread($this->handle, $bytes);

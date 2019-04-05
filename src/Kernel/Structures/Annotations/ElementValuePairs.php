@@ -29,8 +29,19 @@ final class ElementValuePairs implements AnnotationInterface
         $this->classInfoIndex = $this->readUnsignedShort();
 
         $this->annotationValue = new RuntimeVisibleAnnotationsAttribute($this->reader);
+        $this->annotationValue->setConstantPool($this->getConstantPool());
+        $this->annotationValue->execute();
 
-        var_dump($this->getConstantPool()->getEntries()[$this->elementNameIndex]);
+        $this->arrayValue = [
+            'num_values' => $this->readUnsignedShort(),
+
+        ];
+//
+//        for ($i = 0; $i < $this->arrayValue['num_values']; $i++) {
+//
+//        }
+
+        var_dump($this->arrayValue);
         exit();
     }
 }

@@ -10,6 +10,7 @@ final class AttributeInfo implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\AttributeReference;
 
     private $attributeNameIndex = null;
     private $attributeLength = null;
@@ -22,9 +23,9 @@ final class AttributeInfo implements AttributeInterface
         $cpInfo = $this->getConstantPool()->getEntries();
         $currentOffset = $this->getOffset();
         $classAttributeName = '\\PHPJava\\Kernel\\Attributes\\' . $cpInfo[$this->attributeNameIndex]->getString() . 'Attribute';
-        var_dump($classAttributeName);
         $this->attributeData = new $classAttributeName($this->reader);
         $this->attributeData->setConstantPool($this->getConstantPool());
+        $this->attributeData->setAttributeReference($this);
         $this->attributeData->execute();
         if ($this->attributeLength != ($actual = $this->getOffset() - $currentOffset)) {
             throw new ValidatorException(

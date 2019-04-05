@@ -8,9 +8,16 @@ final class SourceDebugExtensionAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\AttributeReference;
+
+    private $debugExtension;
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->debugExtension = $this->read(
+            $this
+                ->getAttributeReference()
+                ->getAttributeLength()
+        );
     }
 }

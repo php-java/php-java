@@ -9,6 +9,7 @@ final class InnerClassesAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\AttributeReference;
 
     private $numberOfClasses = 0;
     private $classes = [];
