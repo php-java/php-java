@@ -228,7 +228,7 @@ echo $result;
 - You may want to call a methods in PHP that contain long type in Java.
 In its case, you can call a method as follows:
 
-#### ex. ) Wrap with `\PHPJava\Kernel\Types\_Long`. We recommend this.
+#### ex. ) [Recommended] Wrap with `\PHPJava\Kernel\Types\_Long`.
 ##### In Java 
 ```java
 class Test
