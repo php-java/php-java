@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM\Parameters;
 
-final class Settings
+final class Runtime
 {
     const MAX_STACK_EXCEEDED = 9999;
     const STRICT = true;
