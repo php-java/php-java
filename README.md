@@ -273,6 +273,7 @@ $javaClass = new JavaClass(
 
 |Options        | Value | Default | Description         |Targeted         |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| entrypoint | ?string | null | Specify to run entrypoint in JAR.  | JavaArchive |
 | max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass | 
 | strict | boolean | true | If strict mode is `true` then execute method, variables and so on with strict. But if strict mode is `false` then execute ambiguously method, variable and etc in PHPJava. | Both |
 | validation.method.arguments_count_only | boolean | false | If this mode `true` then ClassResolver validate arguments size only. | JavaClass |

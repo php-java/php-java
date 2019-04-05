@@ -35,6 +35,8 @@ class JavaArchive
         $this->expandedHArchive = $archive;
         $this->options = $options;
 
+        $this->manifestData['main-class'] = $options['entrypoint'] ?? null;
+
         // Add resolving path
         ClassResolver::add(
             [
