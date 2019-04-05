@@ -1,6 +1,6 @@
 ---
 name: Report a bug
-description: Report a bug in English
+about: Report a bug in English
 
 ---
 
