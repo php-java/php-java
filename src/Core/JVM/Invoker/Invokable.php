@@ -120,7 +120,7 @@ trait Invokable
              */
             $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
 
-            if ((!$this->options['validation']['method']['arguments_count_only'] ?? false)) {
+            if (!($this->options['validation']['method']['arguments_count_only'] ?? false)) {
                 if ($methodSignature === $convertedPassedArguments) {
                     $method = $methodReference;
                     break;
