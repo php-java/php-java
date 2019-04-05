@@ -64,42 +64,6 @@ final class ElementValuePairs implements AnnotationInterface
                 throw new RuntimeException('Invalid tag "' . $this->tag . '" in element_value structure.');
                 break;
         }
-//
-//        var_dump($this->tag);
-//
-//        $this->constValueIndex = $this->readUnsignedShort();
-//
-//
-//        $this->enumConstValue = [
-//            'type_name_index' => $this->readUnsignedShort(),
-//            'const_name_index' => $this->readUnsignedShort(),
-//        ];
-//
-//        $this->classInfoIndex = $this->readUnsignedShort();
-//
-//        $cpInfo = $this->getConstantPool()->getEntries();
-//
-//        if ($this->tag === '@') {
-//            $this->annotationValue = new AttributeInfo($this->reader);
-//            $this->annotationValue->setConstantPool($this->getConstantPool());
-//            $this->annotationValue->execute();
-//        }
-//
-//        if ($this->tag === '[') {
-//            $this->arrayValue = [
-//                'num_values' => $this->readUnsignedShort(),
-//
-//            ];
-//            for ($i = 0; ) {
-//
-//            }
-//            var_dump($this->arrayValue);
-//            exit();
-//        }
-////
-////        for ($i = 0; $i < $this->arrayValue['num_values']; $i++) {
-////
-////        }
 
     }
 }
