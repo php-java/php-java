@@ -228,8 +228,8 @@ echo $result;
 - You may want to call a methods in PHP that contain long type in Java.
 In its case, you can call a method as follows:
 
-- ex. ) Wrap with `\PHPJava\Kernel\Types\_Long`. We recommend this.
-#### In Java 
+#### ex. ) Wrap with `\PHPJava\Kernel\Types\_Long`. We recommend this.
+##### In Java 
 ```java
 class Test
 {
@@ -241,7 +241,7 @@ class Test
 }
 ```
 
-#### In PHP
+##### In PHP
 ```php
 <?php
 $javaClass->getInvoker()->getStatic()->getMethods()->call(
@@ -253,9 +253,8 @@ $javaClass->getInvoker()->getStatic()->getMethods()->call(
 The example will return `1234`.
 
 
-- ex. ) Set `false` to strict mode within options.
-
-#### In PHP
+#### ex. ) Set `false` to strict mode within options.
+##### In PHP
 ```php
 <?php
 use PHPJava\Core\JavaClass;
