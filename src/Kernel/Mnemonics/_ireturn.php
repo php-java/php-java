@@ -15,6 +15,9 @@ final class _ireturn implements OperationInterface
      */
     public function execute()
     {
-        return new _Int($this->getStack());
+        $value = $this->getStack();
+        return ($value instanceof _Int)
+            ? $value
+            : new _Int($value);
     }
 }

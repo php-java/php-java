@@ -85,4 +85,28 @@ class Formatter
         }
         return $string;
     }
+
+    public static function signatureConvertToAmbiguousForPHP($signatures)
+    {
+        $result = [];
+        foreach ($signatures as $signature) {
+            $type = $signature['type'];
+            if ($type === 'class') {
+                $result[] = $signature;
+                continue;
+            }
+            $type = TypeResolver::convertJavaTypeSimplyForPHP($type);
+            if ($type === 'java.lang.String') {
+                $result[] = [
+                    'type' => 'class',
+                    'deep_array' => $signature['deep_array'],
+                    'class_name' => $type,
+                ];
+                continue;
+            }
+            $signature['type'] = $type;
+            $result[] = $signature;
+        }
+        return $result;
+    }
 }

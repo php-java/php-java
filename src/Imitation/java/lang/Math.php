@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Imitation\java\lang;
 
+use PHPJava\Utilities\Extractor;
+
 class Math extends _Object
 {
     public static $E = M_E;
@@ -14,7 +16,7 @@ class Math extends _Object
      */
     public static function abs($number)
     {
-        return abs($number);
+        return abs(Extractor::realValue($number));
     }
 
     /**
@@ -26,6 +28,6 @@ class Math extends _Object
      */
     public static function decrementExact($a)
     {
-        return $a - 1;
+        return Extractor::realValue($a) - 1;
     }
 }

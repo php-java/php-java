@@ -19,9 +19,9 @@ class StaticAccessor implements AccessorInterface
      */
     private $methodAccessor;
 
-    public function __construct(JavaClassInvoker $invoker, array $methods)
+    public function __construct(JavaClassInvoker $invoker, array $methods, array $options = [])
     {
-        $this->methodAccessor = new StaticMethodInvoker($invoker, $methods);
+        $this->methodAccessor = new StaticMethodInvoker($invoker, $methods, $options);
         $this->fieldAccessor = new StaticField($invoker, []);
     }
 

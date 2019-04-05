@@ -3,12 +3,23 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\TypeException;
+use PHPJava\Kernel\Types\Type;
 
 class TypeResolver
 {
     const PHP_TYPE_MAP = [
         'integer' => 'I',
+        'float' => 'F',
+        'double' => 'F',
         'string' => 'Ljava.lang.String',
+    ];
+
+    const AMBIGUOUS_TYPES_ON_PHP = [
+        'long'   => 'int',
+        'double' => 'float',
+        'char'   => 'java.lang.String',
+        'byte'   => 'int',
+        'short'  => 'int',
     ];
 
     const SIGNATURE_MAP = [
@@ -44,6 +55,11 @@ class TypeResolver
             return $flipped[$type];
         }
         return 'L' . $type;
+    }
+
+    public static function convertJavaTypeSimplyForPHP($type): string
+    {
+        return static::AMBIGUOUS_TYPES_ON_PHP[$type] ?? $type;
     }
 
     public static function convertPHPtoJava($arguments, $defaultJavaArgumentType = 'java.lang.String'): array
@@ -82,6 +98,12 @@ class TypeResolver
                 return [
                     'type' => 'class',
                     'class_name' => $arguments->getClassName(false),
+                    'deep_array' => $deepArray,
+                ];
+            }
+            if ($arguments instanceof Type) {
+                return [
+                    'type' => $arguments->getTypeNameInJava(),
                     'deep_array' => $deepArray,
                 ];
             }

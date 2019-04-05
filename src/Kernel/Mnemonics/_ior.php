@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _ior implements OperationInterface
 {
@@ -14,6 +16,14 @@ final class _ior implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(BinaryTool::orBits($value1, $value2, 4));
+        $this->pushStack(
+            new _Int(
+                BinaryTool::orBits(
+                    Extractor::realValue($value1),
+                    Extractor::realValue($value2),
+                    4
+                )
+            )
+        );
     }
 }

@@ -33,7 +33,14 @@ final class _invokevirtual implements OperationInterface
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
         if ($invokerClass instanceof JavaClass) {
-            $result = $invokerClass->getInvoker()->getDynamic()->getMethods()->call($methodName, ...$arguments);
+            $result = $invokerClass
+                ->getInvoker()
+                ->getDynamic()
+                ->getMethods()
+                ->call(
+                    $methodName,
+                    ...$arguments
+                );
         } else {
             $result = call_user_func_array(
                 [

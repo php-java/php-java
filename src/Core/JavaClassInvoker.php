@@ -41,13 +41,16 @@ class JavaClassInvoker
 
     private $specialInvoked = [];
 
+    private $options = [];
+
     /**
-     * JavaClassInvoker constructor.
      * @param JavaClass $javaClass
+     * @param array $options
      */
-    public function __construct(JavaClass $javaClass)
+    public function __construct(JavaClass $javaClass, array $options)
     {
         $this->javaClass = $javaClass;
+        $this->options = $options;
         $cpInfo = $javaClass->getConstantPool()->getEntries();
 
         foreach ($javaClass->getMethods() as $methodInfo) {
@@ -78,12 +81,14 @@ class JavaClassInvoker
 
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
-            $this->dynamicMethods
+            $this->dynamicMethods,
+            $this->options
         );
 
         $this->staticAccessor = new StaticAccessor(
             $this,
-            $this->staticMethods
+            $this->staticMethods,
+            $this->options
         );
 
         // call <clinit>
@@ -100,7 +105,8 @@ class JavaClassInvoker
     {
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
-            $this->dynamicMethods
+            $this->dynamicMethods,
+            $this->options
         );
 
         if (isset($this->dynamicMethods['<init>'])) {

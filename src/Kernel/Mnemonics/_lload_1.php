@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Long;
 use PHPJava\Utilities\BinaryTool;
 
 final class _lload_1 implements OperationInterface
@@ -11,6 +12,10 @@ final class _lload_1 implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->pushStack(
+            new _Long(
+                $this->getLocalStorage(1)
+            )
+        );
     }
 }

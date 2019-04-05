@@ -21,16 +21,19 @@ use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\SuperClassResolver;
 use PHPJava\Utilities\TypeResolver;
+use PHPJava\Core\JVM\Parameters\Runtime;
 
 trait Invokable
 {
     private $javaClassInvoker;
     private $methods = [];
+    private $options = [];
 
-    public function __construct(JavaClassInvoker $javaClassInvoker, array $methods)
+    public function __construct(JavaClassInvoker $javaClassInvoker, array $methods, array $options = [])
     {
         $this->javaClassInvoker = $javaClassInvoker;
         $this->methods = $methods;
+        $this->options = $options;
     }
 
     /**
@@ -104,15 +107,36 @@ trait Invokable
                 break;
             }
             $constantPool = ($currentConstantPool = $methodReference->getConstantPool())->getEntries();
+            $formattedArguments = Formatter::parseSignature(
+                $constantPool[$methodReference->getDescriptorIndex()]->getString()
+            )['arguments'];
+
+            // does not strict mode can be PHP types
+            if (!($this->options['strict'] ?? Runtime::STRICT)) {
+                $formattedArguments = Formatter::signatureConvertToAmbiguousForPHP($formattedArguments);
+            }
+
             /**
              * @var _MethodInfo $methodReference
              */
-            $methodSignature = Formatter::buildArgumentsSignature(
-                Formatter::parseSignature($constantPool[$methodReference->getDescriptorIndex()]->getString())['arguments']
-            );
-            if ($methodSignature === $convertedPassedArguments) {
-                $method = $methodReference;
-                break;
+            $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
+
+            if (!($this->options['validation']['method']['arguments_count_only'] ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
+                if ($methodSignature === $convertedPassedArguments) {
+                    $method = $methodReference;
+                    break;
+                }
+            }
+            if (($this->options['validation']['method']['arguments_count_only'] ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY) === true) {
+                $size = count($formattedArguments);
+                $passedArgumentsSize = count(
+                    $arguments
+                );
+
+                if ($size === $passedArgumentsSize) {
+                    $method = $methodReference;
+                    break;
+                }
             }
         }
 
@@ -157,8 +181,11 @@ trait Invokable
         $mnemonicMap = new OpCode();
         $executedCounter = 0;
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
-            if (++$executedCounter > \PHPJava\Core\JVM\Parameters\Invoker::MAX_STACK_EXCEEDED) {
-                throw new RuntimeException('Max stack exceeded. PHPJava has been stopped by safety guard. Maybe Java class has illegal program counter, stacks, or OpCode.');
+            if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? Runtime::MAX_STACK_EXCEEDED)) {
+                throw new RuntimeException(
+                    'Max stack exceeded. PHPJava has been stopped by safety guard.' .
+                    ' Maybe Java class has illegal program counter, stacks, or OpCode.'
+                );
             }
             $opcode = $reader->readUnsignedByte();
             $mnemonic = $mnemonicMap->getName($opcode);
