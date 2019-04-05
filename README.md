@@ -223,6 +223,80 @@ $dynamicMethodAccessor
 echo $result;
 ```
 
+### Call ambiguous method into Java from PHP
+- PHP types are ambiguous than Java.
+- You may want to call a methods in PHP that contain long type in Java.
+In its case, you can call a method as follows:
+
+- ex. ) Wrap with `\PHPJava\Kernel\Types\_Long`. We recommend this.
+#### In Java 
+```java
+class Test
+{
+    public static void includingLongTypeParameter(long n)
+    {
+        System.out.println(n);
+    }
+
+}
+```
+
+#### In PHP
+```php
+<?php
+$javaClass->getInvoker()->getStatic()->getMethods()->call(
+    'includingLongTypeParameter',
+    new \PHPJava\Kernel\Types\_Long(1234)
+);
+```
+
+The example will return `1234`.
+
+
+- ex. ) Set `false` to strict mode within options.
+
+#### In PHP
+```php
+<?php
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassFileReader;
+
+$javaClass = new JavaClass(
+    new JavaClassFileReader('Test'),
+    [
+        'strict' => false,
+    ]
+);
+```
+
+### Runtime options
+- Available options on `JavaClass` or `JavaArchive` is below:
+
+|Options        | Value | Default | Description         |Targeted         |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass | 
+| strict | boolean | true | If strict mode is `true` then execute method, variables and so on with strict. But if strict mode is `false` then execute ambiguously method, variable and etc in PHPJava. | Both |
+| validation.method.arguments_count_only | boolean | false | If this mode `true` then ClassResolver validate arguments size only. | JavaClass |
+
+- For example:
+```php
+<?php
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassFileReader;
+
+$javaClass = new JavaClass(
+    new JavaClassFileReader('Test'),
+    [
+        'max_stack_exceeded' => 12345,
+        'validation' => [
+            'method' => [
+                'arguments_count_only' => true,
+            ],
+        ],
+    ]
+);
+```
+
 ### Output PHPJava operations
 
 - Output debug trace as follows if you want to show operation log:
