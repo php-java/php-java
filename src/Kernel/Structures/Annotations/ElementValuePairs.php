@@ -64,6 +64,10 @@ final class ElementValuePairs implements AnnotationInterface
                 throw new RuntimeException('Invalid tag "' . $this->tag . '" in element_value structure.');
                 break;
         }
+    }
 
+    public function getValue()
+    {
+        return $this->value;
     }
 }
