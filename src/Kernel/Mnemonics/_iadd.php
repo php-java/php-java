@@ -4,6 +4,7 @@ namespace PHPJava\Kernel\Mnemonics;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _iadd implements OperationInterface
 {
@@ -15,14 +16,13 @@ final class _iadd implements OperationInterface
         $rightValue = $this->getStack();
         $leftValue = $this->getStack();
 
-        if ($leftValue instanceof _Int) {
-            $leftValue = $leftValue->getValue();
-        }
-
-        if ($rightValue instanceof _Int) {
-            $rightValue = $rightValue->getValue();
-        }
-
-        $this->pushStack(BinaryTool::add($leftValue, $rightValue));
+        $this->pushStack(
+            new _Int(
+                BinaryTool::add(
+                    Extractor::realValue($leftValue),
+                    Extractor::realValue($rightValue)
+                )
+            )
+        );
     }
 }

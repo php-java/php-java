@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Long;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _ladd implements OperationInterface
 {
@@ -14,6 +16,13 @@ final class _ladd implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(BinaryTool::add($value1, $value2));
+        $this->pushStack(
+            new _Long(
+                BinaryTool::add(
+                    Extractor::realValue($value1),
+                    Extractor::realValue($value2)
+                )
+            )
+        );
     }
 }
