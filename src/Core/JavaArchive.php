@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Imitation\java\io\FileNotFoundException;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
@@ -35,7 +36,7 @@ class JavaArchive
         $this->expandedHArchive = $archive;
         $this->options = $options;
 
-        $this->manifestData['main-class'] = $options['entrypoint'] ?? null;
+        $this->manifestData['main-class'] = $options['entrypoint'] ?? Runtime::ENTRYPOINT;
 
         // Add resolving path
         ClassResolver::add(
