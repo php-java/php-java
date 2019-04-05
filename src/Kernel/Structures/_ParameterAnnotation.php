@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Structures;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Kernel\Attributes\RuntimeVisibleAnnotationsAttribute;
+use PHPJava\Kernel\Structures\Annotations\Annotation;
 use PHPJava\Utilities\BinaryTool;
 
 class _ParameterAnnotation implements StructureInterface
@@ -17,7 +17,7 @@ class _ParameterAnnotation implements StructureInterface
     {
         $this->numAnnotations = $this->readUnsignedShort();
         for ($i = 0; $i < $this->numAnnotations; $i++) {
-            $annotation = new RuntimeVisibleAnnotationsAttribute($this->reader);
+            $annotation = new Annotation($this->reader);
             $annotation->setConstantPool($this->getConstantPool());
             $annotation->execute();
             $this->annotations[] = $annotation;

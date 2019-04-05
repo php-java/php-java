@@ -22,6 +22,7 @@ final class AttributeInfo implements AttributeInterface
         $cpInfo = $this->getConstantPool()->getEntries();
         $currentOffset = $this->getOffset();
         $classAttributeName = '\\PHPJava\\Kernel\\Attributes\\' . $cpInfo[$this->attributeNameIndex]->getString() . 'Attribute';
+        var_dump($classAttributeName);
         $this->attributeData = new $classAttributeName($this->reader);
         $this->attributeData->setConstantPool($this->getConstantPool());
         $this->attributeData->execute();
