@@ -13,7 +13,6 @@ class ActiveFields
     {
         $this->reader = $reader;
         for ($i = 0; $i < $entries; $i++) {
-            // not implemented, read only
             $this->entries[$i] = new _FieldInfo($reader);
             $this->entries[$i]->setConstantPool($constantPool);
             $this->entries[$i]->execute();

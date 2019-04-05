@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM\Stream;
 
+use PHPJava\Exceptions\BinaryReaderException;
 use PHPJava\Utilities\BinaryTool;
 
 class BinaryReader
@@ -16,7 +17,15 @@ class BinaryReader
     final public function read($bytes = 1)
     {
         $this->offset += $bytes;
-        return fread($this->handle, $bytes);
+        $read = fread($this->handle, $bytes);
+        if (strlen($read) !== $bytes) {
+            throw new BinaryReaderException(
+                'Read binary from stream is incorrect. that expected length is ' .
+                $bytes .
+                ', but actual length is ' . strlen($read) . '.'
+            );
+        }
+        return $read;
     }
 
     public function readByte()
