@@ -6,6 +6,7 @@ use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Imitation\java\io\FileNotFoundException;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
 use PHPJava\Utilities\ClassResolver;
+use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\FileTypeResolver;
 
 class JavaArchive
@@ -22,6 +23,7 @@ class JavaArchive
     private $files = [];
     private $classes = [];
     private $options = [];
+    private $debugTool;
 
     /**
      * @param string $jarFile
@@ -38,6 +40,12 @@ class JavaArchive
         $archive->open($jarFile);
         $this->expandedHArchive = $archive;
         $this->options = $options;
+        $this->debugTool = new DebugTool(
+            basename($jarFile),
+            $this->options
+        );
+
+        $this->debugTool->getLogger()->info('Start jar emulation');
 
         $this->manifestData['main-class'] = $options['entrypoint'] ?? Runtime::ENTRYPOINT;
 
@@ -50,12 +58,14 @@ class JavaArchive
             ]
         );
 
+        $this->debugTool->getLogger()->debug('Extracting jar files: ' . $this->expandedHArchive->numFiles);
         for ($i = 0; $i < $this->expandedHArchive->numFiles; $i++) {
             $name = $archive->getNameIndex($i);
             if ($name[strlen($name) - 1] === '/') {
                 continue;
             }
-            $this->files[preg_replace('/\.class$/', '', $name)] = $archive->getFromIndex($i);
+            $fileName = preg_replace('/\.class$/', '', $name);
+            $this->files[$fileName] = $archive->getFromIndex($i);
         }
 
         if (!isset($this->files[static::MANIFEST_FILE_NAME])) {
@@ -107,13 +117,15 @@ class JavaArchive
                     $value = new JavaClassFileReader($value);
                     break;
                 case ClassResolver::RESOURCE_TYPE_JAR:
-                    $value = new JavaArchive($value);
+                    $value = new JavaArchive($value, $this->options);
                     break;
                 case ClassResolver::RESOURCE_TYPE_FILE:
                     break;
             }
             ClassResolver::add($fileType, $value);
         }
+
+        $this->debugTool->getLogger()->info('End of jar');
     }
 
     /**

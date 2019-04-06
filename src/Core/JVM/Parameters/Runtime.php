@@ -12,4 +12,6 @@ final class Runtime
 
     const LOG_PATH = 'php://stdout';
     const LOG_LEVEL = 0;
+
+    const TEMPORARY_STREAM = 'php://memory';
 }

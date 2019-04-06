@@ -6,6 +6,7 @@ use Monolog\Logger;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\FlexibleMethod;
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
@@ -123,13 +124,13 @@ trait Invokable
              */
             $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
 
-            if (!($this->options['validation']['method']['arguments_count_only'] ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
+            if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
                 if ($methodSignature === $convertedPassedArguments) {
                     $method = $methodReference;
                     break;
                 }
             }
-            if (($this->options['validation']['method']['arguments_count_only'] ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY) === true) {
+            if (($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY) === true) {
                 $size = count($formattedArguments);
                 $passedArgumentsSize = count(
                     $arguments
@@ -183,7 +184,7 @@ trait Invokable
         $mnemonicMap = new OpCode();
         $executedCounter = 0;
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
-            if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? Runtime::MAX_STACK_EXCEEDED)) {
+            if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
                     'Max stack exceeded. PHPJava has been stopped by safety guard.' .
                     ' Maybe Java class has illegal program counter, stacks, or OpCode.'

@@ -100,17 +100,17 @@ class JavaClass
             $options
         );
 
-        $this->debugTool->getLogger()->debug('Start emulation');
+        $this->debugTool->getLogger()->info('Start class emulation');
 
         // read minor version
         $this->versions['minor'] = $reader->getBinaryReader()->readUnsignedShort();
 
-        $this->debugTool->getLogger()->debug('Minor version: ' . $this->versions['minor']);
+        $this->debugTool->getLogger()->info('Minor version: ' . $this->versions['minor']);
 
         // read major version
         $this->versions['major'] = $reader->getBinaryReader()->readUnsignedShort();
 
-        $this->debugTool->getLogger()->debug('Major version: ' . $this->versions['minor']);
+        $this->debugTool->getLogger()->info('Major version: ' . $this->versions['minor']);
 
         // read constant pool size
         $this->constantPool = new ConstantPool(
@@ -120,7 +120,7 @@ class JavaClass
 
         $constantPoolEntries = $this->constantPool->getEntries();
 
-        $this->debugTool->getLogger()->debug('Constant Pools: ' . count($constantPoolEntries));
+        $this->debugTool->getLogger()->info('Constant Pools: ' . count($constantPoolEntries));
 
         // read access flag
         $this->accessFlag = $reader->getBinaryReader()->readUnsignedShort();
@@ -156,7 +156,7 @@ class JavaClass
             $this->debugTool
         );
 
-        $this->debugTool->getLogger()->debug('Extracted interfaces: ' . count($this->activeInterfaces->getEntries()));
+        $this->debugTool->getLogger()->info('Extracted interfaces: ' . count($this->activeInterfaces->getEntries()));
 
         // read fields
         $this->activeFields = new ActiveFields(
@@ -166,7 +166,7 @@ class JavaClass
             $this->debugTool
         );
 
-        $this->debugTool->getLogger()->debug('Extracted fields: ' . count($this->activeFields->getEntries()));
+        $this->debugTool->getLogger()->info('Extracted fields: ' . count($this->activeFields->getEntries()));
 
         // read methods
         $this->activeMethods = new ActiveMethods(
@@ -176,7 +176,7 @@ class JavaClass
             $this->debugTool
         );
 
-        $this->debugTool->getLogger()->debug('Extracted methods: ' . count($this->activeMethods->getEntries()));
+        $this->debugTool->getLogger()->info('Extracted methods: ' . count($this->activeMethods->getEntries()));
 
         // read Attributes
         $this->activeAttributes = new ActiveAttributes(
@@ -186,7 +186,7 @@ class JavaClass
             $this->debugTool
         );
 
-        $this->debugTool->getLogger()->debug('Extracted attributes: ' . count($this->activeAttributes->getEntries()));
+        $this->debugTool->getLogger()->info('Extracted attributes: ' . count($this->activeAttributes->getEntries()));
 
         foreach ($this->activeAttributes->getEntries() as $entry) {
             if ($entry->getAttributeData() instanceof InnerClassesAttribute) {
@@ -196,6 +196,7 @@ class JavaClass
                 );
             }
         }
+        $this->debugTool->getLogger()->info('End of Class');
 
         $this->invoker = new JavaClassInvoker(
             $this,
@@ -380,5 +381,10 @@ class JavaClass
             printf($line);
             printf("\n");
         }
+    }
+
+    public function getOptions(): array
+    {
+        return $this->options;
     }
 }
