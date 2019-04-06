@@ -7,6 +7,7 @@ final class Runtime
 
     const MAX_STACK_EXCEEDED = 9999;
     const STRICT = true;
+    const PRELOAD = false;
 
     const VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY = false;
 
