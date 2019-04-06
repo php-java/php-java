@@ -59,11 +59,21 @@ class TypeResolver
         return 'L' . $type;
     }
 
+    /**
+     * @param $type
+     * @return string
+     */
     public static function convertJavaTypeSimplyForPHP($type): string
     {
         return static::AMBIGUOUS_TYPES_ON_PHP[$type] ?? $type;
     }
 
+    /**
+     * @param $arguments
+     * @param string $defaultJavaArgumentType
+     * @return array
+     * @throws TypeException
+     */
     public static function convertPHPtoJava($arguments, $defaultJavaArgumentType = 'java.lang.String'): array
     {
         $phpType = gettype($arguments);
@@ -132,6 +142,12 @@ class TypeResolver
         ];
     }
 
+    /**
+     * @param string $a
+     * @param string $b
+     * @return bool
+     * @throws TypeException
+     */
     public static function compare(string $a, string $b): bool
     {
         if ($a === $b) {
@@ -157,6 +173,11 @@ class TypeResolver
         );
     }
 
+    /**
+     * @param $class
+     * @return array
+     * @throws TypeException
+     */
     public static function getExtendedClasses($class): array
     {
         $result = [];
