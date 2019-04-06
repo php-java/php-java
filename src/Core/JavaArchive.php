@@ -26,6 +26,7 @@ class JavaArchive
     private $classes = [];
     private $options = [];
     private $debugTool;
+    private $startTime = 0.0;
 
     /**
      * @param string $jarFile
@@ -37,6 +38,7 @@ class JavaArchive
      */
     public function __construct(string $jarFile, array $options = [])
     {
+        $this->startTime = microtime(true);
         $this->jarFile = $jarFile;
         $archive = new \ZipArchive();
         $archive->open($jarFile);
@@ -138,6 +140,13 @@ class JavaArchive
         }
 
         $this->debugTool->getLogger()->info('End of jar');
+    }
+
+    public function __destruct()
+    {
+        $this->debugTool->getLogger()->info(
+            'Spent time: ' . (microtime(true) - $this->startTime) . ' sec.'
+        );
     }
 
     /**
