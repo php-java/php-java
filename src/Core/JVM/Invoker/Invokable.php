@@ -21,6 +21,7 @@ use PHPJava\Kernel\Core\ConstantPool;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Mnemonics\OperationInterface;
 use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\SuperClassResolver;
 use PHPJava\Utilities\TypeResolver;
@@ -31,12 +32,17 @@ trait Invokable
     private $javaClassInvoker;
     private $methods = [];
     private $options = [];
+    private $debugTool;
 
     public function __construct(JavaClassInvoker $javaClassInvoker, array $methods, array $options = [])
     {
         $this->javaClassInvoker = $javaClassInvoker;
         $this->methods = $methods;
         $this->options = $options;
+        $this->debugTool = new DebugTool(
+            $javaClassInvoker->getJavaClass()->getClassName(true),
+            $this->options
+        );
     }
 
     /**
@@ -203,6 +209,18 @@ trait Invokable
             $fullName = '\\PHPJava\\Kernel\\Mnemonics\\' . $mnemonic;
             $debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
             $debugTraces['mnemonic_indexes'][] = $pointer;
+
+            $this->debugTool->getLogger()->debug(
+                vsprintf(
+                    'OpCode: 0x%02X, Mnemonic: %s, Stacks: %d, PC: %d',
+                    [
+                        $opcode,
+                        $mnemonic,
+                        count($stacks),
+                        $pointer,
+                    ]
+                )
+            );
 
             /**
              * @var OperationInterface|Accumulator|ConstantPool $executor

@@ -8,11 +8,12 @@ final class Runtime
     const MAX_STACK_EXCEEDED = 9999;
     const STRICT = true;
     const PRELOAD = false;
+    const DRY_RUN_ATTRIBUTE = false;
 
     const VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY = false;
 
     const LOG_PATH = 'php://stdout';
     const LOG_LEVEL = 0;
 
-    const TEMPORARY_STREAM = 'php://memory';
+    const TEMPORARY_CODE_STREAM = 'php://memory';
 }
