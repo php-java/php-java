@@ -183,7 +183,7 @@ class TypeResolver
         $result = [];
         foreach (Formatter::parseSignature($class) as $signature) {
             if ($signature['type'] !== 'class') {
-                $result[] = $signature['type'];
+                $result[] = [$signature['type']];
                 continue;
             }
             $path = [];
