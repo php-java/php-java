@@ -138,15 +138,31 @@ class TypeResolver
             return true;
         }
 
-        return Formatter::buildArgumentsSignature(static::getRootClasses($a)) === Formatter::buildArgumentsSignature(static::getRootClasses($b));
+        $a = static::getExtendedClasses($a);
+        $b = static::getExtendedClasses($b);
+
+        if (count($a) !== count($b)) {
+            return false;
+        }
+
+        $resultComparison = [];
+        for ($i = 0, $size = count($a); $i < $size; $i++) {
+            $resultComparison[] = count(array_intersect($a[$i], $b[$i])) > 0;
+        }
+
+        return !in_array(
+            false,
+            $resultComparison,
+            true
+        );
     }
 
-    public static function getRootClasses($class)
+    public static function getExtendedClasses($class): array
     {
         $result = [];
         foreach (Formatter::parseSignature($class) as $signature) {
             if ($signature['type'] !== 'class') {
-                $result[] = $signature;
+                $result[] = $signature['type'];
                 continue;
             }
             $path = [];
@@ -155,21 +171,39 @@ class TypeResolver
             }
             $classPath = Runtime::PHP_IMITATION_DIRECTORY . '\\' . implode('\\', $path);
 
-            $rootClass = $classPath;
+            // Remove duplicated prefix
+            $classPath = preg_replace(
+                '/^(?:' . preg_quote(Runtime::PHP_IMITATION_DIRECTORY, '/') . ')+/',
+                Runtime::PHP_IMITATION_DIRECTORY,
+                $classPath
+            );
+
+            $extendedClasses = [];
+            $extendedClasses[] = $rootClass = $classPath;
             while (($getRootClass = get_parent_class($rootClass)) !== false) {
-                $rootClass = $getRootClass;
+                $extendedClasses[] = $rootClass = '\\' . $getRootClass;
             }
-            $newClassName = explode('.', str_replace([Runtime::PHP_IMITATION_DIRECTORY . '\\', '\\'], ['', '.'], $rootClass));
+
+            $result[] = $extendedClasses;
+
+        }
+
+        array_walk_recursive($result, function (&$className) {
+            $newClassName = explode(
+                '.',
+                str_replace(
+                    [Runtime::PHP_IMITATION_DIRECTORY . '\\', '\\'],
+                    ['', '.'],
+                    $className
+                )
+            );
             foreach ($newClassName as $key => $value) {
                 $newClassName[$key] = array_flip(Runtime::PHP_IMITATION_MAPS)[$value] ?? $value;
             }
 
             $newClassName = implode('.', $newClassName);
-            $result[] = [
-                'class_name' => $newClassName,
-                'deep_array' => 0,
-            ] + $signature;
-        }
+            $className = $newClassName;
+        });
 
         return $result;
     }

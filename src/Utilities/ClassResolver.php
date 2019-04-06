@@ -79,10 +79,16 @@ class ClassResolver
             }
         }
 
-        $className = '\\PHPJava\\Imitation\\' . implode('\\', $buildClassPath);
+        $className = Runtime::PHP_IMITATION_DIRECTORY . '\\' . implode('\\', $buildClassPath);
 
         if (!class_exists($className)) {
-            throw new ClassNotFoundException(str_replace(['\\PHPJava\\Imitation\\', '\\'], ['', '.'], $className) . ' class does not exist.');
+            throw new ClassNotFoundException(
+                str_replace(
+                    [Runtime::PHP_IMITATION_DIRECTORY . '\\', '\\'],
+                    ['', '.'],
+                    $className
+                ) . ' class does not exist.'
+            );
         }
 
         return [

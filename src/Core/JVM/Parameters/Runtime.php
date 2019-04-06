@@ -17,7 +17,7 @@ final class Runtime
 
     const VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY = false;
 
-    const LOG_PATH = 'php://stdout';
+    const LOG_PATH = 'php://stderr';
     const LOG_LEVEL = Logger::EMERGENCY;
 
     const PHP_IMITATION_MAPS = [
@@ -25,5 +25,5 @@ final class Runtime
         'Object' => '_Object',
     ];
 
-    const PHP_IMITATION_DIRECTORY = 'PHPJava\\Imitation';
+    const PHP_IMITATION_DIRECTORY = '\\PHPJava\\Imitation';
 }
