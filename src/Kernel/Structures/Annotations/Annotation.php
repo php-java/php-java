@@ -8,6 +8,7 @@ final class Annotation implements AnnotationInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $typeIndex = 0;
     private $numElementValuePairs = 0;
@@ -21,7 +22,8 @@ final class Annotation implements AnnotationInterface
         for ($i = 0; $i < $this->numElementValuePairs; $i++) {
             $elementNameIndex = $this->readUnsignedShort();
             $elementValuePair = (new ElementValue($this->reader))
-                ->setConstantPool($this->getConstantPool());
+                ->setConstantPool($this->getConstantPool())
+                ->setDebugTool($this->getDebugTool());
             $elementValuePair->execute();
             $this->elementValuePairs[] = [
                 'element_name_index' => $elementNameIndex,

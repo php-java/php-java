@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">=7.2",
-        "ext-zip": "*"
+        "ext-zip": "*",
+        "monolog/monolog": "^1.24"
     },
     "autoload": {
         "psr-4": {

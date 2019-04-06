@@ -8,6 +8,7 @@ class _Class implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $classIndex = null;
     public function execute(): void

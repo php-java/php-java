@@ -8,6 +8,7 @@ class _Float implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $bytes = null;
     public function execute(): void

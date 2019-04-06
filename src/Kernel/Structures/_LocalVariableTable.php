@@ -8,6 +8,7 @@ class _LocalVariableTable implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $startPc = 0;
     private $length = 0;

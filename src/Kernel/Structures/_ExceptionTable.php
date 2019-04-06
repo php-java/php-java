@@ -8,6 +8,7 @@ class _ExceptionTable implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $startPc = null;
     private $endPc = null;

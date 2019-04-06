@@ -23,8 +23,18 @@ class JavaClassInlineReader implements JavaClassReaderInterface
         return $this->binaryReader;
     }
 
-    public function __toString(): string
+    public function getJavaPathName(): string
+    {
+        return str_replace('/', '.', $this->getFileName());
+    }
+
+    public function getFileName(): string
     {
         return $this->fileName;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getFileName();
     }
 }

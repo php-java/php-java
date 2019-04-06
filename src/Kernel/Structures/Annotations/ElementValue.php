@@ -11,6 +11,7 @@ final class ElementValue implements AnnotationInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $tag;
     private $value;
@@ -46,6 +47,7 @@ final class ElementValue implements AnnotationInterface
             case '@': // annotation_value
                 $this->value = new AttributeInfo($this->reader);
                 $this->value->setConstantPool($this->getConstantPool());
+                $this->value->setDebugTool($this->getDebugTool());
                 $this->value->execute();
                 break;
             case '[': // array_value
@@ -56,6 +58,7 @@ final class ElementValue implements AnnotationInterface
                 for ($i = 0; $i < $this->value['num_values']; $i++) {
                     $value = new static($this->reader);
                     $value->setConstantPool($this->getConstantPool());
+                    $value->setDebugTool($this->getDebugTool());
                     $value->execute();
                     $this->value['values'][] = $value;
                 }

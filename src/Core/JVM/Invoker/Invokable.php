@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker;
 
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\FlexibleMethod;
@@ -191,7 +193,9 @@ trait Invokable
             $mnemonic = $mnemonicMap->getName($opcode);
 
             if ($mnemonic === null) {
-                throw new UndefinedOpCodeException('Call to undefined OpCode ' . sprintf('0x%X', $opcode) . '.');
+                throw new UndefinedOpCodeException(
+                    'Call to undefined OpCode ' . sprintf('0x%X', $opcode) . '.'
+                );
             }
             $pointer = $reader->getOffset() - 1;
 

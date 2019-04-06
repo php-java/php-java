@@ -8,6 +8,7 @@ class _Classes implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $innerClassInfoIndex = 0;
     private $outerClassInfoIndex = 0;

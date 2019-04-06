@@ -11,6 +11,7 @@ final class AttributeInfo implements AttributeInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\AttributeReference;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $attributeNameIndex = null;
     private $attributeLength = null;
@@ -22,9 +23,13 @@ final class AttributeInfo implements AttributeInterface
         $this->attributeLength = $this->readUnsignedInt();
         $cpInfo = $this->getConstantPool()->getEntries();
         $currentOffset = $this->getOffset();
-        $classAttributeName = '\\PHPJava\\Kernel\\Attributes\\' . $cpInfo[$this->attributeNameIndex]->getString() . 'Attribute';
+
+        $attributeName = $cpInfo[$this->attributeNameIndex]->getString();
+        $classAttributeName = '\\PHPJava\\Kernel\\Attributes\\' . $attributeName . 'Attribute';
+        $this->getDebugTool()->getLogger()->debug('Load an attribute: ' . $attributeName);
         $this->attributeData = new $classAttributeName($this->reader);
         $this->attributeData->setConstantPool($this->getConstantPool());
+        $this->attributeData->setDebugTool($this->getDebugTool());
         $this->attributeData->setAttributeReference($this);
         $this->attributeData->execute();
         if ($this->attributeLength != ($actual = $this->getOffset() - $currentOffset)) {

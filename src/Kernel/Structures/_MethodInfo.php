@@ -8,6 +8,7 @@ class _MethodInfo implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $accessFlag = null;
     private $nameIndex = null;
@@ -24,6 +25,7 @@ class _MethodInfo implements StructureInterface
         for ($i = 0; $i < $this->attributeCount; $i++) {
             $attribute = new \PHPJava\Kernel\Attributes\AttributeInfo($this->reader);
             $attribute->setConstantPool($this->getConstantPool());
+            $attribute->setDebugTool($this->getDebugTool());
             $attribute->execute();
 
             $this->attributes[] = $attribute;

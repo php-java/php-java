@@ -109,4 +109,9 @@ class Formatter
         }
         return $result;
     }
+
+    public static function javaClassNameFromFilePath($fileName): string
+    {
+        return $fileName;
+    }
 }

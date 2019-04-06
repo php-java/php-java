@@ -9,4 +9,7 @@ final class Runtime
     const STRICT = true;
 
     const VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY = false;
+
+    const LOG_PATH = 'php://stdout';
+    const LOG_LEVEL = 0;
 }

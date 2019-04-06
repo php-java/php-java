@@ -83,7 +83,6 @@ class JavaArchive
             if (in_array($className, static::IGNORE_FILES)) {
                 continue;
             }
-            echo "Load " . str_replace('/', '.', $className) . "\n";
             $this->classes[str_replace('/', '.', $className)] = new JavaClass(
                 new JavaClassInlineReader(
                     $className,
