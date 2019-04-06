@@ -282,6 +282,7 @@ $javaClass = new JavaClass(
 | operations.temporary_code_stream | string | php://memory | TBD | JavaClass |
 | log.level | int | 0 | TBD | Both |
 | log.path | string | php://stdout | TBD | Both |
+| dry_run.attribute | boolean | false | TBD | JavaClass |
 
 - For example in JavaClass:
 ```php
