@@ -415,7 +415,8 @@ public static void main(java.lang.String[])
 - **Problem 3:** PHPJava cannot calculate big number of `double` and `float` because `gmp_pow` cannot calculate negative exponents. So, PHPJavas use built-in function `pow`.
 
 ## Run Kotlin on the PHPJava
-Are you wanna run Kotlin on the PHPJava? Haha, yes you can.
+Are you wanna run Kotlin on the PHPJava? Are you a serious? 
+Haha, yes you can.
 But this feature is experimental currently.
 
 ### Quick Start
