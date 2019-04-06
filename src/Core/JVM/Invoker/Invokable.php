@@ -266,4 +266,9 @@ trait Invokable
     {
         return $this->methods;
     }
+
+    public function has(string $name): bool
+    {
+        return count($this->methods[$name] ?? []) > 0;
+    }
 }

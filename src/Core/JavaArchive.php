@@ -209,8 +209,9 @@ class JavaArchive
 
     public function getClassByName(string $name): JavaClassInterface
     {
+        $name = str_replace('/', '.', $name);
         if (!isset($this->classes[$name])) {
-            throw new ClassNotFoundException(str_replace('/', '.', $name) . ' does not found on ' . $this->jarFile . '.');
+            throw new ClassNotFoundException($name . ' does not found on ' . $this->jarFile . '.');
         }
         return $this->classes[$name];
     }

@@ -9,4 +9,5 @@ interface InvokerInterface
     public function call(string $name, ...$arguments);
     public function isDynamic(): bool;
     public function getList(): array;
+    public function has(string $name): bool;
 }

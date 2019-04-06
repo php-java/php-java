@@ -202,19 +202,16 @@ class JavaClass implements JavaClassInterface
             $this,
             $options
         );
-    }
 
-//    public function __debugInfo()
-//    {
-//        return [
-//            'className' => $this->getClassName(),
-//            'superClass' => get_class($this->getSuperClass()),
-//            'methods' => [
-//                'static' => array_keys($this->invoker->getStatic()->getMethods()->getList()),
-//                'dynamic' => array_keys($this->invoker->getDynamic()->getMethods()->getList()),
-//            ],
-//        ];
-//    }
+        if ($this->invoker->getStatic()->getMethods()->has('<clinit>')) {
+            $this->invoker
+                ->getStatic()
+                ->getMethods()
+                ->call(
+                    '<clinit>'
+                );
+        }
+    }
 
     public function getClassName(bool $shortName = false): string
     {
