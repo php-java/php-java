@@ -76,6 +76,8 @@ class JavaClass implements JavaClassInterface
 
     private $debugTool;
 
+    private $startTime = 0.0;
+
     /**
      * JavaClass constructor.
      * @param JavaClassReaderInterface $reader
@@ -86,6 +88,8 @@ class JavaClass implements JavaClassInterface
      */
     public function __construct(JavaClassReaderInterface $reader, array $options = [])
     {
+        $this->startTime = microtime(true);
+
         // Validate Java file
         if (!(new MagicByte($reader->getBinaryReader()->readUnsignedInt()))->isValid()) {
             throw new ValidatorException($reader . ' has broken or not Java class.');
@@ -211,6 +215,13 @@ class JavaClass implements JavaClassInterface
                     '<clinit>'
                 );
         }
+    }
+
+    public function __destruct()
+    {
+        $this->debugTool->getLogger()->info(
+            'Spent time: ' . (microtime(true) - $this->startTime) . ' sec.'
+        );
     }
 
     public function getClassName(bool $shortName = false): string

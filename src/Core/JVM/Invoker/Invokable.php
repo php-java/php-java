@@ -40,7 +40,7 @@ trait Invokable
         $this->methods = $methods;
         $this->options = $options;
         $this->debugTool = new DebugTool(
-            $javaClassInvoker->getJavaClass()->getClassName(true),
+            str_replace('/', '.', $javaClassInvoker->getJavaClass()->getClassName(true)),
             $this->options
         );
     }
