@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Imitation\java\io\FileNotFoundException;
@@ -93,7 +94,17 @@ class JavaArchive
             if (in_array($className, static::IGNORE_FILES)) {
                 continue;
             }
-            $this->classes[str_replace('/', '.', $className)] = new JavaClass(
+            $classPath = str_replace('/', '.', $className);
+            if (!($this->options['preload'] ?? GlobalOptions::get('preload') ?? Runtime::PRELOAD)) {
+                $this->classes[$classPath] = new JavaClassDeferredLoader(
+                    JavaClassInlineReader::class,
+                    [$className, $code],
+                    $this->options
+                );
+                continue;
+            }
+
+            $this->classes[$classPath] = new JavaClass(
                 new JavaClassInlineReader(
                     $className,
                     $code
@@ -194,7 +205,7 @@ class JavaArchive
         return $this->classes;
     }
 
-    public function getClassByName(string $name): JavaClass
+    public function getClassByName(string $name): JavaClassInterface
     {
         if (!isset($this->classes[$name])) {
             throw new ClassNotFoundException(str_replace('/', '.', $name) . ' does not found on ' . $this->jarFile . '.');

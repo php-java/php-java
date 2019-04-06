@@ -276,7 +276,7 @@ $javaClass = new JavaClass(
 | entrypoint | ?string | null | Specify to run entrypoint in JAR.  | JavaArchive |
 | max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass | 
 | strict | boolean | true | If strict mode is `true` then execute method, variables and so on with strict. But if strict mode is `false` then execute ambiguously method, variable and etc in PHPJava. | Both |
-| preload | boolean | false | preload is pre-read JavaClass in emulating JAR. This may be a lot of consuming memories by large JAR file. but if this is false then to use deffer loading. | JavaArchive |
+| preload | boolean | false | preload is pre-read JavaClass in emulating JAR. This may be a lot of consuming memories by large JAR file. but if this is false then to use defer loading. | JavaArchive |
 | validation.method.arguments_count_only | boolean | false | If this mode `true` then ClassResolver validate arguments size only. | JavaClass |
 | operations.enable_trace | boolean | true | Store operations history into memory if this is enabled. | JavaClass |
 | operations.temporary_code_stream | string | php://memory | TBD | JavaClass |

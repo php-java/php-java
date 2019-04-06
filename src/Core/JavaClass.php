@@ -16,7 +16,7 @@ use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 
-class JavaClass
+class JavaClass implements JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
 
