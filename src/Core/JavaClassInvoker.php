@@ -92,13 +92,6 @@ class JavaClassInvoker
             $this->staticMethods,
             $this->options
         );
-
-        // call <clinit>
-        if ($this->options['preload'] ?? GlobalOptions::get('preload') ?? Runtime::PRELOAD) {
-            if (isset($this->staticMethods['<clinit>'])) {
-                $this->getStatic()->getMethods()->call('<clinit>');
-            }
-        }
     }
 
     /**
