@@ -22,7 +22,6 @@ final class _invokestatic implements OperationInterface
         for ($i = 0; $i < $signature['arguments_count']; $i++) {
             $arguments[] = $this->getStack();
         }
-        
         krsort($arguments);
 
         $return = null;

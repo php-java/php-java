@@ -276,9 +276,14 @@ $javaClass = new JavaClass(
 | entrypoint | ?string | null | Specify to run entrypoint in JAR.  | JavaArchive |
 | max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass | 
 | strict | boolean | true | If strict mode is `true` then execute method, variables and so on with strict. But if strict mode is `false` then execute ambiguously method, variable and etc in PHPJava. | Both |
+| preload | boolean | false | preload is pre-read JavaClass in emulating JAR. This may be a lot of consuming memories by large JAR file. but if this is false then to use deffer loading. | JavaArchive |
 | validation.method.arguments_count_only | boolean | false | If this mode `true` then ClassResolver validate arguments size only. | JavaClass |
+| operations.enable_trace | boolean | true | Store operations history into memory if this is enabled. | JavaClass |
+| operations.temporary_code_stream | string | php://memory | TBD | JavaClass |
+| log.level | int | 0 | TBD | Both |
+| log.path | string | php://stdout | TBD | Both |
 
-- For example:
+- For example in JavaClass:
 ```php
 <?php
 use PHPJava\Core\JavaClass;
@@ -295,6 +300,25 @@ $javaClass = new JavaClass(
         ],
     ]
 );
+```
+
+- For example in GlobalOptions
+```php
+<?php
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use Monolog\Logger;
+
+GlobalOptions::set([
+    'log' => [
+        'level' => Logger::DEBUG,
+    ],
+    'validation' => [
+        'method' => [
+            'arguments_count_only' => true,
+        ],
+    ],
+]);
+
 ```
 
 ### Output PHPJava operations
@@ -374,13 +398,13 @@ public static void main(java.lang.String[])
 |:-------------:|:-------------:|
 |null |null |
 |boolean |\PHPJava\Kernel\Types\\_Boolean (including `__toString`) |
-|char |\PHPJava\Kernel\Types\\_Char (including `__toString`), string |
-|byte |\PHPJava\Kernel\Types\\_Byte (including `__toString`), string |
-|short |\PHPJava\Kernel\Types\\_Short (including `__toString`), string, int |
-|int |\PHPJava\Kernel\Types\\_Int (including `__toString`), string, int |
-|long |\PHPJava\Kernel\Types\\_Long (including `__toString`), string, int |
-|float |\PHPJava\Kernel\Types\\_Float (including `__toString`), string, float |
-|double |\PHPJava\Kernel\Types\\_Char (including `__toString`), string, float |
+|char |\PHPJava\Kernel\Types\\_Char (including `__toString`) |
+|byte |\PHPJava\Kernel\Types\\_Byte (including `__toString`) |
+|short |\PHPJava\Kernel\Types\\_Short (including `__toString`) |
+|int |\PHPJava\Kernel\Types\\_Int (including `__toString`) |
+|long |\PHPJava\Kernel\Types\\_Long (including `__toString`) |
+|float |\PHPJava\Kernel\Types\\_Float (including `__toString`) |
+|double |\PHPJava\Kernel\Types\\_Double (including `__toString`) |
 
 - **Problem 3:** PHPJava cannot calculate big number of `double` and `float` because `gmp_pow` cannot calculate negative exponents. So, PHPJavas use built-in function `pow`.
 

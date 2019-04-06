@@ -58,6 +58,7 @@ trait Invokable
      */
     public function call(string $name, ...$arguments)
     {
+        $this->debugTool->getLogger()->debug('Call method: ' . $name);
         $getCodeAttribute = function ($attributes): ?CodeAttribute {
             foreach ($attributes as $attribute) {
                 /**
@@ -130,6 +131,12 @@ trait Invokable
              */
             $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
 
+//            if ($name === 'checkParameterIsNotNull') {
+//                var_dump($arguments);
+//                var_dump($convertedPassedArguments);
+//                var_dump($methodSignature);
+//            }
+
             if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
                 if ($methodSignature === $convertedPassedArguments) {
                     $method = $methodReference;
@@ -166,7 +173,12 @@ trait Invokable
             throw new IllegalJavaClassException('Java class does not having code attribution.');
         }
 
-        $handle = fopen('php://memory', 'r+');
+        $handle = fopen(
+            $this->options['operations']['temporary_code_stream'] ??
+            GlobalOptions::get('operations.temporary_code_stream') ??
+            Runtime::OPERATIONS_TEMPORARY_CODE_STREAM,
+            'r+'
+        );
         fwrite($handle, $codeAttribute->getCode());
         rewind($handle);
 
@@ -189,6 +201,7 @@ trait Invokable
         $stacks = [];
         $mnemonicMap = new OpCode();
         $executedCounter = 0;
+        $this->debugTool->getLogger()->info('Start operations');
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
@@ -207,8 +220,10 @@ trait Invokable
             $pointer = $reader->getOffset() - 1;
 
             $fullName = '\\PHPJava\\Kernel\\Mnemonics\\' . $mnemonic;
-            $debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
-            $debugTraces['mnemonic_indexes'][] = $pointer;
+            if ($this->options['operations']['enable_trace'] ?? GlobalOptions::get('operations.enable_trace') ?? Runtime::OPERATIONS_ENABLE_TRACE) {
+                $debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
+                $debugTraces['mnemonic_indexes'][] = $pointer;
+            }
 
             $this->debugTool->getLogger()->debug(
                 vsprintf(
@@ -238,11 +253,13 @@ trait Invokable
 
             if ($returnValue !== null) {
                 $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+                $this->debugTool->getLogger()->info('Finish operations');
                 return $returnValue;
             }
         }
 
         $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+        $this->debugTool->getLogger()->info('Finish operations');
         return null;
     }
 

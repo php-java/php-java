@@ -3,6 +3,7 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\TypeException;
+use PHPJava\Imitation\java\lang\_String;
 use PHPJava\Kernel\Types\Type;
 
 class TypeResolver
@@ -104,6 +105,13 @@ class TypeResolver
             if ($arguments instanceof Type) {
                 return [
                     'type' => $arguments->getTypeNameInJava(),
+                    'deep_array' => $deepArray,
+                ];
+            }
+            if ($arguments instanceof _String) {
+                return [
+                    'type' => 'class',
+                    'class_name' => 'java.lang.String',
                     'deep_array' => $deepArray,
                 ];
             }

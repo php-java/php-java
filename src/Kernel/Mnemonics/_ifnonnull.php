@@ -11,6 +11,11 @@ final class _ifnonnull implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $offset = $this->readShort();
+        $operand = $this->getStack();
+
+        if ($operand !== null) {
+            $this->setOffset($this->getProgramCounter() + $offset);
+        }
     }
 }
