@@ -280,7 +280,7 @@ $javaClass = new JavaClass(
 | validation.method.arguments_count_only | boolean | false | If this mode `true` then ClassResolver validate arguments size only. | JavaClass |
 | operations.enable_trace | boolean | true | Store operations history into memory if this is enabled. | JavaClass |
 | operations.temporary_code_stream | string | php://memory | TBD | JavaClass |
-| log.level | int | 0 | TBD | Both |
+| log.level | int | Logger::EMERGENCY | TBD | Both |
 | log.path | string | php://stdout | TBD | Both |
 | dry_run.attribute | boolean | false | TBD | JavaClass |
 

@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Core\JVM\Parameters;
 
+use Monolog\Logger;
+
 final class Runtime
 {
     const ENTRYPOINT = null;
@@ -16,6 +18,6 @@ final class Runtime
     const VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY = false;
 
     const LOG_PATH = 'php://stdout';
-    const LOG_LEVEL = 0;
+    const LOG_LEVEL = Logger::EMERGENCY;
 
 }
