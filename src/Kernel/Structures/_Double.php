@@ -8,6 +8,7 @@ class _Double implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $highBytes = null;
     private $lowBytes = null;

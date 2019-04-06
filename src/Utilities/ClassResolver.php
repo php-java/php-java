@@ -5,14 +5,12 @@ use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassFileReader;
 use PHPJava\Core\JavaClassReaderInterface;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
 
 class ClassResolver
 {
-    const MAPS = [
-        'String' => '_String',
-        'Object' => '_Object',
-    ];
+    const MAPS = Runtime::PHP_IMITATION_MAPS;
 
     // resource types
     const RESOURCE_TYPE_FILE = 'RESOURCE_TYPE_FILE';
@@ -81,10 +79,16 @@ class ClassResolver
             }
         }
 
-        $className = '\\PHPJava\\Imitation\\' . implode('\\', $buildClassPath);
+        $className = Runtime::PHP_IMITATION_DIRECTORY . '\\' . implode('\\', $buildClassPath);
 
         if (!class_exists($className)) {
-            throw new ClassNotFoundException(str_replace(['\\PHPJava\\Imitation\\', '\\'], ['', '.'], $className) . ' class does not exist.');
+            throw new ClassNotFoundException(
+                str_replace(
+                    [Runtime::PHP_IMITATION_DIRECTORY . '\\', '\\'],
+                    ['', '.'],
+                    $className
+                ) . ' class does not exist.'
+            );
         }
 
         return [
@@ -106,5 +110,25 @@ class ClassResolver
             return;
         }
         static::$resolves[] = [$valuesOrResourceType, $value];
+    }
+
+    public static function resolveNameByPath($path)
+    {
+        $names = explode(
+            '.',
+            str_replace(
+                [Runtime::PHP_IMITATION_DIRECTORY . '\\', '\\'],
+                ['', '.'],
+                get_class($path)
+            )
+        );
+
+        $string = [];
+
+        foreach ($names as $name) {
+            $string[] = array_flip(static::MAPS)[$name] ?? $name;
+        }
+
+        return implode('.', $string);
     }
 }

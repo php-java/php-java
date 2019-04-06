@@ -2,7 +2,9 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
+use PHPJava\Imitation\java\lang\_Object;
 use PHPJava\Kernel\Types\Type;
 
 class TypeResolver
@@ -57,11 +59,21 @@ class TypeResolver
         return 'L' . $type;
     }
 
+    /**
+     * @param $type
+     * @return string
+     */
     public static function convertJavaTypeSimplyForPHP($type): string
     {
         return static::AMBIGUOUS_TYPES_ON_PHP[$type] ?? $type;
     }
 
+    /**
+     * @param $arguments
+     * @param string $defaultJavaArgumentType
+     * @return array
+     * @throws TypeException
+     */
     public static function convertPHPtoJava($arguments, $defaultJavaArgumentType = 'java.lang.String'): array
     {
         $phpType = gettype($arguments);
@@ -107,6 +119,13 @@ class TypeResolver
                     'deep_array' => $deepArray,
                 ];
             }
+            if ($arguments instanceof _Object) {
+                return [
+                    'type' => 'class',
+                    'class_name' => ClassResolver::resolveNameByPath($arguments),
+                    'deep_array' => $deepArray,
+                ];
+            }
             throw new TypeException(get_class($arguments) . ' does not supported to convert to Java\'s argument.');
         }
         $resolveType = static::SIGNATURE_MAP[static::PHP_TYPE_MAP[$phpType][0]] ?? null;
@@ -121,5 +140,91 @@ class TypeResolver
             'type' => $resolveType,
             'deep_array' => $deepArray,
         ];
+    }
+
+    /**
+     * @param string $a
+     * @param string $b
+     * @return bool
+     * @throws TypeException
+     */
+    public static function compare(string $a, string $b): bool
+    {
+        if ($a === $b) {
+            return true;
+        }
+
+        $a = static::getExtendedClasses($a);
+        $b = static::getExtendedClasses($b);
+
+        if (count($a) !== count($b)) {
+            return false;
+        }
+
+        $resultComparison = [];
+        for ($i = 0, $size = count($a); $i < $size; $i++) {
+            $resultComparison[] = count(array_intersect($a[$i], $b[$i])) > 0;
+        }
+
+        return !in_array(
+            false,
+            $resultComparison,
+            true
+        );
+    }
+
+    /**
+     * @param $class
+     * @return array
+     * @throws TypeException
+     */
+    public static function getExtendedClasses($class): array
+    {
+        $result = [];
+        foreach (Formatter::parseSignature($class) as $signature) {
+            if ($signature['type'] !== 'class') {
+                $result[] = [$signature['type']];
+                continue;
+            }
+            $path = [];
+            foreach (explode('.', $signature['class_name']) as $name) {
+                $path[] = Runtime::PHP_IMITATION_MAPS[$name] ?? $name;
+            }
+            $classPath = Runtime::PHP_IMITATION_DIRECTORY . '\\' . implode('\\', $path);
+
+            // Remove duplicated prefix
+            $classPath = preg_replace(
+                '/^(?:' . preg_quote(Runtime::PHP_IMITATION_DIRECTORY, '/') . ')+/',
+                Runtime::PHP_IMITATION_DIRECTORY,
+                $classPath
+            );
+
+            $extendedClasses = [];
+            $extendedClasses[] = $rootClass = $classPath;
+            while (($getRootClass = get_parent_class($rootClass)) !== false) {
+                $extendedClasses[] = $rootClass = '\\' . $getRootClass;
+            }
+
+            $result[] = $extendedClasses;
+        }
+
+        array_walk_recursive($result, function (&$className) {
+            $newClassName = explode(
+                '.',
+                str_replace(
+                    [Runtime::PHP_IMITATION_DIRECTORY . '\\', '\\'],
+                    ['', '.'],
+                    $className
+                )
+            );
+            foreach ($newClassName as $key => $value) {
+                $newClassName[$key] = array_flip(Runtime::PHP_IMITATION_MAPS)[$value] ?? $value;
+            }
+
+            $newClassName = implode('.', $newClassName);
+            $className = $newClassName;
+        });
+
+        return $result;
     }
 }

@@ -19,7 +19,7 @@ class JarTest extends Base
     public function testCallWithEntryPoint()
     {
         ob_start();
-        (new JavaArchive(__DIR__ . '/caches/JarTest.jar'))->execute();
+        (new JavaArchive(__DIR__ . '/caches/JarTest.jar'))->execute([]);
         $result = ob_get_clean();
 
         $this->assertEquals(

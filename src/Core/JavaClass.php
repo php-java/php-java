@@ -13,9 +13,10 @@ use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Maps\AccessFlag;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\ClassResolver;
+use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 
-class JavaClass
+class JavaClass implements JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
 
@@ -73,6 +74,8 @@ class JavaClass
 
     private $options = [];
 
+    private $debugTool;
+
     /**
      * JavaClass constructor.
      * @param JavaClassReaderInterface $reader
@@ -88,11 +91,26 @@ class JavaClass
             throw new ValidatorException($reader . ' has broken or not Java class.');
         }
 
+        // options
+        $this->options = $options;
+
+        // Debug tool
+        $this->debugTool = new DebugTool(
+            $reader->getJavaPathName(),
+            $options
+        );
+
+        $this->debugTool->getLogger()->info('Start class emulation');
+
         // read minor version
         $this->versions['minor'] = $reader->getBinaryReader()->readUnsignedShort();
 
+        $this->debugTool->getLogger()->info('Minor version: ' . $this->versions['minor']);
+
         // read major version
         $this->versions['major'] = $reader->getBinaryReader()->readUnsignedShort();
+
+        $this->debugTool->getLogger()->info('Major version: ' . $this->versions['minor']);
 
         // read constant pool size
         $this->constantPool = new ConstantPool(
@@ -100,13 +118,15 @@ class JavaClass
             $reader->getBinaryReader()->readUnsignedShort()
         );
 
+        $constantPoolEntries = $this->constantPool->getEntries();
+
+        $this->debugTool->getLogger()->info('Constant Pools: ' . count($constantPoolEntries));
+
         // read access flag
         $this->accessFlag = $reader->getBinaryReader()->readUnsignedShort();
 
         // read this class
         $this->thisClass = $reader->getBinaryReader()->readUnsignedShort();
-
-        $constantPoolEntries = $this->constantPool->getEntries();
 
         $this->className = $constantPoolEntries[$constantPoolEntries[$this->thisClass]->getClassIndex()];
 
@@ -132,29 +152,41 @@ class JavaClass
         $this->activeInterfaces = new ActiveInterface(
             $reader,
             $reader->getBinaryReader()->readUnsignedShort(),
-            $this->constantPool
+            $this->constantPool,
+            $this->debugTool
         );
+
+        $this->debugTool->getLogger()->info('Extracted interfaces: ' . count($this->activeInterfaces->getEntries()));
 
         // read fields
         $this->activeFields = new ActiveFields(
             $reader,
             $reader->getBinaryReader()->readUnsignedShort(),
-            $this->constantPool
+            $this->constantPool,
+            $this->debugTool
         );
+
+        $this->debugTool->getLogger()->info('Extracted fields: ' . count($this->activeFields->getEntries()));
 
         // read methods
         $this->activeMethods = new ActiveMethods(
             $reader,
             $reader->getBinaryReader()->readUnsignedShort(),
-            $this->constantPool
+            $this->constantPool,
+            $this->debugTool
         );
+
+        $this->debugTool->getLogger()->info('Extracted methods: ' . count($this->activeMethods->getEntries()));
 
         // read Attributes
         $this->activeAttributes = new ActiveAttributes(
             $reader,
             $reader->getBinaryReader()->readUnsignedShort(),
-            $this->constantPool
+            $this->constantPool,
+            $this->debugTool
         );
+
+        $this->debugTool->getLogger()->info('Extracted attributes: ' . count($this->activeAttributes->getEntries()));
 
         foreach ($this->activeAttributes->getEntries() as $entry) {
             if ($entry->getAttributeData() instanceof InnerClassesAttribute) {
@@ -164,23 +196,21 @@ class JavaClass
                 );
             }
         }
+        $this->debugTool->getLogger()->info('End of Class');
 
         $this->invoker = new JavaClassInvoker(
             $this,
             $options
         );
-    }
 
-    public function __debugInfo()
-    {
-        return [
-            'className' => $this->getClassName(),
-            'superClass' => get_class($this->getSuperClass()),
-            'methods' => [
-                'static' => array_keys($this->invoker->getStatic()->getMethods()->getList()),
-                'dynamic' => array_keys($this->invoker->getDynamic()->getMethods()->getList()),
-            ],
-        ];
+        if ($this->invoker->getStatic()->getMethods()->has('<clinit>')) {
+            $this->invoker
+                ->getStatic()
+                ->getMethods()
+                ->call(
+                    '<clinit>'
+                );
+        }
     }
 
     public function getClassName(bool $shortName = false): string
@@ -348,5 +378,10 @@ class JavaClass
             printf($line);
             printf("\n");
         }
+    }
+
+    public function getOptions(): array
+    {
+        return $this->options;
     }
 }

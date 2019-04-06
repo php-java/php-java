@@ -8,6 +8,8 @@ final class LineNumberTableAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\AttributeReference;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $lineNumberTableLength = null;
     private $lineNumberTables = null;
@@ -17,6 +19,7 @@ final class LineNumberTableAttribute implements AttributeInterface
         for ($i = 0; $i < $this->lineNumberTableLength; $i++) {
             $lineNumberTable = new \PHPJava\Kernel\Structures\_LineNumberTable($this->reader);
             $lineNumberTable->setConstantPool($this->getConstantPool());
+            $lineNumberTable->setDebugTool($this->getDebugTool());
             $lineNumberTable->setStartPc($this->readUnsignedShort())
                 ->setLineNumber($this->readUnsignedShort())
                 ->execute();

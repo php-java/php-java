@@ -5,6 +5,7 @@ use PHPJava\Utilities\ClassResolver;
 
 class JavaClassFileReader implements JavaClassReaderInterface
 {
+    private $fileName;
     private $handle;
     private $binaryReader;
 
@@ -31,8 +32,22 @@ class JavaClassFileReader implements JavaClassReaderInterface
         return $this->binaryReader;
     }
 
-    public function __toString(): string
+    public function getJavaPathName(): string
+    {
+        return preg_replace(
+            '/\.class$/',
+            '',
+            basename($this->getFileName())
+        );
+    }
+
+    public function getFileName(): string
     {
         return stream_get_meta_data($this->handle)['uri'];
+    }
+
+    public function __toString(): string
+    {
+        return $this->getFileName();
     }
 }

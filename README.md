@@ -84,7 +84,9 @@ $ cd build && jar -cvfe ../Test.jar Test *
 <?php
 use PHPJava\Core\JavaArchive;
 
-(new JavaArchive('Test.jar'))->execute();
+// You must pass parameters to entrypoint within the `execute` method.
+// The `execute` method haven't default parameters.
+(new JavaArchive('Test.jar'))->execute([]);
 
 // or
 (new JavaArchive('Test.jar'))
@@ -274,11 +276,20 @@ $javaClass = new JavaClass(
 |Options        | Value | Default | Description         |Targeted         |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | entrypoint | ?string | null | Specify to run entrypoint in JAR.  | JavaArchive |
-| max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass | 
+| max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass |
+| max_executed_time | integer | 30 | TBD | TBD |  
 | strict | boolean | true | If strict mode is `true` then execute method, variables and so on with strict. But if strict mode is `false` then execute ambiguously method, variable and etc in PHPJava. | Both |
+| preload | boolean | false | preload is pre-read JavaClass in emulating JAR. This may be a lot of consuming memories by large JAR file. but JavaArchive use defer loading if this option is false. | JavaArchive |
 | validation.method.arguments_count_only | boolean | false | If this mode `true` then ClassResolver validate arguments size only. | JavaClass |
+| operations.enable_trace | boolean | true | Store operations history into memory if this is enabled. | JavaClass |
+| operations.temporary_code_stream | string | php://memory | TBD | JavaClass |
+| log.level | int | Logger::EMERGENCY | TBD | Both |
+| log.path | string | php://stdout | TBD | Both |
+| dry_run.* | boolean | false | TBD (Reserved Option) | TBD |
+| mode | enum | Mode::EXPERIMENTAL | TBD (Reserved Option) | TBD |
 
-- For example:
+
+- For example in JavaClass:
 ```php
 <?php
 use PHPJava\Core\JavaClass;
@@ -295,6 +306,25 @@ $javaClass = new JavaClass(
         ],
     ]
 );
+```
+
+- For example in GlobalOptions
+```php
+<?php
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use Monolog\Logger;
+
+GlobalOptions::set([
+    'log' => [
+        'level' => Logger::DEBUG,
+    ],
+    'validation' => [
+        'method' => [
+            'arguments_count_only' => true,
+        ],
+    ],
+]);
+
 ```
 
 ### Output PHPJava operations
@@ -374,15 +404,47 @@ public static void main(java.lang.String[])
 |:-------------:|:-------------:|
 |null |null |
 |boolean |\PHPJava\Kernel\Types\\_Boolean (including `__toString`) |
-|char |\PHPJava\Kernel\Types\\_Char (including `__toString`), string |
-|byte |\PHPJava\Kernel\Types\\_Byte (including `__toString`), string |
-|short |\PHPJava\Kernel\Types\\_Short (including `__toString`), string, int |
-|int |\PHPJava\Kernel\Types\\_Int (including `__toString`), string, int |
-|long |\PHPJava\Kernel\Types\\_Long (including `__toString`), string, int |
-|float |\PHPJava\Kernel\Types\\_Float (including `__toString`), string, float |
-|double |\PHPJava\Kernel\Types\\_Char (including `__toString`), string, float |
+|char |\PHPJava\Kernel\Types\\_Char (including `__toString`) |
+|byte |\PHPJava\Kernel\Types\\_Byte (including `__toString`) |
+|short |\PHPJava\Kernel\Types\\_Short (including `__toString`) |
+|int |\PHPJava\Kernel\Types\\_Int (including `__toString`) |
+|long |\PHPJava\Kernel\Types\\_Long (including `__toString`) |
+|float |\PHPJava\Kernel\Types\\_Float (including `__toString`) |
+|double |\PHPJava\Kernel\Types\\_Double (including `__toString`) |
 
 - **Problem 3:** PHPJava cannot calculate big number of `double` and `float` because `gmp_pow` cannot calculate negative exponents. So, PHPJavas use built-in function `pow`.
+
+## Run Kotlin on the PHPJava
+Are you wanna run Kotlin on the PHPJava? Are you a serious? 
+Haha, yes you can.
+But this feature is experimental currently.
+
+### Quick Start
+
+- 1) Write Kotlin:
+
+```kotlin
+fun main(args: Array<String>) {
+    println("Hello World!")
+}
+```
+
+- 2) Compile Kotlin:
+```
+$ kotlinc HelloWorld.kt -include-runtime -d HelloWorld.jar
+```
+
+- 3) Execute JAR as follows:
+
+```php
+<?php
+use PHPJava\Core\JavaArchive;
+
+$jar = new JavaArchive(__DIR__ . '/HelloWorld.jar');
+$jar->execute([]);
+```
+
+You'll get a result `Hello World!`.
 
 ## Run unit tests
 

@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Kernel\Annotations;
+namespace PHPJava\Kernel\Structures\Annotations;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
@@ -8,6 +8,7 @@ final class Annotation implements AnnotationInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $typeIndex = 0;
     private $numElementValuePairs = 0;
@@ -17,11 +18,17 @@ final class Annotation implements AnnotationInterface
     {
         $this->typeIndex = $this->readUnsignedShort();
         $this->numElementValuePairs = $this->readUnsignedShort();
+
         for ($i = 0; $i < $this->numElementValuePairs; $i++) {
-            $elementValuePair = (new ElementValuePairs($this->reader))
-                ->setConstantPool($this->getConstantPool());
-            $elementValuePair->execute();
-            $this->elementValuePairs[] = $elementValuePair;
+            $elementNameIndex = $this->readUnsignedShort();
+
+            $this->elementValuePairs[] = [
+                'element_name_index' => $elementNameIndex,
+                'element_value_pair' => (new ElementValue($this->reader))
+                    ->setConstantPool($this->getConstantPool())
+                    ->setDebugTool($this->getDebugTool())
+                    ->execute(),
+            ];
         }
     }
 }

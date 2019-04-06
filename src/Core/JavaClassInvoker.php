@@ -5,6 +5,8 @@ use PHPJava\Core\JVM\DynamicAccessor;
 use PHPJava\Core\JVM\Field\FieldInterface;
 use PHPJava\Core\JVM\Invoker\Invokable;
 use PHPJava\Core\JVM\Invoker\InvokerInterface;
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\StaticAccessor;
 use PHPJava\Kernel\Maps\AccessFlag;
 use PHPJava\Kernel\Maps\OpCode;
@@ -90,11 +92,6 @@ class JavaClassInvoker
             $this->staticMethods,
             $this->options
         );
-
-        // call <clinit>
-        if (isset($this->staticMethods['<clinit>'])) {
-            $this->getStatic()->getMethods()->call('<clinit>');
-        }
     }
 
     /**

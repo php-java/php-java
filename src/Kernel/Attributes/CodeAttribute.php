@@ -8,6 +8,8 @@ final class CodeAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\AttributeReference;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $maxStack = null;
     private $maxLocals = null;
@@ -37,6 +39,7 @@ final class CodeAttribute implements AttributeInterface
         for ($i = 0; $i < $this->exceptionTableLength; $i++) {
             $exceptionTable = new \PHPJava\Kernel\Structures\_ExceptionTable($this->reader);
             $exceptionTable->setConstantPool($this->getConstantPool());
+            $exceptionTable->setDebugTool($this->getDebugTool());
             $exceptionTable->setStartPc($this->readUnsignedShort())
                 ->setEndPc($this->readUnsignedShort())
                 ->setHandlerPc($this->readUnsignedShort())
@@ -49,6 +52,7 @@ final class CodeAttribute implements AttributeInterface
         for ($i = 0; $i < $this->attributeCount; $i++) {
             $attributeInfo = new \PHPJava\Kernel\Attributes\AttributeInfo($this->reader);
             $attributeInfo->setConstantPool($this->getConstantPool());
+            $attributeInfo->setDebugTool($this->getDebugTool());
             $attributeInfo->execute();
             $this->attributeInfo[] = $attributeInfo;
         }

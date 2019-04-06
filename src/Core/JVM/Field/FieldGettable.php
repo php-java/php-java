@@ -15,7 +15,6 @@ trait FieldGettable
     public function get(string $name)
     {
         if (!isset($this->fields[$name])) {
-            debug_print_backtrace();
             throw new NoSuchFieldException('Get to undefined Field ' . $name);
         }
         if ($this->fields[$name] instanceof _String) {

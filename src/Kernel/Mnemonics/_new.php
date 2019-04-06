@@ -26,7 +26,6 @@ final class _new implements OperationInterface
             /**
              * @var \PHPJava\Core\JavaClass $classObject
              */
-
             $this->pushStack($classObject->getInvoker()->construct()->getJavaClass());
             return;
         }

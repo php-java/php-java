@@ -8,6 +8,7 @@ class _FieldInfo implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DebugTool;
 
     private $accessFlag = null;
     private $nameIndex = null;
@@ -22,7 +23,12 @@ class _FieldInfo implements StructureInterface
         $this->descriptorIndex = $this->readUnsignedShort();
         $this->attributeCount = $this->readUnsignedShort();
         for ($i = 0; $i < $this->attributeCount; $i++) {
-            $this->attributes[$i] = new \PHPJava\Kernel\Attributes\AttributeInfo($this->reader);
+            $attribute = new \PHPJava\Kernel\Attributes\AttributeInfo($this->reader);
+            $attribute->setConstantPool($this->getConstantPool());
+            $attribute->setDebugTool($this->getDebugTool());
+            $attribute->execute();
+
+            $this->attributes[] = $attribute;
         }
     }
 
