@@ -206,7 +206,6 @@ class TypeResolver
             }
 
             $result[] = $extendedClasses;
-
         }
 
         array_walk_recursive($result, function (&$className) {
