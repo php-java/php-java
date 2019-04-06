@@ -22,7 +22,6 @@ final class ElementValue implements AnnotationInterface
     public function execute(): void
     {
         $this->tag = chr($this->readByte());
-
         switch ($this->tag) {
             case 'B': // const_value_index
             case 'C':
@@ -45,7 +44,7 @@ final class ElementValue implements AnnotationInterface
                 $this->value = $this->readUnsignedShort();
                 break;
             case '@': // annotation_value
-                $this->value = new AttributeInfo($this->reader);
+                $this->value = new Annotation($this->reader);
                 $this->value->setConstantPool($this->getConstantPool());
                 $this->value->setDebugTool($this->getDebugTool());
                 $this->value->execute();

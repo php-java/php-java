@@ -135,6 +135,8 @@ class JavaArchive
      */
     public function execute()
     {
+        $this->debugTool->getLogger()->info('Call to entrypoint: ' . $this->getEntryPointName());
+        exit();
         if ($this->getEntryPointName() === null) {
             throw new UndefinedEntrypointException('No entrypoint.');
         }

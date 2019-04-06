@@ -11,8 +11,12 @@ final class EnclosingMethodAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    private $classIndex = 0;
+    private $methodIndex = 0;
+
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->classIndex = $this->readUnsignedShort();
+        $this->methodIndex = $this->readUnsignedShort();
     }
 }
