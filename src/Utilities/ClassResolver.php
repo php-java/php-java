@@ -5,14 +5,12 @@ use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassFileReader;
 use PHPJava\Core\JavaClassReaderInterface;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
 
 class ClassResolver
 {
-    const MAPS = [
-        'String' => '_String',
-        'Object' => '_Object',
-    ];
+    const MAPS = Runtime::PHP_IMITATION_MAPS;
 
     // resource types
     const RESOURCE_TYPE_FILE = 'RESOURCE_TYPE_FILE';
@@ -106,5 +104,25 @@ class ClassResolver
             return;
         }
         static::$resolves[] = [$valuesOrResourceType, $value];
+    }
+
+    public static function resolveNameByPath($path)
+    {
+        $names = explode(
+            '.',
+            str_replace(
+                [Runtime::PHP_IMITATION_DIRECTORY . '\\', '\\'],
+                ['', '.'],
+                get_class($path)
+            )
+        );
+
+        $string = [];
+
+        foreach ($names as $name) {
+            $string[] = array_flip(static::MAPS)[$name] ?? $name;
+        }
+
+        return implode('.', $string);
     }
 }

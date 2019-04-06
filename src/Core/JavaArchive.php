@@ -5,6 +5,7 @@ use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Imitation\java\io\FileNotFoundException;
+use PHPJava\Imitation\java\lang\_Object;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
@@ -140,11 +141,12 @@ class JavaArchive
     }
 
     /**
+     * @param mixed ...$arguments
      * @return mixed
      * @throws ClassNotFoundException
      * @throws UndefinedEntrypointException
      */
-    public function execute()
+    public function execute(...$arguments)
     {
         $this->debugTool->getLogger()->info('Call to entrypoint: ' . $this->getEntryPointName());
         if ($this->getEntryPointName() === null) {
@@ -157,7 +159,7 @@ class JavaArchive
             ->getMethods()
             ->call(
                 static::DEFAULT_ENTRYPOINT_NAME,
-                []
+                ...$arguments
             );
     }
 

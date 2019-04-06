@@ -16,8 +16,6 @@ final class _new implements OperationInterface
         $class = $cpInfo[$this->readUnsignedShort()];
         $className = $cpInfo[$class->getClassIndex()]->getString();
         if ($className === $this->javaClass->getClassName()) {
-
-            var_dump($this->javaClass->getInvoker());
             // will be called <init>
             $this->pushStack($this->javaClass);
             return;

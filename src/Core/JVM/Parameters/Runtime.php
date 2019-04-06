@@ -20,4 +20,10 @@ final class Runtime
     const LOG_PATH = 'php://stdout';
     const LOG_LEVEL = Logger::EMERGENCY;
 
+    const PHP_IMITATION_MAPS = [
+        'String' => '_String',
+        'Object' => '_Object',
+    ];
+
+    const PHP_IMITATION_DIRECTORY = 'PHPJava\\Imitation';
 }

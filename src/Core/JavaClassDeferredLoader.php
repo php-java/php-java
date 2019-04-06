@@ -27,6 +27,9 @@ class JavaClassDeferredLoader implements JavaClassInterface
 
     private function initializeIfNotInitiated()
     {
+        if (isset($this->javaClass)) {
+            return $this->javaClass;
+        }
         $this->javaClass = new JavaClass(
             new $this->deferLoadingReaderClass(...$this->arguments),
             $this->options

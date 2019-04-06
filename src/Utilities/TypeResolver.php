@@ -2,8 +2,9 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
-use PHPJava\Imitation\java\lang\_String;
+use PHPJava\Imitation\java\lang\_Object;
 use PHPJava\Kernel\Types\Type;
 
 class TypeResolver
@@ -108,10 +109,10 @@ class TypeResolver
                     'deep_array' => $deepArray,
                 ];
             }
-            if ($arguments instanceof _String) {
+            if ($arguments instanceof _Object) {
                 return [
                     'type' => 'class',
-                    'class_name' => 'java.lang.String',
+                    'class_name' => ClassResolver::resolveNameByPath($arguments),
                     'deep_array' => $deepArray,
                 ];
             }
@@ -129,5 +130,47 @@ class TypeResolver
             'type' => $resolveType,
             'deep_array' => $deepArray,
         ];
+    }
+
+    public static function compare(string $a, string $b): bool
+    {
+        if ($a === $b) {
+            return true;
+        }
+
+        return Formatter::buildArgumentsSignature(static::getRootClasses($a)) === Formatter::buildArgumentsSignature(static::getRootClasses($b));
+    }
+
+    public static function getRootClasses($class)
+    {
+        $result = [];
+        foreach (Formatter::parseSignature($class) as $signature) {
+            if ($signature['type'] !== 'class') {
+                $result[] = $signature;
+                continue;
+            }
+            $path = [];
+            foreach (explode('.', $signature['class_name']) as $name) {
+                $path[] = Runtime::PHP_IMITATION_MAPS[$name] ?? $name;
+            }
+            $classPath = Runtime::PHP_IMITATION_DIRECTORY . '\\' . implode('\\', $path);
+
+            $rootClass = $classPath;
+            while (($getRootClass = get_parent_class($rootClass)) !== false) {
+                $rootClass = $getRootClass;
+            }
+            $newClassName = explode('.', str_replace([Runtime::PHP_IMITATION_DIRECTORY . '\\', '\\'], ['', '.'], $rootClass));
+            foreach ($newClassName as $key => $value) {
+                $newClassName[$key] = array_flip(Runtime::PHP_IMITATION_MAPS)[$value] ?? $value;
+            }
+
+            $newClassName = implode('.', $newClassName);
+            $result[] = [
+                'class_name' => $newClassName,
+                'deep_array' => 0,
+            ] + $signature;
+        }
+
+        return $result;
     }
 }

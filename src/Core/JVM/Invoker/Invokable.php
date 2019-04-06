@@ -98,6 +98,7 @@ trait Invokable
             );
         }
 
+
         // Find same method
         $convertedPassedArguments = Formatter::buildArgumentsSignature(
             array_map(
@@ -107,6 +108,8 @@ trait Invokable
                 $arguments
             )
         );
+
+        $this->debugTool->getLogger()->debug('Passed descriptor is ' . $convertedPassedArguments);
 
         $method = null;
 
@@ -131,14 +134,10 @@ trait Invokable
              */
             $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
 
-//            if ($name === 'checkParameterIsNotNull') {
-//                var_dump($arguments);
-//                var_dump($convertedPassedArguments);
-//                var_dump($methodSignature);
-//            }
+            $this->debugTool->getLogger()->debug('Find descriptor for ' . $methodSignature);
 
             if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
-                if ($methodSignature === $convertedPassedArguments) {
+                if (TypeResolver::compare($methodSignature, $convertedPassedArguments)) {
                     $method = $methodReference;
                     break;
                 }

@@ -23,7 +23,6 @@ final class _invokestatic implements OperationInterface
             $arguments[] = $this->getStack();
         }
         krsort($arguments);
-
         $return = null;
         switch ($resourceType) {
             case ClassResolver::RESOLVED_TYPE_CLASS:
