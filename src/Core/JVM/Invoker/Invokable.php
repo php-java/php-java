@@ -182,10 +182,14 @@ trait Invokable
         rewind($handle);
 
         // debug code attribution with HEX
-        $debugTraces['raw_code'] = $codeAttribute->getCode();
-        $debugTraces['method'] = $method;
-        $debugTraces['mnemonic_indexes'] = [];
-        $debugTraces['executed'] = [];
+        $isEnabledTrace = $this->options['operations']['enable_trace'] ?? GlobalOptions::get('operations.enable_trace') ?? Runtime::OPERATIONS_ENABLE_TRACE;
+        $debugTraces = [];
+        if ($isEnabledTrace) {
+            $debugTraces['raw_code'] = $codeAttribute->getCode();
+            $debugTraces['method'] = $method;
+            $debugTraces['mnemonic_indexes'] = [];
+            $debugTraces['executed'] = [];
+        }
 
         $reader = new BinaryReader($handle);
         $localStorage = $arguments;
@@ -200,11 +204,22 @@ trait Invokable
         $stacks = [];
         $mnemonicMap = new OpCode();
         $executedCounter = 0;
-        $this->debugTool->getLogger()->info('Start operations');
+        $executionTime = microtime(true);
+        $maxExecutionTime = ($this->options['max_execution_time'] ?? GlobalOptions::get('max_execution_time') ?? Runtime::MAX_EXECUTION_TIME);
+
+        $methodBeautified = Formatter::beatifyMethodFromConstantPool($method, $currentConstantPool);
+        $this->debugTool->getLogger()->info('Start operations: ' . $methodBeautified);
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
                     'Max stack exceeded. PHPJava has been stopped by safety guard.' .
+                    ' Maybe Java class has illegal program counter, stacks, or OpCode.'
+                );
+            }
+            $exceededTime = microtime(true) - $executionTime;
+            if ($exceededTime > $maxExecutionTime) {
+                throw new RuntimeException(
+                    'Maximum execution time of ' . $maxExecutionTime . ' seconds exceeded. PHPJava has been stopped by safety guard.' .
                     ' Maybe Java class has illegal program counter, stacks, or OpCode.'
                 );
             }
@@ -219,7 +234,7 @@ trait Invokable
             $pointer = $reader->getOffset() - 1;
 
             $fullName = '\\PHPJava\\Kernel\\Mnemonics\\' . $mnemonic;
-            if ($this->options['operations']['enable_trace'] ?? GlobalOptions::get('operations.enable_trace') ?? Runtime::OPERATIONS_ENABLE_TRACE) {
+            if ($isEnabledTrace) {
                 $debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
                 $debugTraces['mnemonic_indexes'][] = $pointer;
             }
@@ -252,13 +267,13 @@ trait Invokable
 
             if ($returnValue !== null) {
                 $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
-                $this->debugTool->getLogger()->info('Finish operations');
+                $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
                 return $returnValue;
             }
         }
 
         $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
-        $this->debugTool->getLogger()->info('Finish operations');
+        $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
         return null;
     }
 

@@ -10,7 +10,7 @@ use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
-use PHPJava\Kernel\Maps\AccessFlag;
+use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
@@ -284,47 +284,8 @@ class JavaClass implements JavaClassInterface
     {
         $cpInfo = $this->getConstantPool()->getEntries();
         foreach ($this->debugTraces as $debugTraces) {
-            $methodAccessFlags = $debugTraces['method']->getAccessFlag();
-            $accessFlags = [];
-            $accessFlag = new AccessFlag();
-            foreach ($accessFlag->getValues() as $value) {
-                if (($methodAccessFlags & $value) !== 0) {
-                    $accessFlags[] = strtolower(str_replace('_', '', $accessFlag->getName($value)));
-                }
-            }
-
-            $methodName = $cpInfo[$debugTraces['method']->getNameIndex()]->getString();
-            $descriptor = Formatter::parseSignature($cpInfo[$debugTraces['method']->getDescriptorIndex()]->getString());
-            $formattedArguments = str_replace(
-                '/',
-                '.',
-                implode(
-                    ', ',
-                    array_map(
-                        function ($argument) {
-                            $arrayBrackets = str_repeat('[]', $argument['deep_array']);
-                            if ($argument['type'] === 'class') {
-                                return $argument['class_name'] . $arrayBrackets;
-                            }
-                            return $argument['type'] . $arrayBrackets;
-                        },
-                        $descriptor['arguments']
-                    )
-                )
-            );
-
-
-            $type = $descriptor[0]['type'];
-            if ($type === 'class') {
-                $type = $descriptor[0]['class_name'];
-            }
-
-            $type = str_replace('/', '.', $type);
-
-            $methodAccessibility = implode(' ', $accessFlags);
-
             printf("[method]\n");
-            printf(ltrim("$methodAccessibility $type $methodName($formattedArguments)\n", ' '));
+            printf(Formatter::beatifyMethodFromConstantPool($debugTraces['method'], $this->getConstantPool()) . "\n");
             printf("\n");
             printf("[code]\n");
 

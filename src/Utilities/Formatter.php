@@ -1,7 +1,11 @@
 <?php
 namespace PHPJava\Utilities;
 
+use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\FormatterException;
+use PHPJava\Kernel\Maps\FieldAccessFlag;
+use PHPJava\Kernel\Maps\MethodAccessFlag;
+use PHPJava\Kernel\Structures\_MethodInfo;
 
 class Formatter
 {
@@ -108,5 +112,54 @@ class Formatter
             $result[] = $signature;
         }
         return $result;
+    }
+
+    /**
+     * @param _MethodInfo $method
+     * @param ConstantPool $constantPool
+     * @return string
+     * @throws \PHPJava\Exceptions\TypeException
+     */
+    public static function beatifyMethodFromConstantPool(_MethodInfo $method, ConstantPool $constantPool): string
+    {
+        $cpInfo = $constantPool->getEntries();
+        $methodAccessFlags = $method->getAccessFlag();
+        $accessFlags = [];
+        $accessFlag = new FieldAccessFlag();
+        foreach ($accessFlag->getValues() as $value) {
+            if (($methodAccessFlags & $value) !== 0) {
+                $accessFlags[] = strtolower(str_replace('ACC_', '', $accessFlag->getName($value)));
+            }
+        }
+
+        $methodName = $cpInfo[$method->getNameIndex()]->getString();
+        $descriptor = Formatter::parseSignature($cpInfo[$method->getDescriptorIndex()]->getString());
+        $formattedArguments = str_replace(
+            '/',
+            '.',
+            implode(
+                ', ',
+                array_map(
+                    function ($argument) {
+                        $arrayBrackets = str_repeat('[]', $argument['deep_array']);
+                        if ($argument['type'] === 'class') {
+                            return $argument['class_name'] . $arrayBrackets;
+                        }
+                        return $argument['type'] . $arrayBrackets;
+                    },
+                    $descriptor['arguments']
+                )
+            )
+        );
+
+        $type = $descriptor[0]['type'];
+        if ($type === 'class') {
+            $type = $descriptor[0]['class_name'];
+        }
+
+        $type = str_replace('/', '.', $type);
+        $methodAccessibility = implode(' ', $accessFlags);
+
+        return ltrim("$methodAccessibility $type $methodName($formattedArguments)");
     }
 }
