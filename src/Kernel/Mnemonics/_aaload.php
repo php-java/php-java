@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _aaload implements OperationInterface
 {
@@ -14,7 +15,7 @@ final class _aaload implements OperationInterface
      */
     public function execute(): void
     {
-        $index = $this->getStack();
+        $index = Extractor::realValue($this->getStack());
         $arrayref = $this->getStack();
 
         if (!isset($arrayref[$index])) {
