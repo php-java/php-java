@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
 
 final class _iconst_1 implements OperationInterface
@@ -11,6 +12,6 @@ final class _iconst_1 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack(1);
+        $this->pushStack(new _Int(1));
     }
 }

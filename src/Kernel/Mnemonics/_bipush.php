@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
 
 final class _bipush implements OperationInterface
@@ -11,6 +12,6 @@ final class _bipush implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack($this->readByte());
+        $this->pushStack(new _Int($this->readByte()));
     }
 }
