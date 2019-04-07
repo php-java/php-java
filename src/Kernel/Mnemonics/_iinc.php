@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _iinc implements OperationInterface
 {
@@ -14,6 +16,8 @@ final class _iinc implements OperationInterface
         $index = $this->readUnsignedByte();
         $const = $this->readByte();
 
-        $this->setLocalStorage($index, $this->getLocalStorage($index) + $const);
+        $value = Extractor::realValue($this->getLocalStorage($index));
+
+        $this->setLocalStorage($index, new _Int($value + $const));
     }
 }

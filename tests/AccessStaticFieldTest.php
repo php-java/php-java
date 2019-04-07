@@ -11,7 +11,7 @@ class AccessStaticFieldTest extends Base
 
     public function testGetPuttedField()
     {
-        $this->assertEquals(5, $this->initiatedJavaClasses['AccessStaticFieldTest']->getInvoker()->getStatic()->getFields()->get('number'));
+        $this->assertEquals(5, $this->initiatedJavaClasses['AccessStaticFieldTest']->getInvoker()->getStatic()->getFields()->get('number')->getValue());
         $this->assertEquals('Hello World', $this->initiatedJavaClasses['AccessStaticFieldTest']->getInvoker()->getStatic()->getFields()->get('string'));
     }
 
