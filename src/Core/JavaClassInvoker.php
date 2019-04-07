@@ -8,7 +8,7 @@ use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\StaticAccessor;
-use PHPJava\Kernel\Maps\AccessFlag;
+use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
@@ -61,9 +61,9 @@ class JavaClassInvoker
              */
             $methodName = $cpInfo[$methodInfo->getNameIndex()]->getString();
 
-            if (($methodInfo->getAccessFlag() & AccessFlag::_Static) !== 0) {
+            if (($methodInfo->getAccessFlag() & FieldAccessFlag::ACC_STATIC) !== 0) {
                 $this->staticMethods[$methodName][] = $methodInfo;
-            } elseif ($methodInfo->getAccessFlag() === 0 || ($methodInfo->getAccessFlag() & AccessFlag::_Public) !== 0) {
+            } elseif ($methodInfo->getAccessFlag() === 0 || ($methodInfo->getAccessFlag() & FieldAccessFlag::ACC_PUBLIC) !== 0) {
                 $this->dynamicMethods[$methodName][] = $methodInfo;
             }
         }
@@ -76,7 +76,7 @@ class JavaClassInvoker
 
             if ($fieldInfo->getAccessFlag() === 0) {
                 $this->dynamicFields[$fieldName] = $fieldInfo;
-            } elseif (($fieldInfo->getAccessFlag() & AccessFlag::_Static) !== 0) {
+            } elseif (($fieldInfo->getAccessFlag() & FieldAccessFlag::ACC_STATIC) !== 0) {
                 $this->staticFields[$fieldName] = $fieldInfo;
             }
         }

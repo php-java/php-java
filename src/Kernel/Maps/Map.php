@@ -18,7 +18,7 @@ class Map
     {
         try {
             $reflectionClass = new \ReflectionClass($this);
-            return array_values($reflectionClass->getConstants());
+            return $reflectionClass->getConstants();
         } catch (\ReflectionException $e) {
         }
         return [];
