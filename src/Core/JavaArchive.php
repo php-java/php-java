@@ -3,6 +3,7 @@ namespace PHPJava\Core;
 
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
+use PHPJava\Core\Stream\Reader\InlineReader;
 use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Imitation\java\io\FileNotFoundException;
 use PHPJava\Imitation\java\lang\_Object;
@@ -100,7 +101,7 @@ class JavaArchive
             $classPath = str_replace('/', '.', $className);
             if (!($this->options['preload'] ?? GlobalOptions::get('preload') ?? Runtime::PRELOAD)) {
                 $this->classes[$classPath] = new JavaClassDeferredLoader(
-                    JavaClassInlineReader::class,
+                    InlineReader::class,
                     [$className, $code],
                     $this->options
                 );
@@ -108,7 +109,7 @@ class JavaArchive
             }
 
             $this->classes[$classPath] = new JavaClass(
-                new JavaClassInlineReader(
+                new InlineReader(
                     $className,
                     $code
                 ),
@@ -128,7 +129,7 @@ class JavaArchive
 
             switch ($fileType = FileTypeResolver::resolve($resolvePath)) {
                 case ClassResolver::RESOLVED_TYPE_CLASS:
-                    $value = new JavaClassFileReader($value);
+                    $value = new Stream\Reader\FileReader($value);
                     break;
                 case ClassResolver::RESOURCE_TYPE_JAR:
                     $value = new JavaArchive($value, $this->options);

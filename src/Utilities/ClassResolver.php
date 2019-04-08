@@ -3,8 +3,8 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassFileReader;
-use PHPJava\Core\JavaClassReaderInterface;
+use PHPJava\Core\Stream\Reader\FileReader;
+use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Imitation\java\lang\ClassNotFoundException;
 
@@ -42,7 +42,7 @@ class ClassResolver
                         return static::$resolvedPaths[$key];
                     }
                     if (is_file($path)) {
-                        $initiatedClass = new JavaClass(new JavaClassFileReader($path));
+                        $initiatedClass = new JavaClass(new FileReader($path));
                         if (strpos($relativePath, '$') !== false && $class !== null) {
                             $initiatedClass->setParentClass($class);
                         }
@@ -66,7 +66,7 @@ class ClassResolver
                     break;
                 case static::RESOLVED_TYPE_CLASS:
                     /**
-                     * @var JavaClassReaderInterface $value
+                     * @var ReaderInterface $value
                      */
                     try {
                         return $resolvedPaths[] = [

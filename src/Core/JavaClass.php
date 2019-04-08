@@ -7,6 +7,7 @@ use PHPJava\Core\JVM\ActiveInterface;
 use PHPJava\Core\JVM\ActiveMethods;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Validations\MagicByte;
+use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
@@ -80,13 +81,13 @@ class JavaClass implements JavaClassInterface
 
     /**
      * JavaClass constructor.
-     * @param JavaClassReaderInterface $reader
+     * @param Stream\Reader\ $reader
      * @param array $options
      * @throws ValidatorException
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Imitation\java\lang\ClassNotFoundException
      */
-    public function __construct(JavaClassReaderInterface $reader, array $options = [])
+    public function __construct(ReaderInterface $reader, array $options = [])
     {
         $this->startTime = microtime(true);
 

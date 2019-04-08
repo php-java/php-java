@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM;
 
-use PHPJava\Core\JavaClassReaderInterface;
+use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Utilities\DebugTool;
 
@@ -11,7 +11,7 @@ class ActiveAttributes
     private $reader;
 
     public function __construct(
-        JavaClassReaderInterface $reader,
+        ReaderInterface $reader,
         int $entries,
         ConstantPool $constantPool,
         DebugTool $debugTool

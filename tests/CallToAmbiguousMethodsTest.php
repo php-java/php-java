@@ -19,7 +19,7 @@ class CallToAmbiguousMethodsTest extends Base
     {
         parent::setUp();
         $this->ambiguousInitiatedClass = new \PHPJava\Core\JavaClass(
-            new \PHPJava\Core\JavaClassFileReader(
+            new \PHPJava\Core\Stream\Reader\FileReader(
                 $this->getClassName($this->fixtures[0])
             ),
             [

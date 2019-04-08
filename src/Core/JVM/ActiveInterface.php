@@ -2,7 +2,7 @@
 namespace PHPJava\Core\JVM;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassReaderInterface;
+use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Utilities\DebugTool;
 
 class ActiveInterface
@@ -11,7 +11,7 @@ class ActiveInterface
     private $reader;
 
     public function __construct(
-        JavaClassReaderInterface $reader,
+        ReaderInterface $reader,
         int $entries,
         ConstantPool $constantPool,
         DebugTool $debugTool
