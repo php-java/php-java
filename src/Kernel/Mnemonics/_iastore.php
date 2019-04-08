@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _iastore implements OperationInterface
 {
@@ -11,10 +12,11 @@ final class _iastore implements OperationInterface
 
     public function execute(): void
     {
-        $data = $this->popFromOperandStack();
-        $arrayref = $this->popFromOperandStack();
+        $data = Extractor::realValue($this->popFromOperandStack());
+        $arrayref = Extractor::realValue($this->popFromOperandStack());
         $value = $this->popFromOperandStack();
-        
+
         $value[$arrayref] = $data;
+        $this->pushToOperandStack($value);
     }
 }
