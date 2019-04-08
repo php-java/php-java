@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _ifne implements OperationInterface
 {
@@ -13,7 +14,7 @@ final class _ifne implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $operand = $this->getStack();
+        $operand = Extractor::realValue($this->getStack());
 
         if ($operand != 0) {
             $this->setOffset($this->getProgramCounter() + $offset);

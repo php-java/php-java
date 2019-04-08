@@ -5,8 +5,11 @@ use PHPJava\Imitation\java\lang\NoSuchMethodException;
 
 trait _Object
 {
+    private $parameters;
+
     public function __construct(...$parameters)
     {
+        $this->parameters = $parameters;
     }
 
     public function __destruct()

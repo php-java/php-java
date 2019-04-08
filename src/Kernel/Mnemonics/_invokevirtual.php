@@ -7,6 +7,7 @@ use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\TypeResolver;
 
 final class _invokevirtual implements OperationInterface
 {
@@ -44,7 +45,7 @@ final class _invokevirtual implements OperationInterface
         } else {
             $result = call_user_func_array(
                 [
-                    $invokerClass,
+                    TypeResolver::convertPHPTypeToJavaType($invokerClass),
                     $methodName
                 ],
                 $arguments
