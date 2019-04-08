@@ -13,7 +13,7 @@ final class _irem implements OperationInterface
 
     public function execute(): void
     {
-        // JVM speck wrote `value1 - (value1 / value2) * value2`
+        // JVM spec wrote `value1 - (value1 / value2) * value2`
         // But PHP can modulo calculation.
 
         $rightOperand = Extractor::realValue($this->getStack());
