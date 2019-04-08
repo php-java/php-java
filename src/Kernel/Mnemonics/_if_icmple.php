@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _if_icmple implements OperationInterface
 {
@@ -11,6 +12,13 @@ final class _if_icmple implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $offset = $this->readShort();
+
+        $rightOperand = Extractor::realValue($this->popFromOperandStack());
+        $leftOperand = Extractor::realValue($this->popFromOperandStack());
+
+        if ($leftOperand < $rightOperand) {
+            $this->setOffset($this->getProgramCounter() + $offset);
+        }
     }
 }

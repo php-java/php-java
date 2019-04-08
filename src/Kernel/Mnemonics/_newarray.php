@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _newarray implements OperationInterface
 {
@@ -12,7 +13,7 @@ final class _newarray implements OperationInterface
     public function execute(): void
     {
         $atype = $this->readUnsignedByte();
-        $count = $this->popFromOperandStack();
+        $count = Extractor::realValue($this->popFromOperandStack());
         
         // need reference
         $ref = new \ArrayIterator(array_fill(0, $count, null));
