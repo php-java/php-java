@@ -48,9 +48,9 @@ $ javac -UTF8 /path/to/HelloWorld.java
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
+(new JavaClass(new FileReader('/path/to/HelloWorld.class')))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -102,9 +102,9 @@ use PHPJava\Core\JavaArchive;
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Core\Stream\Reader\FileReader;
 
-$staticFieldAccessor = (new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
+$staticFieldAccessor = (new JavaClass(new FileReader('/path/to/HelloWorld.class')))
     ->getInvoker()
     ->getStatic()
     ->getFields();
@@ -123,9 +123,9 @@ echo $staticFieldAccessor->get('fieldName');
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
+(new JavaClass(new FileReader('/path/to/HelloWorld.class')))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -138,7 +138,7 @@ use PHPJava\Core\JavaClassFileReader;
     );
 
 // Or if called method have return value then you can store to variable.
-$result = (new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
+$result = (new JavaClass(new FileReader('/path/to/HelloWorld.class')))
    ->getInvoker()
    ->getStatic()
    ->getMethods()
@@ -163,9 +163,9 @@ If you want to get/set dynamic fields, you need to call the `construct` method o
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class'));
+$javaClass = new JavaClass(new FileReader('/path/to/HelloWorld.class'));
 
 $javaClass->getInvoker()->construct();
 
@@ -189,9 +189,9 @@ If you want to get/set dynamic method (same as a field), you need to call the `c
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Core\Stream\Reader\FileReader;
 
-$dynamicMethodAccessor = (new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class')))
+$dynamicMethodAccessor = (new JavaClass(new FileReader('/path/to/HelloWorld.class')))
      ->getInvoker()
      ->construct()
      ->getDynamic()
@@ -255,10 +255,10 @@ The example will return `1234`.
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Core\Stream\Reader\FileReader;
 
 $javaClass = new JavaClass(
-    new JavaClassFileReader('Test'),
+    new Stream\Reader\FileReader('Test'),
     [
         'strict' => false,
     ]
@@ -288,10 +288,10 @@ $javaClass = new JavaClass(
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Core\Stream\Reader\FileReader;
 
 $javaClass = new JavaClass(
-    new JavaClassFileReader('Test'),
+    new FileReader('Test'),
     [
         'max_stack_exceeded' => 12345,
         'validation' => [
@@ -329,9 +329,9 @@ GlobalOptions::set([
 ```php
 <?php
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassFileReader;
+use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(new JavaClassFileReader('/path/to/HelloWorld.class'));
+$javaClass = new JavaClass(new FileReader('/path/to/HelloWorld.class'));
 
 $javaClass
     ->getInvoker()

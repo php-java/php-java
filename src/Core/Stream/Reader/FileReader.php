@@ -1,9 +1,10 @@
 <?php
-namespace PHPJava\Core;
+namespace PHPJava\Core\Stream\Reader;
 
+use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Utilities\ClassResolver;
 
-class JavaClassFileReader implements JavaClassReaderInterface
+class FileReader implements ReaderInterface
 {
     private $fileName;
     private $handle;
@@ -16,7 +17,7 @@ class JavaClassFileReader implements JavaClassReaderInterface
             $file = $file . '.class';
         }
         $this->handle = fopen($file, 'r');
-        $this->binaryReader = new JVM\Stream\BinaryReader($this->handle);
+        $this->binaryReader = new BinaryReader($this->handle);
 
         // Add resolving path
         ClassResolver::add(
@@ -27,7 +28,7 @@ class JavaClassFileReader implements JavaClassReaderInterface
         );
     }
 
-    public function getBinaryReader(): JVM\Stream\BinaryReader
+    public function getBinaryReader(): BinaryReader
     {
         return $this->binaryReader;
     }

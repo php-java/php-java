@@ -1,9 +1,10 @@
 <?php
-namespace PHPJava\Core;
+namespace PHPJava\Core\Stream\Reader;
 
+use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Utilities\ClassResolver;
 
-class JavaClassInlineReader implements JavaClassReaderInterface
+class InlineReader implements ReaderInterface
 {
     private $fileName;
     private $handle;
@@ -15,10 +16,10 @@ class JavaClassInlineReader implements JavaClassReaderInterface
         $this->handle = fopen('php://memory', 'rw');
         fwrite($this->handle, $code);
         rewind($this->handle);
-        $this->binaryReader = new JVM\Stream\BinaryReader($this->handle);
+        $this->binaryReader = new BinaryReader($this->handle);
     }
 
-    public function getBinaryReader(): JVM\Stream\BinaryReader
+    public function getBinaryReader(): BinaryReader
     {
         return $this->binaryReader;
     }
