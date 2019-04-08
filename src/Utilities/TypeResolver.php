@@ -5,6 +5,11 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
 use PHPJava\Imitation\java\lang\_Object;
+use PHPJava\Imitation\java\lang\_String;
+use PHPJava\Kernel\Types\_Boolean;
+use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\Type;
 
 class TypeResolver
@@ -226,5 +231,30 @@ class TypeResolver
         });
 
         return $result;
+    }
+
+    /**
+     * @param $value
+     * @return _String|_Boolean|_Double|_Float|_Int
+     * @throws TypeException
+     */
+    public static function convertPHPTypeToJavaType($value)
+    {
+        switch (gettype($value)) {
+            case 'string':
+                return new _String($value);
+            case 'int':
+                return new _Int($value);
+            case 'bool':
+            case 'boolean':
+                return new _Boolean($value);
+            case 'float':
+                return new _Float($value);
+            case 'double':
+                return new _Double($value);
+            case 'object':
+                return $value;
+        }
+        throw new TypeException('Cannot convert your definition');
     }
 }

@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _if_icmpgt implements OperationInterface
 {
@@ -13,8 +14,8 @@ final class _if_icmpgt implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $rightOperand = $this->getStack();
-        $leftOperand = $this->getStack();
+        $rightOperand = Extractor::realValue($this->getStack());
+        $leftOperand = Extractor::realValue($this->getStack());
 
         if ($leftOperand > $rightOperand) {
             $this->setOffset($this->getProgramCounter() + $offset);

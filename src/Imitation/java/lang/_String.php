@@ -9,7 +9,18 @@ class _String extends _Object
 
     public function __construct($object = null)
     {
+        parent::__construct();
         $this->object = $object;
+    }
+
+    public function length()
+    {
+        return strlen($this->toString());
+    }
+
+    public function isEmpty()
+    {
+        return $this->length() === 0;
     }
 
     public function equals($object): bool

@@ -17,7 +17,7 @@ class PrintStream
         if (is_string($arg) ||
             is_int($arg) ||
             $arg instanceof Type ||
-            $arg instanceof \PHPJava\Imitation\java\lang\_String
+            $arg instanceof \PHPJava\Imitation\java\lang\_Object
         ) {
             echo $arg . "\n";
             return;
@@ -35,7 +35,7 @@ class PrintStream
         if (is_string($arg) ||
             is_int($arg) ||
             $arg instanceof Type ||
-            $arg instanceof \PHPJava\Imitation\java\lang\_String
+            $arg instanceof \PHPJava\Imitation\java\lang\_Object
         ) {
             echo $arg;
             return;

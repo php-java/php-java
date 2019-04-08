@@ -10,7 +10,9 @@ use PHPJava\Kernel\Structures\_Fieldref;
 use PHPJava\Kernel\Structures\_Float;
 use PHPJava\Kernel\Structures\_Integer;
 use PHPJava\Kernel\Structures\_InterfaceMethodref;
+use PHPJava\Kernel\Structures\_InvokeDynamic;
 use PHPJava\Kernel\Structures\_Long;
+use PHPJava\Kernel\Structures\_MethodHandle;
 use PHPJava\Kernel\Structures\_Methodref;
 use PHPJava\Kernel\Structures\_NameAndType;
 use PHPJava\Kernel\Structures\_String;
@@ -77,7 +79,10 @@ class ConstantPool
                 return new _Utf8($this->reader);
             case ConstantPoolTag::CONSTANT_InterfaceMethodref:
                 return new _InterfaceMethodref($this->reader);
+            case ConstantPoolTag::CONSTANT_InvokeDynamic:
+                return new _InvokeDynamic($this->reader);
             case ConstantPoolTag::CONSTANT_MethodHandle:
+                return new _MethodHandle($this->reader);
             case ConstantPoolTag::CONSTANT_MethodType:
             case ConstantPoolTag::CONSTANT_Module:
             case ConstantPoolTag::CONSTANT_Package:
