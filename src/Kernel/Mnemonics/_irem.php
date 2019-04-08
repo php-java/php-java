@@ -21,7 +21,7 @@ final class _irem implements OperationInterface
 
         $this->pushStack(
             new _Int(
-            $leftOperand % $rightOperand
+                $leftOperand % $rightOperand
             )
         );
     }
