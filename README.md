@@ -275,18 +275,18 @@ $javaClass = new JavaClass(
 
 |Options        | Value | Default | Description         |Targeted         |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| entrypoint | ?string | null | Specify to run entrypoint in JAR.  | JavaArchive |
+| entrypoint | string or null | null | Specify to run entrypoint in JAR.  | JavaArchive |
 | max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass |
 | max_execution_time | integer | 30 | This option control max execution times. | JavaClass |  
 | strict | boolean | true | If strict mode is `true` then execute method, variables and so on with strict. But if strict mode is `false` then execute ambiguously method, variable and etc in PHPJava. | Both |
 | preload | boolean | false | preload is pre-read JavaClass in emulating JAR. This may be a lot of consuming memories by large JAR file. but JavaArchive use defer loading if this option is false. | JavaArchive |
 | validation.method.arguments_count_only | boolean | false | If this mode `true` then ClassResolver validate arguments size only. | JavaClass |
 | operations.enable_trace | boolean | true | Store operations history into memory if this is enabled. | JavaClass |
-| operations.temporary_code_stream | string | php://memory | TBD | JavaClass |
-| log.level | int | Logger::EMERGENCY | TBD | Both |
-| log.path | string | php://stdout | TBD | Both |
-| dry_run.* | boolean | false | TBD (Reserved Option) | TBD |
-| mode | enum | Mode::EXPERIMENTAL | TBD (Reserved Option) | TBD |
+| operations.temporary_code_stream | string | php://memory | Operation code will be outputted to temporary stream. Change temporary stream if your code is heavy. You'll get happy. | JavaClass |
+| log.level | int | Logger::EMERGENCY | This option set `Monolog` output level. | Both |
+| log.path | string or resource | php://stdout | This option set `Monolog` output destination. | Both |
+| dry_run (Not Implemented) | boolean | false | Dry-run denotes to check JavaClass/JavaArchive structures only. If this options is `true` then to run dry-run mode. | Both |
+| env (Not Implemented) | enum | Environment::EXPERIMENTAL | Set your environment. | Both |
 
 
 - For example in JavaClass:
