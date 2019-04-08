@@ -12,6 +12,7 @@ The PHPJava reads binary from pre-compiled Java file(s) ☕
 This project referred to [Java Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se11/html/index.html) documentation at the time we made it.
 
 We are welcoming any contributions to this project 💪
+
 Contribution guide is here:
 - [The Contribution Guide](https://github.com/memory-agape/php-java/wiki/The-Contribution-Guide) 
 
@@ -19,14 +20,6 @@ Contribution guide is here:
 - PHP >= 7.2
 - Composer
 - ext-zip
-
-## Not currently supported
-Sorry, I do not have enough time (T_T) 
-
-- Implements
-- Event
-- Many built-in libraries (ex. java.lang.xxx, java.io.xxx and so on) 
-- etc...
 
 ## Quick start
 - 1) Install the PHPJava into your project:
