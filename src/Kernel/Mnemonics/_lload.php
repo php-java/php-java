@@ -14,7 +14,7 @@ final class _lload implements OperationInterface
     {
         $index = $this->readUnsignedByte();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Long(
                 $this->getLocalStorage($index)
             )

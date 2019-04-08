@@ -11,6 +11,6 @@ final class _lconst_1 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack(1);
+        $this->pushToOperandStack(1);
     }
 }

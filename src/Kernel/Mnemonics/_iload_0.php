@@ -12,7 +12,7 @@ final class _iload_0 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Int(
                 $this->getLocalStorage(0)
             )

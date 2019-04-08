@@ -14,6 +14,6 @@ final class _dmul implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(BinaryTool::multiply($value1, $value2, 8));
+        $this->pushToOperandStack(BinaryTool::multiply($value1, $value2, 8));
     }
 }

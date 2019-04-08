@@ -16,7 +16,7 @@ final class _ishl implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Int(
                 BinaryTool::shiftLeft(
                     Extractor::realValue($value1),

@@ -15,6 +15,6 @@ final class _ldc2_w implements OperationInterface
 
         $data = $cpInfo[$this->readUnsignedShort()];
 
-        $this->pushStack($data->getBytes());
+        $this->pushToOperandStack($data->getBytes());
     }
 }

@@ -16,7 +16,7 @@ final class _iadd implements OperationInterface
         $rightValue = $this->getStack();
         $leftValue = $this->getStack();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Int(
                 BinaryTool::add(
                     Extractor::realValue($leftValue),

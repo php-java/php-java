@@ -17,6 +17,6 @@ final class _daload implements OperationInterface
         $index = $this->getStack();
         $arrayref = $this->getStack();
 
-        $this->pushStack($arrayref[$index]);
+        $this->pushToOperandStack($arrayref[$index]);
     }
 }

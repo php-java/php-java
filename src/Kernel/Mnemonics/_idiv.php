@@ -16,7 +16,7 @@ final class _idiv implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Double(
                 BinaryTool::div(
                     Extractor::realValue($value1),

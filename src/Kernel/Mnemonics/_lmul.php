@@ -16,7 +16,7 @@ final class _lmul implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Long(
                 BinaryTool::multiply(
                     Extractor::realValue($value1),

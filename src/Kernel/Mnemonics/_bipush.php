@@ -12,6 +12,6 @@ final class _bipush implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack(new _Int($this->readByte()));
+        $this->pushToOperandStack(new _Int($this->readByte()));
     }
 }

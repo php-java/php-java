@@ -66,7 +66,7 @@ final class _invokespecial implements OperationInterface
         }
 
         if ($parsedSignature[0]['type'] !== 'void') {
-            $this->pushStack($result);
+            $this->pushToOperandStack($result);
         }
     }
 }

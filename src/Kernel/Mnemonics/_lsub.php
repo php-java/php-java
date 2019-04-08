@@ -16,7 +16,7 @@ final class _lsub implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Long(
                 BinaryTool::sub(
                     Extractor::realValue($value1),

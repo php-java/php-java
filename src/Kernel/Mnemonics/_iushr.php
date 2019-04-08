@@ -16,7 +16,7 @@ final class _iushr implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Int(
                 BinaryTool::unsignedShiftRight(
                     Extractor::realValue($value1),

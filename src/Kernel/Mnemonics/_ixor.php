@@ -16,7 +16,7 @@ final class _ixor implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Int(
                 BinaryTool::xorBits(
                     Extractor::realValue($value1),

@@ -17,7 +17,7 @@ final class _new implements OperationInterface
         $className = $cpInfo[$class->getClassIndex()]->getString();
         if ($className === $this->javaClass->getClassName()) {
             // will be called <init>
-            $this->pushStack($this->javaClass);
+            $this->pushToOperandStack($this->javaClass);
             return;
         }
 
@@ -26,9 +26,9 @@ final class _new implements OperationInterface
             /**
              * @var \PHPJava\Core\JavaClass $classObject
              */
-            $this->pushStack($classObject->getInvoker()->construct()->getJavaClass());
+            $this->pushToOperandStack($classObject->getInvoker()->construct()->getJavaClass());
             return;
         }
-        $this->pushStack(new $classObject());
+        $this->pushToOperandStack(new $classObject());
     }
 }

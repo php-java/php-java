@@ -12,7 +12,7 @@ final class _dload_0 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Double(
                 $this->getLocalStorage(0)
             )

@@ -16,7 +16,7 @@ final class _isub implements OperationInterface
         $rightValue = $this->getStack();
         $leftValue = $this->getStack();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Int(
                 BinaryTool::sub(
                     Extractor::realValue($leftValue),

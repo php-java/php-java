@@ -13,6 +13,6 @@ final class _arraylength implements OperationInterface
     {
         $arrayref = $this->getStack();
         
-        $this->pushStack(sizeof($arrayref));
+        $this->pushToOperandStack(sizeof($arrayref));
     }
 }

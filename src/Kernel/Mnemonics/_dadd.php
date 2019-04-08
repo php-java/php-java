@@ -14,6 +14,6 @@ final class _dadd implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(BinaryTool::add($value1, $value2));
+        $this->pushToOperandStack(BinaryTool::add($value1, $value2));
     }
 }

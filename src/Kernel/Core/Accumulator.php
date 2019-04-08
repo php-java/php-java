@@ -102,12 +102,12 @@ trait Accumulator
     }
 
 
-    public function pushStack($value)
+    public function pushToOperandStack($value)
     {
         $this->stacks[] = $value;
     }
 
-    public function pushStackByReference(&$value)
+    public function pushToOperandStackByReference(&$value)
     {
         $this->stacks[] = &$value;
     }

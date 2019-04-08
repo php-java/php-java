@@ -11,6 +11,6 @@ final class _sipush implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack($this->readShort());
+        $this->pushToOperandStack($this->readShort());
     }
 }

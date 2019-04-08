@@ -16,6 +16,6 @@ final class _newarray implements OperationInterface
         
         // need reference
         $ref = new \ArrayIterator(array_fill(0, $count, null));
-        $this->pushStackByReference($ref);
+        $this->pushToOperandStackByReference($ref);
     }
 }

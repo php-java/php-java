@@ -14,6 +14,6 @@ final class _lshr implements OperationInterface
         $value2 = $this->getStack();
         $value1 = $this->getStack();
 
-        $this->pushStack(BinaryTool::shiftRight($value1, $value2, 8));
+        $this->pushToOperandStack(BinaryTool::shiftRight($value1, $value2, 8));
     }
 }

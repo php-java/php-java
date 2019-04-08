@@ -13,6 +13,6 @@ final class _ineg implements OperationInterface
     {
         $value = $this->getStack();
 
-        $this->pushStack(BinaryTool::negate($value, 4));
+        $this->pushToOperandStack(BinaryTool::negate($value, 4));
     }
 }

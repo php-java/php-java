@@ -50,7 +50,7 @@ final class _invokestatic implements OperationInterface
         }
         
         if ($signature[0]['type'] !== 'void') {
-            $this->pushStack($return);
+            $this->pushToOperandStack($return);
         }
     }
 }
