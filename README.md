@@ -33,7 +33,7 @@ class HelloWorld
 {
     public static void main(String[] args)
     {
-        System.out.println(args[0] + " " + args[1]);
+        System.out.println(args[0]);
     }
 }
 ```
@@ -56,14 +56,14 @@ use PHPJava\Core\JavaClassFileReader;
     ->getMethods()
     ->call(
         'main',
-        ["Hello", 'World']
+        ["Hello World!"]
     );
 ```
 
 - 5) Get the result
 ```
 $ php /path/to/HelloWorld.php
-Hello World
+Hello World!
 ```
 
 ## Java Archive (Execute to *.jar file)
