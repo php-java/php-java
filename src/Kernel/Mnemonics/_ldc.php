@@ -33,6 +33,6 @@ final class _ldc implements OperationInterface
             $value = $cpInfo[$data->getStringIndex()];
         }
 
-        $this->pushStack($value);
+        $this->pushToOperandStack($value);
     }
 }

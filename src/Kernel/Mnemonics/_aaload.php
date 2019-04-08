@@ -15,12 +15,12 @@ final class _aaload implements OperationInterface
      */
     public function execute(): void
     {
-        $index = Extractor::realValue($this->getStack());
-        $arrayref = Extractor::realValue($this->getStack());
+        $index = Extractor::realValue($this->popFromOperandStack());
+        $arrayref = Extractor::realValue($this->popFromOperandStack());
 
         if (!isset($arrayref[$index])) {
             throw new \PHPJava\Imitation\java\lang\ArrayIndexOutOfBoundsException('Array index ' . $index . ' out of bounds. (Program Counter: ' . $this->getProgramCounter() . ')');
         }
-        $this->pushStack($arrayref[$index]);
+        $this->pushToOperandStack($arrayref[$index]);
     }
 }

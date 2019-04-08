@@ -12,7 +12,7 @@ final class _lreturn implements OperationInterface
 
     public function execute()
     {
-        $value = $this->getStack();
+        $value = $this->popFromOperandStack();
         return ($value instanceof _Long)
             ? $value
             : new _Long($value);

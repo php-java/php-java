@@ -11,9 +11,9 @@ final class _lushr implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->getStack();
-        $value1 = $this->getStack();
+        $value2 = $this->popFromOperandStack();
+        $value1 = $this->popFromOperandStack();
 
-        $this->pushStack(BinaryTool::unsignedShiftRight($value1, $value2, 8));
+        $this->pushToOperandStack(BinaryTool::unsignedShiftRight($value1, $value2, 8));
     }
 }

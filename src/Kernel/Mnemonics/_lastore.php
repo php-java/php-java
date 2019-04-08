@@ -14,9 +14,9 @@ final class _lastore implements OperationInterface
      */
     public function execute(): void
     {
-        $value = $this->getStack();
-        $index = $this->getStack();
-        $arrayref = $this->getStack();
+        $value = $this->popFromOperandStack();
+        $index = $this->popFromOperandStack();
+        $arrayref = $this->popFromOperandStack();
         
         $arrayref[$index] = $value;
     }

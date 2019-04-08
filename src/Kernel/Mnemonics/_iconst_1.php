@@ -12,6 +12,6 @@ final class _iconst_1 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack(new _Int(1));
+        $this->pushToOperandStack(new _Int(1));
     }
 }

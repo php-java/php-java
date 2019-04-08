@@ -13,10 +13,10 @@ final class _isub implements OperationInterface
 
     public function execute(): void
     {
-        $rightValue = $this->getStack();
-        $leftValue = $this->getStack();
+        $rightValue = $this->popFromOperandStack();
+        $leftValue = $this->popFromOperandStack();
 
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Int(
                 BinaryTool::sub(
                     Extractor::realValue($leftValue),

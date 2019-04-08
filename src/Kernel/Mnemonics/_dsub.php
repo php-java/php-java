@@ -11,9 +11,9 @@ final class _dsub implements OperationInterface
 
     public function execute(): void
     {
-        $rightValue = $this->getStack();
-        $leftValue = $this->getStack();
+        $rightValue = $this->popFromOperandStack();
+        $leftValue = $this->popFromOperandStack();
 
-        $this->pushStack(BinaryTool::sub($leftValue, $rightValue, 8));
+        $this->pushToOperandStack(BinaryTool::sub($leftValue, $rightValue, 8));
     }
 }

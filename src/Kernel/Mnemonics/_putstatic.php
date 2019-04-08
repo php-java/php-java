@@ -18,6 +18,6 @@ final class _putstatic implements OperationInterface
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
         $fieldName = $cpInfo[$class->getNameIndex()]->getString();
 
-        $this->javaClassInvoker->getStatic()->getFields()->set($fieldName, $this->getStack());
+        $this->javaClassInvoker->getStatic()->getFields()->set($fieldName, $this->popFromOperandStack());
     }
 }

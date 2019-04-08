@@ -15,6 +15,6 @@ final class _aload implements OperationInterface
     public function execute(): void
     {
         $index = $this->readByte();
-        $this->pushStack($this->getLocalStorage($index));
+        $this->pushToOperandStack($this->getLocalStorage($index));
     }
 }

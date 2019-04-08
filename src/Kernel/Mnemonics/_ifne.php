@@ -14,7 +14,7 @@ final class _ifne implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $operand = Extractor::realValue($this->getStack());
+        $operand = Extractor::realValue($this->popFromOperandStack());
 
         if ($operand != 0) {
             $this->setOffset($this->getProgramCounter() + $offset);

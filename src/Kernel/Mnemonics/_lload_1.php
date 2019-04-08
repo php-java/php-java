@@ -12,7 +12,7 @@ final class _lload_1 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushStack(
+        $this->pushToOperandStack(
             new _Long(
                 $this->getLocalStorage(1)
             )

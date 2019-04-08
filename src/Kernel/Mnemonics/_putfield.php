@@ -15,9 +15,9 @@ final class _putfield implements OperationInterface
         $cp = $cpInfo[$this->readUnsignedShort()];
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
 
-        $value = $this->getStack();
+        $value = $this->popFromOperandStack();
         $name = $cpInfo[$class->getNameIndex()]->getString();
-        $objectref = $this->getStack();
+        $objectref = $this->popFromOperandStack();
 
         $objectref->getInvoker()->getDynamic()->getFields()->set($name, $value);
     }

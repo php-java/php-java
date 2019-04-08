@@ -14,6 +14,6 @@ final class _aconst_null implements OperationInterface
      */
     public function execute(): void
     {
-        $this->pushStack(null);
+        $this->pushToOperandStack(null);
     }
 }

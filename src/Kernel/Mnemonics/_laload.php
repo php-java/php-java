@@ -14,9 +14,9 @@ final class _laload implements OperationInterface
      */
     public function execute(): void
     {
-        $index = $this->getStack();
-        $arrayref = $this->getStack();
+        $index = $this->popFromOperandStack();
+        $arrayref = $this->popFromOperandStack();
 
-        $this->pushStack($arrayref[$index]);
+        $this->pushToOperandStack($arrayref[$index]);
     }
 }

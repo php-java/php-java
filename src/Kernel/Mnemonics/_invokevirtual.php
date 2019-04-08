@@ -26,10 +26,10 @@ final class _invokevirtual implements OperationInterface
         $arguments = [];
 
         for ($i = 0; $i < $signature['arguments_count']; $i++) {
-            $arguments[] = $this->getStack();
+            $arguments[] = $this->popFromOperandStack();
         }
         krsort($arguments);
-        $invokerClass = $this->getStack();
+        $invokerClass = $this->popFromOperandStack();
         $invokerClassName = ClassResolver::resolve($class);
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
@@ -53,7 +53,7 @@ final class _invokevirtual implements OperationInterface
         }
 
         if ($signature[0]['type'] !== 'void') {
-            $this->pushStack($result);
+            $this->pushToOperandStack($result);
         }
     }
 }

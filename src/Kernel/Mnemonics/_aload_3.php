@@ -14,6 +14,6 @@ final class _aload_3 implements OperationInterface
      */
     public function execute(): void
     {
-        $this->pushStack($this->getLocalStorage(3));
+        $this->pushToOperandStack($this->getLocalStorage(3));
     }
 }

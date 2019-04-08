@@ -11,9 +11,9 @@ final class _land implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->getStack();
-        $value1 = $this->getStack();
+        $value2 = $this->popFromOperandStack();
+        $value1 = $this->popFromOperandStack();
 
-        $this->pushStack(BinaryTool::andBits($value1, $value2, 8));
+        $this->pushToOperandStack(BinaryTool::andBits($value1, $value2, 8));
     }
 }
