@@ -18,5 +18,4 @@ class _MethodHandle implements StructureInterface
         $this->referenceKind = $this->readUnsignedByte();
         $this->referenceIndex = $this->readUnsignedShort();
     }
-
 }
