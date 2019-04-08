@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Utilities\BinaryTool;
 
 final class _dup implements OperationInterface
@@ -11,6 +12,10 @@ final class _dup implements OperationInterface
 
     public function execute(): void
     {
-        $this->dupStack();
+        $stack = $this->stacks[sizeof($this->stacks) - 1] ?? null;
+        if ($stack === null) {
+            throw new RuntimeException('Stack overflow');
+        }
+        $this->pushToOperandStack($stack);
     }
 }

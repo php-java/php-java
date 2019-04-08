@@ -121,7 +121,7 @@ trait Accumulator
         $this->pushStack($stack);
     }
 
-    public function getStack()
+    public function popFromOperandStack()
     {
         return array_pop($this->stacks);
     }

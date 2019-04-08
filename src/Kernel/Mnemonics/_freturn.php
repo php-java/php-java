@@ -11,6 +11,6 @@ final class _freturn implements OperationInterface
 
     public function execute(): void
     {
-        return new JavaTypeFloat($this->getStack());
+        return new JavaTypeFloat($this->popFromOperandStack());
     }
 }

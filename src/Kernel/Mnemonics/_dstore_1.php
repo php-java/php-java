@@ -11,6 +11,6 @@ final class _dstore_1 implements OperationInterface
 
     public function execute(): void
     {
-        $this->setLocalStorage(1, $this->getStack());
+        $this->setLocalStorage(1, $this->popFromOperandStack());
     }
 }

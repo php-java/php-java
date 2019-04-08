@@ -12,8 +12,8 @@ final class _iaload implements OperationInterface
 
     public function execute(): void
     {
-        $index = Extractor::realValue($this->getStack());
-        $arrayref = $this->getStack();
+        $index = Extractor::realValue($this->popFromOperandStack());
+        $arrayref = $this->popFromOperandStack();
         
         $this->pushToOperandStack($arrayref[$index]);
     }

@@ -11,6 +11,6 @@ final class _dreturn implements OperationInterface
 
     public function execute(): void
     {
-        return new JavaTypeDouble($this->getStack());
+        return new JavaTypeDouble($this->popFromOperandStack());
     }
 }

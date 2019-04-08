@@ -13,7 +13,7 @@ final class _athrow implements OperationInterface
     {
         $cpInfo = $this->getConstantPool()->getEntries();
 
-        $objectref = $this->getStack();
+        $objectref = $this->popFromOperandStack();
 
         $className = str_replace('\\', '/', get_class($objectref));
 

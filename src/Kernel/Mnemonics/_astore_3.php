@@ -11,6 +11,6 @@ final class _astore_3 implements OperationInterface
 
     public function execute(): void
     {
-        $this->setLocalStorage(3, $this->getStack());
+        $this->setLocalStorage(3, $this->popFromOperandStack());
     }
 }

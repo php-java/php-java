@@ -12,6 +12,6 @@ final class _lstore implements OperationInterface
     public function execute(): void
     {
         $index = $this->readUnsignedByte();
-        $this->setLocalStorage($index, $this->getStack());
+        $this->setLocalStorage($index, $this->popFromOperandStack());
     }
 }

@@ -15,7 +15,7 @@ final class _dstore implements OperationInterface
     public function execute(): void
     {
         $index = $this->readUnsignedByte();
-        $value = $this->getStack();
+        $value = $this->popFromOperandStack();
         
         $this->setLocalStorage($index, BinaryTool::convertDoubleToIEEE754($value));
     }

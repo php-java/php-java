@@ -20,7 +20,7 @@ final class _invokestatic implements OperationInterface
         $arguments = [];
         [$resourceType, $classObject] = ClassResolver::resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
         for ($i = 0; $i < $signature['arguments_count']; $i++) {
-            $arguments[] = $this->getStack();
+            $arguments[] = $this->popFromOperandStack();
         }
         krsort($arguments);
         $return = null;

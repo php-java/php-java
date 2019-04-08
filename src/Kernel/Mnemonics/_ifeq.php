@@ -13,7 +13,7 @@ final class _ifeq implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $operand = $this->getStack();
+        $operand = $this->popFromOperandStack();
 
         if ($operand == 0) {
             $this->setOffset($this->getProgramCounter() + $offset);

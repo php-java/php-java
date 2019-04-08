@@ -13,8 +13,8 @@ final class _iadd implements OperationInterface
 
     public function execute(): void
     {
-        $rightValue = $this->getStack();
-        $leftValue = $this->getStack();
+        $rightValue = $this->popFromOperandStack();
+        $leftValue = $this->popFromOperandStack();
 
         $this->pushToOperandStack(
             new _Int(

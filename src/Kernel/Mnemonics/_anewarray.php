@@ -20,7 +20,7 @@ final class _anewarray implements OperationInterface
         $this->readUnsignedShort();
         
         // 空の配列を渡す (nullで埋める)
-        $count = $this->getStack();
+        $count = $this->popFromOperandStack();
         // need reference
         $ref = new \ArrayIterator(array_fill(0, $count, null));
         $this->pushToOperandStackByReference($ref);

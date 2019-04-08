@@ -13,7 +13,7 @@ final class _tableswitch implements OperationInterface
     public function execute(): void
     {
         $key = Extractor::realValue(
-            $this->getStack()
+            $this->popFromOperandStack()
         );
 
         // padding data

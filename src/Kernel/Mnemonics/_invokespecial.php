@@ -19,12 +19,12 @@ final class _invokespecial implements OperationInterface
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
         $signature = $cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString();
         $parsedSignature = Formatter::parseSignature($signature);
-        $invokerClass = $this->getStack();
+        $invokerClass = $this->popFromOperandStack();
 
         $arguments = [];
 
         for ($i = 0; $i < $parsedSignature['arguments_count']; $i++) {
-            $arguments[] = $this->getStack();
+            $arguments[] = $this->popFromOperandStack();
         }
 
         krsort($arguments);

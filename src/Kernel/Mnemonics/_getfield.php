@@ -15,7 +15,7 @@ final class _getfield implements OperationInterface
 
         $cp = $cpInfo[$this->readUnsignedShort()];
 
-        $get = $this->getStack();
+        $get = $this->popFromOperandStack();
 
         $return = $get->getInstance($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString());
 

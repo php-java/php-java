@@ -11,7 +11,7 @@ final class _i2s implements OperationInterface
 
     public function execute(): void
     {
-        $value = $this->getStack();
+        $value = $this->popFromOperandStack();
 
         $this->pushToOperandStack(base_convert(substr(sprintf('%032s', base_convert($value, 10, 2)), 16), 2, 10));
     }

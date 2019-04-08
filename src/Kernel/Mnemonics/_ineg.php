@@ -11,7 +11,7 @@ final class _ineg implements OperationInterface
 
     public function execute(): void
     {
-        $value = $this->getStack();
+        $value = $this->popFromOperandStack();
 
         $this->pushToOperandStack(BinaryTool::negate($value, 4));
     }

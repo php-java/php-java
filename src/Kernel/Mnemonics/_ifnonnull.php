@@ -12,7 +12,7 @@ final class _ifnonnull implements OperationInterface
     public function execute(): void
     {
         $offset = $this->readShort();
-        $operand = $this->getStack();
+        $operand = $this->popFromOperandStack();
 
         if ($operand !== null) {
             $this->setOffset($this->getProgramCounter() + $offset);

@@ -11,6 +11,6 @@ final class _areturn implements OperationInterface
 
     public function execute()
     {
-        return new \PHPJava\Imitation\java\lang\_String((string) $this->getStack());
+        return new \PHPJava\Imitation\java\lang\_String((string) $this->popFromOperandStack());
     }
 }

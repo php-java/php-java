@@ -11,9 +11,9 @@ final class _iastore implements OperationInterface
 
     public function execute(): void
     {
-        $data = $this->getStack();
-        $arrayref = $this->getStack();
-        $value = $this->getStack();
+        $data = $this->popFromOperandStack();
+        $arrayref = $this->popFromOperandStack();
+        $value = $this->popFromOperandStack();
         
         $value[$arrayref] = $data;
     }
