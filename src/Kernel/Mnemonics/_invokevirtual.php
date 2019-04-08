@@ -53,7 +53,7 @@ final class _invokevirtual implements OperationInterface
         }
 
         if ($signature[0]['type'] !== 'void') {
-            $this->pushStack($result);
+            $this->pushToOperandStack($result);
         }
     }
 }
