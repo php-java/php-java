@@ -16,15 +16,30 @@ class Type
             !is_float($value) &&
             !is_string($value) &&
             !is_bool($value) &&
+            !is_array($value) &&
+            !is_null($value) &&
             !($value instanceof self)
         ) {
+            $type = gettype($value);
             throw new TypeException(
-                'Passed value is not scalar. The value is "' . gettype($value) . '"'
+                'Passed value is not scalar or miss match type. The value is "' . ($type === 'object' ? get_class($value) : $type) . '"'
             );
         }
         $this->value = ($value instanceof self)
             ? $value->getValue()
             : $value;
+    }
+
+    public static function ensure($value)
+    {
+        return ($value instanceof self)
+            ? $value
+            : new self($value);
+    }
+
+    public function setValue($value)
+    {
+        $this->value = $value;
     }
 
     public function getValue()

@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _arraylength implements OperationInterface
 {
@@ -13,6 +14,6 @@ final class _arraylength implements OperationInterface
     {
         $arrayref = $this->popFromOperandStack();
         
-        $this->pushToOperandStack(sizeof($arrayref));
+        $this->pushToOperandStack(count($arrayref->toArray()));
     }
 }

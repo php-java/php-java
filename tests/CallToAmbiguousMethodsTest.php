@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Tests;
 
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Long;
@@ -18,13 +19,15 @@ class CallToAmbiguousMethodsTest extends Base
     public function setUp(): void
     {
         parent::setUp();
-        $this->ambiguousInitiatedClass = new \PHPJava\Core\JavaClass(
-            new \PHPJava\Core\Stream\Reader\FileReader(
-                $this->getClassName($this->fixtures[0])
-            ),
+        GlobalOptions::set(
             [
                 'strict' => false,
             ]
+        );
+        $this->ambiguousInitiatedClass = new \PHPJava\Core\JavaClass(
+            new \PHPJava\Core\Stream\Reader\FileReader(
+                $this->getClassName($this->fixtures[0])
+            )
         );
     }
 

@@ -21,6 +21,7 @@ use PHPJava\Kernel\Core\ConstantPool;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Mnemonics\OperationInterface;
 use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Types\_Char;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\SuperClassResolver;
@@ -89,6 +90,13 @@ trait Invokable
             ->getJavaClass()
             ->getConstantPool();
 
+        // Wrap _Char
+        foreach ($arguments as &$argument) {
+            if (is_string($argument) && strlen($argument) === 1) {
+                $argument = new _Char($argument);
+            }
+        }
+
         $constantPool = $currentConstantPool->getEntries();
 
         if ($name === '<init>' && $this->javaClassInvoker->getJavaClass()->hasParentClass()) {
@@ -125,7 +133,7 @@ trait Invokable
             )['arguments'];
 
             // does not strict mode can be PHP types
-            if (!($this->options['strict'] ?? Runtime::STRICT)) {
+            if (!($this->options['strict'] ?? GlobalOptions::get('strict') ?? Runtime::STRICT)) {
                 $formattedArguments = Formatter::signatureConvertToAmbiguousForPHP($formattedArguments);
             }
 
@@ -209,6 +217,14 @@ trait Invokable
 
         $methodBeautified = Formatter::beatifyMethodFromConstantPool($method, $currentConstantPool);
         $this->debugTool->getLogger()->info('Start operations: ' . $methodBeautified);
+
+        $localStorage = array_map(
+            function ($item) {
+                return TypeResolver::convertPHPTypeToJavaType($item);
+            },
+            $localStorage
+        );
+
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
