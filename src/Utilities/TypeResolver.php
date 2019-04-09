@@ -2,10 +2,12 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
 use PHPJava\Imitation\java\lang\_Object;
 use PHPJava\Imitation\java\lang\_String;
+use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\_Boolean;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Float;
@@ -24,7 +26,8 @@ class TypeResolver
     const AMBIGUOUS_TYPES_ON_PHP = [
         'long'   => 'int',
         'double' => 'float',
-        'char'   => 'java.lang.String',
+        // Char is same as Int on Java, but strict mode cannot decide Int or String on PHPJava.
+        // 'char'   => 'int',
         'byte'   => 'int',
         'short'  => 'int',
     ];
@@ -42,6 +45,13 @@ class TypeResolver
         'L' => 'class',
     ];
 
+    const PHP_TO_JAVA_MAP = [
+        'integer' => 'int',
+        'string' => 'java.lang.String',
+        'float' => 'double',
+        'double' => 'double',
+    ];
+
     /**
      * @param $signature
      * @return string
@@ -55,13 +65,35 @@ class TypeResolver
         throw new TypeException('Passed undefined signature ' . $signature);
     }
 
+    /**
+     * @param $type
+     * @return string
+     */
     public static function resolve($type): string
     {
         $flipped = array_flip(static::SIGNATURE_MAP);
         if (isset($flipped[$type])) {
+            if (!(GlobalOptions::get('strict') ?? Runtime::STRICT)) {
+                $ambiguousType = static::AMBIGUOUS_TYPES_ON_PHP[$type] ?? $type;
+                return $flipped[$ambiguousType] ?? ('L' . $ambiguousType);
+            }
             return $flipped[$type];
         }
         return 'L' . $type;
+    }
+
+    /**
+     * @param $value
+     * @return bool|mixed|string
+     */
+    public static function resolveFromPHPType($value)
+    {
+        $type = gettype($value);
+        $type = static::PHP_TYPE_MAP[$type][0];
+        if ($type === 'L') {
+            return substr(static::PHP_TYPE_MAP[$type], 1);
+        }
+        return static::SIGNATURE_MAP[$type];
     }
 
     /**
@@ -131,9 +163,16 @@ class TypeResolver
                     'deep_array' => $deepArray,
                 ];
             }
+            if ($arguments instanceof Collection) {
+                return [
+                    'type' => $arguments->getType($defaultJavaArgumentType),
+                    'deep_array' => $deepArray,
+                ];
+            }
             throw new TypeException(get_class($arguments) . ' does not supported to convert to Java\'s argument.');
         }
         $resolveType = static::SIGNATURE_MAP[static::PHP_TYPE_MAP[$phpType][0]] ?? null;
+
         if ($resolveType === 'class') {
             return [
                 'type' => $resolveType,
@@ -235,15 +274,17 @@ class TypeResolver
 
     /**
      * @param $value
-     * @return _String|_Boolean|_Double|_Float|_Int
+     * @return _String|_Boolean|_Double|_Float|_Int|Collection
      * @throws TypeException
      */
     public static function convertPHPTypeToJavaType($value)
     {
-        switch (gettype($value)) {
+        $type = gettype($value);
+        switch ($type) {
             case 'string':
                 return new _String($value);
             case 'int':
+            case 'integer':
                 return new _Int($value);
             case 'bool':
             case 'boolean':
@@ -254,6 +295,12 @@ class TypeResolver
                 return new _Double($value);
             case 'object':
                 return $value;
+            case 'array':
+                $collectionData = [];
+                foreach ($value as $item) {
+                    $collectionData[] = static::convertPHPTypeToJavaType($item);
+                }
+                return new Collection($collectionData);
         }
         throw new TypeException('Cannot convert your definition');
     }

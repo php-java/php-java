@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
@@ -16,11 +17,10 @@ final class _aaload implements OperationInterface
     public function execute(): void
     {
         $index = Extractor::realValue($this->popFromOperandStack());
-        $arrayref = Extractor::realValue($this->popFromOperandStack());
+        $arrayref = $this->popFromOperandStack();
 
-        if (!isset($arrayref[$index])) {
-            throw new \PHPJava\Imitation\java\lang\ArrayIndexOutOfBoundsException('Array index ' . $index . ' out of bounds. (Program Counter: ' . $this->getProgramCounter() . ')');
-        }
-        $this->pushToOperandStack($arrayref[$index]);
+        $this->pushToOperandStack(
+            $arrayref[$index]
+        );
     }
 }
