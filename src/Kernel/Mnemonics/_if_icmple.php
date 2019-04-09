@@ -17,7 +17,7 @@ final class _if_icmple implements OperationInterface
         $rightOperand = Extractor::realValue($this->popFromOperandStack());
         $leftOperand = Extractor::realValue($this->popFromOperandStack());
 
-        if ($leftOperand < $rightOperand) {
+        if ($leftOperand <= $rightOperand) {
             $this->setOffset($this->getProgramCounter() + $offset);
         }
     }

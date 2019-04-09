@@ -93,7 +93,7 @@ class TypeResolver
         if ($type === 'L') {
             return substr(static::PHP_TYPE_MAP[$type], 1);
         }
-        return static::SIGNATURE_MAP[$type];
+        return static::SIGNATURE_MAP[$type] ?? null;
     }
 
     /**

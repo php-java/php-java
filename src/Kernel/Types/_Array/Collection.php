@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Types\_Array;
 
 use PHPJava\Exceptions\TypeException;
 use PHPJava\Kernel\Types\Type;
+use PHPJava\Utilities\Extractor;
 use PHPJava\Utilities\TypeResolver;
 
 class Collection implements \ArrayAccess
@@ -19,7 +20,9 @@ class Collection implements \ArrayAccess
         if (!isset($this->data[0])) {
             return $default;
         }
-        return TypeResolver::resolveFromPHPType($this->data[0]) ?? $default;
+        return TypeResolver::resolveFromPHPType(
+            Extractor::realValue($this->data[0])
+        ) ?? $default;
     }
 
     public function toArray()
