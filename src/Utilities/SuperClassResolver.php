@@ -13,7 +13,7 @@ class SuperClassResolver
 
     public function resolveMethod($methodName, JavaClass $class)
     {
-        $cpInfo = $class->getConstantPool()->getEntries();
+        $cpInfo = $class->getConstantPool();
         if ($class->getSuperClass() instanceof JavaClass) {
             foreach ($class->getSuperClass()->getInvoker()->getDynamic()->getMethods()->getList() as $calleeMethodName => $callee) {
                 if ($methodName !== $calleeMethodName) {

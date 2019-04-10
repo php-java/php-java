@@ -21,7 +21,7 @@ final class AttributeInfo implements AttributeInterface
     {
         $this->attributeNameIndex = $this->readUnsignedShort();
         $this->attributeLength = $this->readUnsignedInt();
-        $cpInfo = $this->getConstantPool()->getEntries();
+        $cpInfo = $this->getConstantPool();
         $currentOffset = $this->getOffset();
 
         $attributeName = $cpInfo[$this->attributeNameIndex]->getString();

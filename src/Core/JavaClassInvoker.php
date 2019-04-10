@@ -53,7 +53,7 @@ class JavaClassInvoker
     {
         $this->javaClass = $javaClass;
         $this->options = $options;
-        $cpInfo = $javaClass->getConstantPool()->getEntries();
+        $cpInfo = $javaClass->getConstantPool();
 
         foreach ($javaClass->getMethods() as $methodInfo) {
             /**

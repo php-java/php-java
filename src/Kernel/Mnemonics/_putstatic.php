@@ -11,7 +11,7 @@ final class _putstatic implements OperationInterface
 
     public function execute(): void
     {
-        $cpInfo = $this->getConstantPool()->getEntries();
+        $cpInfo = $this->getConstantPool();
         
         $cp = $cpInfo[$this->readUnsignedShort()];
         

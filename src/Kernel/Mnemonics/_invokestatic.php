@@ -13,7 +13,7 @@ final class _invokestatic implements OperationInterface
 
     public function execute(): void
     {
-        $cpInfo = $this->getConstantPool()->getEntries();
+        $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());

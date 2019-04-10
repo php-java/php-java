@@ -138,7 +138,7 @@ class JavaClass implements JavaClassInterface
         // read super class
         $this->superClassIndex = $reader->getBinaryReader()->readUnsignedShort();
 
-        $cpInfo = $this->getConstantPool()->getEntries();
+        $cpInfo = $this->getConstantPool();
         [$resolvedType, $superClass] = ClassResolver::resolve(
             $cpInfo[$cpInfo[$this->superClassIndex]->getClassIndex()]->getString(),
             $this
@@ -283,7 +283,7 @@ class JavaClass implements JavaClassInterface
 
     public function debug(): void
     {
-        $cpInfo = $this->getConstantPool()->getEntries();
+        $cpInfo = $this->getConstantPool();
         foreach ($this->debugTraces as $debugTraces) {
             printf("[method]\n");
             printf(Formatter::beatifyMethodFromConstantPool($debugTraces['method'], $this->getConstantPool()) . "\n");

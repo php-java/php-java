@@ -12,7 +12,7 @@ final class _new implements OperationInterface
 
     public function execute(): void
     {
-        $cpInfo = $this->getConstantPool()->getEntries();
+        $cpInfo = $this->getConstantPool();
         $class = $cpInfo[$this->readUnsignedShort()];
         $className = $cpInfo[$class->getClassIndex()]->getString();
         if ($className === $this->javaClass->getClassName()) {

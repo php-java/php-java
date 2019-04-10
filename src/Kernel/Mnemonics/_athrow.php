@@ -11,7 +11,7 @@ final class _athrow implements OperationInterface
 
     public function execute(): void
     {
-        $cpInfo = $this->getConstantPool()->getEntries();
+        $cpInfo = $this->getConstantPool();
 
         $objectref = $this->popFromOperandStack();
 

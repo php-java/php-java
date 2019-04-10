@@ -3,6 +3,7 @@ namespace PHPJava\Core\JVM;
 
 use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\ReadEntryException;
+use PHPJava\Exceptions\ReadOnlyException;
 use PHPJava\Kernel\Maps\ConstantPoolTag;
 use PHPJava\Kernel\Structures\_Class;
 use PHPJava\Kernel\Structures\_Double;
@@ -19,7 +20,7 @@ use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Kernel\Structures\StructureInterface;
 
-class ConstantPool
+class ConstantPool implements \ArrayAccess
 {
     private $entries = [];
     private $reader;
@@ -89,5 +90,25 @@ class ConstantPool
                 throw new ReadEntryException('Entry tag ' . sprintf('0x%04X', $entryTag) . ' is not implemented.');
         }
         throw new ReadEntryException('Entry tag ' . sprintf('0x%04X', $entryTag) . ' is not defined.');
+    }
+
+    public function offsetExists($offset)
+    {
+        return isset($this->entries[$offset]);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->entries[$offset];
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        throw new ReadOnlyException('You cannot rewrite datum. The Constant Pool is read-only.');
+    }
+
+    public function offsetUnset($offset)
+    {
+        throw new ReadOnlyException('You cannot rewrite datum. The Constant Pool is read-only.');
     }
 }

@@ -16,7 +16,7 @@ final class _invokevirtual implements OperationInterface
 
     public function execute(): void
     {
-        $cpInfo = $this->getConstantPool()->getEntries();
+        $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $class = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
