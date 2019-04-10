@@ -24,6 +24,7 @@ trait Accumulator
     private $localStorage;
     private $pointer;
     private $stacks = [];
+    private $options;
 
     public function setParameters(
         JavaClassInvoker $javaClassInvoker,
@@ -34,6 +35,7 @@ trait Accumulator
     ): self {
         $this->javaClassInvoker = $javaClassInvoker;
         $this->javaClass = $javaClassInvoker->getJavaClass();
+        $this->options = $this->javaClass->getOptions();
         $this->reader = $reader;
         $this->localStorage = &$localStorage;
         $this->stacks = &$stacks;
@@ -158,5 +160,10 @@ trait Accumulator
     public function getProgramCounter()
     {
         return $this->pointer;
+    }
+
+    public function getOptions($key)
+    {
+        return $this->options[$key] ?? null;
     }
 }

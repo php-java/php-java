@@ -18,14 +18,6 @@ class FileReader implements ReaderInterface
         }
         $this->handle = fopen($file, 'r');
         $this->binaryReader = new BinaryReader($this->handle);
-
-        // Add resolving path
-        ClassResolver::add(
-            [
-                [ClassResolver::RESOURCE_TYPE_FILE, dirname($file)],
-                [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
-            ]
-        );
     }
 
     public function getBinaryReader(): BinaryReader

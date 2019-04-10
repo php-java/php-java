@@ -99,6 +99,17 @@ class JavaClass implements JavaClassInterface
         // options
         $this->options = $options;
 
+        if (!(($this->options['class_resolver'] ?? null) instanceof ClassResolver)) {
+            $this->options['class_resolver'] = new ClassResolver(
+                $this->options
+            );
+        }
+
+        $this->options['class_resolver']->add([
+            [ClassResolver::RESOURCE_TYPE_FILE, dirname($reader->getFileName())],
+            [ClassResolver::RESOURCE_TYPE_FILE, getcwd()]
+        ]);
+
         // Debug tool
         $this->debugTool = new DebugTool(
             $reader->getJavaPathName(),
@@ -139,7 +150,7 @@ class JavaClass implements JavaClassInterface
         $this->superClassIndex = $reader->getBinaryReader()->readUnsignedShort();
 
         $cpInfo = $this->getConstantPool();
-        [$resolvedType, $superClass] = ClassResolver::resolve(
+        [$resolvedType, $superClass] = $this->options['class_resolver']->resolve(
             $cpInfo[$cpInfo[$this->superClassIndex]->getClassIndex()]->getString(),
             $this
         );
@@ -216,6 +227,11 @@ class JavaClass implements JavaClassInterface
                     '<clinit>'
                 );
         }
+    }
+
+    public function getOptions()
+    {
+        return $this->options;
     }
 
     public function __destruct()
@@ -351,10 +367,5 @@ class JavaClass implements JavaClassInterface
             printf($line);
             printf("\n");
         }
-    }
-
-    public function getOptions(): array
-    {
-        return $this->options;
     }
 }
