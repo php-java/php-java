@@ -30,7 +30,7 @@ final class _invokevirtual implements OperationInterface
         }
         krsort($arguments);
         $invokerClass = $this->popFromOperandStack();
-        $invokerClassName = ClassResolver::resolve($class);
+        $invokerClassName = $this->getOptions('class_resolver')->resolve($class);
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
         if ($invokerClass instanceof JavaClass) {
