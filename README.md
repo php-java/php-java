@@ -278,6 +278,8 @@ $javaClass = new JavaClass(
 | validation.method.arguments_count_only | boolean | false | If this mode `true` then ClassResolver validate arguments size only. | JavaClass |
 | operations.enable_trace | boolean | true | Store operations history into memory if this is enabled. | JavaClass |
 | operations.temporary_code_stream | string | php://memory | Operation code will be outputted to temporary stream. Change temporary stream if your code is heavy. You'll get happy. | JavaClass |
+| operations.injector.before | callable | null | Inject an executor before from executing an operation. | JavaClass |
+| operations.injector.after | callable | null | Inject an executor after to executing an operation. | JavaClass |
 | log.level | int | Logger::EMERGENCY | This option set `Monolog` output level. | Both |
 | log.path | string or resource | php://stdout | This option set `Monolog` output destination. | Both |
 | dry_run (Not Implemented) | boolean | false | Dry-run denotes to check JavaClass/JavaArchive structures only. If this options is `true` then to run dry-run mode. | Both |
