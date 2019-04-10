@@ -21,10 +21,16 @@ class ClassResolver
     const RESOLVED_TYPE_CLASS = 'RESOLVED_TYPE_CLASS';
     const RESOLVED_TYPE_IMITATION = 'RESOLVED_TYPE_IMITATION';
 
-    private static $resolves = [];
-    private static $resolvedPaths = [];
+    private $resolves = [];
+    private $resolvedPaths = [];
+    private $options = [];
 
-    public static function resolve(string $javaPath, JavaClass $class = null): array
+    public function __construct(array $options)
+    {
+        $this->options = $options;
+    }
+
+    public function resolve(string $javaPath, JavaClass $class = null): array
     {
         $namespaces = explode('.', str_replace('/', '.', $javaPath));
         $buildClassPath = [];
@@ -34,19 +40,22 @@ class ClassResolver
 
         // resolve something approaching
         $relativePath = implode('/', $namespaces);
-        foreach (static::$resolves as [$resourceType, $value]) {
+        foreach ($this->resolves as [$resourceType, $value]) {
             switch ($resourceType) {
                 case static::RESOURCE_TYPE_FILE:
                     $path = realpath($value . '/' . $relativePath . '.class');
-                    if (($key = array_search($path, static::$resolvedPaths, true)) !== false) {
-                        return static::$resolvedPaths[$key];
+                    if (($key = array_search($path, $this->resolvedPaths, true)) !== false) {
+                        return $this->resolvedPaths[$key];
                     }
                     if (is_file($path)) {
-                        $initiatedClass = new JavaClass(new FileReader($path));
+                        $initiatedClass = new JavaClass(
+                            new FileReader($path),
+                            $this->options
+                        );
                         if (strpos($relativePath, '$') !== false && $class !== null) {
                             $initiatedClass->setParentClass($class);
                         }
-                        return $resolvedPaths[] = [
+                        return $this->resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
                             $initiatedClass,
                         ];
@@ -57,7 +66,7 @@ class ClassResolver
                      * @var JavaArchive $value
                      */
                     try {
-                        return $resolvedPaths[] = [
+                        return $this->resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
                             $value->getClassByName($relativePath),
                         ];
@@ -69,9 +78,12 @@ class ClassResolver
                      * @var ReaderInterface $value
                      */
                     try {
-                        return $resolvedPaths[] = [
+                        return $this->resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
-                            new JavaClass($value),
+                            new JavaClass(
+                                $value,
+                                $this->options
+                            ),
                         ];
                     } catch (ClassNotFoundException $e) {
                     }
@@ -97,19 +109,18 @@ class ClassResolver
         ];
     }
 
-    public static function add($valuesOrResourceType = self::RESOURCE_TYPE_FILE, $value = null): void
+    public function add($valuesOrResourceType = self::RESOURCE_TYPE_FILE, $value = null): void
     {
         if (is_array($valuesOrResourceType)) {
             foreach ($valuesOrResourceType as [$resourceType, $value]) {
-                static::add($resourceType, $value);
+                $this->add($resourceType, $value);
             }
             return;
         }
-
-        if (in_array([$valuesOrResourceType, $value], static::$resolves, true)) {
+        if (in_array([$valuesOrResourceType, $value], $this->resolves, true)) {
             return;
         }
-        static::$resolves[] = [$valuesOrResourceType, $value];
+        $this->resolves[] = [$valuesOrResourceType, $value];
     }
 
     public static function resolveNameByPath($path)

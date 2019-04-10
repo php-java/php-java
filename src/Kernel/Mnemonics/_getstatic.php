@@ -32,7 +32,8 @@ final class _getstatic implements OperationInterface
         }
 
         if (isset($signature[0]['class_name'])) {
-            [$resourceType, $classObject] = ClassResolver::resolve($signature[0]['class_name']);
+            [$resourceType, $classObject] = $this->getOptions('class_resolver')
+                ->resolve($signature[0]['class_name']);
             if ($resourceType === ClassResolver::RESOLVED_TYPE_CLASS) {
                 /**
                  * @var \PHPJava\Core\JavaClass $className
