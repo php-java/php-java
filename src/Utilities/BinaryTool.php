@@ -167,7 +167,7 @@ class BinaryTool
 
         $build = '';
         for ($i = 0; $i < $bytes * 8; $i++) {
-                $build .= (($value1[$i] === '1' && $value2[$i] === '0') || ($value1[$i] === '0' && $value2[$i] === '1')) ? '1' : 0;
+            $build .= (($value1[$i] === '1' && $value2[$i] === '0') || ($value1[$i] === '0' && $value2[$i] === '1')) ? '1' : 0;
         }
 
         return base_convert($build, 2, 10);
