@@ -3,7 +3,6 @@ namespace PHPJava\Core;
 
 class JavaClassDeferredLoader implements JavaClassInterface
 {
-
     private $deferLoadingReaderClass;
     private $arguments = [];
     private $options = [];

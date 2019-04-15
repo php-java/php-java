@@ -35,7 +35,6 @@ class IntegerCalculateTest extends Base
 
     public function testIntSub()
     {
-
         $this->assertEquals(
             "5",
             $this->call(
@@ -61,7 +60,6 @@ class IntegerCalculateTest extends Base
 
     public function testIntMul()
     {
-
         $this->assertEquals(
             "50",
             $this->call(
@@ -87,7 +85,6 @@ class IntegerCalculateTest extends Base
 
     public function testIntSubFromOtherMethod()
     {
-
         $this->assertEquals(
             "5",
             $this->call(
@@ -113,7 +110,6 @@ class IntegerCalculateTest extends Base
 
     public function testIntMulFromOtherMethod()
     {
-
         $this->assertEquals(
             "50",
             $this->call(
