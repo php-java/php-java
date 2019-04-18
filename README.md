@@ -24,7 +24,7 @@ Contribution guide is here:
 ## Quick start
 - 1) Install the PHPJava into your project:
 ```
-$ composer require memory-agape/php-java
+$ composer require php-java/php-java
 ```
 
 - 2) Write Java:

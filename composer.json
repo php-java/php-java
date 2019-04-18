@@ -1,5 +1,5 @@
 {
-    "name": "memory-agape/php-java",
+    "name": "php-java/php-java",
     "description": "JVM emulator by PHP",
     "type": "library",
     "license": "MIT",
