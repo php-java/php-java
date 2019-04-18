@@ -88,7 +88,7 @@ class CastTest extends Base
             ->getStatic()
             ->getMethods()
             ->call(
-                'testIntToByte',
+                'testIntToChar',
                 new _Int(123)
             );
 
