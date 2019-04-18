@@ -7,6 +7,7 @@ use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\_Long;
 use PHPUnit\Framework\TestCase;
 
 class CastTest extends Base
@@ -95,5 +96,54 @@ class CastTest extends Base
         // check type
         $this->assertInstanceOf(_Int::class, $result);
         $this->assertEquals(123, $result->getValue());
+    }
+
+
+
+    public function testLongToDouble()
+    {
+        $result = $this->initiatedJavaClasses['CastTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testLongToDouble',
+                new _Long(1234)
+            );
+
+        $this->assertInstanceOf(_Double::class, $result);
+        $this->assertEquals(1234, $result->getValue());
+    }
+
+    public function testLongToFloat()
+    {
+        $result = $this->initiatedJavaClasses['CastTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testLongToFloat',
+                new _Long(1234)
+            );
+
+        // check type
+        $this->assertInstanceOf(_Float::class, $result);
+        $this->assertEquals(1234, $result->getValue());
+    }
+
+    public function testLongToInt()
+    {
+        $result = $this->initiatedJavaClasses['CastTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testLongToDouble',
+                new _Long(1234)
+            );
+
+        // check type
+        $this->assertInstanceOf(_Int::class, $result);
+        $this->assertEquals(1234, $result->getValue());
     }
 }

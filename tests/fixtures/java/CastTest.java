@@ -1,5 +1,6 @@
 class CastTest
 {
+    /** Integers */
     public static short testIntToShort(int value)
     {
         return (short) value;
@@ -24,4 +25,22 @@ class CastTest
     {
         return (char) value;
     }
+
+    /** Longs */
+
+    public static double testLongToDouble(long value)
+    {
+        return (double) value;
+    }
+
+    public static float testLongToFloat(long value)
+    {
+        return (float) value;
+    }
+
+    public static int testLongToInt(long value)
+    {
+        return (int) value;
+    }
+
 }
