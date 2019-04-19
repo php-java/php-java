@@ -12,7 +12,8 @@
     "require": {
         "php": ">=7.2",
         "ext-zip": "*",
-        "monolog/monolog": "^1.24"
+        "monolog/monolog": "^1.24",
+        "php-java/java-lang-package": "dev-master"
     },
     "autoload": {
         "psr-4": {
