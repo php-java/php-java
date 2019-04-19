@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Short;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _i2s implements OperationInterface
 {
@@ -11,8 +13,10 @@ final class _i2s implements OperationInterface
 
     public function execute(): void
     {
-        $value = $this->popFromOperandStack();
+        $value = Extractor::realValue(
+            $this->popFromOperandStack()
+        );
 
-        $this->pushToOperandStack(base_convert(substr(sprintf('%032s', base_convert($value, 10, 2)), 16), 2, 10));
+        $this->pushToOperandStack(new _Short($value));
     }
 }

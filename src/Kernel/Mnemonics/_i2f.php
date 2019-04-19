@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Float;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _i2f implements OperationInterface
 {
@@ -11,6 +13,10 @@ final class _i2f implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value = Extractor::realValue(
+            $this->popFromOperandStack()
+        );
+
+        $this->pushToOperandStack(new _Float($value));
     }
 }

@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Float;
 use PHPJava\Utilities\BinaryTool;
 
 final class _fload_0 implements OperationInterface
@@ -11,6 +12,10 @@ final class _fload_0 implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->pushToOperandStack(
+            new _Float(
+                $this->getLocalStorage(0)
+            )
+        );
     }
 }
