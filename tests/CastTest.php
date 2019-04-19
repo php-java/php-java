@@ -138,7 +138,7 @@ class CastTest extends Base
             ->getStatic()
             ->getMethods()
             ->call(
-                'testLongToDouble',
+                'testLongToInt',
                 new _Long(1234)
             );
 
