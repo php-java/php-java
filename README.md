@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/memory-agape/php-java.png?branch=master)](https://travis-ci.org/memory-agape/php-java)
 [![Total Downloads](https://poser.pugx.org/memory-agape/php-java/downloads)](https://packagist.org/packages/memory-agape/php-java)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-<p align="center"><img src="./docs/img/phpjava.jpg" height="300"></p>
+<p align="center"><img src="./docs/img/logo.png" height="300"></p>
 
 # What is the PHPJava?
 The PHPJava is an experimental library which emulates JVM (a.k.a. Java Virtual Machine) by PHP 🐘
