@@ -2,7 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Char;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _i2c implements OperationInterface
 {
@@ -11,6 +13,10 @@ final class _i2c implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value = Extractor::realValue(
+            $this->popFromOperandStack()
+        );
+
+        $this->pushToOperandStack(new _Char($value));
     }
 }
