@@ -146,4 +146,101 @@ class CastTest extends Base
         $this->assertInstanceOf(_Int::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
+
+
+    public function testDoubleToFloat()
+    {
+        $result = $this->initiatedJavaClasses['CastTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testDoubleToFloat',
+                new _Double(1234)
+            );
+
+        $this->assertInstanceOf(_Float::class, $result);
+        $this->assertEquals(1234, $result->getValue());
+    }
+
+    public function testDoubleToInt()
+    {
+        $result = $this->initiatedJavaClasses['CastTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testDoubleToInt',
+                new _Double(1234)
+            );
+
+        // check type
+        $this->assertInstanceOf(_Int::class, $result);
+        $this->assertEquals(1234, $result->getValue());
+    }
+
+    public function testDoubleToLong()
+    {
+        $result = $this->initiatedJavaClasses['CastTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testDoubleToLong',
+                new _Double(1234)
+            );
+
+        // check type
+        $this->assertInstanceOf(_Long::class, $result);
+        $this->assertEquals(1234, $result->getValue());
+    }
+
+
+
+    public function testFloatToDouble()
+    {
+        $result = $this->initiatedJavaClasses['CastTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testFloatToDouble',
+                new _Float(1234)
+            );
+
+        $this->assertInstanceOf(_Double::class, $result);
+        $this->assertEquals(1234, $result->getValue());
+    }
+
+    public function testFloatToInt()
+    {
+        $result = $this->initiatedJavaClasses['CastTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testFloatToInt',
+                new _Float(1234)
+            );
+
+        // check type
+        $this->assertInstanceOf(_Int::class, $result);
+        $this->assertEquals(1234, $result->getValue());
+    }
+
+    public function testFloatToLong()
+    {
+        $result = $this->initiatedJavaClasses['CastTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testFloatToLong',
+                new _Float(1234)
+            );
+
+        // check type
+        $this->assertInstanceOf(_Long::class, $result);
+        $this->assertEquals(1234, $result->getValue());
+    }
 }
