@@ -16,7 +16,8 @@
         "php-java/java-lang-package": "dev-master",
         "php-java/java-util-package": "dev-master",
         "php-java/java-io-package": "dev-master",
-        "php-java/java-net-package": "dev-master"
+        "php-java/java-net-package": "dev-master",
+        "php-java/java-nio-package": "dev-master"
     },
     "autoload": {
         "psr-4": {
