@@ -13,7 +13,9 @@
         "php": ">=7.2",
         "ext-zip": "*",
         "monolog/monolog": "^1.24",
-        "php-java/java-lang-package": "dev-master"
+        "php-java/java-lang-package": "dev-master",
+        "php-java/java-util-package": "dev-master",
+        "php-java/java-io-package": "dev-master"
     },
     "autoload": {
         "psr-4": {
