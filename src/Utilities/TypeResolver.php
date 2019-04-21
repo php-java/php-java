@@ -239,6 +239,7 @@ class TypeResolver
 
             if (isset($loadedExtendedRoots[$classPath])) {
                 $extendedClasses = $loadedExtendedRoots[$classPath];
+                continue;
             }
 
             // Remove duplicated prefix
