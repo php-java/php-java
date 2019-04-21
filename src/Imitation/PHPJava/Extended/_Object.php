@@ -19,25 +19,29 @@ trait _Object
 
     public function __call($name, $arguments)
     {
+        $defaultName = '__default_' . $name;
+        if (method_exists($this, $defaultName)) {
+            return $this->{$defaultName}(...$arguments);
+        }
         throw new NoSuchMethodException($name . ' does not exist on ' . get_class($this));
     }
 
-    public function clone(): _Object
+    public function __default_clone(): _Object
     {
         return clone $this;
     }
 
-    public function equals($a = null)
+    public function __default_equals($a = null)
     {
         return $this === $a;
     }
 
-    public function getClass(): self
+    public function __default_getClass(): self
     {
         return $this;
     }
 
-    public function hashCode()
+    public function __default_hashCode()
     {
         if (version_compare(PHP_VERSION, '7.2', '<')) {
             return crc32(spl_object_hash($this));
@@ -45,17 +49,17 @@ trait _Object
         return spl_object_id($this);
     }
 
-    public function notify(): void
+    public function __default_notify(): void
     {
         // not implemented.
     }
 
-    public function notifyAll(): void
+    public function __default_notifyAll(): void
     {
         // not implemented.
     }
 
-    public function toString($a = null)
+    public function __default_toString()
     {
         return 'java.lang.Object@PHPJava' . spl_object_hash($this);
     }
@@ -65,12 +69,12 @@ trait _Object
         return $this->toString();
     }
 
-    public function wait(int $timeout = null, int $nanos = null): void
+    public function __default_wait(int $timeout = null, int $nanos = null): void
     {
         // not implemented.
     }
 
-    public function finalize(): void
+    public function __default_finalize(): void
     {
     }
 }
