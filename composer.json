@@ -13,11 +13,11 @@
         "php": ">=7.2",
         "ext-zip": "*",
         "monolog/monolog": "^1.24",
-        "php-java/java-lang-package": "dev-master",
-        "php-java/java-util-package": "dev-master",
-        "php-java/java-io-package": "dev-master",
-        "php-java/java-net-package": "dev-master",
-        "php-java/java-nio-package": "dev-master"
+        "php-java/java-lang-package": "*",
+        "php-java/java-util-package": "*",
+        "php-java/java-io-package": "*",
+        "php-java/java-net-package": "*",
+        "php-java/java-nio-package": "*"
     },
     "autoload": {
         "psr-4": {
