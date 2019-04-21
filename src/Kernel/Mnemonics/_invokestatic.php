@@ -28,8 +28,6 @@ final class _invokestatic implements OperationInterface
         krsort($arguments);
         $return = null;
 
-        $methodName = "static_{$methodName}";
-
         switch ($resourceType) {
             case ClassResolver::RESOLVED_TYPE_CLASS:
                 /**
@@ -48,7 +46,7 @@ final class _invokestatic implements OperationInterface
                 $return = forward_static_call_array(
                     [
                         $classObject,
-                        $methodName
+                        "static_{$methodName}"
                     ],
                     $arguments
                 );

@@ -27,7 +27,7 @@ trait _Object
         return clone $this;
     }
 
-    public function equals($a = null): bool
+    public function equals($a = null)
     {
         return $this === $a;
     }
