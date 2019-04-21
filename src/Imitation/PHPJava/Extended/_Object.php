@@ -27,10 +27,9 @@ trait _Object
         return clone $this;
     }
 
-
-    public function equals($object): bool
+    public function equals($a = null): bool
     {
-        return $this === $object;
+        return $this === $a;
     }
 
     public function getClass(): self
@@ -38,7 +37,7 @@ trait _Object
         return $this;
     }
 
-    public function hashCode(): int
+    public function hashCode()
     {
         if (version_compare(PHP_VERSION, '7.2', '<')) {
             return crc32(spl_object_hash($this));

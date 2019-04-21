@@ -27,6 +27,9 @@ final class _invokestatic implements OperationInterface
         }
         krsort($arguments);
         $return = null;
+
+        $methodName = "static_{$methodName}";
+
         switch ($resourceType) {
             case ClassResolver::RESOLVED_TYPE_CLASS:
                 /**
