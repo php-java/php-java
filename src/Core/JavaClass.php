@@ -16,6 +16,7 @@ use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\SDKVersionResolver;
 
 class JavaClass implements JavaClassInterface
 {
@@ -126,7 +127,9 @@ class JavaClass implements JavaClassInterface
         // read major version
         $this->versions['major'] = $reader->getBinaryReader()->readUnsignedShort();
 
-        $this->debugTool->getLogger()->info('Major version: ' . $this->versions['minor']);
+        $this->debugTool->getLogger()->info('Major version: ' . $this->versions['major']);
+
+        $this->debugTool->getLogger()->info('JDK version: ' . SDKVersionResolver::resolve($this->versions['major'] . '.' . $this->versions['minor']));
 
         // read constant pool size
         $this->constantPool = new ConstantPool(
