@@ -50,7 +50,7 @@ final class _invokestatic implements OperationInterface
                 $return = forward_static_call_array(
                     [
                         $classObject,
-                        "{$prefix}_{$methodName}"
+                        "{$prefix}{$methodName}"
                     ],
                     $arguments
                 );
