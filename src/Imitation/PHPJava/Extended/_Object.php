@@ -55,7 +55,7 @@ trait _Object
         // not implemented.
     }
 
-    public function toString(): string
+    public function toString($a = null)
     {
         return 'java.lang.Object@PHPJava' . spl_object_hash($this);
     }
