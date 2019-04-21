@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
@@ -28,6 +30,8 @@ final class _invokestatic implements OperationInterface
         krsort($arguments);
         $return = null;
 
+        $prefix = $this->getOptions('prefix_static') ?? GlobalOptions::get('prefix_static') ?? Runtime::PREFIX_STATIC;
+
         switch ($resourceType) {
             case ClassResolver::RESOLVED_TYPE_CLASS:
                 /**
@@ -46,7 +50,7 @@ final class _invokestatic implements OperationInterface
                 $return = forward_static_call_array(
                     [
                         $classObject,
-                        "static_{$methodName}"
+                        "{$prefix}{$methodName}"
                     ],
                     $arguments
                 );

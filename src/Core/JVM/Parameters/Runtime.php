@@ -27,4 +27,6 @@ final class Runtime
     ];
 
     const PHP_IMITATION_DIRECTORY = '\\PHPJava\\Imitation';
+
+    const PREFIX_STATIC = 'static_';
 }

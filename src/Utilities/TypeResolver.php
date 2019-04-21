@@ -224,6 +224,7 @@ class TypeResolver
      */
     public static function getExtendedClasses($class): array
     {
+        static $loadedExtendedRoots = [];
         $result = [];
         foreach (Formatter::parseSignature($class) as $signature) {
             if ($signature['type'] !== 'class') {
@@ -235,6 +236,11 @@ class TypeResolver
                 $path[] = Runtime::PHP_IMITATION_MAPS[$name] ?? $name;
             }
             $classPath = Runtime::PHP_IMITATION_DIRECTORY . '\\' . implode('\\', $path);
+
+            if (isset($loadedExtendedRoots[$classPath])) {
+                $extendedClasses = $loadedExtendedRoots[$classPath];
+                continue;
+            }
 
             // Remove duplicated prefix
             $classPath = preg_replace(
@@ -250,6 +256,16 @@ class TypeResolver
             }
 
             $result[] = $extendedClasses;
+
+            $loadedExtendedRoots = $extendedClasses;
+            if (class_exists($classPath)) {
+                $reflectionClass = new \ReflectionClass($classPath);
+                preg_match_all('/\@parent\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $parents);
+                $roots = array_merge($parents[1], [$classPath]);
+                if (count($roots) > $extendedClasses) {
+                    $loadedExtendedRoots = $roots;
+                }
+            }
         }
 
         array_walk_recursive($result, function (&$className) {
@@ -265,8 +281,7 @@ class TypeResolver
                 $newClassName[$key] = array_flip(Runtime::PHP_IMITATION_MAPS)[$value] ?? $value;
             }
 
-            $newClassName = implode('.', $newClassName);
-            $className = $newClassName;
+            $className = $newClassName = implode('.', $newClassName);
         });
 
         return $result;
