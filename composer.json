@@ -36,5 +36,6 @@
     },
     "scripts": {
         "tests": "phpunit tests --stop-on-failure && phpcs --standard=phpcs.xml src"
-    }
+    },
+    "minimum-stability": "dev"
 }
