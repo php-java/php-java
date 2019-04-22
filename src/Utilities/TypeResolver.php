@@ -262,11 +262,17 @@ class TypeResolver
                 preg_match_all('/\@parent\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $parents);
                 $roots = array_merge($parents[1], [$classPath]);
                 if (count($roots) > $extendedClasses) {
-                    $loadedExtendedRoots = $roots;
+                    $extendedClasses = $roots;
+                }
+
+                preg_match_all('/\@interface\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $interfaceRoots);
+                $roots = $interfaceRoots[1];
+                if (count($roots) > $extendedClasses) {
+                    $interfaces = $roots;
                 }
             }
 
-            $result[] = [$extendedClasses, $interfaces];
+            $result[] = $loadedExtendedRoots[$classPath] = [$extendedClasses, $interfaces];
         }
 
         array_walk_recursive($result, function (&$className) {
