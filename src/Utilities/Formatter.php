@@ -2,6 +2,7 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Core\JVM\ConstantPool;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\FormatterException;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
@@ -112,6 +113,23 @@ class Formatter
             $result[] = $signature;
         }
         return $result;
+    }
+
+    public static function convertPHPNamespacesToJava($className)
+    {
+        $newClassName = explode(
+            '.',
+            str_replace(
+                [ltrim(Runtime::PHP_IMITATION_DIRECTORY, '\\') . '\\', '\\'],
+                ['', '.'],
+                ltrim($className, '\\')
+            )
+        );
+        foreach ($newClassName as $key => $value) {
+            $newClassName[$key] = array_flip(Runtime::PHP_IMITATION_MAPS)[$value] ?? $value;
+        }
+
+        return implode('.', $newClassName);
     }
 
     /**
