@@ -191,6 +191,7 @@ class TypeResolver
      * @param string $b
      * @return bool
      * @throws TypeException
+     * @throws \ReflectionException
      */
     public static function compare(string $a, string $b): bool
     {
@@ -200,35 +201,35 @@ class TypeResolver
 
         $a = static::getExtendedClasses($a);
         $b = static::getExtendedClasses($b);
-
-        if (count($a) !== count($b)) {
-            return false;
-        }
-
-        $resultComparison = [];
+        
+        $resultClassesComparison = [];
+        $resultInterfacesComparison = [];
         for ($i = 0, $size = count($a); $i < $size; $i++) {
-            $resultComparison[] = count(array_intersect($a[$i], $b[$i])) > 0;
+            [$aClasses, $aInterfaces] = $a[$i];
+            [$bClasses, $bInterfaces] = $b[$i];
+
+            $resultClassesComparison[] = count(array_intersect($aClasses, $bClasses)) > 0;
+            $resultInterfacesComparison[] = count(array_intersect($aInterfaces, $bInterfaces)) > 0;
         }
 
-        return !in_array(
-            false,
-            $resultComparison,
-            true
-        );
+        return !in_array(false, $resultClassesComparison, true) ||
+            !in_array(false, $resultInterfacesComparison, true);
     }
 
     /**
      * @param $class
      * @return array
      * @throws TypeException
+     * @throws \ReflectionException
      */
     public static function getExtendedClasses($class): array
     {
         static $loadedExtendedRoots = [];
         $result = [];
+
         foreach (Formatter::parseSignature($class) as $signature) {
             if ($signature['type'] !== 'class') {
-                $result[] = [$signature['type']];
+                $result[] = [[$signature['type']], []];
                 continue;
             }
             $path = [];
@@ -237,11 +238,6 @@ class TypeResolver
             }
             $classPath = Runtime::PHP_IMITATION_DIRECTORY . '\\' . implode('\\', $path);
 
-            if (isset($loadedExtendedRoots[$classPath])) {
-                $extendedClasses = $loadedExtendedRoots[$classPath];
-                continue;
-            }
-
             // Remove duplicated prefix
             $classPath = preg_replace(
                 '/^(?:' . preg_quote(Runtime::PHP_IMITATION_DIRECTORY, '/') . ')+/',
@@ -249,39 +245,34 @@ class TypeResolver
                 $classPath
             );
 
-            $extendedClasses = [];
-            $extendedClasses[] = $rootClass = $classPath;
-            while (($getRootClass = get_parent_class($rootClass)) !== false) {
-                $extendedClasses[] = $rootClass = '\\' . $getRootClass;
+            if (isset($loadedExtendedRoots[$classPath])) {
+                $result[] = $loadedExtendedRoots[$classPath];
+                continue;
             }
 
-            $result[] = $extendedClasses;
+            $extendedClasses = array_values(class_parents($classPath, true));
+            $interfaces = array_values(class_implements($classPath, true));
 
-            $loadedExtendedRoots = $extendedClasses;
             if (class_exists($classPath)) {
                 $reflectionClass = new \ReflectionClass($classPath);
                 preg_match_all('/\@parent\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $parents);
                 $roots = array_merge($parents[1], [$classPath]);
-                if (count($roots) > $extendedClasses) {
-                    $loadedExtendedRoots = $roots;
+                if (count($roots) > count($extendedClasses)) {
+                    $extendedClasses = $roots;
+                }
+
+                preg_match_all('/\@interface\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $interfaceRoots);
+                $roots = $interfaceRoots[1];
+                if (count($roots) > count($interfaces)) {
+                    $interfaces = $roots;
                 }
             }
+
+            $result[] = $loadedExtendedRoots[$classPath] = [$extendedClasses, $interfaces];
         }
 
         array_walk_recursive($result, function (&$className) {
-            $newClassName = explode(
-                '.',
-                str_replace(
-                    [Runtime::PHP_IMITATION_DIRECTORY . '\\', '\\'],
-                    ['', '.'],
-                    $className
-                )
-            );
-            foreach ($newClassName as $key => $value) {
-                $newClassName[$key] = array_flip(Runtime::PHP_IMITATION_MAPS)[$value] ?? $value;
-            }
-
-            $className = $newClassName = implode('.', $newClassName);
+            $className = Formatter::convertPHPNamespacesToJava($className);
         });
 
         return $result;
