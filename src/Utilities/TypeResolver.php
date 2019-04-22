@@ -201,16 +201,13 @@ class TypeResolver
 
         $a = static::getExtendedClasses($a);
         $b = static::getExtendedClasses($b);
-
-        if (count($a) !== count($b)) {
-            return false;
-        }
-
+        
         $resultClassesComparison = [];
         $resultInterfacesComparison = [];
         for ($i = 0, $size = count($a); $i < $size; $i++) {
             [$aClasses, $aInterfaces] = $a[$i];
             [$bClasses, $bInterfaces] = $b[$i];
+
             $resultClassesComparison[] = count(array_intersect($aClasses, $bClasses)) > 0;
             $resultInterfacesComparison[] = count(array_intersect($aInterfaces, $bInterfaces)) > 0;
         }
@@ -241,11 +238,6 @@ class TypeResolver
             }
             $classPath = Runtime::PHP_IMITATION_DIRECTORY . '\\' . implode('\\', $path);
 
-            if (isset($loadedExtendedRoots[$classPath])) {
-                $extendedClasses = $loadedExtendedRoots[$classPath];
-                continue;
-            }
-
             // Remove duplicated prefix
             $classPath = preg_replace(
                 '/^(?:' . preg_quote(Runtime::PHP_IMITATION_DIRECTORY, '/') . ')+/',
@@ -253,21 +245,25 @@ class TypeResolver
                 $classPath
             );
 
+            if (isset($loadedExtendedRoots[$classPath])) {
+                $result[] = $loadedExtendedRoots[$classPath];
+                continue;
+            }
+
             $extendedClasses = array_values(class_parents($classPath, true));
             $interfaces = array_values(class_implements($classPath, true));
-            $loadedExtendedRoots = $extendedClasses;
 
             if (class_exists($classPath)) {
                 $reflectionClass = new \ReflectionClass($classPath);
                 preg_match_all('/\@parent\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $parents);
                 $roots = array_merge($parents[1], [$classPath]);
-                if (count($roots) > $extendedClasses) {
+                if (count($roots) > count($extendedClasses)) {
                     $extendedClasses = $roots;
                 }
 
                 preg_match_all('/\@interface\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $interfaceRoots);
                 $roots = $interfaceRoots[1];
-                if (count($roots) > $interfaces) {
+                if (count($roots) > count($interfaces)) {
                     $interfaces = $roots;
                 }
             }
