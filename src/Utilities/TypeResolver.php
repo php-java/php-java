@@ -267,7 +267,7 @@ class TypeResolver
 
                 preg_match_all('/\@interface\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $interfaceRoots);
                 $roots = $interfaceRoots[1];
-                if (count($roots) > $extendedClasses) {
+                if (count($roots) > $interfaces) {
                     $interfaces = $roots;
                 }
             }
