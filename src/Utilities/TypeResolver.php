@@ -209,8 +209,10 @@ class TypeResolver
         $resultClassesComparison = [];
         $resultInterfacesComparison = [];
         for ($i = 0, $size = count($a); $i < $size; $i++) {
-            $resultClassesComparison[] = count(array_intersect($a[$i][0], $b[$i][0])) > 0;
-            $resultInterfacesComparison[] = count(array_intersect($a[$i][1], $b[$i][1])) > 0;
+            [$aClasses, $aInterfaces] = $a[$i];
+            [$bClasses, $bInterfaces] = $b[$i];
+            $resultClassesComparison[] = count(array_intersect($aClasses, $bClasses)) > 0;
+            $resultInterfacesComparison[] = count(array_intersect($aInterfaces, $bInterfaces)) > 0;
         }
 
         return !in_array(false, $resultClassesComparison, true) ||
@@ -251,7 +253,7 @@ class TypeResolver
                 $classPath
             );
 
-            $extendedClasses = array_values(class_parents(ltrim($classPath, '\\'), true));
+            $extendedClasses = array_values(class_parents($classPath, true));
             $interfaces = array_values(class_implements($classPath, true));
             $loadedExtendedRoots = $extendedClasses;
 
