@@ -13,6 +13,11 @@ trait Accumulator
     private $javaClass;
 
     /**
+     * @var array
+     */
+    private $attributes = [];
+
+    /**
      * @var JavaClassInvoker
      */
     private $javaClassInvoker;
@@ -27,12 +32,14 @@ trait Accumulator
     private $options;
 
     public function setParameters(
+        array $attributes,
         JavaClassInvoker $javaClassInvoker,
         \PHPJava\Core\JVM\Stream\BinaryReader $reader,
         array &$localStorage,
         array &$stacks,
         int $pointer
     ): self {
+        $this->attributes = $attributes;
         $this->javaClassInvoker = $javaClassInvoker;
         $this->javaClass = $javaClassInvoker->getJavaClass();
         $this->options = $this->javaClass->getOptions();
@@ -165,5 +172,10 @@ trait Accumulator
     public function getOptions($key)
     {
         return $this->options[$key] ?? null;
+    }
+
+    public function getAttributes(): array
+    {
+        return $this->attributes;
     }
 }
