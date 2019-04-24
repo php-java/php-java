@@ -55,6 +55,9 @@ class TryCatchTest extends Base
 
     public function testImitationThrownExceptionHasPreviousException()
     {
+        $this->expectException(IndexOutOfBoundsException::class);
+        $this->expectExceptionMessage('String index out of range: -1');
+
         try {
             $result = $this->initiatedJavaClasses['TryCatchTest']
                 ->getInvoker()
@@ -62,14 +65,8 @@ class TryCatchTest extends Base
                 ->getMethods()
                 ->call('testImitationThrownExceptionHasPreviousException');
         } catch (UnableToCatchException $e) {
-            $this->assertInstanceOf(
-                IndexOutOfBoundsException::class,
-                $e->getPrevious()
-            );
-            $this->assertEquals(
-                'String index out of range: -1',
-                $e->getPrevious()->getMessage()
-            );
+            // Unwrap the original exception
+            throw $e->getPrevious();
         }
     }
 }
