@@ -4,6 +4,10 @@ namespace PHPJava\Kernel\Mnemonics;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Exceptions\UnableToCatchException;
+use PHPJava\Kernel\Attributes\CodeAttribute;
+use PHPJava\Kernel\Structures\_ExceptionTable;
+use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
@@ -33,22 +37,52 @@ final class _invokevirtual implements OperationInterface
         $invokerClassName = $this->getOptions('class_resolver')->resolve($class);
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
-        if ($invokerClass instanceof JavaClass) {
-            $result = $invokerClass
-                ->getInvoker()
-                ->getDynamic()
-                ->getMethods()
-                ->call(
-                    $methodName,
-                    ...$arguments
+        try {
+            if ($invokerClass instanceof JavaClass) {
+                $result = $invokerClass
+                    ->getInvoker()
+                    ->getDynamic()
+                    ->getMethods()
+                    ->call(
+                        $methodName,
+                        ...$arguments
+                    );
+            } else {
+                $result = call_user_func_array(
+                    [
+                        TypeResolver::convertPHPTypeToJavaType($invokerClass),
+                        $methodName
+                    ],
+                    $arguments
                 );
-        } else {
-            $result = call_user_func_array(
-                [
-                    TypeResolver::convertPHPTypeToJavaType($invokerClass),
-                    $methodName
-                ],
-                $arguments
+            }
+        } catch (\Exception $e) {
+            /**
+             * @var $codeAttribute CodeAttribute
+             */
+            $codeAttribute = AttributionResolver::resolve(
+                $this->getAttributes(),
+                CodeAttribute::class
+            );
+
+            $expectedClass = Formatter::convertPHPNamespacesToJava(get_class($e));
+
+            foreach ($codeAttribute->getExceptionTables() as $exception) {
+                /**
+                 * @var $exception _ExceptionTable
+                 */
+                $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
+                if ($catchClass === $expectedClass &&
+                    $exception->getStartPc() <= $this->getProgramCounter() &&
+                    $exception->getEndPc() >= $this->getProgramCounter()
+                ) {
+                    $this->setOffset($exception->getHandlerPc());
+                    return;
+                }
+            }
+
+            throw new UnableToCatchException(
+                $expectedClass . ': ' . $e->getMessage()
             );
         }
 

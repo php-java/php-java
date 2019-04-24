@@ -19,4 +19,18 @@ class TryCatchTest
             return -1;
         }
     }
+
+    public static int testImitationThrowException()
+    {
+        String test = "Test value";
+
+        try {
+            // Get an error
+            test.charAt(-1);
+        } catch (IndexOutOfBoundsException e) {
+            return -1;
+        }
+
+        return 1;
+    }
 }

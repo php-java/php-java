@@ -36,4 +36,18 @@ class TryCatchTest extends Base
             $result
         );
     }
+
+    public function testImitationThroExceptionw()
+    {
+        $result = $this->initiatedJavaClasses['TryCatchTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call('testImitationThrowException');
+
+        $this->assertEquals(
+            '-1',
+            $result
+        );
+    }
 }
