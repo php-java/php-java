@@ -89,10 +89,12 @@ final class _invokestatic implements OperationInterface
             }
 
             throw new UnableToCatchException(
-                $expectedClass . ': ' . $e->getMessage()
+                $expectedClass . ': ' . $e->getMessage(),
+                0,
+                $e
             );
         }
-        
+
         if ($signature[0]['type'] !== 'void') {
             $this->pushToOperandStack($return);
         }
