@@ -11,6 +11,5 @@ if (!isset($argv[1])) {
 }
 
 $jar = new JavaArchive($argv[1]);
-$jar->execute(
-    ...(empty($arguments) ? [[]] : array_slice($argv, 2))
-);
+$arguments = array_slice($argv, 2);
+$jar->execute(...(array_slice($argv, 2) ?: [[]]));
