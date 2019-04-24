@@ -159,7 +159,7 @@ class JavaClass implements JavaClassInterface
         );
 
         switch ($resolvedType) {
-            case ClassResolver::RESOLVED_TYPE_Packages:
+            case ClassResolver::RESOLVED_TYPE_PACKAGES:
                 $this->superClass = new $superClass();
                 break;
             default:

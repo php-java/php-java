@@ -234,14 +234,14 @@ class TypeResolver
             }
             $path = [];
             foreach (explode('.', $signature['class_name']) as $name) {
-                $path[] = Runtime::PHP_Packages_MAPS[$name] ?? $name;
+                $path[] = Runtime::PHP_PACKAGES_MAPS[$name] ?? $name;
             }
-            $classPath = Runtime::PHP_Packages_DIRECTORY . '\\' . implode('\\', $path);
+            $classPath = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . implode('\\', $path);
 
             // Remove duplicated prefix
             $classPath = preg_replace(
-                '/^(?:' . preg_quote(Runtime::PHP_Packages_DIRECTORY, '/') . ')+/',
-                Runtime::PHP_Packages_DIRECTORY,
+                '/^(?:' . preg_quote(Runtime::PHP_PACKAGES_DIRECTORY, '/') . ')+/',
+                Runtime::PHP_PACKAGES_DIRECTORY,
                 $classPath
             );
 

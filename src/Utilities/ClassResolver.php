@@ -10,7 +10,7 @@ use PHPJava\Packages\java\lang\ClassNotFoundException;
 
 class ClassResolver
 {
-    const MAPS = Runtime::PHP_Packages_MAPS;
+    const MAPS = Runtime::PHP_PACKAGES_MAPS;
 
     // resource types
     const RESOURCE_TYPE_FILE = 'RESOURCE_TYPE_FILE';
@@ -19,7 +19,7 @@ class ClassResolver
 
     // resolved types
     const RESOLVED_TYPE_CLASS = 'RESOLVED_TYPE_CLASS';
-    const RESOLVED_TYPE_Packages = 'RESOLVED_TYPE_Packages';
+    const RESOLVED_TYPE_PACKAGES = 'RESOLVED_TYPE_PACKAGES';
 
     private $resolves = [];
     private $resolvedPaths = [];
@@ -91,12 +91,12 @@ class ClassResolver
             }
         }
 
-        $className = Runtime::PHP_Packages_DIRECTORY . '\\' . implode('\\', $buildClassPath);
+        $className = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . implode('\\', $buildClassPath);
 
         if (!class_exists($className)) {
             throw new ClassNotFoundException(
                 str_replace(
-                    [Runtime::PHP_Packages_DIRECTORY . '\\', '\\'],
+                    [Runtime::PHP_PACKAGES_DIRECTORY . '\\', '\\'],
                     ['', '.'],
                     $className
                 ) . ' class does not exist.'
@@ -104,7 +104,7 @@ class ClassResolver
         }
 
         return [
-            static::RESOLVED_TYPE_Packages,
+            static::RESOLVED_TYPE_PACKAGES,
             $className,
         ];
     }
@@ -128,7 +128,7 @@ class ClassResolver
         $names = explode(
             '.',
             str_replace(
-                [Runtime::PHP_Packages_DIRECTORY . '\\', '\\'],
+                [Runtime::PHP_PACKAGES_DIRECTORY . '\\', '\\'],
                 ['', '.'],
                 get_class($path)
             )

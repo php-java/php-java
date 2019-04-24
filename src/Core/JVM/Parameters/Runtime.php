@@ -21,12 +21,12 @@ final class Runtime
     const LOG_PATH = 'php://stderr';
     const LOG_LEVEL = Logger::EMERGENCY;
 
-    const PHP_Packages_MAPS = [
+    const PHP_PACKAGES_MAPS = [
         'String' => '_String',
         'Object' => '_Object',
     ];
 
-    const PHP_Packages_DIRECTORY = '\\PHPJava\\Packages';
+    const PHP_PACKAGES_DIRECTORY = '\\PHPJava\\Packages';
 
     const PREFIX_STATIC = 'static_';
 }
