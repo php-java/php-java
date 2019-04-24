@@ -12,6 +12,12 @@ if (!isset($argv[1])) {
 
 $jar = new JavaArchive($argv[1]);
 $arguments = array_slice($argv, 2);
+if (empty($arguments)) {
+    $arguments = [
+        [],
+    ];
+}
+
 $jar->execute(
-    []
+    ...$arguments
 );
