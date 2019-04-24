@@ -5,9 +5,9 @@ use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\InlineReader;
 use PHPJava\Exceptions\UndefinedEntrypointException;
-use PHPJava\Imitation\java\io\FileNotFoundException;
-use PHPJava\Imitation\java\lang\_Object;
-use PHPJava\Imitation\java\lang\ClassNotFoundException;
+use PHPJava\Packages\java\io\FileNotFoundException;
+use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\ClassNotFoundException;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\FileTypeResolver;
@@ -35,7 +35,7 @@ class JavaArchive
      * @throws FileNotFoundException
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\ValidatorException
-     * @throws \PHPJava\Imitation\java\lang\ClassNotFoundException
+     * @throws \PHPJava\Packages\java\lang\ClassNotFoundException
      */
     public function __construct(string $jarFile, array $options = [])
     {

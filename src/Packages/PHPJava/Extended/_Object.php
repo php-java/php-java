@@ -1,7 +1,7 @@
 <?php
-namespace PHPJava\Imitation\PHPJava\Extended;
+namespace PHPJava\Packages\PHPJava\Extended;
 
-use PHPJava\Imitation\java\lang\NoSuchMethodException;
+use PHPJava\Packages\java\lang\NoSuchMethodException;
 
 trait _Object
 {
