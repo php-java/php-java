@@ -6,9 +6,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 <p align="center"><img src="./docs/img/logo.png" height="300"></p>
 
-# What is the PHPJava?
-The PHPJava is an experimental library which emulates JVM (a.k.a. Java Virtual Machine) by PHP 🐘
-The PHPJava reads binary from pre-compiled Java file(s) ☕
+# What is PHPJava?
+PHPJava is an experimental library which emulates JVM (a.k.a. Java Virtual Machine) by PHP 🐘
+PHPJava reads binary from pre-compiled Java file(s) ☕
 This project referred to [Java Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se11/html/index.html) documentation at the time we made it.
 
 We are welcoming any contributions to this project 💪
@@ -22,12 +22,12 @@ Contribution guide is here:
 - ext-zip
 
 ## Quick start
-- 1) Install the PHPJava into your project:
+1) Install PHPJava in your project:
 ```
 $ composer require php-java/php-java
 ```
 
-- 2) Write Java:
+2) Write Java:
 ```java
 class HelloWorld 
 {
@@ -38,12 +38,12 @@ class HelloWorld
 }
 ```
 
-- 3) Compile Java:
+3) Compile Java:
 ```
 $ javac -UTF8 /path/to/HelloWorld.java
 ```
 
-- 4) Call the main method as follows:
+4) Call the main method as follows:
 
 ```php
 <?php
@@ -60,27 +60,27 @@ use PHPJava\Core\Stream\Reader\FileReader;
     );
 ```
 
-- 5) Get the result
+5) Get the result
 ```
 $ php /path/to/HelloWorld.php
 Hello World!
 ```
 
-## Java Archive (Execute to *.jar file)
+## Java Archive (Execute *.jar file)
 
-- 1) Build your Java files to class. An example is shown below:
+1) Build your Java files into a class:
 ```
 $ javac -encoding UTF8 -d build src/*
 $ cd build && jar -cvfe ../Test.jar Test *
 ```
 
-- 2) Execute jar on PHPJava with either an enrtypoint or your targeted method.
+2) Execute the jar on PHPJava with either an enrtypoint or your target method.
 ```php
 <?php
 use PHPJava\Core\JavaArchive;
 
 // You must pass parameters to entrypoint within the `execute` method.
-// The `execute` method haven't default parameters.
+// The `execute` method does not have any default parameters.
 (new JavaArchive('Test.jar'))->execute([]);
 
 // or
@@ -97,7 +97,7 @@ use PHPJava\Core\JavaArchive;
 
 ### Get/Set static fields
 
-- ex) Set or Get static fields as follows:
+e.g., Set or Get static fields:
 
 ```php
 <?php
@@ -118,7 +118,7 @@ echo $staticFieldAccessor->get('fieldName');
 
 ### Call a static method
 
-- ex) Call a static method as follows:
+e.g., Call a static method:
 
 ```php
 <?php
@@ -137,7 +137,7 @@ use PHPJava\Core\Stream\Reader\FileReader;
         ...
     );
 
-// Or if called method have return value then you can store to variable.
+// Or, if the called method has a return value, you can store it to a variable.
 $result = (new JavaClass(new FileReader('/path/to/HelloWorld.class')))
    ->getInvoker()
    ->getStatic()
@@ -150,7 +150,7 @@ $result = (new JavaClass(new FileReader('/path/to/HelloWorld.class')))
        ...
    );
 
-// The $result you want is output.
+// Output the $result you want
 echo $result;
 ```
 
@@ -158,7 +158,7 @@ echo $result;
 ### Get/Set dynamic fields
 If you want to get/set dynamic fields, you need to call the `construct` method on Java by PHPJava.
 
-- ex) Call dynamic field as follows:
+e.g., Call dynamic field:
 
 ```php
 <?php
@@ -184,7 +184,7 @@ echo $dynamicFieldAccessor->get('fieldName');
 ### Call a dynamic method
 If you want to get/set dynamic method (same as a field), you need to call the `construct` method on Java by PHPJava.
 
-- ex) Call dynamic method as follows:
+e.g., Call dynamic method:
 
 ```php
 <?php
@@ -206,7 +206,7 @@ $dynamicMethodAccessor
         ...
     );
 
-// Or if called method have return value then you can store to variable.
+// Or, if the called method has a return value, you can store it to a variable.
 $dynamicMethodAccessor
    ->call(
        'methodWithSomethingReturn',
@@ -216,17 +216,17 @@ $dynamicMethodAccessor
        ...
    );
 
-// The $result you want is output.
+// Output the $result you want
 echo $result;
 ```
 
-### Call ambiguous method into Java from PHP
-- PHP types are ambiguous than Java.
-- You may want to call a methods in PHP that contain long type in Java.
-In its case, you can call a method as follows:
+### Call ambiguous methods in Java from PHP
+- In PHP, types are more ambiguous than Java.
+- For example, you may want to call a method that accepts a `long` parameter in Java from PHP.
+In this case, you can call that method as follows:
 
-#### ex. ) [Recommended] Wrap with `\PHPJava\Kernel\Types\_Long`.
-##### In Java 
+#### e.g., [Recommended] Wrap with `\PHPJava\Kernel\Types\_Long`.
+##### In Java
 ```java
 class Test
 {
@@ -234,7 +234,6 @@ class Test
     {
         System.out.println(n);
     }
-
 }
 ```
 
@@ -249,8 +248,7 @@ $javaClass->getInvoker()->getStatic()->getMethods()->call(
 
 The example will return `1234`.
 
-
-#### ex. ) Set `false` to strict mode within options.
+#### e.g., Set `false` to strict mode option.
 ##### In PHP
 ```php
 <?php
@@ -266,27 +264,27 @@ $javaClass = new JavaClass(
 ```
 
 ### Runtime options
-- Available options on `JavaClass` or `JavaArchive` is below:
+- Available options on `JavaClass` or `JavaArchive`:
 
 |Options        | Value | Default | Description         |Targeted         |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| entrypoint | string or null | null | Specify to run entrypoint in JAR.  | JavaArchive |
+| entrypoint | string or null | null | The entrypoint in JAR.  | JavaArchive |
 | max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass |
-| max_execution_time | integer | 30 | This option control max execution times. | JavaClass |  
-| strict | boolean | true | If strict mode is `true` then execute method, variables and so on with strict. But if strict mode is `false` then execute ambiguously method, variable and etc in PHPJava. | Both |
-| preload | boolean | false | preload is pre-read JavaClass in emulating JAR. This may be a lot of consuming memories by large JAR file. but JavaArchive use defer loading if this option is false. | JavaArchive |
-| validation.method.arguments_count_only | boolean | false | If this mode `true` then ClassResolver validate arguments size only. | JavaClass |
-| operations.enable_trace | boolean | true | Store operations history into memory if this is enabled. | JavaClass |
-| operations.temporary_code_stream | string | php://memory | Operation code will be outputted to temporary stream. Change temporary stream if your code is heavy. You'll get happy. | JavaClass |
-| operations.injector.before | callable | null | Inject an executor before from executing an operation. | JavaClass |
-| operations.injector.after | callable | null | Inject an executor after to executing an operation. | JavaClass |
-| log.level | int | Logger::EMERGENCY | This option set `Monolog` output level. | Both |
-| log.path | string or resource | php://stdout | This option set `Monolog` output destination. | Both |
-| dry_run (Not Implemented) | boolean | false | Dry-run denotes to check JavaClass/JavaArchive structures only. If this options is `true` then to run dry-run mode. | Both |
-| env (Not Implemented) | enum | Environment::EXPERIMENTAL | Set your environment. | Both |
+| max_execution_time | integer | 30 | Maximum execution time. | JavaClass |
+| strict | boolean | true | When `true`, PHPJava calls a method, variables, and so on strictly; otherwise, it calls them ambiguously. | Both |
+| preload | boolean | false | When `true`, PHPJava pre-reads JavaClasses when emulating JAR. This may consume larger size of memory depending on the size of the JAR file; otherwise, JavaArchive defers loading. | JavaArchive |
+| validation.method.arguments_count_only | boolean | false | When `true`, ClassResolver validates arguments by their number only. | JavaClass |
+| operations.enable_trace | boolean | true | When `true`, PHPJava stores the operation history. | JavaClass |
+| operations.temporary_code_stream | string | php://memory | Operation code will be output to temporary stream. Change this if your code is heavy so you'll be happy. | JavaClass |
+| operations.injector.before | callable | null | Inject an executor before executing an operation. | JavaClass |
+| operations.injector.after | callable | null | Inject an executor after executing an operation. | JavaClass |
+| log.level | int | Logger::EMERGENCY | The output level of `Monolog`. | Both |
+| log.path | string or resource | php://stdout | The output destination of `Monolog`. | Both |
+| dry_run (Not Implemented) | boolean | false | Checking JavaClass/JavaArchive structure only. When `true`, PHPJava runs in dry-run mode. | Both |
+| env (Not Implemented) | enum | Environment::EXPERIMENTAL | Your environment. | Both |
 
 
-- For example in JavaClass:
+- Example of JavaClass:
 ```php
 <?php
 use PHPJava\Core\JavaClass;
@@ -305,7 +303,7 @@ $javaClass = new JavaClass(
 );
 ```
 
-- For example in GlobalOptions
+- Example of GlobalOptions
 ```php
 <?php
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
@@ -326,7 +324,7 @@ GlobalOptions::set([
 
 ### Output PHPJava operations
 
-- Output debug trace as follows if you want to show operation log:
+- Output debug trace if you want to see operation log:
 
 ```php
 <?php
@@ -348,7 +346,7 @@ $javaClass
 $javaClass->debug();
 ```
 
-- Output debug trace is shown below:
+- Output debug trace:
 
 ```
 [method]
@@ -412,13 +410,12 @@ public static void main(java.lang.String[])
 - **Problem 3:** PHPJava cannot calculate big number of `double` and `float` because `gmp_pow` cannot calculate negative exponents. So, PHPJavas use built-in function `pow`.
 
 ## Run Kotlin on the PHPJava
-Are you wanna run Kotlin on the PHPJava? Are you a serious? 
-Haha, yes you can.
-But this feature is experimental currently.
+Do you wanna run Kotlin on the PHPJava? Are you serious?
+Haha, yes, you can, but this feature is currently experimental.
 
 ### Quick Start
 
-- 1) Write Kotlin:
+1) Write Kotlin:
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -426,12 +423,12 @@ fun main(args: Array<String>) {
 }
 ```
 
-- 2) Compile Kotlin:
+2) Compile Kotlin:
 ```
 $ kotlinc HelloWorld.kt -include-runtime -d HelloWorld.jar
 ```
 
-- 3) Execute JAR as follows:
+3) Execute JAR:
 
 ```php
 <?php
@@ -441,7 +438,7 @@ $jar = new JavaArchive(__DIR__ . '/HelloWorld.jar');
 $jar->execute([]);
 ```
 
-You'll get a result `Hello World!`.
+You'll get the result: `Hello World!`.
 
 ## Run unit tests
 
