@@ -22,6 +22,7 @@ use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Mnemonics\OperationInterface;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Types\_Char;
+use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\SuperClassResolver;
@@ -60,17 +61,6 @@ trait Invokable
     public function call(string $name, ...$arguments)
     {
         $this->debugTool->getLogger()->debug('Call method: ' . $name);
-        $getCodeAttribute = function ($attributes): ?CodeAttribute {
-            foreach ($attributes as $attribute) {
-                /**
-                 * @var AttributeInfo $attribute
-                 */
-                if ($attribute->getAttributeData() instanceof CodeAttribute) {
-                    return $attribute->getAttributeData();
-                }
-            }
-            return null;
-        };
 
         /**
          * @var _MethodInfo|null $method
@@ -174,7 +164,10 @@ trait Invokable
             return $method(...$arguments);
         }
 
-        $codeAttribute = $getCodeAttribute($method->getAttributes());
+        $codeAttribute = AttributionResolver::resolve(
+            $method->getAttributes(),
+            CodeAttribute::class
+        );
 
         if ($codeAttribute === null) {
             throw new IllegalJavaClassException('Java class does not having code attribution.');
@@ -284,6 +277,7 @@ trait Invokable
             $executor = new $fullName();
             $executor->setConstantPool($currentConstantPool);
             $executor->setParameters(
+                $method->getAttributes(),
                 $this->javaClassInvoker,
                 $reader,
                 $localStorage,

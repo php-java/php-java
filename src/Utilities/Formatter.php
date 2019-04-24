@@ -117,6 +117,7 @@ class Formatter
 
     public static function convertPHPNamespacesToJava($className)
     {
+        $className = str_replace('/', '\\', $className);
         $newClassName = explode(
             '.',
             str_replace(
