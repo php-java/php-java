@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Tests;
 
+use PHPJava\Exceptions\UnableToCatchException;
+use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
 use PHPUnit\Framework\TestCase;
 
 class TryCatchTest extends Base
@@ -37,7 +39,7 @@ class TryCatchTest extends Base
         );
     }
 
-    public function testImitationThroExceptionw()
+    public function testImitationThrowException()
     {
         $result = $this->initiatedJavaClasses['TryCatchTest']
             ->getInvoker()
@@ -49,5 +51,22 @@ class TryCatchTest extends Base
             '-1',
             $result
         );
+    }
+
+    public function testImitationThrownExceptionHasPreviousException()
+    {
+        $this->expectException(IndexOutOfBoundsException::class);
+        $this->expectExceptionMessage('String index out of range: -1');
+
+        try {
+            $result = $this->initiatedJavaClasses['TryCatchTest']
+                ->getInvoker()
+                ->getStatic()
+                ->getMethods()
+                ->call('testImitationThrownExceptionHasPreviousException');
+        } catch (UnableToCatchException $e) {
+            // Unwrap the original exception
+            throw $e->getPrevious();
+        }
     }
 }

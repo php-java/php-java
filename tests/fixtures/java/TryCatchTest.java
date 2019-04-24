@@ -33,4 +33,9 @@ class TryCatchTest
 
         return 1;
     }
+
+    public static void testImitationThrownExceptionHasPreviousException()
+    {
+        "".charAt(-1);
+    }
 }

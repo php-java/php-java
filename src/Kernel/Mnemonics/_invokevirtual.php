@@ -82,7 +82,9 @@ final class _invokevirtual implements OperationInterface
             }
 
             throw new UnableToCatchException(
-                $expectedClass . ': ' . $e->getMessage()
+                $expectedClass . ': ' . $e->getMessage(),
+                0,
+                $e
             );
         }
 
