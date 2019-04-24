@@ -121,13 +121,13 @@ class Formatter
         $newClassName = explode(
             '.',
             str_replace(
-                [ltrim(Runtime::PHP_IMITATION_DIRECTORY, '\\') . '\\', '\\'],
+                [ltrim(Runtime::PHP_PACKAGES_DIRECTORY, '\\') . '\\', '\\'],
                 ['', '.'],
                 ltrim($className, '\\')
             )
         );
         foreach ($newClassName as $key => $value) {
-            $newClassName[$key] = array_flip(Runtime::PHP_IMITATION_MAPS)[$value] ?? $value;
+            $newClassName[$key] = array_flip(Runtime::PHP_PACKAGES_MAPS)[$value] ?? $value;
         }
 
         return implode('.', $newClassName);

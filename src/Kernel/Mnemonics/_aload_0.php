@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Imitation\java\lang\_Object;
+use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Utilities\BinaryTool;
 
 final class _aload_0 implements OperationInterface

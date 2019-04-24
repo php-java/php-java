@@ -11,7 +11,7 @@
         <exclude-pattern>./src/Kernel/Types</exclude-pattern>
         <exclude-pattern>./src/Kernel/Mnemonics</exclude-pattern>
         <exclude-pattern>./src/Kernel/Structures</exclude-pattern>
-        <exclude-pattern>./src/Imitation/PHPJava/Extended/_Object.php</exclude-pattern>
+        <exclude-pattern>./src/Packages/PHPJava/Extended/_Object.php</exclude-pattern>
     </rule>
 
     <rule ref="Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase">
@@ -20,7 +20,7 @@
 
 
     <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
-        <exclude-pattern>./src/Imitation/PHPJava/Extended/_Object.php</exclude-pattern>
+        <exclude-pattern>./src/Packages/PHPJava/Extended/_Object.php</exclude-pattern>
     </rule>
 
     <arg name="colors"/>

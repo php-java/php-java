@@ -86,7 +86,7 @@ class JavaClass implements JavaClassInterface
      * @param array $options
      * @throws ValidatorException
      * @throws \PHPJava\Exceptions\ReadEntryException
-     * @throws \PHPJava\Imitation\java\lang\ClassNotFoundException
+     * @throws \PHPJava\Packages\java\lang\ClassNotFoundException
      */
     public function __construct(ReaderInterface $reader, array $options = [])
     {
@@ -159,7 +159,7 @@ class JavaClass implements JavaClassInterface
         );
 
         switch ($resolvedType) {
-            case ClassResolver::RESOLVED_TYPE_IMITATION:
+            case ClassResolver::RESOLVED_TYPE_PACKAGES:
                 $this->superClass = new $superClass();
                 break;
             default:

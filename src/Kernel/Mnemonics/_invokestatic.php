@@ -51,7 +51,7 @@ final class _invokestatic implements OperationInterface
                             ...$arguments
                         );
                     break;
-                case ClassResolver::RESOLVED_TYPE_IMITATION:
+                case ClassResolver::RESOLVED_TYPE_PACKAGES:
                     $return = forward_static_call_array(
                         [
                             $classObject,

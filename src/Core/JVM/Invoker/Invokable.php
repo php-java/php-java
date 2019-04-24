@@ -12,7 +12,7 @@ use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Exceptions\UndefinedMethodException;
 use PHPJava\Exceptions\UndefinedOpCodeException;
-use PHPJava\Imitation\java\lang\NoSuchMethodException;
+use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\CodeAttribute;

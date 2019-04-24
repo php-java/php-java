@@ -2,8 +2,8 @@
 namespace PHPJava\Core\JVM\Field;
 
 use PHPJava\Core\JavaClassInvoker;
-use PHPJava\Imitation\java\lang\_String;
-use PHPJava\Imitation\java\lang\NoSuchFieldException;
+use PHPJava\Packages\java\lang\_String;
+use PHPJava\Packages\java\lang\NoSuchFieldException;
 
 trait FieldGettable
 {

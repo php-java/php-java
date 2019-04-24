@@ -5,8 +5,8 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
-use PHPJava\Imitation\java\lang\_Object;
-use PHPJava\Imitation\java\lang\_String;
+use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\_String;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\_Boolean;
 use PHPJava\Kernel\Types\_Double;
@@ -234,14 +234,14 @@ class TypeResolver
             }
             $path = [];
             foreach (explode('.', $signature['class_name']) as $name) {
-                $path[] = Runtime::PHP_IMITATION_MAPS[$name] ?? $name;
+                $path[] = Runtime::PHP_PACKAGES_MAPS[$name] ?? $name;
             }
-            $classPath = Runtime::PHP_IMITATION_DIRECTORY . '\\' . implode('\\', $path);
+            $classPath = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . implode('\\', $path);
 
             // Remove duplicated prefix
             $classPath = preg_replace(
-                '/^(?:' . preg_quote(Runtime::PHP_IMITATION_DIRECTORY, '/') . ')+/',
-                Runtime::PHP_IMITATION_DIRECTORY,
+                '/^(?:' . preg_quote(Runtime::PHP_PACKAGES_DIRECTORY, '/') . ')+/',
+                Runtime::PHP_PACKAGES_DIRECTORY,
                 $classPath
             );
 
