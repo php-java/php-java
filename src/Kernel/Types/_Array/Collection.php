@@ -25,6 +25,11 @@ class Collection implements \ArrayAccess
         ) ?? $default;
     }
 
+    public function __toString()
+    {
+        return implode($this->data);
+    }
+
     public function toArray()
     {
         return $this->data;

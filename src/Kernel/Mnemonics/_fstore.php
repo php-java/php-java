@@ -11,6 +11,7 @@ final class _fstore implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $index = $this->readUnsignedByte();
+        $this->setLocalStorage($index, $this->popFromOperandStack());
     }
 }
