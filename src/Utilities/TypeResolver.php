@@ -204,7 +204,12 @@ class TypeResolver
         
         $resultClassesComparison = [];
         $resultInterfacesComparison = [];
-        for ($i = 0, $size = count($a); $i < $size; $i++) {
+        for ($i = 0, $size = max(count($a), count($b)); $i < $size; $i++) {
+            if (!isset($a[$i], $b[$i])) {
+                // No match absolutely.
+                return false;
+            }
+
             [$aClasses, $aInterfaces] = $a[$i];
             [$bClasses, $bInterfaces] = $b[$i];
 
