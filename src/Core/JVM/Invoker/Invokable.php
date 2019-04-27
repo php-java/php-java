@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker;
 
+use ByteUnits\Metric;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use PHPJava\Core\JavaClass;
@@ -218,6 +219,16 @@ trait Invokable
             $localStorage
         );
 
+        $this->debugTool->getLogger()->debug(
+            vsprintf(
+                'Used Memory: %s, Used Memory Peak: %s',
+                [
+                    Metric::bytes(memory_get_usage())->format(),
+                    Metric::bytes(memory_get_peak_usage())->format(),
+                ]
+            )
+        );
+
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
@@ -247,6 +258,16 @@ trait Invokable
                 $debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
                 $debugTraces['mnemonic_indexes'][] = $pointer;
             }
+
+            $this->debugTool->getLogger()->debug(
+                vsprintf(
+                    'Used Memory: %s, Used Memory Peak: %s',
+                    [
+                        Metric::bytes(memory_get_usage())->format(),
+                        Metric::bytes(memory_get_peak_usage())->format(),
+                    ]
+                )
+            );
 
             $this->debugTool->getLogger()->debug(
                 vsprintf(
