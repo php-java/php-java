@@ -3,13 +3,13 @@ namespace PHPJava\Core\JVM\Cache;
 
 class Cache
 {
-    private static $items = [];
+    private $items = [];
 
-    public static function fetchOrPush(string $key, callable $pushFunction, ...$parameters)
+    public function fetchOrPush(string $key, callable $pushFunction, ...$parameters)
     {
-        if (isset(self::$items[$key])) {
-            return self::$items[$key];
+        if (isset($this->items[$key])) {
+            return $this->items[$key];
         }
-        return self::$items[$key] = $pushFunction(...$parameters);
+        return $this->items[$key] = $pushFunction(...$parameters);
     }
 }

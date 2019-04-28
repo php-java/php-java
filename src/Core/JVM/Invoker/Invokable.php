@@ -230,6 +230,7 @@ trait Invokable
             )
         );
 
+        $operationCache = new OperationCache();
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
@@ -296,7 +297,7 @@ trait Invokable
             /**
              * @var OperationInterface|Accumulator|ConstantPool $executor
              */
-            $executor = OperationCache::fetchOrPush(
+            $executor = $operationCache->fetchOrPush(
                 $fullName,
                 function () use ($fullName) {
                     return new $fullName();

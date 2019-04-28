@@ -33,8 +33,8 @@ trait Accumulator
 
     public function setParameters(
         array $attributes,
-        JavaClassInvoker $javaClassInvoker,
-        \PHPJava\Core\JVM\Stream\BinaryReader $reader,
+        JavaClassInvoker &$javaClassInvoker,
+        \PHPJava\Core\JVM\Stream\BinaryReader &$reader,
         array &$localStorage,
         array &$stacks,
         int $pointer
