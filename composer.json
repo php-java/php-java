@@ -9,6 +9,9 @@
             "name": "memory"
         }
     ],
+    "bin": [
+        "bin/PHPJava"
+    ],
     "require": {
         "php": ">=7.2",
         "ext-zip": "*",

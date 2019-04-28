@@ -1,6 +1,10 @@
 <?php
 namespace PHPJava\Console\Commands\JVM;
 
+use PHPJava\Core\JavaArchive;
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use PHPJava\Core\Stream\Reader\FileReader;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputDefinition;
@@ -36,24 +40,50 @@ class RunCommand extends Command
                 'm',
                 InputOption::VALUE_OPTIONAL,
                 'Set run mode [jar|class]. Default is class.'
-            )
-            ->addOption(
-                'entrypoint',
-                'e',
-                InputOption::VALUE_OPTIONAL,
-                'Overwrite entrypoint'
             );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $settings = $input->getOption('settings') ?? [];
-        $mode = $input->getOption('mode') ?? 'class';
-        $entrypoint = $input->getOption('entrypoint') ?? null;
+        $mode = strtolower($input->getOption('mode') ?? 'class');
         $file = $input->getArgument('file');
         $parameters = $input->getArgument('parameters');
 
+        // Set global options
+        GlobalOptions::set($settings);
 
-        var_dump($file);
+        if ($mode === 'jar') {
+            return $this->runJar($file, $parameters);
+        } elseif ($mode === 'class') {
+            return $this->runClass($file, $parameters);
+        }
+
+        $output->writeln(
+            '<error>Unable to run `' . $mode . '` mode.</error>'
+        );
+    }
+
+    private function runJar(string $file, array $parameters)
+    {
+        $jar = new JavaArchive($file);
+        $jar->execute(
+            $parameters
+        );
+    }
+
+    private function runClass(string $file, array $parameters)
+    {
+        $class = new JavaClass(
+            new FileReader($file)
+        );
+        $class
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'main',
+                $parameters
+            );
     }
 }
