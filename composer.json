@@ -22,7 +22,8 @@
         "php-java/java-net-package": "*",
         "php-java/java-nio-package": "*",
         "gabrielelana/byte-units": "dev-master",
-        "symfony/console": "4.2"
+        "symfony/console": "4.2",
+        "phpdocumentor/reflection-docblock": "4.3"
     },
     "autoload": {
         "psr-4": {

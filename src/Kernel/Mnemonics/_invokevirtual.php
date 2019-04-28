@@ -48,11 +48,24 @@ final class _invokevirtual implements OperationInterface
                         ...$arguments
                     );
             } else {
-                $result = call_user_func_array(
-                    [
-                        TypeResolver::convertPHPTypeToJavaType($invokerClass),
-                        $methodName
-                    ],
+                $reflectionClass = new \ReflectionClass($invokerClass);
+                $methodAccessor = $reflectionClass->getMethod($methodName);
+
+                // parse PHPDoc
+                $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                    ->create($methodAccessor->getDocComment());
+
+                // Native annotation will dependency inject.
+                if (!empty($documentBlock->getTagsByName('native'))) {
+                    array_unshift(
+                        $arguments,
+                        $this->getConstantPool(),
+                        $this->javaClass
+                    );
+                }
+
+                $result = $methodAccessor->invokeArgs(
+                    $invokerClass,
                     $arguments
                 );
             }
