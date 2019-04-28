@@ -43,7 +43,7 @@ trait Accumulator
         $this->javaClassInvoker = &$javaClassInvoker;
         $this->javaClass = $javaClassInvoker->getJavaClass();
         $this->options = $this->javaClass->getOptions();
-        $this->reader = &$reader;
+        $this->reader = $reader;
         $this->localStorage = &$localStorage;
         $this->stacks = &$stacks;
         $this->pointer = $pointer;
