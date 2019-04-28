@@ -25,7 +25,7 @@ final class GlobalOptions
         return $ref;
     }
 
-    public function reset()
+    public static function reset()
     {
         static::$settings = [];
     }
