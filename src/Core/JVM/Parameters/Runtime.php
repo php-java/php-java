@@ -8,7 +8,7 @@ final class Runtime
     const ENTRYPOINT = null;
 
     const MAX_STACK_EXCEEDED = 9999;
-    const MAX_EXECUTION_TIME = 1;
+    const MAX_EXECUTION_TIME = 5;
     const STRICT = true;
     const PRELOAD = false;
     const DRY_RUN_ATTRIBUTE = false;
