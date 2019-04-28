@@ -3,7 +3,7 @@
     "description": "JVM emulator by PHP",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.6.4-dev",
+    "version": "0.0.6.5-dev",
     "authors": [
         {
             "name": "memory"
