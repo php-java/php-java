@@ -1,15 +1,15 @@
 <?php
+namespace PHPJava\Console;
 
+use PHPJava\Console\Commands\JVM\RunCommand;
 use PHPJava\Core\JavaArchive;
 use PHPJava\Core\PHPJava;
+use Symfony\Component\Console\Application;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-if (!isset($argv[1])) {
-    echo "First parameter is needed.\n";
-    return;
-}
-
-$jar = new JavaArchive($argv[1]);
-$arguments = array_slice($argv, 2);
-$jar->execute(...(array_slice($argv, 2) ?: [[]]));
+$application = new Application();
+$runCommand = new RunCommand();
+$application->add($runCommand);
+$application->setDefaultCommand($runCommand->getName());
+$application->run();
