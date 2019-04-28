@@ -298,12 +298,12 @@ trait Invokable
              */
             $executor = OperationCache::fetchOrPush(
                 $fullName,
-                function () use ($fullName, &$currentConstantPool) {
-                    return (new $fullName())
-                        ->setConstantPool($currentConstantPool);
+                function () use ($fullName) {
+                    return new $fullName();
                 }
             );
             $returnValue = $executor
+                ->setConstantPool($currentConstantPool)
                 ->setParameters(
                     $method->getAttributes(),
                     $this->javaClassInvoker,
