@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Types;
 
+use PHPJava\Core\JVM\Cache\HeapCache;
 use PHPJava\Exceptions\TypeException;
 
 class Type

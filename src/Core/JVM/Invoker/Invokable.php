@@ -229,7 +229,7 @@ trait Invokable
                 ]
             )
         );
-        $operationCache = new OperationCache();
+
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
@@ -296,23 +296,23 @@ trait Invokable
             /**
              * @var OperationInterface|Accumulator|ConstantPool $executor
              */
-            $executor = $operationCache->fetchOrPush(
+            $executor = OperationCache::fetchOrPush(
                 $fullName,
-                function () use ($fullName) {
-                    return new $fullName();
+                function () use ($fullName, &$currentConstantPool) {
+                    return (new $fullName())
+                        ->setConstantPool($currentConstantPool);
                 }
             );
-            $executor = new $fullName();
-            $executor->setConstantPool($currentConstantPool);
-            $executor->setParameters(
-                $method->getAttributes(),
-                $this->javaClassInvoker,
-                $reader,
-                $localStorage,
-                $stacks,
-                $pointer
-            );
-            $returnValue = $executor->execute();
+            $returnValue = $executor
+                ->setParameters(
+                    $method->getAttributes(),
+                    $this->javaClassInvoker,
+                    $reader,
+                    $localStorage,
+                    $stacks,
+                    $pointer
+                )
+                ->execute();
 
             $afterTrigger = $this->options['operations']['injections']['after'] ?? GlobalOptions::get('operations.injections.after');
             if (is_callable($afterTrigger)) {

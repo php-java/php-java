@@ -37,16 +37,16 @@ trait Accumulator
         \PHPJava\Core\JVM\Stream\BinaryReader $reader,
         array &$localStorage,
         array &$stacks,
-        int $pointer
+        int &$pointer
     ): self {
-        $this->attributes = $attributes;
-        $this->javaClassInvoker = $javaClassInvoker;
+        $this->attributes = &$attributes;
+        $this->javaClassInvoker = &$javaClassInvoker;
         $this->javaClass = $javaClassInvoker->getJavaClass();
         $this->options = $this->javaClass->getOptions();
-        $this->reader = $reader;
+        $this->reader = &$reader;
         $this->localStorage = &$localStorage;
         $this->stacks = &$stacks;
-        $this->pointer = $pointer;
+        $this->pointer = &$pointer;
         return $this;
     }
 
