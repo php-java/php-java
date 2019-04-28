@@ -1,0 +1,11 @@
+#!/usr/bin/php
+<?php
+
+foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php'] as $file) {
+    if (is_file($file)) {
+        require $file;
+        break;
+    }
+}
+
+\PHPJava\Console\Command::main();

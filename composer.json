@@ -10,7 +10,7 @@
         }
     ],
     "bin": [
-        "bin/PHPJava"
+        "PHPJava"
     ],
     "require": {
         "php": ">=7.2",
@@ -27,7 +27,7 @@
     "autoload": {
         "psr-4": {
             "PHPJava\\": "src/",
-            "PHPJava\\Console\\": "bin/"
+            "PHPJava\\Console\\": "console/"
         }
     },
     "autoload-dev": {
