@@ -51,17 +51,19 @@ final class _invokevirtual implements OperationInterface
                 $reflectionClass = new \ReflectionClass($invokerClass);
                 $methodAccessor = $reflectionClass->getMethod($methodName);
 
-                // parse PHPDoc
-                $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-                    ->create($methodAccessor->getDocComment());
+                if ($document = $methodAccessor->getDocComment()) {
+                    // parse PHPDoc
+                    $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                        ->create($document);
 
-                // Native annotation will dependency inject.
-                if (!empty($documentBlock->getTagsByName('native'))) {
-                    array_unshift(
-                        $arguments,
-                        $this->getConstantPool(),
-                        $this->javaClass
-                    );
+                    // Native annotation will dependency inject.
+                    if (!empty($documentBlock->getTagsByName('native'))) {
+                        array_unshift(
+                            $arguments,
+                            $this->getConstantPool(),
+                            $this->javaClass
+                        );
+                    }
                 }
 
                 $result = $methodAccessor->invokeArgs(
