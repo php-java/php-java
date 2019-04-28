@@ -3,7 +3,7 @@
     "description": "JVM emulator by PHP",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.6.4-dev",
+    "version": "0.0.6.5-dev",
     "authors": [
         {
             "name": "memory"
@@ -17,7 +17,8 @@
         "php-java/java-util-package": "*",
         "php-java/java-io-package": "*",
         "php-java/java-net-package": "*",
-        "php-java/java-nio-package": "*"
+        "php-java/java-nio-package": "*",
+        "gabrielelana/byte-units": "dev-master"
     },
     "autoload": {
         "psr-4": {

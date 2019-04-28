@@ -13,7 +13,7 @@ final class Runtime
     const PRELOAD = false;
     const DRY_RUN_ATTRIBUTE = false;
 
-    const OPERATIONS_ENABLE_TRACE = true;
+    const OPERATIONS_ENABLE_TRACE = false;
     const OPERATIONS_TEMPORARY_CODE_STREAM = 'php://memory';
 
     const VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY = false;

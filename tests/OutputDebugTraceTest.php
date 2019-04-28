@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Tests;
 
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPUnit\Framework\TestCase;
 
 class OutputDebugTraceTest extends Base
@@ -12,6 +13,12 @@ class OutputDebugTraceTest extends Base
     public function testCallMain()
     {
         ob_start();
+
+        GlobalOptions::set([
+            'operations' => [
+                'enable_trace' => true,
+            ],
+        ]);
 
         $calculatedValue = $this->initiatedJavaClasses['OutputDebugTraceTest']
             ->getInvoker()
@@ -30,5 +37,7 @@ class OutputDebugTraceTest extends Base
             file_get_contents(__DIR__ . '/templates/DebugTraceTest.txt'),
             $result
         );
+
+        GlobalOptions::reset();
     }
 }
