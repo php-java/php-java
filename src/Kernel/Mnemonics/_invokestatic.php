@@ -54,6 +54,26 @@ final class _invokestatic implements OperationInterface
                         );
                     break;
                 case ClassResolver::RESOLVED_TYPE_PACKAGES:
+                    $reflectionClass = new \ReflectionClass(
+                        $classObject
+                    );
+                    $methodAccessor = $reflectionClass->getMethod("{$prefix}{$methodName}");
+
+                    if ($document = $methodAccessor->getDocComment()) {
+                        // parse PHPDoc
+                        $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                            ->create($document);
+
+                        // Native annotation will dependency inject.
+                        if (!empty($documentBlock->getTagsByName('native'))) {
+                            array_unshift(
+                                $arguments,
+                                $this->getConstantPool(),
+                                $this->javaClass
+                            );
+                        }
+                    }
+
                     $return = forward_static_call_array(
                         [
                             $classObject,
