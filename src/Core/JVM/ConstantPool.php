@@ -104,11 +104,11 @@ class ConstantPool implements \ArrayAccess
 
     public function offsetSet($offset, $value)
     {
-        throw new ReadOnlyException('You cannot rewrite datum. The Constant Pool is read-only.');
+        throw new ReadOnlyException('You cannot rewrite datum. The Constant Cache is read-only.');
     }
 
     public function offsetUnset($offset)
     {
-        throw new ReadOnlyException('You cannot rewrite datum. The Constant Pool is read-only.');
+        throw new ReadOnlyException('You cannot rewrite datum. The Constant Cache is read-only.');
     }
 }

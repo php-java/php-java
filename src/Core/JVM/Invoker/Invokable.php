@@ -6,6 +6,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Core\JVM\Cache\OperationCache;
 use PHPJava\Core\JVM\FlexibleMethod;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Stream\BinaryReader;
@@ -228,7 +229,7 @@ trait Invokable
                 ]
             )
         );
-
+        $operationCache = new OperationCache();
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
@@ -295,6 +296,12 @@ trait Invokable
             /**
              * @var OperationInterface|Accumulator|ConstantPool $executor
              */
+            $executor = $operationCache->fetchOrPush(
+                $fullName,
+                function () use ($fullName) {
+                    return new $fullName();
+                }
+            );
             $executor = new $fullName();
             $executor->setConstantPool($currentConstantPool);
             $executor->setParameters(
@@ -319,13 +326,17 @@ trait Invokable
             }
 
             if ($returnValue !== null) {
-                $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+                if ($isEnabledTrace === true) {
+                    $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+                }
                 $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
                 return $returnValue;
             }
         }
 
-        $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+        if ($isEnabledTrace === true) {
+            $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+        }
         $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
         return null;
     }
