@@ -3,6 +3,7 @@ namespace PHPJava\Console\Commands\JVM;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -14,12 +15,21 @@ class RunCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Run JVM')
+            ->addArgument(
+                'file',
+                InputArgument::REQUIRED,
+                'Specify to run [jar|class] file.'
+            )
+            ->addArgument(
+                'parameters',
+                InputArgument::OPTIONAL | InputArgument::IS_ARRAY,
+                'Specify parameters to pass for entrypoint.'
+            )
             ->addOption(
-                'options',
-                'o',
+                'settings',
+                's',
                 InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
-                'Set options'
+                'Set option settings.'
             )
             ->addOption(
                 'mode',
@@ -32,16 +42,18 @@ class RunCommand extends Command
                 'e',
                 InputOption::VALUE_OPTIONAL,
                 'Overwrite entrypoint'
-            )
-            ->addArgument(
-                'parameters',
-                InputArgument::OPTIONAL | InputArgument::IS_ARRAY,
-                'Define parameters to pass for entrypoint.'
             );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $options = $input->getOptions();
+        $settings = $input->getOption('settings') ?? [];
+        $mode = $input->getOption('mode') ?? 'class';
+        $entrypoint = $input->getOption('entrypoint') ?? null;
+        $file = $input->getArgument('file');
+        $parameters = $input->getArgument('parameters');
+
+
+        var_dump($file);
     }
 }

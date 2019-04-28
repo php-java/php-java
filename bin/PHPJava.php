@@ -11,5 +11,8 @@ require __DIR__ . '/../vendor/autoload.php';
 $application = new Application();
 $runCommand = new RunCommand();
 $application->add($runCommand);
-$application->setDefaultCommand($runCommand->getName());
+$application->setDefaultCommand(
+    $runCommand->getName(),
+    true
+);
 $application->run();
