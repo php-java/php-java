@@ -54,7 +54,6 @@ final class _invokestatic implements OperationInterface
                         );
                     break;
                 case ClassResolver::RESOLVED_TYPE_PACKAGES:
-
                     $reflectionClass = new \ReflectionClass(
                         $classObject
                     );
