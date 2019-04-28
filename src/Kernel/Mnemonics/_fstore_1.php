@@ -11,6 +11,6 @@ final class _fstore_1 implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->setLocalStorage(1, $this->popFromOperandStack());
     }
 }

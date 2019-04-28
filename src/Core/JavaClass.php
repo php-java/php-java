@@ -6,8 +6,11 @@ use PHPJava\Core\JVM\ActiveFields;
 use PHPJava\Core\JVM\ActiveInterface;
 use PHPJava\Core\JVM\ActiveMethods;
 use PHPJava\Core\JVM\ConstantPool;
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
+use PHPJava\Exceptions\DebugTraceIsDisabledException;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
@@ -302,6 +305,12 @@ class JavaClass implements JavaClassInterface
 
     public function debug(): void
     {
+        $isEnabledTrace = $this->options['operations']['enable_trace'] ?? GlobalOptions::get('operations.enable_trace') ?? Runtime::OPERATIONS_ENABLE_TRACE;
+        if (!$isEnabledTrace) {
+            throw new DebugTraceIsDisabledException(
+                "Debug trace is disabled. If you want to show debug trace then enable to `enable_trace` option."
+            );
+        }
         $cpInfo = $this->getConstantPool();
         foreach ($this->debugTraces as $debugTraces) {
             printf("[method]\n");

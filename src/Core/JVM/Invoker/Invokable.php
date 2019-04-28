@@ -1,10 +1,12 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker;
 
+use ByteUnits\Metric;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Core\JVM\Cache\OperationCache;
 use PHPJava\Core\JVM\FlexibleMethod;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Stream\BinaryReader;
@@ -218,6 +220,17 @@ trait Invokable
             $localStorage
         );
 
+        $this->debugTool->getLogger()->debug(
+            vsprintf(
+                'Used Memory: %s, Used Memory Peak: %s',
+                [
+                    Metric::bytes(memory_get_usage())->format(),
+                    Metric::bytes(memory_get_peak_usage())->format(),
+                ]
+            )
+        );
+
+        $operationCache = new OperationCache();
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
@@ -250,6 +263,16 @@ trait Invokable
 
             $this->debugTool->getLogger()->debug(
                 vsprintf(
+                    'Used Memory: %s, Used Memory Peak: %s',
+                    [
+                        Metric::bytes(memory_get_usage())->format(),
+                        Metric::bytes(memory_get_peak_usage())->format(),
+                    ]
+                )
+            );
+
+            $this->debugTool->getLogger()->debug(
+                vsprintf(
                     'OpCode: 0x%02X, Mnemonic: %s, Stacks: %d, PC: %d',
                     [
                         $opcode,
@@ -274,17 +297,23 @@ trait Invokable
             /**
              * @var OperationInterface|Accumulator|ConstantPool $executor
              */
-            $executor = new $fullName();
-            $executor->setConstantPool($currentConstantPool);
-            $executor->setParameters(
-                $method->getAttributes(),
-                $this->javaClassInvoker,
-                $reader,
-                $localStorage,
-                $stacks,
-                $pointer
+            $executor = $operationCache->fetchOrPush(
+                $fullName,
+                function () use ($fullName) {
+                    return new $fullName();
+                }
             );
-            $returnValue = $executor->execute();
+            $returnValue = $executor
+                ->setConstantPool($currentConstantPool)
+                ->setParameters(
+                    $method->getAttributes(),
+                    $this->javaClassInvoker,
+                    $reader,
+                    $localStorage,
+                    $stacks,
+                    $pointer
+                )
+                ->execute();
 
             $afterTrigger = $this->options['operations']['injections']['after'] ?? GlobalOptions::get('operations.injections.after');
             if (is_callable($afterTrigger)) {
@@ -298,13 +327,17 @@ trait Invokable
             }
 
             if ($returnValue !== null) {
-                $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+                if ($isEnabledTrace) {
+                    $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+                }
                 $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
                 return $returnValue;
             }
         }
 
-        $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+        if ($isEnabledTrace) {
+            $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
+        }
         $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
         return null;
     }

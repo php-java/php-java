@@ -14,19 +14,19 @@ final class _iastore implements OperationInterface
 
     public function execute(): void
     {
-        $data = Extractor::realValue($this->popFromOperandStack());
-        $arrayref = Extractor::realValue($this->popFromOperandStack());
+        $value = Extractor::realValue($this->popFromOperandStack());
+        $index = Extractor::realValue($this->popFromOperandStack());
 
         /**
-         * @var Type $value
+         * @var Type $arrayref
          */
-        $value = $this->popFromOperandStack();
+        $arrayref = $this->popFromOperandStack();
 
         // The value is a ref.
-        $value[$arrayref] = $data;
+        $arrayref[$index] = $value;
 
         $this->pushToOperandStack(
-            $value
+            $arrayref
         );
     }
 }
