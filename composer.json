@@ -3,11 +3,14 @@
     "description": "JVM emulator by PHP",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.6.5-dev",
+    "version": "0.0.6.6-dev",
     "authors": [
         {
             "name": "memory"
         }
+    ],
+    "bin": [
+        "PHPJava"
     ],
     "require": {
         "php": ">=7.2",
@@ -18,11 +21,13 @@
         "php-java/java-io-package": "*",
         "php-java/java-net-package": "*",
         "php-java/java-nio-package": "*",
-        "gabrielelana/byte-units": "dev-master"
+        "gabrielelana/byte-units": "dev-master",
+        "symfony/console": "4.2"
     },
     "autoload": {
         "psr-4": {
-            "PHPJava\\": "src/"
+            "PHPJava\\": "src/",
+            "PHPJava\\Console\\": "console/"
         }
     },
     "autoload-dev": {
