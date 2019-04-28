@@ -39,8 +39,8 @@ trait Accumulator
         array &$stacks,
         int $pointer
     ): self {
-        $this->attributes = &$attributes;
-        $this->javaClassInvoker = &$javaClassInvoker;
+        $this->attributes = $attributes;
+        $this->javaClassInvoker = $javaClassInvoker;
         $this->javaClass = $javaClassInvoker->getJavaClass();
         $this->options = $this->javaClass->getOptions();
         $this->reader = $reader;

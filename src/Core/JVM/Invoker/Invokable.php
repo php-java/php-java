@@ -326,7 +326,7 @@ trait Invokable
             }
 
             if ($returnValue !== null) {
-                if ($isEnabledTrace === true) {
+                if ($isEnabledTrace) {
                     $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
                 }
                 $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
@@ -334,7 +334,7 @@ trait Invokable
             }
         }
 
-        if ($isEnabledTrace === true) {
+        if ($isEnabledTrace) {
             $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
         }
         $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
