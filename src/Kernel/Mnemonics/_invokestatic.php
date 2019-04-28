@@ -61,10 +61,13 @@ final class _invokestatic implements OperationInterface
                     $methodAccessor = $reflectionClass->getMethod("{$prefix}{$methodName}");
 
                     if ($document = $methodAccessor->getDocComment()) {
-                        array_unshift(
-                            $arguments,
-                            ...$this->getNativeAnnotateInjections($document)
-                        );
+                        $prependInjections = $this->getNativeAnnotateInjections($document);
+                        if (!empty($prependInjections)) {
+                            array_unshift(
+                                $arguments,
+                                ...$prependInjections
+                            );
+                        }
                     }
 
                     $return = forward_static_call_array(
