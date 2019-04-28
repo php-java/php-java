@@ -18,13 +18,13 @@ trait DependencyInjector
                  * @var \phpDocumentor\Reflection\DocBlock\Tags\Generic $nativeClass
                  */
                 switch ($type = trim($nativeClass->getDescription())) {
-                    case 'ConstantPool';
+                    case 'ConstantPool':
                         $injections[] = $this->getConstantPool();
                         break;
-                    case 'JavaClass';
+                    case 'JavaClass':
                         $injections[] = $this->javaClass;
                         break;
-                    case 'JavaClassInvoker';
+                    case 'JavaClassInvoker':
                         $injections[] = $this->javaClassInvoker;
                         break;
                     case 'Attributes':
