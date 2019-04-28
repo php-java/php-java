@@ -17,6 +17,7 @@ final class _invokevirtual implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DependencyInjector;
 
     public function execute(): void
     {
@@ -54,18 +55,10 @@ final class _invokevirtual implements OperationInterface
                 $methodAccessor = $reflectionClass->getMethod($methodName);
 
                 if ($document = $methodAccessor->getDocComment()) {
-                    // parse PHPDoc
-                    $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-                        ->create($document);
-
-                    // Native annotation will dependency inject.
-                    if (!empty($documentBlock->getTagsByName('native'))) {
-                        array_unshift(
-                            $arguments,
-                            $this->getConstantPool(),
-                            $this->javaClass
-                        );
-                    }
+                    array_unshift(
+                        $arguments,
+                        ...$this->getNativeAnnotateInjections($document)
+                    );
                 }
 
                 $result = call_user_func_array(
