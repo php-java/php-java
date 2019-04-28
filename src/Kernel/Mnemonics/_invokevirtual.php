@@ -49,7 +49,7 @@ final class _invokevirtual implements OperationInterface
                     );
             } else {
                 $reflectionClass = new \ReflectionClass(
-                    TypeResolver::convertPHPTypeToJavaType($invokerClass)
+                    $realInvokerClass = TypeResolver::convertPHPTypeToJavaType($invokerClass)
                 );
                 $methodAccessor = $reflectionClass->getMethod($methodName);
 
@@ -68,8 +68,8 @@ final class _invokevirtual implements OperationInterface
                     }
                 }
 
-                $result = $methodAccessor->invokeArgs(
-                    $invokerClass,
+                $result = call_user_func_array(
+                    [$realInvokerClass, $methodName],
                     $arguments
                 );
             }
