@@ -28,9 +28,12 @@ final class _invokespecial implements OperationInterface
         $invokerClass = $this->popFromOperandStack();
 
 
-        $arguments = array_fill(0, $parsedSignature['arguments_count'] - 1, null);
-        for ($i = $parsedSignature['arguments_count'] - 1; $i >= 0; $i--) {
-            $arguments[$i] = $this->popFromOperandStack();
+        $arguments = [];
+        if (($length = $parsedSignature['arguments_count'] - 1) >= 0) {
+            $arguments = array_fill(0, $length, null);
+            for ($i = $length; $i >= 0; $i--) {
+                $arguments[$i] = $this->popFromOperandStack();
+            }
         }
 
         $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();

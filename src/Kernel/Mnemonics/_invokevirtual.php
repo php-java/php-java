@@ -29,9 +29,12 @@ final class _invokevirtual implements OperationInterface
         // signature
         $signature = Formatter::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
 
-        $arguments = array_fill(0, $signature['arguments_count'] - 1, null);
-        for ($i = $signature['arguments_count'] - 1; $i >= 0; $i--) {
-            $arguments[$i] = $this->popFromOperandStack();
+        $arguments = [];
+        if (($length = $signature['arguments_count'] - 1) >= 0) {
+            $arguments = array_fill(0, $length, null);
+            for ($i = $length; $i >= 0; $i--) {
+                $arguments[$i] = $this->popFromOperandStack();
+            }
         }
 
         $invokerClass = $this->popFromOperandStack();
