@@ -262,30 +262,30 @@ class TypeResolver
                 $reflectionClass = new \ReflectionClass($classPath);
                 if ($document = $reflectionClass->getDocComment()) {
                     $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-                        ->create($reflectionClass->getDocComment());
+                        ->create($document);
+                    if (!empty($documentBlock->getTagsByName('highPriority'))) {
+                        $roots = array_merge(
+                            array_map(
+                                function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                                    return (string) $item->getDescription();
+                                },
+                                $documentBlock->getTagsByName('parent')
+                            ),
+                            [$classPath]
+                        );
+                        if (count($roots) > count($extendedClasses)) {
+                            $extendedClasses = $roots;
+                        }
 
-                    $roots = array_merge(
-                        array_map(
+                        $roots = array_map(
                             function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                                var_dump($item->getDescription());
                                 return (string) $item->getDescription();
                             },
-                            $documentBlock->getTagsByName('parent')
-                        ),
-                        [$classPath]
-                    );
-                    if (count($roots) > count($extendedClasses)) {
-                        $extendedClasses = $roots;
-                    }
-
-                    $roots = array_map(
-                        function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                            return (string) $item->getDescription();
-                        },
-                        $documentBlock->getTagsByName('interface')
-                    );
-                    if (count($roots) > count($interfaces)) {
-                        $interfaces = $roots;
+                            $documentBlock->getTagsByName('interface')
+                        );
+                        if (count($roots) > count($interfaces)) {
+                            $interfaces = $roots;
+                        }
                     }
                 }
             }

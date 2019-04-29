@@ -21,10 +21,10 @@ class KotlinTest extends Base
             return;
         }
 
-        ob_start();
+//        ob_start();
         $jar = new JavaArchive(__DIR__ . '/caches/HelloWorldKotlin.jar');
         $jar->execute([]);
-        $result = rtrim(ob_get_clean());
+//        $result = rtrim(ob_get_clean());
 
         $this->assertEquals('Hello World!', $result);
     }
