@@ -28,7 +28,7 @@ final class _invokespecial implements OperationInterface
 
         $arguments = [];
 
-        for ($i = $signature['arguments_count'] - 1; $i >= 0; $i--) {
+        for ($i = $parsedSignature['arguments_count'] - 1; $i >= 0; $i--) {
             $arguments[$i] = $this->popFromOperandStack();
         }
 
