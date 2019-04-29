@@ -38,14 +38,6 @@ final class _invokespecial implements OperationInterface
 
         $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
 
-        if ($this->javaClassInvoker->isInvoked($methodName, $signature)) {
-            return;
-        }
-
-        $this->javaClassInvoker
-            ->addToSpecialInvokedList($methodName, $signature);
-
-
         try {
             if ($invokerClass instanceof JavaClass) {
                 if ($invokerClass->getInvoker()->isInvoked($methodName, $signature)) {
