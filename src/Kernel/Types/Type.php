@@ -13,10 +13,7 @@ class Type
     public function __construct($value)
     {
         // Validate value which is scalar.
-        if (!is_int($value) &&
-            !is_float($value) &&
-            !is_string($value) &&
-            !is_bool($value) &&
+        if (!is_scalar($value) &&
             !is_array($value) &&
             !is_null($value) &&
             !($value instanceof self)

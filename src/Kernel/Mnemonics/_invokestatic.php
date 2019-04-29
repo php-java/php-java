@@ -24,13 +24,13 @@ final class _invokestatic implements OperationInterface
         $cp = $cpInfo[$this->readUnsignedShort()];
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
-        $arguments = [];
 
         $this->getOptions('class_resolver')
             ->resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
         [$resourceType, $classObject] = $this->getOptions('class_resolver')
             ->resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
 
+        $arguments = array_fill(0, $signature['arguments_count'] - 1, null);
         for ($i = $signature['arguments_count'] - 1; $i >= 0; $i--) {
             $arguments[$i] = $this->popFromOperandStack();
         }

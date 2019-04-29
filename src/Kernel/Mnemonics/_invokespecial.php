@@ -6,6 +6,7 @@ use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
+use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\MethodNameResolver;
@@ -26,8 +27,8 @@ final class _invokespecial implements OperationInterface
         $parsedSignature = Formatter::parseSignature($signature);
         $invokerClass = $this->popFromOperandStack();
 
-        $arguments = [];
 
+        $arguments = array_fill(0, $parsedSignature['arguments_count'] - 1, null);
         for ($i = $parsedSignature['arguments_count'] - 1; $i >= 0; $i--) {
             $arguments[$i] = $this->popFromOperandStack();
         }
@@ -61,21 +62,6 @@ final class _invokespecial implements OperationInterface
                         ...$arguments
                     );
             } else {
-                $reflectionClass = new \ReflectionClass(
-                    $realInvokerClass = TypeResolver::convertPHPTypeToJavaType($invokerClass)
-                );
-                $methodAccessor = $reflectionClass->getMethod($methodName);
-
-                if ($document = $methodAccessor->getDocComment()) {
-                    $prependInjections = $this->getNativeAnnotateInjections($document);
-                    if (!empty($prependInjections)) {
-                        array_unshift(
-                            $arguments,
-                            ...$prependInjections
-                        );
-                    }
-                }
-
                 $result = call_user_func_array(
                     [
                         $invokerClass,
