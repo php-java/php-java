@@ -1,14 +1,15 @@
 # PHPJava - JVM Emulator by PHP
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 ![Compatibility](https://img.shields.io/badge/Compatibility-7.2%20and%20greater-green.svg) 
-[![Build Status](https://travis-ci.org/memory-agape/php-java.png?branch=master)](https://travis-ci.org/memory-agape/php-java)
-[![Total Downloads](https://poser.pugx.org/memory-agape/php-java/downloads)](https://packagist.org/packages/memory-agape/php-java)
+[![Build Status](https://travis-ci.org/php-java/php-java.png?branch=master)](https://travis-ci.org/memory-agape/php-java)
+[![Total Downloads](https://poser.pugx.org/php-java/php-java/downloads)](https://packagist.org/packages/memory-agape/php-java)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 <p align="center"><img src="./docs/img/logo.png" height="300"></p>
 
 # What is PHPJava?
 PHPJava is an experimental library which emulates JVM (a.k.a. Java Virtual Machine) by PHP 🐘
-PHPJava reads binary from pre-compiled Java file(s) ☕
+And PHPJava reads binary from pre-compiled Java file(s) ☕
+So, PHPJava is **NOT** bridge to Java. This library can be run 100% in PHP.
 This project referred to [Java Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se11/html/index.html) documentation at the time we made it.
 
 We are welcoming any contributions to this project 💪
@@ -20,6 +21,31 @@ Contribution guide is here:
 - PHP >= 7.2
 - Composer
 - ext-zip
+
+## Run with PHPJava's binary 
+You can run PHPJava as same as an executable binary.
+
+### Run Class
+```shell
+./vendor/bin/PHPJava HelloWorld
+```
+
+or
+
+```shell
+./vendor/bin/PHPJava HelloWorld.class
+```
+
+### Run Jar
+```shell
+./vendor/bin/PHPJava -m jar HelloWorld.jar
+```
+
+### help
+
+```shell
+./vendor/bin/PHPJava -h
+```
 
 ## Quick start
 1) Install PHPJava in your project:
