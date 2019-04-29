@@ -255,7 +255,7 @@ class TypeResolver
                 continue;
             }
 
-            $extendedClasses = array_values(class_parents($classPath, true));
+            $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
             $interfaces = array_values(class_implements($classPath, true));
 
             if (class_exists($classPath)) {
@@ -264,28 +264,19 @@ class TypeResolver
                     $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
                         ->create($document);
                     if (!empty($documentBlock->getTagsByName('highPriority'))) {
-                        $roots = array_merge(
-                            array_map(
-                                function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                                    return (string) $item->getDescription();
-                                },
-                                $documentBlock->getTagsByName('parent')
-                            ),
-                            [$classPath]
+                        $extendedClasses = array_map(
+                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                                return (string) $item->getDescription();
+                            },
+                            $documentBlock->getTagsByName('parent')
                         );
-                        if (count($roots) > count($extendedClasses)) {
-                            $extendedClasses = $roots;
-                        }
 
-                        $roots = array_map(
+                        $interfaces = array_map(
                             function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
                                 return (string) $item->getDescription();
                             },
                             $documentBlock->getTagsByName('interface')
                         );
-                        if (count($roots) > count($interfaces)) {
-                            $interfaces = $roots;
-                        }
                     }
                 }
             }
