@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Packages\PHPJava\Extended;
 
-use PHPJava\Packages\PHPJava\Generic\Behavior\System;
+use PHPJava\Packages\PHPJava\Kernel\Behavior\System;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 
 trait _Object

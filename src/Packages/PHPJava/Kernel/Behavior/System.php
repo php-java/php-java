@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Packages\PHPJava\Generic\Behavior;
+namespace PHPJava\Packages\PHPJava\Kernel\Behavior;
 
 final class System
 {
