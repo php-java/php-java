@@ -17,11 +17,15 @@ final class _new implements OperationInterface
         $className = $cpInfo[$class->getClassIndex()]->getString();
         if ($className === $this->javaClass->getClassName()) {
             // will be called <init>
-            $this->pushToOperandStack($this->javaClass);
+            $this->pushToOperandStack(
+                clone $this->javaClass
+            );
             return;
         }
 
-        [$resourceType, $classObject] = $this->getOptions('class_resolver')->resolve($className, $this->javaClass);
+        [$resourceType, $classObject] = $this->getOptions('class_resolver')
+            ->resolve($className, $this->javaClass);
+
         if ($resourceType === ClassResolver::RESOLVED_TYPE_CLASS) {
             /**
              * @var \PHPJava\Core\JavaClass $classObject
