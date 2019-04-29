@@ -260,16 +260,33 @@ class TypeResolver
 
             if (class_exists($classPath)) {
                 $reflectionClass = new \ReflectionClass($classPath);
-                preg_match_all('/\@parent\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $parents);
-                $roots = array_merge($parents[1], [$classPath]);
-                if (count($roots) > count($extendedClasses)) {
-                    $extendedClasses = $roots;
-                }
+                if ($document = $reflectionClass->getDocComment()) {
+                    $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                        ->create($reflectionClass->getDocComment());
 
-                preg_match_all('/\@interface\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $interfaceRoots);
-                $roots = $interfaceRoots[1];
-                if (count($roots) > count($interfaces)) {
-                    $interfaces = $roots;
+                    $roots = array_merge(
+                        array_map(
+                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                                var_dump($item->getDescription());
+                                return (string) $item->getDescription();
+                            },
+                            $documentBlock->getTagsByName('parent')
+                        ),
+                        [$classPath]
+                    );
+                    if (count($roots) > count($extendedClasses)) {
+                        $extendedClasses = $roots;
+                    }
+
+                    $roots = array_map(
+                        function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                            return (string) $item->getDescription();
+                        },
+                        $documentBlock->getTagsByName('interface')
+                    );
+                    if (count($roots) > count($interfaces)) {
+                        $interfaces = $roots;
+                    }
                 }
             }
 
