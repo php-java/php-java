@@ -92,7 +92,7 @@ trait Invokable
         $convertedPassedArguments = $this->stringifyArguments(...$arguments);
 
         $method = $operationCache->fetchOrPush(
-            "{$name}.$convertedPassedArguments",
+            "{$name}.{$convertedPassedArguments}",
             function () use ($name, $arguments) {
                 return $this->findMethod(
                     $name,
