@@ -3,10 +3,10 @@ namespace PHPJava\Packages\PHPJava\Extended;
 
 use PHPJava\Packages\PHPJava\Kernel\Behavior\System;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
+use PHPJava\Packages\java\lang\CloneNotSupportedException;
 
 trait _Object
 {
-
     private $parameters;
 
     /**
@@ -41,12 +41,9 @@ trait _Object
         throw new NoSuchMethodException($name . ' does not exist on ' . get_class($this));
     }
 
-    /**
-     * @return _Object
-     */
-    public function __default_clone(): _Object
+    public function __default_clone(): void
     {
-        return clone $this;
+        throw new CloneNotSupportedException();
     }
 
     /**
