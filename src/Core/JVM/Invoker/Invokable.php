@@ -38,6 +38,7 @@ trait Invokable
     private $options = [];
     private $debugTool;
 
+
     public function __construct(JavaClassInvoker $javaClassInvoker, array $methods, array $options = [])
     {
         $this->javaClassInvoker = $javaClassInvoker;
@@ -49,6 +50,7 @@ trait Invokable
         );
     }
 
+
     /**
      * @param string $name
      * @param mixed ...$arguments
@@ -59,24 +61,13 @@ trait Invokable
      * @throws UndefinedMethodException
      * @throws UndefinedOpCodeException
      * @throws \PHPJava\Exceptions\TypeException
+     * @throws \PHPJava\Exceptions\UnableToFindAttributionException
+     * @throws \ReflectionException
      */
     public function call(string $name, ...$arguments)
     {
+        $operationCache = new OperationCache();
         $this->debugTool->getLogger()->debug('Call method: ' . $name);
-
-        /**
-         * @var _MethodInfo|null $method
-         */
-        $methodReferences = array_merge(
-            $this->methods[$name] ?? [],
-            (new SuperClassResolver())->resolveMethod($name, $this->javaClassInvoker->getJavaClass())[$name] ?? []
-        );
-
-        if (empty($methodReferences)) {
-            if (!isset($methodReferences)) {
-                throw new UndefinedMethodException('Call to undefined method ' . $name . '.');
-            }
-        }
 
         $currentConstantPool = $this->javaClassInvoker
             ->getJavaClass()
@@ -98,66 +89,17 @@ trait Invokable
             );
         }
 
+        $convertedPassedArguments = $this->stringifyArguments(...$arguments);
 
-        // Find same method
-        $convertedPassedArguments = Formatter::buildArgumentsSignature(
-            array_map(
-                function ($argument) {
-                    return TypeResolver::convertPHPtoJava($argument);
-                },
-                $arguments
-            )
-        );
-
-        $this->debugTool->getLogger()->debug('Passed descriptor is ' . $convertedPassedArguments);
-
-        $method = null;
-
-        foreach ($methodReferences as $methodReference) {
-            // If flexible method is available then Invoker use it all time.
-            if ($methodReference instanceof FlexibleMethod) {
-                $method = $methodReference;
-                break;
-            }
-            $constantPool = ($currentConstantPool = $methodReference->getConstantPool())->getEntries();
-            $formattedArguments = Formatter::parseSignature(
-                $constantPool[$methodReference->getDescriptorIndex()]->getString()
-            )['arguments'];
-
-            // does not strict mode can be PHP types
-            if (!($this->options['strict'] ?? GlobalOptions::get('strict') ?? Runtime::STRICT)) {
-                $formattedArguments = Formatter::signatureConvertToAmbiguousForPHP($formattedArguments);
-            }
-
-            /**
-             * @var _MethodInfo $methodReference
-             */
-            $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
-
-            $this->debugTool->getLogger()->debug('Find descriptor for ' . $methodSignature);
-
-            if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
-                if (TypeResolver::compare($methodSignature, $convertedPassedArguments)) {
-                    $method = $methodReference;
-                    break;
-                }
-            }
-            if (($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY) === true) {
-                $size = count($formattedArguments);
-                $passedArgumentsSize = count(
-                    $arguments
+        $method = $operationCache->fetchOrPush(
+            "{$name}.$convertedPassedArguments",
+            function () use ($name, $arguments) {
+                return $this->findMethod(
+                    $name,
+                    ...$arguments
                 );
-
-                if ($size === $passedArgumentsSize) {
-                    $method = $methodReference;
-                    break;
-                }
             }
-        }
-
-        if ($method === null) {
-            throw new NoSuchMethodException('Call to undefined method ' . $name . '.');
-        }
+        );
 
         if ($method instanceof FlexibleMethod) {
             /**
@@ -230,7 +172,6 @@ trait Invokable
             )
         );
 
-        $operationCache = new OperationCache();
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
@@ -350,5 +291,94 @@ trait Invokable
     public function has(string $name): bool
     {
         return count($this->methods[$name] ?? []) > 0;
+    }
+
+    /**
+     * @param $name
+     * @param mixed ...$arguments
+     * @return _MethodInfo
+     * @throws NoSuchMethodException
+     * @throws UndefinedMethodException
+     * @throws \PHPJava\Exceptions\TypeException
+     * @throws \ReflectionException
+     */
+    private function findMethod($name, ...$arguments): _MethodInfo
+    {
+        $methodReferences = array_merge(
+            $this->methods[$name] ?? [],
+            (new SuperClassResolver())->resolveMethod(
+                $name,
+                $this->javaClassInvoker->getJavaClass()
+            )[$name] ?? []
+        );
+
+        if (empty($methodReferences)) {
+            if (!isset($methodReferences)) {
+                throw new UndefinedMethodException('Call to undefined method ' . $name . '.');
+            }
+        }
+
+        $convertedPassedArguments = $this->stringifyArguments(...$arguments);
+
+        $this->debugTool->getLogger()->debug('Passed descriptor is ' . $convertedPassedArguments);
+
+        $method = null;
+
+        foreach ($methodReferences as $methodReference) {
+            // If flexible method is available then Invoker use it all time.
+            if ($methodReference instanceof FlexibleMethod) {
+                return $methodReference;
+            }
+            $constantPool = $currentConstantPool = $methodReference->getConstantPool();
+            $formattedArguments = Formatter::parseSignature(
+                $constantPool[$methodReference->getDescriptorIndex()]->getString()
+            )['arguments'];
+
+            // does not strict mode can be PHP types
+            if (!($this->options['strict'] ?? GlobalOptions::get('strict') ?? Runtime::STRICT)) {
+                $formattedArguments = Formatter::signatureConvertToAmbiguousForPHP($formattedArguments);
+            }
+
+            /**
+             * @var _MethodInfo $methodReference
+             */
+            $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
+
+            $this->debugTool->getLogger()->debug('Find descriptor for ' . $methodSignature);
+
+            if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
+                if (TypeResolver::compare($methodSignature, $convertedPassedArguments)) {
+                    return $methodReference;
+                }
+            }
+            if (($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY) === true) {
+                $size = count($formattedArguments);
+                $passedArgumentsSize = count(
+                    $arguments
+                );
+
+                if ($size === $passedArgumentsSize) {
+                    return $methodReference;
+                }
+            }
+        }
+
+        throw new NoSuchMethodException('Call to undefined method ' . $name . '.');
+    }
+
+    /**
+     * @param mixed ...$arguments
+     * @return string
+     */
+    private function stringifyArguments(...$arguments): string
+    {
+        return Formatter::buildArgumentsSignature(
+            array_map(
+                function ($argument) {
+                    return TypeResolver::convertPHPtoJava($argument);
+                },
+                $arguments
+            )
+        );
     }
 }
