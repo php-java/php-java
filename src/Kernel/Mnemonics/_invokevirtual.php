@@ -30,10 +30,10 @@ final class _invokevirtual implements OperationInterface
         $signature = Formatter::parseSignature($cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString());
         $arguments = [];
 
-        for ($i = 0; $i < $signature['arguments_count']; $i++) {
-            $arguments[] = $this->popFromOperandStack();
+        for ($i = $signature['arguments_count'] - 1; $i >= 0; $i--) {
+            $arguments[$i] = $this->popFromOperandStack();
         }
-        krsort($arguments);
+
         $invokerClass = $this->popFromOperandStack();
         $invokerClassName = $this->getOptions('class_resolver')->resolve($class);
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();

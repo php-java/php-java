@@ -31,10 +31,10 @@ final class _invokestatic implements OperationInterface
         [$resourceType, $classObject] = $this->getOptions('class_resolver')
             ->resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
 
-        for ($i = 0; $i < $signature['arguments_count']; $i++) {
-            $arguments[] = $this->popFromOperandStack();
+        for ($i = $signature['arguments_count'] - 1; $i >= 0; $i--) {
+            $arguments[$i] = $this->popFromOperandStack();
         }
-        krsort($arguments);
+
         $return = null;
 
         $prefix = $this->getOptions('prefix_static') ?? GlobalOptions::get('prefix_static') ?? Runtime::PREFIX_STATIC;
