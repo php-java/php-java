@@ -255,21 +255,29 @@ class TypeResolver
                 continue;
             }
 
-            $extendedClasses = array_values(class_parents($classPath, true));
+            $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
             $interfaces = array_values(class_implements($classPath, true));
 
             if (class_exists($classPath)) {
                 $reflectionClass = new \ReflectionClass($classPath);
-                preg_match_all('/\@parent\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $parents);
-                $roots = array_merge($parents[1], [$classPath]);
-                if (count($roots) > count($extendedClasses)) {
-                    $extendedClasses = $roots;
-                }
+                if ($document = $reflectionClass->getDocComment()) {
+                    $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                        ->create($document);
+                    if (!empty($documentBlock->getTagsByName('highPriority'))) {
+                        $extendedClasses = array_map(
+                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                                return (string) $item->getDescription();
+                            },
+                            $documentBlock->getTagsByName('parent')
+                        );
 
-                preg_match_all('/\@interface\s+([^\r\n]+)/i', $reflectionClass->getDocComment(), $interfaceRoots);
-                $roots = $interfaceRoots[1];
-                if (count($roots) > count($interfaces)) {
-                    $interfaces = $roots;
+                        $interfaces = array_map(
+                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                                return (string) $item->getDescription();
+                            },
+                            $documentBlock->getTagsByName('interface')
+                        );
+                    }
                 }
             }
 
