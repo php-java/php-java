@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Packages\java\lang\_String;
@@ -16,13 +17,21 @@ final class _if_acmpne implements OperationInterface
         $offset = $this->readShort();
 
         /**
-         * @var $rightOperand _String|_Utf8
-         * @var $leftOperand _String|_Utf8
+         * @var $rightOperand _String|_Utf8|JavaClass
+         * @var $leftOperand _String|_Utf8|JavaClass
          */
-        $rightOperand = $this->popFromOperandStack();
-        $leftOperand = $this->popFromOperandStack();
+        $rightComparingValue = $rightOperand = $this->popFromOperandStack();
+        $leftComparingValue = $leftOperand = $this->popFromOperandStack();
 
-        if ($leftOperand->hashCode() !== $rightOperand->hashCode()) {
+        if (method_exists($rightComparingValue, 'hashCode')) {
+            $rightComparingValue = $rightComparingValue->hashCode();
+        }
+
+        if (method_exists($leftComparingValue, 'hashCode')) {
+            $leftComparingValue = $leftComparingValue->hashCode();
+        }
+
+        if ($leftComparingValue !== $rightComparingValue) {
             $this->setOffset($this->getProgramCounter() + $offset);
         }
     }

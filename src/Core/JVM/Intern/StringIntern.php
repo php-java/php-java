@@ -40,5 +40,4 @@ class StringIntern implements InternInterface, \ArrayAccess, \Countable
     {
         unset($this->entries[$offset]);
     }
-
 }

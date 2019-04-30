@@ -222,16 +222,8 @@ class JavaClass implements JavaClassInterface
         }
         $this->debugTool->getLogger()->info('End of Class');
 
-        // Intern provider registration.
-        $internProvider = new InternProvider();
-        $internProvider->add(
-            StringIntern::class,
-            new StringIntern()
-        );
-
         $this->invoker = new JavaClassInvoker(
             $this,
-            $internProvider,
             $options
         );
 

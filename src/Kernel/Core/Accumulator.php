@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Core;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 
 trait Accumulator
 {
@@ -31,13 +32,19 @@ trait Accumulator
     private $stacks = [];
     private $options;
 
+    /**
+     * @var DependencyInjectionProvider
+     */
+    private $dependencyInjectionProvider;
+
     public function setParameters(
         array $attributes,
         JavaClassInvoker $javaClassInvoker,
         \PHPJava\Core\JVM\Stream\BinaryReader $reader,
         array &$localStorage,
         array &$stacks,
-        int $pointer
+        int $pointer,
+        DependencyInjectionProvider $dependencyInjectionProvider
     ): self {
         $this->attributes = $attributes;
         $this->javaClassInvoker = $javaClassInvoker;
@@ -47,6 +54,7 @@ trait Accumulator
         $this->localStorage = &$localStorage;
         $this->stacks = &$stacks;
         $this->pointer = $pointer;
+        $this->dependencyInjectionProvider = $dependencyInjectionProvider;
         return $this;
     }
 

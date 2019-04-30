@@ -53,10 +53,7 @@ final class _invokevirtual implements OperationInterface
                         ...$arguments
                     );
             } else {
-                $reflectionClass = new \ReflectionClass(
-//                    $realInvokerClass = TypeResolver::convertPHPTypeToJavaType($invokerClass)
-                    $invokerClass
-                );
+                $reflectionClass = new \ReflectionClass($invokerClass);
                 $methodAccessor = $reflectionClass->getMethod($methodName);
 
                 if ($document = $methodAccessor->getDocComment()) {

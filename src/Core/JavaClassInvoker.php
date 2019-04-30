@@ -3,6 +3,7 @@ namespace PHPJava\Core;
 
 use PHPJava\Core\JVM\DynamicAccessor;
 use PHPJava\Core\JVM\Field\FieldInterface;
+use PHPJava\Core\JVM\Intern\StringIntern;
 use PHPJava\Core\JVM\Invoker\Invokable;
 use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
@@ -48,21 +49,19 @@ class JavaClassInvoker
 
     private $options = [];
 
-    private $internProvider = null;
+    private $providers = [];
 
     /**
      * JavaClassInvoker constructor.
      * @param JavaClass $javaClass
-     * @param InternProvider $internProvider
      * @param array $options
      */
     public function __construct(
         JavaClass $javaClass,
-        InternProvider $internProvider,
         array $options
     ) {
         $this->javaClass = $javaClass;
-        $this->internProvider = $internProvider;
+
         $this->options = $options;
         $cpInfo = $javaClass->getConstantPool();
 
@@ -91,6 +90,15 @@ class JavaClassInvoker
                 $this->staticFields[$fieldName] = $fieldInfo;
             }
         }
+
+        // Intern provider registration.
+        $this->providers = [
+            'InternProvider' => (new InternProvider())
+                ->add(
+                    StringIntern::class,
+                    new StringIntern()
+                ),
+        ];
 
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
@@ -176,15 +184,10 @@ class JavaClassInvoker
      */
     public function getProvider($providerName): ProviderInterface
     {
-        // TODO: Change to be accepted any provider.
-        $providers = [
-            'InternProvider' => $this->internProvider,
-        ];
-
-        if (!isset($providers[$providerName])) {
+        if (!isset($this->providers[$providerName])) {
             throw new IllegalJavaClassException($providerName . ' not provided.');
         }
 
-        return $providers[$providerName];
+        return $this->providers[$providerName];
     }
 }

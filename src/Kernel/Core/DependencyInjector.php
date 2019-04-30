@@ -30,31 +30,7 @@ trait DependencyInjector
                 /**
                  * @var \phpDocumentor\Reflection\DocBlock\Tags\Generic $native
                  */
-                switch ($type = trim($native->getDescription())) {
-                    case 'ConstantPool':
-                        $injections[] = $this->getConstantPool();
-                        break;
-                    case 'JavaClass':
-                        $injections[] = $this->javaClass;
-                        break;
-                    case 'JavaClassInvoker':
-                        $injections[] = $this->javaClassInvoker;
-                        break;
-                    case 'Attributes':
-                        $injections[] = $this->getAttributes();
-                        break;
-                    case 'OperandStacks':
-                        $injections[] = $this->getStacks();
-                        break;
-                    case 'LocalStorages':
-                        $injections[] = $this->getLocalStorages();
-                        break;
-                    case 'Options':
-                        $injections[] = $this->options;
-                        break;
-                    default:
-                        throw new NotSupportedInjectionTypesException('Not supported injection type: "' . $type . '"');
-                }
+                $injections[] = $this->dependencyInjectionProvider->get($native);
             }
             return $injections;
         }
