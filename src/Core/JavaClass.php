@@ -84,8 +84,6 @@ class JavaClass implements JavaClassInterface
     private $startTime = 0.0;
 
     /**
-     * JavaClass constructor.
-     * 
      * @param ReaderInterface $reader
      * @param array $options
      * @throws ValidatorException
