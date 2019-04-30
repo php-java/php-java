@@ -5,11 +5,11 @@ use PHPJava\Exceptions\NotSupportedInjectionTypesException;
 
 trait DependencyInjector
 {
-    public function getAnnotationInjections(string $phpDocument): array
+    public function getAnnotateInjections(string $phpDocument): array
     {
         return array_merge(
             $this->getNativeAnnotateInjections($phpDocument),
-            $this->getProviderAnnotationInjections($phpDocument)
+            $this->getProviderAnnotateInjections($phpDocument)
         );
     }
 
@@ -65,7 +65,7 @@ trait DependencyInjector
      * @param string $phpDocument
      * @return array
      */
-    private function getProviderAnnotationInjections(string $phpDocument): array
+    private function getProviderAnnotateInjections(string $phpDocument): array
     {
         $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
             ->create($phpDocument);

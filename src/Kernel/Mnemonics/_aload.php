@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JVM\Intern\StringIntern;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
@@ -15,6 +16,10 @@ final class _aload implements OperationInterface
     public function execute(): void
     {
         $index = $this->readByte();
-        $this->pushToOperandStack($this->getLocalStorage($index));
+        $stringIntern = $this->javaClassInvoker
+            ->getProvider('InternProvider')
+            ->get(StringIntern::class);
+        $internedValue = $stringIntern[spl_object_id($this->getLocalStorage($index))] ?? null;
+        $this->pushToOperandStack($internedValue ?: $this->getLocalStorage($index));
     }
 }

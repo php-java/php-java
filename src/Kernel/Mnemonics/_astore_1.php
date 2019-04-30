@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JVM\Intern\StringIntern;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 

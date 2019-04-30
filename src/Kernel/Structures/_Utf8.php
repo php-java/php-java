@@ -19,12 +19,19 @@ class _Utf8 implements StructureInterface
             $this->string .= chr($this->readUnsignedByte());
         }
     }
+
     public function getLength()
     {
         return $this->length;
     }
+
     public function getString()
     {
         return $this->string;
+    }
+
+    public function hashCode()
+    {
+        return spl_object_id($this);
     }
 }

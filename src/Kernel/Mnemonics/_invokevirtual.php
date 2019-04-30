@@ -38,8 +38,11 @@ final class _invokevirtual implements OperationInterface
         }
 
         $invokerClass = $this->popFromOperandStack();
-        $invokerClassName = $this->getOptions('class_resolver')->resolve($class);
+        $invokerClassName = $this->getOptions('class_resolver')
+            ->resolve($class);
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
+
+        var_dump($invokerClassName[1] . '#' . $methodName);
 
         try {
             if ($invokerClass instanceof JavaClass) {
@@ -53,12 +56,13 @@ final class _invokevirtual implements OperationInterface
                     );
             } else {
                 $reflectionClass = new \ReflectionClass(
-                    $realInvokerClass = TypeResolver::convertPHPTypeToJavaType($invokerClass)
+//                    $realInvokerClass = TypeResolver::convertPHPTypeToJavaType($invokerClass)
+                    $invokerClass
                 );
                 $methodAccessor = $reflectionClass->getMethod($methodName);
 
                 if ($document = $methodAccessor->getDocComment()) {
-                    $prependInjections = $this->getAnnotationInjections($document);
+                    $prependInjections = $this->getAnnotateInjections($document);
                     if (!empty($prependInjections)) {
                         array_unshift(
                             $arguments,
@@ -68,7 +72,7 @@ final class _invokevirtual implements OperationInterface
                 }
 
                 $result = call_user_func_array(
-                    [$realInvokerClass, $methodName],
+                    [$invokerClass, $methodName],
                     $arguments
                 );
             }
