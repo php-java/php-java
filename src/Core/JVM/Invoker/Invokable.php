@@ -56,13 +56,10 @@ trait Invokable
      * @param mixed ...$arguments
      * @return null
      * @throws IllegalJavaClassException
-     * @throws NoSuchMethodException
      * @throws RuntimeException
-     * @throws UndefinedMethodException
      * @throws UndefinedOpCodeException
      * @throws \PHPJava\Exceptions\TypeException
      * @throws \PHPJava\Exceptions\UnableToFindAttributionException
-     * @throws \ReflectionException
      */
     public function call(string $name, ...$arguments)
     {

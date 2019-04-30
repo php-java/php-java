@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Attributes;
 
+use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Structures\_Methodref;
@@ -19,12 +21,21 @@ final class AttributeInfo implements AttributeInterface
 
     public function execute(): void
     {
+        $loadAttributes = GlobalOptions::get('load_attributes') ?? Runtime::LOAD_ATTRIBUTES;
+
         $this->attributeNameIndex = $this->readUnsignedShort();
         $this->attributeLength = $this->readUnsignedInt();
         $cpInfo = $this->getConstantPool();
         $currentOffset = $this->getOffset();
 
         $attributeName = $cpInfo[$this->attributeNameIndex]->getString();
+
+        if ($loadAttributes !== null && !in_array($attributeName, $loadAttributes, true)) {
+            $this->read($this->attributeLength);
+            $this->getDebugTool()->getLogger()->debug('Skip to load an attribute: ' . $attributeName);
+            return;
+        }
+
         $classAttributeName = '\\PHPJava\\Kernel\\Attributes\\' . $attributeName . 'Attribute';
         $this->getDebugTool()->getLogger()->debug('Load an attribute: ' . $attributeName);
         $this->attributeData = new $classAttributeName($this->reader);

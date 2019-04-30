@@ -20,9 +20,7 @@ final class LineNumberTableAttribute implements AttributeInterface
             $lineNumberTable = new \PHPJava\Kernel\Structures\_LineNumberTable($this->reader);
             $lineNumberTable->setConstantPool($this->getConstantPool());
             $lineNumberTable->setDebugTool($this->getDebugTool());
-            $lineNumberTable->setStartPc($this->readUnsignedShort())
-                ->setLineNumber($this->readUnsignedShort())
-                ->execute();
+            $lineNumberTable->execute();
             $this->lineNumberTables[] = $lineNumberTable;
         }
     }

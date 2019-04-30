@@ -20,7 +20,7 @@ use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Kernel\Structures\StructureInterface;
 
-class ConstantPool implements \ArrayAccess
+class ConstantPool implements \ArrayAccess, \Countable
 {
     private $entries = [];
     private $reader;
@@ -100,6 +100,11 @@ class ConstantPool implements \ArrayAccess
     public function offsetGet($offset)
     {
         return $this->entries[$offset];
+    }
+
+    public function count()
+    {
+        return count($this->entries);
     }
 
     public function offsetSet($offset, $value)

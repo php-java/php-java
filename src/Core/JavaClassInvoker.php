@@ -55,7 +55,7 @@ class JavaClassInvoker
         $this->options = $options;
         $cpInfo = $javaClass->getConstantPool();
 
-        foreach ($javaClass->getMethods() as $methodInfo) {
+        foreach ($javaClass->getDefinedMethods() as $methodInfo) {
             /**
              * @var _MethodInfo $methodInfo
              */
@@ -68,7 +68,7 @@ class JavaClassInvoker
             }
         }
 
-        foreach ($javaClass->getFields() as $fieldInfo) {
+        foreach ($javaClass->getDefinedFields() as $fieldInfo) {
             /**
              * @var _FieldInfo $fieldInfo
              */

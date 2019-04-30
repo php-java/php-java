@@ -21,6 +21,12 @@ final class Runtime
     const LOG_PATH = 'php://stderr';
     const LOG_LEVEL = Logger::EMERGENCY;
 
+    const LOAD_ATTRIBUTES = [
+        'Code',
+        'Exceptions',
+        'SourceFile',
+    ];
+
     const PHP_PACKAGES_MAPS = [
         'String' => '_String',
         'Object' => '_Object',

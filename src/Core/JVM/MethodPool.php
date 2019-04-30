@@ -2,10 +2,11 @@
 namespace PHPJava\Core\JVM;
 
 use PHPJava\Core\Stream\Reader\ReaderInterface;
+use PHPJava\Exceptions\ReadOnlyException;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\DebugTool;
 
-class ActiveMethods
+class MethodPool implements \ArrayAccess, \Countable
 {
     private $entries = [];
     private $reader;
@@ -28,5 +29,30 @@ class ActiveMethods
     public function getEntries()
     {
         return $this->entries;
+    }
+
+    public function offsetExists($offset)
+    {
+        return isset($this->entries[$offset]);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->entries[$offset];
+    }
+
+    public function count()
+    {
+        return count($this->entries);
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        throw new ReadOnlyException('You cannot rewrite datum. The Interface Pool is read-only.');
+    }
+
+    public function offsetUnset($offset)
+    {
+        throw new ReadOnlyException('You cannot rewrite datum. The Interface Pool is read-only.');
     }
 }

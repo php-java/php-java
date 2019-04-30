@@ -21,7 +21,7 @@ final class _getstatic implements OperationInterface
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
 
         if ($cp instanceof _Fieldref) {
-            foreach ($this->javaClass->getFields() as $field) {
+            foreach ($this->javaClass->getDefinedFields() as $field) {
                 if ($cpInfo[$field->getNameIndex()]->getString() === $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()) {
                     // push stack
                     $fieldName = $cpInfo[$field->getNameIndex()]->getString();
