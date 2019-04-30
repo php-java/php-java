@@ -40,11 +40,7 @@ final class CodeAttribute implements AttributeInterface
             $exceptionTable = new \PHPJava\Kernel\Structures\_ExceptionTable($this->reader);
             $exceptionTable->setConstantPool($this->getConstantPool());
             $exceptionTable->setDebugTool($this->getDebugTool());
-            $exceptionTable->setStartPc($this->readUnsignedShort())
-                ->setEndPc($this->readUnsignedShort())
-                ->setHandlerPc($this->readUnsignedShort())
-                ->setCatchType($this->readUnsignedShort())
-                ->execute();
+            $exceptionTable->execute();
             $this->exceptionTables[] = $exceptionTable;
         }
 

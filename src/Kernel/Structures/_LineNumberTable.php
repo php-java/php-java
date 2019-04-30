@@ -15,6 +15,8 @@ class _LineNumberTable implements StructureInterface
 
     public function execute(): void
     {
+        $this->startPc = $this->readUnsignedShort();
+        $this->lineNumber = $this->readUnsignedShort();
     }
 
     public function setStartPc($startPc)
