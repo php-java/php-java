@@ -42,8 +42,6 @@ final class _invokevirtual implements OperationInterface
             ->resolve($class);
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
-        var_dump($invokerClassName[1] . '#' . $methodName);
-
         try {
             if ($invokerClass instanceof JavaClass) {
                 $result = $invokerClass
