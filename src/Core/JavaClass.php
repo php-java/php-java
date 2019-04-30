@@ -1,10 +1,10 @@
 <?php
 namespace PHPJava\Core;
 
-use PHPJava\Core\JVM\ActiveAttributes;
-use PHPJava\Core\JVM\ActiveFields;
-use PHPJava\Core\JVM\ActiveInterface;
-use PHPJava\Core\JVM\ActiveMethods;
+use PHPJava\Core\JVM\AttributePool;
+use PHPJava\Core\JVM\FieldPool;
+use PHPJava\Core\JVM\InterfacePool;
+use PHPJava\Core\JVM\MethodPool;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
@@ -36,24 +36,24 @@ class JavaClass implements JavaClassInterface
     private $constantPool;
 
     /**
-     * @var ActiveInterface
+     * @var InterfacePool
      */
-    private $activeInterfaces;
+    private $interfacePool;
 
     /**
-     * @var ActiveFields
+     * @var FieldPool
      */
-    private $activeFields;
+    private $fieldPool;
 
     /**
-     * @var ActiveMethods
+     * @var MethodPool
      */
-    private $activeMethods;
+    private $methodPool;
 
     /**
-     * @var ActiveAttributes
+     * @var AttributePool
      */
-    private $activeAttributes;
+    private $attributePool;
 
     private $accessFlag = 0;
     private $thisClass = 0;
@@ -85,11 +85,12 @@ class JavaClass implements JavaClassInterface
 
     /**
      * JavaClass constructor.
-     * @param Stream\Reader\ $reader
+     * 
+     * @param ReaderInterface $reader
      * @param array $options
      * @throws ValidatorException
      * @throws \PHPJava\Exceptions\ReadEntryException
-     * @throws \PHPJava\Packages\java\lang\ClassNotFoundException
+     * @throws \PHPJava\Exceptions\UnknownVersionException
      */
     public function __construct(ReaderInterface $reader, array $options = [])
     {
@@ -171,46 +172,46 @@ class JavaClass implements JavaClassInterface
         }
 
         // read interfaces
-        $this->activeInterfaces = new ActiveInterface(
+        $this->interfacePool = new InterfacePool(
             $reader,
             $reader->getBinaryReader()->readUnsignedShort(),
             $this->constantPool,
             $this->debugTool
         );
 
-        $this->debugTool->getLogger()->info('Extracted interfaces: ' . count($this->activeInterfaces->getEntries()));
+        $this->debugTool->getLogger()->info('Extracted interfaces: ' . count($this->interfacePool));
 
         // read fields
-        $this->activeFields = new ActiveFields(
+        $this->fieldPool = new FieldPool(
             $reader,
             $reader->getBinaryReader()->readUnsignedShort(),
             $this->constantPool,
             $this->debugTool
         );
 
-        $this->debugTool->getLogger()->info('Extracted fields: ' . count($this->activeFields->getEntries()));
+        $this->debugTool->getLogger()->info('Extracted fields: ' . count($this->fieldPool));
 
         // read methods
-        $this->activeMethods = new ActiveMethods(
+        $this->methodPool = new MethodPool(
             $reader,
             $reader->getBinaryReader()->readUnsignedShort(),
             $this->constantPool,
             $this->debugTool
         );
 
-        $this->debugTool->getLogger()->info('Extracted methods: ' . count($this->activeMethods->getEntries()));
+        $this->debugTool->getLogger()->info('Extracted methods: ' . count($this->methodPool));
 
         // read Attributes
-        $this->activeAttributes = new ActiveAttributes(
+        $this->attributePool = new AttributePool(
             $reader,
             $reader->getBinaryReader()->readUnsignedShort(),
             $this->constantPool,
             $this->debugTool
         );
 
-        $this->debugTool->getLogger()->info('Extracted attributes: ' . count($this->activeAttributes->getEntries()));
+        $this->debugTool->getLogger()->info('Extracted attributes: ' . count($this->attributePool));
 
-        foreach ($this->activeAttributes->getEntries() as $entry) {
+        foreach ($this->attributePool as $entry) {
             if ($entry->getAttributeData() instanceof InnerClassesAttribute) {
                 $this->innerClasses = array_merge(
                     $this->innerClasses,
@@ -261,14 +262,14 @@ class JavaClass implements JavaClassInterface
         return $this->innerClasses;
     }
 
-    public function getFields(): array
+    public function getDefinedFields(): array
     {
-        return $this->activeFields->getEntries();
+        return $this->fieldPool->getEntries();
     }
 
-    public function getMethods(): array
+    public function getDefinedMethods(): array
     {
-        return $this->activeMethods->getEntries();
+        return $this->methodPool->getEntries();
     }
 
     public function getInvoker(): JavaClassInvoker

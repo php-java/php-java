@@ -2,10 +2,11 @@
 namespace PHPJava\Core\JVM;
 
 use PHPJava\Core\Stream\Reader\ReaderInterface;
+use PHPJava\Exceptions\ReadOnlyException;
 use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Utilities\DebugTool;
 
-class ActiveAttributes
+class AttributePool implements \ArrayAccess, \Countable
 {
     private $entries = [];
     private $reader;
@@ -29,5 +30,30 @@ class ActiveAttributes
     public function getEntries()
     {
         return $this->entries;
+    }
+
+    public function offsetExists($offset)
+    {
+        return isset($this->entries[$offset]);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->entries[$offset];
+    }
+
+    public function count()
+    {
+        return count($this->entries);
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        throw new ReadOnlyException('You cannot rewrite datum. The Attribute Pool is read-only.');
+    }
+
+    public function offsetUnset($offset)
+    {
+        throw new ReadOnlyException('You cannot rewrite datum. The Attribute Pool is read-only.');
     }
 }
