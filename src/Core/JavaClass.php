@@ -224,6 +224,8 @@ class JavaClass implements JavaClassInterface
             $options
         );
 
+        var_dump(microtime(true) - $this->startTime);
+
         if ($this->invoker->getStatic()->getMethods()->has('<clinit>')) {
             $this->invoker
                 ->getStatic()

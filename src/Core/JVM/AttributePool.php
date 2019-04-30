@@ -20,10 +20,12 @@ class AttributePool implements \ArrayAccess, \Countable
         $this->reader = $reader;
         for ($i = 0; $i < $entries; $i++) {
             // not implemented, read only
-            $this->entries[$i] = new AttributeInfo($reader);
-            $this->entries[$i]->setConstantPool($constantPool);
-            $this->entries[$i]->setDebugTool($debugTool);
-            $this->entries[$i]->execute();
+            $entry = (new AttributeInfo($reader))
+                ->setConstantPool($constantPool)
+                ->setDebugTool($debugTool);
+            $entry->execute();
+
+            $this->entries[] = $entry;
         }
     }
 
