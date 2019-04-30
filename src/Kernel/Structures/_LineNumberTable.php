@@ -23,7 +23,7 @@ class _LineNumberTable implements StructureInterface
     {
         return $this->startPc;
     }
-    
+
     public function getLineNumber()
     {
         return $this->lineNumber;
