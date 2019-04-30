@@ -58,7 +58,7 @@ final class _invokevirtual implements OperationInterface
                 $methodAccessor = $reflectionClass->getMethod($methodName);
 
                 if ($document = $methodAccessor->getDocComment()) {
-                    $prependInjections = $this->getNativeAnnotateInjections($document);
+                    $prependInjections = $this->getAnnotationInjections($document);
                     if (!empty($prependInjections)) {
                         array_unshift(
                             $arguments,

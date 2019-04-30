@@ -4,6 +4,7 @@ namespace PHPJava\Core;
 use PHPJava\Core\JVM\AttributePool;
 use PHPJava\Core\JVM\FieldPool;
 use PHPJava\Core\JVM\InterfacePool;
+use PHPJava\Core\JVM\Intern\StringIntern;
 use PHPJava\Core\JVM\MethodPool;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
@@ -15,6 +16,8 @@ use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
+use PHPJava\Kernel\Provider\DependencyInjectionProvider;
+use PHPJava\Kernel\Provider\InternProvider;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
@@ -219,8 +222,16 @@ class JavaClass implements JavaClassInterface
         }
         $this->debugTool->getLogger()->info('End of Class');
 
+        // Intern provider registration.
+        $internProvider = new InternProvider();
+        $internProvider->add(
+            StringIntern::class,
+            new StringIntern()
+        );
+
         $this->invoker = new JavaClassInvoker(
             $this,
+            $internProvider,
             $options
         );
 

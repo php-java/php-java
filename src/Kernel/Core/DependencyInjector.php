@@ -5,7 +5,20 @@ use PHPJava\Exceptions\NotSupportedInjectionTypesException;
 
 trait DependencyInjector
 {
-    public function getNativeAnnotateInjections($phpDocument): array
+    public function getAnnotationInjections(string $phpDocument): array
+    {
+        return array_merge(
+            $this->getNativeAnnotateInjections($phpDocument),
+            $this->getProviderAnnotationInjections($phpDocument)
+        );
+    }
+
+    /**
+     * @param string $phpDocument
+     * @return array
+     * @throws NotSupportedInjectionTypesException
+     */
+    private function getNativeAnnotateInjections(string $phpDocument): array
     {
         $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
             ->create($phpDocument);
@@ -13,11 +26,11 @@ trait DependencyInjector
         // Native annotation will dependency inject.
         if (!empty($documentBlock->getTagsByName('native'))) {
             $injections = [];
-            foreach ($documentBlock->getTagsByName('native') as $nativeClass) {
+            foreach ($documentBlock->getTagsByName('native') as $native) {
                 /**
-                 * @var \phpDocumentor\Reflection\DocBlock\Tags\Generic $nativeClass
+                 * @var \phpDocumentor\Reflection\DocBlock\Tags\Generic $native
                  */
-                switch ($type = trim($nativeClass->getDescription())) {
+                switch ($type = trim($native->getDescription())) {
                     case 'ConstantPool':
                         $injections[] = $this->getConstantPool();
                         break;
@@ -42,6 +55,28 @@ trait DependencyInjector
                     default:
                         throw new NotSupportedInjectionTypesException('Not supported injection type: "' . $type . '"');
                 }
+            }
+            return $injections;
+        }
+        return [];
+    }
+
+    /**
+     * @param string $phpDocument
+     * @return array
+     */
+    private function getProviderAnnotationInjections(string $phpDocument): array
+    {
+        $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+            ->create($phpDocument);
+
+        if (!empty($documentBlock->getTagsByName('provider'))) {
+            $injections = [];
+            foreach ($documentBlock->getTagsByName('provider') as $provider) {
+                /**
+                 * @var \phpDocumentor\Reflection\DocBlock\Tags\Generic $provider
+                 */
+                $injections[] = $this->javaClassInvoker->getProvider(trim($provider));
             }
             return $injections;
         }

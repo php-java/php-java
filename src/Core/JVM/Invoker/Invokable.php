@@ -201,22 +201,14 @@ trait Invokable
 
             $this->debugTool->getLogger()->debug(
                 vsprintf(
-                    'Used Memory: %s, Used Memory Peak: %s',
-                    [
-                        Metric::bytes(memory_get_usage())->format(),
-                        Metric::bytes(memory_get_peak_usage())->format(),
-                    ]
-                )
-            );
-
-            $this->debugTool->getLogger()->debug(
-                vsprintf(
-                    'OpCode: 0x%02X, Mnemonic: %s, Stacks: %d, PC: %d',
+                    'OpCode: 0x%02X %-15.15s Stacks: %-4.4s PC: %-8.8s Used Memory: %-8.8s Used Memory Peak: %-8.8s',
                     [
                         $opcode,
-                        $mnemonic,
+                        str_replace('_', '', $mnemonic),
                         count($stacks),
                         $pointer,
+                        Metric::bytes(memory_get_usage())->format(),
+                        Metric::bytes(memory_get_peak_usage())->format(),
                     ]
                 )
             );

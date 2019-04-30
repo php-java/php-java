@@ -8,8 +8,11 @@ use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\StaticAccessor;
+use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Maps\OpCode;
+use PHPJava\Kernel\Provider\InternProvider;
+use PHPJava\Kernel\Provider\ProviderInterface;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\Formatter;
@@ -45,13 +48,21 @@ class JavaClassInvoker
 
     private $options = [];
 
+    private $internProvider = null;
+
     /**
+     * JavaClassInvoker constructor.
      * @param JavaClass $javaClass
+     * @param InternProvider $internProvider
      * @param array $options
      */
-    public function __construct(JavaClass $javaClass, array $options)
-    {
+    public function __construct(
+        JavaClass $javaClass,
+        InternProvider $internProvider,
+        array $options
+    ) {
         $this->javaClass = $javaClass;
+        $this->internProvider = $internProvider;
         $this->options = $options;
         $cpInfo = $javaClass->getConstantPool();
 
@@ -156,5 +167,24 @@ class JavaClassInvoker
     {
         $this->specialInvoked[$name][] = $signature;
         return $this;
+    }
+
+    /**
+     * @param $providerName
+     * @return ProviderInterface
+     * @throws IllegalJavaClassException
+     */
+    public function getProvider($providerName): ProviderInterface
+    {
+        // TODO: Change to be accepted any provider.
+        $providers = [
+            'InternProvider' => $this->internProvider,
+        ];
+
+        if (!isset($providers[$providerName])) {
+            throw new IllegalJavaClassException($providerName . ' not provided.');
+        }
+
+        return $providers[$providerName];
     }
 }
