@@ -12,17 +12,19 @@ final class _getfield implements OperationInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool();
-
         $cp = $cpInfo[$this->readUnsignedShort()];
+        $class = $cpInfo[$cp->getNameAndTypeIndex()];
 
-        $get = $this->popFromOperandStack();
+        $name = $cpInfo[$class->getNameIndex()]->getString();
+        $objectref = $this->popFromOperandStack();
 
-        $return = $get->getInstance($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString());
+        $return = $objectref->getInvoker()->getDynamic()->getFields()->get($name);
 
         if ($return !== null) {
             $this->pushToOperandStack($return);
             return;
         }
-        throw new Exception('Cannot get to undefined Field ' . $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString() . '');
+
+        throw new Exception('Cannot get to undefined Field ' . $name);
     }
 }
