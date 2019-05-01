@@ -12,12 +12,19 @@ class _Utf8 implements StructureInterface
 
     private $length = 0;
     private $string = '';
+
+    /**
+     * @var \PHPJava\Packages\java\lang\_String $stringObject
+     */
+    private $stringObject;
+
     public function execute(): void
     {
         $this->length = $this->readUnsignedShort();
         for ($i = 0; $i < $this->length; $i++) {
             $this->string .= chr($this->readUnsignedByte());
         }
+        $this->stringObject = new \PHPJava\Packages\java\lang\_String($this);
     }
 
     public function getLength()
@@ -30,8 +37,13 @@ class _Utf8 implements StructureInterface
         return $this->string;
     }
 
-    public function hashCode()
+    public function __toString(): string
     {
-        return spl_object_id($this);
+        return $this->getString();
+    }
+
+    public function getStringObject(): \PHPJava\Packages\java\lang\_String
+    {
+        return $this->stringObject;
     }
 }

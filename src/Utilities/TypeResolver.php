@@ -5,6 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
+use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\_String;
 use PHPJava\Kernel\Types\_Array\Collection;
@@ -147,6 +148,13 @@ class TypeResolver
                 return [
                     'type' => 'class',
                     'class_name' => $arguments->getClassName(false),
+                    'deep_array' => $deepArray,
+                ];
+            }
+            if ($arguments instanceof _Utf8) {
+                return [
+                    'type' => 'class',
+                    'class_name' => static::PHP_TO_JAVA_MAP['string'],
                     'deep_array' => $deepArray,
                 ];
             }

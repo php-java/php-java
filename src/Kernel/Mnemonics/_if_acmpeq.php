@@ -21,8 +21,8 @@ final class _if_acmpeq implements OperationInterface
          * @var $rightOperand _String|_Utf8|JavaClass
          * @var $leftOperand _String|_Utf8|JavaClass
          */
-        $rightOperand = Extractor::extractUtf8IfThisIsString($this->popFromOperandStack());
-        $leftOperand = Extractor::extractUtf8IfThisIsString($this->popFromOperandStack());
+        $rightOperand = $this->popFromOperandStack();
+        $leftOperand = $this->popFromOperandStack();
 
         if ($leftOperand === $rightOperand) {
             $this->setOffset($this->getProgramCounter() + $offset);
