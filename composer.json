@@ -3,7 +3,7 @@
     "description": "JVM emulator by PHP",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.6.6-dev",
+    "version": "0.0.7.0-dev",
     "authors": [
         {
             "name": "memory"
@@ -16,14 +16,9 @@
         "php": ">=7.2",
         "ext-zip": "*",
         "monolog/monolog": "^1.24",
-        "php-java/java-lang-package": "*",
-        "php-java/java-util-package": "*",
-        "php-java/java-io-package": "*",
-        "php-java/java-net-package": "*",
-        "php-java/java-nio-package": "*",
-        "gabrielelana/byte-units": "dev-master",
-        "symfony/console": "4.2",
-        "phpdocumentor/reflection-docblock": "4.3"
+        "gabrielelana/byte-units": "^0.5.0",
+        "symfony/console": "^4.2",
+        "phpdocumentor/reflection-docblock": "^4.3"
     },
     "autoload": {
         "psr-4": {
@@ -43,6 +38,5 @@
     },
     "scripts": {
         "tests": "phpunit tests --stop-on-failure && phpcs --standard=phpcs.xml src"
-    },
-    "minimum-stability": "dev"
+    }
 }
