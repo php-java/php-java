@@ -151,13 +151,6 @@ class TypeResolver
                     'deep_array' => $deepArray,
                 ];
             }
-            if ($arguments instanceof _Utf8) {
-                return [
-                    'type' => 'class',
-                    'class_name' => static::PHP_TO_JAVA_MAP['string'],
-                    'deep_array' => $deepArray,
-                ];
-            }
             if ($arguments instanceof Type) {
                 return [
                     'type' => $arguments->getTypeNameInJava(),
