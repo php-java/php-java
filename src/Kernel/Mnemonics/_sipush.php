@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Short;
 use PHPJava\Utilities\BinaryTool;
 
 final class _sipush implements OperationInterface
@@ -11,6 +12,6 @@ final class _sipush implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushToOperandStack($this->readShort());
+        $this->pushToOperandStack(new _Short($this->readShort()));
     }
 }
