@@ -21,7 +21,7 @@ class Collection implements \ArrayAccess
             return $default;
         }
         return TypeResolver::resolveFromPHPType(
-            Extractor::realValue($this->data[0])
+            Extractor::getRealValue($this->data[0])
         ) ?? $default;
     }
 

@@ -6,6 +6,7 @@ use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _if_acmpeq implements OperationInterface
 {
@@ -20,18 +21,10 @@ final class _if_acmpeq implements OperationInterface
          * @var $rightOperand _String|_Utf8|JavaClass
          * @var $leftOperand _String|_Utf8|JavaClass
          */
-        $rightComparingValue = $rightOperand = $this->popFromOperandStack();
-        $leftComparingValue = $leftOperand = $this->popFromOperandStack();
+        $rightOperand = Extractor::extractUtf8IfThisIsString($this->popFromOperandStack());
+        $leftOperand = Extractor::extractUtf8IfThisIsString($this->popFromOperandStack());
 
-        if (method_exists($rightComparingValue, 'hashCode')) {
-            $rightComparingValue = $rightComparingValue->hashCode();
-        }
-
-        if (method_exists($leftComparingValue, 'hashCode')) {
-            $leftComparingValue = $leftComparingValue->hashCode();
-        }
-
-        if ($leftComparingValue === $rightComparingValue) {
+        if ($leftOperand === $rightOperand) {
             $this->setOffset($this->getProgramCounter() + $offset);
         }
     }

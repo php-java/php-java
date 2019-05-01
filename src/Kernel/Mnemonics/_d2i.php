@@ -13,7 +13,7 @@ final class _d2i implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::realValue(
+        $value = Extractor::getRealValue(
             $this->popFromOperandStack()
         );
 

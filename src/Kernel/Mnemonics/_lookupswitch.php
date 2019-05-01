@@ -12,7 +12,7 @@ final class _lookupswitch implements OperationInterface
 
     public function execute(): void
     {
-        $key = Extractor::realValue(
+        $key = Extractor::getRealValue(
             $this->popFromOperandStack()
         );
 

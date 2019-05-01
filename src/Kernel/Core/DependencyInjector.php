@@ -30,7 +30,7 @@ trait DependencyInjector
                 /**
                  * @var \phpDocumentor\Reflection\DocBlock\Tags\Generic $native
                  */
-                $injections[] = $this->dependencyInjectionProvider->get($native);
+                $injections[] = $this->dependencyInjectionProvider->get(trim($native));
             }
             return $injections;
         }

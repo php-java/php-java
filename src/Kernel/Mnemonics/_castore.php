@@ -13,8 +13,8 @@ final class _castore implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::realValue($this->popFromOperandStack());
-        $index = Extractor::realValue($this->popFromOperandStack());
+        $value = Extractor::getRealValue($this->popFromOperandStack());
+        $index = Extractor::getRealValue($this->popFromOperandStack());
 
         /**
          * @var Type $arrayref

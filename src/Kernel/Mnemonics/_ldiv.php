@@ -19,8 +19,8 @@ final class _ldiv implements OperationInterface
         $this->pushToOperandStack(
             new _Double(
                 BinaryTool::div(
-                    Extractor::realValue($value1),
-                    Extractor::realValue($value2)
+                    Extractor::getRealValue($value1),
+                    Extractor::getRealValue($value2)
                 )
             )
         );

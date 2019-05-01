@@ -13,7 +13,7 @@ final class _i2b implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::realValue(
+        $value = Extractor::getRealValue(
             $this->popFromOperandStack()
         );
 
