@@ -14,7 +14,7 @@ final class _iastore implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::getRealValue($this->popFromOperandStack());
+        $value = $this->popFromOperandStack();
         $index = Extractor::getRealValue($this->popFromOperandStack());
 
         /**

@@ -34,7 +34,7 @@ class JavaIoPrintStreamClassTest extends Base
     public function testPrintlnWithCharParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
-        $this->assertEquals("65\n", $result);
+        $this->assertEquals("A\n", $result);
     }
 
     public function testPrintlnWithCharArrayParams()
@@ -58,10 +58,10 @@ class JavaIoPrintStreamClassTest extends Base
     public function testPrintlnWithBooleanParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1] . '_true');
-        $this->assertEquals("1\n", $result);
+        $this->assertEquals("true\n", $result);
 
         $result = $this->call(explode('::', __METHOD__)[1] . '_false');
-        $this->assertEquals("0\n", $result);
+        $this->assertEquals("false\n", $result);
     }
 
     public function testPrintWithStringParams()
@@ -73,7 +73,7 @@ class JavaIoPrintStreamClassTest extends Base
     public function testPrintWithCharParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
-        $this->assertEquals("65", $result);
+        $this->assertEquals("A", $result);
     }
 
     public function testPrintWithCharArrayParams()
@@ -97,9 +97,9 @@ class JavaIoPrintStreamClassTest extends Base
     public function testPrintWithBooleanParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1] . '_true');
-        $this->assertEquals("1", $result);
+        $this->assertEquals("true", $result);
 
         $result = $this->call(explode('::', __METHOD__)[1] . '_false');
-        $this->assertEquals("0", $result);
+        $this->assertEquals("false", $result);
     }
 }
