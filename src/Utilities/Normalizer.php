@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Utilities;
 
-use PHPJava\Exceptions\ConverterException;
+use PHPJava\Exceptions\NormalizerException;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\Type;
 
@@ -9,40 +9,49 @@ class Normalizer
 {
 
     /**
-     * @param array $arguments
-     * @param array $acceptedArguments
+     * @param array|Collection $values
+     * @param array $normalizeTypes
      * @return array
-     * @throws ConverterException
+     * @throws NormalizerException
      */
-    public static function normalizeArguments(array $arguments, array $acceptedArguments): array
+    public static function normalizeValues($values, array $normalizeTypes)
     {
-        if (count($arguments) !== count($acceptedArguments)) {
-            throw new ConverterException('Does not match arguments.');
+        if (count($values) !== count($normalizeTypes)) {
+            throw new NormalizerException('Does not match arguments.');
         }
 
-        foreach ($arguments as $key => &$argument) {
-            /**
-             * @var Type|Collection $argument
-             */
-            if ($argument instanceof Collection) {
-                // TODO: convert an array contents.
-                continue;
-            }
-            $realType = $acceptedArguments[$key] ?? null;
+        foreach ($values as $key => &$value) {
+            $realType = $normalizeTypes[$key] ?? null;
             if ($realType === null) {
-                throw new ConverterException('Broken arguments parser.');
+                throw new NormalizerException('Broken arguments parser.');
+            }
+            /**
+             * @var Type|Collection $value
+             */
+            if ($value instanceof Collection) {
+                $value = static::normalizeValues(
+                    $value,
+                    array_fill(
+                        0,
+                        count($value),
+                        $realType
+                    )
+                );
+                continue;
             }
             if ($realType['type'] === 'class') {
                 // TODO: implements up-cast and down-cast
                 continue;
             }
             $initiateClass = TypeResolver::TYPES_MAP[$realType['type']];
-            if ($argument instanceof $initiateClass) {
+            if ($value instanceof $initiateClass) {
                 continue;
             }
-            $argument = new $initiateClass(Extractor::realValue($argument));
+            $value = new $initiateClass(
+                Extractor::realValue($value)
+            );
         }
 
-        return $arguments;
+        return $values;
     }
 }
