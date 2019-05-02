@@ -11,7 +11,7 @@ class Normalizer
     /**
      * @param array|Collection $values
      * @param array $normalizeTypes
-     * @return array
+     * @return array|Collection
      * @throws NormalizerException
      */
     public static function normalizeValues($values, array $normalizeTypes)
