@@ -5,7 +5,7 @@ use PHPJava\Exceptions\ConverterException;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\Type;
 
-class Converter
+class Normalizer
 {
 
     /**
