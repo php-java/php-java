@@ -37,7 +37,7 @@ final class _invokevirtual implements OperationInterface
                 $arguments[$i] = $this->popFromOperandStack();
             }
 
-            $arguments = Normalizer::normalizeArguments(
+            $arguments = Normalizer::normalizeValues(
                 $arguments,
                 $signature['arguments']
             );
