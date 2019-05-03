@@ -6,7 +6,7 @@ use PHPJava\Exceptions\ReadOnlyException;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\DebugTool;
 
-class MethodPool implements \ArrayAccess, \Countable
+class MethodPool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private $entries = [];
     private $reader;
@@ -54,5 +54,10 @@ class MethodPool implements \ArrayAccess, \Countable
     public function offsetUnset($offset)
     {
         throw new ReadOnlyException('You cannot rewrite datum. The Interface Pool is read-only.');
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->entries);
     }
 }

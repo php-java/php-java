@@ -6,7 +6,7 @@ use PHPJava\Exceptions\ReadOnlyException;
 use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Utilities\DebugTool;
 
-class AttributePool implements \ArrayAccess, \Countable
+class AttributePool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private $entries = [];
     private $reader;
@@ -57,5 +57,10 @@ class AttributePool implements \ArrayAccess, \Countable
     public function offsetUnset($offset)
     {
         throw new ReadOnlyException('You cannot rewrite datum. The Attribute Pool is read-only.');
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->entries);
     }
 }
