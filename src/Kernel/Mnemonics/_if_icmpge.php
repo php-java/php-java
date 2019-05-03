@@ -14,8 +14,8 @@ final class _if_icmpge implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $rightOperand = Extractor::realValue($this->popFromOperandStack());
-        $leftOperand = Extractor::realValue($this->popFromOperandStack());
+        $rightOperand = Extractor::getRealValue($this->popFromOperandStack());
+        $leftOperand = Extractor::getRealValue($this->popFromOperandStack());
 
         if ($leftOperand >= $rightOperand) {
             $this->setOffset($this->getProgramCounter() + $offset);

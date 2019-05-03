@@ -5,10 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Char;
-use PHPJava\Kernel\Types\_Long;
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\_String;
 use PHPJava\Kernel\Types\_Array\Collection;
@@ -16,6 +13,10 @@ use PHPJava\Kernel\Types\_Boolean;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\_Byte;
+use PHPJava\Kernel\Types\_Char;
+use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\_Short;
 use PHPJava\Kernel\Types\Type;
 
 class TypeResolver

@@ -14,6 +14,7 @@ use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Exceptions\UndefinedMethodException;
 use PHPJava\Exceptions\UndefinedOpCodeException;
+use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Kernel\Attributes\AttributeInterface;
@@ -149,7 +150,11 @@ trait Invokable
         $executionTime = microtime(true);
         $maxExecutionTime = ($this->options['max_execution_time'] ?? GlobalOptions::get('max_execution_time') ?? Runtime::MAX_EXECUTION_TIME);
 
-        $methodBeautified = Formatter::beatifyMethodFromConstantPool($method, $currentConstantPool);
+        $methodBeautified = Formatter::beatifyMethodFromConstantPool(
+            $method,
+            $currentConstantPool
+        );
+
         $this->debugTool->getLogger()->info('Start operations: ' . $methodBeautified);
 
         $localStorage = array_map(
@@ -159,17 +164,33 @@ trait Invokable
             $localStorage
         );
 
-        $this->debugTool->getLogger()->debug(
-            vsprintf(
-                'Used Memory: %s, Used Memory Peak: %s',
-                [
-                    Metric::bytes(memory_get_usage())->format(),
-                    Metric::bytes(memory_get_peak_usage())->format(),
-                ]
+        $dependencyInjectionProvider = (new DependencyInjectionProvider())
+            ->add(
+                'ConstantPool',
+                $currentConstantPool
             )
-        );
+            ->add(
+                'JavaClass',
+                $this->javaClassInvoker->getJavaClass()
+            )
+            ->add(
+                'JavaClassInvoker',
+                $this->javaClassInvoker
+            )
+            ->add(
+                'Attributes',
+                $method->getAttributes()
+            )
+            ->add(
+                'Options',
+                $this->options
+            );
 
         while ($reader->getOffset() < $codeAttribute->getOpCodeLength()) {
+            $dependencyInjectionProvider
+                ->add('OperandStacks', $stacks)
+                ->add('LocalStorages', $localStorage);
+
             if (++$executedCounter > ($this->options['max_stack_exceeded'] ?? GlobalOptions::get('max_stack_exceeded') ?? Runtime::MAX_STACK_EXCEEDED)) {
                 throw new RuntimeException(
                     'Max stack exceeded. PHPJava has been stopped by safety guard.' .
@@ -201,22 +222,14 @@ trait Invokable
 
             $this->debugTool->getLogger()->debug(
                 vsprintf(
-                    'Used Memory: %s, Used Memory Peak: %s',
-                    [
-                        Metric::bytes(memory_get_usage())->format(),
-                        Metric::bytes(memory_get_peak_usage())->format(),
-                    ]
-                )
-            );
-
-            $this->debugTool->getLogger()->debug(
-                vsprintf(
-                    'OpCode: 0x%02X, Mnemonic: %s, Stacks: %d, PC: %d',
+                    'OpCode: 0x%02X %-15.15s Stacks: %-4.4s PC: %-8.8s Used Memory: %-8.8s Used Memory Peak: %-8.8s',
                     [
                         $opcode,
-                        $mnemonic,
+                        str_replace('_', '', $mnemonic),
                         count($stacks),
                         $pointer,
+                        Metric::bytes(memory_get_usage())->format(),
+                        Metric::bytes(memory_get_peak_usage())->format(),
                     ]
                 )
             );
@@ -249,7 +262,8 @@ trait Invokable
                     $reader,
                     $localStorage,
                     $stacks,
-                    $pointer
+                    $pointer,
+                    $dependencyInjectionProvider
                 )
                 ->execute();
 

@@ -19,8 +19,8 @@ final class _ladd implements OperationInterface
         $this->pushToOperandStack(
             new _Long(
                 BinaryTool::add(
-                    Extractor::realValue($value1),
-                    Extractor::realValue($value2)
+                    Extractor::getRealValue($value1),
+                    Extractor::getRealValue($value2)
                 )
             )
         );

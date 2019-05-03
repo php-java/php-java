@@ -410,9 +410,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     }
 
 
-    public function toString(): string
+    public function toString()
     {
-        return (string) $this;
+        return new _String((string) $this);
     }
 
     public function __toString(): string

@@ -19,8 +19,8 @@ final class _iadd implements OperationInterface
         $this->pushToOperandStack(
             new _Int(
                 BinaryTool::add(
-                    Extractor::realValue($leftValue),
-                    Extractor::realValue($rightValue)
+                    Extractor::getRealValue($leftValue),
+                    Extractor::getRealValue($rightValue)
                 )
             )
         );

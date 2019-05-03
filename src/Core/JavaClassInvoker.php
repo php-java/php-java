@@ -3,13 +3,17 @@ namespace PHPJava\Core;
 
 use PHPJava\Core\JVM\DynamicAccessor;
 use PHPJava\Core\JVM\Field\FieldInterface;
+use PHPJava\Core\JVM\Intern\StringIntern;
 use PHPJava\Core\JVM\Invoker\Invokable;
 use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\StaticAccessor;
+use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Maps\OpCode;
+use PHPJava\Kernel\Provider\InternProvider;
+use PHPJava\Kernel\Provider\ProviderInterface;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\Formatter;
@@ -45,13 +49,19 @@ class JavaClassInvoker
 
     private $options = [];
 
+    private $providers = [];
+
     /**
+     * JavaClassInvoker constructor.
      * @param JavaClass $javaClass
      * @param array $options
      */
-    public function __construct(JavaClass $javaClass, array $options)
-    {
+    public function __construct(
+        JavaClass $javaClass,
+        array $options
+    ) {
         $this->javaClass = $javaClass;
+
         $this->options = $options;
         $cpInfo = $javaClass->getConstantPool();
 
@@ -80,6 +90,15 @@ class JavaClassInvoker
                 $this->staticFields[$fieldName] = $fieldInfo;
             }
         }
+
+        // Intern provider registration.
+        $this->providers = [
+            'InternProvider' => (new InternProvider())
+                ->add(
+                    StringIntern::class,
+                    new StringIntern()
+                ),
+        ];
 
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
@@ -156,5 +175,19 @@ class JavaClassInvoker
     {
         $this->specialInvoked[$name][] = $signature;
         return $this;
+    }
+
+    /**
+     * @param $providerName
+     * @return ProviderInterface
+     * @throws IllegalJavaClassException
+     */
+    public function getProvider($providerName): ProviderInterface
+    {
+        if (!isset($this->providers[$providerName])) {
+            throw new IllegalJavaClassException($providerName . ' not provided.');
+        }
+
+        return $this->providers[$providerName];
     }
 }

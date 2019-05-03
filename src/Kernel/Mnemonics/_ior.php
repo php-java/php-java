@@ -19,8 +19,8 @@ final class _ior implements OperationInterface
         $this->pushToOperandStack(
             new _Int(
                 BinaryTool::orBits(
-                    Extractor::realValue($value1),
-                    Extractor::realValue($value2),
+                    Extractor::getRealValue($value1),
+                    Extractor::getRealValue($value2),
                     4
                 )
             )

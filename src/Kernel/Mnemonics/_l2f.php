@@ -13,7 +13,7 @@ final class _l2f implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::realValue(
+        $value = Extractor::getRealValue(
             $this->popFromOperandStack()
         );
 

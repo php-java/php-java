@@ -23,7 +23,7 @@ final class _newarray implements OperationInterface
     public function execute(): void
     {
         $atype = $this->readUnsignedByte();
-        $count = Extractor::realValue($this->popFromOperandStack());
+        $count = Extractor::getRealValue($this->popFromOperandStack());
 
         $array = array_fill(0, $count, null);
 
