@@ -23,7 +23,7 @@ trait DependencyInjector
         $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
             ->create($phpDocument);
 
-        // Native annotation will dependency inject.
+        // Native annotation will inject a dependency.
         if (!empty($documentBlock->getTagsByName('native'))) {
             $injections = [];
             foreach ($documentBlock->getTagsByName('native') as $native) {

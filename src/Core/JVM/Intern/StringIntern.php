@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Core\JVM\Intern;
 
-use PHPJava\Exceptions\NotAllowedNumberOfTypesException;
-
 class StringIntern implements InternInterface, \ArrayAccess, \Countable
 {
     private $entries = [];

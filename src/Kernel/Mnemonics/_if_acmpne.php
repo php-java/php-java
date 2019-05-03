@@ -5,8 +5,6 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Packages\java\lang\_String;
-use PHPJava\Utilities\BinaryTool;
-use PHPJava\Utilities\Extractor;
 
 final class _if_acmpne implements OperationInterface
 {

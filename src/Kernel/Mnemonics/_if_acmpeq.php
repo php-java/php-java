@@ -6,7 +6,6 @@ use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\BinaryTool;
-use PHPJava\Utilities\Extractor;
 
 final class _if_acmpeq implements OperationInterface
 {

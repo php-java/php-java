@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Utilities;
 
-use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Packages\java\lang\_String;
 

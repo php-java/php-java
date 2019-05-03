@@ -18,7 +18,6 @@ use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Attributes\SourceFileAttribute;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
-use PHPJava\Kernel\Provider\InternProvider;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
