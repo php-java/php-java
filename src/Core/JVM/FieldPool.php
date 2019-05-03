@@ -7,7 +7,7 @@ use PHPJava\Exceptions\ReadOnlyException;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Utilities\DebugTool;
 
-class FieldPool implements \ArrayAccess, \Countable
+class FieldPool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private $entries = [];
     private $reader;
@@ -55,5 +55,10 @@ class FieldPool implements \ArrayAccess, \Countable
     public function offsetUnset($offset)
     {
         throw new ReadOnlyException('You cannot rewrite datum. The Field Pool is read-only.');
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->entries);
     }
 }

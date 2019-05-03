@@ -20,7 +20,7 @@ use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Kernel\Structures\StructureInterface;
 
-class ConstantPool implements \ArrayAccess, \Countable
+class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private $entries = [];
     private $reader;
@@ -115,5 +115,10 @@ class ConstantPool implements \ArrayAccess, \Countable
     public function offsetUnset($offset)
     {
         throw new ReadOnlyException('You cannot rewrite datum. The Constant Pool is read-only.');
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->entries);
     }
 }
