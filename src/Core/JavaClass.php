@@ -15,6 +15,7 @@ use PHPJava\Exceptions\DebugTraceIsDisabledException;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
+use PHPJava\Kernel\Attributes\SourceFileAttribute;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Provider\InternProvider;
@@ -251,11 +252,22 @@ class JavaClass implements JavaClassInterface
 
     public function getClassName(bool $shortName = false): string
     {
+        $className = $this->className->getString();
         if ($shortName === true) {
-            $split = explode('$', $this->className->getString());
+            $split = explode('$', $className);
             return $split[count($split) - 1];
         }
-        return $this->className->getString();
+        return $className;
+    }
+
+
+    public function getPackageName(): ?string
+    {
+        $className = dirname($this->className->getString());
+        if ($className === '') {
+            return null;
+        }
+        return str_replace('/', '.', $className);
     }
 
     public function getInnerClasses(): array

@@ -6,9 +6,10 @@ use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\Extractor;
 use PHPJava\Utilities\TypeResolver;
 
-class Collection implements \ArrayAccess
+class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private $data;
+    private $position = 0;
 
     public function __construct(array &$data, string $type = null)
     {
@@ -53,5 +54,15 @@ class Collection implements \ArrayAccess
     public function offsetSet($offset, $value)
     {
         $this->data[$offset] = $value;
+    }
+
+    public function count()
+    {
+        return count($this->data);
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->data);
     }
 }

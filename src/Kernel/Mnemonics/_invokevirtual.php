@@ -10,7 +10,7 @@ use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
-use PHPJava\Utilities\Converter;
+use PHPJava\Utilities\Normalizer;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\TypeResolver;
 
@@ -37,7 +37,7 @@ final class _invokevirtual implements OperationInterface
                 $arguments[$i] = $this->popFromOperandStack();
             }
 
-            $arguments = Converter::normalizeArguments(
+            $arguments = Normalizer::normalizeValues(
                 $arguments,
                 $signature['arguments']
             );
