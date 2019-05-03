@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _ifeq implements OperationInterface
 {
@@ -12,8 +13,7 @@ final class _ifeq implements OperationInterface
     public function execute(): void
     {
         $offset = $this->readShort();
-
-        $operand = $this->popFromOperandStack();
+        $operand = Extractor::realValue($this->popFromOperandStack());
 
         if ($operand == 0) {
             $this->setOffset($this->getProgramCounter() + $offset);
