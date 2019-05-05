@@ -16,7 +16,6 @@ use PHPJava\Packages\java\lang\_String;
  */
 class StringBuilder extends _Object /* implements Serializable, CharSequence, IntStream */
 {
-
     private $sequence = '';
 
     /**

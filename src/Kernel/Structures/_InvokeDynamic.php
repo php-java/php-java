@@ -18,4 +18,14 @@ class _InvokeDynamic implements StructureInterface
         $this->bootstrapMethodAttrIndex = $this->readUnsignedShort();
         $this->nameAndTypeIndex = $this->readUnsignedShort();
     }
+
+    public function getBootstrapMethodAttrIndex(): int
+    {
+        return $this->bootstrapMethodAttrIndex;
+    }
+
+    public function getNameAndTypeIndex(): int
+    {
+        return $this->nameAndTypeIndex;
+    }
 }

@@ -316,6 +316,11 @@ class JavaClass implements JavaClassInterface
         return $this->superClass;
     }
 
+    public function getAttributes(): array
+    {
+        return $this->attributePool->getEntries();
+    }
+
     public function debug(): void
     {
         $isEnabledTrace = $this->options['operations']['enable_trace'] ?? GlobalOptions::get('operations.enable_trace') ?? Runtime::OPERATIONS_ENABLE_TRACE;
