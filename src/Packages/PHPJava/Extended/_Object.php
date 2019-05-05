@@ -6,7 +6,6 @@ use PHPJava\Packages\java\lang\NoSuchMethodException;
 
 trait _Object
 {
-
     private $parameters;
 
     /**

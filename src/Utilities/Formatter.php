@@ -115,7 +115,11 @@ class Formatter
         return $result;
     }
 
-    public static function convertPHPNamespacesToJava($className)
+    /**
+     * @param $className
+     * @return string
+     */
+    public static function convertPHPNamespacesToJava($className): string
     {
         $className = str_replace('/', '\\', $className);
         $newClassName = explode(
@@ -131,6 +135,25 @@ class Formatter
         }
 
         return implode('.', $newClassName);
+    }
+
+    /**
+     * @param $className
+     * @return string
+     */
+    public static function convertJavaNamespaceToPHP($className): string
+    {
+        $className = str_replace('.', '/', $className);
+        $newClassName = explode(
+            '/',
+            $className
+        );
+
+        foreach ($newClassName as $key => $value) {
+            $newClassName[$key] = Runtime::PHP_PACKAGES_MAPS[$value] ?? $value;
+        }
+
+        return Runtime::PHP_PACKAGES_DIRECTORY . '\\' . implode('\\', $newClassName);
     }
 
     /**

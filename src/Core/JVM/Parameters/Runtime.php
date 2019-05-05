@@ -25,6 +25,8 @@ final class Runtime
         'Code',
         'Exceptions',
         'SourceFile',
+        'InnerClasses',
+        'BootstrapMethods',
     ];
 
     const PHP_PACKAGES_MAPS = [
