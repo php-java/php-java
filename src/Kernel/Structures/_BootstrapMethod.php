@@ -21,7 +21,7 @@ class _BootstrapMethod implements StructureInterface
 
         $cp = $this->getConstantPool();
         for ($i = 0; $i < $this->numBootstrapArguments; $i++) {
-            $this->bootstrapArguments[] = $cp[$cp[$this->readUnsignedShort()]->getStringIndex()];
+            $this->bootstrapArguments[] = $cp[$this->readUnsignedShort()];
         }
     }
 

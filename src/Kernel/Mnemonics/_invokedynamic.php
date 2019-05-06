@@ -20,6 +20,7 @@ final class _invokedynamic implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\DependencyInjector;
 
     /**
      * `invokedynamic` is a trial implementation.
@@ -94,7 +95,7 @@ final class _invokedynamic implements OperationInterface
             case MethodHandleKind::REF_invokeVirtual:
                 throw new NotImplementedException($methodHandle->getReferenceKind() . ' does not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_invokeStatic:
-                $factory = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . str_replace(
+                $factoryClass = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . str_replace(
                     '/',
                     '\\',
                     $cp[$cp[$cp[$methodHandle->getReferenceIndex()]->getClassIndex()]->getClassIndex()]->getString()
@@ -106,21 +107,34 @@ final class _invokedynamic implements OperationInterface
                 $methodHandledDescriptor = $cp[$methodHandleNameAndTypeConstant->getDescriptorIndex()]->getString();
 
                 // NOTE: Must be a class name.
-                $className = Formatter::convertJavaNamespaceToPHP($signature[0]['class_name']);
+                $methodHandleType = MethodType::methodType($signature[0]['class_name']);
 
-                $methodHandleType = MethodType::methodType($className);
+                $reflectionClass = new \ReflectionClass($factoryClass);
+                $methodAccessor = $reflectionClass->getMethod($methodHandledName);
+
+                $arguments = array_merge(
+                    [
+                        MethodHandles::lookup(),
+                        $name,
+                        $methodHandleType,
+                    ],
+                    $bootstrapMethodArguments,
+                    $arguments
+                );
+
+                if ($document = $methodAccessor->getDocComment()) {
+                    $prependInjections = $this->getAnnotateInjections($document);
+                    if (!empty($prependInjections)) {
+                        array_unshift(
+                            $arguments,
+                            ...$prependInjections
+                        );
+                    }
+                }
 
                 $result = forward_static_call_array(
-                    [$factory, $name],
-                    array_merge(
-                        [
-                            MethodHandles::lookup(),
-                            $methodHandledName,
-                            $methodHandleType,
-                            $bootstrapMethodArguments[0]->getStringObject()
-                        ],
-                        $arguments
-                    )
+                    [$factoryClass, $methodHandledName],
+                    $arguments
                 );
 
                 if ($signature[0]['type'] !== 'void') {

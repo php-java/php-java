@@ -1,10 +1,12 @@
 <?php
 namespace PHPJava\Packages\java\lang\invoke;
 
+use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\_String;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
+use PHPJava\Utilities\Formatter;
 
 /**
  * The `StringConcatFactory` class was auto generated.
@@ -32,6 +34,7 @@ class StringConcatFactory extends _Object
     /**
      * Facilitates the creation of optimized String concatenation methods, that can be used to efficiently concatenate a known number of arguments of known types, possibly after type adaptation and partial evaluation of arguments.
      *
+     * @native ConstantPool
      * @param mixed $a
      * @param mixed $b
      * @param mixed $c
@@ -41,7 +44,7 @@ class StringConcatFactory extends _Object
      * @throws StringConcatException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#makeConcatWithConstants
      */
-    public static function makeConcatWithConstants($a, $b, $c, $d, ...$e)
+    public static function makeConcatWithConstants(ConstantPool $cp, $a, $b, $c, $d, ...$e)
     {
         /**
          * @var Lookup $lookup
@@ -53,7 +56,10 @@ class StringConcatFactory extends _Object
         $lookup = $a;
         $name = $b;
         $concatType = $c;
-        $recipe = (string) $d;
+        $recipe = $d;
+        if ($recipe instanceof \PHPJava\Kernel\Structures\_String) {
+            $recipe = $cp[$recipe->getStringIndex()]->getString();
+        }
         $constants = $e;
 
         $newString = '';
@@ -77,7 +83,10 @@ class StringConcatFactory extends _Object
             $newString .= $char;
         }
 
-        $returnType = $concatType->returnType();
+        [, $returnType] = Formatter::convertJavaNamespaceToPHP(
+            $concatType->returnType()
+        );
+
         return new $returnType($newString);
     }
 }
