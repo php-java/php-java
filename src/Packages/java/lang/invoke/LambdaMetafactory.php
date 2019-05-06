@@ -64,6 +64,7 @@ class LambdaMetafactory extends _Object
      */
     public static function metafactory($a = null, $b = null, $c = null, $d = null, $e = null, $f = null)
     {
+        var_dump(func_get_args());
         throw new NotImplementedException(__METHOD__);
     }
 }

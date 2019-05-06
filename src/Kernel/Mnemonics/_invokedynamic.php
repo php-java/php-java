@@ -111,14 +111,14 @@ final class _invokedynamic implements OperationInterface
                 $methodHandleType = MethodType::methodType($className);
 
                 $result = forward_static_call_array(
-                    [$factory, $name],
+                    [$factory, $methodHandledName],
                     array_merge(
                         [
                             MethodHandles::lookup(),
-                            $methodHandledName,
+                            $name,
                             $methodHandleType,
-                            $bootstrapMethodArguments[0]->getStringObject()
                         ],
+                        $bootstrapMethodArguments,
                         $arguments
                     )
                 );
