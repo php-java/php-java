@@ -31,12 +31,12 @@ final class _invokeinterface implements OperationInterface
         }
 
         $objectref = $collection[0];
-        $arguments = array_slice($collection, 1);
+        $arguments = array_values(array_slice($collection, 1));
 
+        $result = $objectref(...$arguments);
 
-        var_dump($objectref(...$arguments));exit();
-        var_dump($name, $descriptor);
-        exit();
-        throw new NotImplementedException(__CLASS__);
+        if ($signature[0] !== 'void') {
+            $this->pushToOperandStack($result);
+        }
     }
 }

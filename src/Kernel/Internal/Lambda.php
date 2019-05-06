@@ -3,6 +3,7 @@
 namespace PHPJava\Kernel\Internal;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Utilities\ClassResolver;
 
 class Lambda
 {
@@ -10,6 +11,8 @@ class Lambda
     private $name;
     private $descriptor;
     private $class;
+    private $resourceType;
+    private $classObject;
 
     public function __construct(JavaClass $javaClass, string $name, string $descriptor, string $class)
     {
@@ -17,11 +20,21 @@ class Lambda
         $this->name = $name;
         $this->descriptor = $descriptor;
         $this->class = $class;
+
+        [$this->resourceType, $this->classObject] = $javaClass
+            ->getOptions('class_resolver')
+            ->resolve($this->class);
     }
 
     public function __invoke(...$arguments)
     {
-        var_dump($arguments);
-        exit();
+        return $this->javaClass
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                $this->name,
+                ...$arguments
+            );
     }
 }
