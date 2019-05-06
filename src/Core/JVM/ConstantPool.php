@@ -15,6 +15,7 @@ use PHPJava\Kernel\Structures\_InvokeDynamic;
 use PHPJava\Kernel\Structures\_Long;
 use PHPJava\Kernel\Structures\_MethodHandle;
 use PHPJava\Kernel\Structures\_Methodref;
+use PHPJava\Kernel\Structures\_MethodType;
 use PHPJava\Kernel\Structures\_NameAndType;
 use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
@@ -85,6 +86,7 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
             case ConstantPoolTag::CONSTANT_MethodHandle:
                 return new _MethodHandle($this->reader);
             case ConstantPoolTag::CONSTANT_MethodType:
+                return new _MethodType($this->reader);
             case ConstantPoolTag::CONSTANT_Module:
             case ConstantPoolTag::CONSTANT_Package:
                 throw new ReadEntryException('Entry tag ' . sprintf('0x%04X', $entryTag) . ' is not implemented.');
