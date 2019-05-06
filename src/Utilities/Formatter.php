@@ -10,6 +10,9 @@ use PHPJava\Kernel\Structures\_MethodInfo;
 
 class Formatter
 {
+    const BUILT_IN_PACKAGE = 0;
+    const USER_DEFINED_PACKAGE = 1;
+
     /**
      * @param $signature
      * @param int $i
@@ -139,9 +142,9 @@ class Formatter
 
     /**
      * @param $className
-     * @return string
+     * @return array
      */
-    public static function convertJavaNamespaceToPHP($className): string
+    public static function convertJavaNamespaceToPHP($className): array
     {
         $className = str_replace('.', '/', $className);
         $newClassName = explode(
@@ -153,7 +156,12 @@ class Formatter
             $newClassName[$key] = Runtime::PHP_PACKAGES_MAPS[$value] ?? $value;
         }
 
-        return Runtime::PHP_PACKAGES_DIRECTORY . '\\' . implode('\\', $newClassName);
+        $newClassName = explode('$', implode('\\', $newClassName));
+        $inPackage = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . $newClassName[0];
+        if (class_exists($inPackage)) {
+            return [static::BUILT_IN_PACKAGE, $inPackage];
+        }
+        return [static::USER_DEFINED_PACKAGE, implode('$', $newClassName)];
     }
 
     /**

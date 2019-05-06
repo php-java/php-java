@@ -237,8 +237,11 @@ class JavaClass implements JavaClassInterface
         }
     }
 
-    public function getOptions()
+    public function getOptions($key = null)
     {
+        if (isset($key)) {
+            return $this->options[$key];
+        }
         return $this->options;
     }
 

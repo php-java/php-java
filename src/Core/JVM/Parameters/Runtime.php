@@ -27,6 +27,7 @@ final class Runtime
         'SourceFile',
         'InnerClasses',
         'BootstrapMethods',
+        'NestMembers',
     ];
 
     const PHP_PACKAGES_MAPS = [
