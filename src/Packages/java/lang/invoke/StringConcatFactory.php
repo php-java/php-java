@@ -86,7 +86,7 @@ class StringConcatFactory extends _Object
         [, $returnType] = Formatter::convertJavaNamespaceToPHP(
             $concatType->returnType()
         );
-        
+
         return new $returnType($newString);
     }
 }

@@ -28,5 +28,4 @@ final class NestMembersAttribute implements AttributeInterface
     {
         return $this->classes;
     }
-
 }

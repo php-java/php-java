@@ -105,38 +105,7 @@ class LambdaMetafactory extends _Object
         $lambdaName = $cp[$lambdaInfo->getNameIndex()]->getString();
         $lambdaDescriptor = $cp[$lambdaInfo->getDescriptorIndex()]->getString();
 
-//
-//        [$resourceType, $classObject] = $javaClass->getOptions('class_resolver')
-//            ->resolve($class);
-//
-//        switch ($resourceType) {
-//            case ClassResolver::RESOLVED_TYPE_PACKAGES:
-//                break;
-//            case ClassResolver::RESOLVED_TYPE_CLASS:
-//                /**
-//                 * @var JavaClass $classObject
-//                 */
-//                break;
-//        }
-
-        /**
-         * @var NestMembersAttribute $nestMembersAttribute
-         */
-//        $nestMembersAttribute = AttributionResolver::resolve(
-//            $javaClass->getAttributes(),
-//            NestMembersAttribute::class
-//        );
-
-
-
-//        /**
-//         * @var _Class $class
-//         */
-//        foreach ($nestMembersAttribute->getClasses() as $class) {
-//            var_dump($cp[$class->getClassIndex()]);
-//        }
-
-        // The Lambda class.
+        // Create a lambda class.
         return new Lambda(
             $javaClass,
             $lambdaName,
