@@ -1,7 +1,9 @@
 <?php
-namespace PHPJava\Core;
+namespace PHPJava\Kernel\Internal;
 
-class JavaClassDeferredLoader implements JavaClassInterface
+use PHPJava\Core\JavaClassInterface;
+
+final class JavaClassDeferredLoader implements JavaClassInterface
 {
     private $deferLoadingReaderClass;
     private $arguments = [];

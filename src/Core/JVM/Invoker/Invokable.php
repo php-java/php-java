@@ -79,14 +79,6 @@ trait Invokable
         }
 
         $constantPool = $currentConstantPool->getEntries();
-
-        if ($name === '<init>' && $this->javaClassInvoker->getJavaClass()->hasParentClass()) {
-            array_unshift(
-                $arguments,
-                $this->javaClassInvoker->getJavaClass()->getParentClass()
-            );
-        }
-
         $convertedPassedArguments = $this->stringifyArguments(...$arguments);
 
         $method = $operationCache->fetchOrPush(
@@ -257,7 +249,7 @@ trait Invokable
             $returnValue = $executor
                 ->setConstantPool($currentConstantPool)
                 ->setParameters(
-                    $method->getAttributes(),
+                    $method,
                     $this->javaClassInvoker,
                     $reader,
                     $localStorage,

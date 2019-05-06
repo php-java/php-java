@@ -19,13 +19,8 @@ final class _new implements OperationInterface
         [$resourceType, $classObject] = $this->getOptions('class_resolver')
             ->resolve($className, $this->javaClass);
 
-        if ($resourceType === ClassResolver::RESOLVED_TYPE_CLASS) {
-            /**
-             * @var \PHPJava\Core\JavaClass $classObject
-             */
-            $this->pushToOperandStack($classObject->getInvoker()->construct()->getJavaClass());
-            return;
-        }
-        $this->pushToOperandStack(new $classObject());
+        $this->pushToOperandStackByReference(
+            $classObject
+        );
     }
 }

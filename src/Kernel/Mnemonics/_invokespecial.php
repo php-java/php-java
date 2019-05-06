@@ -8,6 +8,7 @@ use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\MethodNameResolver;
 use PHPJava\Utilities\TypeResolver;
@@ -23,55 +24,48 @@ final class _invokespecial implements OperationInterface
         $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
+        $className = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
+        $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
         $signature = $cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString();
         $parsedSignature = Formatter::parseSignature($signature);
-        $invokerClass = $this->popFromOperandStack();
 
-
-        $arguments = [];
-        if (($length = $parsedSignature['arguments_count'] - 1) >= 0) {
-            $arguments = array_fill(0, $length, null);
-            for ($i = $length; $i >= 0; $i--) {
-                $arguments[$i] = $this->popFromOperandStack();
-            }
+        // POP with right-to-left (objectref + arguments)
+        $collection = array_fill(0, $parsedSignature['arguments_count'] + 1, null);
+        for ($i = count($collection) - 1; $i >= 0; $i--) {
+            $collection[$i] = $this->popFromOperandStack();
         }
 
-        $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
-
-        if ($this->javaClassInvoker->isInvoked($methodName, $signature)) {
-            return;
-        }
-
-        $this->javaClassInvoker
-            ->addToSpecialInvokedList($methodName, $signature);
-
+        $objectref = $collection[0];
 
         try {
-            if ($invokerClass instanceof JavaClass) {
-                if ($invokerClass->getInvoker()->isInvoked($methodName, $signature)) {
-                    return;
+
+            // NOTE: first arguments is a class object. (PHPJava does not needed.)
+            $arguments = array_values(array_slice($collection, 1));
+            $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
+
+            if ($objectref instanceof JavaClass &&
+                $objectref->getClassName() !== $className
+            ) {
+                // If $objectref is not match $className, then change current class (I have no confidence).
+                // See also: https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-6.html#jvms-6.5.invokespecial
+
+                // FIXME: if $objectref has superclass, then refer superclass from $objectref
+                // NOTE: This implementation is a ** first aid **.
+                [$resourceType, $classObject] = $objectref
+                    ->getOptions('class_resolver')
+                    ->resolve($className);
+
+                switch ($resourceType) {
+                    case ClassResolver::RESOLVED_TYPE_PACKAGES:
+                        $objectref = new $classObject(...$arguments);
+                        break;
+                    case ClassResolver::RESOLVED_TYPE_CLASS:
+                        throw new NotImplementedException('This section is not implementation.');
                 }
-
-                $invokerClass
-                    ->getInvoker()
-                    ->addToSpecialInvokedList($methodName, $signature);
-
-                $result = $invokerClass
-                    ->getInvoker()
-                    ->getDynamic()
-                    ->getMethods()
-                    ->call(
-                        $methodName,
-                        ...$arguments
-                    );
+            } elseif ($objectref instanceof JavaClass) {
+                $objectref = $objectref(...$arguments);
             } else {
-                $result = call_user_func_array(
-                    [
-                        $invokerClass,
-                        MethodNameResolver::resolve($methodName),
-                    ],
-                    $arguments
-                );
+                $objectref = new $objectref(...$arguments);
             }
         } catch (\Exception $e) {
             /**
@@ -103,10 +97,6 @@ final class _invokespecial implements OperationInterface
                 0,
                 $e
             );
-        }
-
-        if ($parsedSignature[0]['type'] !== 'void') {
-            $this->pushToOperandStack($result);
         }
     }
 }
