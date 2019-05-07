@@ -10,6 +10,7 @@ use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
+use PHPJava\Utilities\Normalizer;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\TypeResolver;
 
@@ -35,10 +36,16 @@ final class _invokevirtual implements OperationInterface
             for ($i = $length; $i >= 0; $i--) {
                 $arguments[$i] = $this->popFromOperandStack();
             }
+
+            $arguments = Normalizer::normalizeValues(
+                $arguments,
+                $signature['arguments']
+            );
         }
 
         $invokerClass = $this->popFromOperandStack();
-        $invokerClassName = $this->getOptions('class_resolver')->resolve($class);
+        $invokerClassName = $this->getOptions('class_resolver')
+            ->resolve($class);
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
         try {
@@ -52,13 +59,11 @@ final class _invokevirtual implements OperationInterface
                         ...$arguments
                     );
             } else {
-                $reflectionClass = new \ReflectionClass(
-                    $realInvokerClass = TypeResolver::convertPHPTypeToJavaType($invokerClass)
-                );
+                $reflectionClass = new \ReflectionClass($invokerClass);
                 $methodAccessor = $reflectionClass->getMethod($methodName);
 
                 if ($document = $methodAccessor->getDocComment()) {
-                    $prependInjections = $this->getNativeAnnotateInjections($document);
+                    $prependInjections = $this->getAnnotateInjections($document);
                     if (!empty($prependInjections)) {
                         array_unshift(
                             $arguments,
@@ -68,7 +73,7 @@ final class _invokevirtual implements OperationInterface
                 }
 
                 $result = call_user_func_array(
-                    [$realInvokerClass, $methodName],
+                    [$invokerClass, $methodName],
                     $arguments
                 );
             }

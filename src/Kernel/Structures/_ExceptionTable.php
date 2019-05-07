@@ -17,30 +17,10 @@ class _ExceptionTable implements StructureInterface
 
     public function execute(): void
     {
-    }
-
-    public function setStartPc($startPc)
-    {
-        $this->startPc = $startPc;
-        return $this;
-    }
-
-    public function setEndPc($endPc)
-    {
-        $this->endPc = $endPc;
-        return $this;
-    }
-
-    public function setHandlerPc($handlerPc)
-    {
-        $this->handlerPc = $handlerPc;
-        return $this;
-    }
-
-    public function setCatchType($catchType)
-    {
-        $this->catchType = $catchType;
-        return $this;
+        $this->startPc = $this->readUnsignedShort();
+        $this->endPc = $this->readUnsignedShort();
+        $this->handlerPc = $this->readUnsignedShort();
+        $this->catchType = $this->readUnsignedShort();
     }
 
     public function getStartPc()

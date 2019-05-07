@@ -3,12 +3,14 @@ namespace PHPJava\Kernel\Types\_Array;
 
 use PHPJava\Exceptions\TypeException;
 use PHPJava\Kernel\Types\Type;
+use PHPJava\Packages\java\lang\ArrayIndexOutOfBoundsException;
 use PHPJava\Utilities\Extractor;
 use PHPJava\Utilities\TypeResolver;
 
-class Collection implements \ArrayAccess
+class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private $data;
+    private $position = 0;
 
     public function __construct(array &$data, string $type = null)
     {
@@ -21,7 +23,7 @@ class Collection implements \ArrayAccess
             return $default;
         }
         return TypeResolver::resolveFromPHPType(
-            Extractor::realValue($this->data[0])
+            Extractor::getRealValue($this->data[0])
         ) ?? $default;
     }
 
@@ -42,6 +44,9 @@ class Collection implements \ArrayAccess
 
     public function offsetGet($offset)
     {
+        if (!$this->offsetExists($offset)) {
+            throw new ArrayIndexOutOfBoundsException($offset);
+        }
         return $this->data[$offset];
     }
 
@@ -53,5 +58,15 @@ class Collection implements \ArrayAccess
     public function offsetSet($offset, $value)
     {
         $this->data[$offset] = $value;
+    }
+
+    public function count()
+    {
+        return count($this->data);
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->data);
     }
 }

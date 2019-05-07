@@ -15,13 +15,10 @@ final class _new implements OperationInterface
         $cpInfo = $this->getConstantPool();
         $class = $cpInfo[$this->readUnsignedShort()];
         $className = $cpInfo[$class->getClassIndex()]->getString();
-        if ($className === $this->javaClass->getClassName()) {
-            // will be called <init>
-            $this->pushToOperandStack($this->javaClass);
-            return;
-        }
 
-        [$resourceType, $classObject] = $this->getOptions('class_resolver')->resolve($className, $this->javaClass);
+        [$resourceType, $classObject] = $this->getOptions('class_resolver')
+            ->resolve($className, $this->javaClass);
+
         if ($resourceType === ClassResolver::RESOLVED_TYPE_CLASS) {
             /**
              * @var \PHPJava\Core\JavaClass $classObject

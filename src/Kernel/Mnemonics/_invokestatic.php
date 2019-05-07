@@ -25,8 +25,6 @@ final class _invokestatic implements OperationInterface
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
 
-        $this->getOptions('class_resolver')
-            ->resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
         [$resourceType, $classObject] = $this->getOptions('class_resolver')
             ->resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
 
@@ -64,7 +62,7 @@ final class _invokestatic implements OperationInterface
                     $methodAccessor = $reflectionClass->getMethod("{$prefix}{$methodName}");
 
                     if ($document = $methodAccessor->getDocComment()) {
-                        $prependInjections = $this->getNativeAnnotateInjections($document);
+                        $prependInjections = $this->getAnnotateInjections($document);
                         if (!empty($prependInjections)) {
                             array_unshift(
                                 $arguments,

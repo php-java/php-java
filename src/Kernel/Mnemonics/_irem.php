@@ -16,8 +16,8 @@ final class _irem implements OperationInterface
         // JVM spec wrote `value1 - (value1 / value2) * value2`
         // But PHP can modulo calculation.
 
-        $rightOperand = Extractor::realValue($this->popFromOperandStack());
-        $leftOperand = Extractor::realValue($this->popFromOperandStack());
+        $rightOperand = Extractor::getRealValue($this->popFromOperandStack());
+        $leftOperand = Extractor::getRealValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(
             new _Int(

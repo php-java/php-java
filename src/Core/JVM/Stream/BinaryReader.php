@@ -35,17 +35,17 @@ class BinaryReader
 
     public function readUnsignedByte()
     {
-        return (int) sprintf('%u', ord($this->read(1)));
+        return current(unpack('C', $this->read(1)));
     }
 
     public function readUnsignedInt()
     {
-        return base_convert(bin2hex($this->read(4)), 16, 10);
+        return current(unpack('N', $this->read(4)));
     }
 
     public function readUnsignedShort()
     {
-        return (int) sprintf('%u', hexdec(bin2hex($this->read(2))));
+        return current(unpack('n', $this->read(2)));
     }
 
     public function readInt()
@@ -57,16 +57,12 @@ class BinaryReader
     public function readShort()
     {
         $short = $this->readUnsignedShort();
-        return (($short & 0x8000) > 0) ? ($short - 0xFFFF - 1) : $short ;
+        return (($short & 0x8000) > 0) ? ($short - 0xFFFF - 1) : $short;
     }
 
     public function readUnsignedLong()
     {
-        if (PHP_INT_MAX === 2147483647) {
-            return base_convert(bin2hex($this->read(8)), 16, 10);
-        }
-
-        return (int) sprintf('%u', hexdec(bin2hex($this->read(8))));
+        return current(unpack('J', $this->read(8)));
     }
 
     public function readLong()

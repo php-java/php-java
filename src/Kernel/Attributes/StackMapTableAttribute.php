@@ -12,7 +12,7 @@ final class StackMapTableAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\DebugTool;
 
     private $numberOfEntries = null;
-    private $stackMapFrames = array();
+    private $stackMapFrames = [];
     public function execute(): void
     {
         $this->numberOfEntries = $this->readUnsignedShort();

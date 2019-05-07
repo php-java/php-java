@@ -15,6 +15,7 @@ class _String implements StructureInterface
     {
         $this->stringIndex = $this->readUnsignedShort();
     }
+
     public function getStringIndex()
     {
         return $this->stringIndex;
