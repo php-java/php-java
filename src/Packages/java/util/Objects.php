@@ -120,12 +120,15 @@ class Objects extends _Object /* implements Comparator, Supplier */
      *
      * @param mixed $a
      * @return mixed
-     * @throws NotImplementedException
-     * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Objects.html#hashCode(java.lang.Object)
      */
     public static function static_hashCode($a = null)
     {
-        throw new NotImplementedException(__METHOD__);
+        if ($a === null) {
+            return 0;
+        }
+
+        return $a->hashCode();
     }
 
     /**
