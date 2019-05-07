@@ -4,6 +4,7 @@ namespace PHPJava\Kernel\Core;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
+use PHPJava\Kernel\Structures\_MethodInfo;
 
 trait Accumulator
 {
@@ -33,12 +34,17 @@ trait Accumulator
     private $options;
 
     /**
+     * @var _MethodInfo $method
+     */
+    private $method;
+
+    /**
      * @var DependencyInjectionProvider
      */
     private $dependencyInjectionProvider;
 
     public function setParameters(
-        array $attributes,
+        _MethodInfo $method,
         JavaClassInvoker $javaClassInvoker,
         \PHPJava\Core\JVM\Stream\BinaryReader $reader,
         array &$localStorage,
@@ -46,7 +52,8 @@ trait Accumulator
         int $pointer,
         DependencyInjectionProvider $dependencyInjectionProvider
     ): self {
-        $this->attributes = $attributes;
+        $this->method = $method;
+        $this->attributes = $method->getAttributes();
         $this->javaClassInvoker = $javaClassInvoker;
         $this->javaClass = $javaClassInvoker->getJavaClass();
         $this->options = $this->javaClass->getOptions();
@@ -129,18 +136,21 @@ trait Accumulator
         $this->stacks[] = &$value;
     }
 
-    public function dupStack()
-    {
-        $stack = $this->stacks[sizeof($this->stacks) - 1] ?? null;
-        if ($stack === null) {
-            throw new \Exception('Stack overflow');
-        }
-        $this->pushStack($stack);
-    }
-
     public function popFromOperandStack()
     {
         return array_pop($this->stacks);
+    }
+
+    public function getCurrentStackIndex()
+    {
+        return count($this->stacks) - 1;
+    }
+
+    public function replaceReferredObject($searchObject, $newObject)
+    {
+        while (($index = array_search($searchObject, $this->stacks)) !== false) {
+            $this->stacks[$index] = $newObject;
+        }
     }
 
     public function popStack()

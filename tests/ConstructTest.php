@@ -7,7 +7,67 @@ class ConstructTest extends Base
 {
     protected $fixtures = [
         'ConstructTest',
+        'ConstructorWithParametersTest',
+        'ConstructorNoParameterTest',
     ];
+
+    public function testConstructorWithParameters_Pattern1()
+    {
+        ob_start();
+        $result = $this->initiatedJavaClasses['ConstructorWithParametersTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'main',
+                []
+            );
+        $result = ob_get_clean();
+        $this->assertEquals("Hello World!\n", $result);
+    }
+
+
+    public function testConstructorWithParameters_Pattern2()
+    {
+        ob_start();
+        $result = $this->initiatedJavaClasses['ConstructorWithParametersTest']
+            ->getInvoker()
+            ->construct("Hello World!")
+            ->getDynamic()
+            ->getMethods()
+            ->call('entrypoint');
+        $result = ob_get_clean();
+        $this->assertEquals("Hello World!\nEntrypoint\n", $result);
+    }
+
+    public function testConstructorNoParameter_Pattern1()
+    {
+        ob_start();
+        $result = $this->initiatedJavaClasses['ConstructorNoParameterTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'main',
+                []
+            );
+        $result = ob_get_clean();
+        $this->assertEquals("Hello World!\n", $result);
+    }
+
+
+    public function testConstructorNoParameter_Pattern2()
+    {
+        ob_start();
+        $result = $this->initiatedJavaClasses['ConstructorNoParameterTest']
+            ->getInvoker()
+            ->construct()
+            ->getDynamic()
+            ->getMethods()
+            ->call('entrypoint');
+        $result = ob_get_clean();
+        $this->assertEquals("Hello World!\nEntrypoint\n", $result);
+    }
 
     public function testDynamicField()
     {

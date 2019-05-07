@@ -5,9 +5,11 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
+use PHPJava\Kernel\Internal\InstanceDeferredLoader;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\MethodNameResolver;
 use PHPJava\Utilities\TypeResolver;
@@ -23,56 +25,49 @@ final class _invokespecial implements OperationInterface
         $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
+        $className = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
+        $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
         $signature = $cpInfo[$nameAndTypeIndex->getDescriptorIndex()]->getString();
         $parsedSignature = Formatter::parseSignature($signature);
-        $invokerClass = $this->popFromOperandStack();
 
-
-        $arguments = [];
-        if (($length = $parsedSignature['arguments_count'] - 1) >= 0) {
-            $arguments = array_fill(0, $length, null);
-            for ($i = $length; $i >= 0; $i--) {
-                $arguments[$i] = $this->popFromOperandStack();
-            }
+        // POP with right-to-left (objectref + arguments)
+        $arguments = array_fill(0, $parsedSignature['arguments_count'], null);
+        for ($i = count($arguments) - 1; $i >= 0; $i--) {
+            $arguments[$i] = $this->popFromOperandStack();
         }
 
-        $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
-
-        if ($this->javaClassInvoker->isInvoked($methodName, $signature)) {
-            return;
-        }
-
-        $this->javaClassInvoker
-            ->addToSpecialInvokedList($methodName, $signature);
-
-
+        /**
+         * @var InstanceDeferredLoader $objectref
+         */
+        $objectref = $this->popFromOperandStack();
+        $newObject = null;
         try {
-            if ($invokerClass instanceof JavaClass) {
-                if ($invokerClass->getInvoker()->isInvoked($methodName, $signature)) {
-                    return;
+            $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
+
+            if ($objectref->getClassName() !== $className) {
+                // If $objectref is not match $className, then change current class (I have no confidence).
+                // See also: https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-6.html#jvms-6.5.invokespecial
+
+                // FIXME: if $objectref has superclass, then refer superclass from $objectref
+                // NOTE: This implementation is a ** first aid **.
+                [$resourceType, $classObject] = $objectref
+                    ->getOptions('class_resolver')
+                    ->resolve($className);
+
+                switch ($resourceType) {
+                    case ClassResolver::RESOLVED_TYPE_PACKAGES:
+                        $newObject = new $classObject(...$arguments);
+                        break;
+                    case ClassResolver::RESOLVED_TYPE_CLASS:
+                        $newObject = $classObject(...$arguments);
+                        break;
                 }
-
-                $invokerClass
-                    ->getInvoker()
-                    ->addToSpecialInvokedList($methodName, $signature);
-
-                $result = $invokerClass
-                    ->getInvoker()
-                    ->getDynamic()
-                    ->getMethods()
-                    ->call(
-                        $methodName,
-                        ...$arguments
-                    );
             } else {
-                $result = call_user_func_array(
-                    [
-                        $invokerClass,
-                        MethodNameResolver::resolve($methodName),
-                    ],
-                    $arguments
-                );
+                $newObject = $objectref->instantiate(...$arguments);
             }
+
+            // NOTE: PHP has a problem which a reference object cannot replace to an object.
+            $this->replaceReferredObject($objectref, $newObject);
         } catch (\Exception $e) {
             /**
              * @var $codeAttribute CodeAttribute
@@ -103,10 +98,6 @@ final class _invokespecial implements OperationInterface
                 0,
                 $e
             );
-        }
-
-        if ($parsedSignature[0]['type'] !== 'void') {
-            $this->pushToOperandStack($result);
         }
     }
 }

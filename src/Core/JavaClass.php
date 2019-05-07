@@ -237,6 +237,14 @@ class JavaClass implements JavaClassInterface
         }
     }
 
+    public function __invoke(...$arguments): JavaClass
+    {
+        return $this
+            ->getInvoker()
+            ->construct(...$arguments)
+            ->getJavaClass();
+    }
+
     public function getOptions($key = null)
     {
         if (isset($key)) {
