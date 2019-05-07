@@ -12,9 +12,9 @@ class JavaLangStringTest
 
     public static void testHashCode()
     {
-        System.out.println(Objects.hashCode("hello, world"));
-        System.out.println(Objects.hashCode("HELLO, WORLD".toLowerCase()));
-        System.out.println(Objects.hashCode(new String("hello, world")));
+        System.out.println("hello, world".hashCode());
+        System.out.println("HELLO, WORLD".toLowerCase().hashCode());
+        System.out.println((new String("hello, world")).hashCode());
     }
 
     public static void replace(String a, String b, String c)
