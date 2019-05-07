@@ -103,6 +103,24 @@ class JavaLangStringTest extends Base
         $this->assertSame('2728214739616339340', $values[2]);
     }
 
+    public function testIntern()
+    {
+        ob_start();
+        $this->initiatedJavaClasses['JavaLangStringTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'intern'
+            );
+        [ $intern, $literal ] = array_filter(explode("\n", ob_get_clean()));
+
+        $this->assertIsNumeric($intern);
+        $this->assertIsNumeric($literal);
+
+        $this->assertSame($intern, $literal);
+    }
+
     public function testReplace()
     {
         ob_start();
