@@ -85,6 +85,24 @@ class JavaLangStringTest extends Base
         $this->assertEquals('abcdef', $value);
     }
 
+    public function testHashCode()
+    {
+        ob_start();
+        $this->initiatedJavaClasses['JavaUtilStringTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'testHashCode'
+            );
+
+        $values = array_filter(explode("\n", ob_get_clean()));
+        $this->assertCount(3, $values);
+        $this->assertSame('2728214739616339340', $values[0]);
+        $this->assertSame('2728214739616339340', $values[1]);
+        $this->assertSame('2728214739616339340', $values[2]);
+    }
+
     public function testReplace()
     {
         ob_start();

@@ -10,6 +10,13 @@ class JavaLangStringTest
         System.out.print(a.concat(b));
     }
 
+    public static void testHashCode()
+    {
+        System.out.println(Objects.hashCode("hello, world"));
+        System.out.println(Objects.hashCode("HELLO, WORLD".toLowerCase()));
+        System.out.println(Objects.hashCode(new String("hello, world")));
+    }
+
     public static void replace(String a, String b, String c)
     {
         System.out.print(a.replace(b, c));
