@@ -51,6 +51,9 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
         }
     }
 
+    /**
+     * @return StructureInterface[]
+     */
     public function getEntries(): array
     {
         return $this->entries;
@@ -94,31 +97,49 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
         throw new ReadEntryException('Entry tag ' . sprintf('0x%04X', $entryTag) . ' is not defined.');
     }
 
+    /**
+     * @return boolean
+     */
     public function offsetExists($offset)
     {
         return isset($this->entries[$offset]);
     }
 
+    /**
+     * @return StructureInterface
+     */
     public function offsetGet($offset)
     {
         return $this->entries[$offset];
     }
 
+    /**
+     * @return int
+     */
     public function count()
     {
         return count($this->entries);
     }
 
+    /**
+     * @throws ReadOnlyException
+     */
     public function offsetSet($offset, $value)
     {
         throw new ReadOnlyException('You cannot rewrite datum. The Constant Pool is read-only.');
     }
 
+    /**
+     * @throws ReadOnlyException
+     */
     public function offsetUnset($offset)
     {
         throw new ReadOnlyException('You cannot rewrite datum. The Constant Pool is read-only.');
     }
 
+    /**
+     * @return \ArrayIterator<StructureInterface>
+     */
     public function getIterator()
     {
         return new \ArrayIterator($this->entries);
