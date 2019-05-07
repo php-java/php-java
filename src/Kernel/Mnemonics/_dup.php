@@ -12,10 +12,6 @@ final class _dup implements OperationInterface
 
     public function execute(): void
     {
-        $stack = $this->stacks[sizeof($this->stacks) - 1] ?? null;
-        if ($stack === null) {
-            throw new RuntimeException('Stack overflow');
-        }
-        $this->pushToOperandStack($stack);
+        $this->stacks[] = $this->stacks[$this->getCurrentStackIndex()] ?? null;
     }
 }

@@ -136,18 +136,21 @@ trait Accumulator
         $this->stacks[] = &$value;
     }
 
-    public function dupStack()
-    {
-        $stack = $this->stacks[sizeof($this->stacks) - 1] ?? null;
-        if ($stack === null) {
-            throw new \Exception('Stack overflow');
-        }
-        $this->pushStack($stack);
-    }
-
     public function popFromOperandStack()
     {
         return array_pop($this->stacks);
+    }
+
+    public function getCurrentStackIndex()
+    {
+        return count($this->stacks) - 1;
+    }
+
+    public function replaceReferredObject($searchObject, $newObject)
+    {
+        while (($index = array_search($searchObject, $this->stacks)) !== false) {
+            $this->stacks[$index] = $newObject;
+        }
     }
 
     public function popStack()

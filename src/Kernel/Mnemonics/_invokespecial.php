@@ -5,6 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
+use PHPJava\Kernel\Internal\InstanceDeferredLoader;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\BinaryTool;
@@ -30,22 +31,20 @@ final class _invokespecial implements OperationInterface
         $parsedSignature = Formatter::parseSignature($signature);
 
         // POP with right-to-left (objectref + arguments)
-        $collection = array_fill(0, $parsedSignature['arguments_count'] + 1, null);
-        for ($i = count($collection) - 1; $i >= 0; $i--) {
-            $collection[$i] = $this->popFromOperandStack();
+        $arguments = array_fill(0, $parsedSignature['arguments_count'], null);
+        for ($i = count($arguments) - 1; $i >= 0; $i--) {
+            $arguments[$i] = $this->popFromOperandStack();
         }
 
-        $objectref = $collection[0];
-
+        /**
+         * @var InstanceDeferredLoader $objectref
+         */
+        $objectref = $this->popFromOperandStack();
+        $newObject = null;
         try {
-
-            // NOTE: first arguments is a class object. (PHPJava does not needed.)
-            $arguments = array_values(array_slice($collection, 1));
             $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
 
-            if ($objectref instanceof JavaClass &&
-                $objectref->getClassName() !== $className
-            ) {
+            if ($objectref->getClassName() !== $className) {
                 // If $objectref is not match $className, then change current class (I have no confidence).
                 // See also: https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-6.html#jvms-6.5.invokespecial
 
@@ -57,16 +56,18 @@ final class _invokespecial implements OperationInterface
 
                 switch ($resourceType) {
                     case ClassResolver::RESOLVED_TYPE_PACKAGES:
-                        $objectref = new $classObject(...$arguments);
+                        $newObject = new $classObject(...$arguments);
                         break;
                     case ClassResolver::RESOLVED_TYPE_CLASS:
-                        throw new NotImplementedException('This section is not implementation.');
+                        $newObject = $classObject(...$arguments);
+                        break;
                 }
-            } elseif ($objectref instanceof JavaClass) {
-                $objectref = $objectref(...$arguments);
             } else {
-                $objectref = new $objectref(...$arguments);
+                $newObject = $objectref->instantiate(...$arguments);
             }
+
+            // NOTE: PHP has a problem which a reference object cannot replace to an object.
+            $this->replaceReferredObject($objectref, $newObject);
         } catch (\Exception $e) {
             /**
              * @var $codeAttribute CodeAttribute

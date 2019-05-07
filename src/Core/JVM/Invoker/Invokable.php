@@ -217,7 +217,7 @@ trait Invokable
                     'OpCode: 0x%02X %-15.15s Stacks: %-4.4s PC: %-8.8s Used Memory: %-8.8s Used Memory Peak: %-8.8s',
                     [
                         $opcode,
-                        str_replace('_', '', $mnemonic),
+                        ltrim($mnemonic, '_'),
                         count($stacks),
                         $pointer,
                         Metric::bytes(memory_get_usage())->format(),

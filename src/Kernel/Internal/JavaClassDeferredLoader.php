@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Internal;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 
 final class JavaClassDeferredLoader implements JavaClassInterface

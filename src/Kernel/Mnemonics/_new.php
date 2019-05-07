@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Internal\InstanceDeferredLoader;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
 
@@ -19,8 +20,14 @@ final class _new implements OperationInterface
         [$resourceType, $classObject] = $this->getOptions('class_resolver')
             ->resolve($className, $this->javaClass);
 
+        $instanceDeferredLoader = new InstanceDeferredLoader(
+            $classObject,
+            $resourceType,
+            $className
+        );
+
         $this->pushToOperandStackByReference(
-            $classObject
+            $instanceDeferredLoader
         );
     }
 }
