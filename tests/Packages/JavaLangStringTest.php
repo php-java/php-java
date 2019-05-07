@@ -88,7 +88,7 @@ class JavaLangStringTest extends Base
     public function testHashCode()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaUtilStringTest']
+        $this->initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
