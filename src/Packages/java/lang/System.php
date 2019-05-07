@@ -3,6 +3,7 @@ namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\PHPJava\Kernel\Behavior\System as SystemBehavior;
 
 // use PHPJava\Packages\java\lang\System\Logger;
 // use PHPJava\Packages\java\util\Map;
@@ -194,12 +195,11 @@ class System extends _Object /* implements Logger, Map, Channel */
      *
      * @param mixed $a
      * @return mixed
-     * @throws NotImplementedException
-     * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#identityHashCode
+     * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/System.html#identityHashCode(java.lang.Object)
      */
     public static function static_identityHashCode($a = null)
     {
-        throw new NotImplementedException(__METHOD__);
+        return SystemBehavior::identityHashCode($a);
     }
 
     /**

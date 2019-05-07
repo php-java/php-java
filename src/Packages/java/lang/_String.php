@@ -19,6 +19,7 @@ use PHPJava\Packages\java\lang\CharSequence;
  */
 class _String extends _Object implements CharSequence
 {
+    private $hash = 0;
     private $object = null;
 
     /**
@@ -223,8 +224,7 @@ class _String extends _Object implements CharSequence
      *
      * @param mixed $a
      * @return mixed
-     * @throws NotImplementedException
-     * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equals
+     * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#equals(java.lang.Object)
      */
     public function equals($a = null)
     {
@@ -304,14 +304,24 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a hash code for this string.
      *
-     * @param mixed $a
      * @return mixed
-     * @throws NotImplementedException
-     * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#hashCode
+     * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#hashCode()
      */
-    public function hashCode($a = null)
+    public function hashCode()
     {
-        throw new NotImplementedException(__METHOD__);
+        $count = $this->length();
+
+        $h = $this->hash;
+        if ($h || !$count) {
+            return $h;
+        }
+
+        $str = $this->toString();
+        for ($i = 0; $i < $count; ++$i) {
+            $h = 31 * $h + ord($str[$i]);
+        }
+
+        return $this->hash = $h;
     }
 
     /**
