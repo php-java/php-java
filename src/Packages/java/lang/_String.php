@@ -347,14 +347,12 @@ class _String extends _Object implements CharSequence
      * Returns a canonical representation for the string object.
      *
      * @native ConstantPool
-     * @param ConstantPool $cp
      * @return mixed
-     * @throws ReadOnlyException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#intern
      */
     public function intern(ConstantPool $cp)
     {
-        // Find same string in the Constant Pool
+        // Find the string from the Constant Pool.
         foreach ($cp as $key => $value) {
             if (!($value instanceof _Utf8)) {
                 continue;
