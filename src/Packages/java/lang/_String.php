@@ -363,7 +363,6 @@ class _String extends _Object implements CharSequence
             if ((string) $value === (string) $this->object) {
                 $this->object = $value
                     ->enableWrite(true)
-                    ->setString((string) $this->object)
                     ->setStringObject($this)
                     ->enableWrite(false);
                 break;
