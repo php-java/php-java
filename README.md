@@ -1,8 +1,8 @@
 # PHPJava - JVM Emulator by PHP
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 ![Compatibility](https://img.shields.io/badge/Compatibility-7.2%20and%20greater-green.svg) 
-[![Build Status](https://travis-ci.org/php-java/php-java.png?branch=master)](https://travis-ci.org/memory-agape/php-java)
-[![Total Downloads](https://poser.pugx.org/php-java/php-java/downloads)](https://packagist.org/packages/memory-agape/php-java)
+[![Build Status](https://travis-ci.org/php-java/php-java.svg?branch=master)](https://travis-ci.org/php-java/php-java)
+[![Total Downloads](https://poser.pugx.org/php-java/php-java/downloads)](https://packagist.org/packages/php-java/php-java)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 <p align="center"><img src="./docs/img/logo.png" height="300"></p>
 
@@ -292,9 +292,9 @@ $javaClass = new JavaClass(
 ### Runtime options
 - Available options on `JavaClass` or `JavaArchive`:
 
-|Options        | Value | Default | Description         |Targeted         |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| entrypoint | string or null | null | The entrypoint in JAR.  | JavaArchive |
+| Options | Value | Default | Description | Targeted |
+|:--------|:------|:--------|:------------|:---------|
+| entrypoint | string or null | null | The entrypoint in JAR. | JavaArchive |
 | max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass |
 | max_execution_time | integer | 30 | Maximum execution time. | JavaClass |
 | strict | boolean | true | When `true`, PHPJava calls a method, variables, and so on strictly; otherwise, it calls them ambiguously. | Both |
@@ -308,7 +308,6 @@ $javaClass = new JavaClass(
 | log.path | string or resource | php://stdout | The output destination of `Monolog`. | Both |
 | dry_run (Not Implemented) | boolean | false | Checking JavaClass/JavaArchive structure only. When `true`, PHPJava runs in dry-run mode. | Both |
 | env (Not Implemented) | enum | Environment::EXPERIMENTAL | Your environment. | Both |
-
 
 - Example of JavaClass:
 ```php
@@ -420,20 +419,20 @@ public static void main(java.lang.String[])
 
 - **Problem 2:** PHPJava cannot completely cover Java types because PHP is different from Java.
   The comparison table of Java and PHPJava is shown below:
-  
-|Java        |PHPJava         |
-|:-------------:|:-------------:|
-|null |null |
-|boolean |\PHPJava\Kernel\Types\\_Boolean (including `__toString`) |
-|char |\PHPJava\Kernel\Types\\_Char (including `__toString`) |
-|byte |\PHPJava\Kernel\Types\\_Byte (including `__toString`) |
-|short |\PHPJava\Kernel\Types\\_Short (including `__toString`) |
-|int |\PHPJava\Kernel\Types\\_Int (including `__toString`) |
-|long |\PHPJava\Kernel\Types\\_Long (including `__toString`) |
-|float |\PHPJava\Kernel\Types\\_Float (including `__toString`) |
-|double |\PHPJava\Kernel\Types\\_Double (including `__toString`) |
 
-- **Problem 3:** PHPJava cannot calculate big number of `double` and `float` because `gmp_pow` cannot calculate negative exponents. So, PHPJavas use built-in function `pow`.
+| Java | PHPJava |
+|:-----|:--------|
+| null | null |
+| boolean | \PHPJava\Kernel\Types\\_Boolean (including `__toString`) |
+| char | \PHPJava\Kernel\Types\\_Char (including `__toString`) |
+| byte | \PHPJava\Kernel\Types\\_Byte (including `__toString`) |
+| short | \PHPJava\Kernel\Types\\_Short (including `__toString`) |
+| int | \PHPJava\Kernel\Types\\_Int (including `__toString`) |
+| long | \PHPJava\Kernel\Types\\_Long (including `__toString`) |
+| float | \PHPJava\Kernel\Types\\_Float (including `__toString`) |
+| double | \PHPJava\Kernel\Types\\_Double (including `__toString`) |
+
+- **Problem 3:** PHPJava cannot calculate big number of `double` and `float` because `gmp_pow` cannot calculate negative exponents. So, PHPJava uses built-in function `pow`.
 
 ## Run Kotlin on the PHPJava
 Do you wanna run Kotlin on the PHPJava? Are you serious?
