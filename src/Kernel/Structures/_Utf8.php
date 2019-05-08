@@ -44,21 +44,6 @@ class _Utf8 implements StructureInterface
         return $this;
     }
 
-    /**
-     * @param string $string
-     * @return _Utf8
-     * @throws ReadOnlyException
-     */
-    public function setString(string $string): self
-    {
-        if ($this->isWritable) {
-            $this->string = $string;
-            return $this;
-        }
-
-        throw new ReadOnlyException('You cannot overwrite constant.');
-    }
-
     public function getString()
     {
         return $this->string;
