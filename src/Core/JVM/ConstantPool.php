@@ -25,6 +25,7 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private $entries = [];
     private $reader;
+    private $isWritable = false;
 
     /**
      * @param ReaderInterface $reader
@@ -49,6 +50,16 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
                 $i++;
             }
         }
+    }
+
+    /**
+     * @param bool $enable
+     * @return ConstantPool
+     */
+    public function enableWrite(bool $enable): self
+    {
+        $this->isWritable = $enable;
+        return $this;
     }
 
     /**
@@ -122,18 +133,29 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
+     * @param mixed $offset
+     * @param mixed $value
      * @throws ReadOnlyException
      */
     public function offsetSet($offset, $value)
     {
+        if ($this->isWritable) {
+            $this->entries[$offset] = $value;
+            return;
+        }
         throw new ReadOnlyException('You cannot rewrite datum. The Constant Pool is read-only.');
     }
 
     /**
+     * @param mixed $offset
      * @throws ReadOnlyException
      */
     public function offsetUnset($offset)
     {
+        if ($this->isWritable) {
+            unset($this->entries[$offset]);
+            return;
+        }
         throw new ReadOnlyException('You cannot rewrite datum. The Constant Pool is read-only.');
     }
 

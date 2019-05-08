@@ -3,7 +3,6 @@ namespace PHPJava\Core;
 
 use PHPJava\Core\JVM\DynamicAccessor;
 use PHPJava\Core\JVM\Field\FieldInterface;
-use PHPJava\Core\JVM\Intern\StringIntern;
 use PHPJava\Core\JVM\Invoker\Invokable;
 use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
@@ -12,7 +11,6 @@ use PHPJava\Core\JVM\StaticAccessor;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Provider\InternProvider;
 use PHPJava\Kernel\Provider\ProviderInterface;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
@@ -90,15 +88,6 @@ class JavaClassInvoker
                 $this->staticFields[$fieldName] = $fieldInfo;
             }
         }
-
-        // Intern provider registration.
-        $this->providers = [
-            'InternProvider' => (new InternProvider())
-                ->add(
-                    StringIntern::class,
-                    new StringIntern()
-                ),
-        ];
 
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
