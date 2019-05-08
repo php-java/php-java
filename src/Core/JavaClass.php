@@ -4,7 +4,6 @@ namespace PHPJava\Core;
 use PHPJava\Core\JVM\AttributePool;
 use PHPJava\Core\JVM\FieldPool;
 use PHPJava\Core\JVM\InterfacePool;
-use PHPJava\Core\JVM\Intern\StringIntern;
 use PHPJava\Core\JVM\MethodPool;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
