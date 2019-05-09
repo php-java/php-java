@@ -23,8 +23,13 @@ final class JavaClassDeferredLoader implements JavaClassInterface
 
     public function __call($name, $arguments)
     {
-        $this->initializeIfNotInitiated();
-        return $this->javaClass->{$name}(...$arguments);
+        return ($this->initializeIfNotInitiated())->{$name}(...$arguments);
+    }
+
+    public function __invoke(...$arguments): JavaClassInterface
+    {
+        ;
+        return ($this->initializeIfNotInitiated())(...$arguments);
     }
 
     private function initializeIfNotInitiated()
@@ -32,7 +37,7 @@ final class JavaClassDeferredLoader implements JavaClassInterface
         if (isset($this->javaClass)) {
             return $this->javaClass;
         }
-        $this->javaClass = new JavaClass(
+        return $this->javaClass = new JavaClass(
             new $this->deferLoadingReaderClass(...$this->arguments),
             $this->options
         );

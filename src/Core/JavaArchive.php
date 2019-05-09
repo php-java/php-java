@@ -227,7 +227,7 @@ class JavaArchive
     {
         $name = str_replace('/', '.', $name);
         if (!isset($this->classes[$name])) {
-            throw new ClassNotFoundException($name . ' does not found on ' . $this->jarFile . '.');
+            throw new ClassNotFoundException($name . ' does not exist on ' . $this->jarFile . '.');
         }
         return $this->classes[$name];
     }
