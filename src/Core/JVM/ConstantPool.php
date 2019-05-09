@@ -122,6 +122,8 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
+     * @param mixed $offset
+     * @param mixed $value
      * @throws ReadOnlyException
      */
     public function offsetSet($offset, $value)
@@ -130,6 +132,7 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
+     * @param mixed $offset
      * @throws ReadOnlyException
      */
     public function offsetUnset($offset)

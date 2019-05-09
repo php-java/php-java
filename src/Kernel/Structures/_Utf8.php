@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Structures;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Exceptions\ReadOnlyException;
 use PHPJava\Utilities\BinaryTool;
 
 class _Utf8 implements StructureInterface
@@ -12,6 +13,7 @@ class _Utf8 implements StructureInterface
 
     private $length = 0;
     private $string = '';
+    private $isWritable = false;
 
     /**
      * @var \PHPJava\Packages\java\lang\_String $stringObject
@@ -32,6 +34,16 @@ class _Utf8 implements StructureInterface
         return $this->length;
     }
 
+    /**
+     * @param bool $enable
+     * @return _Utf8
+     */
+    public function enableWrite(bool $enable): self
+    {
+        $this->isWritable = $enable;
+        return $this;
+    }
+
     public function getString()
     {
         return $this->string;
@@ -40,6 +52,12 @@ class _Utf8 implements StructureInterface
     public function __toString(): string
     {
         return $this->getString();
+    }
+
+    public function setStringObject(\PHPJava\Packages\java\lang\_String $stringObject): self
+    {
+        $this->stringObject = $stringObject;
+        return $this;
     }
 
     public function getStringObject(): \PHPJava\Packages\java\lang\_String
