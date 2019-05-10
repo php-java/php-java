@@ -11,14 +11,12 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class GetField extends _Object
 {
-
     /**
      * Return true if the named field is defaulted and has no value in this stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#defaulted
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function defaulted($a = null)
     {
@@ -36,11 +34,10 @@ class GetField extends _Object
      * Get the value of the named short field from the persistent field.
      * Get the value of the named Object field from the persistent field.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#get
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function get($a = null, $b = null)
     {
@@ -50,10 +47,9 @@ class GetField extends _Object
     /**
      * Get the ObjectStreamClass that describes the fields in the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getObjectStreamClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getObjectStreamClass($a = null)
     {

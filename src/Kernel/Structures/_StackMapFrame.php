@@ -1,21 +1,18 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 class _StackMapFrame implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
-    private $frameType = null;
+    private $frameType;
 
     /**
-     * @var StructureInterface|null
+     * @var null|StructureInterface
      */
-    private $frame = null;
+    private $frame;
 
     public function execute(): void
     {

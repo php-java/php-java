@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\Annotations\Annotation;
-use PHPJava\Utilities\BinaryTool;
 
 final class RuntimeInvisibleAnnotationsAttribute implements AttributeInterface
 {

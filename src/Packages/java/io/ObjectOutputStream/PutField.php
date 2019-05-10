@@ -11,9 +11,8 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class PutField extends _Object /* implements ObjectOutput */
+class PutField extends _Object // implements ObjectOutput
 {
-
     /**
      * Put the value of the named boolean field into the persistent field.
      * Put the value of the named byte field into the persistent field.
@@ -25,11 +24,10 @@ class PutField extends _Object /* implements ObjectOutput */
      * Put the value of the named short field into the persistent field.
      * Put the value of the named Object field into the persistent field.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#put
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function put($a = null, $b = null)
     {
@@ -39,10 +37,9 @@ class PutField extends _Object /* implements ObjectOutput */
     /**
      * Deprecated.This method does not write the values contained by this         PutField object in a proper format, and may         result in corruption of the serialization stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function write($a = null)
     {

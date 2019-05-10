@@ -3,7 +3,6 @@ namespace PHPJava\Tests;
 
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
-use PHPUnit\Framework\TestCase;
 
 class TryCatchTest extends Base
 {

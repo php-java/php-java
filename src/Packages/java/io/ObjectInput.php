@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `ObjectInput` interface was auto generated.
@@ -13,8 +12,8 @@ interface ObjectInput
      * Returns the number of bytes that can be read without blocking.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#available
      * @NotImplemented
      */
@@ -24,8 +23,8 @@ interface ObjectInput
      * Closes the input stream.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
      * @NotImplemented
      */
@@ -39,8 +38,8 @@ interface ObjectInput
      * @param mixed $a
      * @param mixed $b
      * @param mixed $c
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#read
      * @NotImplemented
      */
@@ -50,8 +49,8 @@ interface ObjectInput
      * Read and return an object.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readObject
      * @NotImplemented
      */
@@ -61,8 +60,8 @@ interface ObjectInput
      * Skips n bytes of input.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#skip
      * @NotImplemented
      */

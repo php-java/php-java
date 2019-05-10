@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Utilities;
 
-use PHPJava\Core\JavaClass;
-use PHPJava\Exceptions\TypeException;
-
 class FileTypeResolver
 {
     public static function resolve($path): string

@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\lang;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
-
 /**
  * The `Void` class was auto generated.
  *

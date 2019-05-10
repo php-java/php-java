@@ -12,16 +12,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Currency extends _Object /* implements Serializable, Set */
+class Currency extends _Object // implements Serializable, Set
 {
-
     /**
      * Gets the set of available currencies.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getAvailableCurrencies
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getAvailableCurrencies($a = null)
     {
@@ -31,10 +29,9 @@ class Currency extends _Object /* implements Serializable, Set */
     /**
      * Gets the ISO 4217 currency code of this currency.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getCurrencyCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCurrencyCode($a = null)
     {
@@ -44,10 +41,9 @@ class Currency extends _Object /* implements Serializable, Set */
     /**
      * Gets the default number of fraction digits used with this currency.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDefaultFractionDigits
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDefaultFractionDigits($a = null)
     {
@@ -58,10 +54,9 @@ class Currency extends _Object /* implements Serializable, Set */
      * Gets the name that is suitable for displaying this currency for the default DISPLAY locale.
      * Gets the name that is suitable for displaying this currency for the specified locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDisplayName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDisplayName($a = null)
     {
@@ -72,10 +67,9 @@ class Currency extends _Object /* implements Serializable, Set */
      * Returns the Currency instance for the given currency code.
      * Returns the Currency instance for the country of the given locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getInstance
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getInstance($a = null)
     {
@@ -85,10 +79,9 @@ class Currency extends _Object /* implements Serializable, Set */
     /**
      * Returns the ISO 4217 numeric code of this currency.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getNumericCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getNumericCode($a = null)
     {
@@ -98,10 +91,9 @@ class Currency extends _Object /* implements Serializable, Set */
     /**
      * Returns the 3 digit ISO 4217 numeric code of this currency as a String.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getNumericCodeAsString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getNumericCodeAsString($a = null)
     {
@@ -112,10 +104,9 @@ class Currency extends _Object /* implements Serializable, Set */
      * Gets the symbol of this currency for the default DISPLAY locale.
      * Gets the symbol of this currency for the specified locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getSymbol
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSymbol($a = null)
     {
@@ -125,10 +116,9 @@ class Currency extends _Object /* implements Serializable, Set */
     /**
      * Returns the ISO 4217 currency code of this currency.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

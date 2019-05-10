@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\Annotations\Annotation;
-use PHPJava\Utilities\BinaryTool;
 
 class _ParameterAnnotation implements StructureInterface
 {

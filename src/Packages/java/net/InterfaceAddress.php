@@ -11,14 +11,12 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class InterfaceAddress extends _Object
 {
-
     /**
      * Compares this object against the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -28,10 +26,9 @@ class InterfaceAddress extends _Object
     /**
      * Returns an InetAddress for this address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAddress($a = null)
     {
@@ -41,10 +38,9 @@ class InterfaceAddress extends _Object
     /**
      * Returns an InetAddress for the broadcast address for this InterfaceAddress.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getBroadcast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getBroadcast($a = null)
     {
@@ -54,10 +50,9 @@ class InterfaceAddress extends _Object
     /**
      * Returns the network prefix length for this address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getNetworkPrefixLength
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getNetworkPrefixLength($a = null)
     {
@@ -67,10 +62,9 @@ class InterfaceAddress extends _Object
     /**
      * Returns a hashcode for this Interface address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -80,10 +74,9 @@ class InterfaceAddress extends _Object
     /**
      * Converts this Interface address to a String.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

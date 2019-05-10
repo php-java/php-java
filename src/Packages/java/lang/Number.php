@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\io\Serializable;
 
@@ -11,16 +10,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Number extends _Object /* implements Serializable */
+class Number extends _Object // implements Serializable
 {
-
     /**
      * Returns the value of the specified number as a byte.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#byteValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function byteValue($a = null)
     {
@@ -30,10 +27,9 @@ class Number extends _Object /* implements Serializable */
     /**
      * Returns the value of the specified number as a double.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#doubleValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function doubleValue($a = null)
     {
@@ -43,10 +39,9 @@ class Number extends _Object /* implements Serializable */
     /**
      * Returns the value of the specified number as a float.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#floatValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function floatValue($a = null)
     {
@@ -56,10 +51,9 @@ class Number extends _Object /* implements Serializable */
     /**
      * Returns the value of the specified number as an int.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#intValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function intValue($a = null)
     {
@@ -69,10 +63,9 @@ class Number extends _Object /* implements Serializable */
     /**
      * Returns the value of the specified number as a long.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#longValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function longValue($a = null)
     {
@@ -82,10 +75,9 @@ class Number extends _Object /* implements Serializable */
     /**
      * Returns the value of the specified number as a short.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#shortValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function shortValue($a = null)
     {

@@ -5,19 +5,18 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
-use PHPJava\Kernel\Structures\_Utf8;
-use PHPJava\Packages\java\lang\_Object;
-use PHPJava\Packages\java\lang\_String;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\_Boolean;
+use PHPJava\Kernel\Types\_Byte;
+use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Kernel\Types\_Short;
 use PHPJava\Kernel\Types\Type;
+use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\_String;
 
 class TypeResolver
 {
@@ -29,12 +28,12 @@ class TypeResolver
     ];
 
     const AMBIGUOUS_TYPES_ON_PHP = [
-        'long'   => 'int',
+        'long' => 'int',
         'double' => 'float',
         // Char is same as Int on Java, but strict mode cannot decide Int or String on PHPJava.
         // 'char'   => 'int',
-        'byte'   => 'int',
-        'short'  => 'int',
+        'byte' => 'int',
+        'short' => 'int',
     ];
 
     const SIGNATURE_MAP = [
@@ -51,13 +50,13 @@ class TypeResolver
     ];
 
     const TYPES_MAP = [
-        'byte'    => _Byte::class,
-        'char'    => _Char::class,
-        'double'  => _Double::class,
-        'float'   => _Float::class,
-        'int'     => _Int::class,
-        'long'    => _Long::class,
-        'short'   => _Short::class,
+        'byte' => _Byte::class,
+        'char' => _Char::class,
+        'double' => _Double::class,
+        'float' => _Float::class,
+        'int' => _Int::class,
+        'long' => _Long::class,
+        'short' => _Short::class,
         'boolean' => _Boolean::class,
     ];
 
@@ -70,7 +69,6 @@ class TypeResolver
 
     /**
      * @param $signature
-     * @return string
      * @throws TypeException
      */
     public static function getMappedSignatureType($signature): string
@@ -83,7 +81,6 @@ class TypeResolver
 
     /**
      * @param $type
-     * @return string
      */
     public static function resolve($type): string
     {
@@ -114,7 +111,6 @@ class TypeResolver
 
     /**
      * @param $type
-     * @return string
      */
     public static function convertJavaTypeSimplyForPHP($type): string
     {
@@ -124,7 +120,6 @@ class TypeResolver
     /**
      * @param $arguments
      * @param string $defaultJavaArgumentType
-     * @return array
      * @throws TypeException
      */
     public static function convertPHPtoJava($arguments, $defaultJavaArgumentType = 'java.lang.String'): array
@@ -203,9 +198,6 @@ class TypeResolver
     }
 
     /**
-     * @param string $a
-     * @param string $b
-     * @return bool
      * @throws TypeException
      * @throws \ReflectionException
      */
@@ -217,7 +209,7 @@ class TypeResolver
 
         $a = static::getExtendedClasses($a);
         $b = static::getExtendedClasses($b);
-        
+
         $resultClassesComparison = [];
         $resultInterfacesComparison = [];
         for ($i = 0, $size = max(count($a), count($b)); $i < $size; $i++) {
@@ -239,7 +231,6 @@ class TypeResolver
 
     /**
      * @param $class
-     * @return array
      * @throws TypeException
      * @throws \ReflectionException
      */
@@ -309,8 +300,8 @@ class TypeResolver
 
     /**
      * @param $value
-     * @return _String|_Boolean|_Double|_Float|_Int|Collection
      * @throws TypeException
+     * @return _Boolean|_Double|_Float|_Int|_String|Collection
      */
     public static function convertPHPTypeToJavaType($value)
     {

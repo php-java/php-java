@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class FizzBuzzTest extends Base
 {
     protected $fixtures = [
@@ -19,7 +17,7 @@ class FizzBuzzTest extends Base
             ->getMethods()
             ->call(
                 'main',
-                ["100"]
+                ['100']
             );
         $result = ob_get_clean();
         $this->assertEquals(

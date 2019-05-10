@@ -1,10 +1,9 @@
 <?php
 namespace PHPJava\Tests\Packages;
 
-use PHPJava\Core\JavaArchive;
 use PHPJava\Exceptions\UnableToCatchException;
-use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
 use PHPJava\Packages\java\lang\_String;
+use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
 use PHPJava\Tests\Base;
 
 class JavaLangStringTest extends Base

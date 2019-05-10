@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\Writer;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -13,34 +12,32 @@ use PHPJava\Packages\java\io\Writer;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\Writer
  */
-class CharArrayWriter extends Writer /* implements Closeable, AutoCloseable */
+class CharArrayWriter extends Writer // implements Closeable, AutoCloseable
 {
     /**
      * The buffer where data is stored.
      *
      * @var mixed $buf
      */
-    protected $buf = null;
+    protected $buf;
 
     /**
      * The number of chars in the buffer.
      *
      * @var mixed $count
      */
-    protected $count = null;
-
+    protected $count;
 
     /**
      * Appends the specified character to this writer.
      * Appends the specified character sequence to this writer.
      * Appends a subsequence of the specified character sequence to this writer.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#append
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function append($a = null, $b = null, $c = null)
     {
@@ -50,10 +47,9 @@ class CharArrayWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Close the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -63,10 +59,9 @@ class CharArrayWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Flush the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -76,10 +71,9 @@ class CharArrayWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Resets the buffer so that you can use it again without throwing away the already allocated buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#reset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reset($a = null)
     {
@@ -89,10 +83,9 @@ class CharArrayWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Returns the current size of the buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {
@@ -102,10 +95,9 @@ class CharArrayWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Returns a copy of the input data.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toCharArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toCharArray($a = null)
     {
@@ -115,10 +107,9 @@ class CharArrayWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Converts input data to a string.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -130,12 +121,11 @@ class CharArrayWriter extends Writer /* implements Closeable, AutoCloseable */
      * Writes a character to the buffer.
      * Write a portion of a string to the buffer.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {
@@ -145,10 +135,9 @@ class CharArrayWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Writes the contents of the buffer to another character stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeTo($a = null)
     {

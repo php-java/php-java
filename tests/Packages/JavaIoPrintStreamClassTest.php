@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Tests\Packages\java\io;
 
-use PHPJava\Core\JavaArchive;
 use PHPJava\Tests\Base;
-use PHPUnit\Framework\TestCase;
 
 class JavaIoPrintStreamClassTest extends Base
 {
@@ -46,7 +44,7 @@ class JavaIoPrintStreamClassTest extends Base
     public function testPrintlnWithFloatParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
-        $this->assertStringContainsString("0.123", $result);
+        $this->assertStringContainsString('0.123', $result);
     }
 
     public function testPrintlnWithDoubleParams()
@@ -67,39 +65,39 @@ class JavaIoPrintStreamClassTest extends Base
     public function testPrintWithStringParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
-        $this->assertEquals("Hello World", $result);
+        $this->assertEquals('Hello World', $result);
     }
 
     public function testPrintWithCharParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
-        $this->assertEquals("A", $result);
+        $this->assertEquals('A', $result);
     }
 
     public function testPrintWithCharArrayParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
-        $this->assertEquals("ABC", $result);
+        $this->assertEquals('ABC', $result);
     }
 
     public function testPrintWithFloatParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
-        $this->assertStringContainsString("0.123", $result);
+        $this->assertStringContainsString('0.123', $result);
     }
 
     public function testPrintWithDoubleParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
-        $this->assertEquals("0.123", $result);
+        $this->assertEquals('0.123', $result);
     }
 
     public function testPrintWithBooleanParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1] . '_true');
-        $this->assertEquals("true", $result);
+        $this->assertEquals('true', $result);
 
         $result = $this->call(explode('::', __METHOD__)[1] . '_false');
-        $this->assertEquals("false", $result);
+        $this->assertEquals('false', $result);
     }
 }

@@ -12,23 +12,21 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Reader extends _Object /* implements Closeable, AutoCloseable */
+class Reader extends _Object // implements Closeable, AutoCloseable
 {
     /**
      * The object used to synchronize operations on this stream.
      *
      * @var mixed $lock
      */
-    protected $lock = null;
-
+    protected $lock;
 
     /**
      * Closes the stream and releases any system resources associated with it.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -38,10 +36,9 @@ class Reader extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Marks the present position in the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#mark
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function mark($a = null)
     {
@@ -51,10 +48,9 @@ class Reader extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Tells whether this stream supports the mark() operation.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#markSupported
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function markSupported($a = null)
     {
@@ -64,10 +60,9 @@ class Reader extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Returns a new Reader that reads no characters.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#nullReader
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_nullReader($a = null)
     {
@@ -80,12 +75,11 @@ class Reader extends _Object /* implements Closeable, AutoCloseable */
      * Reads characters into a portion of an array.
      * Attempts to read characters into the specified character buffer.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#read
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function read($a = null, $b = null, $c = null)
     {
@@ -95,10 +89,9 @@ class Reader extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Tells whether this stream is ready to be read.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#ready
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ready($a = null)
     {
@@ -108,10 +101,9 @@ class Reader extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Resets the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#reset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reset($a = null)
     {
@@ -121,10 +113,9 @@ class Reader extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Skips characters.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#skip
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function skip($a = null)
     {
@@ -134,10 +125,9 @@ class Reader extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Reads all characters from this reader and writes the characters to the given writer in the order that they are read.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#transferTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function transferTo($a = null)
     {

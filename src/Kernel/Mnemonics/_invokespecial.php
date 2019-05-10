@@ -1,18 +1,13 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Core\JavaClass;
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Internal\InstanceDeferredLoader;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\MethodNameResolver;
-use PHPJava\Utilities\TypeResolver;
 
 final class _invokespecial implements OperationInterface
 {
@@ -70,7 +65,7 @@ final class _invokespecial implements OperationInterface
             $this->replaceReferredObject($objectref, $newObject);
         } catch (\Exception $e) {
             /**
-             * @var $codeAttribute CodeAttribute
+             * @var CodeAttribute $codeAttribute
              */
             $codeAttribute = AttributionResolver::resolve(
                 $this->getAttributes(),
@@ -81,7 +76,7 @@ final class _invokespecial implements OperationInterface
 
             foreach ($codeAttribute->getExceptionTables() as $exception) {
                 /**
-                 * @var $exception _ExceptionTable
+                 * @var _ExceptionTable $exception
                  */
                 $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
                 if ($catchClass === $expectedClass &&

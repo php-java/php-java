@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Formatter;
 
 final class _invokeinterface implements OperationInterface

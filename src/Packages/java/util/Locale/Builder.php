@@ -11,14 +11,12 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class Builder extends _Object
 {
-
     /**
      * Adds a unicode locale attribute, if not already present, otherwise has no effect.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addUnicodeLocaleAttribute
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function addUnicodeLocaleAttribute($a = null)
     {
@@ -28,10 +26,9 @@ class Builder extends _Object
     /**
      * Returns an instance of Locale created from the fields set on this builder.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#build
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function build($a = null)
     {
@@ -41,10 +38,9 @@ class Builder extends _Object
     /**
      * Resets the builder to its initial, empty state.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -54,10 +50,9 @@ class Builder extends _Object
     /**
      * Resets the extensions to their initial, empty state.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clearExtensions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clearExtensions($a = null)
     {
@@ -67,10 +62,9 @@ class Builder extends _Object
     /**
      * Removes a unicode locale attribute, if present, otherwise has no effect.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeUnicodeLocaleAttribute
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeUnicodeLocaleAttribute($a = null)
     {
@@ -80,11 +74,10 @@ class Builder extends _Object
     /**
      * Sets the extension for the given key.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setExtension
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setExtension($a = null, $b = null)
     {
@@ -94,10 +87,9 @@ class Builder extends _Object
     /**
      * Sets the language.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setLanguage
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setLanguage($a = null)
     {
@@ -107,10 +99,9 @@ class Builder extends _Object
     /**
      * Resets the Builder to match the provided IETF BCP 47 language tag.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setLanguageTag
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setLanguageTag($a = null)
     {
@@ -120,10 +111,9 @@ class Builder extends _Object
     /**
      * Resets the Builder to match the provided locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setLocale
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setLocale($a = null)
     {
@@ -133,10 +123,9 @@ class Builder extends _Object
     /**
      * Sets the region.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setRegion
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setRegion($a = null)
     {
@@ -146,10 +135,9 @@ class Builder extends _Object
     /**
      * Sets the script.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setScript
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setScript($a = null)
     {
@@ -159,11 +147,10 @@ class Builder extends _Object
     /**
      * Sets the Unicode locale keyword type for the given key.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setUnicodeLocaleKeyword
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setUnicodeLocaleKeyword($a = null, $b = null)
     {
@@ -173,10 +160,9 @@ class Builder extends _Object
     /**
      * Sets the variant.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setVariant
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setVariant($a = null)
     {

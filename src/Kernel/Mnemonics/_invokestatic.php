@@ -3,12 +3,10 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
 
@@ -74,7 +72,7 @@ final class _invokestatic implements OperationInterface
                     $return = forward_static_call_array(
                         [
                             $classObject,
-                            "{$prefix}{$methodName}"
+                            "{$prefix}{$methodName}",
                         ],
                         $arguments
                     );
@@ -84,7 +82,7 @@ final class _invokestatic implements OperationInterface
             // Handling exceptions.
 
             /**
-             * @var $codeAttribute CodeAttribute
+             * @var CodeAttribute $codeAttribute
              */
             $codeAttribute = AttributionResolver::resolve(
                 $this->getAttributes(),
@@ -95,7 +93,7 @@ final class _invokestatic implements OperationInterface
 
             foreach ($codeAttribute->getExceptionTables() as $exception) {
                 /**
-                 * @var $exception _ExceptionTable
+                 * @var _ExceptionTable $exception
                  */
                 $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
                 if ($catchClass === $expectedClass &&

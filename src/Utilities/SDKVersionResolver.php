@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Utilities;
 
-use PHPJava\Exceptions\TypeException;
 use PHPJava\Exceptions\UnknownVersionException;
 
 class SDKVersionResolver

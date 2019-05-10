@@ -2,9 +2,7 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\FlexibleMethod;
-use PHPJava\Packages\java\lang\_Object;
 
 class SuperClassResolver
 {

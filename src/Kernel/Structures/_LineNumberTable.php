@@ -1,17 +1,14 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 class _LineNumberTable implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
-    private $startPc = null;
-    private $lineNumber = null;
+    private $startPc;
+    private $lineNumber;
 
     public function execute(): void
     {

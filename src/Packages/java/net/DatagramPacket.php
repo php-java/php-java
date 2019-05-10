@@ -11,14 +11,12 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class DatagramPacket extends _Object
 {
-
     /**
      * Returns the IP address of the machine to which this datagram is being sent or from which the datagram was received.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAddress($a = null)
     {
@@ -28,10 +26,9 @@ class DatagramPacket extends _Object
     /**
      * Returns the data buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getData
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getData($a = null)
     {
@@ -41,10 +38,9 @@ class DatagramPacket extends _Object
     /**
      * Returns the length of the data to be sent or the length of the data received.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLength
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLength($a = null)
     {
@@ -54,10 +50,9 @@ class DatagramPacket extends _Object
     /**
      * Returns the offset of the data to be sent or the offset of the data received.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getOffset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOffset($a = null)
     {
@@ -67,10 +62,9 @@ class DatagramPacket extends _Object
     /**
      * Returns the port number on the remote host to which this datagram is being sent or from which the datagram was received.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPort($a = null)
     {
@@ -80,10 +74,9 @@ class DatagramPacket extends _Object
     /**
      * Gets the SocketAddress (usually IP address + port number) of the remote host that this packet is being sent to or is coming from.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getSocketAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSocketAddress($a = null)
     {
@@ -93,10 +86,9 @@ class DatagramPacket extends _Object
     /**
      * Sets the IP address of the machine to which this datagram is being sent.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setAddress($a = null)
     {
@@ -107,12 +99,11 @@ class DatagramPacket extends _Object
      * Set the data buffer for this packet.
      * Set the data buffer for this packet.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setData
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function setData($a = null, $b = null, $c = null)
     {
@@ -122,10 +113,9 @@ class DatagramPacket extends _Object
     /**
      * Set the length for this packet.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setLength
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setLength($a = null)
     {
@@ -135,10 +125,9 @@ class DatagramPacket extends _Object
     /**
      * Sets the port number on the remote host to which this datagram is being sent.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setPort($a = null)
     {
@@ -148,10 +137,9 @@ class DatagramPacket extends _Object
     /**
      * Sets the SocketAddress (usually IP address + port number) of the remote host to which this datagram is being sent.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setSocketAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setSocketAddress($a = null)
     {

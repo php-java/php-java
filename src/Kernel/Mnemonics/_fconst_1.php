@@ -2,7 +2,6 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
 
 final class _fconst_1 implements OperationInterface
 {

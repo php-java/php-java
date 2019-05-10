@@ -25,14 +25,12 @@ class ByteOrder extends _Object
      */
     public static $LITTLE_ENDIAN = null;
 
-
     /**
      * Retrieves the native byte order of the underlying platform.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#nativeOrder
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_nativeOrder($a = null)
     {
@@ -42,10 +40,9 @@ class ByteOrder extends _Object
     /**
      * Constructs a string describing this object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

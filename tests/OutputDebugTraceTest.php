@@ -2,7 +2,6 @@
 namespace PHPJava\Tests;
 
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
-use PHPUnit\Framework\TestCase;
 
 class OutputDebugTraceTest extends Base
 {
@@ -26,7 +25,7 @@ class OutputDebugTraceTest extends Base
             ->getMethods()
             ->call(
                 'main',
-                ["Hello", " ", "World"]
+                ['Hello', ' ', 'World']
             );
         ob_end_clean();
 

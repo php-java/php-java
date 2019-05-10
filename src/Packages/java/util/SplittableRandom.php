@@ -11,21 +11,19 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class SplittableRandom extends _Object /* implements DoubleStream */
+class SplittableRandom extends _Object // implements DoubleStream
 {
-
     /**
      * Returns an effectively unlimited stream of pseudorandom  double values from this generator and/or one split from it; each value is between zero (inclusive) and one (exclusive).
      * Returns an effectively unlimited stream of pseudorandom  double values from this generator and/or one split from it; each value conforms to the given origin (inclusive) and bound (exclusive).
      * Returns a stream producing the given streamSize number of pseudorandom double values from this generator and/or one split from it; each value is between zero (inclusive) and one (exclusive).
      * Returns a stream producing the given streamSize number of pseudorandom double values from this generator and/or one split from it; each value conforms to the given origin (inclusive) and bound (exclusive).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#doubles
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function doubles($a = null, $b = null, $c = null)
     {
@@ -38,12 +36,11 @@ class SplittableRandom extends _Object /* implements DoubleStream */
      * Returns a stream producing the given streamSize number of pseudorandom int values from this generator and/or one split from it.
      * Returns a stream producing the given streamSize number of pseudorandom int values from this generator and/or one split from it; each value conforms to the given origin (inclusive) and bound (exclusive).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ints
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function ints($a = null, $b = null, $c = null)
     {
@@ -56,12 +53,11 @@ class SplittableRandom extends _Object /* implements DoubleStream */
      * Returns an effectively unlimited stream of pseudorandom  long values from this generator and/or one split from it; each value conforms to the given origin (inclusive) and bound (exclusive).
      * Returns a stream producing the given streamSize number of pseudorandom long values from this generator and/or one split from it; each value conforms to the given origin (inclusive) and bound (exclusive).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#longs
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function longs($a = null, $b = null, $c = null)
     {
@@ -71,10 +67,9 @@ class SplittableRandom extends _Object /* implements DoubleStream */
     /**
      * Returns a pseudorandom boolean value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#nextBoolean
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function nextBoolean($a = null)
     {
@@ -84,10 +79,9 @@ class SplittableRandom extends _Object /* implements DoubleStream */
     /**
      * Fills a user-supplied byte array with generated pseudorandom bytes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#nextBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function nextBytes($a = null)
     {
@@ -99,11 +93,10 @@ class SplittableRandom extends _Object /* implements DoubleStream */
      * Returns a pseudorandom double value between 0.0 (inclusive) and the specified bound (exclusive).
      * Returns a pseudorandom double value between the specified origin (inclusive) and bound (exclusive).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#nextDouble
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function nextDouble($a = null, $b = null)
     {
@@ -115,11 +108,10 @@ class SplittableRandom extends _Object /* implements DoubleStream */
      * Returns a pseudorandom int value between zero (inclusive) and the specified bound (exclusive).
      * Returns a pseudorandom int value between the specified origin (inclusive) and the specified bound (exclusive).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#nextInt
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function nextInt($a = null, $b = null)
     {
@@ -131,11 +123,10 @@ class SplittableRandom extends _Object /* implements DoubleStream */
      * Returns a pseudorandom long value between zero (inclusive) and the specified bound (exclusive).
      * Returns a pseudorandom long value between the specified origin (inclusive) and the specified bound (exclusive).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#nextLong
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function nextLong($a = null, $b = null)
     {
@@ -145,10 +136,9 @@ class SplittableRandom extends _Object /* implements DoubleStream */
     /**
      * Constructs and returns a new SplittableRandom instance that shares no mutable state with this instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#split
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function split($a = null)
     {

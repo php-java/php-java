@@ -11,18 +11,16 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class ProxySelector extends _Object /* implements _List */
+class ProxySelector extends _Object // implements _List
 {
-
     /**
      * Called to indicate that a connection could not be established to a proxy/socks server.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#connectFailed
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function connectFailed($a = null, $b = null, $c = null)
     {
@@ -32,10 +30,9 @@ class ProxySelector extends _Object /* implements _List */
     /**
      * Gets the system-wide proxy selector.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDefault
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDefault($a = null)
     {
@@ -45,10 +42,9 @@ class ProxySelector extends _Object /* implements _List */
     /**
      * Returns a ProxySelector which uses the given proxy address for all HTTP and HTTPS requests.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#of
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_of($a = null)
     {
@@ -58,10 +54,9 @@ class ProxySelector extends _Object /* implements _List */
     /**
      * Selects all the applicable proxies based on the protocol to access the resource with and a destination address to access the resource at.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#select
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function select($a = null)
     {
@@ -71,10 +66,9 @@ class ProxySelector extends _Object /* implements _List */
     /**
      * Sets (or unsets) the system-wide proxy selector.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDefault
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setDefault($a = null)
     {

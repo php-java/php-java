@@ -1,11 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Structures\Annotations;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\RuntimeException;
-use PHPJava\Kernel\Attributes\AttributeInfo;
-use PHPJava\Kernel\Attributes\RuntimeVisibleAnnotationsAttribute;
-use PHPJava\Utilities\BinaryTool;
 
 final class ElementValue implements AnnotationInterface
 {

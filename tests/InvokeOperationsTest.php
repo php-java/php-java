@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class InvokeOperationsTest extends Base
 {
     protected $fixtures = [

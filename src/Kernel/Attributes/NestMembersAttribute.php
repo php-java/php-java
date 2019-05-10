@@ -1,10 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Kernel\Structures\_LocalVariableTable;
-use PHPJava\Utilities\BinaryTool;
-
 final class NestMembersAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;

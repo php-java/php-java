@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
 class _Float implements StructureInterface
@@ -10,11 +9,13 @@ class _Float implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
-    private $bytes = null;
+    private $bytes;
+
     public function execute(): void
     {
         $this->bytes = $this->readUnsignedInt();
     }
+
     public function getBytes()
     {
         return BinaryTool::convertFloatToIEEE754($this->bytes);

@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\Number;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Comparable;
@@ -13,7 +12,7 @@ use PHPJava\Packages\java\lang\Number;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Number
  */
-class _Float extends Number /* implements Serializable, Comparable */
+class _Float extends Number // implements Serializable, Comparable
 {
     /**
      * The number of bytes used to represent a float value.
@@ -92,14 +91,12 @@ class _Float extends Number /* implements Serializable, Comparable */
      */
     public static $TYPE = null;
 
-
     /**
      * Returns the value of this Float as a byte after a narrowing primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#byteValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function byteValue($a = null)
     {
@@ -109,11 +106,10 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Compares the two specified float values.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compare
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_compare($a = null, $b = null)
     {
@@ -123,10 +119,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Compares two Float objects numerically.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -136,10 +131,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Float as a double after a widening primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#doubleValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function doubleValue($a = null)
     {
@@ -149,10 +143,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Compares this object against the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -162,10 +155,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns a representation of the specified floating-point value according to the IEEE 754 floating-point "single format" bit layout.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#floatToIntBits
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_floatToIntBits($a = null)
     {
@@ -175,10 +167,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns a representation of the specified floating-point value according to the IEEE 754 floating-point "single format" bit layout, preserving Not-a-Number (NaN) values.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#floatToRawIntBits
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_floatToRawIntBits($a = null)
     {
@@ -188,10 +179,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns the float value of this Float object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#floatValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function floatValue($a = null)
     {
@@ -202,10 +192,9 @@ class _Float extends Number /* implements Serializable, Comparable */
      * Returns a hash code for this Float object.
      * Returns a hash code for a float value; compatible with Float.hashCode().
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_hashCode($a = null)
     {
@@ -215,10 +204,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns the float value corresponding to a given bit representation.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#intBitsToFloat
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_intBitsToFloat($a = null)
     {
@@ -228,10 +216,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Float as an int after a narrowing primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#intValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function intValue($a = null)
     {
@@ -241,10 +228,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns true if the argument is a finite floating-point value; returns false otherwise (for NaN and infinity arguments).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isFinite
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isFinite($a = null)
     {
@@ -255,10 +241,9 @@ class _Float extends Number /* implements Serializable, Comparable */
      * Returns true if this Float value is infinitely large in magnitude, false otherwise.
      * Returns true if the specified number is infinitely large in magnitude, false otherwise.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isInfinite
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isInfinite($a = null)
     {
@@ -269,10 +254,9 @@ class _Float extends Number /* implements Serializable, Comparable */
      * Returns true if this Float value is a Not-a-Number (NaN), false otherwise.
      * Returns true if the specified number is a Not-a-Number (NaN) value, false otherwise.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isNaN
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isNaN($a = null)
     {
@@ -282,10 +266,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns value of this Float as a long after a narrowing primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#longValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function longValue($a = null)
     {
@@ -295,11 +278,10 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns the greater of two float values as if by calling Math.max.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#max
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_max($a = null, $b = null)
     {
@@ -309,11 +291,10 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns the smaller of two float values as if by calling Math.min.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#min
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_min($a = null, $b = null)
     {
@@ -323,10 +304,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns a new float initialized to the value represented by the specified String, as performed by the valueOf method of class Float.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#parseFloat
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_parseFloat($a = null)
     {
@@ -336,10 +316,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Float as a short after a narrowing primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#shortValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function shortValue($a = null)
     {
@@ -349,11 +328,10 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Adds two float values together as per the + operator.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#sum
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_sum($a = null, $b = null)
     {
@@ -363,10 +341,9 @@ class _Float extends Number /* implements Serializable, Comparable */
     /**
      * Returns a hexadecimal string representation of the float argument.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toHexString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toHexString($a = null)
     {
@@ -377,10 +354,9 @@ class _Float extends Number /* implements Serializable, Comparable */
      * Returns a string representation of this Float object.
      * Returns a string representation of the float argument.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toString($a = null)
     {
@@ -391,10 +367,9 @@ class _Float extends Number /* implements Serializable, Comparable */
      * Returns a Float instance representing the specified float value.
      * Returns a Float object holding the float value represented by the argument string s.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null)
     {

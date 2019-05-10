@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class LoopTest extends Base
 {
     protected $fixtures = [
@@ -17,7 +15,7 @@ class LoopTest extends Base
             ->getMethods()
             ->call('calculateByFor', 10);
         $this->assertEquals(
-            "45",
+            '45',
             (string) $calculatedValue
         );
 
@@ -27,7 +25,7 @@ class LoopTest extends Base
             ->getMethods()
             ->call('calculateByFor', 20);
         $this->assertEquals(
-            "190",
+            '190',
             (string) $calculatedValue
         );
     }
@@ -40,7 +38,7 @@ class LoopTest extends Base
             ->getMethods()
             ->call('calculateByWhile', 10);
         $this->assertEquals(
-            "45",
+            '45',
             (string) $calculatedValue
         );
 
@@ -50,7 +48,7 @@ class LoopTest extends Base
             ->getMethods()
             ->call('calculateByWhile', 20);
         $this->assertEquals(
-            "190",
+            '190',
             (string) $calculatedValue
         );
     }

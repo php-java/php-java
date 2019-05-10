@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\util\Enumeration;
 // use PHPJava\Packages\java\util\stream\Stream;
@@ -12,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class ClassLoader extends _Object /* implements Enumeration, Stream */
+class ClassLoader extends _Object // implements Enumeration, Stream
 {
-
     /**
      * Sets the default assertion status for this class loader to false and discards any package defaults or class assertion status settings associated with the class loader.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#clearAssertionStatus
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clearAssertionStatus($a = null)
     {
@@ -34,14 +31,13 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
      * Converts an array of bytes into an instance of class Class, with a given ProtectionDomain.
      * Converts a ByteBuffer into an instance of class Class, with the given ProtectionDomain.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#defineClass
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @throws NotImplementedException
      */
     public function defineClass($a = null, $b = null, $c = null, $d = null, $e = null)
     {
@@ -51,17 +47,16 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Defines a package by name in this ClassLoader.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @param mixed $g
-     * @param mixed $h
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#definePackage
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @param null|mixed $g
+     * @param null|mixed $h
+     * @throws NotImplementedException
      */
     public function definePackage($a = null, $b = null, $c = null, $d = null, $e = null, $f = null, $g = null, $h = null)
     {
@@ -72,11 +67,10 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
      * Finds the class with the specified binary name.
      * Finds the class with the given binary name in a module defined to this class loader.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#findClass
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function findClass($a = null, $b = null)
     {
@@ -86,10 +80,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the absolute path name of a native library.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#findLibrary
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function findLibrary($a = null)
     {
@@ -99,10 +92,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the class with the given binary name if this loader has been recorded by the Java virtual machine as an initiating loader of a class with that binary name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#findLoadedClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function findLoadedClass($a = null)
     {
@@ -113,11 +105,10 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
      * Finds the resource with the given name.
      * Returns a URL to a resource in a module defined to this class loader.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#findResource
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function findResource($a = null, $b = null)
     {
@@ -127,10 +118,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns an enumeration of URL objects representing all the resources with the given name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#findResources
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function findResources($a = null)
     {
@@ -140,10 +130,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Finds a class with the specified binary name, loading it if necessary.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#findSystemClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function findSystemClass($a = null)
     {
@@ -153,10 +142,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the lock object for class loading operations.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getClassLoadingLock
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getClassLoadingLock($a = null)
     {
@@ -166,10 +154,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns a Package of the given name that has been defined by this class loader.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDefinedPackage
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDefinedPackage($a = null)
     {
@@ -179,10 +166,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns all of the Packages that have been defined by this class loader.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDefinedPackages
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDefinedPackages($a = null)
     {
@@ -192,10 +178,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the name of this class loader or null if this class loader is not named.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getName($a = null)
     {
@@ -205,10 +190,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Deprecated.If multiple class loaders delegate to each other and define classes with the same package name, and one such loader relies on the lookup behavior of getPackage to return a Package from a parent loader, then the properties exposed by the Package may not be as expected in the rest of the program.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getPackage
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPackage($a = null)
     {
@@ -218,10 +202,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns all of the Packages that have been defined by this class loader and its ancestors.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getPackages
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPackages($a = null)
     {
@@ -231,10 +214,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the parent class loader for delegation.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getParent
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getParent($a = null)
     {
@@ -244,10 +226,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the platform class loader.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getPlatformClassLoader
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getPlatformClassLoader($a = null)
     {
@@ -257,10 +238,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Finds the resource with the given name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getResource
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getResource($a = null)
     {
@@ -270,10 +250,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns an input stream for reading the specified resource.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getResourceAsStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getResourceAsStream($a = null)
     {
@@ -283,10 +262,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Finds all the resources with the given name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getResources
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getResources($a = null)
     {
@@ -296,10 +274,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the system class loader.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getSystemClassLoader
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getSystemClassLoader($a = null)
     {
@@ -309,10 +286,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Find a resource of the specified name from the search path used to load classes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getSystemResource
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getSystemResource($a = null)
     {
@@ -322,10 +298,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Open for reading, a resource of the specified name from the search path used to load classes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getSystemResourceAsStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getSystemResourceAsStream($a = null)
     {
@@ -335,10 +310,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Finds all resources of the specified name from the search path used to load classes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getSystemResources
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getSystemResources($a = null)
     {
@@ -348,10 +322,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the unnamed Module for this class loader.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getUnnamedModule
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getUnnamedModule($a = null)
     {
@@ -361,10 +334,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns true if this class loader is registered as parallel capable, otherwise false.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isRegisteredAsParallelCapable
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isRegisteredAsParallelCapable($a = null)
     {
@@ -375,11 +347,10 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
      * Loads the class with the specified binary name.
      * Loads the class with the specified binary name.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#loadClass
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function loadClass($a = null, $b = null)
     {
@@ -389,10 +360,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Registers the caller as parallel capable.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#registerAsParallelCapable
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_registerAsParallelCapable($a = null)
     {
@@ -402,10 +372,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Links the specified class.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#resolveClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function resolveClass($a = null)
     {
@@ -415,10 +384,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Returns a stream whose elements are the URLs of all the resources with the given name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#resources
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function resources($a = null)
     {
@@ -428,11 +396,10 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Sets the desired assertion status for the named top-level class in this class loader and any nested classes contained therein.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setClassAssertionStatus
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setClassAssertionStatus($a = null, $b = null)
     {
@@ -442,10 +409,9 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Sets the default assertion status for this class loader.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setDefaultAssertionStatus
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setDefaultAssertionStatus($a = null)
     {
@@ -455,11 +421,10 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Sets the package default assertion status for the named package.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setPackageAssertionStatus
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setPackageAssertionStatus($a = null, $b = null)
     {
@@ -469,11 +434,10 @@ class ClassLoader extends _Object /* implements Enumeration, Stream */
     /**
      * Sets the signers of a class.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setSigners
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setSigners($a = null, $b = null)
     {

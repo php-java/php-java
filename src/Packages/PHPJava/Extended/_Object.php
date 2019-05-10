@@ -1,9 +1,9 @@
 <?php
 namespace PHPJava\Packages\PHPJava\Extended;
 
-use PHPJava\Packages\PHPJava\Kernel\Behavior\System;
-use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Packages\java\lang\CloneNotSupportedException;
+use PHPJava\Packages\java\lang\NoSuchMethodException;
+use PHPJava\Packages\PHPJava\Kernel\Behavior\System;
 
 trait _Object
 {
@@ -29,7 +29,6 @@ trait _Object
     /**
      * @param $name
      * @param $arguments
-     * @return mixed
      * @throws NoSuchMethodException
      */
     public function __call($name, $arguments)
@@ -55,9 +54,6 @@ trait _Object
         return $this === $a;
     }
 
-    /**
-     * @return self
-     */
     public function __default_getClass(): self
     {
         return $this;
@@ -68,17 +64,11 @@ trait _Object
         return System::identityHashCode($this);
     }
 
-    /**
-     *
-     */
     public function __default_notify(): void
     {
         // not implemented.
     }
 
-    /**
-     *
-     */
     public function __default_notifyAll(): void
     {
         // not implemented.
@@ -93,7 +83,6 @@ trait _Object
     }
 
     /**
-     * @return string
      * @throws NoSuchMethodException
      */
     public function __toString(): string
@@ -101,18 +90,11 @@ trait _Object
         return $this->toString();
     }
 
-    /**
-     * @param int|null $timeout
-     * @param int|null $nanos
-     */
     public function __default_wait(int $timeout = null, int $nanos = null): void
     {
         // not implemented.
     }
 
-    /**
-     *
-     */
     public function __default_finalize(): void
     {
     }

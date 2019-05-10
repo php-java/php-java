@@ -18,14 +18,12 @@ class Proxy extends _Object
      */
     public static $NO_PROXY = null;
 
-
     /**
      * Returns the socket address of the proxy, or null if its a direct connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#address
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function address($a = null)
     {
@@ -35,10 +33,9 @@ class Proxy extends _Object
     /**
      * Compares this object against the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -48,10 +45,9 @@ class Proxy extends _Object
     /**
      * Returns a hashcode for this Proxy.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -61,10 +57,9 @@ class Proxy extends _Object
     /**
      * Constructs a string representation of this Proxy.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -74,10 +69,9 @@ class Proxy extends _Object
     /**
      * Returns the proxy type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#type
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function type($a = null)
     {

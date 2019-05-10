@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\io;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\security\BasicPermission;
 
 // use PHPJava\Packages\java\io\Serializable;
@@ -14,6 +13,6 @@ use PHPJava\Packages\java\security\BasicPermission;
  * @parent \PHPJava\Packages\java\security\Permission
  * @parent \PHPJava\Packages\java\security\BasicPermission
  */
-class SerializablePermission extends BasicPermission /* implements Serializable, Guard */
+class SerializablePermission extends BasicPermission // implements Serializable, Guard
 {
 }

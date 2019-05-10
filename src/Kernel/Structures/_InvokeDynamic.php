@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 class _InvokeDynamic implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;

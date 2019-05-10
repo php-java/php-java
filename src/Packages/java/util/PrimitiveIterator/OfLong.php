@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\util\PrimitiveIterator;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `OfLong` interface was auto generated.
@@ -14,8 +13,8 @@ interface OfLong
      * Performs the given action for each remaining element until all elements have been processed or the action throws an exception.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#forEachRemaining
      * @NotImplemented
      */
@@ -25,8 +24,8 @@ interface OfLong
      * Returns the next element in the iteration.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#next
      * @NotImplemented
      */
@@ -36,8 +35,8 @@ interface OfLong
      * Returns the next long element in the iteration.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#nextLong
      * @NotImplemented
      */

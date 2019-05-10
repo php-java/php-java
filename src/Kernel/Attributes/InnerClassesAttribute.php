@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_Classes;
-use PHPJava\Utilities\BinaryTool;
 
 final class InnerClassesAttribute implements AttributeInterface
 {
@@ -26,6 +24,7 @@ final class InnerClassesAttribute implements AttributeInterface
             $this->classes[$i]->setInnerClassAccessFlag($this->readUnsignedShort());
         }
     }
+
     public function getClasses(): array
     {
         return $this->classes;

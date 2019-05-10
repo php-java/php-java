@@ -11,15 +11,13 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class MethodHandleProxies extends _Object
 {
-
     /**
      * Produces an instance of the given single-method interface which redirects its calls to the given method handle.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#asInterfaceInstance
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function asInterfaceInstance($a = null, $b = null)
     {
@@ -29,10 +27,9 @@ class MethodHandleProxies extends _Object
     /**
      * Determines if the given object was produced by a call to asInterfaceInstance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#isWrapperInstance
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function isWrapperInstance($a = null)
     {
@@ -42,10 +39,9 @@ class MethodHandleProxies extends _Object
     /**
      * Produces or recovers a target method handle which is behaviorally equivalent to the unique method of this wrapper instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#wrapperInstanceTarget
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function wrapperInstanceTarget($a = null)
     {
@@ -55,10 +51,9 @@ class MethodHandleProxies extends _Object
     /**
      * Recovers the unique single-method interface type for which this wrapper instance was created.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#wrapperInstanceType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function wrapperInstanceType($a = null)
     {

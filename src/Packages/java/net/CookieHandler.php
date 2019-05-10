@@ -11,18 +11,16 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class CookieHandler extends _Object /* implements _List */
+class CookieHandler extends _Object // implements _List
 {
-
     /**
      * Gets all the applicable cookies from a cookie cache for the specified uri in the request header.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#get
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function get($a = null, $b = null, $c = null)
     {
@@ -32,10 +30,9 @@ class CookieHandler extends _Object /* implements _List */
     /**
      * Gets the system-wide cookie handler.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDefault
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDefault($a = null)
     {
@@ -45,12 +42,11 @@ class CookieHandler extends _Object /* implements _List */
     /**
      * Sets all the applicable cookies, examples are response header fields that are named Set-Cookie2, present in the response headers into a cookie cache.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#put
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function put($a = null, $b = null, $c = null)
     {
@@ -60,10 +56,9 @@ class CookieHandler extends _Object /* implements _List */
     /**
      * Sets (or unsets) the system-wide cookie handler.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDefault
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setDefault($a = null)
     {

@@ -4,14 +4,10 @@ namespace PHPJava\Packages\java\lang\invoke;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Kernel\Attributes\NestMembersAttribute;
 use PHPJava\Kernel\Internal\Lambda;
-use PHPJava\Kernel\Structures\_Class;
 use PHPJava\Kernel\Structures\_MethodHandle;
 use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
-use PHPJava\Utilities\AttributionResolver;
-use PHPJava\Utilities\ClassResolver;
 
 /**
  * The `LambdaMetafactory` class was auto generated.
@@ -21,37 +17,35 @@ use PHPJava\Utilities\ClassResolver;
 class LambdaMetafactory extends _Object
 {
     /**
-     * Flag for alternate metafactories indicating the lambda object requires additional bridge methods
+     * Flag for alternate metafactories indicating the lambda object requires additional bridge methods.
      *
      * @var mixed $FLAG_BRIDGES
      */
     public static $FLAG_BRIDGES = null;
 
     /**
-     * Flag for alternate metafactories indicating the lambda object implements other marker interfaces besides Serializable
+     * Flag for alternate metafactories indicating the lambda object implements other marker interfaces besides Serializable.
      *
      * @var mixed $FLAG_MARKERS
      */
     public static $FLAG_MARKERS = null;
 
     /**
-     * Flag for alternate metafactories indicating the lambda object must be serializable
+     * Flag for alternate metafactories indicating the lambda object must be serializable.
      *
      * @var mixed $FLAG_SERIALIZABLE
      */
     public static $FLAG_SERIALIZABLE = null;
 
-
     /**
      * Facilitates the creation of simple "function objects" that implement one or more interfaces by delegation to a provided MethodHandle, after appropriate type adaptation and partial evaluation of arguments.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#altMetafactory
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function altMetafactory($a = null, $b = null, $c = null, $d = null)
     {
@@ -63,16 +57,14 @@ class LambdaMetafactory extends _Object
      *
      * @native JavaClass
      * @native ConstantPool
-     * @param JavaClass $javaClass
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#metafactory
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @throws NotImplementedException
      */
     public static function metafactory(
         JavaClass $javaClass,

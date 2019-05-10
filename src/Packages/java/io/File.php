@@ -13,7 +13,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class File extends _Object /* implements FileFilter, Comparable, Path */
+class File extends _Object // implements FileFilter, Comparable, Path
 {
     /**
      * The system-dependent path-separator character, represented as a string for convenience.
@@ -43,14 +43,12 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
      */
     public static $separatorChar = null;
 
-
     /**
      * Tests whether the application can execute the file denoted by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#canExecute
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function canExecute($a = null)
     {
@@ -60,10 +58,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Tests whether the application can read the file denoted by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#canRead
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function canRead($a = null)
     {
@@ -73,10 +70,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Tests whether the application can modify the file denoted by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#canWrite
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function canWrite($a = null)
     {
@@ -86,10 +82,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Compares two abstract pathnames lexicographically.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -99,10 +94,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Atomically creates a new, empty file named by this abstract pathname if and only if a file with this name does not yet exist.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#createNewFile
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function createNewFile($a = null)
     {
@@ -113,12 +107,11 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
      * Creates an empty file in the default temporary-file directory, using the given prefix and suffix to generate its name.
      *  Creates a new empty file in the specified directory, using the given prefix and suffix strings to generate its name.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#createTempFile
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_createTempFile($a = null, $b = null, $c = null)
     {
@@ -128,10 +121,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Deletes the file or directory denoted by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#delete
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function delete($a = null)
     {
@@ -141,10 +133,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Requests that the file or directory denoted by this abstract pathname be deleted when the virtual machine terminates.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#deleteOnExit
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function deleteOnExit($a = null)
     {
@@ -154,10 +145,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Tests this abstract pathname for equality with the given object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -167,10 +157,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Tests whether the file or directory denoted by this abstract pathname exists.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#exists
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function exists($a = null)
     {
@@ -180,10 +169,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the absolute form of this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getAbsoluteFile
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAbsoluteFile($a = null)
     {
@@ -193,10 +181,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the absolute pathname string of this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getAbsolutePath
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAbsolutePath($a = null)
     {
@@ -206,10 +193,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the canonical form of this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getCanonicalFile
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCanonicalFile($a = null)
     {
@@ -219,10 +205,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the canonical pathname string of this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getCanonicalPath
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCanonicalPath($a = null)
     {
@@ -232,10 +217,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the number of unallocated bytes in the partition named by this abstract path name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getFreeSpace
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFreeSpace($a = null)
     {
@@ -245,10 +229,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the name of the file or directory denoted by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getName($a = null)
     {
@@ -258,10 +241,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the pathname string of this abstract pathname's parent, or null if this pathname does not name a parent directory.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getParent
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getParent($a = null)
     {
@@ -271,10 +253,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the abstract pathname of this abstract pathname's parent, or null if this pathname does not name a parent directory.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getParentFile
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getParentFile($a = null)
     {
@@ -284,10 +265,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Converts this abstract pathname into a pathname string.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getPath
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPath($a = null)
     {
@@ -297,10 +277,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the size of the partition named by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getTotalSpace
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTotalSpace($a = null)
     {
@@ -310,10 +289,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the number of bytes available to this virtual machine on the partition named by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getUsableSpace
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getUsableSpace($a = null)
     {
@@ -323,10 +301,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Computes a hash code for this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -336,10 +313,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Tests whether this abstract pathname is absolute.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#isAbsolute
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isAbsolute($a = null)
     {
@@ -349,10 +325,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Tests whether the file denoted by this abstract pathname is a directory.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#isDirectory
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isDirectory($a = null)
     {
@@ -362,10 +337,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Tests whether the file denoted by this abstract pathname is a normal file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#isFile
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isFile($a = null)
     {
@@ -375,10 +349,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Tests whether the file named by this abstract pathname is a hidden file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#isHidden
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isHidden($a = null)
     {
@@ -388,10 +361,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the time that the file denoted by this abstract pathname was last modified.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#lastModified
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lastModified($a = null)
     {
@@ -401,10 +373,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the length of the file denoted by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#length
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function length($a = null)
     {
@@ -415,10 +386,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
      * Returns an array of strings naming the files and directories in the directory denoted by this abstract pathname.
      * Returns an array of strings naming the files and directories in the directory denoted by this abstract pathname that satisfy the specified filter.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#list
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function list($a = null)
     {
@@ -430,10 +400,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
      * Returns an array of abstract pathnames denoting the files and directories in the directory denoted by this abstract pathname that satisfy the specified filter.
      * Returns an array of abstract pathnames denoting the files and directories in the directory denoted by this abstract pathname that satisfy the specified filter.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#listFiles
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function listFiles($a = null)
     {
@@ -443,10 +412,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * List the available filesystem roots.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#listRoots
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_listRoots($a = null)
     {
@@ -456,10 +424,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Creates the directory named by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#mkdir
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function mkdir($a = null)
     {
@@ -469,10 +436,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Creates the directory named by this abstract pathname, including any necessary but nonexistent parent directories.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#mkdirs
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function mkdirs($a = null)
     {
@@ -482,10 +448,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Renames the file denoted by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#renameTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function renameTo($a = null)
     {
@@ -496,11 +461,10 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
      * A convenience method to set the owner's execute permission for this abstract pathname.
      * Sets the owner's or everybody's execute permission for this abstract pathname.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setExecutable
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setExecutable($a = null, $b = null)
     {
@@ -510,10 +474,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Sets the last-modified time of the file or directory named by this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setLastModified
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setLastModified($a = null)
     {
@@ -524,11 +487,10 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
      * A convenience method to set the owner's read permission for this abstract pathname.
      * Sets the owner's or everybody's read permission for this abstract pathname.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setReadable
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setReadable($a = null, $b = null)
     {
@@ -538,10 +500,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Marks the file or directory named by this abstract pathname so that only read operations are allowed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setReadOnly
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setReadOnly($a = null)
     {
@@ -552,11 +513,10 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
      * A convenience method to set the owner's write permission for this abstract pathname.
      * Sets the owner's or everybody's write permission for this abstract pathname.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setWritable
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setWritable($a = null, $b = null)
     {
@@ -566,10 +526,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns a java.nio.file.Path object constructed from this abstract path.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toPath
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toPath($a = null)
     {
@@ -579,10 +538,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Returns the pathname string of this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -592,10 +550,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Constructs a file: URI that represents this abstract pathname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toURI
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toURI($a = null)
     {
@@ -605,10 +562,9 @@ class File extends _Object /* implements FileFilter, Comparable, Path */
     /**
      * Deprecated.This method does not automatically escape characters that are illegal in URLs.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toURL
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toURL($a = null)
     {

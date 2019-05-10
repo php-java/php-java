@@ -1,18 +1,15 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 class _MethodInfo implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
-    private $accessFlag = null;
-    private $nameIndex = null;
-    private $descriptorIndex = null;
+    private $accessFlag;
+    private $nameIndex;
+    private $descriptorIndex;
     private $attributeCount = 0;
     private $attributes = [];
 
@@ -31,18 +28,22 @@ class _MethodInfo implements StructureInterface
             $this->attributes[] = $attribute;
         }
     }
+
     public function getAccessFlag()
     {
         return $this->accessFlag;
     }
+
     public function getNameIndex()
     {
         return $this->nameIndex;
     }
+
     public function getDescriptorIndex()
     {
         return $this->descriptorIndex;
     }
+
     public function getAttributes()
     {
         return $this->attributes;

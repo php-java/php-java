@@ -11,23 +11,21 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class EventObject extends _Object /* implements Serializable */
+class EventObject extends _Object // implements Serializable
 {
     /**
      * The object on which the Event initially occurred.
      *
      * @var mixed $source
      */
-    protected $source = null;
-
+    protected $source;
 
     /**
      * The object on which the Event initially occurred.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getSource
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSource($a = null)
     {
@@ -37,10 +35,9 @@ class EventObject extends _Object /* implements Serializable */
     /**
      * Returns a String representation of this EventObject.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

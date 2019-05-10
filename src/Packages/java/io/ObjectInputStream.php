@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\InputStream;
 
 // use PHPJava\Packages\java\io\ObjectInputFilter;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -13,16 +12,14 @@ use PHPJava\Packages\java\io\InputStream;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\InputStream
  */
-class ObjectInputStream extends InputStream /* implements ObjectInputFilter, AutoCloseable */
+class ObjectInputStream extends InputStream // implements ObjectInputFilter, AutoCloseable
 {
-
     /**
      * Returns the number of bytes that can be read without blocking.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#available
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function available($a = null)
     {
@@ -32,10 +29,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Closes the input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -45,10 +41,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Read the non-static and non-transient fields of the current class from this stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#defaultReadObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function defaultReadObject($a = null)
     {
@@ -58,10 +53,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Enables the stream to do replacement of objects read from the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#enableResolveObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function enableResolveObject($a = null)
     {
@@ -71,10 +65,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Returns the serialization filter for this stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getObjectInputFilter
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getObjectInputFilter($a = null)
     {
@@ -85,12 +78,11 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
      * Reads a byte of data.
      * Reads into an array of bytes.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#read
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function read($a = null, $b = null, $c = null)
     {
@@ -100,10 +92,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads in a boolean.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readBoolean
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readBoolean($a = null)
     {
@@ -113,10 +104,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads an 8 bit byte.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readByte
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readByte($a = null)
     {
@@ -126,10 +116,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads a 16 bit char.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readChar
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readChar($a = null)
     {
@@ -139,10 +128,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Read a class descriptor from the serialization stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readClassDescriptor
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function readClassDescriptor($a = null)
     {
@@ -152,10 +140,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads a 64 bit double.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readDouble
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readDouble($a = null)
     {
@@ -165,10 +152,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads the persistent fields from the stream and makes them available by name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readFields
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readFields($a = null)
     {
@@ -178,10 +164,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads a 32 bit float.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readFloat
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readFloat($a = null)
     {
@@ -192,12 +177,11 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
      * Reads bytes, blocking until all bytes are read.
      * Reads bytes, blocking until all bytes are read.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readFully
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function readFully($a = null, $b = null, $c = null)
     {
@@ -207,10 +191,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads a 32 bit int.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readInt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readInt($a = null)
     {
@@ -220,10 +203,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Deprecated.This method does not properly convert bytes to characters.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readLine
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readLine($a = null)
     {
@@ -233,10 +215,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads a 64 bit long.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readLong
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readLong($a = null)
     {
@@ -246,10 +227,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Read an object from the ObjectInputStream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readObject($a = null)
     {
@@ -259,10 +239,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * This method is called by trusted subclasses of ObjectOutputStream that constructed ObjectOutputStream using the protected no-arg constructor.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readObjectOverride
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function readObjectOverride($a = null)
     {
@@ -272,10 +251,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads a 16 bit short.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readShort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readShort($a = null)
     {
@@ -285,10 +263,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * The readStreamHeader method is provided to allow subclasses to read and verify their own stream headers.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readStreamHeader
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function readStreamHeader($a = null)
     {
@@ -298,10 +275,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads an "unshared" object from the ObjectInputStream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUnshared
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readUnshared($a = null)
     {
@@ -311,10 +287,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads an unsigned 8 bit byte.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUnsignedByte
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readUnsignedByte($a = null)
     {
@@ -324,10 +299,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads an unsigned 16 bit short.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUnsignedShort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readUnsignedShort($a = null)
     {
@@ -337,10 +311,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Reads a String in modified UTF-8 format.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUTF
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readUTF($a = null)
     {
@@ -350,11 +323,10 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Register an object to be validated before the graph is returned.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#registerValidation
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function registerValidation($a = null, $b = null)
     {
@@ -364,10 +336,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Load the local class equivalent of the specified stream class description.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#resolveClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function resolveClass($a = null)
     {
@@ -377,10 +348,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * This method will allow trusted subclasses of ObjectInputStream to substitute one object for another during deserialization.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#resolveObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function resolveObject($a = null)
     {
@@ -390,10 +360,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Returns a proxy class that implements the interfaces named in a proxy class descriptor; subclasses may implement this method to read custom data from the stream along with the descriptors for dynamic proxy classes, allowing them to use an alternate loading mechanism for the interfaces and the proxy class.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#resolveProxyClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function resolveProxyClass($a = null)
     {
@@ -403,10 +372,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Set the serialization filter for the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setObjectInputFilter
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setObjectInputFilter($a = null)
     {
@@ -416,10 +384,9 @@ class ObjectInputStream extends InputStream /* implements ObjectInputFilter, Aut
     /**
      * Skips bytes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#skipBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function skipBytes($a = null)
     {

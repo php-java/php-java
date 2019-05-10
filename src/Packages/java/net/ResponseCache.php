@@ -11,19 +11,17 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class ResponseCache extends _Object /* implements _List */
+class ResponseCache extends _Object // implements _List
 {
-
     /**
      * Retrieve the cached response based on the requesting uri, request method and request headers.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#get
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public function get($a = null, $b = null, $c = null, $d = null)
     {
@@ -33,10 +31,9 @@ class ResponseCache extends _Object /* implements _List */
     /**
      * Gets the system-wide response cache.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDefault
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDefault($a = null)
     {
@@ -46,11 +43,10 @@ class ResponseCache extends _Object /* implements _List */
     /**
      * The protocol handler calls this method after a resource has been retrieved, and the ResponseCache must decide whether or not to store the resource in its cache.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#put
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function put($a = null, $b = null)
     {
@@ -60,10 +56,9 @@ class ResponseCache extends _Object /* implements _List */
     /**
      * Sets (or unsets) the system-wide cache.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDefault
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setDefault($a = null)
     {

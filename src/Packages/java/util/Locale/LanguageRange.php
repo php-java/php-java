@@ -11,7 +11,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class LanguageRange extends _Object /* implements _List */
+class LanguageRange extends _Object // implements _List
 {
     /**
      * A constant holding the maximum value of weight, 1.0, which indicates that the language range is a good fit for the user.
@@ -27,14 +27,12 @@ class LanguageRange extends _Object /* implements _List */
      */
     public static $MIN_WEIGHT = null;
 
-
     /**
      * Compares this object to the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -44,10 +42,9 @@ class LanguageRange extends _Object /* implements _List */
     /**
      * Returns the language range of this LanguageRange.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getRange
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getRange($a = null)
     {
@@ -57,10 +54,9 @@ class LanguageRange extends _Object /* implements _List */
     /**
      * Returns the weight of this LanguageRange.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getWeight
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getWeight($a = null)
     {
@@ -70,10 +66,9 @@ class LanguageRange extends _Object /* implements _List */
     /**
      * Returns a hash code value for the object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -83,12 +78,11 @@ class LanguageRange extends _Object /* implements _List */
     /**
      * Generates a new customized Language Priority List using the given priorityList and map.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#mapEquivalents
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_mapEquivalents($a = null, $b = null, $c = null)
     {
@@ -99,12 +93,11 @@ class LanguageRange extends _Object /* implements _List */
      * Parses the given ranges to generate a Language Priority List.
      * Parses the given ranges to generate a Language Priority List, and then customizes the list using the given map.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#parse
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_parse($a = null, $b = null, $c = null)
     {
@@ -114,10 +107,9 @@ class LanguageRange extends _Object /* implements _List */
     /**
      * Returns an informative string representation of this LanguageRange object, consisting of language range and weight if the range is weighted and the weight is less than the max weight.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

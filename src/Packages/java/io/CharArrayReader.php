@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\Reader;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -13,44 +12,42 @@ use PHPJava\Packages\java\io\Reader;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\Reader
  */
-class CharArrayReader extends Reader /* implements Closeable, AutoCloseable */
+class CharArrayReader extends Reader // implements Closeable, AutoCloseable
 {
     /**
      * The character buffer.
      *
      * @var mixed $buf
      */
-    protected $buf = null;
+    protected $buf;
 
     /**
      * The index of the end of this buffer.
      *
      * @var mixed $count
      */
-    protected $count = null;
+    protected $count;
 
     /**
      * The position of mark in buffer.
      *
      * @var mixed $markedPos
      */
-    protected $markedPos = null;
+    protected $markedPos;
 
     /**
      * The current buffer position.
      *
      * @var mixed $pos
      */
-    protected $pos = null;
-
+    protected $pos;
 
     /**
      * Closes the stream and releases any system resources associated with it.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -60,10 +57,9 @@ class CharArrayReader extends Reader /* implements Closeable, AutoCloseable */
     /**
      * Marks the present position in the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#mark
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function mark($a = null)
     {
@@ -73,10 +69,9 @@ class CharArrayReader extends Reader /* implements Closeable, AutoCloseable */
     /**
      * Tells whether this stream supports the mark() operation, which it does.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#markSupported
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function markSupported($a = null)
     {
@@ -87,12 +82,11 @@ class CharArrayReader extends Reader /* implements Closeable, AutoCloseable */
      * Reads a single character.
      * Reads characters into a portion of an array.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#read
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function read($a = null, $b = null, $c = null)
     {
@@ -102,10 +96,9 @@ class CharArrayReader extends Reader /* implements Closeable, AutoCloseable */
     /**
      * Tells whether this stream is ready to be read.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#ready
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ready($a = null)
     {
@@ -115,10 +108,9 @@ class CharArrayReader extends Reader /* implements Closeable, AutoCloseable */
     /**
      * Resets the stream to the most recent mark, or to the beginning if it has never been marked.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#reset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reset($a = null)
     {
@@ -128,10 +120,9 @@ class CharArrayReader extends Reader /* implements Closeable, AutoCloseable */
     /**
      * Skips characters.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#skip
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function skip($a = null)
     {

@@ -14,8 +14,6 @@ trait DependencyInjector
     }
 
     /**
-     * @param string $phpDocument
-     * @return array
      * @throws NotSupportedInjectionTypesException
      */
     private function getNativeAnnotateInjections(string $phpDocument): array
@@ -37,10 +35,6 @@ trait DependencyInjector
         return [];
     }
 
-    /**
-     * @param string $phpDocument
-     * @return array
-     */
     private function getProviderAnnotateInjections(string $phpDocument): array
     {
         $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()

@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\util;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\Error;
 
 // use PHPJava\Packages\java\io\Serializable;
@@ -13,6 +12,6 @@ use PHPJava\Packages\java\lang\Error;
  * @parent \PHPJava\Packages\java\lang\Throwable
  * @parent \PHPJava\Packages\java\lang\Error
  */
-class ServiceConfigurationError extends Error /* implements Serializable */
+class ServiceConfigurationError extends Error // implements Serializable
 {
 }

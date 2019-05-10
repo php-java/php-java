@@ -2,17 +2,12 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassInvoker;
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
-use PHPJava\Utilities\BinaryTool;
-use PHPJava\Utilities\ClassResolver;
-use PHPJava\Utilities\Normalizer;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\TypeResolver;
+use PHPJava\Utilities\Normalizer;
 
 final class _invokevirtual implements OperationInterface
 {
@@ -79,7 +74,7 @@ final class _invokevirtual implements OperationInterface
             }
         } catch (\Exception $e) {
             /**
-             * @var $codeAttribute CodeAttribute
+             * @var CodeAttribute $codeAttribute
              */
             $codeAttribute = AttributionResolver::resolve(
                 $this->getAttributes(),
@@ -90,7 +85,7 @@ final class _invokevirtual implements OperationInterface
 
             foreach ($codeAttribute->getExceptionTables() as $exception) {
                 /**
-                 * @var $exception _ExceptionTable
+                 * @var _ExceptionTable $exception
                  */
                 $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
                 if ($catchClass === $expectedClass &&

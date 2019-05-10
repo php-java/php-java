@@ -2,10 +2,8 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
-use PHPJava\Utilities\BinaryTool;
 
 final class _if_acmpeq implements OperationInterface
 {
@@ -17,8 +15,8 @@ final class _if_acmpeq implements OperationInterface
         $offset = $this->readShort();
 
         /**
-         * @var $rightOperand _String|_Utf8|JavaClass
-         * @var $leftOperand _String|_Utf8|JavaClass
+         * @var _String|_Utf8|JavaClass $rightOperand
+         * @var _String|_Utf8|JavaClass $leftOperand
          */
         $rightOperand = $this->popFromOperandStack();
         $leftOperand = $this->popFromOperandStack();

@@ -7,12 +7,10 @@ use PHPJava\Kernel\Types\Type;
 
 class Normalizer
 {
-
     /**
      * @param array|Collection $values
-     * @param array $normalizeTypes
-     * @return array|Collection
      * @throws NormalizerException
+     * @return array|Collection
      */
     public static function normalizeValues($values, array $normalizeTypes)
     {
@@ -26,7 +24,7 @@ class Normalizer
                 throw new NormalizerException('Broken arguments parser.');
             }
             /**
-             * @var Type|Collection $value
+             * @var Collection|Type $value
              */
             if ($value instanceof Collection) {
                 $value = static::normalizeValues(

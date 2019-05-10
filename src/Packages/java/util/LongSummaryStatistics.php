@@ -12,17 +12,15 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class LongSummaryStatistics extends _Object /* implements LongConsumer, stream */
+class LongSummaryStatistics extends _Object // implements LongConsumer, stream
 {
-
     /**
      * Records a new int value into the summary information.
      * Records a new long value into the summary information.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#accept
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function accept($a = null)
     {
@@ -32,10 +30,9 @@ class LongSummaryStatistics extends _Object /* implements LongConsumer, stream *
     /**
      * Combines the state of another LongSummaryStatistics into this one.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#combine
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function combine($a = null)
     {
@@ -45,10 +42,9 @@ class LongSummaryStatistics extends _Object /* implements LongConsumer, stream *
     /**
      * Returns the arithmetic mean of values recorded, or zero if no values have been recorded.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getAverage
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAverage($a = null)
     {
@@ -58,10 +54,9 @@ class LongSummaryStatistics extends _Object /* implements LongConsumer, stream *
     /**
      * Returns the count of values recorded.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getCount
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCount($a = null)
     {
@@ -69,12 +64,11 @@ class LongSummaryStatistics extends _Object /* implements LongConsumer, stream *
     }
 
     /**
-     * Returns the maximum value recorded, or Long.MIN_VALUE if no values have been recorded
+     * Returns the maximum value recorded, or Long.MIN_VALUE if no values have been recorded.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getMax
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMax($a = null)
     {
@@ -84,10 +78,9 @@ class LongSummaryStatistics extends _Object /* implements LongConsumer, stream *
     /**
      * Returns the minimum value recorded, or Long.MAX_VALUE if no values have been recorded.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getMin
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMin($a = null)
     {
@@ -97,10 +90,9 @@ class LongSummaryStatistics extends _Object /* implements LongConsumer, stream *
     /**
      * Returns the sum of values recorded, or zero if no values have been recorded.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getSum
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSum($a = null)
     {
@@ -110,10 +102,9 @@ class LongSummaryStatistics extends _Object /* implements LongConsumer, stream *
     /**
      * Returns a non-empty string representation of this object suitable for debugging.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

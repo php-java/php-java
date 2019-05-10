@@ -12,16 +12,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class HttpCookie extends _Object /* implements Cloneable, _List */
+class HttpCookie extends _Object // implements Cloneable, _List
 {
-
     /**
      * Create and return a copy of this object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -31,11 +29,10 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * The utility method to check whether a host name is in a domain or not.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#domainMatches
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_domainMatches($a = null, $b = null)
     {
@@ -45,10 +42,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Test the equality of two HTTP cookies.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -58,10 +54,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns the comment describing the purpose of this cookie, or null if the cookie has no comment.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getComment
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getComment($a = null)
     {
@@ -71,10 +66,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns the comment URL describing the purpose of this cookie, or null if the cookie has no comment URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getCommentURL
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCommentURL($a = null)
     {
@@ -82,12 +76,11 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     }
 
     /**
-     * Returns the discard attribute of the cookie
+     * Returns the discard attribute of the cookie.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDiscard
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDiscard($a = null)
     {
@@ -97,10 +90,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns the domain name set for this cookie.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDomain
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDomain($a = null)
     {
@@ -110,10 +102,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns the maximum age of the cookie, specified in seconds.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getMaxAge
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMaxAge($a = null)
     {
@@ -123,10 +114,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns the name of the cookie.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getName($a = null)
     {
@@ -136,10 +126,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns the path on the server to which the browser returns this cookie.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPath
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPath($a = null)
     {
@@ -147,12 +136,11 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     }
 
     /**
-     * Returns the port list attribute of the cookie
+     * Returns the port list attribute of the cookie.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPortlist
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPortlist($a = null)
     {
@@ -162,10 +150,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns true if sending this cookie should be restricted to a secure protocol, or false if the it can be sent using any protocol.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getSecure
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSecure($a = null)
     {
@@ -175,10 +162,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns the value of the cookie.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getValue($a = null)
     {
@@ -188,10 +174,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns the version of the protocol this cookie complies with.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getVersion
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getVersion($a = null)
     {
@@ -201,10 +186,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Reports whether this HTTP cookie has expired or not.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#hasExpired
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasExpired($a = null)
     {
@@ -214,10 +198,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns the hash code of this HTTP cookie.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -227,10 +210,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Returns true if this cookie contains the HttpOnly attribute.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isHttpOnly
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isHttpOnly($a = null)
     {
@@ -240,10 +222,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Constructs cookies from set-cookie or set-cookie2 header string.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#parse
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_parse($a = null)
     {
@@ -253,10 +234,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Specifies a comment that describes a cookie's purpose.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setComment
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setComment($a = null)
     {
@@ -266,10 +246,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Specifies a comment URL that describes a cookie's purpose.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setCommentURL
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setCommentURL($a = null)
     {
@@ -279,10 +258,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Specify whether user agent should discard the cookie unconditionally.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDiscard
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setDiscard($a = null)
     {
@@ -292,10 +270,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Specifies the domain within which this cookie should be presented.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDomain
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setDomain($a = null)
     {
@@ -305,10 +282,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Indicates whether the cookie should be considered HTTP Only.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setHttpOnly
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setHttpOnly($a = null)
     {
@@ -318,10 +294,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Sets the maximum age of the cookie in seconds.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setMaxAge
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setMaxAge($a = null)
     {
@@ -331,10 +306,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Specifies a path for the cookie to which the client should return the cookie.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setPath
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setPath($a = null)
     {
@@ -344,10 +318,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Specify the portlist of the cookie, which restricts the port(s) to which a cookie may be sent back in a Cookie header.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setPortlist
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setPortlist($a = null)
     {
@@ -357,10 +330,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Indicates whether the cookie should only be sent using a secure protocol, such as HTTPS or SSL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setSecure
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setSecure($a = null)
     {
@@ -370,10 +342,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Assigns a new value to a cookie after the cookie is created.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setValue($a = null)
     {
@@ -383,10 +354,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Sets the version of the cookie protocol this cookie complies with.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setVersion
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setVersion($a = null)
     {
@@ -396,10 +366,9 @@ class HttpCookie extends _Object /* implements Cloneable, _List */
     /**
      * Constructs a cookie header string representation of this cookie, which is in the format defined by corresponding cookie specification, but without the leading "Cookie:" token.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Types\_Float;
-use PHPJava\Utilities\BinaryTool;
 
 final class _fload_1 implements OperationInterface
 {

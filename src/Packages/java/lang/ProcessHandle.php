@@ -13,8 +13,8 @@ interface ProcessHandle
      * Returns a snapshot of all processes visible to the current process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#allProcesses
      * @NotImplemented
      */
@@ -24,8 +24,8 @@ interface ProcessHandle
      * Returns a snapshot of the current direct children of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#children
      * @NotImplemented
      */
@@ -35,8 +35,8 @@ interface ProcessHandle
      * Compares this ProcessHandle with the specified ProcessHandle for order.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
      * @NotImplemented
      */
@@ -46,8 +46,8 @@ interface ProcessHandle
      * Returns a ProcessHandle for the current process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#current
      * @NotImplemented
      */
@@ -57,8 +57,8 @@ interface ProcessHandle
      * Returns a snapshot of the descendants of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#descendants
      * @NotImplemented
      */
@@ -68,8 +68,8 @@ interface ProcessHandle
      * Requests the process to be killed.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#destroy
      * @NotImplemented
      */
@@ -79,8 +79,8 @@ interface ProcessHandle
      * Requests the process to be killed forcibly.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#destroyForcibly
      * @NotImplemented
      */
@@ -90,8 +90,8 @@ interface ProcessHandle
      * Returns true if other object is non-null, is of the same implementation, and represents the same system process; otherwise it returns false.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equals
      * @NotImplemented
      */
@@ -101,8 +101,8 @@ interface ProcessHandle
      * Returns a hash code value for this ProcessHandle.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#hashCode
      * @NotImplemented
      */
@@ -112,8 +112,8 @@ interface ProcessHandle
      * Returns a snapshot of information about the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#info
      * @NotImplemented
      */
@@ -123,8 +123,8 @@ interface ProcessHandle
      * Tests whether the process represented by this ProcessHandle is alive.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isAlive
      * @NotImplemented
      */
@@ -134,8 +134,8 @@ interface ProcessHandle
      * Returns an Optional&lt;ProcessHandle&gt; for an existing native process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#of
      * @NotImplemented
      */
@@ -145,8 +145,8 @@ interface ProcessHandle
      * Returns a CompletableFuture&lt;ProcessHandle&gt; for the termination of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#onExit
      * @NotImplemented
      */
@@ -156,8 +156,8 @@ interface ProcessHandle
      * Returns an Optional&lt;ProcessHandle&gt; for the parent process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#parent
      * @NotImplemented
      */
@@ -167,8 +167,8 @@ interface ProcessHandle
      * Returns the native process ID of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#pid
      * @NotImplemented
      */
@@ -178,8 +178,8 @@ interface ProcessHandle
      * Returns true if the implementation of destroy() normally terminates the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#supportsNormalTermination
      * @NotImplemented
      */

@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;

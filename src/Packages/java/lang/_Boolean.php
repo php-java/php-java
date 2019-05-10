@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Comparable;
@@ -12,7 +11,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class _Boolean extends _Object /* implements Serializable, Comparable */
+class _Boolean extends _Object // implements Serializable, Comparable
 {
     /**
      * The Boolean object corresponding to the primitive value false.
@@ -35,14 +34,12 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
      */
     public static $TYPE = null;
 
-
     /**
      * Returns the value of this Boolean object as a boolean primitive.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#booleanValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function booleanValue($a = null)
     {
@@ -52,11 +49,10 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
     /**
      * Compares two boolean values.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compare
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_compare($a = null, $b = null)
     {
@@ -66,10 +62,9 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
     /**
      * Compares this Boolean instance with another.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -79,10 +74,9 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
     /**
      * Returns true if and only if the argument is not null and is a Boolean object that represents the same boolean value as this object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -92,10 +86,9 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
     /**
      * Returns true if and only if the system property named by the argument exists and is equal to, ignoring case, the string "true".
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getBoolean
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getBoolean($a = null)
     {
@@ -106,10 +99,9 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
      * Returns a hash code for this Boolean object.
      * Returns a hash code for a boolean value; compatible with Boolean.hashCode().
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_hashCode($a = null)
     {
@@ -119,11 +111,10 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the result of applying the logical AND operator to the specified boolean operands.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#logicalAnd
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_logicalAnd($a = null, $b = null)
     {
@@ -133,11 +124,10 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the result of applying the logical OR operator to the specified boolean operands.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#logicalOr
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_logicalOr($a = null, $b = null)
     {
@@ -147,11 +137,10 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the result of applying the logical XOR operator to the specified boolean operands.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#logicalXor
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_logicalXor($a = null, $b = null)
     {
@@ -161,10 +150,9 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
     /**
      * Parses the string argument as a boolean.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#parseBoolean
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_parseBoolean($a = null)
     {
@@ -175,10 +163,9 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
      * Returns a String object representing this Boolean's value.
      * Returns a String object representing the specified boolean.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toString($a = null)
     {
@@ -189,10 +176,9 @@ class _Boolean extends _Object /* implements Serializable, Comparable */
      * Returns a Boolean instance representing the specified boolean value.
      * Returns a Boolean with a value represented by the specified string.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null)
     {

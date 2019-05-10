@@ -32,14 +32,12 @@ class FileDescriptor extends _Object
      */
     public static $out = null;
 
-
     /**
      * Force all system buffers to synchronize with the underlying device.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#sync
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function sync($a = null)
     {
@@ -49,10 +47,9 @@ class FileDescriptor extends _Object
     /**
      * Tests if this file descriptor object is valid.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#valid
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function valid($a = null)
     {

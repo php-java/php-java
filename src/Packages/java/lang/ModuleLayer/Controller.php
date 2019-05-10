@@ -11,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class Controller extends _Object
 {
-
     /**
      * Updates module source in the layer to export a package to module target.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#addExports
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function addExports($a = null, $b = null, $c = null)
     {
@@ -30,12 +28,11 @@ class Controller extends _Object
     /**
      * Updates module source in the layer to open a package to module target.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#addOpens
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function addOpens($a = null, $b = null, $c = null)
     {
@@ -45,11 +42,10 @@ class Controller extends _Object
     /**
      * Updates module source in the layer to read module target.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#addReads
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function addReads($a = null, $b = null)
     {
@@ -59,10 +55,9 @@ class Controller extends _Object
     /**
      * Returns the layer that this object controls.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#layer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function layer($a = null)
     {

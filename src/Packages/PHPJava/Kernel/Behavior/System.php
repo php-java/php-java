@@ -5,7 +5,6 @@ final class System
 {
     /**
      * @param $object
-     * @return int
      */
     public static function identityHashCode($object): int
     {

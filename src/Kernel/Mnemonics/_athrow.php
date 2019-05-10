@@ -1,12 +1,10 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Formatter;
 
 final class _athrow implements OperationInterface
@@ -22,7 +20,7 @@ final class _athrow implements OperationInterface
         $className = str_replace('\\', '/', get_class($objectref));
 
         /**
-         * @var $codeAttribute CodeAttribute
+         * @var CodeAttribute $codeAttribute
          */
         $codeAttribute = AttributionResolver::resolve(
             $this->getAttributes(),
@@ -32,7 +30,7 @@ final class _athrow implements OperationInterface
         $className = Formatter::convertPHPNamespacesToJava($className);
         foreach ($codeAttribute->getExceptionTables() as $exception) {
             /**
-             * @var $exception _ExceptionTable
+             * @var _ExceptionTable $exception
              */
             $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
             if ($catchClass === $className &&
@@ -46,8 +44,8 @@ final class _athrow implements OperationInterface
 
         throw new UnableToCatchException(
             "Unable to catch {$className} exception. " .
-            "PHPJava has been stopped operations. " .
-            "You may be running broken Java class. "
+            'PHPJava has been stopped operations. ' .
+            'You may be running broken Java class. '
         );
     }
 }
