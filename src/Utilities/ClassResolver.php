@@ -6,7 +6,6 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\FileReader;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
-use PHPJava\Kernel\Structures\_Classes;
 use PHPJava\Packages\java\lang\ClassNotFoundException;
 
 class ClassResolver

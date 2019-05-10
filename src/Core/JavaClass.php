@@ -218,7 +218,7 @@ class JavaClass implements JavaClassInterface
             $this->options['class_resolver']->add([
                 [
                     ClassResolver::RESOURCE_TYPE_INNER_CLASS,
-                    $innerClass
+                    $innerClass,
                 ],
             ]);
         }
