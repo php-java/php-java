@@ -212,7 +212,7 @@ $dynamicFieldAccessor->set('fieldName', 'value');
 echo $dynamicFieldAccessor->get('fieldName');
 ```
 
-### Call a dynamic method
+### 動的メソッドの呼び出し
 
 - 動的メソッドを呼びたい場合動的フィールドのように、`construct` メソッド呼ぶ必要があります。
 
@@ -459,7 +459,7 @@ fun main(args: Array<String>) {
 $ kotlinc HelloWorld.kt -include-runtime -d HelloWorld.jar
 ```
 
-3) Jar として実行します。:
+3) Jar として実行します。
 
 ```php
 <?php
@@ -473,7 +473,7 @@ $jar->execute([]);
 
 ## ユニットテスト
 
-- PHPUnit でテストを動かします。:
+- PHPUnit でテストを動かします。
 ```
 $ ./vendor/bin/phpunit tests
 ```
