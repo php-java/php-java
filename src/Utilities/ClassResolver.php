@@ -6,6 +6,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\FileReader;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
+use PHPJava\Kernel\Structures\_Classes;
 use PHPJava\Packages\java\lang\ClassNotFoundException;
 
 class ClassResolver
@@ -16,6 +17,7 @@ class ClassResolver
     const RESOURCE_TYPE_FILE = 'RESOURCE_TYPE_FILE';
     const RESOURCE_TYPE_JAR = 'RESOURCE_TYPE_JAR';
     const RESOURCE_TYPE_CLASS = 'RESOURCE_TYPE_CLASS';
+    const RESOURCE_TYPE_INNER_CLASS = 'RESOURCE_TYPE_INNER_CLASS';
 
     // resolved types
     const RESOLVED_TYPE_CLASS = 'RESOLVED_TYPE_CLASS';
@@ -42,11 +44,17 @@ class ClassResolver
         $relativePath = implode('/', $namespaces);
         foreach ($this->resolves as [$resourceType, $value]) {
             switch ($resourceType) {
+                case static::RESOURCE_TYPE_INNER_CLASS:
+                    // TODO: Implement here
+                    break;
                 case static::RESOURCE_TYPE_FILE:
                     $path = realpath($value . '/' . $relativePath . '.class');
                     if (($key = array_search($path, $this->resolvedPaths, true)) !== false) {
                         return $this->resolvedPaths[$key];
                     }
+                    /**
+                     * @var JavaClass $initiatedClass
+                     */
                     if (is_file($path)) {
                         $initiatedClass = new JavaClass(
                             new FileReader($path),
@@ -73,7 +81,7 @@ class ClassResolver
                     } catch (ClassNotFoundException $e) {
                     }
                     break;
-                case static::RESOLVED_TYPE_CLASS:
+                case static::RESOURCE_TYPE_CLASS:
                     /**
                      * @var ReaderInterface $value
                      */

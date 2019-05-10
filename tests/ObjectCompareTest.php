@@ -7,7 +7,7 @@ class ObjectCompareTest extends Base
         'ObjectCompareTest',
     ];
 
-    public function testCallTableswitchPattern1()
+    public function testObjectCompareTest()
     {
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['ObjectCompareTest']

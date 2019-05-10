@@ -17,11 +17,11 @@ final class InnerClassesAttribute implements AttributeInterface
     {
         $this->numberOfClasses = $this->readUnsignedShort();
         for ($i = 0; $i < $this->numberOfClasses; $i++) {
-            $this->classes[$i] = new _Classes($this->reader);
-            $this->classes[$i]->setInnerClassInfoIndex($this->readUnsignedShort());
-            $this->classes[$i]->setOuterClassInfoIndex($this->readUnsignedShort());
-            $this->classes[$i]->setInnerNameIndex($this->readUnsignedShort());
-            $this->classes[$i]->setInnerClassAccessFlag($this->readUnsignedShort());
+            $class = new _Classes($this->reader);
+            $class->setConstantPool($this->getConstantPool())
+                ->setDebugTool($this->getDebugTool());
+            $class->execute();
+            $this->classes[] = $class;
         }
     }
 

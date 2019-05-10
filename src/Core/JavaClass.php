@@ -135,9 +135,7 @@ class JavaClass implements JavaClassInterface
             $reader->getBinaryReader()->readUnsignedShort()
         );
 
-        $constantPoolEntries = $this->constantPool->getEntries();
-
-        $this->debugTool->getLogger()->info('Constant Pools: ' . count($constantPoolEntries));
+        $this->debugTool->getLogger()->info('Constant Pools: ' . count($this->constantPool));
 
         // read access flag
         $this->accessFlag = $reader->getBinaryReader()->readUnsignedShort();
@@ -145,7 +143,7 @@ class JavaClass implements JavaClassInterface
         // read this class
         $this->thisClass = $reader->getBinaryReader()->readUnsignedShort();
 
-        $this->className = $constantPoolEntries[$constantPoolEntries[$this->thisClass]->getClassIndex()];
+        $this->className = $this->constantPool[$this->constantPool[$this->thisClass]->getClassIndex()];
 
         // read super class
         $this->superClassIndex = $reader->getBinaryReader()->readUnsignedShort();
@@ -205,14 +203,26 @@ class JavaClass implements JavaClassInterface
 
         $this->debugTool->getLogger()->info('Extracted attributes: ' . count($this->attributePool));
 
+        $innerClasses = [];
         foreach ($this->attributePool as $entry) {
             if ($entry->getAttributeData() instanceof InnerClassesAttribute) {
-                $this->innerClasses = array_merge(
-                    $this->innerClasses,
+                $innerClasses = array_merge(
+                    $innerClasses,
                     $entry->getAttributeData()->getClasses()
                 );
             }
         }
+
+        // Add to class resolver
+        foreach ($innerClasses as $innerClass) {
+            $this->options['class_resolver']->add([
+                [
+                    ClassResolver::RESOURCE_TYPE_INNER_CLASS,
+                    $innerClass
+                ],
+            ]);
+        }
+
         $this->debugTool->getLogger()->info('End of Class');
 
         $this->invoker = new JavaClassInvoker(
