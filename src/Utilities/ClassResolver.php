@@ -3,7 +3,6 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JVM\Cache\ResolvedClassesCache;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\FileReader;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
@@ -57,14 +56,9 @@ class ClassResolver
                      * @var JavaClass $initiatedClass
                      */
                     if (is_file($path)) {
-                        $initiatedClass = ResolvedClassesCache::resolve(
-                            $path,
-                            function () use ($path) {
-                                return new JavaClass(
-                                    new FileReader($path),
-                                    $this->options
-                                );
-                            }
+                        $initiatedClass = new JavaClass(
+                            new FileReader($path),
+                            $this->options
                         );
                         if (strpos($relativePath, '$') !== false && $class !== null) {
                             $initiatedClass->setParentClass($class);
