@@ -3,9 +3,9 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\FileReader;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
-use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Packages\java\lang\ClassNotFoundException;
 
 class ClassResolver

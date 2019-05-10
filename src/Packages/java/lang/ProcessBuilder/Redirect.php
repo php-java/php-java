@@ -32,14 +32,12 @@ class Redirect extends _Object
      */
     public static $PIPE = null;
 
-
     /**
      * Returns a redirect to append to the specified file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#appendTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_appendTo($a = null)
     {
@@ -49,10 +47,9 @@ class Redirect extends _Object
     /**
      * Compares the specified object with this Redirect for equality.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -62,10 +59,9 @@ class Redirect extends _Object
     /**
      * Returns the File source or destination associated with this redirect, or null if there is no such file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#file
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function file($a = null)
     {
@@ -75,10 +71,9 @@ class Redirect extends _Object
     /**
      * Returns a redirect to read from the specified file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#from
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_from($a = null)
     {
@@ -88,10 +83,9 @@ class Redirect extends _Object
     /**
      * Returns a hash code value for this Redirect.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -101,10 +95,9 @@ class Redirect extends _Object
     /**
      * Returns a redirect to write to the specified file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#to
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_to($a = null)
     {
@@ -114,10 +107,9 @@ class Redirect extends _Object
     /**
      * Returns the type of this Redirect.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#type
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function type($a = null)
     {

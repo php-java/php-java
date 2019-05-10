@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 final class StackMapTableAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
@@ -11,8 +8,9 @@ final class StackMapTableAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
-    private $numberOfEntries = null;
+    private $numberOfEntries;
     private $stackMapFrames = [];
+
     public function execute(): void
     {
         $this->numberOfEntries = $this->readUnsignedShort();
@@ -24,6 +22,7 @@ final class StackMapTableAttribute implements AttributeInterface
             $this->stackMapFrames[] = $stackMapFrame;
         }
     }
+
     public function getStackMapFrames()
     {
         return $this->stackMapFrames;

@@ -13,51 +13,35 @@ use PHPJava\Packages\java\lang\Enum;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Enum
  */
-class Level extends Enum /* implements Serializable, loggers */
+class Level extends Enum // implements Serializable, loggers
 {
-    /*
-     * A marker to indicate that all levels are enabled.
-     */
+    // A marker to indicate that all levels are enabled.
     const ALL = 'ALL';
 
-    /*
-     * DEBUG level: usually used to log debug information traces.
-     */
+    // DEBUG level: usually used to log debug information traces.
     const DEBUG = 'DEBUG';
 
-    /*
-     * ERROR level: usually used to log error messages.
-     */
+    // ERROR level: usually used to log error messages.
     const ERROR = 'ERROR';
 
-    /*
-     * INFO level: usually used to log information messages.
-     */
+    // INFO level: usually used to log information messages.
     const INFO = 'INFO';
 
-    /*
-     * A marker to indicate that all levels are disabled.
-     */
+    // A marker to indicate that all levels are disabled.
     const OFF = 'OFF';
 
-    /*
-     * TRACE level: usually used to log diagnostic information.
-     */
+    // TRACE level: usually used to log diagnostic information.
     const TRACE = 'TRACE';
 
-    /*
-     * WARNING level: usually used to log warning messages.
-     */
+    // WARNING level: usually used to log warning messages.
     const WARNING = 'WARNING';
-
 
     /**
      * Returns the name of this level.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getName($a = null)
     {
@@ -67,10 +51,9 @@ class Level extends Enum /* implements Serializable, loggers */
     /**
      * Returns the severity of this level.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getSeverity
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSeverity($a = null)
     {
@@ -80,10 +63,9 @@ class Level extends Enum /* implements Serializable, loggers */
     /**
      * Returns the enum constant of this type with the specified name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null)
     {
@@ -93,10 +75,9 @@ class Level extends Enum /* implements Serializable, loggers */
     /**
      * Returns an array containing the constants of this enum type, inthe order they are declared.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#values
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_values($a = null)
     {

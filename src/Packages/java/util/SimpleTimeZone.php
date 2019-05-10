@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\util\TimeZone;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Cloneable;
@@ -13,7 +12,7 @@ use PHPJava\Packages\java\util\TimeZone;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\util\TimeZone
  */
-class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
+class SimpleTimeZone extends TimeZone // implements Serializable, Cloneable
 {
     /**
      * Constant for a mode of start or end time specified as standard time.
@@ -36,14 +35,12 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
      */
     public static $WALL_TIME = null;
 
-
     /**
      * Returns a clone of this SimpleTimeZone instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -53,10 +50,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Compares the equality of two SimpleTimeZone objects.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -66,10 +62,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Returns the amount of time in milliseconds that the clock is advanced during daylight saving time.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDSTSavings
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDSTSavings($a = null)
     {
@@ -80,15 +75,14 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
      * Returns the difference in milliseconds between local time and UTC, taking into account both the raw offset and the effect of daylight saving, for the specified date and time.
      * Returns the offset of this time zone from UTC at the given time.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getOffset
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @throws NotImplementedException
      */
     public function getOffset($a = null, $b = null, $c = null, $d = null, $e = null, $f = null)
     {
@@ -98,10 +92,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Gets the GMT offset for this time zone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getRawOffset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getRawOffset($a = null)
     {
@@ -111,10 +104,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Generates the hash code for the SimpleDateFormat object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -124,10 +116,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Returns true if this zone has the same rules and offset as another zone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hasSameRules
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasSameRules($a = null)
     {
@@ -137,10 +128,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Queries if the given date is in daylight saving time.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#inDaylightTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function inDaylightTime($a = null)
     {
@@ -150,10 +140,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Returns true if this SimpleTimeZone observes Daylight Saving Time.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#observesDaylightTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function observesDaylightTime($a = null)
     {
@@ -163,10 +152,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Sets the amount of time in milliseconds that the clock is advanced during daylight saving time.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setDSTSavings
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setDSTSavings($a = null)
     {
@@ -178,14 +166,13 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
      * Sets the daylight saving time end rule.
      * Sets the daylight saving time end rule to a weekday before or after the given date within a month, e.g., the first Monday on or after the 8th.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setEndRule
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @throws NotImplementedException
      */
     public function setEndRule($a = null, $b = null, $c = null, $d = null, $e = null)
     {
@@ -195,10 +182,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Sets the base time zone offset to GMT.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setRawOffset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setRawOffset($a = null)
     {
@@ -210,14 +196,13 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
      * Sets the daylight saving time start rule.
      * Sets the daylight saving time start rule to a weekday before or after the given date within a month, e.g., the first Monday on or after the 8th.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setStartRule
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @throws NotImplementedException
      */
     public function setStartRule($a = null, $b = null, $c = null, $d = null, $e = null)
     {
@@ -227,10 +212,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Sets the daylight saving time starting year.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setStartYear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setStartYear($a = null)
     {
@@ -240,10 +224,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Returns a string representation of this time zone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -253,10 +236,9 @@ class SimpleTimeZone extends TimeZone /* implements Serializable, Cloneable */
     /**
      * Queries if this time zone uses daylight saving time.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#useDaylightTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function useDaylightTime($a = null)
     {

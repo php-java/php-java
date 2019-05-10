@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class AccessStaticFieldTest extends Base
 {
     protected $fixtures = [

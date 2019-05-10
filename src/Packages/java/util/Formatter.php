@@ -12,16 +12,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Formatter extends _Object /* implements Closeable, AutoCloseable */
+class Formatter extends _Object // implements Closeable, AutoCloseable
 {
-
     /**
      * Closes this formatter.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -31,10 +29,9 @@ class Formatter extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Flushes this formatter.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -45,12 +42,11 @@ class Formatter extends _Object /* implements Closeable, AutoCloseable */
      * Writes a formatted string to this object's destination using the specified format string and arguments.
      * Writes a formatted string to this object's destination using the specified locale, format string, and arguments.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#format
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function format($a = null, $b = null, $c = null)
     {
@@ -60,10 +56,9 @@ class Formatter extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Returns the IOException last thrown by this formatter's Appendable.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ioException
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ioException($a = null)
     {
@@ -73,10 +68,9 @@ class Formatter extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Returns the locale set by the construction of this formatter.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#locale
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function locale($a = null)
     {
@@ -86,10 +80,9 @@ class Formatter extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Returns the destination for the output.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#out
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function out($a = null)
     {
@@ -99,10 +92,9 @@ class Formatter extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Returns the result of invoking toString() on the destination for the output.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

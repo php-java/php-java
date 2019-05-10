@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\Writer;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -13,20 +12,18 @@ use PHPJava\Packages\java\io\Writer;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\Writer
  */
-class StringWriter extends Writer /* implements Closeable, AutoCloseable */
+class StringWriter extends Writer // implements Closeable, AutoCloseable
 {
-
     /**
      * Appends the specified character to this writer.
      * Appends the specified character sequence to this writer.
      * Appends a subsequence of the specified character sequence to this writer.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#append
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function append($a = null, $b = null, $c = null)
     {
@@ -36,10 +33,9 @@ class StringWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Closing a StringWriter has no effect.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -49,10 +45,9 @@ class StringWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Flush the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -62,10 +57,9 @@ class StringWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Return the string buffer itself.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getBuffer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getBuffer($a = null)
     {
@@ -75,10 +69,9 @@ class StringWriter extends Writer /* implements Closeable, AutoCloseable */
     /**
      * Return the buffer's current value as a string.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -91,12 +84,11 @@ class StringWriter extends Writer /* implements Closeable, AutoCloseable */
      * Write a string.
      * Write a portion of a string.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {

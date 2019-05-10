@@ -2,11 +2,10 @@
 namespace PHPJava\Tests;
 
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use PHPJava\Kernel\Types\_Byte;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Long;
-use PHPJava\Kernel\Types\_Byte;
-use PHPUnit\Framework\TestCase;
 
 class CallToAmbiguousMethodsTest extends Base
 {
@@ -102,7 +101,6 @@ class CallToAmbiguousMethodsTest extends Base
         $result = rtrim(ob_get_clean());
         $this->assertEquals('0.01', $result);
     }
-
 
     public function testCallToMethodIncludingLongParamsByAmbiguousMode()
     {

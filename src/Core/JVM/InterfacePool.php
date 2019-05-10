@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Core\JVM;
 
-use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\ReadOnlyException;
 use PHPJava\Utilities\DebugTool;

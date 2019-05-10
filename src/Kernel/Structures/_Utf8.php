@@ -1,10 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Exceptions\ReadOnlyException;
-use PHPJava\Utilities\BinaryTool;
-
 class _Utf8 implements StructureInterface, FreezableInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
@@ -13,7 +9,7 @@ class _Utf8 implements StructureInterface, FreezableInterface
 
     private $length = 0;
     private $string = '';
-    private $isWritable = null;
+    private $isWritable;
     private $isFrozen = false;
 
     /**

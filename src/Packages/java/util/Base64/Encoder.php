@@ -11,17 +11,15 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class Encoder extends _Object
 {
-
     /**
      * Encodes all bytes from the specified byte array into a newly-allocated byte array using the Base64 encoding scheme.
      * Encodes all bytes from the specified byte array using the Base64 encoding scheme, writing the resulting bytes to the given output byte array, starting at offset 0.
      * Encodes all remaining bytes from the specified byte buffer into a newly-allocated ByteBuffer using the Base64 encoding scheme.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#encode
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function encode($a = null, $b = null)
     {
@@ -31,10 +29,9 @@ class Encoder extends _Object
     /**
      * Encodes the specified byte array into a String using the Base64 encoding scheme.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#encodeToString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function encodeToString($a = null)
     {
@@ -44,10 +41,9 @@ class Encoder extends _Object
     /**
      * Returns an encoder instance that encodes equivalently to this one, but without adding any padding character at the end of the encoded byte data.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#withoutPadding
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function withoutPadding($a = null)
     {
@@ -57,10 +53,9 @@ class Encoder extends _Object
     /**
      * Wraps an output stream for encoding byte data using the Base64 encoding scheme.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#wrap
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function wrap($a = null)
     {

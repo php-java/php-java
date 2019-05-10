@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\nio;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\IllegalStateException;
 
 // use PHPJava\Packages\java\io\Serializable;
@@ -15,6 +14,6 @@ use PHPJava\Packages\java\lang\IllegalStateException;
  * @parent \PHPJava\Packages\java\lang\RuntimeException
  * @parent \PHPJava\Packages\java\lang\IllegalStateException
  */
-class InvalidMarkException extends IllegalStateException /* implements Serializable */
+class InvalidMarkException extends IllegalStateException // implements Serializable
 {
 }

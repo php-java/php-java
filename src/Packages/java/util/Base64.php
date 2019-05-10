@@ -11,14 +11,12 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class Base64 extends _Object
 {
-
     /**
      * Returns a Base64.Decoder that decodes using the Basic type base64 encoding scheme.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDecoder
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDecoder($a = null)
     {
@@ -28,10 +26,9 @@ class Base64 extends _Object
     /**
      * Returns a Base64.Encoder that encodes using the Basic type base64 encoding scheme.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getEncoder
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getEncoder($a = null)
     {
@@ -41,10 +38,9 @@ class Base64 extends _Object
     /**
      * Returns a Base64.Decoder that decodes using the MIME type base64 decoding scheme.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getMimeDecoder
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getMimeDecoder($a = null)
     {
@@ -55,11 +51,10 @@ class Base64 extends _Object
      * Returns a Base64.Encoder that encodes using the MIME type base64 encoding scheme.
      * Returns a Base64.Encoder that encodes using the MIME type base64 encoding scheme with specified line length and line separators.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getMimeEncoder
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_getMimeEncoder($a = null, $b = null)
     {
@@ -69,10 +64,9 @@ class Base64 extends _Object
     /**
      * Returns a Base64.Decoder that decodes using the URL and Filename safe type base64 encoding scheme.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getUrlDecoder
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getUrlDecoder($a = null)
     {
@@ -82,10 +76,9 @@ class Base64 extends _Object
     /**
      * Returns a Base64.Encoder that encodes using the URL and Filename safe type base64 encoding scheme.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getUrlEncoder
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getUrlEncoder($a = null)
     {

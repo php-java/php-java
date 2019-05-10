@@ -15,16 +15,14 @@ use PHPJava\Utilities\Formatter;
  */
 class StringConcatFactory extends _Object
 {
-
     /**
      * Facilitates the creation of optimized String concatenation methods, that can be used to efficiently concatenate a known number of arguments of known types, possibly after type adaptation and partial evaluation of arguments.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#makeConcat
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function makeConcat($a = null, $b = null, $c = null)
     {
@@ -35,12 +33,7 @@ class StringConcatFactory extends _Object
      * Facilitates the creation of optimized String concatenation methods, that can be used to efficiently concatenate a known number of arguments of known types, possibly after type adaptation and partial evaluation of arguments.
      *
      * @native ConstantPool
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
      * @param mixed $e
-     * @return mixed
      * @throws StringConcatException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#makeConcatWithConstants
      */
@@ -49,7 +42,7 @@ class StringConcatFactory extends _Object
         /**
          * @var Lookup $lookup
          * @var MethodType $concatType
-         * @var _String|null $name
+         * @var null|_String $name
          * @var string recipe
          * @var _Object[] $constants
          */
@@ -72,7 +65,7 @@ class StringConcatFactory extends _Object
         $counter = 0;
         for ($i = 0, $s = strlen($recipe); $i < $s; $i++) {
             $char = $recipe[$i];
-            if ($char === $unicodeMeta["\u0001"]) {
+            if ($char === $unicodeMeta['\\u0001']) {
                 if (!isset($constants[$counter])) {
                     throw new StringConcatException('Unknown error.');
                 }

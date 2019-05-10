@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang\Character;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\Character\Subset;
 
 /**
  * The `UnicodeBlock` class was auto generated.
@@ -1979,14 +1978,12 @@ class UnicodeBlock extends Subset
      */
     public static $ZANABAZAR_SQUARE = null;
 
-
     /**
      * Returns the UnicodeBlock with the given name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#forName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_forName($a = null)
     {
@@ -1997,10 +1994,9 @@ class UnicodeBlock extends Subset
      * Returns the object representing the Unicode block containing the given character, or null if the character is not a member of a defined block.
      * Returns the object representing the Unicode block containing the given character (Unicode code point), or null if the character is not a member of a defined block.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#of
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_of($a = null)
     {

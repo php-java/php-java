@@ -14,26 +14,20 @@ use PHPJava\Packages\java\lang\Enum;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Enum
  */
-class StandardProtocolFamily extends Enum /* implements Serializable, Comparable, ProtocolFamily */
+class StandardProtocolFamily extends Enum // implements Serializable, Comparable, ProtocolFamily
 {
-    /*
-     * Internet Protocol Version 4 (IPv4)
-     */
+    // Internet Protocol Version 4 (IPv4)
     const INET = 'INET';
 
-    /*
-     * Internet Protocol Version 6 (IPv6)
-     */
+    // Internet Protocol Version 6 (IPv6)
     const INET6 = 'INET6';
-
 
     /**
      * Returns the enum constant of this type with the specified name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null)
     {
@@ -43,10 +37,9 @@ class StandardProtocolFamily extends Enum /* implements Serializable, Comparable
     /**
      * Returns an array containing the constants of this enum type, inthe order they are declared.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#values
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_values($a = null)
     {

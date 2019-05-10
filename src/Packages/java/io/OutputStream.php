@@ -12,16 +12,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class OutputStream extends _Object /* implements Closeable, AutoCloseable */
+class OutputStream extends _Object // implements Closeable, AutoCloseable
 {
-
     /**
      * Closes this output stream and releases any system resources associated with this stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -31,10 +29,9 @@ class OutputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Flushes this output stream and forces any buffered output bytes to be written out.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -44,10 +41,9 @@ class OutputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Returns a new OutputStream which discards all bytes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#nullOutputStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_nullOutputStream($a = null)
     {
@@ -59,12 +55,11 @@ class OutputStream extends _Object /* implements Closeable, AutoCloseable */
      * Writes len bytes from the specified byte array starting at offset off to this output stream.
      * Writes the specified byte to this output stream.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {

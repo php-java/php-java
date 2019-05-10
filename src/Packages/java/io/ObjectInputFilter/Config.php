@@ -11,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Config extends _Object /* implements ObjectInputFilter */
+class Config extends _Object // implements ObjectInputFilter
 {
-
     /**
      * Returns an ObjectInputFilter from a string of patterns.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#createFilter
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_createFilter($a = null)
     {
@@ -30,10 +28,9 @@ class Config extends _Object /* implements ObjectInputFilter */
     /**
      * Returns the process-wide serialization filter or null if not configured.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getSerialFilter
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getSerialFilter($a = null)
     {
@@ -43,10 +40,9 @@ class Config extends _Object /* implements ObjectInputFilter */
     /**
      * Set the process-wide filter if it has not already been configured or set.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setSerialFilter
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setSerialFilter($a = null)
     {

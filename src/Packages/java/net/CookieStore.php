@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `CookieStore` interface was auto generated.
@@ -14,8 +13,8 @@ interface CookieStore
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#add
      * @NotImplemented
      */
@@ -25,8 +24,8 @@ interface CookieStore
      * Retrieve cookies associated with given URI, or whose domain matches the given URI.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#get
      * @NotImplemented
      */
@@ -36,8 +35,8 @@ interface CookieStore
      * Get all not-expired cookies in cookie store.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getCookies
      * @NotImplemented
      */
@@ -47,8 +46,8 @@ interface CookieStore
      * Get all URIs which identify the cookies in this cookie store.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getURIs
      * @NotImplemented
      */
@@ -59,8 +58,8 @@ interface CookieStore
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#remove
      * @NotImplemented
      */
@@ -70,8 +69,8 @@ interface CookieStore
      * Remove all cookies in this cookie store.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#removeAll
      * @NotImplemented
      */

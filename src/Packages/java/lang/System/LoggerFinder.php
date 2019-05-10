@@ -11,18 +11,16 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class LoggerFinder extends _Object /* implements Logger */
+class LoggerFinder extends _Object // implements Logger
 {
-
     /**
      * Returns a localizable instance of Logger for the given module.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getLocalizedLogger
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function getLocalizedLogger($a = null, $b = null, $c = null)
     {
@@ -32,11 +30,10 @@ class LoggerFinder extends _Object /* implements Logger */
     /**
      * Returns an instance of Logger for the given module.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getLogger
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function getLogger($a = null, $b = null)
     {
@@ -46,10 +43,9 @@ class LoggerFinder extends _Object /* implements Logger */
     /**
      * Returns the LoggerFinder instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getLoggerFinder
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getLoggerFinder($a = null)
     {

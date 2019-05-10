@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class IntegerCalculateTest extends Base
 {
     protected $fixtures = [
@@ -24,7 +22,7 @@ class IntegerCalculateTest extends Base
     public function testIntAdd()
     {
         $this->assertEquals(
-            "30",
+            '30',
             $this->call(
                 'intAdd',
                 10,
@@ -36,7 +34,7 @@ class IntegerCalculateTest extends Base
     public function testIntSub()
     {
         $this->assertEquals(
-            "5",
+            '5',
             $this->call(
                 'intSub',
                 10,
@@ -48,7 +46,7 @@ class IntegerCalculateTest extends Base
     public function testIntNegativeSub()
     {
         $this->assertEquals(
-            "-10",
+            '-10',
             $this->call(
                 'intSub',
                 10,
@@ -57,11 +55,10 @@ class IntegerCalculateTest extends Base
         );
     }
 
-
     public function testIntMul()
     {
         $this->assertEquals(
-            "50",
+            '50',
             $this->call(
                 'intMul',
                 10,
@@ -70,11 +67,10 @@ class IntegerCalculateTest extends Base
         );
     }
 
-
     public function testIntAddFromOtherMethod()
     {
         $this->assertEquals(
-            "30",
+            '30',
             $this->call(
                 'intAddFromOtherMethod',
                 10,
@@ -86,7 +82,7 @@ class IntegerCalculateTest extends Base
     public function testIntSubFromOtherMethod()
     {
         $this->assertEquals(
-            "5",
+            '5',
             $this->call(
                 'intSubFromOtherMethod',
                 10,
@@ -98,7 +94,7 @@ class IntegerCalculateTest extends Base
     public function testIntNegativeSubFromOtherMethod()
     {
         $this->assertEquals(
-            "-10",
+            '-10',
             $this->call(
                 'intSubFromOtherMethod',
                 10,
@@ -107,11 +103,10 @@ class IntegerCalculateTest extends Base
         );
     }
 
-
     public function testIntMulFromOtherMethod()
     {
         $this->assertEquals(
-            "50",
+            '50',
             $this->call(
                 'intMulFromOtherMethod',
                 10,

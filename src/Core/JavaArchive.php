@@ -7,7 +7,6 @@ use PHPJava\Core\Stream\Reader\InlineReader;
 use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Kernel\Internal\JavaClassDeferredLoader;
 use PHPJava\Packages\java\io\FileNotFoundException;
-use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\ClassNotFoundException;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
@@ -31,8 +30,6 @@ class JavaArchive
     private $startTime = 0.0;
 
     /**
-     * @param string $jarFile
-     * @param array $options
      * @throws FileNotFoundException
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\ValidatorException
@@ -158,7 +155,6 @@ class JavaArchive
 
     /**
      * @param mixed ...$arguments
-     * @return mixed
      * @throws ClassNotFoundException
      * @throws UndefinedEntrypointException
      */
@@ -227,7 +223,7 @@ class JavaArchive
     {
         $name = str_replace('/', '.', $name);
         if (!isset($this->classes[$name])) {
-            throw new ClassNotFoundException($name . ' does not found on ' . $this->jarFile . '.');
+            throw new ClassNotFoundException($name . ' does not exist on ' . $this->jarFile . '.');
         }
         return $this->classes[$name];
     }

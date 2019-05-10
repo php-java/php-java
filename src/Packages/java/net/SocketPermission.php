@@ -13,16 +13,14 @@ use PHPJava\Packages\java\security\Permission;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\security\Permission
  */
-class SocketPermission extends Permission /* implements Serializable, Guard */
+class SocketPermission extends Permission // implements Serializable, Guard
 {
-
     /**
      * Checks two SocketPermission objects for equality.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -32,10 +30,9 @@ class SocketPermission extends Permission /* implements Serializable, Guard */
     /**
      * Returns the canonical string representation of the actions.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getActions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getActions($a = null)
     {
@@ -45,10 +42,9 @@ class SocketPermission extends Permission /* implements Serializable, Guard */
     /**
      * Returns the hash code value for this object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -58,10 +54,9 @@ class SocketPermission extends Permission /* implements Serializable, Guard */
     /**
      * Checks if this socket permission object "implies" the specified permission.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#implies
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function implies($a = null)
     {
@@ -71,10 +66,9 @@ class SocketPermission extends Permission /* implements Serializable, Guard */
     /**
      * Returns a new PermissionCollection object for storing SocketPermission objects.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#newPermissionCollection
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function newPermissionCollection($a = null)
     {

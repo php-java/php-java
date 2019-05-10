@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\lang;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\Error;
-
 // use PHPJava\Packages\java\io\Serializable;
 
 /**
@@ -13,6 +10,6 @@ use PHPJava\Packages\java\lang\Error;
  * @parent \PHPJava\Packages\java\lang\Throwable
  * @parent \PHPJava\Packages\java\lang\Error
  */
-class ThreadDeath extends Error /* implements Serializable */
+class ThreadDeath extends Error // implements Serializable
 {
 }

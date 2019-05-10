@@ -12,24 +12,22 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class ResourceBundle extends _Object /* implements service provider, Set */
+class ResourceBundle extends _Object // implements service provider, Set
 {
     /**
      * The parent bundle of this bundle.
      *
      * @var mixed $parent
      */
-    protected $parent = null;
-
+    protected $parent;
 
     /**
      * Removes all resource bundles from the cache that have been loaded by the caller's module.
      * Removes all resource bundles from the cache that have been loaded by the given class loader.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clearCache
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_clearCache($a = null)
     {
@@ -39,10 +37,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Determines whether the given key is contained in this ResourceBundle or its parent bundles.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#containsKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function containsKey($a = null)
     {
@@ -52,10 +49,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Returns the base name of this bundle, if known, or null if unknown.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getBaseBundleName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getBaseBundleName($a = null)
     {
@@ -72,13 +68,12 @@ class ResourceBundle extends _Object /* implements service provider, Set */
      * Returns a resource bundle using the specified base name, target locale and control, and the caller's class loader.
      * Returns a resource bundle using the specified base name, the default locale and the specified control.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getBundle
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function static_getBundle($a = null, $b = null, $c = null, $d = null)
     {
@@ -88,10 +83,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Returns an enumeration of the keys.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getKeys
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getKeys($a = null)
     {
@@ -101,10 +95,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Returns the locale of this resource bundle.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getLocale
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLocale($a = null)
     {
@@ -114,10 +107,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Gets an object for the given key from this resource bundle or one of its parents.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getObject($a = null)
     {
@@ -127,10 +119,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Gets a string for the given key from this resource bundle or one of its parents.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getString($a = null)
     {
@@ -140,10 +131,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Gets a string array for the given key from this resource bundle or one of its parents.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getStringArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getStringArray($a = null)
     {
@@ -153,10 +143,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Gets an object for the given key from this resource bundle.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#handleGetObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function handleGetObject($a = null)
     {
@@ -166,10 +155,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Returns a Set of the keys contained only in this ResourceBundle.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#handleKeySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function handleKeySet($a = null)
     {
@@ -179,10 +167,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Returns a Set of all keys contained in this ResourceBundle and its parent bundles.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#keySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function keySet($a = null)
     {
@@ -192,10 +179,9 @@ class ResourceBundle extends _Object /* implements service provider, Set */
     /**
      * Sets the parent bundle of this bundle.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setParent
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function setParent($a = null)
     {

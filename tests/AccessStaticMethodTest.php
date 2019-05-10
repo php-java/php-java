@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class AccessStaticMethodTest extends Base
 {
     protected $fixtures = [
@@ -19,11 +17,11 @@ class AccessStaticMethodTest extends Base
             ->getMethods()
             ->call(
                 'main',
-                ["Hello", "World"]
+                ['Hello', 'World']
             );
         $result = ob_get_clean();
 
-        $this->assertEquals("HelloWorld", $result);
+        $this->assertEquals('HelloWorld', $result);
     }
 
     public function testCallMainHavingIntegerArguments()

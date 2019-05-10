@@ -2,7 +2,6 @@
 namespace PHPJava\Kernel\Attributes;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
 
 final class RuntimeVisibleParameterAnnotationsAttribute implements AttributeInterface
 {

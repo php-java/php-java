@@ -13,46 +13,32 @@ use PHPJava\Packages\java\lang\Enum;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Enum
  */
-class State extends Enum /* implements Serializable, Comparable */
+class State extends Enum // implements Serializable, Comparable
 {
-    /*
-     * Thread state for a thread blocked waiting for a monitor lock.
-     */
+    // Thread state for a thread blocked waiting for a monitor lock.
     const BLOCKED = 'BLOCKED';
 
-    /*
-     * Thread state for a thread which has not yet started.
-     */
+    // Thread state for a thread which has not yet started.
     const _NEW = '_NEW';
 
-    /*
-     * Thread state for a runnable thread.
-     */
+    // Thread state for a runnable thread.
     const RUNNABLE = 'RUNNABLE';
 
-    /*
-     * Thread state for a terminated thread.
-     */
+    // Thread state for a terminated thread.
     const TERMINATED = 'TERMINATED';
 
-    /*
-     * Thread state for a waiting thread with a specified waiting time.
-     */
+    // Thread state for a waiting thread with a specified waiting time.
     const TIMED_WAITING = 'TIMED_WAITING';
 
-    /*
-     * Thread state for a waiting thread.
-     */
+    // Thread state for a waiting thread.
     const WAITING = 'WAITING';
-
 
     /**
      * Returns the enum constant of this type with the specified name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null)
     {
@@ -62,10 +48,9 @@ class State extends Enum /* implements Serializable, Comparable */
     /**
      * Returns an array containing the constants of this enum type, inthe order they are declared.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#values
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_values($a = null)
     {

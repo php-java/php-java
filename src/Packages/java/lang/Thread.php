@@ -2,8 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\CloneNotSupportedException;
-use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\lang\Thread\UncaughtExceptionHandler;
 // use PHPJava\Packages\java\util\Map;
@@ -13,7 +11,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
+class Thread extends _Object // implements UncaughtExceptionHandler, Map
 {
     /**
      * The maximum priority that a thread can have.
@@ -36,14 +34,12 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
      */
     public static $NORM_PRIORITY = null;
 
-
     /**
      * Returns an estimate of the number of active threads in the current thread's thread group and its subgroups.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#activeCount
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_activeCount($a = null)
     {
@@ -53,10 +49,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Determines if the currently running thread has permission to modify this thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#checkAccess
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function checkAccess($a = null)
     {
@@ -66,10 +61,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Deprecated, for removal: This API element is subject to removal in a future version.The definition of this call depends on suspend(),             which is deprecated.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#countStackFrames
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function countStackFrames($a = null)
     {
@@ -79,10 +73,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns a reference to the currently executing thread object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#currentThread
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_currentThread($a = null)
     {
@@ -92,10 +85,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Prints a stack trace of the current thread to the standard error stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#dumpStack
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_dumpStack($a = null)
     {
@@ -105,10 +97,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Copies into the specified array every active thread in the current thread's thread group and its subgroups.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#enumerate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_enumerate($a = null)
     {
@@ -118,10 +109,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns a map of stack traces for all live threads.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getAllStackTraces
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getAllStackTraces($a = null)
     {
@@ -131,10 +121,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns the context ClassLoader for this thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getContextClassLoader
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getContextClassLoader($a = null)
     {
@@ -144,10 +133,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns the default handler invoked when a thread abruptly terminates due to an uncaught exception.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDefaultUncaughtExceptionHandler
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDefaultUncaughtExceptionHandler($a = null)
     {
@@ -157,10 +145,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns the identifier of this Thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getId
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getId($a = null)
     {
@@ -170,10 +157,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns this thread's name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getName($a = null)
     {
@@ -183,10 +169,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns this thread's priority.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getPriority
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPriority($a = null)
     {
@@ -196,10 +181,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns an array of stack trace elements representing the stack dump of this thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getStackTrace
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getStackTrace($a = null)
     {
@@ -209,10 +193,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns the state of this thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getState
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getState($a = null)
     {
@@ -222,10 +205,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns the thread group to which this thread belongs.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getThreadGroup
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getThreadGroup($a = null)
     {
@@ -235,10 +217,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns the handler invoked when this thread abruptly terminates due to an uncaught exception.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getUncaughtExceptionHandler
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getUncaughtExceptionHandler($a = null)
     {
@@ -248,10 +229,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns true if and only if the current thread holds the monitor lock on the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#holdsLock
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_holdsLock($a = null)
     {
@@ -261,10 +241,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Interrupts this thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#interrupt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function interrupt($a = null)
     {
@@ -274,10 +253,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Tests whether the current thread has been interrupted.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#interrupted
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_interrupted($a = null)
     {
@@ -287,10 +265,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Tests if this thread is alive.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isAlive
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isAlive($a = null)
     {
@@ -300,10 +277,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Tests if this thread is a daemon thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isDaemon
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isDaemon($a = null)
     {
@@ -313,10 +289,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Tests whether this thread has been interrupted.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isInterrupted
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isInterrupted($a = null)
     {
@@ -328,11 +303,10 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
      * Waits at most millis milliseconds for this thread to die.
      * Waits at most millis milliseconds plus nanos nanoseconds for this thread to die.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#join
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function join($a = null, $b = null)
     {
@@ -342,10 +316,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Indicates that the caller is momentarily unable to progress, until the occurrence of one or more actions on the part of other activities.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#onSpinWait
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_onSpinWait($a = null)
     {
@@ -355,10 +328,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Deprecated.This method exists solely for use with suspend(),     which has been deprecated because it is deadlock-prone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#resume
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function resume($a = null)
     {
@@ -368,10 +340,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * If this thread was constructed using a separate Runnable run object, then that Runnable object's run method is called; otherwise, this method does nothing and returns.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#run
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function run($a = null)
     {
@@ -381,10 +352,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Sets the context ClassLoader for this Thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setContextClassLoader
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setContextClassLoader($a = null)
     {
@@ -394,10 +364,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Marks this thread as either a daemon thread or a user thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setDaemon
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setDaemon($a = null)
     {
@@ -407,10 +376,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Set the default handler invoked when a thread abruptly terminates due to an uncaught exception, and no other handler has been defined for that thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setDefaultUncaughtExceptionHandler
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setDefaultUncaughtExceptionHandler($a = null)
     {
@@ -420,10 +388,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Changes the name of this thread to be equal to the argument name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setName($a = null)
     {
@@ -433,10 +400,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Changes the priority of this thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setPriority
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setPriority($a = null)
     {
@@ -446,10 +412,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Set the handler invoked when this thread abruptly terminates due to an uncaught exception.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setUncaughtExceptionHandler
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setUncaughtExceptionHandler($a = null)
     {
@@ -460,11 +425,10 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
      * Causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds, subject to the precision and accuracy of system timers and schedulers.
      * Causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds plus the specified number of nanoseconds, subject to the precision and accuracy of system timers and schedulers.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#sleep
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_sleep($a = null, $b = null)
     {
@@ -474,10 +438,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Causes this thread to begin execution; the Java Virtual Machine calls the run method of this thread.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#start
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function start($a = null)
     {
@@ -487,10 +450,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Deprecated.This method is inherently unsafe.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#stop
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function stop($a = null)
     {
@@ -500,10 +462,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Deprecated.This method has been deprecated, as it is   inherently deadlock-prone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#suspend
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function suspend($a = null)
     {
@@ -513,10 +474,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * Returns a string representation of this thread, including the thread's name, priority, and thread group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -526,10 +486,9 @@ class Thread extends _Object /* implements UncaughtExceptionHandler, Map */
     /**
      * A hint to the scheduler that the current thread is willing to yield its current use of a processor.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#yield
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_yield($a = null)
     {

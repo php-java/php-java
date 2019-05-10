@@ -2,7 +2,6 @@
 namespace PHPJava\Core\JVM\Field;
 
 use PHPJava\Core\JavaClassInvoker;
-use PHPJava\Packages\java\lang\_String;
 
 class StaticField implements FieldInterface
 {

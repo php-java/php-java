@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class InnerClassTest extends Base
 {
     protected $fixtures = [
@@ -19,10 +17,10 @@ class InnerClassTest extends Base
             ->getMethods()
             ->call(
                 'main',
-                ["Hello", "World"]
+                ['Hello', 'World']
             );
         $result = ob_get_clean();
 
-        $this->assertEquals("Hello World", $result);
+        $this->assertEquals('Hello World', $result);
     }
 }

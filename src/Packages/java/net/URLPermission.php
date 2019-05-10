@@ -13,16 +13,14 @@ use PHPJava\Packages\java\security\Permission;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\security\Permission
  */
-class URLPermission extends Permission /* implements Serializable, Guard */
+class URLPermission extends Permission // implements Serializable, Guard
 {
-
     /**
      * Returns true if, this.getActions().equals(p.getActions()) and p's url equals this's url.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -30,12 +28,11 @@ class URLPermission extends Permission /* implements Serializable, Guard */
     }
 
     /**
-     * Returns the normalized method list and request header list, in the form:
+     * Returns the normalized method list and request header list, in the form:.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getActions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getActions($a = null)
     {
@@ -45,10 +42,9 @@ class URLPermission extends Permission /* implements Serializable, Guard */
     /**
      * Returns a hashcode calculated from the hashcode of the actions String and the url string.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -58,10 +54,9 @@ class URLPermission extends Permission /* implements Serializable, Guard */
     /**
      * Checks if this URLPermission implies the given permission.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#implies
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function implies($a = null)
     {

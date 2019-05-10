@@ -12,16 +12,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
+class URL extends _Object // implements Serializable, URLStreamHandlerFactory
 {
-
     /**
      * Compares this URL for equality with another object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -31,10 +29,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the authority part of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getAuthority
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAuthority($a = null)
     {
@@ -45,10 +42,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
      * Gets the contents of this URL.
      * Gets the contents of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getContent
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getContent($a = null)
     {
@@ -58,10 +54,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the default port number of the protocol associated with this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDefaultPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDefaultPort($a = null)
     {
@@ -71,10 +66,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the file name of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getFile
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFile($a = null)
     {
@@ -84,10 +78,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the host name of this URL, if applicable.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHost
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHost($a = null)
     {
@@ -97,10 +90,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the path part of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPath
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPath($a = null)
     {
@@ -110,10 +102,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the port number of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPort($a = null)
     {
@@ -123,10 +114,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the protocol name of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getProtocol
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getProtocol($a = null)
     {
@@ -136,10 +126,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the query part of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getQuery
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getQuery($a = null)
     {
@@ -149,10 +138,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the anchor (also known as the "reference") of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getRef
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getRef($a = null)
     {
@@ -162,10 +150,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Gets the userInfo part of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getUserInfo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getUserInfo($a = null)
     {
@@ -175,10 +162,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Creates an integer suitable for hash table indexing.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -189,10 +175,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
      * Returns a URLConnection instance that represents a connection to the remote object referred to by the URL.
      * Same as openConnection(), except that the connection will be made through the specified proxy; Protocol handlers that do not support proxing will ignore the proxy parameter and make a normal connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#openConnection
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function openConnection($a = null)
     {
@@ -202,10 +187,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Opens a connection to this URL and returns an InputStream for reading from that connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#openStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function openStream($a = null)
     {
@@ -215,10 +199,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Compares two URLs, excluding the fragment component.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#sameFile
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function sameFile($a = null)
     {
@@ -228,10 +211,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Sets an application's URLStreamHandlerFactory.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setURLStreamHandlerFactory
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setURLStreamHandlerFactory($a = null)
     {
@@ -241,10 +223,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Constructs a string representation of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toExternalForm
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toExternalForm($a = null)
     {
@@ -254,10 +235,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Constructs a string representation of this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -267,10 +247,9 @@ class URL extends _Object /* implements Serializable, URLStreamHandlerFactory */
     /**
      * Returns a URI equivalent to this URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toURI
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toURI($a = null)
     {

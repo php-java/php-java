@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Internal;
 
-use PHPJava\Core\JavaClassInterface;
-use PHPJava\Exceptions\NotInstantiatedException;
 use PHPJava\Utilities\ClassResolver;
 
 final class InstanceDeferredLoader
@@ -30,7 +28,6 @@ final class InstanceDeferredLoader
 
     /**
      * @param mixed ...$arguments
-     * @return mixed
      */
     public function instantiate(...$arguments)
     {
@@ -47,17 +44,11 @@ final class InstanceDeferredLoader
         return $this->instance;
     }
 
-    /**
-     * @return string
-     */
     public function getClassName(): string
     {
         return $this->className;
     }
 
-    /**
-     * @return mixed
-     */
     public function getInstance()
     {
         return $this->instance;

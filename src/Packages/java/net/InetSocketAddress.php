@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\net\SocketAddress;
 
 // use PHPJava\Packages\java\io\Serializable;
 
@@ -12,17 +11,15 @@ use PHPJava\Packages\java\net\SocketAddress;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\net\SocketAddress
  */
-class InetSocketAddress extends SocketAddress /* implements Serializable */
+class InetSocketAddress extends SocketAddress // implements Serializable
 {
-
     /**
      * Creates an unresolved socket address from a hostname and a port number.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#createUnresolved
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_createUnresolved($a = null, $b = null)
     {
@@ -32,10 +29,9 @@ class InetSocketAddress extends SocketAddress /* implements Serializable */
     /**
      * Compares this object against the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -45,10 +41,9 @@ class InetSocketAddress extends SocketAddress /* implements Serializable */
     /**
      * Gets the InetAddress.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAddress($a = null)
     {
@@ -58,10 +53,9 @@ class InetSocketAddress extends SocketAddress /* implements Serializable */
     /**
      * Gets the hostname.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHostName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHostName($a = null)
     {
@@ -71,10 +65,9 @@ class InetSocketAddress extends SocketAddress /* implements Serializable */
     /**
      * Returns the hostname, or the String form of the address if it doesn't have a hostname (it was created using a literal).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHostString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHostString($a = null)
     {
@@ -84,10 +77,9 @@ class InetSocketAddress extends SocketAddress /* implements Serializable */
     /**
      * Gets the port number.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPort($a = null)
     {
@@ -97,10 +89,9 @@ class InetSocketAddress extends SocketAddress /* implements Serializable */
     /**
      * Returns a hashcode for this socket address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -110,10 +101,9 @@ class InetSocketAddress extends SocketAddress /* implements Serializable */
     /**
      * Checks whether the address has been resolved or not.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isUnresolved
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isUnresolved($a = null)
     {
@@ -123,10 +113,9 @@ class InetSocketAddress extends SocketAddress /* implements Serializable */
     /**
      * Constructs a string representation of this InetSocketAddress.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

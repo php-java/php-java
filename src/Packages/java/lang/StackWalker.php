@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\lang\StackWalker\StackFrame;
 // use PHPJava\Packages\java\util\function\Consumer;
@@ -14,16 +13,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class StackWalker extends _Object /* implements StackFrame, Consumer, Set, Stream */
+class StackWalker extends _Object // implements StackFrame, Consumer, Set, Stream
 {
-
     /**
      * Performs the given action on each element of StackFrame stream of the current thread, traversing from the top frame of the stack, which is the method calling this forEach method.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#forEach
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function forEach($a = null)
     {
@@ -33,10 +30,9 @@ class StackWalker extends _Object /* implements StackFrame, Consumer, Set, Strea
     /**
      * Gets the Class object of the caller who invoked the method that invoked getCallerClass.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getCallerClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCallerClass($a = null)
     {
@@ -49,11 +45,10 @@ class StackWalker extends _Object /* implements StackFrame, Consumer, Set, Strea
      * Returns a StackWalker instance with the given options specifying the stack frame information it can access.
      * Returns a StackWalker instance with the given options specifying the stack frame information it can access.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getInstance
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_getInstance($a = null, $b = null)
     {
@@ -63,11 +58,10 @@ class StackWalker extends _Object /* implements StackFrame, Consumer, Set, Strea
     /**
      * Applies the given function to the stream of StackFrames for the current thread, traversing from the top frame of the stack, which is the method calling this walk method.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#walk
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function walk($a = null, $b = null)
     {

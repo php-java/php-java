@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\io;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\OutputStreamWriter;
-
 // use PHPJava\Packages\java\io\Flushable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
 
@@ -14,6 +11,6 @@ use PHPJava\Packages\java\io\OutputStreamWriter;
  * @parent \PHPJava\Packages\java\io\Writer
  * @parent \PHPJava\Packages\java\io\OutputStreamWriter
  */
-class FileWriter extends OutputStreamWriter /* implements Flushable, AutoCloseable */
+class FileWriter extends OutputStreamWriter // implements Flushable, AutoCloseable
 {
 }

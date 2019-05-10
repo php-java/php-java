@@ -12,16 +12,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable */
+class RandomAccessFile extends _Object // implements DataOutput, AutoCloseable
 {
-
     /**
      * Closes this random access file stream and releases any system resources associated with the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -31,10 +29,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Returns the unique FileChannel object associated with this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getChannel
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getChannel($a = null)
     {
@@ -44,10 +41,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Returns the opaque file descriptor object associated with this stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getFD
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFD($a = null)
     {
@@ -57,10 +53,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Returns the current offset in this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getFilePointer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFilePointer($a = null)
     {
@@ -70,10 +65,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Returns the length of this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#length
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function length($a = null)
     {
@@ -85,12 +79,11 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
      * Reads up to b.length bytes of data from this file into an array of bytes.
      * Reads up to len bytes of data from this file into an array of bytes.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#read
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function read($a = null, $b = null, $c = null)
     {
@@ -100,10 +93,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads a boolean from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readBoolean
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readBoolean($a = null)
     {
@@ -113,10 +105,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads a signed eight-bit value from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readByte
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readByte($a = null)
     {
@@ -126,10 +117,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads a character from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readChar
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readChar($a = null)
     {
@@ -139,10 +129,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads a double from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readDouble
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readDouble($a = null)
     {
@@ -152,10 +141,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads a float from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readFloat
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readFloat($a = null)
     {
@@ -166,12 +154,11 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
      * Reads b.length bytes from this file into the byte array, starting at the current file pointer.
      * Reads exactly len bytes from this file into the byte array, starting at the current file pointer.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readFully
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function readFully($a = null, $b = null, $c = null)
     {
@@ -181,10 +168,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads a signed 32-bit integer from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readInt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readInt($a = null)
     {
@@ -194,10 +180,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads the next line of text from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readLine
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readLine($a = null)
     {
@@ -207,10 +192,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads a signed 64-bit integer from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readLong
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readLong($a = null)
     {
@@ -220,10 +204,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads a signed 16-bit number from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readShort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readShort($a = null)
     {
@@ -233,10 +216,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads an unsigned eight-bit number from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUnsignedByte
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readUnsignedByte($a = null)
     {
@@ -246,10 +228,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads an unsigned 16-bit number from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUnsignedShort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readUnsignedShort($a = null)
     {
@@ -259,10 +240,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Reads in a string from this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUTF
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readUTF($a = null)
     {
@@ -272,10 +252,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Sets the file-pointer offset, measured from the beginning of this file, at which the next read or write occurs.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#seek
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function seek($a = null)
     {
@@ -285,10 +264,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Sets the length of this file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setLength
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setLength($a = null)
     {
@@ -298,10 +276,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Attempts to skip over n bytes of input discarding the skipped bytes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#skipBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function skipBytes($a = null)
     {
@@ -313,12 +290,11 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
      * Writes len bytes from the specified byte array starting at offset off to this file.
      * Writes the specified byte to this file.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {
@@ -328,10 +304,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Writes a boolean to the file as a one-byte value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeBoolean
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeBoolean($a = null)
     {
@@ -341,10 +316,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Writes a byte to the file as a one-byte value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeByte
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeByte($a = null)
     {
@@ -354,10 +328,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Writes the string to the file as a sequence of bytes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeBytes($a = null)
     {
@@ -367,10 +340,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Writes a char to the file as a two-byte value, high byte first.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeChar
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeChar($a = null)
     {
@@ -380,10 +352,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Writes a string to the file as a sequence of characters.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeChars
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeChars($a = null)
     {
@@ -393,10 +364,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Converts the double argument to a long using the doubleToLongBits method in class Double, and then writes that long value to the file as an eight-byte quantity, high byte first.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeDouble
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeDouble($a = null)
     {
@@ -406,10 +376,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Converts the float argument to an int using the floatToIntBits method in class Float, and then writes that int value to the file as a four-byte quantity, high byte first.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeFloat
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeFloat($a = null)
     {
@@ -419,10 +388,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Writes an int to the file as four bytes, high byte first.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeInt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeInt($a = null)
     {
@@ -432,10 +400,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Writes a long to the file as eight bytes, high byte first.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeLong
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeLong($a = null)
     {
@@ -445,10 +412,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Writes a short to the file as two bytes, high byte first.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeShort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeShort($a = null)
     {
@@ -458,10 +424,9 @@ class RandomAccessFile extends _Object /* implements DataOutput, AutoCloseable *
     /**
      * Writes a string to the file using modified UTF-8 encoding in a machine-independent manner.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeUTF
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeUTF($a = null)
     {

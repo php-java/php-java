@@ -12,31 +12,29 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
+class DatagramSocketImpl extends _Object // implements SocketOption, Set
 {
     /**
      * The file descriptor object.
      *
      * @var mixed $fd
      */
-    protected $fd = null;
+    protected $fd;
 
     /**
      * The local port number.
      *
      * @var mixed $localPort
      */
-    protected $localPort = null;
-
+    protected $localPort;
 
     /**
      * Binds a datagram socket to a local port and address.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#bind
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function bind($a = null, $b = null)
     {
@@ -46,10 +44,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Close the socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -59,11 +56,10 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Connects a datagram socket to a remote destination.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#connect
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function connect($a = null, $b = null)
     {
@@ -73,10 +69,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Creates a datagram socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#create
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function create($a = null)
     {
@@ -86,10 +81,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Disconnects a datagram socket from its remote destination.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#disconnect
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function disconnect($a = null)
     {
@@ -99,10 +93,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Gets the datagram socket file descriptor.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getFileDescriptor
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFileDescriptor($a = null)
     {
@@ -112,10 +105,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Gets the local port.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLocalPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLocalPort($a = null)
     {
@@ -125,10 +117,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Called to get a socket option.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getOption
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOption($a = null)
     {
@@ -138,10 +129,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Retrieve the TTL (time-to-live) option.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getTimeToLive
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTimeToLive($a = null)
     {
@@ -151,10 +141,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Deprecated.use getTimeToLive instead.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getTTL
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTTL($a = null)
     {
@@ -164,10 +153,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Join the multicast group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#join
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function join($a = null)
     {
@@ -177,11 +165,10 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Join the multicast group.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#joinGroup
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function joinGroup($a = null, $b = null)
     {
@@ -191,10 +178,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Leave the multicast group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#leave
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function leave($a = null)
     {
@@ -204,11 +190,10 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Leave the multicast group.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#leaveGroup
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function leaveGroup($a = null, $b = null)
     {
@@ -218,10 +203,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Peek at the packet to see who it is from.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#peek
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function peek($a = null)
     {
@@ -231,10 +215,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Peek at the packet to see who it is from.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#peekData
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function peekData($a = null)
     {
@@ -244,10 +227,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Receive the datagram packet.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#receive
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function receive($a = null)
     {
@@ -257,10 +239,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Sends a datagram packet.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#send
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function send($a = null)
     {
@@ -270,11 +251,10 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Called to set a socket option.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setOption
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setOption($a = null, $b = null)
     {
@@ -284,10 +264,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Set the TTL (time-to-live) option.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setTimeToLive
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTimeToLive($a = null)
     {
@@ -297,10 +276,9 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Deprecated.use setTimeToLive instead.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setTTL
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTTL($a = null)
     {
@@ -308,12 +286,11 @@ class DatagramSocketImpl extends _Object /* implements SocketOption, Set */
     }
 
     /**
-     * Returns a set of SocketOptions supported by this impl and by this impl's socket (DatagramSocket or MulticastSocket)
+     * Returns a set of SocketOptions supported by this impl and by this impl's socket (DatagramSocket or MulticastSocket).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#supportedOptions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function supportedOptions($a = null)
     {

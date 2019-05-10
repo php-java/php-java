@@ -3,16 +3,15 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\invoke\MethodHandles;
-use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 use PHPJava\Kernel\Attributes\BootstrapMethodsAttribute;
 use PHPJava\Kernel\Maps\MethodHandleKind;
 use PHPJava\Kernel\Structures\_BootstrapMethod;
 use PHPJava\Kernel\Structures\_MethodHandle;
 use PHPJava\Kernel\Structures\_NameAndType;
+use PHPJava\Packages\java\lang\invoke\MethodHandles;
+use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 use PHPJava\Packages\java\lang\invoke\MethodType;
 use PHPJava\Utilities\AttributionResolver;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\Normalizer;
 

@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\Number;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Comparable;
@@ -13,7 +12,7 @@ use PHPJava\Packages\java\lang\Number;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Number
  */
-class Short extends Number /* implements Serializable, Comparable */
+class Short extends Number // implements Serializable, Comparable
 {
     /**
      * The number of bytes used to represent a short value in two's complement binary form.
@@ -50,14 +49,12 @@ class Short extends Number /* implements Serializable, Comparable */
      */
     public static $TYPE = null;
 
-
     /**
      * Returns the value of this Short as a byte after a narrowing primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#byteValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function byteValue($a = null)
     {
@@ -67,11 +64,10 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Compares two short values numerically.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compare
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_compare($a = null, $b = null)
     {
@@ -81,10 +77,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Compares two Short objects numerically.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -94,11 +89,10 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Compares two short values numerically treating the values as unsigned.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareUnsigned
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_compareUnsigned($a = null, $b = null)
     {
@@ -108,10 +102,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Decodes a String into a Short.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#decode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_decode($a = null)
     {
@@ -121,10 +114,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Short as a double after a widening primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#doubleValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function doubleValue($a = null)
     {
@@ -134,10 +126,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Compares this object to the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -147,10 +138,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Short as a float after a widening primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#floatValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function floatValue($a = null)
     {
@@ -161,10 +151,9 @@ class Short extends Number /* implements Serializable, Comparable */
      * Returns a hash code for this Short; equal to the result of invoking intValue().
      * Returns a hash code for a short value; compatible with Short.hashCode().
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_hashCode($a = null)
     {
@@ -174,10 +163,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Short as an int after a widening primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#intValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function intValue($a = null)
     {
@@ -187,10 +175,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Short as a long after a widening primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#longValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function longValue($a = null)
     {
@@ -201,11 +188,10 @@ class Short extends Number /* implements Serializable, Comparable */
      * Parses the string argument as a signed decimal  short.
      * Parses the string argument as a signed short in the radix specified by the second argument.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#parseShort
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_parseShort($a = null, $b = null)
     {
@@ -215,10 +201,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value obtained by reversing the order of the bytes in the two's complement representation of the specified short value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#reverseBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_reverseBytes($a = null)
     {
@@ -228,10 +213,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Short as a short.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#shortValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function shortValue($a = null)
     {
@@ -242,10 +226,9 @@ class Short extends Number /* implements Serializable, Comparable */
      * Returns a String object representing this Short's value.
      * Returns a new String object representing the specified short.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toString($a = null)
     {
@@ -255,10 +238,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Converts the argument to an int by an unsigned conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toUnsignedInt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toUnsignedInt($a = null)
     {
@@ -268,10 +250,9 @@ class Short extends Number /* implements Serializable, Comparable */
     /**
      * Converts the argument to a long by an unsigned conversion.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toUnsignedLong
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toUnsignedLong($a = null)
     {
@@ -283,11 +264,10 @@ class Short extends Number /* implements Serializable, Comparable */
      * Returns a Short object holding the value given by the specified String.
      * Returns a Short object holding the value extracted from the specified String when parsed with the radix given by the second argument.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null, $b = null)
     {

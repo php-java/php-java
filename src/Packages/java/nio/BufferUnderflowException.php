@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\nio;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\RuntimeException;
 
 // use PHPJava\Packages\java\io\Serializable;
@@ -14,6 +13,6 @@ use PHPJava\Packages\java\lang\RuntimeException;
  * @parent \PHPJava\Packages\java\lang\Exception
  * @parent \PHPJava\Packages\java\lang\RuntimeException
  */
-class BufferUnderflowException extends RuntimeException /* implements Serializable */
+class BufferUnderflowException extends RuntimeException // implements Serializable
 {
 }

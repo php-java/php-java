@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Tests\Packages\PHPJava\Extended\_Object;
 
-use PHPUnit\Framework\TestCase;
 use PHPJava\Packages\java\lang\CloneNotSupportedException;
 
 class _ObjectTest extends Base
@@ -10,8 +9,7 @@ class _ObjectTest extends Base
     {
         $this->expectException(CloneNotSupportedException::class);
 
-        clone new class
-        {
+        clone new class() {
             use \PHPJava\Packages\PHPJava\Extended\_Object;
         };
     }

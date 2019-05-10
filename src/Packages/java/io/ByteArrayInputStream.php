@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\InputStream;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -13,44 +12,42 @@ use PHPJava\Packages\java\io\InputStream;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\InputStream
  */
-class ByteArrayInputStream extends InputStream /* implements Closeable, AutoCloseable */
+class ByteArrayInputStream extends InputStream // implements Closeable, AutoCloseable
 {
     /**
      * An array of bytes that was provided by the creator of the stream.
      *
      * @var mixed $buf
      */
-    protected $buf = null;
+    protected $buf;
 
     /**
      * The index one greater than the last valid character in the input stream buffer.
      *
      * @var mixed $count
      */
-    protected $count = null;
+    protected $count;
 
     /**
      * The currently marked position in the stream.
      *
      * @var mixed $mark
      */
-    protected $mark = null;
+    protected $mark;
 
     /**
      * The index of the next character to read from the input stream buffer.
      *
      * @var mixed $pos
      */
-    protected $pos = null;
-
+    protected $pos;
 
     /**
      * Returns the number of remaining bytes that can be read (or skipped over) from this input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#available
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function available($a = null)
     {
@@ -60,10 +57,9 @@ class ByteArrayInputStream extends InputStream /* implements Closeable, AutoClos
     /**
      * Closing a ByteArrayInputStream has no effect.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -73,10 +69,9 @@ class ByteArrayInputStream extends InputStream /* implements Closeable, AutoClos
     /**
      * Set the current marked position in the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#mark
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function mark($a = null)
     {
@@ -86,10 +81,9 @@ class ByteArrayInputStream extends InputStream /* implements Closeable, AutoClos
     /**
      * Tests if this InputStream supports mark/reset.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#markSupported
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function markSupported($a = null)
     {
@@ -100,12 +94,11 @@ class ByteArrayInputStream extends InputStream /* implements Closeable, AutoClos
      * Reads the next byte of data from this input stream.
      * Reads up to len bytes of data into an array of bytes from this input stream.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#read
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function read($a = null, $b = null, $c = null)
     {
@@ -115,10 +108,9 @@ class ByteArrayInputStream extends InputStream /* implements Closeable, AutoClos
     /**
      * Resets the buffer to the marked position.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#reset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reset($a = null)
     {
@@ -128,10 +120,9 @@ class ByteArrayInputStream extends InputStream /* implements Closeable, AutoClos
     /**
      * Skips n bytes of input from this input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#skip
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function skip($a = null)
     {

@@ -12,44 +12,42 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class SocketImpl extends _Object /* implements SocketOption, Set */
+class SocketImpl extends _Object // implements SocketOption, Set
 {
     /**
      * The IP address of the remote end of this socket.
      *
      * @var mixed $address
      */
-    protected $address = null;
+    protected $address;
 
     /**
      * The file descriptor object for this socket.
      *
      * @var mixed $fd
      */
-    protected $fd = null;
+    protected $fd;
 
     /**
      * The local port number to which this socket is connected.
      *
      * @var mixed $localport
      */
-    protected $localport = null;
+    protected $localport;
 
     /**
      * The port number on the remote host to which this socket is connected.
      *
      * @var mixed $port
      */
-    protected $port = null;
-
+    protected $port;
 
     /**
      * Accepts a connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#accept
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function accept($a = null)
     {
@@ -59,10 +57,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Returns the number of bytes that can be read from this socket without blocking.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#available
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function available($a = null)
     {
@@ -72,11 +69,10 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Binds this socket to the specified local IP address and port number.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#bind
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function bind($a = null, $b = null)
     {
@@ -86,10 +82,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Closes this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -101,11 +96,10 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
      * Connects this socket to the specified port number on the specified host.
      * Connects this socket to the specified port number on the specified host.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#connect
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function connect($a = null, $b = null)
     {
@@ -115,10 +109,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Creates either a stream or a datagram socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#create
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function create($a = null)
     {
@@ -128,10 +121,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Returns the value of this socket's fd field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getFileDescriptor
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFileDescriptor($a = null)
     {
@@ -141,10 +133,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Returns the value of this socket's address field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getInetAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInetAddress($a = null)
     {
@@ -154,10 +145,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Returns an input stream for this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getInputStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInputStream($a = null)
     {
@@ -167,10 +157,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Returns the value of this socket's localport field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLocalPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLocalPort($a = null)
     {
@@ -180,10 +169,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Called to get a socket option.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getOption
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOption($a = null)
     {
@@ -193,10 +181,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Returns an output stream for this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getOutputStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOutputStream($a = null)
     {
@@ -206,10 +193,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Returns the value of this socket's port field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPort($a = null)
     {
@@ -219,10 +205,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Sets the maximum queue length for incoming connection indications (a request to connect) to the count argument.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#listen
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function listen($a = null)
     {
@@ -232,10 +217,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Send one byte of urgent data on the socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#sendUrgentData
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function sendUrgentData($a = null)
     {
@@ -245,11 +229,10 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Called to set a socket option.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setOption
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setOption($a = null, $b = null)
     {
@@ -259,12 +242,11 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Sets performance preferences for this socket.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setPerformancePreferences
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function setPerformancePreferences($a = null, $b = null, $c = null)
     {
@@ -274,10 +256,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Places the input stream for this socket at "end of stream".
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#shutdownInput
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function shutdownInput($a = null)
     {
@@ -287,10 +268,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Disables the output stream for this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#shutdownOutput
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function shutdownOutput($a = null)
     {
@@ -298,12 +278,11 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     }
 
     /**
-     * Returns a set of SocketOptions supported by this impl and by this impl's socket (Socket or ServerSocket)
+     * Returns a set of SocketOptions supported by this impl and by this impl's socket (Socket or ServerSocket).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#supportedOptions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function supportedOptions($a = null)
     {
@@ -313,10 +292,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Returns whether or not this SocketImpl supports sending urgent data.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#supportsUrgentData
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function supportsUrgentData($a = null)
     {
@@ -326,10 +304,9 @@ class SocketImpl extends _Object /* implements SocketOption, Set */
     /**
      * Returns the address and port of this socket as a String.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

@@ -37,6 +37,13 @@
         "friendsofphp/php-cs-fixer": "^2.14"
     },
     "scripts": {
-        "tests": "phpunit tests --stop-on-failure && phpcs -n --standard=phpcs.xml src"
+        "test": "phpunit tests --stop-on-failure",
+        "cs": "phpcs -n --standard=phpcs.xml src",
+        "fix": "php-cs-fixer fix",
+        "tests": [
+            "@test",
+            "@cs",
+            "@fix"
+        ]
     }
 }

@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\lang;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\LinkageError;
-
 // use PHPJava\Packages\java\io\Serializable;
 
 /**
@@ -14,6 +11,6 @@ use PHPJava\Packages\java\lang\LinkageError;
  * @parent \PHPJava\Packages\java\lang\Error
  * @parent \PHPJava\Packages\java\lang\LinkageError
  */
-class NoClassDefFoundError extends LinkageError /* implements Serializable */
+class NoClassDefFoundError extends LinkageError // implements Serializable
 {
 }

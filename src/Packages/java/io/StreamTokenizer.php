@@ -16,14 +16,14 @@ class StreamTokenizer extends _Object
      *
      * @var mixed $nval
      */
-    public $nval = null;
+    public $nval;
 
     /**
      * If the current token is a word token, this field contains a string giving the characters of the word token.
      *
      * @var mixed $sval
      */
-    public $sval = null;
+    public $sval;
 
     /**
      * A constant indicating that the end of the stream has been read.
@@ -58,16 +58,14 @@ class StreamTokenizer extends _Object
      *
      * @var mixed $ttype
      */
-    public $ttype = null;
-
+    public $ttype;
 
     /**
      * Specified that the character argument starts a single-line comment.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#commentChar
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function commentChar($a = null)
     {
@@ -77,10 +75,9 @@ class StreamTokenizer extends _Object
     /**
      * Determines whether or not ends of line are treated as tokens.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#eolIsSignificant
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function eolIsSignificant($a = null)
     {
@@ -90,10 +87,9 @@ class StreamTokenizer extends _Object
     /**
      * Return the current line number.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#lineno
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lineno($a = null)
     {
@@ -103,10 +99,9 @@ class StreamTokenizer extends _Object
     /**
      * Determines whether or not word token are automatically lowercased.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#lowerCaseMode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lowerCaseMode($a = null)
     {
@@ -116,10 +111,9 @@ class StreamTokenizer extends _Object
     /**
      * Parses the next token from the input stream of this tokenizer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#nextToken
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function nextToken($a = null)
     {
@@ -129,10 +123,9 @@ class StreamTokenizer extends _Object
     /**
      * Specifies that the character argument is "ordinary" in this tokenizer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#ordinaryChar
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ordinaryChar($a = null)
     {
@@ -142,11 +135,10 @@ class StreamTokenizer extends _Object
     /**
      * Specifies that all characters c in the range low&nbsp;&lt;=&nbsp;c&nbsp;&lt;=&nbsp;high are "ordinary" in this tokenizer.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#ordinaryChars
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function ordinaryChars($a = null, $b = null)
     {
@@ -156,10 +148,9 @@ class StreamTokenizer extends _Object
     /**
      * Specifies that numbers should be parsed by this tokenizer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#parseNumbers
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function parseNumbers($a = null)
     {
@@ -169,10 +160,9 @@ class StreamTokenizer extends _Object
     /**
      * Causes the next call to the nextToken method of this tokenizer to return the current value in the ttype field, and not to modify the value in the nval or sval field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#pushBack
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function pushBack($a = null)
     {
@@ -182,10 +172,9 @@ class StreamTokenizer extends _Object
     /**
      * Specifies that matching pairs of this character delimit string constants in this tokenizer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#quoteChar
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function quoteChar($a = null)
     {
@@ -193,12 +182,11 @@ class StreamTokenizer extends _Object
     }
 
     /**
-     * Resets this tokenizer's syntax table so that all characters are "ordinary."
+     * Resets this tokenizer's syntax table so that all characters are "ordinary.".
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#resetSyntax
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function resetSyntax($a = null)
     {
@@ -208,10 +196,9 @@ class StreamTokenizer extends _Object
     /**
      * Determines whether or not the tokenizer recognizes C++-style comments.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#slashSlashComments
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function slashSlashComments($a = null)
     {
@@ -221,10 +208,9 @@ class StreamTokenizer extends _Object
     /**
      * Determines whether or not the tokenizer recognizes C-style comments.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#slashStarComments
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function slashStarComments($a = null)
     {
@@ -234,10 +220,9 @@ class StreamTokenizer extends _Object
     /**
      * Returns the string representation of the current stream token and the line number it occurs on.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -247,11 +232,10 @@ class StreamTokenizer extends _Object
     /**
      * Specifies that all characters c in the range low&nbsp;&lt;=&nbsp;c&nbsp;&lt;=&nbsp;high are white space characters.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#whitespaceChars
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function whitespaceChars($a = null, $b = null)
     {
@@ -261,11 +245,10 @@ class StreamTokenizer extends _Object
     /**
      * Specifies that all characters c in the range low&nbsp;&lt;=&nbsp;c&nbsp;&lt;=&nbsp;high are word constituents.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#wordChars
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function wordChars($a = null, $b = null)
     {

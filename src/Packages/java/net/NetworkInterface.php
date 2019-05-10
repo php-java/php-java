@@ -12,16 +12,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class NetworkInterface extends _Object /* implements Enumeration, Stream */
+class NetworkInterface extends _Object // implements Enumeration, Stream
 {
-
     /**
      * Compares this object against the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -31,10 +29,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Get a network interface given its index.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getByIndex
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getByIndex($a = null)
     {
@@ -44,10 +41,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Convenience method to search for a network interface that has the specified Internet Protocol (IP) address bound to it.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getByInetAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getByInetAddress($a = null)
     {
@@ -57,10 +53,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Searches for the network interface with the specified name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getByName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getByName($a = null)
     {
@@ -70,10 +65,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Get the display name of this network interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDisplayName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDisplayName($a = null)
     {
@@ -83,10 +77,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the hardware address (usually MAC) of the interface if it has one and if it can be accessed given the current privileges.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHardwareAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHardwareAddress($a = null)
     {
@@ -96,10 +89,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the index of this network interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getIndex
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getIndex($a = null)
     {
@@ -109,10 +101,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Get an Enumeration with all or a subset of the InetAddresses bound to this network interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getInetAddresses
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInetAddresses($a = null)
     {
@@ -122,10 +113,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Get a List of all or a subset of the InterfaceAddresses of this network interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getInterfaceAddresses
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInterfaceAddresses($a = null)
     {
@@ -135,10 +125,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the Maximum Transmission Unit (MTU) of this interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getMTU
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMTU($a = null)
     {
@@ -148,10 +137,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Get the name of this network interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getName($a = null)
     {
@@ -161,10 +149,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns an Enumeration of all the interfaces on this machine.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getNetworkInterfaces
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getNetworkInterfaces($a = null)
     {
@@ -174,10 +161,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns the parent NetworkInterface of this interface if this is a subinterface, or null if it is a physical (non virtual) interface or has no parent.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getParent
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getParent($a = null)
     {
@@ -187,10 +173,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Get an Enumeration with all the subinterfaces (also known as virtual interfaces) attached to this network interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getSubInterfaces
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSubInterfaces($a = null)
     {
@@ -200,10 +185,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Get a Stream of all or a subset of the InetAddresses bound to this network interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#inetAddresses
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function inetAddresses($a = null)
     {
@@ -213,10 +197,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns whether a network interface is a loopback interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isLoopback
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isLoopback($a = null)
     {
@@ -226,10 +209,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns whether a network interface is a point to point interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isPointToPoint
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isPointToPoint($a = null)
     {
@@ -239,10 +221,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns whether a network interface is up and running.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isUp
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isUp($a = null)
     {
@@ -252,10 +233,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns whether this interface is a virtual interface (also called subinterface).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isVirtual
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isVirtual($a = null)
     {
@@ -265,10 +245,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns a Stream of all the interfaces on this machine.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#networkInterfaces
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_networkInterfaces($a = null)
     {
@@ -278,10 +257,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Get a Stream of all subinterfaces (also known as virtual interfaces) attached to this network interface.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#subInterfaces
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function subInterfaces($a = null)
     {
@@ -291,10 +269,9 @@ class NetworkInterface extends _Object /* implements Enumeration, Stream */
     /**
      * Returns whether a network interface supports multicasting or not.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#supportsMulticast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function supportsMulticast($a = null)
     {

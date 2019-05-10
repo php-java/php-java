@@ -11,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class ObjectStreamField extends _Object /* implements Comparable */
+class ObjectStreamField extends _Object // implements Comparable
 {
-
     /**
      * Compare this field with another ObjectStreamField.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -30,10 +28,9 @@ class ObjectStreamField extends _Object /* implements Comparable */
     /**
      * Get the name of this field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getName($a = null)
     {
@@ -43,10 +40,9 @@ class ObjectStreamField extends _Object /* implements Comparable */
     /**
      * Offset of field within instance data.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getOffset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOffset($a = null)
     {
@@ -56,10 +52,9 @@ class ObjectStreamField extends _Object /* implements Comparable */
     /**
      * Get the type of the field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getType($a = null)
     {
@@ -69,10 +64,9 @@ class ObjectStreamField extends _Object /* implements Comparable */
     /**
      * Returns character encoding of field type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getTypeCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTypeCode($a = null)
     {
@@ -82,10 +76,9 @@ class ObjectStreamField extends _Object /* implements Comparable */
     /**
      * Return the JVM type signature.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getTypeString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTypeString($a = null)
     {
@@ -95,10 +88,9 @@ class ObjectStreamField extends _Object /* implements Comparable */
     /**
      * Return true if this field has a primitive type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#isPrimitive
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isPrimitive($a = null)
     {
@@ -108,10 +100,9 @@ class ObjectStreamField extends _Object /* implements Comparable */
     /**
      * Returns boolean value indicating whether or not the serializable field represented by this ObjectStreamField instance is unshared.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#isUnshared
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isUnshared($a = null)
     {
@@ -121,10 +112,9 @@ class ObjectStreamField extends _Object /* implements Comparable */
     /**
      * Offset within instance data.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setOffset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function setOffset($a = null)
     {
@@ -134,10 +124,9 @@ class ObjectStreamField extends _Object /* implements Comparable */
     /**
      * Return a string that describes this field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

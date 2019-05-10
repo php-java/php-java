@@ -12,7 +12,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class MethodType extends _Object /* implements Serializable, _List */
+class MethodType extends _Object // implements Serializable, _List
 {
     private $parameters = [];
 
@@ -26,10 +26,9 @@ class MethodType extends _Object /* implements Serializable, _List */
      * Finds or creates a method type with additional parameter types.
      * Finds or creates a method type with additional parameter types.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#appendParameterTypes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function appendParameterTypes($a = null)
     {
@@ -39,11 +38,10 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Finds or creates a method type with a single different parameter type.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#changeParameterType
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function changeParameterType($a = null, $b = null)
     {
@@ -53,10 +51,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Finds or creates a method type with a different return type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#changeReturnType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function changeReturnType($a = null)
     {
@@ -66,11 +63,10 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Finds or creates a method type with some parameter types omitted.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#dropParameterTypes
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function dropParameterTypes($a = null, $b = null)
     {
@@ -80,10 +76,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Compares the specified object with this type for equality.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -93,10 +88,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Erases all reference types to Object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#erase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function erase($a = null)
     {
@@ -106,11 +100,10 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Finds or creates an instance of a method type, given the spelling of its bytecode descriptor.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#fromMethodDescriptorString
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function fromMethodDescriptorString($a = null, $b = null)
     {
@@ -120,10 +113,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Converts all types, both reference and primitive, to Object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#generic
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function generic($a = null)
     {
@@ -134,11 +126,10 @@ class MethodType extends _Object /* implements Serializable, _List */
      * Finds or creates a method type whose components are all Object.
      * Finds or creates a method type whose components are Object with an optional trailing Object[] array.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#genericMethodType
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function genericMethodType($a = null, $b = null)
     {
@@ -148,10 +139,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Returns the hash code value for this method type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -161,10 +151,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Reports if this type contains a primitive argument or return value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#hasPrimitives
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasPrimitives($a = null)
     {
@@ -174,10 +163,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Reports if this type contains a wrapper argument or return value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#hasWrappers
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasWrappers($a = null)
     {
@@ -188,11 +176,10 @@ class MethodType extends _Object /* implements Serializable, _List */
      * Finds or creates a method type with additional parameter types.
      * Finds or creates a method type with additional parameter types.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#insertParameterTypes
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function insertParameterTypes($a = null, $b = null)
     {
@@ -202,10 +189,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Returns the last parameter type of this method type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#lastParameterType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lastParameterType($a = null)
     {
@@ -220,11 +206,10 @@ class MethodType extends _Object /* implements Serializable, _List */
      * Finds or creates a method type with the given components.
      * Finds or creates a method type with the given components.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#methodType
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
      */
     public static function methodType($a = null, $b = null, $c = null)
     {
@@ -234,10 +219,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Presents the parameter types as an array (a convenience method).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#parameterArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function parameterArray($a = null)
     {
@@ -247,10 +231,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Returns the number of parameter types in this method type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#parameterCount
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function parameterCount($a = null)
     {
@@ -260,10 +243,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Presents the parameter types as a list (a convenience method).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#parameterList
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function parameterList($a = null)
     {
@@ -273,10 +255,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Returns the parameter type at the specified index, within this method type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#parameterType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function parameterType($a = null)
     {
@@ -286,7 +267,6 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Returns the return type of this method type.
      *
-     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#returnType
      */
     public function returnType()
@@ -297,10 +277,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Produces a bytecode descriptor representation of the method type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#toMethodDescriptorString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toMethodDescriptorString($a = null)
     {
@@ -310,10 +289,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Returns a string representation of the method type, of the form "(PT0,PT1...)RT".
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -323,10 +301,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Converts all wrapper types to their corresponding primitive types.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#unwrap
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function unwrap($a = null)
     {
@@ -336,10 +313,9 @@ class MethodType extends _Object /* implements Serializable, _List */
     /**
      * Converts all primitive types to their corresponding wrapper types.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#wrap
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function wrap($a = null)
     {

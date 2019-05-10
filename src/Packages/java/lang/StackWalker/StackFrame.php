@@ -13,8 +13,8 @@ interface StackFrame
      * Returns the index to the code array of the Code attribute containing the execution point represented by this stack frame.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getByteCodeIndex
      * @NotImplemented
      */
@@ -24,8 +24,8 @@ interface StackFrame
      * Gets the binary name of the declaring class of the method represented by this stack frame.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getClassName
      * @NotImplemented
      */
@@ -35,8 +35,8 @@ interface StackFrame
      * Gets the declaring Class for the method represented by this stack frame.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaringClass
      * @NotImplemented
      */
@@ -46,8 +46,8 @@ interface StackFrame
      * Returns the descriptor of the method represented by this stack frame as defined by The Java Virtual Machine Specification.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDescriptor
      * @NotImplemented
      */
@@ -57,8 +57,8 @@ interface StackFrame
      * Returns the name of the source file containing the execution point represented by this stack frame.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getFileName
      * @NotImplemented
      */
@@ -68,8 +68,8 @@ interface StackFrame
      * Returns the line number of the source line containing the execution point represented by this stack frame.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getLineNumber
      * @NotImplemented
      */
@@ -79,8 +79,8 @@ interface StackFrame
      * Gets the name of the method represented by this stack frame.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getMethodName
      * @NotImplemented
      */
@@ -90,8 +90,8 @@ interface StackFrame
      * Returns the MethodType representing the parameter types and the return type for the method represented by this stack frame.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getMethodType
      * @NotImplemented
      */
@@ -101,8 +101,8 @@ interface StackFrame
      * Returns true if the method containing the execution point represented by this stack frame is a native method.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isNativeMethod
      * @NotImplemented
      */
@@ -112,8 +112,8 @@ interface StackFrame
      * Gets a StackTraceElement for this stack frame.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toStackTraceElement
      * @NotImplemented
      */

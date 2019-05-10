@@ -17,8 +17,8 @@ interface Appendable
      * @param mixed $a
      * @param mixed $b
      * @param mixed $c
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#append
      * @NotImplemented
      */

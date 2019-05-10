@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\Reader;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -13,16 +12,14 @@ use PHPJava\Packages\java\io\Reader;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\Reader
  */
-class PipedReader extends Reader /* implements Closeable, AutoCloseable */
+class PipedReader extends Reader // implements Closeable, AutoCloseable
 {
-
     /**
      * Closes this piped stream and releases any system resources associated with the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -32,10 +29,9 @@ class PipedReader extends Reader /* implements Closeable, AutoCloseable */
     /**
      * Causes this piped reader to be connected to the piped  writer src.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#connect
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function connect($a = null)
     {
@@ -46,12 +42,11 @@ class PipedReader extends Reader /* implements Closeable, AutoCloseable */
      * Reads the next character of data from this piped stream.
      * Reads up to len characters of data from this piped stream into an array of characters.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#read
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function read($a = null, $b = null, $c = null)
     {
@@ -61,10 +56,9 @@ class PipedReader extends Reader /* implements Closeable, AutoCloseable */
     /**
      * Tell whether this stream is ready to be read.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#ready
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ready($a = null)
     {

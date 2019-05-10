@@ -14,16 +14,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOption, Set */
+class Socket extends _Object // implements Closeable, AutoCloseable, SocketOption, Set
 {
-
     /**
      * Binds the socket to a local address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#bind
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function bind($a = null)
     {
@@ -33,10 +31,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Closes this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -47,11 +44,10 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
      * Connects this socket to the server.
      * Connects this socket to the server with a specified timeout value.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#connect
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function connect($a = null, $b = null)
     {
@@ -61,10 +57,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the unique SocketChannel object associated with this socket, if any.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getChannel
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getChannel($a = null)
     {
@@ -74,10 +69,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the address to which the socket is connected.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getInetAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInetAddress($a = null)
     {
@@ -87,10 +81,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns an input stream for this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getInputStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInputStream($a = null)
     {
@@ -100,10 +93,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Tests if SO_KEEPALIVE is enabled.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getKeepAlive
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getKeepAlive($a = null)
     {
@@ -113,10 +105,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Gets the local address to which the socket is bound.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLocalAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLocalAddress($a = null)
     {
@@ -126,10 +117,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the local port number to which this socket is bound.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLocalPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLocalPort($a = null)
     {
@@ -139,10 +129,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the address of the endpoint this socket is bound to.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLocalSocketAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLocalSocketAddress($a = null)
     {
@@ -152,10 +141,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Tests if SO_OOBINLINE is enabled.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getOOBInline
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOOBInline($a = null)
     {
@@ -165,10 +153,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the value of a socket option.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getOption
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOption($a = null)
     {
@@ -178,10 +165,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns an output stream for this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getOutputStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOutputStream($a = null)
     {
@@ -191,10 +177,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the remote port number to which this socket is connected.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPort($a = null)
     {
@@ -204,10 +189,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Gets the value of the SO_RCVBUF option for this Socket, that is the buffer size used by the platform for input on this Socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getReceiveBufferSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getReceiveBufferSize($a = null)
     {
@@ -217,10 +201,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the address of the endpoint this socket is connected to, or null if it is unconnected.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getRemoteSocketAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getRemoteSocketAddress($a = null)
     {
@@ -230,10 +213,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Tests if SO_REUSEADDR is enabled.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getReuseAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getReuseAddress($a = null)
     {
@@ -243,10 +225,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Get value of the SO_SNDBUF option for this Socket, that is the buffer size used by the platform for output on this Socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getSendBufferSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSendBufferSize($a = null)
     {
@@ -256,10 +237,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns setting for SO_LINGER.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getSoLinger
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSoLinger($a = null)
     {
@@ -269,10 +249,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns setting for SO_TIMEOUT. 0 returns implies that the option is disabled (i.e., timeout of infinity).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getSoTimeout
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSoTimeout($a = null)
     {
@@ -282,10 +261,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Tests if TCP_NODELAY is enabled.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getTcpNoDelay
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTcpNoDelay($a = null)
     {
@@ -293,12 +271,11 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     }
 
     /**
-     * Gets traffic class or type-of-service in the IP header for packets sent from this Socket
+     * Gets traffic class or type-of-service in the IP header for packets sent from this Socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getTrafficClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTrafficClass($a = null)
     {
@@ -308,10 +285,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the binding state of the socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isBound
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isBound($a = null)
     {
@@ -321,10 +297,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the closed state of the socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isClosed
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isClosed($a = null)
     {
@@ -334,10 +309,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns the connection state of the socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isConnected
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isConnected($a = null)
     {
@@ -347,10 +321,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns whether the read-half of the socket connection is closed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isInputShutdown
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isInputShutdown($a = null)
     {
@@ -360,10 +333,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns whether the write-half of the socket connection is closed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isOutputShutdown
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isOutputShutdown($a = null)
     {
@@ -373,10 +345,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Send one byte of urgent data on the socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#sendUrgentData
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function sendUrgentData($a = null)
     {
@@ -386,10 +357,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Enable/disable SO_KEEPALIVE.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setKeepAlive
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setKeepAlive($a = null)
     {
@@ -399,10 +369,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Enable/disable SO_OOBINLINE (receipt of TCP urgent data) By default, this option is disabled and TCP urgent data received on a socket is silently discarded.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setOOBInline
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setOOBInline($a = null)
     {
@@ -412,11 +381,10 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Sets the value of a socket option.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setOption
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setOption($a = null, $b = null)
     {
@@ -426,12 +394,11 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Sets performance preferences for this socket.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setPerformancePreferences
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function setPerformancePreferences($a = null, $b = null, $c = null)
     {
@@ -441,10 +408,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Sets the SO_RCVBUF option to the specified value for this Socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setReceiveBufferSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setReceiveBufferSize($a = null)
     {
@@ -454,10 +420,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Enable/disable the SO_REUSEADDR socket option.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setReuseAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setReuseAddress($a = null)
     {
@@ -467,10 +432,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Sets the SO_SNDBUF option to the specified value for this Socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setSendBufferSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setSendBufferSize($a = null)
     {
@@ -480,10 +444,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Sets the client socket implementation factory for the application.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setSocketImplFactory
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setSocketImplFactory($a = null)
     {
@@ -493,11 +456,10 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Enable/disable SO_LINGER with the specified linger time in seconds.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setSoLinger
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setSoLinger($a = null, $b = null)
     {
@@ -507,10 +469,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Enable/disable SO_TIMEOUT  with the specified timeout, in milliseconds.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setSoTimeout
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setSoTimeout($a = null)
     {
@@ -520,10 +481,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Enable/disable TCP_NODELAY (disable/enable Nagle's algorithm).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setTcpNoDelay
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTcpNoDelay($a = null)
     {
@@ -533,10 +493,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Sets traffic class or type-of-service octet in the IP header for packets sent from this Socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setTrafficClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTrafficClass($a = null)
     {
@@ -546,10 +505,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Places the input stream for this socket at "end of stream".
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#shutdownInput
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function shutdownInput($a = null)
     {
@@ -559,10 +517,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Disables the output stream for this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#shutdownOutput
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function shutdownOutput($a = null)
     {
@@ -572,10 +529,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Returns a set of the socket options supported by this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#supportedOptions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function supportedOptions($a = null)
     {
@@ -585,10 +541,9 @@ class Socket extends _Object /* implements Closeable, AutoCloseable, SocketOptio
     /**
      * Converts this socket to a String.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

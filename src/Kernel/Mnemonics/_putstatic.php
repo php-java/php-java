@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 final class _putstatic implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -12,9 +9,9 @@ final class _putstatic implements OperationInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool();
-        
+
         $cp = $cpInfo[$this->readUnsignedShort()];
-        
+
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
         $fieldName = $cpInfo[$class->getNameIndex()]->getString();
 

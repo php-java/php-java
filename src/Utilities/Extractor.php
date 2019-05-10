@@ -2,7 +2,6 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Kernel\Types\Type;
-use PHPJava\Packages\java\lang\_String;
 
 class Extractor
 {
@@ -11,7 +10,7 @@ class Extractor
      *
      * @deprecated
      * @param $value
-     * @return array|bool|float|int|null|Type|string
+     * @return null|array|bool|float|int|string|Type
      */
     public static function realValue($value)
     {

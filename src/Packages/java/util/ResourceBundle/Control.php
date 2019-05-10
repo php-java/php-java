@@ -11,7 +11,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Control extends _Object /* implements _List */
+class Control extends _Object // implements _List
 {
     /**
      * The class-only format List containing "java.class".
@@ -48,15 +48,13 @@ class Control extends _Object /* implements _List */
      */
     public static $TTL_NO_EXPIRATION_CONTROL = null;
 
-
     /**
      * Returns a List of Locales as candidate locales for baseName and locale.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getCandidateLocales
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function getCandidateLocales($a = null, $b = null)
     {
@@ -66,10 +64,9 @@ class Control extends _Object /* implements _List */
     /**
      * Returns a ResourceBundle.Control in which the getFormats method returns the specified formats.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getControl
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getControl($a = null)
     {
@@ -79,11 +76,10 @@ class Control extends _Object /* implements _List */
     /**
      * Returns a Locale to be used as a fallback locale for further resource bundle searches by the ResourceBundle.getBundle factory method.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getFallbackLocale
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function getFallbackLocale($a = null, $b = null)
     {
@@ -93,10 +89,9 @@ class Control extends _Object /* implements _List */
     /**
      * Returns a List of Strings containing formats to be used to load resource bundles for the given baseName.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getFormats
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFormats($a = null)
     {
@@ -106,10 +101,9 @@ class Control extends _Object /* implements _List */
     /**
      * Returns a ResourceBundle.Control in which the getFormats method returns the specified formats and the getFallbackLocale method returns null.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getNoFallbackControl
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getNoFallbackControl($a = null)
     {
@@ -119,11 +113,10 @@ class Control extends _Object /* implements _List */
     /**
      * Returns the time-to-live (TTL) value for resource bundles that are loaded under this ResourceBundle.Control.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getTimeToLive
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function getTimeToLive($a = null, $b = null)
     {
@@ -133,15 +126,14 @@ class Control extends _Object /* implements _List */
     /**
      * Determines if the expired bundle in the cache needs to be reloaded based on the loading time given by loadTime or some other criteria.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#needsReload
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @throws NotImplementedException
      */
     public function needsReload($a = null, $b = null, $c = null, $d = null, $e = null, $f = null)
     {
@@ -151,14 +143,13 @@ class Control extends _Object /* implements _List */
     /**
      * Instantiates a resource bundle for the given bundle name of the given format and locale, using the given class loader if necessary.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#newBundle
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @throws NotImplementedException
      */
     public function newBundle($a = null, $b = null, $c = null, $d = null, $e = null)
     {
@@ -168,11 +159,10 @@ class Control extends _Object /* implements _List */
     /**
      * Converts the given baseName and locale to the bundle name.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toBundleName
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function toBundleName($a = null, $b = null)
     {
@@ -182,11 +172,10 @@ class Control extends _Object /* implements _List */
     /**
      * Converts the given bundleName to the form required by the ClassLoader.getResource method by replacing all occurrences of '.' in bundleName with '/' and appending a '.' and the given file suffix.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toResourceName
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function toResourceName($a = null, $b = null)
     {

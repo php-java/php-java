@@ -11,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class CacheResponse extends _Object /* implements _List */
+class CacheResponse extends _Object // implements _List
 {
-
     /**
      * Returns the response body as an InputStream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getBody
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getBody($a = null)
     {
@@ -30,10 +28,9 @@ class CacheResponse extends _Object /* implements _List */
     /**
      * Returns the response headers as a Map.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHeaders
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHeaders($a = null)
     {

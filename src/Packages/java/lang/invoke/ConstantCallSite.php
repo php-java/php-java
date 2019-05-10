@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\invoke\CallSite;
 
 /**
  * The `ConstantCallSite` class was auto generated.
@@ -12,14 +11,12 @@ use PHPJava\Packages\java\lang\invoke\CallSite;
  */
 class ConstantCallSite extends CallSite
 {
-
     /**
      * Returns this call site's permanent target.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#dynamicInvoker
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function dynamicInvoker($a = null)
     {
@@ -29,10 +26,9 @@ class ConstantCallSite extends CallSite
     /**
      * Returns the target method of the call site, which behaves like a final field of the ConstantCallSite.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getTarget
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTarget($a = null)
     {
@@ -42,10 +38,9 @@ class ConstantCallSite extends CallSite
     /**
      * Always throws an UnsupportedOperationException.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#setTarget
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTarget($a = null)
     {

@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\Writer;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\Appendable;
@@ -13,27 +12,25 @@ use PHPJava\Packages\java\io\Writer;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\Writer
  */
-class PrintWriter extends Writer /* implements Closeable, Appendable */
+class PrintWriter extends Writer // implements Closeable, Appendable
 {
     /**
      * The underlying character-output stream of this PrintWriter.
      *
      * @var mixed $out
      */
-    protected $out = null;
-
+    protected $out;
 
     /**
      * Appends the specified character to this writer.
      * Appends the specified character sequence to this writer.
      * Appends a subsequence of the specified character sequence to this writer.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#append
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function append($a = null, $b = null, $c = null)
     {
@@ -43,10 +40,9 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
     /**
      * Flushes the stream if it's not closed and checks its error state.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#checkError
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function checkError($a = null)
     {
@@ -56,10 +52,9 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
     /**
      * Clears the error state of this stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#clearError
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function clearError($a = null)
     {
@@ -69,10 +64,9 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
     /**
      * Closes the stream and releases any system resources associated with it.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -82,10 +76,9 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
     /**
      * Flushes the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -96,12 +89,11 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
      * Writes a formatted string to this writer using the specified format string and arguments.
      * Writes a formatted string to this writer using the specified format string and arguments.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#format
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function format($a = null, $b = null, $c = null)
     {
@@ -119,10 +111,9 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
      * Prints an object.
      * Prints a string.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#print
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function print($a = null)
     {
@@ -133,12 +124,11 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
      * A convenience method to write a formatted string to this writer using the specified format string and arguments.
      * A convenience method to write a formatted string to this writer using the specified format string and arguments.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#printf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function printf($a = null, $b = null, $c = null)
     {
@@ -157,10 +147,9 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
      * Prints an Object and then terminates the line.
      * Prints a String and then terminates the line.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#println
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function println($a = null)
     {
@@ -170,10 +159,9 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
     /**
      * Indicates that an error has occurred.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setError
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function setError($a = null)
     {
@@ -187,12 +175,11 @@ class PrintWriter extends Writer /* implements Closeable, Appendable */
      * Writes a string.
      * Writes a portion of a string.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {

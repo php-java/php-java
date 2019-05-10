@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPJava\Core\JavaArchive;
-use PHPUnit\Framework\TestCase;
-
 class BubbleSortTest extends Base
 {
     protected $fixtures = [

@@ -14,16 +14,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFunction, DoubleStream */
+class Arrays extends _Object // implements Comparator, Comparable, IntToDoubleFunction, DoubleStream
 {
-
     /**
      * Returns a fixed-size list backed by the specified array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#asList
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_asList($a = null)
     {
@@ -50,14 +48,13 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Searches a range of the specified array for the specified object using the binary search algorithm.
      * Searches the specified array for the specified object using the binary search algorithm.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#binarySearch
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @throws NotImplementedException
      */
     public static function static_binarySearch($a = null, $b = null, $c = null, $d = null, $e = null)
     {
@@ -86,16 +83,15 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Compares two Object arrays, within comparable elements, lexicographically.
      * Compares two Object arrays lexicographically using a specified comparator.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @param mixed $g
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#compare
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @param null|mixed $g
+     * @throws NotImplementedException
      */
     public static function static_compare($a = null, $b = null, $c = null, $d = null, $e = null, $f = null, $g = null)
     {
@@ -112,15 +108,14 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Compares two short arrays lexicographically over the specified ranges, numerically treating elements as unsigned.
      * Compares two short arrays lexicographically, numerically treating elements as unsigned.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#compareUnsigned
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @throws NotImplementedException
      */
     public static function static_compareUnsigned($a = null, $b = null, $c = null, $d = null, $e = null, $f = null)
     {
@@ -139,12 +134,11 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Copies the specified array, truncating or padding with nulls (if necessary) so the copy has the specified length.
      * Copies the specified array, truncating or padding with nulls (if necessary) so the copy has the specified length.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#copyOf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_copyOf($a = null, $b = null, $c = null)
     {
@@ -163,13 +157,12 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Copies the specified range of the specified array into a new array.
      * Copies the specified range of the specified array into a new array.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#copyOfRange
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function static_copyOfRange($a = null, $b = null, $c = null, $d = null)
     {
@@ -179,11 +172,10 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
     /**
      * Returns true if the two specified arrays are deeply equal to one another.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#deepEquals
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_deepEquals($a = null, $b = null)
     {
@@ -193,10 +185,9 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
     /**
      * Returns a hash code based on the "deep contents" of the specified array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#deepHashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_deepHashCode($a = null)
     {
@@ -206,10 +197,9 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
     /**
      * Returns a string representation of the "deep contents" of the specified array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#deepToString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_deepToString($a = null)
     {
@@ -238,16 +228,15 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Returns true if the two specified arrays of Objects, over the specified ranges, are equal to one another.
      * Returns true if the two specified arrays of Objects are equal to one another.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @param mixed $g
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @param null|mixed $g
+     * @throws NotImplementedException
      */
     public static function static_equals($a = null, $b = null, $c = null, $d = null, $e = null, $f = null, $g = null)
     {
@@ -274,13 +263,12 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Assigns the specified Object reference to each element of the specified range of the specified array of Objects.
      * Assigns the specified Object reference to each element of the specified array of Objects.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#fill
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function static_fill($a = null, $b = null, $c = null, $d = null)
     {
@@ -298,10 +286,9 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Returns a hash code based on the contents of the specified array.
      * Returns a hash code based on the contents of the specified array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_hashCode($a = null)
     {
@@ -330,16 +317,15 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Finds and returns the relative index of the first mismatch between two Object arrays over the specified ranges, otherwise return -1 if no mismatch is found.
      * Finds and returns the index of the first mismatch between two Object arrays, otherwise return -1 if no mismatch is found.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @param mixed $g
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#mismatch
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @param null|mixed $g
+     * @throws NotImplementedException
      */
     public static function static_mismatch($a = null, $b = null, $c = null, $d = null, $e = null, $f = null, $g = null)
     {
@@ -356,13 +342,12 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Performs parallelPrefix(Object[], BinaryOperator) for the given subrange of the array.
      * Cumulates, in parallel, each element of the given array in place, using the supplied function.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#parallelPrefix
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function static_parallelPrefix($a = null, $b = null, $c = null, $d = null)
     {
@@ -375,11 +360,10 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Set all elements of the specified array, in parallel, using the provided generator function to compute each element.
      * Set all elements of the specified array, in parallel, using the provided generator function to compute each element.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#parallelSetAll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_parallelSetAll($a = null, $b = null)
     {
@@ -406,13 +390,12 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Sorts the specified range of the specified array of objects according to the order induced by the specified comparator.
      * Sorts the specified array of objects according to the order induced by the specified comparator.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#parallelSort
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function static_parallelSort($a = null, $b = null, $c = null, $d = null)
     {
@@ -425,11 +408,10 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Set all elements of the specified array, using the provided generator function to compute each element.
      * Set all elements of the specified array, using the provided generator function to compute each element.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setAll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_setAll($a = null, $b = null)
     {
@@ -456,13 +438,12 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Sorts the specified range of the specified array of objects according to the order induced by the specified comparator.
      * Sorts the specified array of objects according to the order induced by the specified comparator.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#sort
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function static_sort($a = null, $b = null, $c = null, $d = null)
     {
@@ -479,12 +460,11 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Returns a Spliterator covering all of the specified array.
      * Returns a Spliterator covering the specified range of the specified array.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_spliterator($a = null, $b = null, $c = null)
     {
@@ -501,12 +481,11 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Returns a sequential Stream with the specified array as its source.
      * Returns a sequential Stream with the specified range of the specified array as its source.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#stream
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_stream($a = null, $b = null, $c = null)
     {
@@ -524,10 +503,9 @@ class Arrays extends _Object /* implements Comparator, Comparable, IntToDoubleFu
      * Returns a string representation of the contents of the specified array.
      * Returns a string representation of the contents of the specified array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toString($a = null)
     {

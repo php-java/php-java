@@ -1,15 +1,12 @@
 <?php
 namespace PHPJava\Kernel\Frames;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 class SameLocals1StackItemFrame implements FrameInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $frameType = null;
+    private $frameType;
     private $stack = [];
 
     public function execute(): void

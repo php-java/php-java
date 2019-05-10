@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\nio;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\UnsupportedOperationException;
 
 // use PHPJava\Packages\java\io\Serializable;
@@ -15,6 +14,6 @@ use PHPJava\Packages\java\lang\UnsupportedOperationException;
  * @parent \PHPJava\Packages\java\lang\RuntimeException
  * @parent \PHPJava\Packages\java\lang\UnsupportedOperationException
  */
-class ReadOnlyBufferException extends UnsupportedOperationException /* implements Serializable */
+class ReadOnlyBufferException extends UnsupportedOperationException // implements Serializable
 {
 }

@@ -11,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class SerializedLambda extends _Object /* implements Serializable */
+class SerializedLambda extends _Object // implements Serializable
 {
-
     /**
      * Get a dynamic argument to the lambda capture site.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getCapturedArg
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCapturedArg($a = null)
     {
@@ -30,10 +28,9 @@ class SerializedLambda extends _Object /* implements Serializable */
     /**
      * Get the count of dynamic arguments to the lambda capture site.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getCapturedArgCount
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCapturedArgCount($a = null)
     {
@@ -43,10 +40,9 @@ class SerializedLambda extends _Object /* implements Serializable */
     /**
      * Get the name of the class that captured this lambda.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getCapturingClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCapturingClass($a = null)
     {
@@ -54,12 +50,11 @@ class SerializedLambda extends _Object /* implements Serializable */
     }
 
     /**
-     * Get the name of the invoked type to which this lambda has been converted
+     * Get the name of the invoked type to which this lambda has been converted.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getFunctionalInterfaceClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFunctionalInterfaceClass($a = null)
     {
@@ -69,10 +64,9 @@ class SerializedLambda extends _Object /* implements Serializable */
     /**
      * Get the name of the primary method for the functional interface to which this lambda has been converted.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getFunctionalInterfaceMethodName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFunctionalInterfaceMethodName($a = null)
     {
@@ -82,10 +76,9 @@ class SerializedLambda extends _Object /* implements Serializable */
     /**
      * Get the signature of the primary method for the functional interface to which this lambda has been converted.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getFunctionalInterfaceMethodSignature
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFunctionalInterfaceMethodSignature($a = null)
     {
@@ -95,10 +88,9 @@ class SerializedLambda extends _Object /* implements Serializable */
     /**
      * Get the name of the class containing the implementation method.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getImplClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getImplClass($a = null)
     {
@@ -108,10 +100,9 @@ class SerializedLambda extends _Object /* implements Serializable */
     /**
      * Get the method handle kind (see MethodHandleInfo) of the implementation method.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getImplMethodKind
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getImplMethodKind($a = null)
     {
@@ -121,10 +112,9 @@ class SerializedLambda extends _Object /* implements Serializable */
     /**
      * Get the name of the implementation method.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getImplMethodName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getImplMethodName($a = null)
     {
@@ -134,10 +124,9 @@ class SerializedLambda extends _Object /* implements Serializable */
     /**
      * Get the signature of the implementation method.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getImplMethodSignature
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getImplMethodSignature($a = null)
     {
@@ -147,10 +136,9 @@ class SerializedLambda extends _Object /* implements Serializable */
     /**
      * Get the signature of the primary functional interface method after type variables are substituted with their instantiation from the capture site.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getInstantiatedMethodType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInstantiatedMethodType($a = null)
     {

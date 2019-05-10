@@ -12,16 +12,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class UUID extends _Object /* implements Serializable, Comparable */
+class UUID extends _Object // implements Serializable, Comparable
 {
-
     /**
      * The clock sequence value associated with this UUID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clockSequence
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clockSequence($a = null)
     {
@@ -31,10 +29,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * Compares this UUID with the specified UUID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -44,10 +41,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * Compares this object to the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -57,10 +53,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * Creates a UUID from the string standard representation as described in the toString() method.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#fromString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_fromString($a = null)
     {
@@ -70,10 +65,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the least significant 64 bits of this UUID's 128 bit value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getLeastSignificantBits
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLeastSignificantBits($a = null)
     {
@@ -83,10 +77,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the most significant 64 bits of this UUID's 128 bit value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getMostSignificantBits
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMostSignificantBits($a = null)
     {
@@ -96,10 +89,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * Returns a hash code for this UUID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -109,10 +101,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * Static factory to retrieve a type 3 (name based) UUID based on the specified byte array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#nameUUIDFromBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_nameUUIDFromBytes($a = null)
     {
@@ -122,10 +113,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * The node value associated with this UUID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#node
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function node($a = null)
     {
@@ -135,10 +125,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * Static factory to retrieve a type 4 (pseudo randomly generated) UUID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#randomUUID
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_randomUUID($a = null)
     {
@@ -148,10 +137,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * The timestamp value associated with this UUID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#timestamp
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function timestamp($a = null)
     {
@@ -161,10 +149,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * Returns a String object representing this UUID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -174,10 +161,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * The variant number associated with this UUID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#variant
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function variant($a = null)
     {
@@ -187,10 +173,9 @@ class UUID extends _Object /* implements Serializable, Comparable */
     /**
      * The version number associated with this UUID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#version
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function version($a = null)
     {

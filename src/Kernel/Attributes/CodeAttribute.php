@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 final class CodeAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
@@ -11,12 +8,12 @@ final class CodeAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
-    private $maxStack = null;
-    private $maxLocals = null;
-    private $codeLength = null;
+    private $maxStack;
+    private $maxLocals;
+    private $codeLength;
     private $rawCode = '';
     private $code = [];
-    private $exceptionTableLength = null;
+    private $exceptionTableLength;
     private $exceptionTables = [];
     private $attributeInfo = [];
     private $attributeCount = 0;
@@ -53,18 +50,22 @@ final class CodeAttribute implements AttributeInterface
             $this->attributeInfo[] = $attributeInfo;
         }
     }
+
     public function getExceptionTables()
     {
         return $this->exceptionTables;
     }
+
     public function getCode()
     {
         return $this->rawCode;
     }
+
     public function getOpCodes()
     {
         return $this->code;
     }
+
     public function getOpCodeLength()
     {
         return (int) $this->codeLength;

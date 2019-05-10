@@ -2,21 +2,17 @@
 namespace PHPJava\Core;
 
 use PHPJava\Core\JVM\AttributePool;
+use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\FieldPool;
 use PHPJava\Core\JVM\InterfacePool;
 use PHPJava\Core\JVM\MethodPool;
-use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\DebugTraceIsDisabledException;
 use PHPJava\Exceptions\ValidatorException;
-use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
-use PHPJava\Kernel\Attributes\SourceFileAttribute;
-use PHPJava\Kernel\Maps\FieldAccessFlag;
-use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
@@ -62,9 +58,9 @@ class JavaClass implements JavaClassInterface
     private $superClassIndex = 0;
 
     /**
-     * @var _Utf8|null
+     * @var null|_Utf8
      */
-    private $className = null;
+    private $className;
 
     private $debugTraces = [];
 
@@ -86,8 +82,6 @@ class JavaClass implements JavaClassInterface
     private $startTime = 0.0;
 
     /**
-     * @param ReaderInterface $reader
-     * @param array $options
      * @throws ValidatorException
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\UnknownVersionException
@@ -112,7 +106,7 @@ class JavaClass implements JavaClassInterface
 
         $this->options['class_resolver']->add([
             [ClassResolver::RESOURCE_TYPE_FILE, dirname($reader->getFileName())],
-            [ClassResolver::RESOURCE_TYPE_FILE, getcwd()]
+            [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
         ]);
 
         // Debug tool
@@ -269,7 +263,6 @@ class JavaClass implements JavaClassInterface
         return $className;
     }
 
-
     public function getPackageName(): ?string
     {
         $className = dirname($this->className->getString());
@@ -336,7 +329,7 @@ class JavaClass implements JavaClassInterface
         $isEnabledTrace = $this->options['operations']['enable_trace'] ?? GlobalOptions::get('operations.enable_trace') ?? Runtime::OPERATIONS_ENABLE_TRACE;
         if (!$isEnabledTrace) {
             throw new DebugTraceIsDisabledException(
-                "Debug trace is disabled. If you want to show debug trace then enable to `enable_trace` option."
+                'Debug trace is disabled. If you want to show debug trace then enable to `enable_trace` option.'
             );
         }
         $cpInfo = $this->getConstantPool();
@@ -359,7 +352,7 @@ class JavaClass implements JavaClassInterface
                                     function ($code) use (&$codeCounter, &$debugTraces) {
                                         $isMnemonic = in_array($codeCounter, $debugTraces['mnemonic_indexes']);
                                         $codeCounter++;
-                                        return ($isMnemonic ? "\e[1m\e[35m" : "") . "<0x{$code}>" . ($isMnemonic ? "\e[m" : "");
+                                        return ($isMnemonic ? "\e[1m\e[35m" : '') . "<0x{$code}>" . ($isMnemonic ? "\e[m" : '');
                                     },
                                     $codes
                                 )
@@ -374,20 +367,20 @@ class JavaClass implements JavaClassInterface
 
             printf(
                 "% 8s | %-6.6s | %-20.20s | %-10.10s | %-15.15s\n",
-                "PC",
-                "OPCODE",
-                "MNEMONIC",
-                "OPERANDS",
-                "LOCAL STORAGE"
+                'PC',
+                'OPCODE',
+                'MNEMONIC',
+                'OPERANDS',
+                'LOCAL STORAGE'
             );
 
             $line = sprintf(
                 "%8s+%8s+%22s+%12s+%17s\n",
-                "---------",
-                "--------",
-                "----------------------",
-                "------------",
-                "-----------------"
+                '---------',
+                '--------',
+                '----------------------',
+                '------------',
+                '-----------------'
             );
 
             printf($line);

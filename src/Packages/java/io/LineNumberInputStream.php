@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\FilterInputStream;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -14,16 +13,14 @@ use PHPJava\Packages\java\io\FilterInputStream;
  * @parent \PHPJava\Packages\java\io\InputStream
  * @parent \PHPJava\Packages\java\io\FilterInputStream
  */
-class LineNumberInputStream extends FilterInputStream /* implements Closeable, AutoCloseable */
+class LineNumberInputStream extends FilterInputStream // implements Closeable, AutoCloseable
 {
-
     /**
      * Deprecated.Returns the number of bytes that can be read from this input stream without blocking.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#available
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function available($a = null)
     {
@@ -33,10 +30,9 @@ class LineNumberInputStream extends FilterInputStream /* implements Closeable, A
     /**
      * Deprecated.Returns the current line number.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getLineNumber
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLineNumber($a = null)
     {
@@ -46,10 +42,9 @@ class LineNumberInputStream extends FilterInputStream /* implements Closeable, A
     /**
      * Deprecated.Marks the current position in this input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#mark
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function mark($a = null)
     {
@@ -60,12 +55,11 @@ class LineNumberInputStream extends FilterInputStream /* implements Closeable, A
      * Deprecated.Reads the next byte of data from this input stream.
      * Deprecated.Reads up to len bytes of data from this input stream into an array of bytes.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#read
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function read($a = null, $b = null, $c = null)
     {
@@ -75,10 +69,9 @@ class LineNumberInputStream extends FilterInputStream /* implements Closeable, A
     /**
      * Deprecated.Repositions this stream to the position at the time the mark method was last called on this input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#reset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reset($a = null)
     {
@@ -88,10 +81,9 @@ class LineNumberInputStream extends FilterInputStream /* implements Closeable, A
     /**
      * Deprecated.Sets the line number to the specified argument.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setLineNumber
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setLineNumber($a = null)
     {
@@ -101,10 +93,9 @@ class LineNumberInputStream extends FilterInputStream /* implements Closeable, A
     /**
      * Deprecated.Skips over and discards n bytes of data from this input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#skip
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function skip($a = null)
     {

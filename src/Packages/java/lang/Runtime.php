@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
 
 /**
  * The `Runtime` class was auto generated.
@@ -11,14 +10,12 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class Runtime extends _Object
 {
-
     /**
      * Registers a new virtual-machine shutdown hook.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#addShutdownHook
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function addShutdownHook($a = null)
     {
@@ -28,10 +25,9 @@ class Runtime extends _Object
     /**
      * Returns the number of processors available to the Java virtual machine.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#availableProcessors
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function availableProcessors($a = null)
     {
@@ -46,12 +42,11 @@ class Runtime extends _Object
      * Executes the specified string command in a separate process with the specified environment.
      * Executes the specified string command in a separate process with the specified environment and working directory.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#exec
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function exec($a = null, $b = null, $c = null)
     {
@@ -61,10 +56,9 @@ class Runtime extends _Object
     /**
      * Terminates the currently running Java virtual machine by initiating its shutdown sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#exit
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function exit($a = null)
     {
@@ -74,10 +68,9 @@ class Runtime extends _Object
     /**
      * Returns the amount of free memory in the Java Virtual Machine.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#freeMemory
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function freeMemory($a = null)
     {
@@ -87,10 +80,9 @@ class Runtime extends _Object
     /**
      * Runs the garbage collector.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#gc
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function gc($a = null)
     {
@@ -100,10 +92,9 @@ class Runtime extends _Object
     /**
      * Returns the runtime object associated with the current Java application.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getRuntime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getRuntime($a = null)
     {
@@ -113,10 +104,9 @@ class Runtime extends _Object
     /**
      * Forcibly terminates the currently running Java virtual machine.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#halt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function halt($a = null)
     {
@@ -126,10 +116,9 @@ class Runtime extends _Object
     /**
      * Loads the native library specified by the filename argument.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#load
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function load($a = null)
     {
@@ -139,10 +128,9 @@ class Runtime extends _Object
     /**
      * Loads the native library specified by the libname argument.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#loadLibrary
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function loadLibrary($a = null)
     {
@@ -152,10 +140,9 @@ class Runtime extends _Object
     /**
      * Returns the maximum amount of memory that the Java virtual machine will attempt to use.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#maxMemory
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function maxMemory($a = null)
     {
@@ -165,10 +152,9 @@ class Runtime extends _Object
     /**
      * De-registers a previously-registered virtual-machine shutdown hook.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#removeShutdownHook
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeShutdownHook($a = null)
     {
@@ -178,10 +164,9 @@ class Runtime extends _Object
     /**
      * Runs the finalization methods of any objects pending finalization.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#runFinalization
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function runFinalization($a = null)
     {
@@ -191,10 +176,9 @@ class Runtime extends _Object
     /**
      * Returns the total amount of memory in the Java virtual machine.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#totalMemory
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function totalMemory($a = null)
     {
@@ -204,10 +188,9 @@ class Runtime extends _Object
     /**
      * Deprecated, for removal: This API element is subject to removal in a future version.This method was intended to control instruction tracing.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#traceInstructions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function traceInstructions($a = null)
     {
@@ -217,10 +200,9 @@ class Runtime extends _Object
     /**
      * Deprecated, for removal: This API element is subject to removal in a future version.This method was intended to control method call tracing.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#traceMethodCalls
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function traceMethodCalls($a = null)
     {
@@ -230,10 +212,9 @@ class Runtime extends _Object
     /**
      * Returns the version of the Java Runtime Environment as a Runtime.Version.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#version
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_version($a = null)
     {

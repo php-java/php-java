@@ -2,8 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
-use PHPJava\Packages\java\lang\_String;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\CharSequence;
@@ -14,7 +12,7 @@ use PHPJava\Packages\java\lang\_String;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class StringBuilder extends _Object /* implements Serializable, CharSequence, IntStream */
+class StringBuilder extends _Object // implements Serializable, CharSequence, IntStream
 {
     private $sequence = '';
 
@@ -33,12 +31,11 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
      * Appends the specified string to this character sequence.
      * Appends the specified StringBuffer to this sequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#append
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function append($a = null, $b = null, $c = null)
     {
@@ -56,10 +53,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Appends the string representation of the codePoint argument to this sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#appendCodePoint
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function appendCodePoint($a = null)
     {
@@ -69,10 +65,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns the current capacity.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#capacity
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function capacity($a = null)
     {
@@ -82,10 +77,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns the char value in this sequence at the specified index.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#charAt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function charAt($a = null)
     {
@@ -95,10 +89,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns a stream of int zero-extending the char values from this sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#chars
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function chars($a = null)
     {
@@ -108,10 +101,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns the character (Unicode code point) at the specified index.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointAt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function codePointAt($a = null)
     {
@@ -121,10 +113,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns the character (Unicode code point) before the specified index.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointBefore
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function codePointBefore($a = null)
     {
@@ -134,11 +125,10 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns the number of Unicode code points in the specified text range of this sequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointCount
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function codePointCount($a = null, $b = null)
     {
@@ -148,10 +138,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns a stream of code point values from this sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePoints
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function codePoints($a = null)
     {
@@ -161,10 +150,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Compares two StringBuilder instances lexicographically.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -174,11 +162,10 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Removes the characters in a substring of this sequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#delete
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function delete($a = null, $b = null)
     {
@@ -188,10 +175,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Removes the char at the specified position in this sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#deleteCharAt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function deleteCharAt($a = null)
     {
@@ -201,10 +187,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Ensures that the capacity is at least equal to the specified minimum.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#ensureCapacity
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ensureCapacity($a = null)
     {
@@ -214,13 +199,12 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Characters are copied from this sequence into the destination character array dst.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getChars
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public function getChars($a = null, $b = null, $c = null, $d = null)
     {
@@ -231,11 +215,10 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
      * Returns the index within this string of the first occurrence of the specified substring.
      * Returns the index within this string of the first occurrence of the specified substring, starting at the specified index.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#indexOf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function indexOf($a = null, $b = null)
     {
@@ -256,13 +239,12 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
      * Inserts the string representation of the Object argument into this character sequence.
      * Inserts the string into this character sequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#insert
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public function insert($a = null, $b = null, $c = null, $d = null)
     {
@@ -273,11 +255,10 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
      * Returns the index within this string of the last occurrence of the specified substring.
      * Returns the index within this string of the last occurrence of the specified substring, searching backward starting at the specified index.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#lastIndexOf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function lastIndexOf($a = null, $b = null)
     {
@@ -287,10 +268,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns the length (character count).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#length
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function length($a = null)
     {
@@ -300,11 +280,10 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns the index within this sequence that is offset from the given index by codePointOffset code points.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#offsetByCodePoints
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function offsetByCodePoints($a = null, $b = null)
     {
@@ -314,12 +293,11 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Replaces the characters in a substring of this sequence with characters in the specified String.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#replace
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function replace($a = null, $b = null, $c = null)
     {
@@ -329,10 +307,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Causes this character sequence to be replaced by the reverse of the sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#reverse
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reverse($a = null)
     {
@@ -342,11 +319,10 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * The character at the specified index is set to ch.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setCharAt
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setCharAt($a = null, $b = null)
     {
@@ -356,10 +332,9 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Sets the length of the character sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setLength
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setLength($a = null)
     {
@@ -369,11 +344,10 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Returns a new character sequence that is a subsequence of this sequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#subSequence
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function subSequence($a = null, $b = null)
     {
@@ -384,11 +358,10 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
      * Returns a new String that contains a subsequence of characters currently contained in this character sequence.
      * Returns a new String that contains a subsequence of characters currently contained in this sequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#substring
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function substring($a = null, $b = null)
     {
@@ -398,16 +371,14 @@ class StringBuilder extends _Object /* implements Serializable, CharSequence, In
     /**
      * Attempts to reduce storage used for the character sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#trimToSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function trimToSize($a = null)
     {
         throw new NotImplementedException(__METHOD__);
     }
-
 
     public function toString()
     {

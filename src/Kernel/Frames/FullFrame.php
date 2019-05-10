@@ -1,18 +1,15 @@
 <?php
 namespace PHPJava\Kernel\Frames;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 class FullFrame implements FrameInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $frameType = null;
-    private $offsetDelta = null;
-    private $numberOfLocals = null;
-    private $numberOfStackItems = null;
+    private $frameType;
+    private $offsetDelta;
+    private $numberOfLocals;
+    private $numberOfStackItems;
     private $locals = [];
     private $stack = [];
 

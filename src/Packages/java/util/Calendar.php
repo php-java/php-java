@@ -13,7 +13,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Calendar extends _Object /* implements Serializable, Comparable, Set */
+class Calendar extends _Object // implements Serializable, Comparable, Set
 {
     /**
      * A style specifier for getDisplayNames indicating names in all styles, such as "January" and "Jan".
@@ -48,7 +48,7 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
      *
      * @var mixed $areFieldsSet
      */
-    protected $areFieldsSet = null;
+    protected $areFieldsSet;
 
     /**
      * Value of the MONTH field indicating the eighth month of the year in the Gregorian and Julian calendars.
@@ -132,7 +132,7 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
      *
      * @var mixed $fields
      */
-    protected $fields = null;
+    protected $fields;
 
     /**
      * Value of the DAY_OF_WEEK field indicating Friday.
@@ -160,14 +160,14 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
      *
      * @var mixed $isSet
      */
-    protected $isSet = null;
+    protected $isSet;
 
     /**
      * True if then the value of time is valid.
      *
      * @var mixed $isTimeSet
      */
-    protected $isTimeSet = null;
+    protected $isTimeSet;
 
     /**
      * Value of the MONTH field indicating the first month of the year in the Gregorian and Julian calendars.
@@ -349,7 +349,7 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
      *
      * @var mixed $time
      */
-    protected $time = null;
+    protected $time;
 
     /**
      * Value of the DAY_OF_WEEK field indicating Tuesday.
@@ -400,15 +400,13 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
      */
     public static $ZONE_OFFSET = null;
 
-
     /**
      * Adds or subtracts the specified amount of time to the given calendar field, based on the calendar's rules.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function add($a = null, $b = null)
     {
@@ -418,10 +416,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns whether this Calendar represents a time after the time represented by the specified Object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#after
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function after($a = null)
     {
@@ -431,10 +428,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns whether this Calendar represents a time before the time represented by the specified Object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#before
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function before($a = null)
     {
@@ -445,10 +441,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
      * Sets all the calendar field values and the time value (millisecond offset from the Epoch) of this Calendar undefined.
      * Sets the given calendar field value and the time value (millisecond offset from the Epoch) of this Calendar undefined.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -458,10 +453,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Creates and returns a copy of this object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -471,10 +465,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Compares the time values (millisecond offsets from the Epoch) represented by two Calendar objects.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -484,10 +477,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Fills in any unset fields in the calendar fields.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#complete
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function complete($a = null)
     {
@@ -497,10 +489,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Converts the current millisecond time value time to calendar field values in fields[].
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#computeFields
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function computeFields($a = null)
     {
@@ -510,10 +501,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Converts the current calendar field values in fields[] to the millisecond time value time.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#computeTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function computeTime($a = null)
     {
@@ -523,10 +513,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Compares this Calendar to the specified Object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -536,10 +525,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the value of the given calendar field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function get($a = null)
     {
@@ -549,10 +537,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the maximum value that the specified calendar field could have, given the time value of this Calendar.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getActualMaximum
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getActualMaximum($a = null)
     {
@@ -562,10 +549,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the minimum value that the specified calendar field could have, given the time value of this Calendar.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getActualMinimum
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getActualMinimum($a = null)
     {
@@ -575,10 +561,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns an unmodifiable Set containing all calendar types supported by Calendar in the runtime environment.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getAvailableCalendarTypes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getAvailableCalendarTypes($a = null)
     {
@@ -588,10 +573,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns an array of all locales for which the getInstance methods of this class can return localized instances.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getAvailableLocales
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getAvailableLocales($a = null)
     {
@@ -601,10 +585,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the calendar type of this Calendar.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getCalendarType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCalendarType($a = null)
     {
@@ -614,12 +597,11 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the string representation of the calendar field value in the given style and locale.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDisplayName
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function getDisplayName($a = null, $b = null, $c = null)
     {
@@ -629,12 +611,11 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns a Map containing all names of the calendar field in the given style and locale and their corresponding field values.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDisplayNames
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function getDisplayNames($a = null, $b = null, $c = null)
     {
@@ -644,10 +625,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Gets what the first day of the week is; e.g., SUNDAY in the U.S., MONDAY in France.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getFirstDayOfWeek
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFirstDayOfWeek($a = null)
     {
@@ -657,10 +637,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the highest minimum value for the given calendar field of this Calendar instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getGreatestMinimum
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getGreatestMinimum($a = null)
     {
@@ -673,11 +652,10 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
      * Gets a calendar using the specified time zone and default locale.
      * Gets a calendar with the specified time zone and locale.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getInstance
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_getInstance($a = null, $b = null)
     {
@@ -687,10 +665,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the lowest maximum value for the given calendar field of this Calendar instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getLeastMaximum
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLeastMaximum($a = null)
     {
@@ -700,10 +677,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the maximum value for the given calendar field of this Calendar instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getMaximum
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMaximum($a = null)
     {
@@ -713,10 +689,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Gets what the minimal days required in the first week of the year are; e.g., if the first week is defined as one that contains the first day of the first month of a year, this method returns 1.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getMinimalDaysInFirstWeek
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMinimalDaysInFirstWeek($a = null)
     {
@@ -726,10 +701,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the minimum value for the given calendar field of this Calendar instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getMinimum
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMinimum($a = null)
     {
@@ -739,10 +713,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns a Date object representing this Calendar's time value (millisecond offset from the Epoch").
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTime($a = null)
     {
@@ -752,10 +725,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns this Calendar's time value in milliseconds.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getTimeInMillis
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTimeInMillis($a = null)
     {
@@ -765,10 +737,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Gets the time zone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getTimeZone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTimeZone($a = null)
     {
@@ -778,10 +749,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the number of weeks in the week year represented by this Calendar.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getWeeksInWeekYear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getWeeksInWeekYear($a = null)
     {
@@ -791,10 +761,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the week year represented by this Calendar.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getWeekYear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getWeekYear($a = null)
     {
@@ -804,10 +773,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns a hash code for this calendar.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -817,10 +785,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns the value of the given calendar field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#internalGet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function internalGet($a = null)
     {
@@ -830,10 +797,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Tells whether date/time interpretation is to be lenient.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isLenient
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isLenient($a = null)
     {
@@ -843,10 +809,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Determines if the given calendar field has a value set, including cases that the value has been set by internal fields calculations triggered by a get method call.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isSet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isSet($a = null)
     {
@@ -856,10 +821,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Returns whether this Calendar supports week dates.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isWeekDateSupported
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isWeekDateSupported($a = null)
     {
@@ -870,11 +834,10 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
      * Adds or subtracts (up/down) a single unit of time on the given time field without changing larger fields.
      * Adds the specified (signed) amount to the specified calendar field without changing larger fields.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#roll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function roll($a = null, $b = null)
     {
@@ -887,15 +850,14 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
      * Sets the values for the calendar fields YEAR, MONTH, DAY_OF_MONTH, HOUR_OF_DAY, and MINUTE.
      * Sets the values for the fields YEAR, MONTH, DAY_OF_MONTH, HOUR_OF_DAY, MINUTE, and SECOND.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#set
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @throws NotImplementedException
      */
     public function set($a = null, $b = null, $c = null, $d = null, $e = null, $f = null)
     {
@@ -905,10 +867,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Sets what the first day of the week is; e.g., SUNDAY in the U.S., MONDAY in France.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setFirstDayOfWeek
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setFirstDayOfWeek($a = null)
     {
@@ -918,10 +879,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Specifies whether or not date/time interpretation is to be lenient.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setLenient
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setLenient($a = null)
     {
@@ -931,10 +891,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Sets what the minimal days required in the first week of the year are; For example, if the first week is defined as one that contains the first day of the first month of a year, call this method with value 1.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setMinimalDaysInFirstWeek
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setMinimalDaysInFirstWeek($a = null)
     {
@@ -944,10 +903,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Sets this Calendar's time with the given Date.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTime($a = null)
     {
@@ -957,10 +915,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Sets this Calendar's current time from the given long value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setTimeInMillis
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTimeInMillis($a = null)
     {
@@ -970,10 +927,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Sets the time zone with the given time zone value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setTimeZone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTimeZone($a = null)
     {
@@ -983,12 +939,11 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Sets the date of this Calendar with the given date specifiers - week year, week of year, and day of week.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setWeekDate
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function setWeekDate($a = null, $b = null, $c = null)
     {
@@ -998,10 +953,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Converts this object to an Instant.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toInstant
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toInstant($a = null)
     {
@@ -1011,10 +965,9 @@ class Calendar extends _Object /* implements Serializable, Comparable, Set */
     /**
      * Return a string representation of this calendar.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

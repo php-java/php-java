@@ -1,17 +1,15 @@
 <?php
 namespace PHPJava\Kernel\Frames;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 class SameLocals1StackItemFrameExtended implements FrameInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $frameType = null;
-    private $offsetDelta = null;
+    private $frameType;
+    private $offsetDelta;
     private $locals = [];
+
     public function execute(): void
     {
         $this->frameType = $this->readUnsignedByte();

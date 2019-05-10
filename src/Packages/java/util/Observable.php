@@ -11,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Observable extends _Object /* implements Observer */
+class Observable extends _Object // implements Observer
 {
-
     /**
      * Deprecated.Adds an observer to the set of observers for this object, provided that it is not the same as some observer already in the set.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addObserver
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function addObserver($a = null)
     {
@@ -30,10 +28,9 @@ class Observable extends _Object /* implements Observer */
     /**
      * Deprecated.Indicates that this object has no longer changed, or that it has already notified all of its observers of its most recent change, so that the hasChanged method will now return false.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clearChanged
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function clearChanged($a = null)
     {
@@ -43,10 +40,9 @@ class Observable extends _Object /* implements Observer */
     /**
      * Deprecated.Returns the number of observers of this Observable object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#countObservers
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function countObservers($a = null)
     {
@@ -56,10 +52,9 @@ class Observable extends _Object /* implements Observer */
     /**
      * Deprecated.Deletes an observer from the set of observers of this object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#deleteObserver
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function deleteObserver($a = null)
     {
@@ -69,10 +64,9 @@ class Observable extends _Object /* implements Observer */
     /**
      * Deprecated.Clears the observer list so that this object no longer has any observers.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#deleteObservers
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function deleteObservers($a = null)
     {
@@ -82,10 +76,9 @@ class Observable extends _Object /* implements Observer */
     /**
      * Deprecated.Tests if this object has changed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hasChanged
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasChanged($a = null)
     {
@@ -96,10 +89,9 @@ class Observable extends _Object /* implements Observer */
      * Deprecated.If this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed.
      * Deprecated.If this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#notifyObservers
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function notifyObservers($a = null)
     {
@@ -109,10 +101,9 @@ class Observable extends _Object /* implements Observer */
     /**
      * Deprecated.Marks this Observable object as having been changed; the hasChanged method will now return true.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setChanged
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function setChanged($a = null)
     {

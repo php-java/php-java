@@ -28,8 +28,6 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     private $reader;
 
     /**
-     * @param ReaderInterface $reader
-     * @param int $entries
      * @throws ReadEntryException
      */
     public function __construct(ReaderInterface $reader, int $entries)
@@ -99,7 +97,7 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -126,8 +124,6 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @param mixed $offset
-     * @param mixed $value
      * @throws ReadOnlyException
      */
     public function offsetSet($offset, $value)
@@ -136,7 +132,6 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @param mixed $offset
      * @throws ReadOnlyException
      */
     public function offsetUnset($offset)

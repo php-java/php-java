@@ -12,16 +12,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class InputStream extends _Object /* implements Closeable, AutoCloseable */
+class InputStream extends _Object // implements Closeable, AutoCloseable
 {
-
     /**
      * Returns an estimate of the number of bytes that can be read (or skipped over) from this input stream without blocking, which may be 0, or 0 when end of stream is detected.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#available
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function available($a = null)
     {
@@ -31,10 +29,9 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Closes this input stream and releases any system resources associated with the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -44,10 +41,9 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Marks the current position in this input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#mark
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function mark($a = null)
     {
@@ -57,10 +53,9 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Tests if this input stream supports the mark and reset methods.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#markSupported
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function markSupported($a = null)
     {
@@ -70,10 +65,9 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Returns a new InputStream that reads no bytes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#nullInputStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_nullInputStream($a = null)
     {
@@ -85,12 +79,11 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
      * Reads some number of bytes from the input stream and stores them into the buffer array b.
      * Reads up to len bytes of data from the input stream into an array of bytes.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#read
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function read($a = null, $b = null, $c = null)
     {
@@ -100,10 +93,9 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Reads all remaining bytes from the input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readAllBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function readAllBytes($a = null)
     {
@@ -114,12 +106,11 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
      * Reads the requested number of bytes from the input stream into the given byte array.
      * Reads up to a specified number of bytes from the input stream.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readNBytes
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function readNBytes($a = null, $b = null, $c = null)
     {
@@ -129,10 +120,9 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Repositions this stream to the position at the time the mark method was last called on this input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#reset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reset($a = null)
     {
@@ -142,10 +132,9 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Skips over and discards n bytes of data from this input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#skip
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function skip($a = null)
     {
@@ -155,10 +144,9 @@ class InputStream extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Reads all bytes from this input stream and writes the bytes to the given output stream in the order that they are read.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#transferTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function transferTo($a = null)
     {

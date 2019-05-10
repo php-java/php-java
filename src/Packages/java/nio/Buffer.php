@@ -11,14 +11,12 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class Buffer extends _Object
 {
-
     /**
      * Returns the array that backs this buffer&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#array
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function array($a = null)
     {
@@ -28,10 +26,9 @@ class Buffer extends _Object
     /**
      * Returns the offset within this buffer's backing array of the first element of the buffer&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#arrayOffset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function arrayOffset($a = null)
     {
@@ -41,10 +38,9 @@ class Buffer extends _Object
     /**
      * Returns this buffer's capacity.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#capacity
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function capacity($a = null)
     {
@@ -54,10 +50,9 @@ class Buffer extends _Object
     /**
      * Clears this buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -67,10 +62,9 @@ class Buffer extends _Object
     /**
      * Creates a new buffer that shares this buffer's content.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#duplicate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function duplicate($a = null)
     {
@@ -80,10 +74,9 @@ class Buffer extends _Object
     /**
      * Flips this buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#flip
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flip($a = null)
     {
@@ -93,10 +86,9 @@ class Buffer extends _Object
     /**
      * Tells whether or not this buffer is backed by an accessible array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#hasArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasArray($a = null)
     {
@@ -106,10 +98,9 @@ class Buffer extends _Object
     /**
      * Tells whether there are any elements between the current position and the limit.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#hasRemaining
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasRemaining($a = null)
     {
@@ -119,10 +110,9 @@ class Buffer extends _Object
     /**
      * Tells whether or not this buffer is direct.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#isDirect
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isDirect($a = null)
     {
@@ -132,10 +122,9 @@ class Buffer extends _Object
     /**
      * Tells whether or not this buffer is read-only.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#isReadOnly
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isReadOnly($a = null)
     {
@@ -146,10 +135,9 @@ class Buffer extends _Object
      * Returns this buffer's limit.
      * Sets this buffer's limit.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#limit
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function limit($a = null)
     {
@@ -159,10 +147,9 @@ class Buffer extends _Object
     /**
      * Sets this buffer's mark at its position.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#mark
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function mark($a = null)
     {
@@ -173,10 +160,9 @@ class Buffer extends _Object
      * Returns this buffer's position.
      * Sets this buffer's position.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#position
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function position($a = null)
     {
@@ -186,10 +172,9 @@ class Buffer extends _Object
     /**
      * Returns the number of elements between the current position and the limit.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#remaining
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remaining($a = null)
     {
@@ -199,10 +184,9 @@ class Buffer extends _Object
     /**
      * Resets this buffer's position to the previously-marked position.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#reset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reset($a = null)
     {
@@ -212,10 +196,9 @@ class Buffer extends _Object
     /**
      * Rewinds this buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#rewind
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function rewind($a = null)
     {
@@ -225,10 +208,9 @@ class Buffer extends _Object
     /**
      * Creates a new buffer whose content is a shared subsequence of this buffer's content.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#slice
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function slice($a = null)
     {

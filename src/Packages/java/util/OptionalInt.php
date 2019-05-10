@@ -13,16 +13,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
+class OptionalInt extends _Object // implements Supplier, Runnable, IntStream
 {
-
     /**
      * Returns an empty OptionalInt instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#empty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_empty($a = null)
     {
@@ -32,10 +30,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * Indicates whether some other object is "equal to" this OptionalInt.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -45,10 +42,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * If a value is present, returns the value, otherwise throws NoSuchElementException.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getAsInt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAsInt($a = null)
     {
@@ -58,10 +54,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * Returns the hash code of the value, if present, otherwise 0 (zero) if no value is present.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -71,10 +66,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * If a value is present, performs the given action with the value, otherwise does nothing.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ifPresent
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ifPresent($a = null)
     {
@@ -84,11 +78,10 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * If a value is present, performs the given action with the value, otherwise performs the given empty-based action.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ifPresentOrElse
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function ifPresentOrElse($a = null, $b = null)
     {
@@ -98,10 +91,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * If a value is not present, returns true, otherwise false.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isEmpty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isEmpty($a = null)
     {
@@ -111,10 +103,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * If a value is present, returns true, otherwise false.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isPresent
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isPresent($a = null)
     {
@@ -124,10 +115,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * Returns an OptionalInt describing the given value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#of
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_of($a = null)
     {
@@ -137,10 +127,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * If a value is present, returns the value, otherwise returns other.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#orElse
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function orElse($a = null)
     {
@@ -150,10 +139,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * If a value is present, returns the value, otherwise returns the result produced by the supplying function.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#orElseGet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function orElseGet($a = null)
     {
@@ -164,10 +152,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
      * If a value is present, returns the value, otherwise throws NoSuchElementException.
      * If a value is present, returns the value, otherwise throws an exception produced by the exception supplying function.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#orElseThrow
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function orElseThrow($a = null)
     {
@@ -177,10 +164,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * If a value is present, returns a sequential IntStream containing only that value, otherwise returns an empty IntStream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#stream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function stream($a = null)
     {
@@ -190,10 +176,9 @@ class OptionalInt extends _Object /* implements Supplier, Runnable, IntStream */
     /**
      * Returns a non-empty string representation of this OptionalInt suitable for debugging.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

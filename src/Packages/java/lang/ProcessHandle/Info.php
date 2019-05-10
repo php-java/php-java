@@ -13,8 +13,8 @@ interface Info
      * Returns an array of Strings of the arguments of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#arguments
      * @NotImplemented
      */
@@ -24,8 +24,8 @@ interface Info
      * Returns the executable pathname of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#command
      * @NotImplemented
      */
@@ -35,8 +35,8 @@ interface Info
      * Returns the command line of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#commandLine
      * @NotImplemented
      */
@@ -46,8 +46,8 @@ interface Info
      * Returns the start time of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#startInstant
      * @NotImplemented
      */
@@ -57,8 +57,8 @@ interface Info
      * Returns the total cputime accumulated of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#totalCpuDuration
      * @NotImplemented
      */
@@ -68,8 +68,8 @@ interface Info
      * Return the user of the process.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#user
      * @NotImplemented
      */

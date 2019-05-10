@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `ObjectOutput` interface was auto generated.
@@ -13,8 +12,8 @@ interface ObjectOutput
      * Closes the stream.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
      * @NotImplemented
      */
@@ -24,8 +23,8 @@ interface ObjectOutput
      * Flushes the stream.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
      * @NotImplemented
      */
@@ -39,8 +38,8 @@ interface ObjectOutput
      * @param mixed $a
      * @param mixed $b
      * @param mixed $c
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
      * @NotImplemented
      */
@@ -50,8 +49,8 @@ interface ObjectOutput
      * Write an object to the underlying storage or stream.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeObject
      * @NotImplemented
      */

@@ -1,10 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Internal\InstanceDeferredLoader;
-use PHPJava\Utilities\BinaryTool;
-use PHPJava\Utilities\ClassResolver;
 
 final class _new implements OperationInterface
 {

@@ -11,6 +11,9 @@ final class JavaClassDeferredLoader implements JavaClassInterface
     private $options = [];
     private $javaClass;
 
+    /**
+     * JavaClassDeferredLoader constructor.
+     */
     public function __construct(
         string $deferLoadingReaderClass,
         array $arguments = [],
@@ -21,18 +24,40 @@ final class JavaClassDeferredLoader implements JavaClassInterface
         $this->options = $options;
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     * @throws \PHPJava\Exceptions\ReadEntryException
+     * @throws \PHPJava\Exceptions\UnknownVersionException
+     * @throws \PHPJava\Exceptions\ValidatorException
+     */
     public function __call($name, $arguments)
     {
-        $this->initializeIfNotInitiated();
-        return $this->javaClass->{$name}(...$arguments);
+        return ($this->initializeIfNotInitiated())->{$name}(...$arguments);
     }
 
-    private function initializeIfNotInitiated()
+    /**
+     * @param mixed ...$arguments
+     * @throws \PHPJava\Exceptions\ReadEntryException
+     * @throws \PHPJava\Exceptions\UnknownVersionException
+     * @throws \PHPJava\Exceptions\ValidatorException
+     */
+    public function __invoke(...$arguments): JavaClassInterface
+    {
+        return ($this->initializeIfNotInitiated())(...$arguments);
+    }
+
+    /**
+     * @throws \PHPJava\Exceptions\ReadEntryException
+     * @throws \PHPJava\Exceptions\UnknownVersionException
+     * @throws \PHPJava\Exceptions\ValidatorException
+     */
+    private function initializeIfNotInitiated(): JavaClass
     {
         if (isset($this->javaClass)) {
             return $this->javaClass;
         }
-        $this->javaClass = new JavaClass(
+        return $this->javaClass = new JavaClass(
             new $this->deferLoadingReaderClass(...$this->arguments),
             $this->options
         );

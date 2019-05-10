@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Comparable;
@@ -12,7 +11,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Character extends _Object /* implements Serializable, Comparable */
+class Character extends _Object // implements Serializable, Comparable
 {
     /**
      * The number of bytes used to represent a char value in unsigned binary form.
@@ -504,14 +503,12 @@ class Character extends _Object /* implements Serializable, Comparable */
      */
     public static $UPPERCASE_LETTER = null;
 
-
     /**
      * Determines the number of char values needed to represent the specified character (Unicode code point).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#charCount
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_charCount($a = null)
     {
@@ -521,10 +518,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the value of this Character object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#charValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function charValue($a = null)
     {
@@ -536,12 +532,11 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns the code point at the given index of the char array, where only array elements with index less than limit can be used.
      * Returns the code point at the given index of the CharSequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointAt
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_codePointAt($a = null, $b = null, $c = null)
     {
@@ -553,12 +548,11 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns the code point preceding the given index of the char array, where only array elements with index greater than or equal to start can be used.
      * Returns the code point preceding the given index of the CharSequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointBefore
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_codePointBefore($a = null, $b = null, $c = null)
     {
@@ -569,12 +563,11 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns the number of Unicode code points in a subarray of the char array argument.
      * Returns the number of Unicode code points in the text range of the specified char sequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointCount
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_codePointCount($a = null, $b = null, $c = null)
     {
@@ -584,10 +577,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the code point value of the Unicode character specified by the given Unicode character name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_codePointOf($a = null)
     {
@@ -597,11 +589,10 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Compares two char values numerically.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compare
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_compare($a = null, $b = null)
     {
@@ -611,10 +602,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Compares two Character objects numerically.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -625,11 +615,10 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns the numeric value of the character ch in the specified radix.
      * Returns the numeric value of the specified character (Unicode code point) in the specified radix.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#digit
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_digit($a = null, $b = null)
     {
@@ -639,10 +628,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Compares this object against the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -652,11 +640,10 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines the character representation for a specific digit in the specified radix.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#forDigit
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_forDigit($a = null, $b = null)
     {
@@ -667,10 +654,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns the Unicode directionality property for the given character.
      * Returns the Unicode directionality property for the given character (Unicode code point).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDirectionality
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDirectionality($a = null)
     {
@@ -680,10 +666,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the Unicode name of the specified character codePoint, or null if the code point is unassigned.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getName($a = null)
     {
@@ -694,10 +679,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns the int value that the specified Unicode character represents.
      * Returns the int value that the specified character (Unicode code point) represents.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getNumericValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getNumericValue($a = null)
     {
@@ -708,10 +692,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns a value indicating a character's general category.
      * Returns a value indicating a character's general category.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getType($a = null)
     {
@@ -722,10 +705,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns a hash code for this Character; equal to the result of invoking charValue().
      * Returns a hash code for a char value; compatible with Character.hashCode().
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_hashCode($a = null)
     {
@@ -735,10 +717,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the leading surrogate (a  high surrogate code unit) of the  surrogate pair representing the specified supplementary character (Unicode code point) in the UTF-16 encoding.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#highSurrogate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_highSurrogate($a = null)
     {
@@ -748,10 +729,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines if the specified character (Unicode code point) is an alphabet.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isAlphabetic
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isAlphabetic($a = null)
     {
@@ -761,10 +741,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines whether the specified character (Unicode code point) is in the Basic Multilingual Plane (BMP).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isBmpCodePoint
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isBmpCodePoint($a = null)
     {
@@ -775,10 +754,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if a character is defined in Unicode.
      * Determines if a character (Unicode code point) is defined in Unicode.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isDefined
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isDefined($a = null)
     {
@@ -789,10 +767,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is a digit.
      * Determines if the specified character (Unicode code point) is a digit.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isDigit
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isDigit($a = null)
     {
@@ -802,10 +779,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines if the given char value is a  Unicode high-surrogate code unit (also known as leading-surrogate code unit).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isHighSurrogate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isHighSurrogate($a = null)
     {
@@ -816,10 +792,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character should be regarded as an ignorable character in a Java identifier or a Unicode identifier.
      * Determines if the specified character (Unicode code point) should be regarded as an ignorable character in a Java identifier or a Unicode identifier.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isIdentifierIgnorable
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isIdentifierIgnorable($a = null)
     {
@@ -829,10 +804,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines if the specified character (Unicode code point) is a CJKV (Chinese, Japanese, Korean and Vietnamese) ideograph, as defined by the Unicode Standard.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isIdeographic
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isIdeographic($a = null)
     {
@@ -843,10 +817,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is an ISO control character.
      * Determines if the referenced character (Unicode code point) is an ISO control character.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isISOControl
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isISOControl($a = null)
     {
@@ -857,10 +830,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character may be part of a Java identifier as other than the first character.
      * Determines if the character (Unicode code point) may be part of a Java identifier as other than the first character.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isJavaIdentifierPart
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isJavaIdentifierPart($a = null)
     {
@@ -871,10 +843,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is permissible as the first character in a Java identifier.
      * Determines if the character (Unicode code point) is permissible as the first character in a Java identifier.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isJavaIdentifierStart
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isJavaIdentifierStart($a = null)
     {
@@ -884,10 +855,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Deprecated.Replaced by isJavaIdentifierStart(char).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isJavaLetter
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isJavaLetter($a = null)
     {
@@ -897,10 +867,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Deprecated.Replaced by isJavaIdentifierPart(char).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isJavaLetterOrDigit
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isJavaLetterOrDigit($a = null)
     {
@@ -911,10 +880,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is a letter.
      * Determines if the specified character (Unicode code point) is a letter.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isLetter
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isLetter($a = null)
     {
@@ -925,10 +893,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is a letter or digit.
      * Determines if the specified character (Unicode code point) is a letter or digit.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isLetterOrDigit
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isLetterOrDigit($a = null)
     {
@@ -939,10 +906,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is a lowercase character.
      * Determines if the specified character (Unicode code point) is a lowercase character.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isLowerCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isLowerCase($a = null)
     {
@@ -952,10 +918,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines if the given char value is a  Unicode low-surrogate code unit (also known as trailing-surrogate code unit).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isLowSurrogate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isLowSurrogate($a = null)
     {
@@ -966,10 +931,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines whether the character is mirrored according to the Unicode specification.
      * Determines whether the specified character (Unicode code point) is mirrored according to the Unicode specification.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isMirrored
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isMirrored($a = null)
     {
@@ -979,10 +943,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Deprecated.Replaced by isWhitespace(char).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isSpace
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isSpace($a = null)
     {
@@ -993,10 +956,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is a Unicode space character.
      * Determines if the specified character (Unicode code point) is a Unicode space character.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isSpaceChar
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isSpaceChar($a = null)
     {
@@ -1006,10 +968,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines whether the specified character (Unicode code point) is in the supplementary character range.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isSupplementaryCodePoint
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isSupplementaryCodePoint($a = null)
     {
@@ -1019,10 +980,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines if the given char value is a Unicode surrogate code unit.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isSurrogate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isSurrogate($a = null)
     {
@@ -1032,11 +992,10 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines whether the specified pair of char values is a valid  Unicode surrogate pair.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isSurrogatePair
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_isSurrogatePair($a = null, $b = null)
     {
@@ -1047,10 +1006,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is a titlecase character.
      * Determines if the specified character (Unicode code point) is a titlecase character.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isTitleCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isTitleCase($a = null)
     {
@@ -1061,10 +1019,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character may be part of a Unicode identifier as other than the first character.
      * Determines if the specified character (Unicode code point) may be part of a Unicode identifier as other than the first character.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isUnicodeIdentifierPart
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isUnicodeIdentifierPart($a = null)
     {
@@ -1075,10 +1032,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is permissible as the first character in a Unicode identifier.
      * Determines if the specified character (Unicode code point) is permissible as the first character in a Unicode identifier.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isUnicodeIdentifierStart
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isUnicodeIdentifierStart($a = null)
     {
@@ -1089,10 +1045,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is an uppercase character.
      * Determines if the specified character (Unicode code point) is an uppercase character.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isUpperCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isUpperCase($a = null)
     {
@@ -1102,10 +1057,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Determines whether the specified code point is a valid  Unicode code point value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isValidCodePoint
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isValidCodePoint($a = null)
     {
@@ -1116,10 +1070,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Determines if the specified character is white space according to Java.
      * Determines if the specified character (Unicode code point) is white space according to Java.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isWhitespace
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_isWhitespace($a = null)
     {
@@ -1129,10 +1082,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the trailing surrogate (a  low surrogate code unit) of the  surrogate pair representing the specified supplementary character (Unicode code point) in the UTF-16 encoding.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#lowSurrogate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_lowSurrogate($a = null)
     {
@@ -1143,14 +1095,13 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns the index within the given char subarray that is offset from the given index by codePointOffset code points.
      * Returns the index within the given char sequence that is offset from the given index by codePointOffset code points.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#offsetByCodePoints
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @throws NotImplementedException
      */
     public static function static_offsetByCodePoints($a = null, $b = null, $c = null, $d = null, $e = null)
     {
@@ -1160,10 +1111,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Returns the value obtained by reversing the order of the bytes in the specified char value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#reverseBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_reverseBytes($a = null)
     {
@@ -1174,12 +1124,11 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Converts the specified character (Unicode code point) to its UTF-16 representation stored in a char array.
      * Converts the specified character (Unicode code point) to its UTF-16 representation.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toChars
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_toChars($a = null, $b = null, $c = null)
     {
@@ -1189,11 +1138,10 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Converts the specified surrogate pair to its supplementary code point value.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toCodePoint
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_toCodePoint($a = null, $b = null)
     {
@@ -1204,10 +1152,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Converts the character argument to lowercase using case mapping information from the UnicodeData file.
      * Converts the character (Unicode code point) argument to lowercase using case mapping information from the UnicodeData file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toLowerCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toLowerCase($a = null)
     {
@@ -1219,10 +1166,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Returns a String object representing the specified char.
      * Returns a String object representing the specified character (Unicode code point).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toString($a = null)
     {
@@ -1233,10 +1179,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Converts the character argument to titlecase using case mapping information from the UnicodeData file.
      * Converts the character (Unicode code point) argument to titlecase using case mapping information from the UnicodeData file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toTitleCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toTitleCase($a = null)
     {
@@ -1247,10 +1192,9 @@ class Character extends _Object /* implements Serializable, Comparable */
      * Converts the character argument to uppercase using case mapping information from the UnicodeData file.
      * Converts the character (Unicode code point) argument to uppercase using case mapping information from the UnicodeData file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toUpperCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_toUpperCase($a = null)
     {
@@ -1260,10 +1204,9 @@ class Character extends _Object /* implements Serializable, Comparable */
     /**
      * Returns a Character instance representing the specified char value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null)
     {
