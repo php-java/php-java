@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Tests\Packages;
 
-use PHPJava\Core\JavaArchive;
 use PHPJava\Tests\Base;
 
 class JavaUtilObjectsTest extends Base

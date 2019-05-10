@@ -1,12 +1,10 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_Float;
 use PHPJava\Kernel\Structures\_Integer;
 use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
-use PHPJava\Utilities\BinaryTool;
 
 final class _ldc implements OperationInterface
 {

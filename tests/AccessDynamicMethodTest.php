@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class AccessDynamicMethodTest extends Base
 {
     protected $fixtures = [
@@ -20,11 +18,11 @@ class AccessDynamicMethodTest extends Base
             ->getMethods()
             ->call(
                 'main',
-                ["Hello", "World"]
+                ['Hello', 'World']
             );
         $result = ob_get_clean();
 
-        $this->assertEquals("HelloWorld", $result);
+        $this->assertEquals('HelloWorld', $result);
     }
 
     public function testCallMainHavingIntegerArguments()

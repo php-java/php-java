@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\invoke\CallSite;
 
 /**
  * The `VolatileCallSite` class was auto generated.
@@ -12,14 +11,12 @@ use PHPJava\Packages\java\lang\invoke\CallSite;
  */
 class VolatileCallSite extends CallSite
 {
-
     /**
      * Returns the target method of the call site, which behaves like a volatile field of the VolatileCallSite.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getTarget
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTarget($a = null)
     {
@@ -29,10 +26,9 @@ class VolatileCallSite extends CallSite
     /**
      * Updates the target method of this call site, as a volatile variable.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#setTarget
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTarget($a = null)
     {

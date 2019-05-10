@@ -12,30 +12,28 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class TimeZone extends _Object /* implements Serializable, Cloneable */
+class TimeZone extends _Object // implements Serializable, Cloneable
 {
     /**
-     * A style specifier for getDisplayName() indicating a long name, such as "Pacific Standard Time."
+     * A style specifier for getDisplayName() indicating a long name, such as "Pacific Standard Time.".
      *
      * @var mixed $LONG
      */
     public static $LONG = null;
 
     /**
-     * A style specifier for getDisplayName() indicating a short name, such as "PST."
+     * A style specifier for getDisplayName() indicating a short name, such as "PST.".
      *
      * @var mixed $SHORT
      */
     public static $SHORT = null;
 
-
     /**
      * Creates a copy of this TimeZone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -46,10 +44,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
      * Gets all the available IDs supported.
      * Gets the available IDs according to the given time zone offset in milliseconds.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getAvailableIDs
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getAvailableIDs($a = null)
     {
@@ -59,10 +56,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Gets the default TimeZone of the Java virtual machine.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDefault
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDefault($a = null)
     {
@@ -75,12 +71,11 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
      * Returns a name in the specified style of this TimeZone suitable for presentation to the user in the specified  locale.
      * Returns a long standard time name of this TimeZone suitable for presentation to the user in the specified locale.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDisplayName
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function getDisplayName($a = null, $b = null, $c = null)
     {
@@ -90,10 +85,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Returns the amount of time to be added to local standard time to get local wall clock time.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDSTSavings
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDSTSavings($a = null)
     {
@@ -103,10 +97,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Gets the ID of this time zone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getID
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getID($a = null)
     {
@@ -117,15 +110,14 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
      * Gets the time zone offset, for current date, modified in case of daylight savings.
      * Returns the offset of this time zone from UTC at the specified date.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @param mixed $f
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getOffset
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @param null|mixed $f
+     * @throws NotImplementedException
      */
     public function getOffset($a = null, $b = null, $c = null, $d = null, $e = null, $f = null)
     {
@@ -135,10 +127,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Returns the amount of time in milliseconds to add to UTC to get standard time in this time zone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getRawOffset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getRawOffset($a = null)
     {
@@ -149,10 +140,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
      * Gets the TimeZone for the given ID.
      * Gets the TimeZone for the given zoneId.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getTimeZone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getTimeZone($a = null)
     {
@@ -162,10 +152,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Returns true if this zone has the same rule and offset as another zone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hasSameRules
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasSameRules($a = null)
     {
@@ -175,10 +164,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Queries if the given date is in Daylight Saving Time in this time zone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#inDaylightTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function inDaylightTime($a = null)
     {
@@ -188,10 +176,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Returns true if this TimeZone is currently in Daylight Saving Time, or if a transition from Standard Time to Daylight Saving Time occurs at any future time.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#observesDaylightTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function observesDaylightTime($a = null)
     {
@@ -201,10 +188,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Sets the TimeZone that is returned by the getDefault method.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setDefault
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setDefault($a = null)
     {
@@ -214,10 +200,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Sets the time zone ID.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setID
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setID($a = null)
     {
@@ -227,10 +212,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Sets the base time zone offset to GMT.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setRawOffset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setRawOffset($a = null)
     {
@@ -240,10 +224,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Converts this TimeZone object to a ZoneId.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toZoneId
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toZoneId($a = null)
     {
@@ -253,10 +236,9 @@ class TimeZone extends _Object /* implements Serializable, Cloneable */
     /**
      * Queries if this TimeZone uses Daylight Saving Time.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#useDaylightTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function useDaylightTime($a = null)
     {

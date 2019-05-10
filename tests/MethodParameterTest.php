@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPJava\Core\JavaArchive;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
-use PHPUnit\Framework\TestCase;
 
 class MethodParameterTest extends Base
 {
@@ -46,7 +44,6 @@ class MethodParameterTest extends Base
 
         $this->assertEquals('Hello World!', $result);
     }
-
 
     public function testPassParameterToNoParameterMethod()
     {

@@ -1,14 +1,11 @@
 <?php
 namespace PHPJava\Utilities;
 
-use PHPJava\Exceptions\TypeException;
-
 class MethodNameResolver
 {
     const PHP_METHOD_MAP = [
         '__construct' => '<init>',
     ];
-
 
     public static function resolve(string $name): string
     {

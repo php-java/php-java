@@ -1,10 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Exceptions\RuntimeException;
-use PHPJava\Utilities\BinaryTool;
-
 final class _dup implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;

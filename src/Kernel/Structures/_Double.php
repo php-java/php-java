@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\BinaryTool;
 
 class _Double implements StructureInterface
@@ -10,8 +9,9 @@ class _Double implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
-    private $highBytes = null;
-    private $lowBytes = null;
+    private $highBytes;
+    private $lowBytes;
+
     public function execute(): void
     {
         $this->highBytes = $this->readUnsignedInt();

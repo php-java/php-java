@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\net\URLConnection;
 
 /**
  * The `HttpURLConnection` class was auto generated.
@@ -17,21 +16,21 @@ class HttpURLConnection extends URLConnection
      *
      * @var mixed $chunkLength
      */
-    protected $chunkLength = null;
+    protected $chunkLength;
 
     /**
      * The fixed content-length when using fixed-length streaming mode.
      *
      * @var mixed $fixedContentLength
      */
-    protected $fixedContentLength = null;
+    protected $fixedContentLength;
 
     /**
      * The fixed content-length when using fixed-length streaming mode.
      *
      * @var mixed $fixedContentLengthLong
      */
-    protected $fixedContentLengthLong = null;
+    protected $fixedContentLengthLong;
 
     /**
      * HTTP Status-Code 202: Accepted.
@@ -290,37 +289,35 @@ class HttpURLConnection extends URLConnection
      *
      * @var mixed $instanceFollowRedirects
      */
-    protected $instanceFollowRedirects = null;
+    protected $instanceFollowRedirects;
 
     /**
      * The HTTP method (GET,POST,PUT,etc.).
      *
      * @var mixed $method
      */
-    protected $method = null;
+    protected $method;
 
     /**
      * An int representing the three digit HTTP Status-Code.
      *
      * @var mixed $responseCode
      */
-    protected $responseCode = null;
+    protected $responseCode;
 
     /**
      * The HTTP response message.
      *
      * @var mixed $responseMessage
      */
-    protected $responseMessage = null;
-
+    protected $responseMessage;
 
     /**
      * Indicates that other requests to the server are unlikely in the near future.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#disconnect
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function disconnect($a = null)
     {
@@ -330,10 +327,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Returns the error stream if the connection failed but the server sent useful data nonetheless.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getErrorStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getErrorStream($a = null)
     {
@@ -343,10 +339,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Returns a boolean indicating whether or not HTTP redirects (3xx) should be automatically followed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getFollowRedirects
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getFollowRedirects($a = null)
     {
@@ -356,10 +351,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Returns the value for the nth header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHeaderField
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHeaderField($a = null)
     {
@@ -369,10 +363,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Returns the key for the nth header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHeaderFieldKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHeaderFieldKey($a = null)
     {
@@ -382,10 +375,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Returns the value of this HttpURLConnection's instanceFollowRedirects field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getInstanceFollowRedirects
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInstanceFollowRedirects($a = null)
     {
@@ -395,10 +387,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Returns a SocketPermission object representing the permission necessary to connect to the destination host and port.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPermission
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPermission($a = null)
     {
@@ -408,10 +399,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Get the request method.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getRequestMethod
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getRequestMethod($a = null)
     {
@@ -421,10 +411,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Gets the status code from an HTTP response message.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getResponseCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getResponseCode($a = null)
     {
@@ -434,10 +423,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Gets the HTTP response message, if any, returned along with the response code from a server.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getResponseMessage
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getResponseMessage($a = null)
     {
@@ -447,10 +435,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Supplies an Authenticator to be used when authentication is requested through the HTTP protocol for this HttpURLConnection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setAuthenticator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setAuthenticator($a = null)
     {
@@ -460,10 +447,9 @@ class HttpURLConnection extends URLConnection
     /**
      * This method is used to enable streaming of a HTTP request body without internal buffering, when the content length is not known in advance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setChunkedStreamingMode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setChunkedStreamingMode($a = null)
     {
@@ -474,10 +460,9 @@ class HttpURLConnection extends URLConnection
      * This method is used to enable streaming of a HTTP request body without internal buffering, when the content length is known in advance.
      * This method is used to enable streaming of a HTTP request body without internal buffering, when the content length is known in advance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setFixedLengthStreamingMode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setFixedLengthStreamingMode($a = null)
     {
@@ -487,10 +472,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Sets whether HTTP redirects  (requests with response code 3xx) should be automatically followed by this class.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setFollowRedirects
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setFollowRedirects($a = null)
     {
@@ -500,10 +484,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Sets whether HTTP redirects (requests with response code 3xx) should be automatically followed by this HttpURLConnection instance.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setInstanceFollowRedirects
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setInstanceFollowRedirects($a = null)
     {
@@ -513,10 +496,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Set the method for the URL request, one of:   GET  POST  HEAD  OPTIONS  PUT  DELETE  TRACE  are legal, subject to protocol restrictions.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setRequestMethod
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setRequestMethod($a = null)
     {
@@ -526,10 +508,9 @@ class HttpURLConnection extends URLConnection
     /**
      * Indicates if the connection is going through a proxy.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#usingProxy
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function usingProxy($a = null)
     {

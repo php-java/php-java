@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class BinaryOperatorTest extends Base
 {
     protected $fixtures = [

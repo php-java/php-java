@@ -13,726 +13,440 @@ use PHPJava\Packages\java\lang\Enum;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Enum
  */
-class UnicodeScript extends Enum /* implements Serializable, Comparable */
+class UnicodeScript extends Enum // implements Serializable, Comparable
 {
-    /*
-     * Unicode script "Adlam".
-     */
+    // Unicode script "Adlam".
     const ADLAM = 'ADLAM';
 
-    /*
-     * Unicode script "Ahom".
-     */
+    // Unicode script "Ahom".
     const AHOM = 'AHOM';
 
-    /*
-     * Unicode script "Anatolian Hieroglyphs".
-     */
+    // Unicode script "Anatolian Hieroglyphs".
     const ANATOLIAN_HIEROGLYPHS = 'ANATOLIAN_HIEROGLYPHS';
 
-    /*
-     * Unicode script "Arabic".
-     */
+    // Unicode script "Arabic".
     const ARABIC = 'ARABIC';
 
-    /*
-     * Unicode script "Armenian".
-     */
+    // Unicode script "Armenian".
     const ARMENIAN = 'ARMENIAN';
 
-    /*
-     * Unicode script "Avestan".
-     */
+    // Unicode script "Avestan".
     const AVESTAN = 'AVESTAN';
 
-    /*
-     * Unicode script "Balinese".
-     */
+    // Unicode script "Balinese".
     const BALINESE = 'BALINESE';
 
-    /*
-     * Unicode script "Bamum".
-     */
+    // Unicode script "Bamum".
     const BAMUM = 'BAMUM';
 
-    /*
-     * Unicode script "Bassa Vah".
-     */
+    // Unicode script "Bassa Vah".
     const BASSA_VAH = 'BASSA_VAH';
 
-    /*
-     * Unicode script "Batak".
-     */
+    // Unicode script "Batak".
     const BATAK = 'BATAK';
 
-    /*
-     * Unicode script "Bengali".
-     */
+    // Unicode script "Bengali".
     const BENGALI = 'BENGALI';
 
-    /*
-     * Unicode script "Bhaiksuki".
-     */
+    // Unicode script "Bhaiksuki".
     const BHAIKSUKI = 'BHAIKSUKI';
 
-    /*
-     * Unicode script "Bopomofo".
-     */
+    // Unicode script "Bopomofo".
     const BOPOMOFO = 'BOPOMOFO';
 
-    /*
-     * Unicode script "Brahmi".
-     */
+    // Unicode script "Brahmi".
     const BRAHMI = 'BRAHMI';
 
-    /*
-     * Unicode script "Braille".
-     */
+    // Unicode script "Braille".
     const BRAILLE = 'BRAILLE';
 
-    /*
-     * Unicode script "Buginese".
-     */
+    // Unicode script "Buginese".
     const BUGINESE = 'BUGINESE';
 
-    /*
-     * Unicode script "Buhid".
-     */
+    // Unicode script "Buhid".
     const BUHID = 'BUHID';
 
-    /*
-     * Unicode script "Canadian_Aboriginal".
-     */
+    // Unicode script "Canadian_Aboriginal".
     const CANADIAN_ABORIGINAL = 'CANADIAN_ABORIGINAL';
 
-    /*
-     * Unicode script "Carian".
-     */
+    // Unicode script "Carian".
     const CARIAN = 'CARIAN';
 
-    /*
-     * Unicode script "Caucasian Albanian".
-     */
+    // Unicode script "Caucasian Albanian".
     const CAUCASIAN_ALBANIAN = 'CAUCASIAN_ALBANIAN';
 
-    /*
-     * Unicode script "Chakma".
-     */
+    // Unicode script "Chakma".
     const CHAKMA = 'CHAKMA';
 
-    /*
-     * Unicode script "Cham".
-     */
+    // Unicode script "Cham".
     const CHAM = 'CHAM';
 
-    /*
-     * Unicode script "Cherokee".
-     */
+    // Unicode script "Cherokee".
     const CHEROKEE = 'CHEROKEE';
 
-    /*
-     * Unicode script "Common".
-     */
+    // Unicode script "Common".
     const COMMON = 'COMMON';
 
-    /*
-     * Unicode script "Coptic".
-     */
+    // Unicode script "Coptic".
     const COPTIC = 'COPTIC';
 
-    /*
-     * Unicode script "Cuneiform".
-     */
+    // Unicode script "Cuneiform".
     const CUNEIFORM = 'CUNEIFORM';
 
-    /*
-     * Unicode script "Cypriot".
-     */
+    // Unicode script "Cypriot".
     const CYPRIOT = 'CYPRIOT';
 
-    /*
-     * Unicode script "Cyrillic".
-     */
+    // Unicode script "Cyrillic".
     const CYRILLIC = 'CYRILLIC';
 
-    /*
-     * Unicode script "Deseret".
-     */
+    // Unicode script "Deseret".
     const DESERET = 'DESERET';
 
-    /*
-     * Unicode script "Devanagari".
-     */
+    // Unicode script "Devanagari".
     const DEVANAGARI = 'DEVANAGARI';
 
-    /*
-     * Unicode script "Duployan".
-     */
+    // Unicode script "Duployan".
     const DUPLOYAN = 'DUPLOYAN';
 
-    /*
-     * Unicode script "Egyptian_Hieroglyphs".
-     */
+    // Unicode script "Egyptian_Hieroglyphs".
     const EGYPTIAN_HIEROGLYPHS = 'EGYPTIAN_HIEROGLYPHS';
 
-    /*
-     * Unicode script "Elbasan".
-     */
+    // Unicode script "Elbasan".
     const ELBASAN = 'ELBASAN';
 
-    /*
-     * Unicode script "Ethiopic".
-     */
+    // Unicode script "Ethiopic".
     const ETHIOPIC = 'ETHIOPIC';
 
-    /*
-     * Unicode script "Georgian".
-     */
+    // Unicode script "Georgian".
     const GEORGIAN = 'GEORGIAN';
 
-    /*
-     * Unicode script "Glagolitic".
-     */
+    // Unicode script "Glagolitic".
     const GLAGOLITIC = 'GLAGOLITIC';
 
-    /*
-     * Unicode script "Gothic".
-     */
+    // Unicode script "Gothic".
     const GOTHIC = 'GOTHIC';
 
-    /*
-     * Unicode script "Grantha".
-     */
+    // Unicode script "Grantha".
     const GRANTHA = 'GRANTHA';
 
-    /*
-     * Unicode script "Greek".
-     */
+    // Unicode script "Greek".
     const GREEK = 'GREEK';
 
-    /*
-     * Unicode script "Gujarati".
-     */
+    // Unicode script "Gujarati".
     const GUJARATI = 'GUJARATI';
 
-    /*
-     * Unicode script "Gurmukhi".
-     */
+    // Unicode script "Gurmukhi".
     const GURMUKHI = 'GURMUKHI';
 
-    /*
-     * Unicode script "Han".
-     */
+    // Unicode script "Han".
     const HAN = 'HAN';
 
-    /*
-     * Unicode script "Hangul".
-     */
+    // Unicode script "Hangul".
     const HANGUL = 'HANGUL';
 
-    /*
-     * Unicode script "Hanunoo".
-     */
+    // Unicode script "Hanunoo".
     const HANUNOO = 'HANUNOO';
 
-    /*
-     * Unicode script "Hatran".
-     */
+    // Unicode script "Hatran".
     const HATRAN = 'HATRAN';
 
-    /*
-     * Unicode script "Hebrew".
-     */
+    // Unicode script "Hebrew".
     const HEBREW = 'HEBREW';
 
-    /*
-     * Unicode script "Hiragana".
-     */
+    // Unicode script "Hiragana".
     const HIRAGANA = 'HIRAGANA';
 
-    /*
-     * Unicode script "Imperial_Aramaic".
-     */
+    // Unicode script "Imperial_Aramaic".
     const IMPERIAL_ARAMAIC = 'IMPERIAL_ARAMAIC';
 
-    /*
-     * Unicode script "Inherited".
-     */
+    // Unicode script "Inherited".
     const INHERITED = 'INHERITED';
 
-    /*
-     * Unicode script "Inscriptional_Pahlavi".
-     */
+    // Unicode script "Inscriptional_Pahlavi".
     const INSCRIPTIONAL_PAHLAVI = 'INSCRIPTIONAL_PAHLAVI';
 
-    /*
-     * Unicode script "Inscriptional_Parthian".
-     */
+    // Unicode script "Inscriptional_Parthian".
     const INSCRIPTIONAL_PARTHIAN = 'INSCRIPTIONAL_PARTHIAN';
 
-    /*
-     * Unicode script "Javanese".
-     */
+    // Unicode script "Javanese".
     const JAVANESE = 'JAVANESE';
 
-    /*
-     * Unicode script "Kaithi".
-     */
+    // Unicode script "Kaithi".
     const KAITHI = 'KAITHI';
 
-    /*
-     * Unicode script "Kannada".
-     */
+    // Unicode script "Kannada".
     const KANNADA = 'KANNADA';
 
-    /*
-     * Unicode script "Katakana".
-     */
+    // Unicode script "Katakana".
     const KATAKANA = 'KATAKANA';
 
-    /*
-     * Unicode script "Kayah_Li".
-     */
+    // Unicode script "Kayah_Li".
     const KAYAH_LI = 'KAYAH_LI';
 
-    /*
-     * Unicode script "Kharoshthi".
-     */
+    // Unicode script "Kharoshthi".
     const KHAROSHTHI = 'KHAROSHTHI';
 
-    /*
-     * Unicode script "Khmer".
-     */
+    // Unicode script "Khmer".
     const KHMER = 'KHMER';
 
-    /*
-     * Unicode script "Khojki".
-     */
+    // Unicode script "Khojki".
     const KHOJKI = 'KHOJKI';
 
-    /*
-     * Unicode script "Khudawadi".
-     */
+    // Unicode script "Khudawadi".
     const KHUDAWADI = 'KHUDAWADI';
 
-    /*
-     * Unicode script "Lao".
-     */
+    // Unicode script "Lao".
     const LAO = 'LAO';
 
-    /*
-     * Unicode script "Latin".
-     */
+    // Unicode script "Latin".
     const LATIN = 'LATIN';
 
-    /*
-     * Unicode script "Lepcha".
-     */
+    // Unicode script "Lepcha".
     const LEPCHA = 'LEPCHA';
 
-    /*
-     * Unicode script "Limbu".
-     */
+    // Unicode script "Limbu".
     const LIMBU = 'LIMBU';
 
-    /*
-     * Unicode script "Linear A".
-     */
+    // Unicode script "Linear A".
     const LINEAR_A = 'LINEAR_A';
 
-    /*
-     * Unicode script "Linear_B".
-     */
+    // Unicode script "Linear_B".
     const LINEAR_B = 'LINEAR_B';
 
-    /*
-     * Unicode script "Lisu".
-     */
+    // Unicode script "Lisu".
     const LISU = 'LISU';
 
-    /*
-     * Unicode script "Lycian".
-     */
+    // Unicode script "Lycian".
     const LYCIAN = 'LYCIAN';
 
-    /*
-     * Unicode script "Lydian".
-     */
+    // Unicode script "Lydian".
     const LYDIAN = 'LYDIAN';
 
-    /*
-     * Unicode script "Mahajani".
-     */
+    // Unicode script "Mahajani".
     const MAHAJANI = 'MAHAJANI';
 
-    /*
-     * Unicode script "Malayalam".
-     */
+    // Unicode script "Malayalam".
     const MALAYALAM = 'MALAYALAM';
 
-    /*
-     * Unicode script "Mandaic".
-     */
+    // Unicode script "Mandaic".
     const MANDAIC = 'MANDAIC';
 
-    /*
-     * Unicode script "Manichaean".
-     */
+    // Unicode script "Manichaean".
     const MANICHAEAN = 'MANICHAEAN';
 
-    /*
-     * Unicode script "Marchen".
-     */
+    // Unicode script "Marchen".
     const MARCHEN = 'MARCHEN';
 
-    /*
-     * Unicode script "Masaram Gondi".
-     */
+    // Unicode script "Masaram Gondi".
     const MASARAM_GONDI = 'MASARAM_GONDI';
 
-    /*
-     * Unicode script "Meetei_Mayek".
-     */
+    // Unicode script "Meetei_Mayek".
     const MEETEI_MAYEK = 'MEETEI_MAYEK';
 
-    /*
-     * Unicode script "Mende Kikakui".
-     */
+    // Unicode script "Mende Kikakui".
     const MENDE_KIKAKUI = 'MENDE_KIKAKUI';
 
-    /*
-     * Unicode script "Meroitic Cursive".
-     */
+    // Unicode script "Meroitic Cursive".
     const MEROITIC_CURSIVE = 'MEROITIC_CURSIVE';
 
-    /*
-     * Unicode script "Meroitic Hieroglyphs".
-     */
+    // Unicode script "Meroitic Hieroglyphs".
     const MEROITIC_HIEROGLYPHS = 'MEROITIC_HIEROGLYPHS';
 
-    /*
-     * Unicode script "Miao".
-     */
+    // Unicode script "Miao".
     const MIAO = 'MIAO';
 
-    /*
-     * Unicode script "Modi".
-     */
+    // Unicode script "Modi".
     const MODI = 'MODI';
 
-    /*
-     * Unicode script "Mongolian".
-     */
+    // Unicode script "Mongolian".
     const MONGOLIAN = 'MONGOLIAN';
 
-    /*
-     * Unicode script "Mro".
-     */
+    // Unicode script "Mro".
     const MRO = 'MRO';
 
-    /*
-     * Unicode script "Multani".
-     */
+    // Unicode script "Multani".
     const MULTANI = 'MULTANI';
 
-    /*
-     * Unicode script "Myanmar".
-     */
+    // Unicode script "Myanmar".
     const MYANMAR = 'MYANMAR';
 
-    /*
-     * Unicode script "Nabataean".
-     */
+    // Unicode script "Nabataean".
     const NABATAEAN = 'NABATAEAN';
 
-    /*
-     * Unicode script "New_Tai_Lue".
-     */
+    // Unicode script "New_Tai_Lue".
     const NEW_TAI_LUE = 'NEW_TAI_LUE';
 
-    /*
-     * Unicode script "Newa".
-     */
+    // Unicode script "Newa".
     const NEWA = 'NEWA';
 
-    /*
-     * Unicode script "Nko".
-     */
+    // Unicode script "Nko".
     const NKO = 'NKO';
 
-    /*
-     * Unicode script "Nushu".
-     */
+    // Unicode script "Nushu".
     const NUSHU = 'NUSHU';
 
-    /*
-     * Unicode script "Ogham".
-     */
+    // Unicode script "Ogham".
     const OGHAM = 'OGHAM';
 
-    /*
-     * Unicode script "Ol_Chiki".
-     */
+    // Unicode script "Ol_Chiki".
     const OL_CHIKI = 'OL_CHIKI';
 
-    /*
-     * Unicode script "Old Hungarian".
-     */
+    // Unicode script "Old Hungarian".
     const OLD_HUNGARIAN = 'OLD_HUNGARIAN';
 
-    /*
-     * Unicode script "Old_Italic".
-     */
+    // Unicode script "Old_Italic".
     const OLD_ITALIC = 'OLD_ITALIC';
 
-    /*
-     * Unicode script "Old North Arabian".
-     */
+    // Unicode script "Old North Arabian".
     const OLD_NORTH_ARABIAN = 'OLD_NORTH_ARABIAN';
 
-    /*
-     * Unicode script "Old Permic".
-     */
+    // Unicode script "Old Permic".
     const OLD_PERMIC = 'OLD_PERMIC';
 
-    /*
-     * Unicode script "Old_Persian".
-     */
+    // Unicode script "Old_Persian".
     const OLD_PERSIAN = 'OLD_PERSIAN';
 
-    /*
-     * Unicode script "Old_South_Arabian".
-     */
+    // Unicode script "Old_South_Arabian".
     const OLD_SOUTH_ARABIAN = 'OLD_SOUTH_ARABIAN';
 
-    /*
-     * Unicode script "Old_Turkic".
-     */
+    // Unicode script "Old_Turkic".
     const OLD_TURKIC = 'OLD_TURKIC';
 
-    /*
-     * Unicode script "Oriya".
-     */
+    // Unicode script "Oriya".
     const ORIYA = 'ORIYA';
 
-    /*
-     * Unicode script "Osage".
-     */
+    // Unicode script "Osage".
     const OSAGE = 'OSAGE';
 
-    /*
-     * Unicode script "Osmanya".
-     */
+    // Unicode script "Osmanya".
     const OSMANYA = 'OSMANYA';
 
-    /*
-     * Unicode script "Pahawh Hmong".
-     */
+    // Unicode script "Pahawh Hmong".
     const PAHAWH_HMONG = 'PAHAWH_HMONG';
 
-    /*
-     * Unicode script "Palmyrene".
-     */
+    // Unicode script "Palmyrene".
     const PALMYRENE = 'PALMYRENE';
 
-    /*
-     * Unicode script "Pau Cin Hau".
-     */
+    // Unicode script "Pau Cin Hau".
     const PAU_CIN_HAU = 'PAU_CIN_HAU';
 
-    /*
-     * Unicode script "Phags_Pa".
-     */
+    // Unicode script "Phags_Pa".
     const PHAGS_PA = 'PHAGS_PA';
 
-    /*
-     * Unicode script "Phoenician".
-     */
+    // Unicode script "Phoenician".
     const PHOENICIAN = 'PHOENICIAN';
 
-    /*
-     * Unicode script "Psalter Pahlavi".
-     */
+    // Unicode script "Psalter Pahlavi".
     const PSALTER_PAHLAVI = 'PSALTER_PAHLAVI';
 
-    /*
-     * Unicode script "Rejang".
-     */
+    // Unicode script "Rejang".
     const REJANG = 'REJANG';
 
-    /*
-     * Unicode script "Runic".
-     */
+    // Unicode script "Runic".
     const RUNIC = 'RUNIC';
 
-    /*
-     * Unicode script "Samaritan".
-     */
+    // Unicode script "Samaritan".
     const SAMARITAN = 'SAMARITAN';
 
-    /*
-     * Unicode script "Saurashtra".
-     */
+    // Unicode script "Saurashtra".
     const SAURASHTRA = 'SAURASHTRA';
 
-    /*
-     * Unicode script "Sharada".
-     */
+    // Unicode script "Sharada".
     const SHARADA = 'SHARADA';
 
-    /*
-     * Unicode script "Shavian".
-     */
+    // Unicode script "Shavian".
     const SHAVIAN = 'SHAVIAN';
 
-    /*
-     * Unicode script "Siddham".
-     */
+    // Unicode script "Siddham".
     const SIDDHAM = 'SIDDHAM';
 
-    /*
-     * Unicode script "SignWriting".
-     */
+    // Unicode script "SignWriting".
     const SIGNWRITING = 'SIGNWRITING';
 
-    /*
-     * Unicode script "Sinhala".
-     */
+    // Unicode script "Sinhala".
     const SINHALA = 'SINHALA';
 
-    /*
-     * Unicode script "Sora Sompeng".
-     */
+    // Unicode script "Sora Sompeng".
     const SORA_SOMPENG = 'SORA_SOMPENG';
 
-    /*
-     * Unicode script "Soyombo".
-     */
+    // Unicode script "Soyombo".
     const SOYOMBO = 'SOYOMBO';
 
-    /*
-     * Unicode script "Sundanese".
-     */
+    // Unicode script "Sundanese".
     const SUNDANESE = 'SUNDANESE';
 
-    /*
-     * Unicode script "Syloti_Nagri".
-     */
+    // Unicode script "Syloti_Nagri".
     const SYLOTI_NAGRI = 'SYLOTI_NAGRI';
 
-    /*
-     * Unicode script "Syriac".
-     */
+    // Unicode script "Syriac".
     const SYRIAC = 'SYRIAC';
 
-    /*
-     * Unicode script "Tagalog".
-     */
+    // Unicode script "Tagalog".
     const TAGALOG = 'TAGALOG';
 
-    /*
-     * Unicode script "Tagbanwa".
-     */
+    // Unicode script "Tagbanwa".
     const TAGBANWA = 'TAGBANWA';
 
-    /*
-     * Unicode script "Tai_Le".
-     */
+    // Unicode script "Tai_Le".
     const TAI_LE = 'TAI_LE';
 
-    /*
-     * Unicode script "Tai_Tham".
-     */
+    // Unicode script "Tai_Tham".
     const TAI_THAM = 'TAI_THAM';
 
-    /*
-     * Unicode script "Tai_Viet".
-     */
+    // Unicode script "Tai_Viet".
     const TAI_VIET = 'TAI_VIET';
 
-    /*
-     * Unicode script "Takri".
-     */
+    // Unicode script "Takri".
     const TAKRI = 'TAKRI';
 
-    /*
-     * Unicode script "Tamil".
-     */
+    // Unicode script "Tamil".
     const TAMIL = 'TAMIL';
 
-    /*
-     * Unicode script "Tangut".
-     */
+    // Unicode script "Tangut".
     const TANGUT = 'TANGUT';
 
-    /*
-     * Unicode script "Telugu".
-     */
+    // Unicode script "Telugu".
     const TELUGU = 'TELUGU';
 
-    /*
-     * Unicode script "Thaana".
-     */
+    // Unicode script "Thaana".
     const THAANA = 'THAANA';
 
-    /*
-     * Unicode script "Thai".
-     */
+    // Unicode script "Thai".
     const THAI = 'THAI';
 
-    /*
-     * Unicode script "Tibetan".
-     */
+    // Unicode script "Tibetan".
     const TIBETAN = 'TIBETAN';
 
-    /*
-     * Unicode script "Tifinagh".
-     */
+    // Unicode script "Tifinagh".
     const TIFINAGH = 'TIFINAGH';
 
-    /*
-     * Unicode script "Tirhuta".
-     */
+    // Unicode script "Tirhuta".
     const TIRHUTA = 'TIRHUTA';
 
-    /*
-     * Unicode script "Ugaritic".
-     */
+    // Unicode script "Ugaritic".
     const UGARITIC = 'UGARITIC';
 
-    /*
-     * Unicode script "Unknown".
-     */
+    // Unicode script "Unknown".
     const UNKNOWN = 'UNKNOWN';
 
-    /*
-     * Unicode script "Vai".
-     */
+    // Unicode script "Vai".
     const VAI = 'VAI';
 
-    /*
-     * Unicode script "Warang Citi".
-     */
+    // Unicode script "Warang Citi".
     const WARANG_CITI = 'WARANG_CITI';
 
-    /*
-     * Unicode script "Yi".
-     */
+    // Unicode script "Yi".
     const YI = 'YI';
 
-    /*
-     * Unicode script "Zanabazar Square".
-     */
+    // Unicode script "Zanabazar Square".
     const ZANABAZAR_SQUARE = 'ZANABAZAR_SQUARE';
-
 
     /**
      * Returns the UnicodeScript constant with the given Unicode script name or the script name alias.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#forName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_forName($a = null)
     {
@@ -742,10 +456,9 @@ class UnicodeScript extends Enum /* implements Serializable, Comparable */
     /**
      * Returns the enum constant representing the Unicode script of which the given character (Unicode code point) is assigned to.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#of
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_of($a = null)
     {
@@ -755,10 +468,9 @@ class UnicodeScript extends Enum /* implements Serializable, Comparable */
     /**
      * Returns the enum constant of this type with the specified name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null)
     {
@@ -768,10 +480,9 @@ class UnicodeScript extends Enum /* implements Serializable, Comparable */
     /**
      * Returns an array containing the constants of this enum type, inthe order they are declared.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#values
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_values($a = null)
     {

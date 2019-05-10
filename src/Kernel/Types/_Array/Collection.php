@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Types\_Array;
 
-use PHPJava\Exceptions\TypeException;
-use PHPJava\Kernel\Types\Type;
 use PHPJava\Packages\java\lang\ArrayIndexOutOfBoundsException;
 use PHPJava\Utilities\Extractor;
 use PHPJava\Utilities\TypeResolver;

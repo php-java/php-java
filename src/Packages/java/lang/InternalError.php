@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\lang;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\VirtualMachineError;
-
 // use PHPJava\Packages\java\io\Serializable;
 
 /**
@@ -14,6 +11,6 @@ use PHPJava\Packages\java\lang\VirtualMachineError;
  * @parent \PHPJava\Packages\java\lang\Error
  * @parent \PHPJava\Packages\java\lang\VirtualMachineError
  */
-class InternalError extends VirtualMachineError /* implements Serializable */
+class InternalError extends VirtualMachineError // implements Serializable
 {
 }

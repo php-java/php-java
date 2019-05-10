@@ -2,7 +2,6 @@
 namespace PHPJava\Core\JVM\Stream;
 
 use PHPJava\Exceptions\BinaryReaderException;
-use PHPJava\Utilities\BinaryTool;
 
 class BinaryReader
 {

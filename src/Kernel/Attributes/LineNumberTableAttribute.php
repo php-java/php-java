@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 final class LineNumberTableAttribute implements AttributeInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
@@ -11,8 +8,9 @@ final class LineNumberTableAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
-    private $lineNumberTableLength = null;
-    private $lineNumberTables = null;
+    private $lineNumberTableLength;
+    private $lineNumberTables;
+
     public function execute(): void
     {
         $this->lineNumberTableLength = $this->readUnsignedShort();
@@ -24,6 +22,7 @@ final class LineNumberTableAttribute implements AttributeInterface
             $this->lineNumberTables[] = $lineNumberTable;
         }
     }
+
     public function getLineNumberTables()
     {
         return $this->lineNumberTables;

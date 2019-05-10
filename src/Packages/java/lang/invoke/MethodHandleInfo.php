@@ -13,8 +13,8 @@ interface MethodHandleInfo
      * Returns the class in which the cracked method handle's underlying member was defined.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getDeclaringClass
      * @NotImplemented
      */
@@ -24,8 +24,8 @@ interface MethodHandleInfo
      * Returns the nominal type of the cracked symbolic reference, expressed as a method type.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getMethodType
      * @NotImplemented
      */
@@ -35,8 +35,8 @@ interface MethodHandleInfo
      * Returns the access modifiers of the underlying member.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getModifiers
      * @NotImplemented
      */
@@ -46,8 +46,8 @@ interface MethodHandleInfo
      * Returns the name of the cracked method handle's underlying member.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getName
      * @NotImplemented
      */
@@ -57,8 +57,8 @@ interface MethodHandleInfo
      * Returns the reference kind of the cracked method handle, which in turn determines whether the method handle's underlying member was a constructor, method, or field.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#getReferenceKind
      * @NotImplemented
      */
@@ -68,8 +68,8 @@ interface MethodHandleInfo
      * Determines if the underlying member was a variable arity method or constructor.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#isVarArgs
      * @NotImplemented
      */
@@ -79,8 +79,8 @@ interface MethodHandleInfo
      * Returns the descriptive name of the given reference kind, as defined in the table above.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#referenceKindToString
      * @NotImplemented
      */
@@ -91,8 +91,8 @@ interface MethodHandleInfo
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#reflectAs
      * @NotImplemented
      */
@@ -105,8 +105,8 @@ interface MethodHandleInfo
      * @param mixed $b
      * @param mixed $c
      * @param mixed $d
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#toString
      * @NotImplemented
      */

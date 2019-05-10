@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\net\URLConnection;
 
 /**
  * The `JarURLConnection` class was auto generated.
@@ -17,16 +16,14 @@ class JarURLConnection extends URLConnection
      *
      * @var mixed $jarFileURLConnection
      */
-    protected $jarFileURLConnection = null;
-
+    protected $jarFileURLConnection;
 
     /**
      * Return the Attributes object for this connection if the URL for it points to a JAR file entry, null otherwise.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getAttributes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAttributes($a = null)
     {
@@ -36,10 +33,9 @@ class JarURLConnection extends URLConnection
     /**
      * Return the Certificate object for this connection if the URL for it points to a JAR file entry, null otherwise.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getCertificates
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCertificates($a = null)
     {
@@ -49,10 +45,9 @@ class JarURLConnection extends URLConnection
     /**
      * Return the entry name for this connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getEntryName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getEntryName($a = null)
     {
@@ -62,10 +57,9 @@ class JarURLConnection extends URLConnection
     /**
      * Return the JAR entry object for this connection, if any.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getJarEntry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getJarEntry($a = null)
     {
@@ -75,10 +69,9 @@ class JarURLConnection extends URLConnection
     /**
      * Return the JAR file for this connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getJarFile
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getJarFile($a = null)
     {
@@ -88,10 +81,9 @@ class JarURLConnection extends URLConnection
     /**
      * Returns the URL for the Jar file for this connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getJarFileURL
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getJarFileURL($a = null)
     {
@@ -101,10 +93,9 @@ class JarURLConnection extends URLConnection
     /**
      * Returns the main Attributes for the JAR file for this connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getMainAttributes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMainAttributes($a = null)
     {
@@ -114,10 +105,9 @@ class JarURLConnection extends URLConnection
     /**
      * Returns the Manifest for this connection, or null if none.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getManifest
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getManifest($a = null)
     {

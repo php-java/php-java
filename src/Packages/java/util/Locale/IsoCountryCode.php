@@ -13,31 +13,23 @@ use PHPJava\Packages\java\lang\Enum;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Enum
  */
-class IsoCountryCode extends Enum /* implements Serializable, Comparable */
+class IsoCountryCode extends Enum // implements Serializable, Comparable
 {
-    /*
-     * PART1_ALPHA2 is used to represent the ISO3166-1 alpha-2 two letter country codes.
-     */
+    // PART1_ALPHA2 is used to represent the ISO3166-1 alpha-2 two letter country codes.
     const PART1_ALPHA2 = 'PART1_ALPHA2';
 
-    /*
-     * PART1_ALPHA3 is used to represent the ISO3166-1 alpha-3 three letter country codes.
-     */
+    // PART1_ALPHA3 is used to represent the ISO3166-1 alpha-3 three letter country codes.
     const PART1_ALPHA3 = 'PART1_ALPHA3';
 
-    /*
-     * PART3 is used to represent the ISO3166-3 four letter country codes.
-     */
+    // PART3 is used to represent the ISO3166-3 four letter country codes.
     const PART3 = 'PART3';
-
 
     /**
      * Returns the enum constant of this type with the specified name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null)
     {
@@ -47,10 +39,9 @@ class IsoCountryCode extends Enum /* implements Serializable, Comparable */
     /**
      * Returns an array containing the constants of this enum type, inthe order they are declared.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#values
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_values($a = null)
     {

@@ -3,10 +3,7 @@ namespace PHPJava\Kernel\Attributes;
 
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Exceptions\ValidatorException;
-use PHPJava\Kernel\Structures\_Methodref;
-use PHPJava\Utilities\BinaryTool;
 
 final class AttributeInfo implements AttributeInterface
 {
@@ -15,9 +12,9 @@ final class AttributeInfo implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
-    private $attributeNameIndex = null;
-    private $attributeLength = null;
-    private $attributeData = null;
+    private $attributeNameIndex;
+    private $attributeLength;
+    private $attributeData;
 
     public function execute(): void
     {

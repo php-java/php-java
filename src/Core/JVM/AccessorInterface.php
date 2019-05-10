@@ -7,5 +7,6 @@ use PHPJava\Core\JVM\Invoker\InvokerInterface;
 interface AccessorInterface
 {
     public function getFields(): FieldInterface;
+
     public function getMethods(): InvokerInterface;
 }

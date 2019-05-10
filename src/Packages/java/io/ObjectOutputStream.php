@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\OutputStream;
 
 // use PHPJava\Packages\java\io\DataOutput;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -13,16 +12,14 @@ use PHPJava\Packages\java\io\OutputStream;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\OutputStream
  */
-class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoCloseable */
+class ObjectOutputStream extends OutputStream // implements DataOutput, AutoCloseable
 {
-
     /**
      * Subclasses may implement this method to allow class data to be stored in the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#annotateClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function annotateClass($a = null)
     {
@@ -32,10 +29,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Subclasses may implement this method to store custom data in the stream along with descriptors for dynamic proxy classes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#annotateProxyClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function annotateProxyClass($a = null)
     {
@@ -45,10 +41,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Closes the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -58,10 +53,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Write the non-static and non-transient fields of the current class to this stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#defaultWriteObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function defaultWriteObject($a = null)
     {
@@ -71,10 +65,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Drain any buffered data in ObjectOutputStream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#drain
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function drain($a = null)
     {
@@ -84,10 +77,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Enables the stream to do replacement of objects written to the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#enableReplaceObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function enableReplaceObject($a = null)
     {
@@ -97,10 +89,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Flushes the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -110,10 +101,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Retrieve the object used to buffer persistent fields to be written to the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#putFields
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function putFields($a = null)
     {
@@ -123,10 +113,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * This method will allow trusted subclasses of ObjectOutputStream to substitute one object for another during serialization.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#replaceObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function replaceObject($a = null)
     {
@@ -136,10 +125,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Reset will disregard the state of any objects already written to the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#reset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reset($a = null)
     {
@@ -149,10 +137,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Specify stream protocol version to use when writing the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#useProtocolVersion
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function useProtocolVersion($a = null)
     {
@@ -164,12 +151,11 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
      * Writes a sub array of bytes.
      * Writes a byte.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {
@@ -179,10 +165,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes a boolean.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeBoolean
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeBoolean($a = null)
     {
@@ -192,10 +177,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes an 8 bit byte.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeByte
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeByte($a = null)
     {
@@ -205,10 +189,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes a String as a sequence of bytes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeBytes($a = null)
     {
@@ -218,10 +201,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes a 16 bit char.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeChar
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeChar($a = null)
     {
@@ -231,10 +213,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes a String as a sequence of chars.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeChars
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeChars($a = null)
     {
@@ -244,10 +225,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Write the specified class descriptor to the ObjectOutputStream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeClassDescriptor
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function writeClassDescriptor($a = null)
     {
@@ -257,10 +237,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes a 64 bit double.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeDouble
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeDouble($a = null)
     {
@@ -270,10 +249,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Write the buffered fields to the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeFields
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeFields($a = null)
     {
@@ -283,10 +261,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes a 32 bit float.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeFloat
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeFloat($a = null)
     {
@@ -296,10 +273,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes a 32 bit int.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeInt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeInt($a = null)
     {
@@ -309,10 +285,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes a 64 bit long.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeLong
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeLong($a = null)
     {
@@ -322,10 +297,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Write the specified object to the ObjectOutputStream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeObject
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeObject($a = null)
     {
@@ -335,10 +309,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Method used by subclasses to override the default writeObject method.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeObjectOverride
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function writeObjectOverride($a = null)
     {
@@ -348,10 +321,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes a 16 bit short.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeShort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeShort($a = null)
     {
@@ -361,10 +333,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * The writeStreamHeader method is provided so subclasses can append or prepend their own header to the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeStreamHeader
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function writeStreamHeader($a = null)
     {
@@ -374,10 +345,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Writes an "unshared" object to the ObjectOutputStream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeUnshared
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeUnshared($a = null)
     {
@@ -387,10 +357,9 @@ class ObjectOutputStream extends OutputStream /* implements DataOutput, AutoClos
     /**
      * Primitive data write of this String in modified UTF-8 format.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeUTF
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeUTF($a = null)
     {

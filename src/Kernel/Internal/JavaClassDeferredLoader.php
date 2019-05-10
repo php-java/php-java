@@ -13,9 +13,6 @@ final class JavaClassDeferredLoader implements JavaClassInterface
 
     /**
      * JavaClassDeferredLoader constructor.
-     * @param string $deferLoadingReaderClass
-     * @param array $arguments
-     * @param array $options
      */
     public function __construct(
         string $deferLoadingReaderClass,
@@ -30,7 +27,6 @@ final class JavaClassDeferredLoader implements JavaClassInterface
     /**
      * @param $name
      * @param $arguments
-     * @return mixed
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\UnknownVersionException
      * @throws \PHPJava\Exceptions\ValidatorException
@@ -42,7 +38,6 @@ final class JavaClassDeferredLoader implements JavaClassInterface
 
     /**
      * @param mixed ...$arguments
-     * @return JavaClassInterface
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\UnknownVersionException
      * @throws \PHPJava\Exceptions\ValidatorException
@@ -53,7 +48,6 @@ final class JavaClassDeferredLoader implements JavaClassInterface
     }
 
     /**
-     * @return JavaClass
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\UnknownVersionException
      * @throws \PHPJava\Exceptions\ValidatorException

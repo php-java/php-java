@@ -13,8 +13,8 @@ interface Logger
      * Returns the name of this logger.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getName
      * @NotImplemented
      */
@@ -24,8 +24,8 @@ interface Logger
      * Checks if a message of the given level would be logged by this logger.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isLoggable
      * @NotImplemented
      */
@@ -45,8 +45,8 @@ interface Logger
      * @param mixed $b
      * @param mixed $c
      * @param mixed $d
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#log
      * @NotImplemented
      */

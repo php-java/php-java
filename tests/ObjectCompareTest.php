@@ -1,15 +1,13 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class ObjectCompareTest extends Base
 {
     protected $fixtures = [
         'ObjectCompareTest',
     ];
 
-    public function testCallTableswitch_Pattern1()
+    public function testCallTableswitchPattern1()
     {
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['ObjectCompareTest']

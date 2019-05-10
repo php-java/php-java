@@ -13,8 +13,8 @@ interface CharSequence
      * Returns the char value at the specified index.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#charAt
      * @NotImplemented
      */
@@ -24,8 +24,8 @@ interface CharSequence
      * Returns a stream of int zero-extending the char values from this sequence.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#chars
      * @NotImplemented
      */
@@ -35,8 +35,8 @@ interface CharSequence
      * Returns a stream of code point values from this sequence.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePoints
      * @NotImplemented
      */
@@ -47,8 +47,8 @@ interface CharSequence
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compare
      * @NotImplemented
      */
@@ -58,8 +58,8 @@ interface CharSequence
      * Returns the length of this character sequence.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#length
      * @NotImplemented
      */
@@ -70,8 +70,8 @@ interface CharSequence
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#subSequence
      * @NotImplemented
      */
@@ -81,8 +81,8 @@ interface CharSequence
      * Returns a string containing the characters in this sequence in the same order as this sequence.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
      * @NotImplemented
      */

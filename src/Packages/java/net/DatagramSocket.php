@@ -14,16 +14,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, SocketOption, Set */
+class DatagramSocket extends _Object // implements Closeable, AutoCloseable, SocketOption, Set
 {
-
     /**
      * Binds this DatagramSocket to a specific address and port.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#bind
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function bind($a = null)
     {
@@ -33,10 +31,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Closes this datagram socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -47,11 +44,10 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
      * Connects the socket to a remote address for this socket.
      * Connects this socket to a remote socket address (IP address + port number).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#connect
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function connect($a = null, $b = null)
     {
@@ -61,10 +57,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Disconnects the socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#disconnect
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function disconnect($a = null)
     {
@@ -74,10 +69,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Tests if SO_BROADCAST is enabled.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getBroadcast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getBroadcast($a = null)
     {
@@ -87,10 +81,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns the unique DatagramChannel object associated with this datagram socket, if any.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getChannel
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getChannel($a = null)
     {
@@ -100,10 +93,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns the address to which this socket is connected.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getInetAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInetAddress($a = null)
     {
@@ -113,10 +105,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Gets the local address to which the socket is bound.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLocalAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLocalAddress($a = null)
     {
@@ -126,10 +117,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns the port number on the local host to which this socket is bound.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLocalPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLocalPort($a = null)
     {
@@ -139,10 +129,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns the address of the endpoint this socket is bound to.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLocalSocketAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLocalSocketAddress($a = null)
     {
@@ -152,10 +141,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns the value of a socket option.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getOption
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOption($a = null)
     {
@@ -165,10 +153,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns the port number to which this socket is connected.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPort($a = null)
     {
@@ -178,10 +165,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Get value of the SO_RCVBUF option for this DatagramSocket, that is the buffer size used by the platform for input on this DatagramSocket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getReceiveBufferSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getReceiveBufferSize($a = null)
     {
@@ -191,10 +177,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns the address of the endpoint this socket is connected to, or null if it is unconnected.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getRemoteSocketAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getRemoteSocketAddress($a = null)
     {
@@ -204,10 +189,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Tests if SO_REUSEADDR is enabled.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getReuseAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getReuseAddress($a = null)
     {
@@ -217,10 +201,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Get value of the SO_SNDBUF option for this DatagramSocket, that is the buffer size used by the platform for output on this DatagramSocket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getSendBufferSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSendBufferSize($a = null)
     {
@@ -230,10 +213,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Retrieve setting for SO_TIMEOUT.  0 returns implies that the option is disabled (i.e., timeout of infinity).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getSoTimeout
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSoTimeout($a = null)
     {
@@ -243,10 +225,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Gets traffic class or type-of-service in the IP datagram header for packets sent from this DatagramSocket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getTrafficClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getTrafficClass($a = null)
     {
@@ -256,10 +237,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns the binding state of the socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isBound
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isBound($a = null)
     {
@@ -269,10 +249,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns whether the socket is closed or not.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isClosed
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isClosed($a = null)
     {
@@ -282,10 +261,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns the connection state of the socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isConnected
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isConnected($a = null)
     {
@@ -295,10 +273,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Receives a datagram packet from this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#receive
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function receive($a = null)
     {
@@ -308,10 +285,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Sends a datagram packet from this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#send
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function send($a = null)
     {
@@ -321,10 +297,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Enable/disable SO_BROADCAST.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setBroadcast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setBroadcast($a = null)
     {
@@ -334,10 +309,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Sets the datagram socket implementation factory for the application.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDatagramSocketImplFactory
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setDatagramSocketImplFactory($a = null)
     {
@@ -347,11 +321,10 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Sets the value of a socket option.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setOption
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setOption($a = null, $b = null)
     {
@@ -361,10 +334,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Sets the SO_RCVBUF option to the specified value for this DatagramSocket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setReceiveBufferSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setReceiveBufferSize($a = null)
     {
@@ -374,10 +346,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Enable/disable the SO_REUSEADDR socket option.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setReuseAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setReuseAddress($a = null)
     {
@@ -387,10 +358,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Sets the SO_SNDBUF option to the specified value for this DatagramSocket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setSendBufferSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setSendBufferSize($a = null)
     {
@@ -400,10 +370,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Enable/disable SO_TIMEOUT with the specified timeout, in  milliseconds.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setSoTimeout
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setSoTimeout($a = null)
     {
@@ -413,10 +382,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Sets traffic class or type-of-service octet in the IP datagram header for datagrams sent from this DatagramSocket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setTrafficClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setTrafficClass($a = null)
     {
@@ -426,10 +394,9 @@ class DatagramSocket extends _Object /* implements Closeable, AutoCloseable, Soc
     /**
      * Returns a set of the socket options supported by this socket.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#supportedOptions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function supportedOptions($a = null)
     {

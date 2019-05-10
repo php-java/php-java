@@ -2,7 +2,6 @@
 namespace PHPJava\Tests;
 
 use PHPJava\Core\JavaArchive;
-use PHPUnit\Framework\TestCase;
 
 class JarTest extends Base
 {

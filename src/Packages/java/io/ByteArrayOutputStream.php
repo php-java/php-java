@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\OutputStream;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -13,30 +12,28 @@ use PHPJava\Packages\java\io\OutputStream;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\OutputStream
  */
-class ByteArrayOutputStream extends OutputStream /* implements Closeable, AutoCloseable */
+class ByteArrayOutputStream extends OutputStream // implements Closeable, AutoCloseable
 {
     /**
      * The buffer where data is stored.
      *
      * @var mixed $buf
      */
-    protected $buf = null;
+    protected $buf;
 
     /**
      * The number of valid bytes in the buffer.
      *
      * @var mixed $count
      */
-    protected $count = null;
-
+    protected $count;
 
     /**
      * Closing a ByteArrayOutputStream has no effect.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -46,10 +43,9 @@ class ByteArrayOutputStream extends OutputStream /* implements Closeable, AutoCl
     /**
      * Resets the count field of this ByteArrayOutputStream to zero, so that all currently accumulated output in the output stream is discarded.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#reset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reset($a = null)
     {
@@ -59,10 +55,9 @@ class ByteArrayOutputStream extends OutputStream /* implements Closeable, AutoCl
     /**
      * Returns the current size of the buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {
@@ -72,10 +67,9 @@ class ByteArrayOutputStream extends OutputStream /* implements Closeable, AutoCl
     /**
      * Creates a newly allocated byte array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toByteArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toByteArray($a = null)
     {
@@ -88,10 +82,9 @@ class ByteArrayOutputStream extends OutputStream /* implements Closeable, AutoCl
      * Converts the buffer's contents into a string by decoding the bytes using the named charset.
      * Converts the buffer's contents into a string by decoding the bytes using the specified charset.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -102,12 +95,11 @@ class ByteArrayOutputStream extends OutputStream /* implements Closeable, AutoCl
      * Writes len bytes from the specified byte array starting at offset off to this ByteArrayOutputStream.
      * Writes the specified byte to this ByteArrayOutputStream.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {
@@ -117,10 +109,9 @@ class ByteArrayOutputStream extends OutputStream /* implements Closeable, AutoCl
     /**
      * Writes the complete contents of the specified byte array to this ByteArrayOutputStream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeBytes($a = null)
     {
@@ -130,10 +121,9 @@ class ByteArrayOutputStream extends OutputStream /* implements Closeable, AutoCl
     /**
      * Writes the complete contents of this ByteArrayOutputStream to the specified output stream argument, as if by calling the output stream's write method using out.write(buf, 0, count).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writeTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writeTo($a = null)
     {

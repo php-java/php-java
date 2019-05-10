@@ -1,15 +1,12 @@
 <?php
 namespace PHPJava\Kernel\Frames;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 class SameFrame implements FrameInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $frameType = null;
+    private $frameType;
 
     public function execute(): void
     {

@@ -3,9 +3,7 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\Runtime;
-use PHPJava\Exceptions\FormatterException;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
-use PHPJava\Kernel\Maps\MethodAccessFlag;
 use PHPJava\Kernel\Structures\_MethodInfo;
 
 class Formatter
@@ -16,7 +14,6 @@ class Formatter
     /**
      * @param $signature
      * @param int $i
-     * @return array
      * @throws \PHPJava\Exceptions\TypeException
      */
     public static function parseSignature($signature, $i = 0): array
@@ -120,7 +117,6 @@ class Formatter
 
     /**
      * @param $className
-     * @return string
      */
     public static function convertPHPNamespacesToJava($className): string
     {
@@ -142,7 +138,6 @@ class Formatter
 
     /**
      * @param $className
-     * @return array
      */
     public static function convertJavaNamespaceToPHP($className): array
     {
@@ -165,9 +160,6 @@ class Formatter
     }
 
     /**
-     * @param _MethodInfo $method
-     * @param ConstantPool $constantPool
-     * @return string
      * @throws \PHPJava\Exceptions\TypeException
      */
     public static function beatifyMethodFromConstantPool(_MethodInfo $method, ConstantPool $constantPool): string
@@ -210,6 +202,6 @@ class Formatter
         $type = str_replace('/', '.', $type);
         $methodAccessibility = implode(' ', $accessFlags);
 
-        return ltrim("$methodAccessibility $type $methodName($formattedArguments)");
+        return ltrim("{$methodAccessibility} {$type} {$methodName}({$formattedArguments})");
     }
 }

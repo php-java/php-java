@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\net;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\net\SocketOption;
@@ -11,7 +10,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class StandardSocketOptions extends _Object /* implements SocketOption */
+class StandardSocketOptions extends _Object // implements SocketOption
 {
     /**
      * The network interface for Internet Protocol (IP) multicast datagrams.

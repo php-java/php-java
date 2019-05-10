@@ -14,16 +14,14 @@ use PHPJava\Packages\java\security\BasicPermission;
  * @parent \PHPJava\Packages\java\security\Permission
  * @parent \PHPJava\Packages\java\security\BasicPermission
  */
-class PropertyPermission extends BasicPermission /* implements Serializable, Guard */
+class PropertyPermission extends BasicPermission // implements Serializable, Guard
 {
-
     /**
      * Checks two PropertyPermission objects for equality.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -33,10 +31,9 @@ class PropertyPermission extends BasicPermission /* implements Serializable, Gua
     /**
      * Returns the "canonical string representation" of the actions.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getActions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getActions($a = null)
     {
@@ -46,10 +43,9 @@ class PropertyPermission extends BasicPermission /* implements Serializable, Gua
     /**
      * Returns the hash code value for this object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -59,10 +55,9 @@ class PropertyPermission extends BasicPermission /* implements Serializable, Gua
     /**
      * Checks if this PropertyPermission object "implies" the specified permission.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#implies
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function implies($a = null)
     {
@@ -72,10 +67,9 @@ class PropertyPermission extends BasicPermission /* implements Serializable, Gua
     /**
      * Returns a new PermissionCollection object for storing PropertyPermission objects.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#newPermissionCollection
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function newPermissionCollection($a = null)
     {

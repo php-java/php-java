@@ -11,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Console extends _Object /* implements Flushable */
+class Console extends _Object // implements Flushable
 {
-
     /**
      * Flushes the console and forces any buffered output to be written immediately .
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -30,11 +28,10 @@ class Console extends _Object /* implements Flushable */
     /**
      * Writes a formatted string to this console's output stream using the specified format string and arguments.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#format
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function format($a = null, $b = null)
     {
@@ -44,11 +41,10 @@ class Console extends _Object /* implements Flushable */
     /**
      * A convenience method to write a formatted string to this console's output stream using the specified format string and arguments.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#printf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function printf($a = null, $b = null)
     {
@@ -58,10 +54,9 @@ class Console extends _Object /* implements Flushable */
     /**
      * Retrieves the unique Reader object associated with this console.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#reader
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reader($a = null)
     {
@@ -72,11 +67,10 @@ class Console extends _Object /* implements Flushable */
      * Reads a single line of text from the console.
      * Provides a formatted prompt, then reads a single line of text from the console.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readLine
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function readLine($a = null, $b = null)
     {
@@ -87,11 +81,10 @@ class Console extends _Object /* implements Flushable */
      * Reads a password or passphrase from the console with echoing disabled
      * Provides a formatted prompt, then reads a password or passphrase from the console with echoing disabled.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readPassword
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function readPassword($a = null, $b = null)
     {
@@ -101,10 +94,9 @@ class Console extends _Object /* implements Flushable */
     /**
      * Retrieves the unique PrintWriter object associated with this console.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#writer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function writer($a = null)
     {

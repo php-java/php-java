@@ -2,7 +2,6 @@
 namespace PHPJava\Core\Stream\Reader;
 
 use PHPJava\Core\JVM\Stream\BinaryReader;
-use PHPJava\Utilities\ClassResolver;
 
 class InlineReader implements ReaderInterface
 {

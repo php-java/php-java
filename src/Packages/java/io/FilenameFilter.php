@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `FilenameFilter` interface was auto generated.
@@ -14,8 +13,8 @@ interface FilenameFilter
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#accept
      * @NotImplemented
      */

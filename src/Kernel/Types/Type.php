@@ -1,14 +1,13 @@
 <?php
 namespace PHPJava\Kernel\Types;
 
-use PHPJava\Core\JVM\Cache\HeapCache;
 use PHPJava\Exceptions\TypeException;
 
 class Type
 {
-    protected $value = null;
-    protected $nameInJava = null;
-    protected $nameInPHP = null;
+    protected $value;
+    protected $nameInJava;
+    protected $nameInPHP;
 
     public function __construct($value)
     {
@@ -49,7 +48,6 @@ class Type
     {
         return $this->nameInJava;
     }
-
 
     public function getTypeNameInPHP()
     {

@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Types\_Long;
-use PHPJava\Utilities\BinaryTool;
 
 final class _lload_1 implements OperationInterface
 {

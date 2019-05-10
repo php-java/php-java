@@ -2,21 +2,14 @@
 namespace PHPJava\Core;
 
 use PHPJava\Core\JVM\DynamicAccessor;
-use PHPJava\Core\JVM\Field\FieldInterface;
 use PHPJava\Core\JVM\Intern\StringIntern;
-use PHPJava\Core\JVM\Invoker\Invokable;
-use PHPJava\Core\JVM\Invoker\InvokerInterface;
-use PHPJava\Core\JVM\Parameters\GlobalOptions;
-use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\StaticAccessor;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
-use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Provider\InternProvider;
 use PHPJava\Kernel\Provider\ProviderInterface;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
-use PHPJava\Utilities\Formatter;
 
 class JavaClassInvoker
 {
@@ -53,8 +46,6 @@ class JavaClassInvoker
 
     /**
      * JavaClassInvoker constructor.
-     * @param JavaClass $javaClass
-     * @param array $options
      */
     public function __construct(
         JavaClass $javaClass,
@@ -132,43 +123,27 @@ class JavaClassInvoker
         return $this;
     }
 
-    /**
-     * @return JavaClass
-     */
     public function getJavaClass(): JavaClass
     {
         return $this->javaClass;
     }
 
-    /**
-     * @return DynamicAccessor
-     */
     public function getDynamic(): DynamicAccessor
     {
         return $this->dynamicAccessor;
     }
 
-    /**
-     * @return StaticAccessor
-     */
     public function getStatic(): StaticAccessor
     {
         return $this->staticAccessor;
     }
 
-    /**
-     * @param string $name
-     * @param string $signature
-     * @return bool
-     */
     public function isInvoked(string $name, string $signature): bool
     {
         return in_array($signature, $this->specialInvoked[$name] ?? [], true);
     }
 
     /**
-     * @param string $name
-     * @param string $signature
      * @return JavaClassInvoker
      */
     public function addToSpecialInvokedList(string $name, string $signature): self
@@ -179,7 +154,6 @@ class JavaClassInvoker
 
     /**
      * @param $providerName
-     * @return ProviderInterface
      * @throws IllegalJavaClassException
      */
     public function getProvider($providerName): ProviderInterface

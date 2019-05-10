@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Variables\VariableInfoInterface;
-use PHPJava\Utilities\BinaryTool;
 
 class _VerificationTypeInfo implements StructureInterface
 {
@@ -14,9 +12,9 @@ class _VerificationTypeInfo implements StructureInterface
     private $tag = 0;
 
     /**
-     * @var VariableInfoInterface|null
+     * @var null|VariableInfoInterface
      */
-    private $variableInfo = null;
+    private $variableInfo;
 
     public function execute(): void
     {

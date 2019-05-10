@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Types\_Short;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _i2s implements OperationInterface

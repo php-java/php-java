@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `DataInput` interface was auto generated.
@@ -13,8 +12,8 @@ interface DataInput
      * Reads one input byte and returns true if that byte is nonzero, false if that byte is zero.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readBoolean
      * @NotImplemented
      */
@@ -24,8 +23,8 @@ interface DataInput
      * Reads and returns one input byte.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readByte
      * @NotImplemented
      */
@@ -35,8 +34,8 @@ interface DataInput
      * Reads two input bytes and returns a char value.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readChar
      * @NotImplemented
      */
@@ -46,8 +45,8 @@ interface DataInput
      * Reads eight input bytes and returns a double value.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readDouble
      * @NotImplemented
      */
@@ -57,8 +56,8 @@ interface DataInput
      * Reads four input bytes and returns a float value.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readFloat
      * @NotImplemented
      */
@@ -71,8 +70,8 @@ interface DataInput
      * @param mixed $a
      * @param mixed $b
      * @param mixed $c
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readFully
      * @NotImplemented
      */
@@ -82,8 +81,8 @@ interface DataInput
      * Reads four input bytes and returns an int value.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readInt
      * @NotImplemented
      */
@@ -93,8 +92,8 @@ interface DataInput
      * Reads the next line of text from the input stream.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readLine
      * @NotImplemented
      */
@@ -104,8 +103,8 @@ interface DataInput
      * Reads eight input bytes and returns a long value.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readLong
      * @NotImplemented
      */
@@ -115,8 +114,8 @@ interface DataInput
      * Reads two input bytes and returns a short value.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readShort
      * @NotImplemented
      */
@@ -126,8 +125,8 @@ interface DataInput
      * Reads one input byte, zero-extends it to type int, and returns the result, which is therefore in the range 0 through 255.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUnsignedByte
      * @NotImplemented
      */
@@ -137,8 +136,8 @@ interface DataInput
      * Reads two input bytes and returns an int value in the range 0 through 65535.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUnsignedShort
      * @NotImplemented
      */
@@ -148,8 +147,8 @@ interface DataInput
      * Reads in a string that has been encoded using a modified UTF-8 format.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#readUTF
      * @NotImplemented
      */
@@ -159,8 +158,8 @@ interface DataInput
      * Makes an attempt to skip over n bytes of data from the input stream, discarding the skipped bytes.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#skipBytes
      * @NotImplemented
      */

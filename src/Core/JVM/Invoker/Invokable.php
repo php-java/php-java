@@ -2,35 +2,30 @@
 namespace PHPJava\Core\JVM\Invoker;
 
 use ByteUnits\Metric;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
-use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\Cache\OperationCache;
 use PHPJava\Core\JVM\FlexibleMethod;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Exceptions\UndefinedMethodException;
 use PHPJava\Exceptions\UndefinedOpCodeException;
-use PHPJava\Kernel\Provider\DependencyInjectionProvider;
-use PHPJava\Packages\java\lang\NoSuchMethodException;
-use PHPJava\Kernel\Attributes\AttributeInfo;
-use PHPJava\Kernel\Attributes\AttributeInterface;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Core\Accumulator;
 use PHPJava\Kernel\Core\ConstantPool;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Mnemonics\OperationInterface;
+use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Types\_Char;
+use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\SuperClassResolver;
 use PHPJava\Utilities\TypeResolver;
-use PHPJava\Core\JVM\Parameters\Runtime;
 
 trait Invokable
 {
@@ -38,7 +33,6 @@ trait Invokable
     private $methods = [];
     private $options = [];
     private $debugTool;
-
 
     public function __construct(JavaClassInvoker $javaClassInvoker, array $methods, array $options = [])
     {
@@ -51,11 +45,8 @@ trait Invokable
         );
     }
 
-
     /**
-     * @param string $name
      * @param mixed ...$arguments
-     * @return null
      * @throws IllegalJavaClassException
      * @throws RuntimeException
      * @throws UndefinedOpCodeException
@@ -238,7 +229,7 @@ trait Invokable
             }
 
             /**
-             * @var OperationInterface|Accumulator|ConstantPool $executor
+             * @var Accumulator|ConstantPool|OperationInterface $executor
              */
             $executor = $operationCache->fetchOrPush(
                 $fullName,
@@ -299,7 +290,6 @@ trait Invokable
     /**
      * @param $name
      * @param mixed ...$arguments
-     * @return _MethodInfo
      * @throws NoSuchMethodException
      * @throws UndefinedMethodException
      * @throws \PHPJava\Exceptions\TypeException
@@ -371,7 +361,6 @@ trait Invokable
 
     /**
      * @param mixed ...$arguments
-     * @return string
      */
     private function stringifyArguments(...$arguments): string
     {

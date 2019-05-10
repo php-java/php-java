@@ -11,23 +11,21 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class ObjectStreamClass extends _Object /* implements Serializable */
+class ObjectStreamClass extends _Object // implements Serializable
 {
     /**
-     * serialPersistentFields value indicating no serializable fields
+     * serialPersistentFields value indicating no serializable fields.
      *
      * @var mixed $NO_FIELDS
      */
     public static $NO_FIELDS = null;
 
-
     /**
      * Return the class in the local VM that this version is mapped to.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#forClass
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function forClass($a = null)
     {
@@ -37,10 +35,9 @@ class ObjectStreamClass extends _Object /* implements Serializable */
     /**
      * Get the field of this class by name.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getField
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getField($a = null)
     {
@@ -50,10 +47,9 @@ class ObjectStreamClass extends _Object /* implements Serializable */
     /**
      * Return an array of the fields of this serializable class.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getFields
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFields($a = null)
     {
@@ -63,10 +59,9 @@ class ObjectStreamClass extends _Object /* implements Serializable */
     /**
      * Returns the name of the class described by this descriptor.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getName($a = null)
     {
@@ -76,10 +71,9 @@ class ObjectStreamClass extends _Object /* implements Serializable */
     /**
      * Return the serialVersionUID for this class.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#getSerialVersionUID
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getSerialVersionUID($a = null)
     {
@@ -89,10 +83,9 @@ class ObjectStreamClass extends _Object /* implements Serializable */
     /**
      * Find the descriptor for a class that can be serialized.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#lookup
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_lookup($a = null)
     {
@@ -102,10 +95,9 @@ class ObjectStreamClass extends _Object /* implements Serializable */
     /**
      * Returns the descriptor for any class, regardless of whether it implements Serializable.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#lookupAny
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_lookupAny($a = null)
     {
@@ -115,10 +107,9 @@ class ObjectStreamClass extends _Object /* implements Serializable */
     /**
      * Return a string describing this ObjectStreamClass.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

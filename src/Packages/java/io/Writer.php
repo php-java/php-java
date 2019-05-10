@@ -12,27 +12,25 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Writer extends _Object /* implements Closeable, AutoCloseable */
+class Writer extends _Object // implements Closeable, AutoCloseable
 {
     /**
      * The object used to synchronize operations on this stream.
      *
      * @var mixed $lock
      */
-    protected $lock = null;
-
+    protected $lock;
 
     /**
      * Appends the specified character to this writer.
      * Appends the specified character sequence to this writer.
      * Appends a subsequence of the specified character sequence to this writer.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#append
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function append($a = null, $b = null, $c = null)
     {
@@ -42,10 +40,9 @@ class Writer extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Closes the stream, flushing it first.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -55,10 +52,9 @@ class Writer extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Flushes the stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -68,10 +64,9 @@ class Writer extends _Object /* implements Closeable, AutoCloseable */
     /**
      * Returns a new Writer which discards all characters.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#nullWriter
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_nullWriter($a = null)
     {
@@ -85,12 +80,11 @@ class Writer extends _Object /* implements Closeable, AutoCloseable */
      * Writes a string.
      * Writes a portion of a string.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {

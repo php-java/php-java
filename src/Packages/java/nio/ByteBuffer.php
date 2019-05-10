@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\nio;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\nio\Buffer;
 
 // use PHPJava\Packages\java\lang\Comparable;
 
@@ -12,16 +11,14 @@ use PHPJava\Packages\java\nio\Buffer;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\nio\Buffer
  */
-class ByteBuffer extends Buffer /* implements Comparable */
+class ByteBuffer extends Buffer // implements Comparable
 {
-
     /**
      * Creates a new byte buffer whose content is a shared and aligned subsequence of this buffer's content.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#alignedSlice
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function alignedSlice($a = null)
     {
@@ -31,11 +28,10 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Returns the memory address, pointing to the byte at the given index, modulus the given unit size.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#alignmentOffset
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function alignmentOffset($a = null, $b = null)
     {
@@ -45,10 +41,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Allocates a new byte buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#allocate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_allocate($a = null)
     {
@@ -58,10 +53,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Allocates a new direct byte buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#allocateDirect
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_allocateDirect($a = null)
     {
@@ -71,10 +65,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Returns the byte array that backs this buffer&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#array
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function array($a = null)
     {
@@ -84,10 +77,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Returns the offset within this buffer's backing array of the first element of the buffer&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#arrayOffset
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function arrayOffset($a = null)
     {
@@ -97,10 +89,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Creates a view of this byte buffer as a char buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#asCharBuffer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function asCharBuffer($a = null)
     {
@@ -110,10 +101,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Creates a view of this byte buffer as a double buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#asDoubleBuffer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function asDoubleBuffer($a = null)
     {
@@ -123,10 +113,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Creates a view of this byte buffer as a float buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#asFloatBuffer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function asFloatBuffer($a = null)
     {
@@ -136,10 +125,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Creates a view of this byte buffer as an int buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#asIntBuffer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function asIntBuffer($a = null)
     {
@@ -149,10 +137,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Creates a view of this byte buffer as a long buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#asLongBuffer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function asLongBuffer($a = null)
     {
@@ -162,10 +149,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Creates a new, read-only byte buffer that shares this buffer's content.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#asReadOnlyBuffer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function asReadOnlyBuffer($a = null)
     {
@@ -175,10 +161,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Creates a view of this byte buffer as a short buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#asShortBuffer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function asShortBuffer($a = null)
     {
@@ -188,10 +173,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Compacts this buffer&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#compact
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compact($a = null)
     {
@@ -201,10 +185,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Compares this buffer to another.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -214,10 +197,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Creates a new byte buffer that shares this buffer's content.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#duplicate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function duplicate($a = null)
     {
@@ -227,10 +209,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Tells whether or not this buffer is equal to another object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -243,12 +224,11 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative bulk get method.
      * Absolute get method.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#get
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function get($a = null, $b = null, $c = null)
     {
@@ -259,10 +239,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative get method for reading a char value.
      * Absolute get method for reading a char value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#getChar
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getChar($a = null)
     {
@@ -273,10 +252,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative get method for reading a double value.
      * Absolute get method for reading a double value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#getDouble
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDouble($a = null)
     {
@@ -287,10 +265,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative get method for reading a float value.
      * Absolute get method for reading a float value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#getFloat
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFloat($a = null)
     {
@@ -301,10 +278,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative get method for reading an int value.
      * Absolute get method for reading an int value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#getInt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInt($a = null)
     {
@@ -315,10 +291,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative get method for reading a long value.
      * Absolute get method for reading a long value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#getLong
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLong($a = null)
     {
@@ -329,10 +304,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative get method for reading a short value.
      * Absolute get method for reading a short value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#getShort
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getShort($a = null)
     {
@@ -342,10 +316,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Tells whether or not this buffer is backed by an accessible byte array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#hasArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasArray($a = null)
     {
@@ -355,10 +328,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Returns the current hash code of this buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -368,10 +340,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Tells whether or not this byte buffer is direct.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#isDirect
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isDirect($a = null)
     {
@@ -381,10 +352,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Finds and returns the relative index of the first mismatch between this buffer and a given buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#mismatch
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function mismatch($a = null)
     {
@@ -395,10 +365,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Retrieves this buffer's byte order.
      * Modifies this buffer's byte order.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#order
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function order($a = null)
     {
@@ -412,12 +381,11 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Absolute put method&nbsp;&nbsp;(optional operation).
      * Relative bulk put method&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#put
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function put($a = null, $b = null, $c = null)
     {
@@ -428,11 +396,10 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative put method for writing a char value&nbsp;&nbsp;(optional operation).
      * Absolute put method for writing a char value&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#putChar
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function putChar($a = null, $b = null)
     {
@@ -443,11 +410,10 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative put method for writing a double value&nbsp;&nbsp;(optional operation).
      * Absolute put method for writing a double value&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#putDouble
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function putDouble($a = null, $b = null)
     {
@@ -458,11 +424,10 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative put method for writing a float value&nbsp;&nbsp;(optional operation).
      * Absolute put method for writing a float value&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#putFloat
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function putFloat($a = null, $b = null)
     {
@@ -473,11 +438,10 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Relative put method for writing an int value&nbsp;&nbsp;(optional operation).
      * Absolute put method for writing an int value&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#putInt
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function putInt($a = null, $b = null)
     {
@@ -488,11 +452,10 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Absolute put method for writing a long value&nbsp;&nbsp;(optional operation).
      * Relative put method for writing a long value&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#putLong
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function putLong($a = null, $b = null)
     {
@@ -503,11 +466,10 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Absolute put method for writing a short value&nbsp;&nbsp;(optional operation).
      * Relative put method for writing a short value&nbsp;&nbsp;(optional operation).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#putShort
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function putShort($a = null, $b = null)
     {
@@ -517,10 +479,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Creates a new byte buffer whose content is a shared subsequence of this buffer's content.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#slice
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function slice($a = null)
     {
@@ -530,10 +491,9 @@ class ByteBuffer extends Buffer /* implements Comparable */
     /**
      * Returns a string summarizing the state of this buffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -544,12 +504,11 @@ class ByteBuffer extends Buffer /* implements Comparable */
      * Wraps a byte array into a buffer.
      * Wraps a byte array into a buffer.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/package-summary.html#wrap
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_wrap($a = null, $b = null, $c = null)
     {

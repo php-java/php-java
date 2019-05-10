@@ -1,16 +1,13 @@
 <?php
 namespace PHPJava\Kernel\Frames;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 class ChopFrame implements FrameInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
-    private $frameType = null;
-    private $offsetDelta = null;
+    private $frameType;
+    private $offsetDelta;
 
     public function execute(): void
     {

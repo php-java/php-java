@@ -1,15 +1,13 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class SwitchTest extends Base
 {
     protected $fixtures = [
         'SwitchTest',
     ];
 
-    public function testCallTableswitch_Pattern1()
+    public function testCallTableswitchPattern1()
     {
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
@@ -28,7 +26,7 @@ class SwitchTest extends Base
         );
     }
 
-    public function testTableswitch_Pattern2()
+    public function testTableswitchPattern2()
     {
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
@@ -47,7 +45,7 @@ class SwitchTest extends Base
         );
     }
 
-    public function testTableswitch_Pattern3()
+    public function testTableswitchPattern3()
     {
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
@@ -66,8 +64,7 @@ class SwitchTest extends Base
         );
     }
 
-
-    public function testCallLookupswitch_Pattern1()
+    public function testCallLookupswitchPattern1()
     {
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
@@ -86,7 +83,7 @@ class SwitchTest extends Base
         );
     }
 
-    public function testCallLookupswitch_Pattern2()
+    public function testCallLookupswitchPattern2()
     {
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
@@ -105,7 +102,7 @@ class SwitchTest extends Base
         );
     }
 
-    public function testCallLookupswitch_Pattern3()
+    public function testCallLookupswitchPattern3()
     {
         ob_start();
         $calculatedValue = $this->initiatedJavaClasses['SwitchTest']

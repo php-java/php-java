@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\OutputStream;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -13,16 +12,14 @@ use PHPJava\Packages\java\io\OutputStream;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\io\OutputStream
  */
-class PipedOutputStream extends OutputStream /* implements Closeable, AutoCloseable */
+class PipedOutputStream extends OutputStream // implements Closeable, AutoCloseable
 {
-
     /**
      * Closes this piped output stream and releases any system resources associated with this stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -32,10 +29,9 @@ class PipedOutputStream extends OutputStream /* implements Closeable, AutoClosea
     /**
      * Connects this piped output stream to a receiver.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#connect
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function connect($a = null)
     {
@@ -45,10 +41,9 @@ class PipedOutputStream extends OutputStream /* implements Closeable, AutoClosea
     /**
      * Flushes this output stream and forces any buffered output bytes to be written out.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -59,12 +54,11 @@ class PipedOutputStream extends OutputStream /* implements Closeable, AutoClosea
      * Writes len bytes from the specified byte array starting at offset off to this piped output stream.
      * Writes the specified byte to the piped output stream.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {

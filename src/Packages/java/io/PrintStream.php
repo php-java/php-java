@@ -1,14 +1,15 @@
 <?php
 namespace PHPJava\Packages\java\io;
 
-use PHPJava\Kernel\Types\_Array\Collection;
-use PHPJava\Packages\java\util\IllegalFormatException;
 use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\Type;
+use PHPJava\Packages\java\util\IllegalFormatException;
 
 class PrintStream
 {
     private $sequence = '';
+
     public function println($arg)
     {
         if ($arg instanceof _Utf8) {

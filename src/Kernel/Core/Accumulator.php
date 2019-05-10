@@ -8,9 +8,8 @@ use PHPJava\Kernel\Structures\_MethodInfo;
 
 trait Accumulator
 {
-
     /**
-     * @var JavaClass|null
+     * @var null|JavaClass
      */
     private $javaClass;
 
@@ -23,7 +22,7 @@ trait Accumulator
      * @var JavaClassInvoker
      */
     private $javaClassInvoker;
-    
+
     /**
      * @var \PHPJava\Core\JVM\Stream\BinaryReader
      */
@@ -125,7 +124,6 @@ trait Accumulator
         return $this->reader->getOffset();
     }
 
-
     public function pushToOperandStack($value)
     {
         $this->stacks[] = $value;
@@ -167,7 +165,6 @@ trait Accumulator
     {
         $this->localStorage[(int) $index] = $value;
     }
-
 
     public function getLocalStorage($index)
     {

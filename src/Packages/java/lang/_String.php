@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Utilities\Extractor;
@@ -10,7 +9,6 @@ use PHPJava\Utilities\Extractor;
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\util\Comparator;
 // use PHPJava\Packages\java\util\stream\IntStream;
-use PHPJava\Packages\java\lang\CharSequence;
 
 /**
  * The `String` class was auto generated.
@@ -20,7 +18,7 @@ use PHPJava\Packages\java\lang\CharSequence;
 class _String extends _Object implements CharSequence
 {
     private $hash = 0;
-    private $object = null;
+    private $object;
 
     /**
      * A Comparator that orders String objects as by compareToIgnoreCase.
@@ -42,9 +40,8 @@ class _String extends _Object implements CharSequence
     /**
      * Returns the char value at the specified index.
      *
-     * @param mixed $a
-     * @return _Char
      * @throws IndexOutOfBoundsException
+     * @return _Char
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#charAt(int)
      */
     public function charAt($a)
@@ -62,10 +59,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a stream of int zero-extending the char values from this sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#chars
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function chars($a = null)
     {
@@ -75,10 +71,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns the character (Unicode code point) at the specified index.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointAt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function codePointAt($a = null)
     {
@@ -88,10 +83,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns the character (Unicode code point) before the specified index.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointBefore
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function codePointBefore($a = null)
     {
@@ -101,11 +95,10 @@ class _String extends _Object implements CharSequence
     /**
      * Returns the number of Unicode code points in the specified text range of this String.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePointCount
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function codePointCount($a = null, $b = null)
     {
@@ -115,10 +108,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a stream of code point values from this sequence.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#codePoints
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function codePoints($a = null)
     {
@@ -128,10 +120,9 @@ class _String extends _Object implements CharSequence
     /**
      * Compares two strings lexicographically.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -141,10 +132,9 @@ class _String extends _Object implements CharSequence
     /**
      * Compares two strings lexicographically, ignoring case differences.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareToIgnoreCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareToIgnoreCase($a = null)
     {
@@ -154,9 +144,8 @@ class _String extends _Object implements CharSequence
     /**
      * Concatenates the specified string to the end of this string.
      *
-     * @param mixed $a
-     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#concat(java.lang.String)
+     * @param null|mixed $a
      */
     public function concat($a = null)
     {
@@ -166,10 +155,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns true if and only if this string contains the specified sequence of char values.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#contains
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function contains($a = null)
     {
@@ -180,10 +168,9 @@ class _String extends _Object implements CharSequence
      * Compares this string to the specified CharSequence.
      * Compares this string to the specified StringBuffer.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#contentEquals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function contentEquals($a = null)
     {
@@ -194,12 +181,11 @@ class _String extends _Object implements CharSequence
      * Equivalent to valueOf(char[]).
      * Equivalent to valueOf(char[], int, int).
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#copyValueOf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_copyValueOf($a = null, $b = null, $c = null)
     {
@@ -209,10 +195,9 @@ class _String extends _Object implements CharSequence
     /**
      * Tests if this string ends with the specified suffix.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#endsWith
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function endsWith($a = null)
     {
@@ -222,9 +207,8 @@ class _String extends _Object implements CharSequence
     /**
      * Compares this string to the specified object.
      *
-     * @param mixed $a
-     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#equals(java.lang.Object)
+     * @param null|mixed $a
      */
     public function equals($a = null)
     {
@@ -240,10 +224,9 @@ class _String extends _Object implements CharSequence
     /**
      * Compares this String to another String, ignoring case considerations.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equalsIgnoreCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equalsIgnoreCase($a = null)
     {
@@ -254,12 +237,11 @@ class _String extends _Object implements CharSequence
      * Returns a formatted string using the specified format string and arguments.
      * Returns a formatted string using the specified locale, format string, and arguments.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#format
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_format($a = null, $b = null, $c = null)
     {
@@ -272,13 +254,12 @@ class _String extends _Object implements CharSequence
      * Encodes this String into a sequence of bytes using the named charset, storing the result into a new byte array.
      * Encodes this String into a sequence of bytes using the given charset, storing the result into a new byte array.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getBytes
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public function getBytes($a = null, $b = null, $c = null, $d = null)
     {
@@ -288,13 +269,12 @@ class _String extends _Object implements CharSequence
     /**
      * Copies characters from this string into the destination character array.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getChars
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public function getChars($a = null, $b = null, $c = null, $d = null)
     {
@@ -304,7 +284,6 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a hash code for this string.
      *
-     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#hashCode()
      */
     public function hashCode()
@@ -317,7 +296,7 @@ class _String extends _Object implements CharSequence
         }
 
         $str = $this->toString();
-        for ($i = 0; $i < $count; ++$i) {
+        for ($i = 0; $i < $count; $i++) {
             $h = 31 * $h + ord($str[$i]);
         }
 
@@ -330,11 +309,10 @@ class _String extends _Object implements CharSequence
      * Returns the index within this string of the first occurrence of the specified substring.
      * Returns the index within this string of the first occurrence of the specified substring, starting at the specified index.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#indexOf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function indexOf($a = null, $b = null)
     {
@@ -344,10 +322,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a canonical representation for the string object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#intern
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function intern($a = null)
     {
@@ -357,10 +334,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns true if the string is empty or contains only white space codepoints, otherwise false.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isBlank
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isBlank($a = null)
     {
@@ -370,10 +346,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns true if, and only if, length() is 0.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isEmpty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isEmpty($a = null)
     {
@@ -384,11 +359,10 @@ class _String extends _Object implements CharSequence
      * Returns a new String composed of copies of the CharSequence elements joined together with a copy of the specified delimiter.
      * Returns a new String composed of copies of the CharSequence elements joined together with a copy of the specified delimiter.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#join
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_join($a = null, $b = null)
     {
@@ -401,11 +375,10 @@ class _String extends _Object implements CharSequence
      * Returns the index within this string of the last occurrence of the specified substring.
      * Returns the index within this string of the last occurrence of the specified substring, searching backward starting at the specified index.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#lastIndexOf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function lastIndexOf($a = null, $b = null)
     {
@@ -415,10 +388,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns the length of this string.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#length
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function length($a = null)
     {
@@ -428,10 +400,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a stream of lines extracted from this string, separated by line terminators.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#lines
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lines($a = null)
     {
@@ -441,10 +412,9 @@ class _String extends _Object implements CharSequence
     /**
      * Tells whether or not this string matches the given regular expression.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#matches
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function matches($a = null)
     {
@@ -454,11 +424,10 @@ class _String extends _Object implements CharSequence
     /**
      * Returns the index within this String that is offset from the given index by codePointOffset code points.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#offsetByCodePoints
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function offsetByCodePoints($a = null, $b = null)
     {
@@ -469,14 +438,13 @@ class _String extends _Object implements CharSequence
      * Tests if two string regions are equal.
      * Tests if two string regions are equal.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#regionMatches
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @throws NotImplementedException
      */
     public function regionMatches($a = null, $b = null, $c = null, $d = null, $e = null)
     {
@@ -486,10 +454,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a string whose value is the concatenation of this string repeated count times.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#repeat
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function repeat($a = null)
     {
@@ -500,10 +467,9 @@ class _String extends _Object implements CharSequence
      * Returns a string resulting from replacing all occurrences of oldChar in this string with newChar.
      * Replaces each substring of this string that matches the literal target sequence with the specified literal replacement sequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#replace(java.lang.CharSequence,java.lang.CharSequence)
+     * @param null|mixed $a
+     * @param null|mixed $b
      */
     public function replace($a = null, $b = null)
     {
@@ -513,11 +479,10 @@ class _String extends _Object implements CharSequence
     /**
      * Replaces each substring of this string that matches the given regular expression with the given replacement.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#replaceAll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function replaceAll($a = null, $b = null)
     {
@@ -527,11 +492,10 @@ class _String extends _Object implements CharSequence
     /**
      * Replaces the first substring of this string that matches the given regular expression with the given replacement.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#replaceFirst
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function replaceFirst($a = null, $b = null)
     {
@@ -542,11 +506,10 @@ class _String extends _Object implements CharSequence
      * Splits this string around matches of the given regular expression.
      * Splits this string around matches of the given regular expression.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#split
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function split($a = null, $b = null)
     {
@@ -557,11 +520,10 @@ class _String extends _Object implements CharSequence
      * Tests if this string starts with the specified prefix.
      * Tests if the substring of this string beginning at the specified index starts with the specified prefix.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#startsWith
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function startsWith($a = null, $b = null)
     {
@@ -571,10 +533,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a string whose value is this string, with all leading and trailing white space removed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#strip
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function strip($a = null)
     {
@@ -584,10 +545,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a string whose value is this string, with all leading white space removed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#stripLeading
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function stripLeading($a = null)
     {
@@ -597,10 +557,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a string whose value is this string, with all trailing white space removed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#stripTrailing
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function stripTrailing($a = null)
     {
@@ -610,11 +569,10 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a character sequence that is a subsequence of this sequence.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#subSequence
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function subSequence($a = null, $b = null)
     {
@@ -625,11 +583,10 @@ class _String extends _Object implements CharSequence
      * Returns a string that is a substring of this string.
      * Returns a string that is a substring of this string.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#substring
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function substring($a = null, $b = null)
     {
@@ -639,10 +596,9 @@ class _String extends _Object implements CharSequence
     /**
      * Converts this string to a new character array.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toCharArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toCharArray($a = null)
     {
@@ -653,10 +609,9 @@ class _String extends _Object implements CharSequence
      * Converts all of the characters in this String to lower case using the rules of the default locale.
      * Converts all of the characters in this String to lower case using the rules of the given Locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toLowerCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toLowerCase($a = null)
     {
@@ -669,10 +624,10 @@ class _String extends _Object implements CharSequence
     }
 
     /**
-     * This object (which is already a string!)
+     * This object (which is already a string!).
      *
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
      */
     public function toString(): string
@@ -684,10 +639,9 @@ class _String extends _Object implements CharSequence
      * Converts all of the characters in this String to upper case using the rules of the default locale.
      * Converts all of the characters in this String to upper case using the rules of the given Locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toUpperCase
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toUpperCase($a = null)
     {
@@ -702,10 +656,9 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a string whose value is this string, with all leading and trailing space removed, where space is defined as any character whose codepoint is less than or equal to 'U+0020' (the space character).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#trim
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function trim($a = null)
     {
@@ -723,21 +676,17 @@ class _String extends _Object implements CharSequence
      * Returns the string representation of the long argument.
      * Returns the string representation of the Object argument.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_valueOf($a = null, $b = null, $c = null)
     {
         throw new NotImplementedException(__METHOD__);
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         if (!($this->object instanceof _Utf8)) {

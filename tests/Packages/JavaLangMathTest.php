@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Tests\Packages;
 
-use PHPJava\Core\JavaArchive;
 use PHPJava\Tests\Base;
-use PHPUnit\Framework\TestCase;
 
 class JavaLangMathTest extends Base
 {
@@ -22,7 +20,7 @@ class JavaLangMathTest extends Base
                 'abs',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.5, $value);
     }
 
@@ -37,7 +35,7 @@ class JavaLangMathTest extends Base
                 'acos',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(1.0471975511966, $value);
     }
 
@@ -68,7 +66,7 @@ class JavaLangMathTest extends Base
                 'asin',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.5235987755983, $value);
     }
 
@@ -83,7 +81,7 @@ class JavaLangMathTest extends Base
                 'atan',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.46364760900081, $value);
     }
 
@@ -99,7 +97,7 @@ class JavaLangMathTest extends Base
                 1.0,
                 2.0
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.46364760900081, $value);
     }
 
@@ -114,7 +112,7 @@ class JavaLangMathTest extends Base
                 'cbrt',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.7937005259841, $value);
     }
 
@@ -145,7 +143,7 @@ class JavaLangMathTest extends Base
                 0.5,
                 1.0
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.5, $value);
     }
 
@@ -160,7 +158,7 @@ class JavaLangMathTest extends Base
                 'cos',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.87758256189037, $value);
     }
 
@@ -175,7 +173,7 @@ class JavaLangMathTest extends Base
                 'cosh',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(1.1276259652064, $value);
     }
 
@@ -205,7 +203,7 @@ class JavaLangMathTest extends Base
                 'exp',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(1.6487212707001, $value);
     }
 
@@ -220,7 +218,7 @@ class JavaLangMathTest extends Base
                 'expm1',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.64872127070013, $value);
     }
 
@@ -299,7 +297,7 @@ class JavaLangMathTest extends Base
                 'log',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(-0.69314718055995, $value);
     }
 
@@ -314,7 +312,7 @@ class JavaLangMathTest extends Base
                 'log10',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(-0.30102999566398, $value);
     }
 
@@ -329,7 +327,7 @@ class JavaLangMathTest extends Base
                 'log1p',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.40546510810816, $value);
     }
 
@@ -427,7 +425,7 @@ class JavaLangMathTest extends Base
             ->call(
                 'random'
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.19151945001982, $value);
     }
 
@@ -442,7 +440,7 @@ class JavaLangMathTest extends Base
                 'round',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(1.0, $value);
     }
 
@@ -457,7 +455,7 @@ class JavaLangMathTest extends Base
                 'sin',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.4794255386042, $value);
     }
 
@@ -472,7 +470,7 @@ class JavaLangMathTest extends Base
                 'sinh',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.52109530549375, $value);
     }
 
@@ -487,7 +485,7 @@ class JavaLangMathTest extends Base
                 'sqrt',
                 4.0
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(2.0, $value);
     }
 
@@ -518,7 +516,7 @@ class JavaLangMathTest extends Base
                 'tan',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.54630248984379, $value);
     }
 
@@ -533,7 +531,7 @@ class JavaLangMathTest extends Base
                 'tanh',
                 0.5
             );
-        $value = (double) ob_get_clean();
+        $value = (float) ob_get_clean();
         $this->assertEquals(0.46211715726001, $value);
     }
 }

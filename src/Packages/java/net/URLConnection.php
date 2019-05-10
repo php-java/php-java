@@ -12,66 +12,64 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class URLConnection extends _Object /* implements ContentHandlerFactory, _List */
+class URLConnection extends _Object // implements ContentHandlerFactory, _List
 {
     /**
      * If true, this URL is being examined in a context in which it makes sense to allow user interactions such as popping up an authentication dialog.
      *
      * @var mixed $allowUserInteraction
      */
-    protected $allowUserInteraction = null;
+    protected $allowUserInteraction;
 
     /**
      * If false, this connection object has not created a communications link to the specified URL.
      *
      * @var mixed $connected
      */
-    protected $connected = null;
+    protected $connected;
 
     /**
      * This variable is set by the setDoInput method.
      *
      * @var mixed $doInput
      */
-    protected $doInput = null;
+    protected $doInput;
 
     /**
      * This variable is set by the setDoOutput method.
      *
      * @var mixed $doOutput
      */
-    protected $doOutput = null;
+    protected $doOutput;
 
     /**
      * Some protocols support skipping the fetching of the object unless the object has been modified more recently than a certain time.
      *
      * @var mixed $ifModifiedSince
      */
-    protected $ifModifiedSince = null;
+    protected $ifModifiedSince;
 
     /**
      * The URL represents the remote object on the World Wide Web to which this connection is opened.
      *
      * @var mixed $url
      */
-    protected $url = null;
+    protected $url;
 
     /**
      * If true, the protocol is allowed to use caching whenever it can.
      *
      * @var mixed $useCaches
      */
-    protected $useCaches = null;
-
+    protected $useCaches;
 
     /**
      * Adds a general request property specified by a key-value pair.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#addRequestProperty
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function addRequestProperty($a = null, $b = null)
     {
@@ -81,10 +79,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Opens a communications link to the resource referenced by this URL, if such a connection has not already been established.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#connect
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function connect($a = null)
     {
@@ -94,10 +91,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the allowUserInteraction field for this object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getAllowUserInteraction
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAllowUserInteraction($a = null)
     {
@@ -107,10 +103,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns setting for connect timeout.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getConnectTimeout
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getConnectTimeout($a = null)
     {
@@ -121,10 +116,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
      * Retrieves the contents of this URL connection.
      * Retrieves the contents of this URL connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getContent
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getContent($a = null)
     {
@@ -134,10 +128,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the content-encoding header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getContentEncoding
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getContentEncoding($a = null)
     {
@@ -147,10 +140,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the content-length header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getContentLength
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getContentLength($a = null)
     {
@@ -160,10 +152,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the content-length header field as a long.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getContentLengthLong
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getContentLengthLong($a = null)
     {
@@ -173,10 +164,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the content-type header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getContentType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getContentType($a = null)
     {
@@ -186,10 +176,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the date header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDate
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDate($a = null)
     {
@@ -199,10 +188,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the default value of the allowUserInteraction field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDefaultAllowUserInteraction
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDefaultAllowUserInteraction($a = null)
     {
@@ -212,10 +200,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Deprecated.The instance specific getRequestProperty method should be used after an appropriate instance of URLConnection is obtained.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDefaultRequestProperty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDefaultRequestProperty($a = null)
     {
@@ -226,10 +213,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
      * Returns the default value of a URLConnection's useCaches flag.
      * Returns the default value of the useCaches flag for the given protocol.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDefaultUseCaches
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDefaultUseCaches($a = null)
     {
@@ -239,10 +225,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of this URLConnection's doInput flag.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDoInput
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDoInput($a = null)
     {
@@ -252,10 +237,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of this URLConnection's doOutput flag.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getDoOutput
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDoOutput($a = null)
     {
@@ -265,10 +249,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the expires header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getExpiration
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getExpiration($a = null)
     {
@@ -278,10 +261,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Loads filename map (a mimetable) from a data file.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getFileNameMap
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getFileNameMap($a = null)
     {
@@ -292,10 +274,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
      * Returns the value for the nth header field.
      * Returns the value of the named header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHeaderField
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHeaderField($a = null)
     {
@@ -305,11 +286,10 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the named field parsed as date.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHeaderFieldDate
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function getHeaderFieldDate($a = null, $b = null)
     {
@@ -319,11 +299,10 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the named field parsed as a number.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHeaderFieldInt
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function getHeaderFieldInt($a = null, $b = null)
     {
@@ -333,10 +312,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the key for the nth header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHeaderFieldKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHeaderFieldKey($a = null)
     {
@@ -346,11 +324,10 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the named field parsed as a number.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHeaderFieldLong
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function getHeaderFieldLong($a = null, $b = null)
     {
@@ -360,10 +337,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns an unmodifiable Map of the header fields.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHeaderFields
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHeaderFields($a = null)
     {
@@ -373,10 +349,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of this object's ifModifiedSince field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getIfModifiedSince
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getIfModifiedSince($a = null)
     {
@@ -386,10 +361,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns an input stream that reads from this open connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getInputStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getInputStream($a = null)
     {
@@ -399,10 +373,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the last-modified header field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getLastModified
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLastModified($a = null)
     {
@@ -412,10 +385,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns an output stream that writes to this connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getOutputStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getOutputStream($a = null)
     {
@@ -425,10 +397,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns a permission object representing the permission necessary to make the connection represented by this object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getPermission
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getPermission($a = null)
     {
@@ -438,10 +409,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns setting for read timeout. 0 return implies that the option is disabled (i.e., timeout of infinity).
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getReadTimeout
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getReadTimeout($a = null)
     {
@@ -451,10 +421,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns an unmodifiable Map of general request properties for this connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getRequestProperties
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getRequestProperties($a = null)
     {
@@ -464,10 +433,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of the named general request property for this connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getRequestProperty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getRequestProperty($a = null)
     {
@@ -477,10 +445,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of this URLConnection's URL field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getURL
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getURL($a = null)
     {
@@ -490,10 +457,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns the value of this URLConnection's useCaches field.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getUseCaches
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getUseCaches($a = null)
     {
@@ -503,10 +469,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Tries to determine the content type of an object, based on the specified "file" component of a URL.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#guessContentTypeFromName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_guessContentTypeFromName($a = null)
     {
@@ -516,10 +481,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Tries to determine the type of an input stream based on the characters at the beginning of the input stream.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#guessContentTypeFromStream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_guessContentTypeFromStream($a = null)
     {
@@ -529,10 +493,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Set the value of the allowUserInteraction field of this URLConnection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setAllowUserInteraction
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setAllowUserInteraction($a = null)
     {
@@ -542,10 +505,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets a specified timeout value, in milliseconds, to be used when opening a communications link to the resource referenced by this URLConnection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setConnectTimeout
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setConnectTimeout($a = null)
     {
@@ -555,10 +517,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets the ContentHandlerFactory of an application.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setContentHandlerFactory
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setContentHandlerFactory($a = null)
     {
@@ -568,10 +529,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets the default value of the allowUserInteraction field for all future URLConnection objects to the specified value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDefaultAllowUserInteraction
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setDefaultAllowUserInteraction($a = null)
     {
@@ -581,11 +541,10 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Deprecated.The instance specific setRequestProperty method should be used after an appropriate instance of URLConnection is obtained.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDefaultRequestProperty
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_setDefaultRequestProperty($a = null, $b = null)
     {
@@ -596,11 +555,10 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
      * Sets the default value of the useCaches field to the specified value.
      * Sets the default value of the useCaches field for the named protocol to the given value.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDefaultUseCaches
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_setDefaultUseCaches($a = null, $b = null)
     {
@@ -610,10 +568,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets the value of the doInput field for this URLConnection to the specified value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDoInput
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setDoInput($a = null)
     {
@@ -623,10 +580,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets the value of the doOutput field for this URLConnection to the specified value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setDoOutput
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setDoOutput($a = null)
     {
@@ -636,10 +592,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets the FileNameMap.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setFileNameMap
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_setFileNameMap($a = null)
     {
@@ -649,10 +604,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets the value of the ifModifiedSince field of this URLConnection to the specified value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setIfModifiedSince
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setIfModifiedSince($a = null)
     {
@@ -662,10 +616,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets the read timeout to a specified timeout, in milliseconds.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setReadTimeout
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setReadTimeout($a = null)
     {
@@ -675,11 +628,10 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets the general request property.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setRequestProperty
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function setRequestProperty($a = null, $b = null)
     {
@@ -689,10 +641,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Sets the value of the useCaches field of this URLConnection to the specified value.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#setUseCaches
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setUseCaches($a = null)
     {
@@ -702,10 +653,9 @@ class URLConnection extends _Object /* implements ContentHandlerFactory, _List *
     /**
      * Returns a String representation of this URL connection.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

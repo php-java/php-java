@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Packages\java\util;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\util\Formattables;
@@ -11,7 +10,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class FormattableFlags extends _Object /* implements Formattables */
+class FormattableFlags extends _Object // implements Formattables
 {
     /**
      * Requires the output to use an alternate form.

@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\lang\Thread\UncaughtExceptionHandler;
 
@@ -11,16 +10,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
+class ThreadGroup extends _Object // implements UncaughtExceptionHandler
 {
-
     /**
      * Returns an estimate of the number of active threads in this thread group and its subgroups.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#activeCount
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function activeCount($a = null)
     {
@@ -30,10 +27,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Returns an estimate of the number of active groups in this thread group and its subgroups.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#activeGroupCount
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function activeGroupCount($a = null)
     {
@@ -43,10 +39,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Deprecated.The definition of this call depends on suspend(),             which is deprecated.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#allowThreadSuspension
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function allowThreadSuspension($a = null)
     {
@@ -56,10 +51,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Determines if the currently running thread has permission to modify this thread group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#checkAccess
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function checkAccess($a = null)
     {
@@ -69,10 +63,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Destroys this thread group and all of its subgroups.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#destroy
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function destroy($a = null)
     {
@@ -85,11 +78,10 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
      * Copies into the specified array references to every active subgroup in this thread group and its subgroups.
      * Copies into the specified array references to every active subgroup in this thread group.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#enumerate
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function enumerate($a = null, $b = null)
     {
@@ -99,10 +91,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Returns the maximum priority of this thread group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getMaxPriority
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getMaxPriority($a = null)
     {
@@ -112,10 +103,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Returns the name of this thread group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getName($a = null)
     {
@@ -125,10 +115,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Returns the parent of this thread group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getParent
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getParent($a = null)
     {
@@ -138,10 +127,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Interrupts all threads in this thread group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#interrupt
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function interrupt($a = null)
     {
@@ -151,10 +139,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Tests if this thread group is a daemon thread group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isDaemon
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isDaemon($a = null)
     {
@@ -164,10 +151,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Tests if this thread group has been destroyed.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isDestroyed
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isDestroyed($a = null)
     {
@@ -177,10 +163,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Prints information about this thread group to the standard output.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#list
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function list($a = null)
     {
@@ -190,10 +175,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Tests if this thread group is either the thread group argument or one of its ancestor thread groups.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#parentOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function parentOf($a = null)
     {
@@ -203,10 +187,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Deprecated.This method is used solely in conjunction with       Thread.suspend and ThreadGroup.suspend,       both of which have been deprecated, as they are inherently       deadlock-prone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#resume
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function resume($a = null)
     {
@@ -216,10 +199,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Changes the daemon status of this thread group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setDaemon
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setDaemon($a = null)
     {
@@ -229,10 +211,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Sets the maximum priority of the group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#setMaxPriority
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setMaxPriority($a = null)
     {
@@ -242,10 +223,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Deprecated.This method is inherently unsafe.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#stop
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function stop($a = null)
     {
@@ -255,10 +235,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Deprecated.This method is inherently deadlock-prone.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#suspend
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function suspend($a = null)
     {
@@ -268,10 +247,9 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Returns a string representation of this Thread group.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {
@@ -281,11 +259,10 @@ class ThreadGroup extends _Object /* implements UncaughtExceptionHandler */
     /**
      * Called by the Java Virtual Machine when a thread in this thread group stops because of an uncaught exception, and the thread does not have a specific Thread.UncaughtExceptionHandler installed.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#uncaughtException
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function uncaughtException($a = null, $b = null)
     {

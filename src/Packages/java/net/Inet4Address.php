@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\net\InetAddress;
 
 // use PHPJava\Packages\java\io\Serializable;
 
@@ -12,16 +11,14 @@ use PHPJava\Packages\java\net\InetAddress;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\net\InetAddress
  */
-class Inet4Address extends InetAddress /* implements Serializable */
+class Inet4Address extends InetAddress // implements Serializable
 {
-
     /**
      * Compares this object against the specified object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -31,10 +28,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Returns the raw IP address of this InetAddress object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getAddress($a = null)
     {
@@ -44,10 +40,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Returns the IP address string in textual presentation form.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#getHostAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getHostAddress($a = null)
     {
@@ -57,10 +52,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Returns a hashcode for this IP address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -70,10 +64,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the InetAddress is a wildcard address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isAnyLocalAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isAnyLocalAddress($a = null)
     {
@@ -83,10 +76,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the InetAddress is an link local address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isLinkLocalAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isLinkLocalAddress($a = null)
     {
@@ -96,10 +88,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the InetAddress is a loopback address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isLoopbackAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isLoopbackAddress($a = null)
     {
@@ -109,10 +100,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the multicast address has global scope.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isMCGlobal
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isMCGlobal($a = null)
     {
@@ -122,10 +112,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the multicast address has link scope.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isMCLinkLocal
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isMCLinkLocal($a = null)
     {
@@ -135,10 +124,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the multicast address has node scope.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isMCNodeLocal
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isMCNodeLocal($a = null)
     {
@@ -148,10 +136,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the multicast address has organization scope.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isMCOrgLocal
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isMCOrgLocal($a = null)
     {
@@ -161,10 +148,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the multicast address has site scope.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isMCSiteLocal
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isMCSiteLocal($a = null)
     {
@@ -174,10 +160,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the InetAddress is an IP multicast address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isMulticastAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isMulticastAddress($a = null)
     {
@@ -187,10 +172,9 @@ class Inet4Address extends InetAddress /* implements Serializable */
     /**
      * Utility routine to check if the InetAddress is a site local address.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/package-summary.html#isSiteLocalAddress
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isSiteLocalAddress($a = null)
     {

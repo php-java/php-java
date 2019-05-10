@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Core\JVM\Field;
 
-use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Packages\java\lang\_String;
 use PHPJava\Packages\java\lang\NoSuchFieldException;
 
@@ -9,7 +8,6 @@ trait FieldGettable
 {
     /**
      * @param $name
-     * @return mixed
      * @throws NoSuchFieldException
      */
     public function get(string $name)

@@ -3,7 +3,6 @@
 namespace PHPJava\Kernel\Internal;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Utilities\ClassResolver;
 
 class Lambda
 {

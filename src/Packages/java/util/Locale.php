@@ -13,7 +13,7 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Locale extends _Object /* implements Serializable, Cloneable, Collection */
+class Locale extends _Object // implements Serializable, Cloneable, Collection
 {
     /**
      * Useful constant for country.
@@ -183,14 +183,12 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      */
     public static $US = null;
 
-
     /**
      * Overrides Cloneable.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -200,10 +198,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns true if this Locale is equal to another object.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -214,12 +211,11 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Returns a list of matching Locale instances using the filtering mechanism defined in RFC 4647.
      * Returns a list of matching Locale instances using the filtering mechanism defined in RFC 4647.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#filter
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_filter($a = null, $b = null, $c = null)
     {
@@ -230,12 +226,11 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Returns a list of matching languages tags using the basic filtering mechanism defined in RFC 4647.
      * Returns a list of matching languages tags using the basic filtering mechanism defined in RFC 4647.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#filterTags
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public static function static_filterTags($a = null, $b = null, $c = null)
     {
@@ -245,10 +240,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns a locale for the specified IETF BCP 47 language tag string.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#forLanguageTag
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_forLanguageTag($a = null)
     {
@@ -258,10 +252,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns an array of all installed locales.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getAvailableLocales
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getAvailableLocales($a = null)
     {
@@ -271,10 +264,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the country/region code for this locale, which should either be the empty string, an uppercase ISO 3166 2-letter code, or a UN M.49 3-digit code.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getCountry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getCountry($a = null)
     {
@@ -285,10 +277,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Gets the current value of the default locale for this instance of the Java Virtual Machine.
      * Gets the current value of the default locale for the specified Category for this instance of the Java Virtual Machine.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDefault
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getDefault($a = null)
     {
@@ -299,10 +290,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Returns a name for the locale's country that is appropriate for display to the user.
      * Returns a name for the locale's country that is appropriate for display to the user.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDisplayCountry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDisplayCountry($a = null)
     {
@@ -313,10 +303,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Returns a name for the locale's language that is appropriate for display to the user.
      * Returns a name for the locale's language that is appropriate for display to the user.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDisplayLanguage
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDisplayLanguage($a = null)
     {
@@ -327,10 +316,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Returns a name for the locale that is appropriate for display to the user.
      * Returns a name for the locale that is appropriate for display to the user.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDisplayName
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDisplayName($a = null)
     {
@@ -341,10 +329,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Returns a name for the locale's script that is appropriate for display to the user.
      * Returns a name for the locale's script that is appropriate for display to the user.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDisplayScript
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDisplayScript($a = null)
     {
@@ -355,10 +342,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Returns a name for the locale's variant code that is appropriate for display to the user.
      * Returns a name for the locale's variant code that is appropriate for display to the user.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getDisplayVariant
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getDisplayVariant($a = null)
     {
@@ -368,10 +354,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the extension (or private use) value associated with the specified key, or null if there is no extension associated with the key.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getExtension
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getExtension($a = null)
     {
@@ -381,10 +366,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the set of extension keys associated with this locale, or the empty set if it has no extensions.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getExtensionKeys
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getExtensionKeys($a = null)
     {
@@ -394,10 +378,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns a three-letter abbreviation for this locale's country.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getISO3Country
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getISO3Country($a = null)
     {
@@ -407,10 +390,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns a three-letter abbreviation of this locale's language.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getISO3Language
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getISO3Language($a = null)
     {
@@ -421,10 +403,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Returns a list of all 2-letter country codes defined in ISO 3166.
      * Returns a Set of ISO3166 country codes for the specified type.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getISOCountries
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getISOCountries($a = null)
     {
@@ -434,10 +415,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns a list of all 2-letter language codes defined in ISO 639.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getISOLanguages
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_getISOLanguages($a = null)
     {
@@ -447,10 +427,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the language code of this Locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getLanguage
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLanguage($a = null)
     {
@@ -460,10 +439,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the script for this locale, which should either be the empty string or an ISO 15924 4-letter script code.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getScript
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getScript($a = null)
     {
@@ -473,10 +451,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the set of unicode locale attributes associated with this locale, or the empty set if it has no attributes.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getUnicodeLocaleAttributes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getUnicodeLocaleAttributes($a = null)
     {
@@ -486,10 +463,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the set of Unicode locale keys defined by this locale, or the empty set if this locale has none.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getUnicodeLocaleKeys
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getUnicodeLocaleKeys($a = null)
     {
@@ -499,10 +475,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the Unicode locale type associated with the specified Unicode locale key for this locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getUnicodeLocaleType
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getUnicodeLocaleType($a = null)
     {
@@ -512,10 +487,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the variant code for this locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getVariant
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getVariant($a = null)
     {
@@ -525,10 +499,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns true if this Locale has any  extensions.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hasExtensions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hasExtensions($a = null)
     {
@@ -538,10 +511,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Override hashCode.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -551,11 +523,10 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns a Locale instance for the best-matching language tag using the lookup mechanism defined in RFC 4647.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lookup
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_lookup($a = null, $b = null)
     {
@@ -565,11 +536,10 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns the best-matching language tag using the lookup mechanism defined in RFC 4647.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lookupTag
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_lookupTag($a = null, $b = null)
     {
@@ -580,11 +550,10 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
      * Sets the default locale for this instance of the Java Virtual Machine.
      * Sets the default locale for the specified Category for this instance of the Java Virtual Machine.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setDefault
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_setDefault($a = null, $b = null)
     {
@@ -594,10 +563,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns a copy of this Locale with no  extensions.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#stripExtensions
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function stripExtensions($a = null)
     {
@@ -607,10 +575,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns a well-formed IETF BCP 47 language tag representing this locale.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toLanguageTag
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toLanguageTag($a = null)
     {
@@ -620,10 +587,9 @@ class Locale extends _Object /* implements Serializable, Cloneable, Collection *
     /**
      * Returns a string representation of this Locale object, consisting of language, country, variant, script, and extensions as below:  language + "_" + country + "_" + (variant + "_#" | "#") + script + "_" + extensions  Language is always lower case, country is always upper case, script is always title case, and extensions are always lower case.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

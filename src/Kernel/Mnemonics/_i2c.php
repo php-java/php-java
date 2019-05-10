@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Types\_Char;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _i2c implements OperationInterface

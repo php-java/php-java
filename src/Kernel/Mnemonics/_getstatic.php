@@ -1,9 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_Fieldref;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
 
@@ -15,7 +13,7 @@ final class _getstatic implements OperationInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool();
-        
+
         $cp = $cpInfo[$this->readUnsignedShort()];
         $class = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());

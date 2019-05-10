@@ -11,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class TimerTask extends _Object /* implements Runnable */
+class TimerTask extends _Object // implements Runnable
 {
-
     /**
      * Cancels this timer task.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#cancel
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function cancel($a = null)
     {
@@ -30,10 +28,9 @@ class TimerTask extends _Object /* implements Runnable */
     /**
      * The action to be performed by this timer task.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#run
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function run($a = null)
     {
@@ -43,10 +40,9 @@ class TimerTask extends _Object /* implements Runnable */
     /**
      * Returns the scheduled execution time of the most recent actual execution of this task.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#scheduledExecutionTime
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function scheduledExecutionTime($a = null)
     {

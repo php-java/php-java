@@ -11,16 +11,14 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Spliterators extends _Object /* implements OfDouble */
+class Spliterators extends _Object // implements OfDouble
 {
-
     /**
-     * Creates an empty Spliterator.OfDouble
+     * Creates an empty Spliterator.OfDouble.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#emptyDoubleSpliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_emptyDoubleSpliterator($a = null)
     {
@@ -28,12 +26,11 @@ class Spliterators extends _Object /* implements OfDouble */
     }
 
     /**
-     * Creates an empty Spliterator.OfInt
+     * Creates an empty Spliterator.OfInt.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#emptyIntSpliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_emptyIntSpliterator($a = null)
     {
@@ -41,12 +38,11 @@ class Spliterators extends _Object /* implements OfDouble */
     }
 
     /**
-     * Creates an empty Spliterator.OfLong
+     * Creates an empty Spliterator.OfLong.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#emptyLongSpliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_emptyLongSpliterator($a = null)
     {
@@ -54,12 +50,11 @@ class Spliterators extends _Object /* implements OfDouble */
     }
 
     /**
-     * Creates an empty Spliterator
+     * Creates an empty Spliterator.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#emptySpliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_emptySpliterator($a = null)
     {
@@ -72,10 +67,9 @@ class Spliterators extends _Object /* implements OfDouble */
      * Creates an PrimitiveIterator.OfLong from a Spliterator.OfLong.
      * Creates an Iterator from a Spliterator.
      *
-     * @param mixed $a
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function static_iterator($a = null)
     {
@@ -97,13 +91,12 @@ class Spliterators extends _Object /* implements OfDouble */
      * Creates a Spliterator.OfInt using a given IntStream.IntIterator as the source of elements, and with a given initially reported size.
      * Creates a Spliterator.OfLong using a given LongStream.LongIterator as the source of elements, and with a given initially reported size.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function static_spliterator($a = null, $b = null, $c = null, $d = null)
     {
@@ -116,11 +109,10 @@ class Spliterators extends _Object /* implements OfDouble */
      * Creates a Spliterator.OfInt using a given IntStream.IntIterator as the source of elements, with no initial size estimate.
      * Creates a Spliterator.OfLong using a given LongStream.LongIterator as the source of elements, with no initial size estimate.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliteratorUnknownSize
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function static_spliteratorUnknownSize($a = null, $b = null)
     {

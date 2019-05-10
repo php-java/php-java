@@ -1,9 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Structures\Annotations;
 
-use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Utilities\BinaryTool;
-
 final class Annotation implements AnnotationInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;

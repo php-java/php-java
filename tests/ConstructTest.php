@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 class ConstructTest extends Base
 {
     protected $fixtures = [
@@ -11,7 +9,7 @@ class ConstructTest extends Base
         'ConstructorNoParameterTest',
     ];
 
-    public function testConstructorWithParameters_Pattern1()
+    public function testConstructorWithParametersPattern1()
     {
         ob_start();
         $result = $this->initiatedJavaClasses['ConstructorWithParametersTest']
@@ -26,13 +24,12 @@ class ConstructTest extends Base
         $this->assertEquals("Hello World!\n", $result);
     }
 
-
-    public function testConstructorWithParameters_Pattern2()
+    public function testConstructorWithParametersPattern2()
     {
         ob_start();
         $result = $this->initiatedJavaClasses['ConstructorWithParametersTest']
             ->getInvoker()
-            ->construct("Hello World!")
+            ->construct('Hello World!')
             ->getDynamic()
             ->getMethods()
             ->call('entrypoint');
@@ -40,7 +37,7 @@ class ConstructTest extends Base
         $this->assertEquals("Hello World!\nEntrypoint\n", $result);
     }
 
-    public function testConstructorNoParameter_Pattern1()
+    public function testConstructorNoParameterPattern1()
     {
         ob_start();
         $result = $this->initiatedJavaClasses['ConstructorNoParameterTest']
@@ -55,8 +52,7 @@ class ConstructTest extends Base
         $this->assertEquals("Hello World!\n", $result);
     }
 
-
-    public function testConstructorNoParameter_Pattern2()
+    public function testConstructorNoParameterPattern2()
     {
         ob_start();
         $result = $this->initiatedJavaClasses['ConstructorNoParameterTest']
