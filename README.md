@@ -15,7 +15,12 @@ This project referred to [Java Virtual Machine Specification](https://docs.oracl
 We are welcoming any contributions to this project 💪
 
 Contribution guide is here:
-- [The Contribution Guide](https://github.com/memory-agape/php-java/wiki/The-Contribution-Guide) 
+- [The Contribution Guide](https://github.com/php-java/php-java/wiki/The-Contribution-Guide) 
+
+## Documents
+
+- [English](https://github.com/php-java/php-java/blob/master/README.md)
+- [日本語](https://github.com/php-java/php-java/blob/master/README-ja.md)
 
 ## Requirements
 - PHP >= 7.2
@@ -208,7 +213,7 @@ echo $dynamicFieldAccessor->get('fieldName');
 ```
 
 ### Call a dynamic method
-If you want to get/set dynamic method (same as a field), you need to call the `construct` method on Java by PHPJava.
+If you want to call a dynamic method (same as a field), you need to call the `construct` method on Java by PHPJava.
 
 e.g., Call dynamic method:
 
@@ -300,7 +305,7 @@ $javaClass = new JavaClass(
 | strict | boolean | true | When `true`, PHPJava calls a method, variables, and so on strictly; otherwise, it calls them ambiguously. | Both |
 | preload | boolean | false | When `true`, PHPJava pre-reads JavaClasses when emulating JAR. This may consume larger size of memory depending on the size of the JAR file; otherwise, JavaArchive defers loading. | JavaArchive |
 | validation.method.arguments_count_only | boolean | false | When `true`, ClassResolver validates arguments by their number only. | JavaClass |
-| operations.enable_trace | boolean | true | When `true`, PHPJava stores the operation history. | JavaClass |
+| operations.enable_trace | boolean | false | When `true`, PHPJava stores the operation history. | JavaClass |
 | operations.temporary_code_stream | string | php://memory | Operation code will be output to temporary stream. Change this if your code is heavy so you'll be happy. | JavaClass |
 | operations.injector.before | callable | null | Inject an executor before executing an operation. | JavaClass |
 | operations.injector.after | callable | null | Inject an executor after executing an operation. | JavaClass |
