@@ -72,6 +72,9 @@ trait Invokable
         $constantPool = $currentConstantPool->getEntries();
         $convertedPassedArguments = $this->stringifyArguments(...$arguments);
 
+        /**
+         * @var _MethodInfo $method
+         */
         $method = $operationCache->fetchOrPush(
             "{$name}.{$convertedPassedArguments}",
             function () use ($name, $arguments) {
@@ -81,6 +84,8 @@ trait Invokable
                 );
             }
         );
+
+        $currentConstantPool = $method->getConstantPool() ?? $currentConstantPool;
 
         if ($method instanceof FlexibleMethod) {
             /**
