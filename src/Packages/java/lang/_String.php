@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Packages\java\lang;
 
+use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Kernel\Types\_Char;
@@ -322,13 +323,28 @@ class _String extends _Object implements CharSequence
     /**
      * Returns a canonical representation for the string object.
      *
+     * @native ConstantPool
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#intern
-     * @param null|mixed $a
      * @throws NotImplementedException
      */
-    public function intern($a = null)
+    public function intern(ConstantPool $cp)
     {
-        throw new NotImplementedException(__METHOD__);
+        // Find the string from the Constant Pool.
+        foreach ($cp as $key => $value) {
+            if (!($value instanceof _Utf8)) {
+                continue;
+            }
+            /**
+             * @var _Utf8 $value
+             */
+            if ((string) $value === (string) $this->object) {
+                $this->object = $value
+                    ->enableWrite(true)
+                    ->setStringObject($this);
+                break;
+            }
+        }
+        return $this;
     }
 
     /**

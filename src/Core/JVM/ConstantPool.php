@@ -19,6 +19,7 @@ use PHPJava\Kernel\Structures\_MethodType;
 use PHPJava\Kernel\Structures\_NameAndType;
 use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Kernel\Structures\FreezableInterface;
 use PHPJava\Kernel\Structures\StructureInterface;
 
 class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
@@ -108,6 +109,9 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
      */
     public function offsetGet($offset)
     {
+        if ($this->entries[$offset] instanceof FreezableInterface) {
+            $this->entries[$offset]->freeze();
+        }
         return $this->entries[$offset];
     }
 

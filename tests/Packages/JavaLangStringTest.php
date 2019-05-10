@@ -102,6 +102,63 @@ class JavaLangStringTest extends Base
         $this->assertSame('2728214739616339340', $values[2]);
     }
 
+    public function testIntern()
+    {
+        ob_start();
+        $this->initiatedJavaClasses['JavaLangStringTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'intern'
+            );
+        [ $intern, $literal ] = array_filter(explode("\n", ob_get_clean()));
+
+        $this->assertIsNumeric($intern);
+        $this->assertIsNumeric($literal);
+
+        $this->assertSame($intern, $literal);
+    }
+
+    public function testNotInterned()
+    {
+        ob_start();
+        $this->initiatedJavaClasses['JavaLangStringTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'notInterned'
+            );
+        [ $intern, $literal ] = array_filter(explode("\n", ob_get_clean()));
+
+        $this->assertIsNumeric($intern);
+        $this->assertIsNumeric($literal);
+
+        $this->assertNotSame($intern, $literal);
+    }
+
+    public function testNotInternedAfterLiteral()
+    {
+        ob_start();
+        $this->initiatedJavaClasses['JavaLangStringTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'notInternedAfterLiteral'
+            );
+        [ $intern, $literal1, $literal2 ] = array_filter(explode("\n", ob_get_clean()));
+
+        $this->assertIsNumeric($intern);
+        $this->assertIsNumeric($literal1);
+        $this->assertIsNumeric($literal2);
+
+        $this->assertNotSame($intern, $literal1);
+        $this->assertNotSame($intern, $literal2);
+        $this->assertSame($literal1, $literal2);
+    }
+
     public function testReplace()
     {
         ob_start();
