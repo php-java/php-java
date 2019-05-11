@@ -8,3 +8,4 @@ composer.lock
 tests/caches/
 !tests/caches/.gitkeep
 tools
+cghooks.lock
