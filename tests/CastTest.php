@@ -93,7 +93,7 @@ class CastTest extends Base
 
         // check type
         $this->assertInstanceOf(_Char::class, $result);
-        $this->assertEquals("{", (string) $result);
+        $this->assertEquals('{', (string) $result);
     }
 
     public function testLongToDouble()

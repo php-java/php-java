@@ -29,8 +29,8 @@ class Type
 
     /**
      * @param $value
-     * @return Type
      * @throws TypeException
+     * @return Type
      */
     public static function get($value)
     {
