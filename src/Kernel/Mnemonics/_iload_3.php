@@ -11,7 +11,7 @@ final class _iload_3 implements OperationInterface
     public function execute(): void
     {
         $this->pushToOperandStack(
-            new _Int(
+            _Int::get(
                 $this->getLocalStorage(3)
             )
         );

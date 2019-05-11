@@ -11,7 +11,7 @@ final class _dconst_0 implements OperationInterface
     public function execute(): void
     {
         $this->pushToOperandStack(
-            new _Double(0)
+            _Double::get(0)
         );
     }
 }

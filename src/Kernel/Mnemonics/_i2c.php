@@ -15,6 +15,6 @@ final class _i2c implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(new _Char($value));
+        $this->pushToOperandStack(_Char::get($value));
     }
 }

@@ -18,7 +18,7 @@ final class _irem implements OperationInterface
         $leftOperand = Extractor::getRealValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(
-            new _Int(
+            _Int::get(
                 $leftOperand % $rightOperand
             )
         );

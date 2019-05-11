@@ -15,7 +15,7 @@ final class _dload implements OperationInterface
     {
         $index = $this->readUnsignedByte();
         $this->pushToOperandStack(
-            new _Double(
+            _Double::get(
                 $this->getLocalStorage($index)
             )
         );

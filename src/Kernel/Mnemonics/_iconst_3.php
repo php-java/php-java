@@ -10,6 +10,6 @@ final class _iconst_3 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushToOperandStack(new _Int(3));
+        $this->pushToOperandStack(_Int::get(3));
     }
 }

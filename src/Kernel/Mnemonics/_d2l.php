@@ -15,6 +15,6 @@ final class _d2l implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(new _Long($value));
+        $this->pushToOperandStack(_Long::get($value));
     }
 }

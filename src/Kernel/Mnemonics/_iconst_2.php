@@ -10,6 +10,6 @@ final class _iconst_2 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushToOperandStack(new _Int(2));
+        $this->pushToOperandStack(_Int::get(2));
     }
 }

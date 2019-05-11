@@ -15,6 +15,6 @@ final class _d2i implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(new _Int($value));
+        $this->pushToOperandStack(_Int::get($value));
     }
 }

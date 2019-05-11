@@ -16,7 +16,7 @@ final class _iand implements OperationInterface
         $value1 = $this->popFromOperandStack();
 
         $this->pushToOperandStack(
-            new _Int(
+            _Int::get(
                 BinaryTool::andBits(
                     Extractor::getRealValue($value1),
                     Extractor::getRealValue($value2),

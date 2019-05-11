@@ -16,7 +16,7 @@ final class _ishr implements OperationInterface
         $value1 = $this->popFromOperandStack();
 
         $this->pushToOperandStack(
-            new _Int(
+            _Int::get(
                 BinaryTool::shiftRight(
                     Extractor::getRealValue($value1),
                     Extractor::getRealValue($value2),

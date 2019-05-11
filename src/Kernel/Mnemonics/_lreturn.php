@@ -13,6 +13,6 @@ final class _lreturn implements OperationInterface
         $value = $this->popFromOperandStack();
         return ($value instanceof _Long)
             ? $value
-            : new _Long($value);
+            : _Long::get($value);
     }
 }

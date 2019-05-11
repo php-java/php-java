@@ -13,6 +13,6 @@ final class _dreturn implements OperationInterface
         $value = $this->popFromOperandStack();
         return ($value instanceof _Double)
             ? $value
-            : new _Double($value);
+            : _Double::get($value);
     }
 }

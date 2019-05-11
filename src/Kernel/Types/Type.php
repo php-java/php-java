@@ -27,16 +27,16 @@ class Type
             : $value;
     }
 
-    public static function ensure($value)
+    /**
+     * @param $value
+     * @throws TypeException
+     * @return Type
+     */
+    public static function get($value)
     {
-        return ($value instanceof self)
-            ? $value
-            : new self($value);
-    }
-
-    public function setValue($value)
-    {
-        $this->value = $value;
+        static $instantiated = null;
+        $identity = (string) $value;
+        return $instantiated[$identity] = $instantiated[$identity] ?? new static($identity);
     }
 
     public function getValue()

@@ -13,7 +13,7 @@ final class _iload implements OperationInterface
         $index = $this->readUnsignedByte();
 
         $this->pushToOperandStack(
-            new _Int(
+            _Int::get(
                 $this->getLocalStorage($index)
             )
         );

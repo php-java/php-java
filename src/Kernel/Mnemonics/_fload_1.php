@@ -11,7 +11,7 @@ final class _fload_1 implements OperationInterface
     public function execute(): void
     {
         $this->pushToOperandStack(
-            new _Float(
+            _Float::get(
                 $this->getLocalStorage(1)
             )
         );

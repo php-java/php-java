@@ -12,7 +12,7 @@ final class _fload implements OperationInterface
     {
         $index = $this->readUnsignedByte();
         $this->pushToOperandStack(
-            new _Float(
+            _Float::get(
                 $this->getLocalStorage($index)
             )
         );

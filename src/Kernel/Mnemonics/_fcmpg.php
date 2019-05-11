@@ -16,20 +16,20 @@ final class _fcmpg implements OperationInterface
 
         if ($leftOperand > $rightOperand) {
             $this->pushToOperandStack(
-                new _Int(1)
+                _Int::get(1)
             );
             return;
         }
 
         if ($leftOperand < $rightOperand) {
             $this->pushToOperandStack(
-                new _Int(-1)
+                _Int::get(-1)
             );
             return;
         }
 
         $this->pushToOperandStack(
-            new _Int(0)
+            _Int::get(0)
         );
     }
 }
