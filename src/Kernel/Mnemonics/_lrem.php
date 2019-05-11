@@ -2,6 +2,8 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Long;
+use PHPJava\Utilities\Extractor;
 
 final class _lrem implements OperationInterface
 {
@@ -10,6 +12,13 @@ final class _lrem implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $rightOperand = Extractor::getRealValue($this->popFromOperandStack());
+        $leftOperand = Extractor::getRealValue($this->popFromOperandStack());
+
+        $this->pushToOperandStack(
+            _Long::get(
+                $leftOperand % $rightOperand
+            )
+        );
     }
 }

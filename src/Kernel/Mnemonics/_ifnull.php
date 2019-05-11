@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Utilities\Extractor;
 
 final class _ifnull implements OperationInterface
 {
@@ -10,6 +11,12 @@ final class _ifnull implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $offset = $this->readShort();
+
+        $branch = Extractor::getRealValue($this->popFromOperandStack());
+
+        if ($branch === null) {
+            $this->setOffset($this->getProgramCounter() + $offset);
+        }
     }
 }
