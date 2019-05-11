@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Utilities\Extractor;
+
 final class _lastore implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -12,7 +14,7 @@ final class _lastore implements OperationInterface
     public function execute(): void
     {
         $value = $this->popFromOperandStack();
-        $index = $this->popFromOperandStack();
+        $index = Extractor::getRealValue($this->popFromOperandStack());
         $arrayref = $this->popFromOperandStack();
 
         $arrayref[$index] = $value;
