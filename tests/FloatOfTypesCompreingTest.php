@@ -39,7 +39,6 @@ class FloatOfTypesComparingTest extends Base
         $this->assertEquals("Hello World!\n", $result);
     }
 
-
     public function testGraterThan()
     {
         ob_start();
@@ -69,5 +68,4 @@ class FloatOfTypesComparingTest extends Base
         $result = ob_get_clean();
         $this->assertEquals("Hello World!\n", $result);
     }
-
 }

@@ -270,7 +270,8 @@ trait Invokable
                 $opcode === OpCode::_areturn ||
                 $opcode === OpCode::_freturn ||
                 $opcode === OpCode::_dreturn ||
-                $opcode === OpCode::_ireturn
+                $opcode === OpCode::_ireturn ||
+                $opcode === OpCode::_lreturn
             ) {
                 if ($isEnabledTrace) {
                     $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
