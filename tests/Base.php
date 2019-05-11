@@ -25,6 +25,21 @@ class Base extends TestCase
         }
     }
 
+    public function createJAR($name, $entrypoint, array $fixtures = [])
+    {
+        $classes = implode(
+            ' ',
+            array_map(
+                function ($fixture) {
+                    return $fixture . '.class';
+                },
+                $fixtures
+            )
+        );
+        exec('cd ' . __DIR__ . '/caches && jar -cvfe ' . $name . ' ' . $entrypoint . ' ' . $classes);
+        return $this;
+    }
+
     protected function getClassName($fixtureName)
     {
         return __DIR__ . '/caches/' . $fixtureName . '.class';

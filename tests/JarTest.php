@@ -9,13 +9,37 @@ class JarTest extends Base
         'OuterClassTest',
         'JarCalleeTest',
         'JarCallerTest',
+        'CalleeEnclosingMethodInJarTest',
+        'CallerEnclosingMethodInJarTest',
     ];
 
     public function setUp(): void
     {
         parent::setUp();
-        exec('cd ' . __DIR__ . '/caches && jar -cvfe JarTest.jar OuterClassTest OuterClassTest.class');
-        exec('cd ' . __DIR__ . '/caches && jar -cvfe JarCallTest.jar JarCallerTest JarCalleeTest.class JarCallerTest.class');
+        $this
+            ->createJAR(
+                'JarTest.jar',
+                'OuterClassTest',
+                [
+                    'OuterClassTest',
+                ]
+            )
+            ->createJAR(
+                'JarCallTest.jar',
+                'JarCallerTest',
+                [
+                    'JarCalleeTest',
+                    'JarCallerTest',
+                ]
+            )
+            ->createJAR(
+                'CallEnclosingMethodInJarTest.jar',
+                'CallerEnclosingMethodInJarTest',
+                [
+                    'CalleeEnclosingMethodInJarTest',
+                    'CallerEnclosingMethodInJarTest',
+                ]
+            );
     }
 
     public function testCallWithEntryPoint()
@@ -64,5 +88,21 @@ class JarTest extends Base
             );
         $result = ob_get_clean();
         $this->assertEquals("TEST\n", $result);
+    }
+
+    public function testEnclosingMethodInJar()
+    {
+        ob_start();
+        (new JavaArchive(__DIR__ . '/caches/CallEnclosingMethodInJarTest.jar'))
+            ->getClassByName('CallerEnclosingMethodInJarTest')
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'main',
+                []
+            );
+        $result = ob_get_clean();
+        $this->assertEquals("Hello World!\n", $result);
     }
 }
