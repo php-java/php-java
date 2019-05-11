@@ -46,8 +46,8 @@
             "@cs",
             "@fix"
         ],
-        "post-install-cmd": "[[ \"$COMPOSER_DEV_MODE\" = 1 ]] && cghooks add --ignore-lock",
-        "post-update-cmd": "[[ \"$COMPOSER_DEV_MODE\" = 1 ]] && cghooks update"
+        "post-install-cmd": "[ \"$COMPOSER_DEV_MODE\" = 1 ] && cghooks add --ignore-lock",
+        "post-update-cmd": "[ \"$COMPOSER_DEV_MODE\" = 1 ] && cghooks update"
     },
     "extra": {
         "hooks": {
