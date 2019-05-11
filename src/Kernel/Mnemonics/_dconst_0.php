@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Types\_Double;
+
 final class _dconst_0 implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -8,6 +10,8 @@ final class _dconst_0 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushToOperandStack(0);
+        $this->pushToOperandStack(
+            new _Double(0)
+        );
     }
 }
