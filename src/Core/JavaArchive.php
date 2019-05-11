@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Core;
 
-use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\InlineReader;
 use PHPJava\Exceptions\UndefinedEntrypointException;
