@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Utilities;
 
-use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JVM\FlexibleMethod;
 

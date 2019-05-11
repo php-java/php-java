@@ -9,13 +9,11 @@ class ArrayTest extends Base
 
     private function call($method)
     {
-        $calculatedValue = $this->initiatedJavaClasses['ArrayTest']
+        return $this->initiatedJavaClasses['ArrayTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
             ->call($method);
-
-        return $calculatedValue;
     }
 
     public function testCreateIntArray()
@@ -33,8 +31,8 @@ class ArrayTest extends Base
         $actual = $this->call('createStringArray');
 
         $this->assertEquals(3, $actual->count());
-        $this->assertEquals("foo", $actual->offsetGet(0));
-        $this->assertEquals("bar", $actual->offsetGet(1));
-        $this->assertEquals("baz", $actual->offsetGet(2));
+        $this->assertEquals('foo', $actual->offsetGet(0));
+        $this->assertEquals('bar', $actual->offsetGet(1));
+        $this->assertEquals('baz', $actual->offsetGet(2));
     }
 }
