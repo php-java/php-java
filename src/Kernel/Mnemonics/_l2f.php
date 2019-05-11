@@ -15,6 +15,6 @@ final class _l2f implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(new _Float($value));
+        $this->pushToOperandStack(_Float::get($value));
     }
 }

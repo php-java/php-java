@@ -15,6 +15,6 @@ final class _f2d implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(new _Double($value));
+        $this->pushToOperandStack(_Double::get($value));
     }
 }

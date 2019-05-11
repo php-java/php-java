@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
@@ -16,8 +17,8 @@ final class _idiv implements OperationInterface
         $value1 = $this->popFromOperandStack();
 
         $this->pushToOperandStack(
-            new _Double(
-                BinaryTool::div(
+            _Int::get(
+                (int) BinaryTool::div(
                     Extractor::getRealValue($value1),
                     Extractor::getRealValue($value2)
                 )

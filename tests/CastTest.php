@@ -1,10 +1,13 @@
 <?php
 namespace PHPJava\Tests;
 
+use PHPJava\Kernel\Types\_Byte;
+use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\_Short;
 
 class CastTest extends Base
 {
@@ -23,7 +26,7 @@ class CastTest extends Base
                 new _Int(1234)
             );
 
-        $this->assertInstanceOf(_Int::class, $result);
+        $this->assertInstanceOf(_Short::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -72,7 +75,7 @@ class CastTest extends Base
             );
 
         // check type
-        $this->assertInstanceOf(_Int::class, $result);
+        $this->assertInstanceOf(_Byte::class, $result);
         $this->assertEquals(123, $result->getValue());
     }
 
@@ -89,8 +92,8 @@ class CastTest extends Base
             );
 
         // check type
-        $this->assertInstanceOf(_Int::class, $result);
-        $this->assertEquals(123, $result->getValue());
+        $this->assertInstanceOf(_Char::class, $result);
+        $this->assertEquals("{", (string) $result);
     }
 
     public function testLongToDouble()

@@ -16,7 +16,7 @@ final class _ddiv implements OperationInterface
         $value1 = $this->popFromOperandStack();
 
         $this->pushToOperandStack(
-            new _Double(
+            _Double::get(
                 BinaryTool::div(
                     Extractor::getRealValue($value1),
                     Extractor::getRealValue($value2)

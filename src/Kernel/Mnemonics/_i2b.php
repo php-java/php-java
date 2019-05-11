@@ -15,6 +15,6 @@ final class _i2b implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(new _Byte($value));
+        $this->pushToOperandStack(_Byte::get($value));
     }
 }

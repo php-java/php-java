@@ -11,7 +11,7 @@ final class _lload_2 implements OperationInterface
     public function execute(): void
     {
         $this->pushToOperandStack(
-            new _Long(
+            _Long::get(
                 $this->getLocalStorage(2)
             )
         );

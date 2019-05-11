@@ -45,8 +45,12 @@ class Normalizer
             if ($value instanceof $initiateClass) {
                 continue;
             }
-            $value = new $initiateClass(
-                Extractor::realValue($value)
+
+            /**
+             * @var Type $initiateClass
+             */
+            $value = $initiateClass::get(
+                Extractor::getRealValue($value)
             );
         }
 

@@ -16,6 +16,6 @@ final class _iinc implements OperationInterface
 
         $value = Extractor::getRealValue($this->getLocalStorage($index));
 
-        $this->setLocalStorage($index, new _Int($value + $const));
+        $this->setLocalStorage($index, _Int::get($value + $const));
     }
 }

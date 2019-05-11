@@ -10,6 +10,6 @@ final class _fconst_1 implements OperationInterface
 
     public function execute(): void
     {
-        $this->pushToOperandStack(new _Float(1));
+        $this->pushToOperandStack(_Float::get(1));
     }
 }

@@ -15,6 +15,6 @@ final class _i2s implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(new _Short($value));
+        $this->pushToOperandStack(_Short::get($value));
     }
 }

@@ -10,6 +10,8 @@ class _Char extends Type
     public function __toString()
     {
         $value = $this->getValue();
-        return is_int($value) ? chr($value) : $value;
+        return ctype_digit($value)
+            ? chr($value)
+            : $value;
     }
 }

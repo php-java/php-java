@@ -13,6 +13,6 @@ final class _freturn implements OperationInterface
         $value = $this->popFromOperandStack();
         return ($value instanceof _Float)
             ? $value
-            : new _Float($value);
+            : _Float::get($value);
     }
 }

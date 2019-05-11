@@ -16,7 +16,7 @@ final class _fdiv implements OperationInterface
         $value1 = $this->popFromOperandStack();
 
         $this->pushToOperandStack(
-            new _Double(
+            _Float::get(
                 BinaryTool::div(
                     Extractor::getRealValue($value1),
                     Extractor::getRealValue($value2)
