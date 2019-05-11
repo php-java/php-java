@@ -10,7 +10,6 @@ final class Runtime
     const MAX_STACK_EXCEEDED = 9999;
     const MAX_EXECUTION_TIME = 5;
     const STRICT = true;
-    const PRELOAD = false;
     const DRY_RUN_ATTRIBUTE = false;
 
     const OPERATIONS_ENABLE_TRACE = false;

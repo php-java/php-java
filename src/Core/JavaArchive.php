@@ -102,20 +102,9 @@ class JavaArchive
                 continue;
             }
             $classPath = str_replace('/', '.', $className);
-            if (!($this->options['preload'] ?? GlobalOptions::get('preload') ?? Runtime::PRELOAD)) {
-                $this->classes[$classPath] = new JavaClassDeferredLoader(
-                    InlineReader::class,
-                    [$className, $code],
-                    $this->options
-                );
-                continue;
-            }
-
-            $this->classes[$classPath] = new JavaClass(
-                new InlineReader(
-                    $className,
-                    $code
-                ),
+            $this->classes[$classPath] = new JavaClassDeferredLoader(
+                InlineReader::class,
+                [$className, $code],
                 $this->options
             );
         }
