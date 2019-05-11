@@ -1,5 +1,6 @@
 <?php
 namespace PHPJava\Core;
+
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
 
