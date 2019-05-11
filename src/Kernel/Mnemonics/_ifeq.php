@@ -11,7 +11,7 @@ final class _ifeq implements OperationInterface
     public function execute(): void
     {
         $offset = $this->readShort();
-        $operand = Extractor::realValue($this->popFromOperandStack());
+        $operand = Extractor::getRealValue($this->popFromOperandStack());
 
         if ($operand == 0) {
             $this->setOffset($this->getProgramCounter() + $offset);

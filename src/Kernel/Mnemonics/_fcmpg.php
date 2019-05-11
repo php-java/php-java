@@ -1,7 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
+use PHPJava\Utilities\Extractor;
 
 final class _fcmpg implements OperationInterface
 {
@@ -10,6 +11,25 @@ final class _fcmpg implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $rightOperand = Extractor::getRealValue($this->popFromOperandStack());
+        $leftOperand = Extractor::getRealValue($this->popFromOperandStack());
+
+        if ($leftOperand > $rightOperand) {
+            $this->pushToOperandStack(
+                new _Int(1)
+            );
+            return;
+        }
+
+        if ($leftOperand < $rightOperand) {
+            $this->pushToOperandStack(
+                new _Int(-1)
+            );
+            return;
+        }
+
+        $this->pushToOperandStack(
+            new _Int(0)
+        );
     }
 }
