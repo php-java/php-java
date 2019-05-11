@@ -2,6 +2,7 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JVM\FlexibleMethod;
 
 class SuperClassResolver
@@ -9,10 +10,10 @@ class SuperClassResolver
     private $classes = [];
     private $constantPool;
 
-    public function resolveMethod($methodName, JavaClass $class)
+    public function resolveMethod($methodName, JavaClassInterface $class)
     {
         $cpInfo = $class->getConstantPool();
-        if ($class->getSuperClass() instanceof JavaClass) {
+        if ($class->getSuperClass() instanceof JavaClassInterface) {
             foreach ($class->getSuperClass()->getInvoker()->getDynamic()->getMethods()->getList() as $calleeMethodName => $callee) {
                 if ($methodName !== $calleeMethodName) {
                     continue;
@@ -36,6 +37,9 @@ class SuperClassResolver
                 [new FlexibleMethod($class->getSuperClass(), $callee)]
             );
         }
-        return array_merge($prependItems, $this->classes);
+        return array_merge(
+            $prependItems,
+            $this->classes
+        );
     }
 }

@@ -46,8 +46,26 @@ class ClassResolver
                 case static::RESOURCE_TYPE_INNER_CLASS:
                     // TODO: Implement here
                     break;
+                case static::RESOURCE_TYPE_JAR:
+                    if (($key = array_search($relativePath, $this->resolvedPaths, true)) !== false) {
+                        return $this->resolvedPaths[$relativePath];
+                    }
+                    /**
+                     * @var JavaArchive $value
+                     */
+                    try {
+                        return $this->resolvedPaths[] = [
+                            static::RESOLVED_TYPE_CLASS,
+                            $value->getClassByName($relativePath),
+                        ];
+                    } catch (ClassNotFoundException $e) {
+                    }
+                    break;
                 case static::RESOURCE_TYPE_FILE:
                     $path = realpath($value . '/' . $relativePath . '.class');
+                    if ($path === false) {
+                        break;
+                    }
                     if (($key = array_search($path, $this->resolvedPaths, true)) !== false) {
                         return $this->resolvedPaths[$key];
                     }
@@ -66,18 +84,6 @@ class ClassResolver
                             static::RESOLVED_TYPE_CLASS,
                             $initiatedClass,
                         ];
-                    }
-                    break;
-                case static::RESOURCE_TYPE_JAR:
-                    /**
-                     * @var JavaArchive $value
-                     */
-                    try {
-                        return $this->resolvedPaths[] = [
-                            static::RESOLVED_TYPE_CLASS,
-                            $value->getClassByName($relativePath),
-                        ];
-                    } catch (ClassNotFoundException $e) {
                     }
                     break;
                 case static::RESOURCE_TYPE_CLASS:

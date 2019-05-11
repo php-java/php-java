@@ -106,7 +106,10 @@ class JavaClassInvoker
         );
 
         if (isset($this->dynamicMethods['<init>'])) {
-            $this->getDynamic()->getMethods()->call('<init>', ...$arguments);
+            $this->getDynamic()->getMethods()->call(
+                '<init>',
+                ...$arguments
+            );
         }
 
         return $this;
