@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Core;
 
-use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\InlineReader;
 use PHPJava\Exceptions\UndefinedEntrypointException;
@@ -102,20 +101,9 @@ class JavaArchive
                 continue;
             }
             $classPath = str_replace('/', '.', $className);
-            if (!($this->options['preload'] ?? GlobalOptions::get('preload') ?? Runtime::PRELOAD)) {
-                $this->classes[$classPath] = new JavaClassDeferredLoader(
-                    InlineReader::class,
-                    [$className, $code],
-                    $this->options
-                );
-                continue;
-            }
-
-            $this->classes[$classPath] = new JavaClass(
-                new InlineReader(
-                    $className,
-                    $code
-                ),
+            $this->classes[$classPath] = new JavaClassDeferredLoader(
+                InlineReader::class,
+                [$className, $code],
                 $this->options
             );
         }

@@ -303,7 +303,6 @@ $javaClass = new JavaClass(
 | max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass |
 | max_execution_time | integer | 30 | Maximum execution time. | JavaClass |
 | strict | boolean | true | When `true`, PHPJava calls a method, variables, and so on strictly; otherwise, it calls them ambiguously. | Both |
-| preload | boolean | false | When `true`, PHPJava pre-reads JavaClasses when emulating JAR. This may consume larger size of memory depending on the size of the JAR file; otherwise, JavaArchive defers loading. | JavaArchive |
 | validation.method.arguments_count_only | boolean | false | When `true`, ClassResolver validates arguments by their number only. | JavaClass |
 | operations.enable_trace | boolean | false | When `true`, PHPJava stores the operation history. | JavaClass |
 | operations.temporary_code_stream | string | php://memory | Operation code will be output to temporary stream. Change this if your code is heavy so you'll be happy. | JavaClass |

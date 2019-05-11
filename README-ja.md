@@ -301,7 +301,6 @@ $javaClass = new JavaClass(
 | max_stack_exceeded | integer | 9999 | オペレーションを最大何回実行できるかを指定します。 | JavaClass |
 | max_execution_time | integer | 30 | 最大実行時間を指定します。 | JavaClass |
 | strict | boolean | true | このオプションが `true` の場合、 PHPJava はメソッド、変数などを厳格に評価し実行します。 `false` の場合は、曖昧に評価して実行します。. | Both |
-| preload | boolean | false | このオプションが `true` の場合、 Jar 実行時に定義されている JavaClass を予めメモリ上にマッピング（プリロード）させることにより、処理速度が向上させます。ただし、この機能が有効である場合、 Jar が巨大であると メモリを多く消費します。また、それ以外の場合は、必要に応じてクラスを遅延ロードします。 | JavaArchive |
 | validation.method.arguments_count_only | boolean | false | このオプションが `true` の場合、 クラス解決をして、メソッドを呼び出す際に、引数の数のみを比較します。 | JavaClass |
 | operations.enable_trace | boolean | false | このオプションが `true` の場合、 PHPJava はオペレーションの実行ログを記録します。 | JavaClass |
 | operations.temporary_code_stream | string | php://memory | 実行用のバイトコードの一時保存先を指定します。 | JavaClass |
