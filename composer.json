@@ -51,7 +51,10 @@
     },
     "extra": {
         "hooks": {
-            "pre-commit": "git diff-index --cached --name-only HEAD | xargs -n1 vendor/bin/php-cs-fixer fix"
+            "pre-commit": [
+                "git diff-index --cached --name-only HEAD | vendor/bin/php-cs-fixer fix",
+                "git update-index --again"
+            ]
         }
     }
 }
