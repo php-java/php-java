@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
-
 final class _lstore_2 implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -10,6 +8,6 @@ final class _lstore_2 implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->setLocalStorage(2, $this->popFromOperandStack());
     }
 }
