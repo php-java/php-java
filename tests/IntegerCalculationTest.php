@@ -4,12 +4,12 @@ namespace PHPJava\Tests;
 class IntegerCalculationTest extends Base
 {
     protected $fixtures = [
-        'IntegerCalculateTest',
+        'IntegerCalculationTest',
     ];
 
     private function call($name, ...$parameters)
     {
-        return $this->initiatedJavaClasses['IntegerCalculateTest']
+        return $this->initiatedJavaClasses['IntegerCalculationTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
