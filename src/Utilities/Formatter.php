@@ -8,8 +8,8 @@ use PHPJava\Kernel\Structures\_MethodInfo;
 
 class Formatter
 {
-    const BUILT_IN_PACKAGE = 0;
-    const USER_DEFINED_PACKAGE = 1;
+    const BUILT_IN_PACKAGE = 'BUILT_IN_PACKAGE';
+    const USER_DEFINED_PACKAGE = 'USER_DEFINED_PACKAGE';
 
     /**
      * @param $signature
