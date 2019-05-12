@@ -1,7 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Float;
+use PHPJava\Utilities\Extractor;
 
 final class _frem implements OperationInterface
 {
@@ -10,6 +11,13 @@ final class _frem implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $rightOperand = Extractor::getRealValue($this->popFromOperandStack());
+        $leftOperand = Extractor::getRealValue($this->popFromOperandStack());
+
+        $this->pushToOperandStack(
+            _Float::get(
+                $leftOperand % $rightOperand
+            )
+        );
     }
 }

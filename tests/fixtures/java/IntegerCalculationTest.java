@@ -1,4 +1,4 @@
-class IntegerCalculateTest
+class IntegerCalculationTest
 {
     private static int returnInt(int n)
     {

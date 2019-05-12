@@ -15,13 +15,25 @@ final class _anewarray implements OperationInterface
      */
     public function execute(): void
     {
-        // 配列のサイズを調べる (PHPでは不要なので実行するだけ)
+        // Current class index for Constant Pool
         $this->readUnsignedShort();
 
-        // 空の配列を渡す (nullで埋める)
-        $count = Extractor::getRealValue($this->popFromOperandStack());
-        // need reference
-        $ref = new \ArrayIterator(array_fill(0, $count, null));
-        $this->pushToOperandStackByReference($ref);
+        // Get an array size
+        $count = Extractor::getRealValue(
+            $this->popFromOperandStack()
+        );
+
+        // Make an array with object.
+        $array = new \ArrayIterator(
+            array_fill(
+                0,
+                $count,
+                null
+            )
+        );
+
+        $this->pushToOperandStackByReference(
+            $array
+        );
     }
 }
