@@ -1,7 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Long;
+use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _lneg implements OperationInterface
 {
@@ -10,6 +12,14 @@ final class _lneg implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value = Extractor::getRealValue(
+            $this->popFromOperandStack()
+        );
+
+        $this->pushToOperandStack(
+            _Long::get(
+                BinaryTool::negate($value)
+            )
+        );
     }
 }

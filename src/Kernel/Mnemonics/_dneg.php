@@ -1,7 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Double;
+use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _dneg implements OperationInterface
 {
@@ -10,6 +12,14 @@ final class _dneg implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value = Extractor::getRealValue(
+            $this->popFromOperandStack()
+        );
+
+        $this->pushToOperandStack(
+            _Double::get(
+                BinaryTool::negate($value)
+            )
+        );
     }
 }

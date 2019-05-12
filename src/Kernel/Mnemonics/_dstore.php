@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _dstore implements OperationInterface
 {
@@ -14,8 +14,11 @@ final class _dstore implements OperationInterface
     public function execute(): void
     {
         $index = $this->readUnsignedByte();
-        $value = $this->popFromOperandStack();
+        $value = Extractor::getRealValue($this->popFromOperandStack());
 
-        $this->setLocalStorage($index, BinaryTool::convertDoubleToIEEE754($value));
+        $this->setLocalStorage(
+            $index,
+            $value
+        );
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\Extractor;
 
 final class _dastore implements OperationInterface
@@ -15,8 +16,17 @@ final class _dastore implements OperationInterface
     {
         $value = $this->popFromOperandStack();
         $index = Extractor::getRealValue($this->popFromOperandStack());
+
+        /**
+         * @var Type $arrayref
+         */
         $arrayref = $this->popFromOperandStack();
 
+        // The value is a ref.
         $arrayref[$index] = $value;
+
+        $this->pushToOperandStack(
+            $arrayref
+        );
     }
 }
