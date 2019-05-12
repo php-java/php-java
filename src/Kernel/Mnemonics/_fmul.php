@@ -2,6 +2,10 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\_Int;
+use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _fmul implements OperationInterface
 {
@@ -10,6 +14,16 @@ final class _fmul implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value2 = $this->popFromOperandStack();
+        $value1 = $this->popFromOperandStack();
+
+        $this->pushToOperandStack(
+            _Float::get(
+                BinaryTool::multiply(
+                    Extractor::getRealValue($value1),
+                    Extractor::getRealValue($value2)
+                )
+            )
+        );
     }
 }

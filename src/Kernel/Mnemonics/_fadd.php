@@ -2,6 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Float;
+use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _fadd implements OperationInterface
 {
@@ -10,6 +13,16 @@ final class _fadd implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $rightValue = $this->popFromOperandStack();
+        $leftValue = $this->popFromOperandStack();
+
+        $this->pushToOperandStack(
+            _Float::get(
+                BinaryTool::add(
+                    Extractor::getRealValue($leftValue),
+                    Extractor::getRealValue($rightValue)
+                )
+            )
+        );
     }
 }
