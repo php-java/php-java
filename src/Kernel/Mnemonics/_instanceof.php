@@ -1,7 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Int;
+use PHPJava\Utilities\Formatter;
 
 final class _instanceof implements OperationInterface
 {
@@ -10,6 +11,22 @@ final class _instanceof implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $cp = $this->getConstantPool();
+        $objectref = $this->popFromOperandStack();
+
+        $targetClass = $cp[$cp[$this->readUnsignedShort()]->getClassIndex()];
+
+        [, $className] = Formatter::convertJavaNamespaceToPHP($targetClass);
+
+        if ($objectref instanceof $className) {
+            $this->pushToOperandStack(
+                _Int::get(1)
+            );
+            return;
+        }
+
+        $this->pushToOperandStack(
+            _Int::get(0)
+        );
     }
 }
