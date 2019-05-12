@@ -20,6 +20,8 @@ use PHPJava\Kernel\Mnemonics\OperationInterface;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Types\_Char;
+use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\_Long;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\DebugTool;
@@ -123,11 +125,10 @@ trait Invokable
         }
 
         $reader = new BinaryReader($handle);
-        $localStorage = $arguments;
 
         if ($this->isDynamic()) {
             array_unshift(
-                $localStorage,
+                $arguments,
                 $this->javaClassInvoker->getJavaClass()
             );
         }
@@ -145,12 +146,21 @@ trait Invokable
 
         $this->debugTool->getLogger()->info('Start operations: ' . $methodBeautified);
 
-        $localStorage = array_map(
-            function ($item) {
-                return TypeResolver::convertPHPTypeToJavaType($item);
+        $arguments = array_map(
+            function ($argument) {
+                return TypeResolver::convertPHPTypeToJavaType($argument);
             },
-            $localStorage
+            $arguments
         );
+
+        $localStorage = [];
+        foreach ($arguments as $argument) {
+            $localStorage[] = $argument;
+            if ($argument instanceof _Double || $argument instanceof _Long) {
+                // Double and Long has problem which skipping next storage.
+                $localStorage[] = null;
+            }
+        }
 
         $dependencyInjectionProvider = (new DependencyInjectionProvider())
             ->add(

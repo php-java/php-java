@@ -1,7 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Types\_Double;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _dmul implements OperationInterface
 {
@@ -10,9 +12,16 @@ final class _dmul implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->popFromOperandStack();
-        $value1 = $this->popFromOperandStack();
+        $rightValue = $this->popFromOperandStack();
+        $leftValue = $this->popFromOperandStack();
 
-        $this->pushToOperandStack(BinaryTool::multiply($value1, $value2, 8));
+        $this->pushToOperandStack(
+            _Double::get(
+                BinaryTool::multiply(
+                    Extractor::getRealValue($leftValue),
+                    Extractor::getRealValue($rightValue)
+                )
+            )
+        );
     }
 }

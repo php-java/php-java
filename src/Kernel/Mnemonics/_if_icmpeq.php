@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Utilities\Extractor;
 
 final class _if_icmpeq implements OperationInterface

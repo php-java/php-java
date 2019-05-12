@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests;
 
-class IntegerCalculateTest extends Base
+class IntegerCalculationTest extends Base
 {
     protected $fixtures = [
         'IntegerCalculateTest',

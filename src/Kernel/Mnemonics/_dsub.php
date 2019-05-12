@@ -1,7 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Types\_Double;
 use PHPJava\Utilities\BinaryTool;
+use PHPJava\Utilities\Extractor;
 
 final class _dsub implements OperationInterface
 {
@@ -13,6 +15,13 @@ final class _dsub implements OperationInterface
         $rightValue = $this->popFromOperandStack();
         $leftValue = $this->popFromOperandStack();
 
-        $this->pushToOperandStack(BinaryTool::sub($leftValue, $rightValue, 8));
+        $this->pushToOperandStack(
+            _Double::get(
+                BinaryTool::sub(
+                    Extractor::getRealValue($leftValue),
+                    Extractor::getRealValue($rightValue)
+                )
+            )
+        );
     }
 }
