@@ -60,6 +60,17 @@ class TypeResolver
         'boolean' => _Boolean::class,
     ];
 
+    const PHP_SCALAR_MAP = [
+        // [ TypeClass, Instantiation ]
+        'string' => [_String::class, true],
+        'float' => [_Float::class, true],
+        'double' => [_Float::class, true],
+        'int' => [_Int::class, true],
+        'integer' => [_Int::class, true],
+        'bool' => [_Boolean::class, true],
+        'boolean' => [_Boolean::class, true],
+    ];
+
     const PHP_TO_JAVA_MAP = [
         'integer' => 'int',
         'string' => 'java.lang.String',
@@ -306,19 +317,19 @@ class TypeResolver
     public static function convertPHPTypeToJavaType($value)
     {
         $type = gettype($value);
+        if ((static::PHP_SCALAR_MAP[$type] ?? null) !== null) {
+            /**
+             * @var Type $typeClass
+             * @var bool $instantiation
+             */
+            [$typeClass, $instantiation] = static::PHP_SCALAR_MAP[$type];
+            if ($instantiation) {
+                return new $typeClass($value);
+            }
+            return $typeClass::get($value);
+        }
+
         switch ($type) {
-            case 'string':
-                return new _String($value);
-            case 'int':
-            case 'integer':
-                return new _Int($value);
-            case 'bool':
-            case 'boolean':
-                return new _Boolean($value);
-            case 'float':
-                return new _Float($value);
-            case 'double':
-                return new _Double($value);
             case 'object':
                 return $value;
             case 'array':

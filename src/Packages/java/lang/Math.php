@@ -36,7 +36,7 @@ class Math extends _Object
      */
     public static function static_abs($a = null)
     {
-        return abs(Extractor::realValue($a));
+        return abs(Extractor::getRealValue($a));
     }
 
     /**
@@ -47,7 +47,7 @@ class Math extends _Object
      */
     public static function static_acos($a = null)
     {
-        return acos(Extractor::realValue($a));
+        return acos(Extractor::getRealValue($a));
     }
 
     /**
@@ -60,7 +60,7 @@ class Math extends _Object
      */
     public static function static_addExact($a = null, $b = null)
     {
-        return Extractor::realValue($a) + Extractor::realValue($b);
+        return Extractor::getRealValue($a) + Extractor::getRealValue($b);
     }
 
     /**
@@ -71,7 +71,7 @@ class Math extends _Object
      */
     public static function static_asin($a = null)
     {
-        return asin(Extractor::realValue($a));
+        return asin(Extractor::getRealValue($a));
     }
 
     /**
@@ -82,7 +82,7 @@ class Math extends _Object
      */
     public static function static_atan($a = null)
     {
-        return atan(Extractor::realValue($a));
+        return atan(Extractor::getRealValue($a));
     }
 
     /**
@@ -94,7 +94,7 @@ class Math extends _Object
      */
     public static function static_atan2($a = null, $b = null)
     {
-        return atan2(Extractor::realValue($a), Extractor::realValue($b));
+        return atan2(Extractor::getRealValue($a), Extractor::getRealValue($b));
     }
 
     /**
@@ -105,7 +105,7 @@ class Math extends _Object
      */
     public static function static_cbrt($a = null)
     {
-        $a = Extractor::realValue($a);
+        $a = Extractor::getRealValue($a);
 
         if ($a >= 0) {
             return pow($a, 1 / 3);
@@ -122,7 +122,7 @@ class Math extends _Object
      */
     public static function static_ceil($a = null)
     {
-        return ceil(Extractor::realValue($a));
+        return ceil(Extractor::getRealValue($a));
     }
 
     /**
@@ -135,8 +135,8 @@ class Math extends _Object
      */
     public static function static_copySign($a = null, $b = null)
     {
-        $magnitude = Extractor::realValue($a);
-        $sign = Extractor::realValue($b);
+        $magnitude = Extractor::getRealValue($a);
+        $sign = Extractor::getRealValue($b);
 
         return $sign >= 0 ? abs($magnitude) : -abs($magnitude);
     }
@@ -149,7 +149,7 @@ class Math extends _Object
      */
     public static function static_cos($a = null)
     {
-        return cos(Extractor::realValue($a));
+        return cos(Extractor::getRealValue($a));
     }
 
     /**
@@ -160,7 +160,7 @@ class Math extends _Object
      */
     public static function static_cosh($a = null)
     {
-        return cosh(Extractor::realValue($a));
+        return cosh(Extractor::getRealValue($a));
     }
 
     /**
@@ -172,7 +172,7 @@ class Math extends _Object
      */
     public static function static_decrementExact($a = null)
     {
-        return Extractor::realValue($a) - 1;
+        return Extractor::getRealValue($a) - 1;
     }
 
     /**
@@ -183,7 +183,7 @@ class Math extends _Object
      */
     public static function static_exp($a = null)
     {
-        return exp(Extractor::realValue($a));
+        return exp(Extractor::getRealValue($a));
     }
 
     /**
@@ -194,7 +194,7 @@ class Math extends _Object
      */
     public static function static_expm1($a = null)
     {
-        return expm1(Extractor::realValue($a));
+        return expm1(Extractor::getRealValue($a));
     }
 
     /**
@@ -205,7 +205,7 @@ class Math extends _Object
      */
     public static function static_floor($a = null)
     {
-        return floor(Extractor::realValue($a));
+        return floor(Extractor::getRealValue($a));
     }
 
     /**
@@ -219,8 +219,8 @@ class Math extends _Object
      */
     public static function static_floorDiv($a = null, $b = null)
     {
-        $a = Extractor::realValue($a);
-        $b = Extractor::realValue($b);
+        $a = Extractor::getRealValue($a);
+        $b = Extractor::getRealValue($b);
 
         return (int) floor($a / $b);
     }
@@ -236,8 +236,8 @@ class Math extends _Object
      */
     public static function static_floorMod($a = null, $b = null)
     {
-        $a = Extractor::realValue($a);
-        $b = Extractor::realValue($b);
+        $a = Extractor::getRealValue($a);
+        $b = Extractor::getRealValue($b);
 
         return $a - static::static_floorDiv($a, $b) * $b;
     }
@@ -305,7 +305,7 @@ class Math extends _Object
      */
     public static function static_incrementExact($a = null)
     {
-        return Extractor::realValue($a) + 1;
+        return Extractor::getRealValue($a) + 1;
     }
 
     /**
@@ -316,7 +316,7 @@ class Math extends _Object
      */
     public static function static_log($a = null)
     {
-        return log(Extractor::realValue($a));
+        return log(Extractor::getRealValue($a));
     }
 
     /**
@@ -327,7 +327,7 @@ class Math extends _Object
      */
     public static function static_log10($a = null)
     {
-        return log10(Extractor::realValue($a));
+        return log10(Extractor::getRealValue($a));
     }
 
     /**
@@ -338,7 +338,7 @@ class Math extends _Object
      */
     public static function static_log1p($a = null)
     {
-        return log1p(Extractor::realValue($a));
+        return log1p(Extractor::getRealValue($a));
     }
 
     /**
@@ -353,7 +353,7 @@ class Math extends _Object
      */
     public static function static_max($a = null, $b = null)
     {
-        return max(Extractor::realValue($a), Extractor::realValue($b));
+        return max(Extractor::getRealValue($a), Extractor::getRealValue($b));
     }
 
     /**
@@ -368,7 +368,7 @@ class Math extends _Object
      */
     public static function static_min($a = null, $b = null)
     {
-        return min(Extractor::realValue($a), Extractor::realValue($b));
+        return min(Extractor::getRealValue($a), Extractor::getRealValue($b));
     }
 
     /**
@@ -382,7 +382,7 @@ class Math extends _Object
      */
     public static function static_multiplyExact($a = null, $b = null)
     {
-        return Extractor::realValue($a) * Extractor::realValue($b);
+        return Extractor::getRealValue($a) * Extractor::getRealValue($b);
     }
 
     /**
@@ -394,7 +394,7 @@ class Math extends _Object
      */
     public static function static_multiplyFull($a = null, $b = null)
     {
-        return Extractor::realValue($a) * Extractor::realValue($b);
+        return Extractor::getRealValue($a) * Extractor::getRealValue($b);
     }
 
     /**
@@ -472,7 +472,7 @@ class Math extends _Object
      */
     public static function static_pow($a = null, $b = null)
     {
-        return pow(Extractor::realValue($a), Extractor::realValue($b));
+        return pow(Extractor::getRealValue($a), Extractor::getRealValue($b));
     }
 
     /**
@@ -506,7 +506,7 @@ class Math extends _Object
      */
     public static function static_round($a = null)
     {
-        return round(Extractor::realValue($a));
+        return round(Extractor::getRealValue($a));
     }
 
     /**
@@ -544,7 +544,7 @@ class Math extends _Object
      */
     public static function static_sin($a = null)
     {
-        return sin(Extractor::realValue($a));
+        return sin(Extractor::getRealValue($a));
     }
 
     /**
@@ -555,7 +555,7 @@ class Math extends _Object
      */
     public static function static_sinh($a = null)
     {
-        return sinh(Extractor::realValue($a));
+        return sinh(Extractor::getRealValue($a));
     }
 
     /**
@@ -566,7 +566,7 @@ class Math extends _Object
      */
     public static function static_sqrt($a = null)
     {
-        return sqrt(Extractor::realValue($a));
+        return sqrt(Extractor::getRealValue($a));
     }
 
     /**
@@ -579,7 +579,7 @@ class Math extends _Object
      */
     public static function static_subtractExact($a = null, $b = null)
     {
-        return Extractor::realValue($a) - Extractor::realValue($b);
+        return Extractor::getRealValue($a) - Extractor::getRealValue($b);
     }
 
     /**
@@ -590,7 +590,7 @@ class Math extends _Object
      */
     public static function static_tan($a = null)
     {
-        return tan(Extractor::realValue($a));
+        return tan(Extractor::getRealValue($a));
     }
 
     /**
@@ -601,7 +601,7 @@ class Math extends _Object
      */
     public static function static_tanh($a = null)
     {
-        return tanh(Extractor::realValue($a));
+        return tanh(Extractor::getRealValue($a));
     }
 
     /**
