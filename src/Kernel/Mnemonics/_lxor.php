@@ -1,7 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Long;
+use PHPJava\Utilities\Extractor;
 
 final class _lxor implements OperationInterface
 {
@@ -10,6 +11,17 @@ final class _lxor implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value2 = $this->popFromOperandStack();
+        $value1 = $this->popFromOperandStack();
+
+        $this->pushToOperandStack(
+            _Long::get(
+                BinaryTool::xorBits(
+                    Extractor::getRealValue($value1),
+                    Extractor::getRealValue($value2),
+                    8
+                )
+            )
+        );
     }
 }
