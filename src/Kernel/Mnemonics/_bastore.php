@@ -2,6 +2,8 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\Type;
+use PHPJava\Utilities\Extractor;
 
 final class _bastore implements OperationInterface
 {
@@ -10,6 +12,19 @@ final class _bastore implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value = $this->popFromOperandStack();
+        $index = Extractor::getRealValue($this->popFromOperandStack());
+
+        /**
+         * @var Type $arrayref
+         */
+        $arrayref = $this->popFromOperandStack();
+
+        // The value is a ref.
+        $arrayref[$index] = $value;
+
+        $this->pushToOperandStack(
+            $arrayref
+        );
     }
 }

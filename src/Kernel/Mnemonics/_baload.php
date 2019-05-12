@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Utilities\Extractor;
 
 final class _baload implements OperationInterface
 {
@@ -10,6 +11,11 @@ final class _baload implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $index = Extractor::getRealValue($this->popFromOperandStack());
+        $arrayref = $this->popFromOperandStack();
+
+        $this->pushToOperandStack(
+            $arrayref[$index]
+        );
     }
 }

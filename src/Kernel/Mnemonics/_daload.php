@@ -16,6 +16,8 @@ final class _daload implements OperationInterface
         $index = Extractor::getRealValue($this->popFromOperandStack());
         $arrayref = $this->popFromOperandStack();
 
-        $this->pushToOperandStack($arrayref[$index]);
+        $this->pushToOperandStack(
+            $arrayref[$index]
+        );
     }
 }
