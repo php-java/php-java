@@ -52,18 +52,9 @@ class BinaryTool
         return '-' . base_convert(self::addOneBit(self::reverseBits($convert)), 2, 10);
     }
 
-    final public static function negate($value, $bytes)
+    final public static function negate($value)
     {
-        $value = (int) $value;
-        $value = base_convert((string) $value, 10, 2);
-
-        if (sprintf('%0' . $bytes . 's', $value) === str_repeat('0', $bytes)) {
-            // zero number was overflow
-            return '0';
-        }
-
-        $convert = self::addOneBit(self::reverseBits($value));
-        return ($convert[0] === '1' ? '-' : '') . base_convert($convert, 2, 10);
+        return $value * -1;
     }
 
     final public static function multiply($value1, $value2)
