@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\Extractor;
 

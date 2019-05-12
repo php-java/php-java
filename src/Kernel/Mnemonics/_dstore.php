@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Double;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _dstore implements OperationInterface
