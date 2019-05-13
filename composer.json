@@ -3,7 +3,7 @@
     "description": "JVM emulator by PHP",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.7.4-dev",
+    "version": "0.0.7.5-dev",
     "authors": [
         {
             "name": "memory"
@@ -18,7 +18,8 @@
         "monolog/monolog": "^1.24",
         "gabrielelana/byte-units": "^0.5.0",
         "symfony/console": "^4.2",
-        "phpdocumentor/reflection-docblock": "^4.3"
+        "phpdocumentor/reflection-docblock": "^4.3",
+        "brick/math": "^0.8.8"
     },
     "autoload": {
         "psr-4": {

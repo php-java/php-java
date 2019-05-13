@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Tests;
 
+use PHPJava\Kernel\Types\_Long;
+
 class BinaryOperatorTest extends Base
 {
     protected $fixtures = [
@@ -14,6 +16,21 @@ class BinaryOperatorTest extends Base
             ->getStatic()
             ->getMethods()
             ->call($method, $value1, $value2);
+
+        return $calculatedValue->getValue();
+    }
+
+    private function callWithLong($method, $value1, $value2)
+    {
+        $calculatedValue = $this->initiatedJavaClasses['BinaryOperatorTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                $method,
+                _Long::get($value1),
+                _Long::get($value2)
+            );
 
         return $calculatedValue->getValue();
     }
@@ -78,6 +95,69 @@ class BinaryOperatorTest extends Base
         $value2 = (int) base_convert('0101', 2, 10);
         $expect = (int) base_convert('0110', 2, 10);
         $actual = $this->call('intXor', $value1, $value2);
+        $this->assertEquals($expect, $actual);
+    }
+
+    public function testLongAdd()
+    {
+        $actual = $this->callWithLong('longAdd', 5, 3);
+        $this->assertEquals(8, $actual);
+    }
+
+    public function testLongSub()
+    {
+        $actual = $this->callWithLong('longSub', 5, 3);
+        $this->assertEquals(2, $actual);
+    }
+
+    public function testLongMul()
+    {
+        $actual = $this->callWithLong('longMul', 5, 3);
+        $this->assertEquals(15, $actual);
+    }
+
+    public function testLongShl()
+    {
+        $actual = $this->callWithLong('longShl', 3, 2);
+        $this->assertEquals(12, $actual);
+    }
+
+    public function testLongShr()
+    {
+        $actual = $this->callWithLong('longShr', 12, 2);
+        $this->assertEquals(3, $actual);
+    }
+
+    public function testLongUshr()
+    {
+        $actual = $this->callWithLong('longUshr', 12, 2);
+        $this->assertEquals(3, $actual);
+    }
+
+    public function testLongAnd()
+    {
+        $value1 = (int) base_convert('0011', 2, 10);
+        $value2 = (int) base_convert('0101', 2, 10);
+        $expect = (int) base_convert('0001', 2, 10);
+        $actual = $this->callWithLong('longAnd', $value1, $value2);
+        $this->assertEquals($expect, $actual);
+    }
+
+    public function testLongOr()
+    {
+        $value1 = (int) base_convert('0011', 2, 10);
+        $value2 = (int) base_convert('0101', 2, 10);
+        $expect = (int) base_convert('0111', 2, 10);
+        $actual = $this->callWithLong('longOr', $value1, $value2);
+        $this->assertEquals($expect, $actual);
+    }
+
+    public function testLongXor()
+    {
+        $value1 = (int) base_convert('0011', 2, 10);
+        $value2 = (int) base_convert('0101', 2, 10);
+        $expect = (int) base_convert('0110', 2, 10);
+        $actual = $this->callWithLong('longXor', $value1, $value2);
         $this->assertEquals($expect, $actual);
     }
 }

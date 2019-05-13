@@ -2,7 +2,6 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Types\_Float;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _fneg implements OperationInterface
@@ -16,10 +15,6 @@ final class _fneg implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(
-            _Float::get(
-                BinaryTool::negate($value)
-            )
-        );
+        $this->pushToOperandStack(_Float::get($value * (float) -1));
     }
 }

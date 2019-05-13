@@ -416,13 +416,15 @@ public static void main(java.lang.String[])
   - **OPERANDS** shows the stacked items on memory.
   - **LOCAL STORAGE** shows the stacked items on a method.
 
-## PHP problems
-- **Problem 1:** PHP cannot calculate big numbers because PHP is different from Java.
-  But PHPJava uses `bcmath` functions and `gmp` functions to a certain extent to cover such calculations.
-  Therefore, PHPJava returns a mixed value and we recommend to cast them to `string` on PHPJava.
-
-- **Problem 2:** PHPJava cannot completely cover Java types because PHP is different from Java.
-  The comparison table of Java and PHPJava is shown below:
+## About big number calculation
+- In normally, PHP cannot calculate big numbers as such as `long` and `double` types.
+  But, PHPJava uses external `Math` library for covering above problems.
+  And, PHPJava to use Java's type as below comparison table.
+  Therefore, we recommend to cast them to `string` on PHPJava.
+  And, if it can be calculated with 64-bitPHP, PHPJava uses PHP's arithmetic operations.
+  
+## Types of Java 
+- The comparison table of Java and PHPJava is shown below:
 
 | Java | PHPJava |
 |:-----|:--------|
@@ -435,8 +437,6 @@ public static void main(java.lang.String[])
 | long | \PHPJava\Kernel\Types\\_Long (including `__toString`) |
 | float | \PHPJava\Kernel\Types\\_Float (including `__toString`) |
 | double | \PHPJava\Kernel\Types\\_Double (including `__toString`) |
-
-- **Problem 3:** PHPJava cannot calculate big number of `double` and `float` because `gmp_pow` cannot calculate negative exponents. So, PHPJava uses built-in function `pow`.
 
 ## Run Kotlin on the PHPJava
 Do you wanna run Kotlin on the PHPJava? Are you serious?

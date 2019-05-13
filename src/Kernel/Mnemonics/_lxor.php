@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use Brick\Math\BigInteger;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Utilities\Extractor;
 
@@ -11,17 +12,12 @@ final class _lxor implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->popFromOperandStack();
-        $value1 = $this->popFromOperandStack();
+        $value2 = Extractor::getRealValue($this->popFromOperandStack());
+        $value1 = Extractor::getRealValue($this->popFromOperandStack());
 
-        $this->pushToOperandStack(
-            _Long::get(
-                BinaryTool::xorBits(
-                    Extractor::getRealValue($value1),
-                    Extractor::getRealValue($value2),
-                    8
-                )
-            )
-        );
+        $result = (string) BigInteger::of($value1)
+            ->xor(BigInteger::of($value2));
+
+        $this->pushToOperandStack(_Long::get($result));
     }
 }

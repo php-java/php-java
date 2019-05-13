@@ -2,7 +2,6 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Types\_Int;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _ineg implements OperationInterface
@@ -12,14 +11,8 @@ final class _ineg implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::getRealValue(
-            $this->popFromOperandStack()
-        );
+        $value = Extractor::getRealValue($this->popFromOperandStack());
 
-        $this->pushToOperandStack(
-            _Int::get(
-                BinaryTool::negate($value)
-            )
-        );
+        $this->pushToOperandStack(_Int::get($value * -1));
     }
 }

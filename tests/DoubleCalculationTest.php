@@ -120,7 +120,7 @@ class DoubleCalculationTest extends Base
     public function testDoublePointAdd()
     {
         $this->assertEquals(
-            '3',
+            '3.0',
             $this->call(
                 'doubleAdd',
                 _Double::get(1.5),
@@ -132,7 +132,7 @@ class DoubleCalculationTest extends Base
     public function testDoublePointSub()
     {
         $this->assertEquals(
-            '0',
+            '0.0',
             $this->call(
                 'doubleSub',
                 _Double::get(1.5),
@@ -144,7 +144,7 @@ class DoubleCalculationTest extends Base
     public function testDoubleNegativePointSub()
     {
         $this->assertEquals(
-            '-1',
+            '-1.0',
             $this->call(
                 'doubleSub',
                 _Double::get(1.5),
@@ -168,7 +168,7 @@ class DoubleCalculationTest extends Base
     public function testDoublePointAddFromOtherMethod()
     {
         $this->assertEquals(
-            '3',
+            '3.0',
             $this->call(
                 'doubleAddFromOtherMethod',
                 _Double::get(1.5),
@@ -180,7 +180,7 @@ class DoubleCalculationTest extends Base
     public function testDoublePointSubFromOtherMethod()
     {
         $this->assertEquals(
-            '0',
+            '0.0',
             $this->call(
                 'doubleSubFromOtherMethod',
                 _Double::get(1.5),
@@ -192,7 +192,7 @@ class DoubleCalculationTest extends Base
     public function testDoubleNegativePointSubFromOtherMethod()
     {
         $this->assertEquals(
-            '-1',
+            '-1.0',
             $this->call(
                 'doubleSubFromOtherMethod',
                 _Double::get(1.5),

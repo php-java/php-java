@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use Brick\Math\BigDecimal;
 use PHPJava\Kernel\Types\_Double;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _ddiv implements OperationInterface
@@ -12,16 +12,12 @@ final class _ddiv implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->popFromOperandStack();
-        $value1 = $this->popFromOperandStack();
+        $value2 = Extractor::getRealValue($this->popFromOperandStack());
+        $value1 = Extractor::getRealValue($this->popFromOperandStack());
 
-        $this->pushToOperandStack(
-            _Double::get(
-                BinaryTool::div(
-                    Extractor::getRealValue($value1),
-                    Extractor::getRealValue($value2)
-                )
-            )
-        );
+        $result = (string) BigDecimal::of($value1)
+            ->minus(BigDecimal::of($value2));
+
+        $this->pushToOperandStack(_Double::get($result));
     }
 }

@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-use PHPJava\Utilities\BinaryTool;
-
 class _Float implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
@@ -10,6 +8,7 @@ class _Float implements StructureInterface
     use \PHPJava\Kernel\Core\DebugTool;
 
     private $bytes;
+    private $realByte;
 
     public function execute(): void
     {
@@ -18,6 +17,13 @@ class _Float implements StructureInterface
 
     public function getBytes()
     {
-        return BinaryTool::convertFloatToIEEE754($this->bytes);
+        if ($this->realByte) {
+            return $this->realByte;
+        }
+        $bits = $this->bytes;
+        $s = ($bits >> 31) == 0 ? 1 : -1;
+        $e = ($bits >> 23) & 0xff;
+        $m = ($e == 0) ? (($bits & 0x7fffff) << 1) : ($bits & 0x7fffff) | 0x800000;
+        return $this->realByte = ($s * $m * pow(2, $e - 150));
     }
 }

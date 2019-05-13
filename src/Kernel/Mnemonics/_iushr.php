@@ -2,7 +2,6 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Types\_Int;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _iushr implements OperationInterface
@@ -12,17 +11,12 @@ final class _iushr implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->popFromOperandStack();
-        $value1 = $this->popFromOperandStack();
+        $value2 = (int) Extractor::getRealValue($this->popFromOperandStack());
+        $value1 = (int) Extractor::getRealValue($this->popFromOperandStack());
 
+        // See: https://stackoverflow.com/questions/14428193/php-unsigned-right-shift-malfunctioning
         $this->pushToOperandStack(
-            _Int::get(
-                BinaryTool::unsignedShiftRight(
-                    Extractor::getRealValue($value1),
-                    Extractor::getRealValue($value2),
-                    4
-                )
-            )
+            _Int::get(($value1 >> $value2) & ~(1 << (8 * PHP_INT_SIZE - 1) >> ($value2 - 1)))
         );
     }
 }
