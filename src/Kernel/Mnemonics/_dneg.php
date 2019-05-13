@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use Brick\Math\BigDecimal;
 use PHPJava\Kernel\Types\_Double;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _dneg implements OperationInterface
@@ -16,10 +16,9 @@ final class _dneg implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(
-            _Double::get(
-                BinaryTool::negate($value)
-            )
-        );
+        $result = (string) BigDecimal::of($value)
+            ->multipliedBy(BigDecimal::of(-1));
+
+        $this->pushToOperandStack(_Double::get($result));
     }
 }

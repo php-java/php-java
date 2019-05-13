@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use Brick\Math\BigInteger;
 use PHPJava\Kernel\Types\_Long;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _lneg implements OperationInterface
@@ -16,10 +16,9 @@ final class _lneg implements OperationInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(
-            _Long::get(
-                BinaryTool::negate($value)
-            )
-        );
+        $result = (string) BigInteger::of($value)
+            ->multipliedBy(BigInteger::of(-1));
+
+        $this->pushToOperandStack(_Long::get($result));
     }
 }

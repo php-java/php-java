@@ -1,7 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\BinaryTool;
+use PHPJava\Kernel\Types\_Long;
+use PHPJava\Utilities\Extractor;
 
 final class _lushr implements OperationInterface
 {
@@ -10,9 +11,12 @@ final class _lushr implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->popFromOperandStack();
-        $value1 = $this->popFromOperandStack();
+        $value2 = (int) Extractor::getRealValue($this->popFromOperandStack());
+        $value1 = (int) Extractor::getRealValue($this->popFromOperandStack());
 
-        $this->pushToOperandStack(BinaryTool::unsignedShiftRight($value1, $value2, 8));
+        // See: https://stackoverflow.com/questions/14428193/php-unsigned-right-shift-malfunctioning
+        $this->pushToOperandStack(
+            _Long::get(($value1 >> $value2) & ~(1 << (8 * PHP_INT_SIZE - 1) >> ($value2 - 1)))
+        );
     }
 }

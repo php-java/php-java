@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use Brick\Math\BigInteger;
 use PHPJava\Kernel\Types\_Long;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _lmul implements OperationInterface
@@ -12,16 +12,12 @@ final class _lmul implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->popFromOperandStack();
-        $value1 = $this->popFromOperandStack();
+        $value2 = Extractor::getRealValue($this->popFromOperandStack());
+        $value1 = Extractor::getRealValue($this->popFromOperandStack());
 
-        $this->pushToOperandStack(
-            _Long::get(
-                BinaryTool::multiply(
-                    Extractor::getRealValue($value1),
-                    Extractor::getRealValue($value2)
-                )
-            )
-        );
+        $result = (string) BigInteger::of($value1)
+            ->multipliedBy(BigInteger::of($value2));
+
+        $this->pushToOperandStack(_Long::get($result));
     }
 }

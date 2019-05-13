@@ -414,14 +414,16 @@ public static void main(java.lang.String[])
   - **OPERANDS** はオペランドスタック上のアイテムを表示します。
   - **LOCAL STORAGE** はローカルストレージに格納されているアイテムの数を表示します。
 
-## PHP における問題
-- **問題 1** PHP は Java と異なるため、巨大な数字を計算することができません。
-  しかし、 PHPJava は `bcmath` 関数や `gmp` 関数を使って、できる限り、計算を試みようとします。
-  したがって、 PHPJava の返す値は `string` であったり、 `int` であったり、またはその他の型である可能性があります。
-  そのため、 `string` として基本的に扱うことを推奨します。
 
-- **問題 2** PHPJava は Java とは異なるため、完全に Java の型をカバーしていません。
-  また、以下はカバーしている範囲の型の比較表です。
+## 大きな数字の計算について
+- PHP は通常、 Java における long 型や double 型といった大きな値の計算を行うことができません。
+  PHPJava ではそれらをカバーするために数値計算用ライブラリを使用します。
+  それらは、 下記の Java の型でラップされて使用されます。
+  そのため、数値をPHP側で取り扱う場合は、 string 型にキャストすることを推奨します。
+  また、通常の 64bit 版 PHP で計算できる範囲については、PHP の四則演算を使用して計算を行います。
+
+## Java の型
+- 下記はJava と PHPJava の型の比較表です。
 
 | Java | PHPJava |
 |:-----|:--------|
@@ -434,9 +436,6 @@ public static void main(java.lang.String[])
 | long | \PHPJava\Kernel\Types\\_Long (`__toString` を含む) |
 | float | \PHPJava\Kernel\Types\\_Float (`__toString` を含む) |
 | double | \PHPJava\Kernel\Types\\_Double (`__toString` を含む) |
-
-- **問題 3**  PHPJava は `double` や `float` などの浮動小数点の巨大な数字の計算をすることができません。
-  なぜなら、 `gmp_pow` 関数はマイナス指数 (たとえば -1 乗や -2 乗など) を扱えないためです。そのため代替としてビルトインされている `pow` を使用しています。
 
 ## Run Kotlin on the PHPJava
 ## Kotlin を PHPJava で動かす。

@@ -1,7 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\BinaryTool;
+use Brick\Math\BigInteger;
+use PHPJava\Kernel\Types\_Long;
+use PHPJava\Utilities\Extractor;
 
 final class _lshl implements OperationInterface
 {
@@ -10,9 +12,12 @@ final class _lshl implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->popFromOperandStack();
-        $value1 = $this->popFromOperandStack();
+        $value2 = Extractor::getRealValue($this->popFromOperandStack());
+        $value1 = Extractor::getRealValue($this->popFromOperandStack());
 
-        $this->pushToOperandStack(BinaryTool::shiftLeft($value1, $value2));
+        $result = (string) BigInteger::of($value1)
+            ->shiftedLeft((int) $value2);
+
+        $this->pushToOperandStack(_Long::get($result));
     }
 }

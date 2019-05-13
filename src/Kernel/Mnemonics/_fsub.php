@@ -2,7 +2,6 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Types\_Float;
-use PHPJava\Utilities\BinaryTool;
 use PHPJava\Utilities\Extractor;
 
 final class _fsub implements OperationInterface
@@ -12,16 +11,9 @@ final class _fsub implements OperationInterface
 
     public function execute(): void
     {
-        $rightValue = $this->popFromOperandStack();
-        $leftValue = $this->popFromOperandStack();
+        $value2 = (float) Extractor::getRealValue($this->popFromOperandStack());
+        $value1 = (float) Extractor::getRealValue($this->popFromOperandStack());
 
-        $this->pushToOperandStack(
-            _Float::get(
-                BinaryTool::sub(
-                    Extractor::getRealValue($leftValue),
-                    Extractor::getRealValue($rightValue)
-                )
-            )
-        );
+        $this->pushToOperandStack(_Float::get($value1 - $value2));
     }
 }
