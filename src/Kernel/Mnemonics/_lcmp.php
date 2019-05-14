@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use Brick\Math\BigInteger;
 use PHPJava\Kernel\Types\_Int;
+use PHPJava\Utilities\Extractor;
 
 final class _lcmp implements OperationInterface
 {
@@ -11,8 +12,8 @@ final class _lcmp implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = $this->popFromOperandStack();
-        $value1 = $this->popFromOperandStack();
+        $value2 = (string) Extractor::getRealValue($this->popFromOperandStack());
+        $value1 = (string) Extractor::getRealValue($this->popFromOperandStack());
 
         $compare = BigInteger::of($value1)->compareTo($value2);
 

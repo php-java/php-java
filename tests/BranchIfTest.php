@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Tests;
 
+use PHPJava\Kernel\Types\_Long;
+
 class BranchIfTest extends Base
 {
     protected $fixtures = [
@@ -30,11 +32,11 @@ class BranchIfTest extends Base
         $this->assertEquals(1, $actual);
     }
 
-    // public function testIfIcmpEq()
-    // {
-    //     $actual = $this->call('ifIcmpEq', 5, 3);
-    //     $this->assertEquals(0, $actual);
-    // }
+    public function testIfIcmpEq()
+    {
+        $actual = $this->call('ifIcmpEq', 5, 3);
+        $this->assertEquals(0, $actual);
+    }
 
     public function testIfIcmpNe()
     {
@@ -60,9 +62,33 @@ class BranchIfTest extends Base
         $this->assertEquals(1, $actual);
     }
 
-    // public function testIfIcmpLe()
-    // {
-    //     $actual = $this->call('ifIcmpLe', 5, 3);
-    //     $this->assertEquals(0, $actual);
-    // }
+    public function testIfIcmpLe()
+    {
+        $actual = $this->call('ifIcmpLe', 5, 3);
+        $this->assertEquals(0, $actual);
+    }
+
+    public function testIfLcmpGraterThan()
+    {
+        $actual = $this->call('ifLcmpGraterThan', _Long::get(5), _Long::get(3));
+        $this->assertEquals(0, $actual);
+    }
+
+    public function testIfLcmpLessThan()
+    {
+        $actual = $this->call('ifLcmpLessThan', _Long::get(5), _Long::get(3));
+        $this->assertEquals(1, $actual);
+    }
+
+    public function testIfLcmpNotEqualsTo()
+    {
+        $actual = $this->call('ifLcmpEqualsTo', _Long::get(5), _Long::get(3));
+        $this->assertEquals(1, $actual);
+    }
+
+    public function testIfLcmpEqualsTo()
+    {
+        $actual = $this->call('ifLcmpEqualsTo', _Long::get(5), _Long::get(5));
+        $this->assertEquals(0, $actual);
+    }
 }
