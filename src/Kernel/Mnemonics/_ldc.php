@@ -28,7 +28,7 @@ final class _ldc implements OperationInterface
         } elseif (($data instanceof _Integer)) {
             $value = _Int::get($data->getBytes());
         } elseif ($data instanceof _Float) {
-            $value = _Float::get($data->getBytes());
+            $value = \PHPJava\Kernel\Types\_Float::get($data->getBytes());
         } else {
             $value = $cpInfo[$data->getStringIndex()];
         }
