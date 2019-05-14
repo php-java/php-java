@@ -1,6 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\_Long;
+
 final class _ldc2_w implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -9,9 +12,15 @@ final class _ldc2_w implements OperationInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool();
-
         $data = $cpInfo[$this->readUnsignedShort()];
 
-        $this->pushToOperandStack($data->getBytes());
+        $value = null;
+        if (($data instanceof \PHPJava\Kernel\Structures\_Long)) {
+            $value = _Long::get($data->getBytes());
+        } elseif ($data instanceof \PHPJava\Kernel\Structures\_Double) {
+            $value = _Double::get($data->getBytes());
+        }
+
+        $this->pushToOperandStack($value);
     }
 }
