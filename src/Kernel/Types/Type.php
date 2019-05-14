@@ -11,20 +11,25 @@ class Type
 
     public function __construct($value)
     {
-        // Validate value which is scalar.
-        if (!is_scalar($value) &&
-            !is_array($value) &&
-            !is_null($value) &&
-            !($value instanceof self)
+        if (!($value instanceof self) &&
+            $value !== null &&
+            !static::isValid($value)
         ) {
-            $type = gettype($value);
             throw new TypeException(
-                'Passed value is not scalar or miss match type. The value is "' . ($type === 'object' ? get_class($value) : $type) . '"'
+                '"' . ((string) $value) . '" is not expected in ' . get_class($this) . '.'
             );
         }
+
         $this->value = ($value instanceof self)
             ? $value->getValue()
-            : $value;
+            : static::filter($value);
+    }
+
+    public function __debugInfo()
+    {
+        return [
+            'value' => $this->value,
+        ];
     }
 
     /**
@@ -57,5 +62,15 @@ class Type
     public function __toString()
     {
         return (string) $this->getValue();
+    }
+
+    public static function isValid($value)
+    {
+        throw new TypeException('Not implemented type validation.');
+    }
+
+    protected static function filter($value)
+    {
+        return $value;
     }
 }

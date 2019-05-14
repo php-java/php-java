@@ -10,10 +10,22 @@ class _Boolean extends Type
     const TRUE = 'true';
     const FALSE = 'false';
 
-    public function __toString()
+    public static function isValid($value)
     {
-        $value = (int) $this->getValue();
-        return $value === 1
+        return $value == 0 ||
+            $value == 1 ||
+            $value === true ||
+            $value === false;
+    }
+
+    protected static function filter($value)
+    {
+        return $value ? true : false;
+    }
+
+    public function getValue()
+    {
+        return $this->value
             ? static::TRUE
             : static::FALSE;
     }
