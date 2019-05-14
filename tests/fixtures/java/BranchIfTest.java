@@ -39,4 +39,19 @@ class BranchIfTest
     {
 	return value1 > value2 ? 0 : 1;
     }
+
+    public static int ifLcmpGraterThan(long value1, long value2)
+    {
+        return value1 > value2 ? 0 : 1;
+    }
+
+    public static int ifLcmpLessThan(long value1, long value2)
+    {
+        return value1 < value2 ? 0 : 1;
+    }
+
+    public static int ifLcmpEqualsTo(long value1, long value2)
+    {
+        return value1 == value2 ? 0 : 1;
+    }
 }

@@ -1,7 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use Brick\Math\BigInteger;
+use PHPJava\Kernel\Types\_Int;
+use PHPJava\Utilities\Extractor;
 
 final class _lcmp implements OperationInterface
 {
@@ -10,6 +12,21 @@ final class _lcmp implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value2 = (string) Extractor::getRealValue($this->popFromOperandStack());
+        $value1 = (string) Extractor::getRealValue($this->popFromOperandStack());
+
+        $compare = BigInteger::of($value1)->compareTo($value2);
+
+        if ($compare == 1) {
+            $this->pushToOperandStack(_Int::get(1));
+            return;
+        }
+
+        if ($compare == -1) {
+            $this->pushToOperandStack(_Int::get(-1));
+            return;
+        }
+
+        $this->pushToOperandStack(_Int::get(0));
     }
 }
