@@ -5,6 +5,7 @@ use PHPJava\Kernel\Structures\_Float;
 use PHPJava\Kernel\Structures\_Integer;
 use PHPJava\Kernel\Structures\_String;
 use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Kernel\Types\_Int;
 
 final class _ldc implements OperationInterface
 {
@@ -14,7 +15,6 @@ final class _ldc implements OperationInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool();
-
         $data = $cpInfo[$this->readUnsignedByte()];
 
         $value = null;
@@ -25,8 +25,10 @@ final class _ldc implements OperationInterface
             if ($value instanceof _Utf8) {
                 $value = $value->getStringObject();
             }
-        } elseif (($data instanceof _Integer) || ($data instanceof _Float)) {
-            $value = $data->getBytes();
+        } elseif (($data instanceof _Integer)) {
+            $value = _Int::get($data->getBytes());
+        } elseif ($data instanceof _Float) {
+            $value = \PHPJava\Kernel\Types\_Float::get($data->getBytes());
         } else {
             $value = $cpInfo[$data->getStringIndex()];
         }
