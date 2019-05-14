@@ -10,7 +10,7 @@ class _Char extends Type
     const MIN = 0;
     const MAX = 65535;
 
-    public function isValid($value)
+    public static function isValid($value)
     {
         if (ctype_alpha($value) && strlen($value) === 1) {
             $value = ord($value);
@@ -23,7 +23,7 @@ class _Char extends Type
         return $value >= static::MIN && $value <= static::MAX;
     }
 
-    protected function filter($value)
+    protected static function filter($value)
     {
         if (ctype_alpha($value) && strlen($value) === 1) {
             return $value;

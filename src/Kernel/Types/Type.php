@@ -13,9 +13,8 @@ class Type
     {
         if (!($value instanceof self) &&
             $value !== null &&
-            !$this->isValid($value)
+            !static::isValid($value)
         ) {
-            $type = gettype($value);
             throw new TypeException(
                 '"' . ((string) $value) . '" is not expected in ' . get_class($this) . '.'
             );
@@ -23,7 +22,7 @@ class Type
 
         $this->value = ($value instanceof self)
             ? $value->getValue()
-            : $this->filter($value);
+            : static::filter($value);
     }
 
     public function __debugInfo()
@@ -65,12 +64,12 @@ class Type
         return (string) $this->getValue();
     }
 
-    protected function isValid($value)
+    public static function isValid($value)
     {
-        return false;
+        throw new TypeException('Not implemented type validation.');
     }
 
-    protected function filter($value)
+    protected static function filter($value)
     {
         return $value;
     }

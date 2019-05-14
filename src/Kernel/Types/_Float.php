@@ -10,7 +10,7 @@ class _Float extends Type
     const MIN = 1.4E-45;
     const MAX = 3.4028235E38;
 
-    public function isValid($value)
+    public static function isValid($value)
     {
         $value = (string) abs($value);
         if (!is_numeric($value)) {
@@ -20,7 +20,7 @@ class _Float extends Type
         return $value == 0 || ($value >= static::MIN && $value <= static::MAX);
     }
 
-    protected function filter($value)
+    protected static function filter($value)
     {
         return (float) $value;
     }

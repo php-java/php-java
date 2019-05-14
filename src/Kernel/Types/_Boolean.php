@@ -10,7 +10,7 @@ class _Boolean extends Type
     const TRUE = 'true';
     const FALSE = 'false';
 
-    public function isValid($value)
+    public static function isValid($value)
     {
         return $value == 0 ||
             $value == 1 ||
@@ -18,7 +18,7 @@ class _Boolean extends Type
             $value === false;
     }
 
-    protected function filter($value)
+    protected static function filter($value)
     {
         return $value ? true : false;
     }

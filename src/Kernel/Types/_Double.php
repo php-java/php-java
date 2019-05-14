@@ -12,7 +12,7 @@ class _Double extends Type
     const MIN = '4.9E-324';
     const MAX = '1.7976931348623157E308';
 
-    public function isValid($value)
+    public static function isValid($value)
     {
         if (!is_numeric((string) abs($value))) {
             return false;
@@ -26,7 +26,7 @@ class _Double extends Type
         );
     }
 
-    protected function filter($value)
+    protected static function filter($value)
     {
         return (string) $value;
     }

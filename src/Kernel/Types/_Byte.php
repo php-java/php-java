@@ -10,7 +10,7 @@ class _Byte extends Type
     const MIN = -128;
     const MAX = 127;
 
-    public function isValid($value)
+    public static function isValid($value)
     {
         if (!ctype_digit((string) abs($value))) {
             return false;
@@ -19,7 +19,7 @@ class _Byte extends Type
         return $value >= static::MIN && $value <= static::MAX;
     }
 
-    protected function filter($value)
+    protected static function filter($value)
     {
         return (int) $value;
     }

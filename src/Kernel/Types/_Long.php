@@ -10,7 +10,7 @@ class _Long extends Type
     const MIN = -9223372036854775808;
     const MAX = 9223372036854775807;
 
-    public function isValid($value)
+    public static function isValid($value)
     {
         if (!ctype_digit((string) abs($value))) {
             return false;
@@ -18,8 +18,8 @@ class _Long extends Type
         return $value >= static::MIN && $value <= static::MAX;
     }
 
-    protected function filter($value)
+    protected static function filter($value)
     {
-        return (string) ((int) $value);
+        return (int) $value;
     }
 }

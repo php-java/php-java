@@ -10,14 +10,14 @@ class _Short extends Type
     const MIN = -32768;
     const MAX = 32767;
 
-    public function isValid($value)
+    public static function isValid($value)
     {
         return ctype_digit((string) abs($value)) &&
             $value >= static::MIN &&
             $value <= static::MAX;
     }
 
-    protected function filter($value)
+    protected static function filter($value)
     {
         return (int) $value;
     }

@@ -10,11 +10,12 @@ class _Int extends Type
     const MIN = -2147483648;
     const MAX = 2147483647;
 
-    public function isValid($value)
+    public static function isValid($value)
     {
         if (ctype_alpha($value) && strlen($value) === 1) {
             $value = ord($value);
         }
+
         $value = ($value << 32) >> 32;
         if (!ctype_digit((string) abs($value))) {
             return false;
@@ -23,7 +24,7 @@ class _Int extends Type
         return $value >= static::MIN && $value <= static::MAX;
     }
 
-    protected function filter($value)
+    protected static function filter($value)
     {
         if (ctype_alpha($value) && strlen($value) === 1) {
             return ord($value);
