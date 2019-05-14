@@ -1,7 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use Brick\Math\BigInteger;
+use PHPJava\Kernel\Types\_Int;
 
 final class _lcmp implements OperationInterface
 {
@@ -10,6 +11,21 @@ final class _lcmp implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $value2 = $this->popFromOperandStack();
+        $value1 = $this->popFromOperandStack();
+
+        $compare = BigInteger::of($value1)->compareTo($value2);
+
+        if ($compare == 1) {
+            $this->pushToOperandStack(_Int::get(1));
+            return;
+        }
+
+        if ($compare == -1) {
+            $this->pushToOperandStack(_Int::get(-1));
+            return;
+        }
+
+        $this->pushToOperandStack(_Int::get(0));
     }
 }
