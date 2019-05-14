@@ -12,12 +12,13 @@ class _Long extends Type
 
     public function isValid($value)
     {
-        return ctype_digit($value) &&
-            $value >= static::MIN &&
-            $value <= static::MAX;
+        if (!ctype_digit((string) abs($value))) {
+            return false;
+        }
+        return $value >= static::MIN && $value <= static::MAX;
     }
 
-    public function filter($value)
+    protected function filter($value)
     {
         return (string) ((int) $value);
     }

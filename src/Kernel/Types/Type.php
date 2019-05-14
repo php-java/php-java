@@ -11,13 +11,13 @@ class Type
 
     public function __construct($value)
     {
-        if (!$value instanceof self &&
+        if (!($value instanceof self) &&
             $value !== null &&
             !$this->isValid($value)
         ) {
             $type = gettype($value);
             throw new TypeException(
-                get_class($this) . ' does not expected which passed value is not valid.'
+                '"' . ((string) $value) . '" is not expected in ' . get_class($this) . '.'
             );
         }
 
@@ -62,7 +62,7 @@ class Type
 
     public function __toString()
     {
-        return (string) $this->value;
+        return (string) $this->getValue();
     }
 
     protected function isValid($value)

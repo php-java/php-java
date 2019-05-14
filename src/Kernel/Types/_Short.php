@@ -12,12 +12,12 @@ class _Short extends Type
 
     public function isValid($value)
     {
-        return ctype_digit($value) &&
+        return ctype_digit((string) abs($value)) &&
             $value >= static::MIN &&
             $value <= static::MAX;
     }
 
-    public function filter($value)
+    protected function filter($value)
     {
         return (int) $value;
     }

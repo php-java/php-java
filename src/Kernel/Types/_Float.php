@@ -12,12 +12,15 @@ class _Float extends Type
 
     public function isValid($value)
     {
-        return is_numeric($value) &&
-            $value >= static::MIN &&
-            $value <= static::MAX;
+        $value = (string) abs($value);
+        if (!is_numeric($value)) {
+            return false;
+        }
+
+        return $value == 0 || ($value >= static::MIN && $value <= static::MAX);
     }
 
-    public function filter($value)
+    protected function filter($value)
     {
         return (float) $value;
     }

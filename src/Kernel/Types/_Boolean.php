@@ -18,7 +18,7 @@ class _Boolean extends Type
             $value === false;
     }
 
-    public function filter($value)
+    protected function filter($value)
     {
         return $value ? true : false;
     }

@@ -12,18 +12,22 @@ class _Char extends Type
 
     public function isValid($value)
     {
-        return ctype_digit($value) &&
-            $value >= static::MIN &&
-            $value <= static::MAX;
+        if (ctype_alpha($value) && strlen($value) === 1) {
+            $value = ord($value);
+        }
+
+        if (!ctype_digit((string) abs($value))) {
+            return false;
+        }
+
+        return $value >= static::MIN && $value <= static::MAX;
     }
 
-    public function filter($value)
+    protected function filter($value)
     {
-        return (int) $value;
-    }
-
-    public function getValue()
-    {
-        return chr($this->value);
+        if (ctype_alpha($value) && strlen($value) === 1) {
+            return $value;
+        }
+        return chr($value);
     }
 }
