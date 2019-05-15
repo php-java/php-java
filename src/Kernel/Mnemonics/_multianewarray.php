@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
-
 final class _multianewarray implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -10,6 +8,13 @@ final class _multianewarray implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $cp = $this->getConstantPool();
+        $index = $this->readUnsignedShort();
+        $dimensions = $this->readByte();
+
+        $descriptor = $cp[$cp[$index]->getClassIndex()]->getString();
+
+        var_dump($descriptor, $dimensions);
+        exit();
     }
 }
