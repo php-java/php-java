@@ -23,6 +23,7 @@ use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
+use PHPJava\Packages\java\lang\UnsupportedOperationException;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
@@ -213,6 +214,17 @@ trait Invokable
             $pointer = $reader->getOffset() - 1;
 
             $fullName = '\\PHPJava\\Kernel\\Mnemonics\\' . $mnemonic;
+
+            if (!class_exists($fullName)) {
+                throw new UnsupportedOperationException(
+                    sprintf(
+                        '%s(0x%02X) operation does not supported.',
+                        ltrim($mnemonic, '_'),
+                        $opcode
+                    )
+                );
+            }
+
             if ($isEnabledTrace) {
                 $debugTraces['executed'][] = [$opcode, $mnemonic, $localStorage, $stacks, $pointer];
                 $debugTraces['mnemonic_indexes'][] = $pointer;

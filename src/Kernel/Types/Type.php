@@ -20,9 +20,11 @@ class Type
             );
         }
 
-        $this->value = ($value instanceof self)
-            ? $value->getValue()
-            : static::filter($value);
+        $this->value = static::filter(
+            ($value instanceof self)
+                ? $value->getValue()
+                : $value
+        );
     }
 
     public function __debugInfo()
@@ -40,8 +42,15 @@ class Type
     public static function get($value)
     {
         static $instantiated = null;
-        $identity = (string) $value;
-        return $instantiated[$identity] = $instantiated[$identity] ?? new static($identity);
+        if (is_object($value)) {
+            if ($value instanceof static) {
+                return $value;
+            }
+            $identity = spl_object_hash($value);
+        } else {
+            $identity = (string) $value;
+        }
+        return $instantiated[$identity] = $instantiated[$identity] ?? new static($value);
     }
 
     public function getValue()

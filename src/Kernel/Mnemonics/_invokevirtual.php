@@ -5,9 +5,11 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
+use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\Normalizer;
+use PHPJava\Utilities\TypeResolver;
 
 final class _invokevirtual implements OperationInterface
 {
@@ -105,7 +107,16 @@ final class _invokevirtual implements OperationInterface
         }
 
         if ($signature[0]['type'] !== 'void') {
-            $this->pushToOperandStack($result);
+            /**
+             * @var Type $typeClass
+             */
+            [$type, $typeClass] = TypeResolver::getType($signature[0]);
+
+            $this->pushToOperandStack(
+                $type === TypeResolver::IS_PRIMITIVE
+                    ? $typeClass::get($result)
+                    : $result
+            );
         }
     }
 }

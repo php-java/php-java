@@ -20,6 +20,9 @@ use PHPJava\Packages\java\lang\_String;
 
 class TypeResolver
 {
+    const IS_CLASS = 'class';
+    const IS_PRIMITIVE = 'primitive';
+
     const PHP_TYPE_MAP = [
         'integer' => 'I',
         'float' => 'F',
@@ -63,12 +66,10 @@ class TypeResolver
     const PHP_SCALAR_MAP = [
         // [ TypeClass, Instantiation ]
         'string' => [_String::class, true],
-        'float' => [_Float::class, true],
-        'double' => [_Float::class, true],
-        'int' => [_Int::class, true],
-        'integer' => [_Int::class, true],
-        'bool' => [_Boolean::class, true],
-        'boolean' => [_Boolean::class, true],
+        'float' => [_Float::class, false],
+        'double' => [_Float::class, false],
+        'integer' => [_Int::class, false],
+        'boolean' => [_Boolean::class, false],
     ];
 
     const PHP_TO_JAVA_MAP = [
@@ -82,7 +83,7 @@ class TypeResolver
      * @param $signature
      * @throws TypeException
      */
-    public static function getMappedSignatureType($signature): string
+    public static function getMappedSignatureType(string $signature): string
     {
         if (isset(static::SIGNATURE_MAP[$signature])) {
             return static::SIGNATURE_MAP[$signature];
@@ -93,7 +94,7 @@ class TypeResolver
     /**
      * @param $type
      */
-    public static function resolve($type): string
+    public static function resolve(string $type): string
     {
         $flipped = array_flip(static::SIGNATURE_MAP);
         if (isset($flipped[$type])) {
@@ -104,6 +105,47 @@ class TypeResolver
             return $flipped[$type];
         }
         return 'L' . $type;
+    }
+
+    public static function extractPrimitiveValueFromType(Type $value)
+    {
+        $extractedValue = (string) $value->getValue();
+        if ($value instanceof _Int || $value instanceof _Long) {
+            return (int) $extractedValue;
+        }
+        if ($value instanceof _Float || $value instanceof _Double) {
+            return (float) $extractedValue;
+        }
+        if ($value instanceof _Boolean) {
+            return $extractedValue === 'true' ? true : false;
+        }
+
+        return $extractedValue;
+    }
+
+    /**
+     * @param array $signatureArray a formatted signature array
+     * @throws TypeException
+     * @return string
+     */
+    public static function getType(array $signatureArray)
+    {
+        $type = $signatureArray['type'];
+        if ($type === 'class') {
+            $className = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . str_replace('/', '\\', $signatureArray['class_name']);
+            return [
+                static::IS_CLASS,
+                $className,
+            ];
+        }
+        $result = static::TYPES_MAP[strtolower($type)] ?? null;
+        if ($result === null) {
+            throw new TypeException('Unknown type: ' . $type);
+        }
+        return [
+            static::IS_PRIMITIVE,
+            $result,
+        ];
     }
 
     /**
@@ -123,17 +165,16 @@ class TypeResolver
     /**
      * @param $type
      */
-    public static function convertJavaTypeSimplyForPHP($type): string
+    public static function convertJavaTypeSimplyForPHP(string $type): string
     {
         return static::AMBIGUOUS_TYPES_ON_PHP[$type] ?? $type;
     }
 
     /**
      * @param $arguments
-     * @param string $defaultJavaArgumentType
      * @throws TypeException
      */
-    public static function convertPHPtoJava($arguments, $defaultJavaArgumentType = 'java.lang.String'): array
+    public static function convertPHPtoJava($arguments, string $defaultJavaArgumentType = 'java.lang.String'): array
     {
         $phpType = gettype($arguments);
         $deepArray = 0;
@@ -245,7 +286,7 @@ class TypeResolver
      * @throws TypeException
      * @throws \ReflectionException
      */
-    public static function getExtendedClasses($class): array
+    public static function getExtendedClasses(string $class): array
     {
         static $loadedExtendedRoots = [];
         $result = [];

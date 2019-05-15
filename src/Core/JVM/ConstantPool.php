@@ -4,6 +4,7 @@ namespace PHPJava\Core\JVM;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\ReadEntryException;
 use PHPJava\Exceptions\ReadOnlyException;
+use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Kernel\Maps\ConstantPoolTag;
 use PHPJava\Kernel\Structures\_Class;
 use PHPJava\Kernel\Structures\_Double;
@@ -111,6 +112,11 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     {
         if ($this->entries[$offset] instanceof FreezableInterface) {
             $this->entries[$offset]->freeze();
+        }
+        if (!array_key_exists($offset, $this->entries)) {
+            throw new RuntimeException(
+                'Cannot refer an entry on the Constant Pool (index: ' . $offset . ')'
+            );
         }
         return $this->entries[$offset];
     }
