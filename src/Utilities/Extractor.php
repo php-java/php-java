@@ -20,7 +20,7 @@ class Extractor
     public static function getRealValue($value)
     {
         if ($value instanceof Type) {
-            return $value->getValue();
+            return TypeResolver::extractPrimitiveValueFromType($value);
         }
         return $value;
     }
