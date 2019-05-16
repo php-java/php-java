@@ -35,10 +35,27 @@ class ArrayTest
         return new char[] { 'A', 'B', 'C' };
     }
 
-
     public static byte[] createByteArray()
     {
         return new byte[] { 0x01, 0x02, 0x03 };
+    }
 
+    public static String multiDimensionArrayWithConstants()
+    {
+        String[][] a = {
+            {"Hello", " ", "World!"}
+        };
+
+        return a[0][0] + "" + a[0][1] + "" + a[0][2];
+    }
+
+    public static String[] testMultiDimensionArrayWithDynamic()
+    {
+        String[][] a = new String[1][3];
+        a[0][0] = "Hello";
+        a[0][1] = " ";
+        a[0][2] = "World!";
+
+        return a[0];
     }
 }

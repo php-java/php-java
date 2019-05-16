@@ -95,4 +95,17 @@ class ArrayTest extends Base
         $this->assertEquals('2', $actual->offsetGet(1));
         $this->assertEquals('3', $actual->offsetGet(2));
     }
+
+    public function testMultiDimensionArrayWithConstants()
+    {
+        $actual = $this->call('multiDimensionArrayWithConstants');
+        $this->assertEquals('Hello World!', $actual);
+    }
+
+    public function testMultiDimensionArrayWithDynamic()
+    {
+        $actual = $this->call('multiDimensionArrayWithDynamic');
+        var_dump($actual);
+        $this->assertEquals('Hello World!', $actual);
+    }
 }
