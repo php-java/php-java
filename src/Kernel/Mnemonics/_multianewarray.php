@@ -46,11 +46,12 @@ final class _multianewarray implements OperationInterface
      */
     private function makeMultiDimensionArray($array, array $counts, string $type, int $currentDimension, int $maxDimension)
     {
-        if ($currentDimension >= $maxDimension) {
-            return $array;
-        }
         $newArray = (new Collection())->setType($type);
         for ($i = 0; $i < $counts[$currentDimension]; $i++) {
+            if ($currentDimension === $maxDimension - 1) {
+                $newArray[$i] = null;
+                continue;
+            }
             $collection = (new Collection())->setType($type);
             $newArray[$i] = $this->makeMultiDimensionArray(
                 $collection,
