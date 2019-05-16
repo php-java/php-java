@@ -105,7 +105,9 @@ class ArrayTest extends Base
     public function testMultiDimensionArrayWithDynamic()
     {
         $actual = $this->call('multiDimensionArrayWithDynamic');
-        var_dump($actual);
-        $this->assertEquals('Hello World!', $actual);
+        $this->assertCount(3, $actual);
+        $this->assertEquals('Hello', (string) $actual[0]);
+        $this->assertEquals(' ', (string) $actual[1]);
+        $this->assertEquals('World!', (string) $actual[2]);
     }
 }

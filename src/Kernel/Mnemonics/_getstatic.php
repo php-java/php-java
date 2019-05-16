@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_Fieldref;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
@@ -36,6 +37,9 @@ final class _getstatic implements OperationInterface
                 /**
                  * @var \PHPJava\Core\JavaClass $className
                  */
+                throw new NotImplementedException(
+                    'Not implemented operation.'
+                );
                 return;
             }
             $this->pushToOperandStack(new $classObject());

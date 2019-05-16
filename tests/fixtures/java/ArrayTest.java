@@ -49,7 +49,7 @@ class ArrayTest
         return a[0][0] + "" + a[0][1] + "" + a[0][2];
     }
 
-    public static String[] testMultiDimensionArrayWithDynamic()
+    public static String[] multiDimensionArrayWithDynamic()
     {
         String[][] a = new String[1][3];
         a[0][0] = "Hello";
