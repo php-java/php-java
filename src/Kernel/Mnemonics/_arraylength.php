@@ -9,6 +9,8 @@ final class _arraylength implements OperationInterface
     public function execute(): void
     {
         $arrayref = $this->popFromOperandStack();
-        $this->pushToOperandStack(count($arrayref->toArray()));
+        $this->pushToOperandStack(
+            count($arrayref)
+        );
     }
 }

@@ -1,7 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Array\Collection;
+use PHPJava\Utilities\Extractor;
+use PHPJava\Utilities\Formatter;
 
 final class _multianewarray implements OperationInterface
 {
@@ -10,6 +12,54 @@ final class _multianewarray implements OperationInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $cp = $this->getConstantPool();
+        $index = $this->readUnsignedShort();
+        $dimensions = $this->readByte();
+
+        $descriptor = Formatter::parseSignature(
+            $cp[$cp[$index]->getClassIndex()]->getString()
+        );
+
+        $counts = array_fill(0, $dimensions, 0);
+
+        for ($i = $dimensions - 1; $i >= 0; $i--) {
+            $counts[$i] = Extractor::getRealValue(
+                $this->popFromOperandStack()
+            );
+        }
+
+        $data = null;
+        $multiDimensionArray = $this->makeMultiDimensionArray(
+            $data,
+            $counts,
+            $descriptor[0]['class_name'] ?? $descriptor[0]['type'],
+            0,
+            $dimensions
+        );
+
+        $this->pushToOperandStackByReference($multiDimensionArray);
+    }
+
+    /**
+     * @param $array
+     * @return $this
+     */
+    private function makeMultiDimensionArray($array, array $counts, string $type, int $currentDimension, int $maxDimension)
+    {
+        if ($currentDimension >= $maxDimension) {
+            return $array;
+        }
+        $newArray = (new Collection())->setType($type);
+        for ($i = 0; $i < $counts[$currentDimension]; $i++) {
+            $collection = (new Collection())->setType($type);
+            $newArray[$i] = $this->makeMultiDimensionArray(
+                $collection,
+                $counts,
+                $type,
+                $currentDimension + 1,
+                $maxDimension
+            );
+        }
+        return $newArray;
     }
 }

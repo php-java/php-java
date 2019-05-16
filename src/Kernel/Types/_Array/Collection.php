@@ -9,20 +9,27 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private $data;
     private $position = 0;
+    private $type;
 
-    public function __construct(array &$data, string $type = null)
+    public function __construct(array &$data = [])
     {
         $this->data = $data;
+    }
+
+    public function setType(string $type = null)
+    {
+        $this->type = $type;
+        return $this;
     }
 
     public function getType($default = null): ?string
     {
         if (!isset($this->data[0])) {
-            return $default;
+            return $this->type ?? $default;
         }
         return TypeResolver::resolveFromPHPType(
             Extractor::getRealValue($this->data[0])
-        ) ?? $default;
+        ) ?? $this->type ?? $default;
     }
 
     public function __toString()
@@ -55,6 +62,10 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     public function offsetSet($offset, $value)
     {
+        if ($offset === null) {
+            $this->data[] = $value;
+            return;
+        }
         $this->data[$offset] = $value;
     }
 
