@@ -12,7 +12,7 @@ class ChopFrame implements FrameInterface
     private $frameType;
 
     /**
-     * @var
+     * @var int
      */
     private $offsetDelta;
 

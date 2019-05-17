@@ -10,7 +10,7 @@ trait DependencyInjector
      *           \PHPJava\Core\JavaClass|
      *           \PHPJava\Core\JavaClassInvoker|
      *           \PHPJava\Kernel\Attributes\AttributeInfo|
-     *           \PHPJava\Kernel\Provider\ProviderInterface
+     *           \PHPJava\Kernel\Provider\ProviderInterface|
      *           array
      *           )[]
      */
