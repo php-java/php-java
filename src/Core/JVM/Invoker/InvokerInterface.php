@@ -6,7 +6,7 @@ use PHPJava\Core\JavaClassInvoker;
 interface InvokerInterface
 {
     /**
-     * @param _MethodInfo[] $methods
+     * @param PHPJava\Kernel\Structures\_MethodInfo[] $methods
      */
     public function __construct(JavaClassInvoker $javaClassInvoker, array $methods);
 
@@ -15,7 +15,7 @@ interface InvokerInterface
     public function isDynamic(): bool;
 
     /**
-     * @return _MethodInfo[]
+     * @return PHPJava\Kernel\Structures\_MethodInfo[]
      */
     public function getList(): array;
 

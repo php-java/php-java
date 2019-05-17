@@ -9,7 +9,14 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 
 class DebugTool
 {
+    /**
+     * @var Logger
+     */
     private $logger;
+
+    /**
+     * @var array
+     */
     private $options = [];
 
     public function __construct(string $channelName, array $options = [])

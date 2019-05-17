@@ -9,14 +9,16 @@ class Extractor
      * You need to use `getRealValue` instead of `realValue`.
      *
      * @deprecated
-     * @param $value
-     * @return null|array|bool|float|int|string|Type
+     * @return null|array|bool|float|int|string
      */
     public static function realValue($value)
     {
         return static::getRealValue($value);
     }
 
+    /**
+     * @return null|array|bool|float|int|string
+     */
     public static function getRealValue($value)
     {
         if ($value instanceof Type) {

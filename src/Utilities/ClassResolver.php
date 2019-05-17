@@ -22,8 +22,19 @@ class ClassResolver
     const RESOLVED_TYPE_CLASS = 'RESOLVED_TYPE_CLASS';
     const RESOLVED_TYPE_PACKAGES = 'RESOLVED_TYPE_PACKAGES';
 
+    /**
+     * @var array
+     */
     private $resolves = [];
+
+    /**
+     * (string|JavaClass)[][].
+     */
     private $resolvedPaths = [];
+
+    /**
+     * @var array
+     */
     private $options = [];
 
     public function __construct(array $options)
@@ -136,7 +147,7 @@ class ClassResolver
         $this->resolves[] = [$valuesOrResourceType, $value];
     }
 
-    public static function resolveNameByPath($path)
+    public static function resolveNameByPath($path): string
     {
         $names = explode(
             '.',

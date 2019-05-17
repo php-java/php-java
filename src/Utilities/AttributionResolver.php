@@ -7,14 +7,12 @@ use PHPJava\Kernel\Attributes\AttributeInfo;
 class AttributionResolver
 {
     /**
+     * @param AttributeInfo[] $attributes
      * @throws UnableToFindAttributionException
      */
     public static function resolve(array $attributes, string $attributeName)
     {
         foreach ($attributes as $attribute) {
-            /**
-             * @var AttributeInfo $attribute
-             */
             if ($attribute->getAttributeData() instanceof $attributeName) {
                 return $attribute->getAttributeData();
             }
