@@ -85,14 +85,14 @@ class BinaryReader
         return hexdec(bin2hex($this->read(8)));
     }
 
-    public function seek(int $bytes): void
+    public function seek(int $bytes): self
     {
         $this->offset += $bytes;
         fseek($this->handle, $bytes, SEEK_CUR);
         return $this;
     }
 
-    public function setOffset(int $pointer): void
+    public function setOffset(int $pointer): self
     {
         $this->offset = $pointer;
         fseek($this->handle, $pointer, SEEK_SET);

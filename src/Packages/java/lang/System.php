@@ -162,7 +162,8 @@ class System extends _Object // implements Logger, Map, Channel
      */
     public static function static_getProperty($a = null, $b = null)
     {
-        throw new NotImplementedException(__METHOD__);
+        var_dump((string) $a);
+        return null;
     }
 
     /**

@@ -47,9 +47,16 @@ class LambdaMetafactory extends _Object
      * @param null|mixed $d
      * @throws NotImplementedException
      */
-    public static function altMetafactory($a = null, $b = null, $c = null, $d = null)
+    public static function altMetafactory($a = null, $b = null, $c = null, ...$d)
     {
-        throw new NotImplementedException(__METHOD__);
+        $caller = $a;
+        $invokedName = $b;
+        $invokedType = $c;
+        $args = $d;
+
+//        var_dump(func_get_args());
+//
+//        throw new NotImplementedException(__METHOD__);
     }
 
     /**
