@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Packages\java\lang\invoke;
 
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
 
@@ -207,13 +209,22 @@ class MethodType extends _Object // implements Serializable, _List
      * Finds or creates a method type with the given components.
      *
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#methodType
+     * @native JavaClass
      * @param null|mixed $a
      * @param null|mixed $b
      * @param null|mixed $c
      */
-    public static function methodType($a = null, $b = null, $c = null)
+    public static function methodType(JavaClass $javaClass, $a = null, $b = null, $c = null)
     {
-        return new static($a);
+        [$resourceType, $classObject] = $javaClass
+            ->getOptions('class_resolver')
+            ->resolve($a, $javaClass);
+
+        if ($classObject instanceof JavaClassInterface) {
+            return $classObject;
+        }
+
+        return $classObject;
     }
 
     /**
