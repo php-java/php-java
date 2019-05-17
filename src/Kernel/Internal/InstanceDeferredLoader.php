@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Internal;
 
-use PHPJava\Core\JavaClassInterface;
 use PHPJava\Utilities\ClassResolver;
 
 final class InstanceDeferredLoader
@@ -59,7 +58,10 @@ final class InstanceDeferredLoader
         return $this->className;
     }
 
-    public function getClassObject(): JavaClassInterface
+    /**
+     * @return \PHPJava\Core\JavaClass|string
+     */
+    public function getClassObject()
     {
         return $this->classObject;
     }
