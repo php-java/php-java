@@ -94,7 +94,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @return $offset
+     * @return int
      */
     public function count()
     {

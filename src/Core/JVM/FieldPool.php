@@ -34,7 +34,7 @@ class FieldPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @var _FieldInfo[]
+     * @return _FieldInfo[]
      */
     public function getEntries()
     {

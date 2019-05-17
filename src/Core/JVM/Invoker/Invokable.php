@@ -346,7 +346,7 @@ trait Invokable
      * @throws \PHPJava\Exceptions\TypeException
      * @throws \ReflectionException
      */
-    private function findMethod($name, ...$arguments): _MethodInfo
+    private function findMethod(string $name, ...$arguments): _MethodInfo
     {
         $methodReferences = array_merge(
             $this->methods[$name] ?? [],

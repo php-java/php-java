@@ -153,7 +153,7 @@ class JavaClassInvoker
     /**
      * @throws IllegalJavaClassException
      */
-    public function getProvider($providerName): ProviderInterface
+    public function getProvider(string $providerName): ProviderInterface
     {
         if (!isset($this->providers[$providerName])) {
             throw new IllegalJavaClassException($providerName . ' not provided.');
