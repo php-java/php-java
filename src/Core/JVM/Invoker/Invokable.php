@@ -10,6 +10,7 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
+use PHPJava\Exceptions\UnableToFindAttributionException;
 use PHPJava\Exceptions\UndefinedMethodException;
 use PHPJava\Exceptions\UndefinedOpCodeException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
@@ -100,13 +101,14 @@ trait Invokable
             return $method(...$arguments);
         }
 
-        $codeAttribute = AttributionResolver::resolve(
-            $method->getAttributes(),
-            CodeAttribute::class
-        );
-
-        if ($codeAttribute === null) {
-            throw new IllegalJavaClassException('Java class does not having code attribution.');
+        try {
+            $codeAttribute = AttributionResolver::resolve(
+                $method->getAttributes(),
+                CodeAttribute::class
+            );
+        } catch (UnableToFindAttributionException $e) {
+            // No action.
+            return;
         }
 
         $handle = fopen(

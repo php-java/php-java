@@ -106,7 +106,6 @@ class JavaClassInvoker
             $this->options
         );
 
-        var_dump($methodName);
         if (isset($this->dynamicMethods[$methodName])) {
             $this->getDynamic()->getMethods()->call(
                 $methodName,

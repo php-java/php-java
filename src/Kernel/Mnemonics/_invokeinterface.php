@@ -28,12 +28,10 @@ final class _invokeinterface implements OperationInterface
             $collection[$i] = $this->popFromOperandStack();
         }
 
-        exit('BREAKPOINT');
-
         $objectref = $collection[0];
         $arguments = array_values(array_slice($collection, 1));
 
-        $result = $objectref(...$arguments);
+        $result = $objectref($name, ...$arguments);
 
         if ($signature[0] !== 'void') {
             $this->pushToOperandStack($result);
