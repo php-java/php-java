@@ -8,7 +8,14 @@ use PHPJava\Utilities\DebugTool;
 
 class FieldPool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
+    /**
+     * @var _FieldInfo[]
+     */
     private $entries = [];
+
+    /**
+     * @var ReaderInterface
+     */
     private $reader;
 
     public function __construct(
@@ -26,36 +33,59 @@ class FieldPool implements \ArrayAccess, \Countable, \IteratorAggregate
         }
     }
 
+    /**
+     * @return _FieldInfo[]
+     */
     public function getEntries()
     {
         return $this->entries;
     }
 
+    /**
+     * @param int $offset
+     * @return bool
+     */
     public function offsetExists($offset)
     {
         return isset($this->entries[$offset]);
     }
 
+    /**
+     * @param int $offset
+     * @return _FieldInfo
+     */
     public function offsetGet($offset)
     {
         return $this->entries[$offset];
     }
 
+    /**
+     * @return int
+     */
     public function count()
     {
         return count($this->entries);
     }
 
+    /**
+     * @throws ReadOnlyException
+     */
     public function offsetSet($offset, $value)
     {
         throw new ReadOnlyException('You cannot rewrite datum. The Field Pool is read-only.');
     }
 
+    /**
+     * @throws ReadOnlyException
+     */
     public function offsetUnset($offset)
     {
         throw new ReadOnlyException('You cannot rewrite datum. The Field Pool is read-only.');
     }
 
+    /**
+     * @return \ArrayIterator<_FieldInfo>
+     */
     public function getIterator()
     {
         return new \ArrayIterator($this->entries);

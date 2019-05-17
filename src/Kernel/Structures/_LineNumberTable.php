@@ -7,7 +7,14 @@ class _LineNumberTable implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $startPc;
+
+    /**
+     * @var int
+     */
     private $lineNumber;
 
     public function execute(): void
@@ -16,12 +23,12 @@ class _LineNumberTable implements StructureInterface
         $this->lineNumber = $this->readUnsignedShort();
     }
 
-    public function getStartPc()
+    public function getStartPc(): int
     {
         return $this->startPc;
     }
 
-    public function getLineNumber()
+    public function getLineNumber(): int
     {
         return $this->lineNumber;
     }

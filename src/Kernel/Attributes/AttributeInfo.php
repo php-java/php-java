@@ -12,10 +12,24 @@ final class AttributeInfo implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $attributeNameIndex;
+
+    /**
+     * @var int
+     */
     private $attributeLength;
+
+    /**
+     * @var AttributeInterface
+     */
     private $attributeData;
 
+    /**
+     * @throws ValidatorException
+     */
     public function execute(): void
     {
         $loadAttributes = GlobalOptions::get('load_attributes') ?? Runtime::LOAD_ATTRIBUTES;
@@ -49,17 +63,17 @@ final class AttributeInfo implements AttributeInterface
         }
     }
 
-    public function getAttributeData()
+    public function getAttributeData(): ?AttributeInterface
     {
         return $this->attributeData;
     }
 
-    public function getAttributeNameIndex()
+    public function getAttributeNameIndex(): int
     {
         return $this->attributeNameIndex;
     }
 
-    public function getAttributeLength()
+    public function getAttributeLength(): int
     {
         return $this->attributeLength;
     }

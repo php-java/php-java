@@ -7,9 +7,24 @@ class _Classes implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $innerClassInfoIndex = 0;
+
+    /**
+     * @var int
+     */
     private $outerClassInfoIndex = 0;
+
+    /**
+     * @var int
+     */
     private $innerNameIndex = 0;
+
+    /**
+     * @var int
+     */
     private $innerClassAccessFlag = 0;
 
     public function execute(): void
@@ -20,22 +35,22 @@ class _Classes implements StructureInterface
         $this->innerClassAccessFlag = $this->readUnsignedShort();
     }
 
-    public function getInnerClassInfoIndex()
+    public function getInnerClassInfoIndex(): int
     {
         return $this->innerClassInfoIndex;
     }
 
-    public function getOuterClassInfoIndex()
+    public function getOuterClassInfoIndex(): int
     {
         return $this->outerClassInfoIndex;
     }
 
-    public function getInnerNameIndex()
+    public function getInnerNameIndex(): int
     {
         return $this->innerNameIndex;
     }
 
-    public function getInnerClassAccessFlag()
+    public function getInnerClassAccessFlag(): int
     {
         return $this->innerClassAccessFlag;
     }

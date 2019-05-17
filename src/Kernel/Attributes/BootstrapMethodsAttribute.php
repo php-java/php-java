@@ -10,6 +10,9 @@ final class BootstrapMethodsAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var _BootstrapMethod[]
+     */
     private $bootstrapMethods = [];
 
     public function execute(): void
@@ -26,7 +29,10 @@ final class BootstrapMethodsAttribute implements AttributeInterface
         }
     }
 
-    public function getBootstrapMethods()
+    /**
+     * @return _BootstrapMethod[]
+     */
+    public function getBootstrapMethods(): array
     {
         return $this->bootstrapMethods;
     }

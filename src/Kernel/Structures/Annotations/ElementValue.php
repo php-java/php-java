@@ -9,10 +9,18 @@ final class ElementValue implements AnnotationInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var string
+     */
     private $tag;
+
+    /**
+     * @var int|int[]|(int|static[])[]|Annotation
+     */
     private $value;
 
     /**
+     * @throws RuntimeException
      * @see https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-4.html#jvms-4.7.16
      */
     public function execute(): void
@@ -60,7 +68,6 @@ final class ElementValue implements AnnotationInterface
                 break;
             default:
                 throw new RuntimeException('Invalid tag "' . $this->tag . '" in element_value structure.');
-                break;
         }
     }
 

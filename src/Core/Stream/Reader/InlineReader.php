@@ -5,8 +5,19 @@ use PHPJava\Core\JVM\Stream\BinaryReader;
 
 class InlineReader implements ReaderInterface
 {
+    /**
+     * @var string
+     */
     private $fileName;
+
+    /**
+     * @var resource
+     */
     private $handle;
+
+    /**
+     * @var BinaryReader
+     */
     private $binaryReader;
 
     public function __construct(string $fileName, string $code)

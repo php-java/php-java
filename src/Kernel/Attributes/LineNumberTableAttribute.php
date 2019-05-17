@@ -8,8 +8,15 @@ final class LineNumberTableAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $lineNumberTableLength;
-    private $lineNumberTables;
+
+    /**
+     * @var \PHPJava\Kernel\Structures\_LineNumberTable[]
+     */
+    private $lineNumberTables = [];
 
     public function execute(): void
     {
@@ -23,7 +30,10 @@ final class LineNumberTableAttribute implements AttributeInterface
         }
     }
 
-    public function getLineNumberTables()
+    /**
+     * @return \PHPJava\Kernel\Structures\_LineNumberTable[]
+     */
+    public function getLineNumberTables(): array
     {
         return $this->lineNumberTables;
     }

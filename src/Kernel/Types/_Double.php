@@ -1,5 +1,4 @@
 <?php
-
 namespace PHPJava\Kernel\Types;
 
 use Brick\Math\BigDecimal;
@@ -12,7 +11,7 @@ class _Double extends Type
     const MIN = '4.9E-324';
     const MAX = '1.7976931348623157E308';
 
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
         if (!is_numeric((string) abs($value))) {
             return false;

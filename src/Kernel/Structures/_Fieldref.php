@@ -7,7 +7,14 @@ class _Fieldref implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $classIndex;
+
+    /**
+     * @var int
+     */
     private $nameAndTypeIndex;
 
     public function execute(): void
@@ -16,12 +23,12 @@ class _Fieldref implements StructureInterface
         $this->nameAndTypeIndex = $this->readUnsignedShort();
     }
 
-    public function getClassIndex()
+    public function getClassIndex(): int
     {
         return $this->classIndex;
     }
 
-    public function getNameAndTypeIndex()
+    public function getNameAndTypeIndex(): int
     {
         return $this->nameAndTypeIndex;
     }

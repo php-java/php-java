@@ -1,5 +1,4 @@
 <?php
-
 namespace PHPJava\Kernel\Types;
 
 class _Short extends Type
@@ -10,7 +9,7 @@ class _Short extends Type
     const MIN = -32768;
     const MAX = 32767;
 
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
         return ctype_digit((string) abs($value)) &&
             $value >= static::MIN &&

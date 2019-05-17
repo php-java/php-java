@@ -10,7 +10,14 @@ final class InnerClassesAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $numberOfClasses = 0;
+
+    /**
+     * @var _Classes[]
+     */
     private $classes = [];
 
     public function execute(): void
@@ -25,6 +32,9 @@ final class InnerClassesAttribute implements AttributeInterface
         }
     }
 
+    /**
+     * @return _Classes[]
+     */
     public function getClasses(): array
     {
         return $this->classes;

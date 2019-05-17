@@ -3,6 +3,9 @@ namespace PHPJava\Core\JVM\Parameters;
 
 final class GlobalOptions
 {
+    /**
+     * @var array
+     */
     private static $settings = [];
 
     public static function set($values)

@@ -19,13 +19,44 @@ class JavaArchive
         'META-INF/main.kotlin_module',
     ];
 
+    /**
+     * @var ?string[]
+     */
     private $manifestData = [];
+
+    /**
+     * @var string
+     */
     private $jarFile;
+
+    /**
+     * @var \ZipArchive
+     */
     private $expandedHArchive;
+
+    /**
+     * @var string[]
+     */
     private $files = [];
+
+    /**
+     * @var JavaClassInterface
+     */
     private $classes = [];
+
+    /**
+     * @var array
+     */
     private $options = [];
+
+    /**
+     * @var DebugTool
+     */
     private $debugTool;
+
+    /**
+     * @var float
+     */
     private $startTime = 0.0;
 
     /**
@@ -142,7 +173,6 @@ class JavaArchive
     }
 
     /**
-     * @param mixed ...$arguments
      * @throws ClassNotFoundException
      * @throws UndefinedEntrypointException
      */
@@ -163,6 +193,9 @@ class JavaArchive
             );
     }
 
+    /**
+     * @return mixed[]
+     */
     public function __debugInfo()
     {
         return [
@@ -190,6 +223,9 @@ class JavaArchive
         return $this->manifestData['main-class'] ?? null;
     }
 
+    /**
+     * @return string[]
+     */
     public function getClassPaths(): array
     {
         $classPaths = [];
@@ -202,6 +238,9 @@ class JavaArchive
         return $classPaths;
     }
 
+    /**
+     * @return JavaClassInterface[]
+     */
     public function getClasses(): array
     {
         return $this->classes;

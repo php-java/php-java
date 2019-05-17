@@ -8,7 +8,14 @@ class StaticField implements FieldInterface
     use FieldGettable;
     use FieldSettable;
 
+    /**
+     * @var JavaClassInvoker
+     */
     private $javaClassInvoker;
+
+    /**
+     * @var mixed[]
+     */
     private $fields = [];
 
     public function __construct(JavaClassInvoker $javaClassInvoker, array $fields)

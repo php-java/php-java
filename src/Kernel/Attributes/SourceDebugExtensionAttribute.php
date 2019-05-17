@@ -8,6 +8,9 @@ final class SourceDebugExtensionAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var string
+     */
     private $debugExtension;
 
     public function execute(): void

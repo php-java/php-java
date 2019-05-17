@@ -9,11 +9,6 @@ trait _Object
 {
     private $parameters = [];
 
-    /**
-     * _Object constructor.
-     * @param $methodName
-     * @param mixed ...$parameters
-     */
     public function __construct(?string $methodName = null, ...$parameters)
     {
         if ($methodName !== null && $methodName !== '<init>') {
@@ -33,11 +28,9 @@ trait _Object
     }
 
     /**
-     * @param $name
-     * @param $arguments
      * @throws NoSuchMethodException
      */
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         $defaultName = '__default_' . $name;
         if (method_exists($this, $defaultName)) {
@@ -51,11 +44,7 @@ trait _Object
         throw new CloneNotSupportedException();
     }
 
-    /**
-     * @param null $a
-     * @return bool
-     */
-    public function __default_equals($a = null)
+    public function __default_equals($a = null): bool
     {
         return $this === $a;
     }

@@ -7,7 +7,14 @@ class _MethodHandle implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $referenceKind = 0;
+
+    /**
+     * @var int
+     */
     private $referenceIndex = 0;
 
     public function execute(): void

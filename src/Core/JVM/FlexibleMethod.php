@@ -3,12 +3,12 @@ namespace PHPJava\Core\JVM;
 
 class FlexibleMethod
 {
+    private $object;
+
     /**
-     * @var \ReflectionMethod $method
+     * @var \ReflectionMethod
      */
     private $method;
-
-    private $object;
 
     public function __construct($object, \ReflectionMethod $method)
     {

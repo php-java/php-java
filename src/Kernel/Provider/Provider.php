@@ -7,12 +7,18 @@ class Provider implements ProviderInterface
 {
     private $entries = [];
 
+    /**
+     * @return static
+     */
     public function add($key, $value)
     {
         $this->entries[$key] = $value;
         return $this;
     }
 
+    /**
+     * @throws ProviderException
+     */
     public function get($key, ...$arguments)
     {
         if (!isset($this->entries[$key])) {

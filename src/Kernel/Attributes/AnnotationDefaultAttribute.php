@@ -10,6 +10,9 @@ final class AnnotationDefaultAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var ElementValue
+     */
     private $elementValue;
 
     public function execute(): void
