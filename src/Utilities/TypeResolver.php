@@ -2,6 +2,8 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
+use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
@@ -253,14 +255,14 @@ class TypeResolver
      * @throws TypeException
      * @throws \ReflectionException
      */
-    public static function compare(string $a, string $b): bool
+    public static function compare(JavaClassInvoker $javaClassInvoker, string $a, string $b): bool
     {
         if ($a === $b) {
             return true;
         }
 
-        $a = static::getExtendedClasses($a);
-        $b = static::getExtendedClasses($b);
+        $a = static::getExtendedClasses($javaClassInvoker, $a);
+        $b = static::getExtendedClasses($javaClassInvoker, $b);
 
         $resultClassesComparison = [];
         $resultInterfacesComparison = [];
@@ -286,7 +288,7 @@ class TypeResolver
      * @throws TypeException
      * @throws \ReflectionException
      */
-    public static function getExtendedClasses(string $class): array
+    public static function getExtendedClasses(JavaClassInvoker $javaClassInvoker, string $class): array
     {
         static $loadedExtendedRoots = [];
         $result = [];
@@ -297,6 +299,7 @@ class TypeResolver
                 continue;
             }
             $path = [];
+
             foreach (explode('.', $signature['class_name']) as $name) {
                 $path[] = Runtime::PHP_PACKAGES_MAPS[$name] ?? $name;
             }
@@ -314,10 +317,12 @@ class TypeResolver
                 continue;
             }
 
-            $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
-            $interfaces = array_values(class_implements($classPath, true));
-
+            $extendedClasses = [];
+            $interfaces = [];
             if (class_exists($classPath)) {
+                $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
+                $interfaces = array_values(class_implements($classPath, true));
+
                 $reflectionClass = new \ReflectionClass($classPath);
                 if ($document = $reflectionClass->getDocComment()) {
                     $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
@@ -338,6 +343,43 @@ class TypeResolver
                         );
                     }
                 }
+            } else {
+                // in package
+                $packagedClasses = [];
+                $packagedClasses[] = $currentClass = $signature['class_name'];
+                $packagedInterfaces = [];
+
+                $beforeClass = null;
+                for (;;) {
+                    if ($beforeClass === $currentClass) {
+                        // Stop loop if beforeClass and currentClass is same class.
+                        break;
+                    }
+                    /**
+                     * @var JavaClassInterface $classObject
+                     */
+                    [$resourceType, $classObject] = $javaClassInvoker
+                        ->getJavaClass()
+                        ->getOptions('class_resolver')
+                        ->resolve(
+                            $currentClass,
+                            $javaClassInvoker->getJavaClass()
+                        );
+
+                    $superClass = $classObject->getSuperClass();
+                    if ($superClass instanceof JavaClassInterface) {
+                        $beforeClass = $currentClass;
+                        $currentClass = $superClass;
+                    } else {
+                        [$extendedClasses, $interfaces] = static::getRecursiveRootsClassesByClassPath(
+                            get_class($superClass)
+                        );
+                        break;
+                    }
+                }
+
+                $extendedClasses = array_merge($extendedClasses, $packagedClasses);
+                $interfaces = array_merge($interfaces, $packagedInterfaces);
             }
 
             $result[] = $loadedExtendedRoots[$classPath] = [$extendedClasses, $interfaces];
@@ -348,6 +390,35 @@ class TypeResolver
         });
 
         return $result;
+    }
+
+    public static function getRecursiveRootsClassesByClassPath(string $classPath)
+    {
+        $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
+        $interfaces = array_values(class_implements($classPath, true));
+
+        $reflectionClass = new \ReflectionClass($classPath);
+        if ($document = $reflectionClass->getDocComment()) {
+            $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                ->create($document);
+            if (!empty($documentBlock->getTagsByName('highPriority'))) {
+                $extendedClasses = array_map(
+                    function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                        return (string) $item->getDescription();
+                    },
+                    $documentBlock->getTagsByName('parent')
+                );
+
+                $interfaces = array_map(
+                    function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                        return (string) $item->getDescription();
+                    },
+                    $documentBlock->getTagsByName('interface')
+                );
+            }
+        }
+
+        return [$extendedClasses, $interfaces];
     }
 
     /**

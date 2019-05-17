@@ -26,6 +26,8 @@ class ClassResolver
     private $resolvedPaths = [];
     private $options = [];
 
+    private static $loadedClasses = [];
+
     public function __construct(array $options)
     {
         $this->options = $options;

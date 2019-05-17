@@ -13,9 +13,12 @@ class BinaryReader
         $this->handle = $handle;
     }
 
-    final public function read(int $bytes = 1)
+    final public function read(int $bytes = 1): string
     {
         $this->offset += $bytes;
+        if ($bytes === 0) {
+            return '';
+        }
         $read = fread($this->handle, $bytes);
         if (strlen($read) !== $bytes) {
             throw new BinaryReaderException(
@@ -27,44 +30,44 @@ class BinaryReader
         return $read;
     }
 
-    public function readByte()
+    public function readByte(): int
     {
         return current(unpack('c', $this->read(1)));
     }
 
-    public function readUnsignedByte()
+    public function readUnsignedByte(): int
     {
         return current(unpack('C', $this->read(1)));
     }
 
-    public function readUnsignedInt()
+    public function readUnsignedInt(): int
     {
         return current(unpack('N', $this->read(4)));
     }
 
-    public function readUnsignedShort()
+    public function readUnsignedShort(): int
     {
         return current(unpack('n', $this->read(2)));
     }
 
-    public function readInt()
+    public function readInt(): int
     {
         $bytes = array_values(unpack('c4', $this->read(4)));
         return ($bytes[0] << 24) | ($bytes[1] << 16) | ($bytes[2] << 8) | $bytes[3];
     }
 
-    public function readShort()
+    public function readShort(): int
     {
         $short = $this->readUnsignedShort();
         return (($short & 0x8000) > 0) ? ($short - 0xFFFF - 1) : $short;
     }
 
-    public function readUnsignedLong()
+    public function readUnsignedLong(): int
     {
         return current(unpack('J', $this->read(8)));
     }
 
-    public function readLong()
+    public function readLong(): int
     {
         return hexdec(bin2hex($this->read(8)));
     }
@@ -73,12 +76,14 @@ class BinaryReader
     {
         $this->offset += $bytes;
         fseek($this->handle, $bytes, SEEK_CUR);
+        return $this;
     }
 
     public function setOffset($pointer)
     {
         $this->offset = $pointer;
         fseek($this->handle, $pointer, SEEK_SET);
+        return $this;
     }
 
     public function getOffset()

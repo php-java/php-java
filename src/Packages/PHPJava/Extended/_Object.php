@@ -7,14 +7,20 @@ use PHPJava\Packages\PHPJava\Kernel\Behavior\System;
 
 trait _Object
 {
-    private $parameters;
+    private $parameters = [];
 
     /**
      * _Object constructor.
+     * @param $methodName
      * @param mixed ...$parameters
      */
-    public function __construct(...$parameters)
+    public function __construct(?string $methodName = null, ...$parameters)
     {
+        if ($methodName !== null && $methodName !== '<init>') {
+            // Another construction method.
+            $this->{$methodName}(...$parameters);
+            return;
+        }
         $this->parameters = $parameters;
     }
 

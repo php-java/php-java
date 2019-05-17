@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
@@ -46,7 +46,7 @@ final class _invokevirtual implements OperationInterface
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
         try {
-            if ($invokerClass instanceof JavaClass) {
+            if ($invokerClass instanceof JavaClassInterface) {
                 $result = $invokerClass
                     ->getInvoker()
                     ->getDynamic()

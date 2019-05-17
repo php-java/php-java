@@ -36,6 +36,7 @@ trait Invokable
     private $methods = [];
     private $options = [];
     private $debugTool;
+    private $isInstantiatedStaticInitializer = false;
 
     public function __construct(JavaClassInvoker $javaClassInvoker, array $methods, array $options = [])
     {
@@ -58,6 +59,8 @@ trait Invokable
      */
     public function call(string $name, ...$arguments)
     {
+        $this->callStaticInitializerIfNotInstantiated();
+
         $operationCache = new OperationCache();
         $this->debugTool->getLogger()->debug('Call method: ' . $name);
 
@@ -373,7 +376,7 @@ trait Invokable
             $this->debugTool->getLogger()->debug('Find descriptor for ' . $methodSignature);
 
             if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
-                if (TypeResolver::compare($methodSignature, $convertedPassedArguments)) {
+                if (TypeResolver::compare($this->javaClassInvoker, $methodSignature, $convertedPassedArguments)) {
                     return $methodReference;
                 }
             }
@@ -405,5 +408,23 @@ trait Invokable
                 $arguments
             )
         );
+    }
+
+    private function callStaticInitializerIfNotInstantiated()
+    {
+        if ($this->isInstantiatedStaticInitializer) {
+            return $this;
+        }
+
+        $this->isInstantiatedStaticInitializer = true;
+        if ($this->javaClassInvoker->getStatic()->getMethods()->has('<clinit>')) {
+            $this->javaClassInvoker
+                ->getStatic()
+                ->getMethods()
+                ->call(
+                    '<clinit>'
+                );
+        }
+        return $this;
     }
 }

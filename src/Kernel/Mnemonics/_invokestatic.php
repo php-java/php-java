@@ -24,7 +24,10 @@ final class _invokestatic implements OperationInterface
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
 
         [$resourceType, $classObject] = $this->getOptions('class_resolver')
-            ->resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
+            ->resolve(
+                $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString(),
+                $this->javaClass
+            );
 
         $arguments = [];
         if (($length = $signature['arguments_count'] - 1) >= 0) {

@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
+use PHPJava\Utilities\ClassHandler;
+
 class _Utf8 implements StructureInterface, FreezableInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
@@ -23,7 +25,10 @@ class _Utf8 implements StructureInterface, FreezableInterface
         for ($i = 0; $i < $this->length; $i++) {
             $this->string .= chr($this->readUnsignedByte());
         }
-        $this->stringObject = new \PHPJava\Packages\java\lang\_String($this);
+        $this->stringObject = ClassHandler::call(
+            \PHPJava\Packages\java\lang\_String::class,
+            $this
+        );
     }
 
     public function getLength(): int

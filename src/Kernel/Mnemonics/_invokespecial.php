@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Internal\InstanceDeferredLoader;
@@ -35,6 +36,10 @@ final class _invokespecial implements OperationInterface
          * @var InstanceDeferredLoader $objectref
          */
         $objectref = $this->popFromOperandStack();
+
+        /**
+         * @var JavaClassInterface $newObject
+         */
         $newObject = null;
         try {
             $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
@@ -47,18 +52,21 @@ final class _invokespecial implements OperationInterface
                 // NOTE: This implementation is a ** first aid **.
                 [$resourceType, $classObject] = $objectref
                     ->getOptions('class_resolver')
-                    ->resolve($className);
+                    ->resolve(
+                        $className,
+                        $this->javaClass
+                    );
 
                 switch ($resourceType) {
                     case ClassResolver::RESOLVED_TYPE_PACKAGES:
-                        $newObject = new $classObject(...$arguments);
+                        $newObject = new $classObject($methodName, ...$arguments);
                         break;
                     case ClassResolver::RESOLVED_TYPE_CLASS:
-                        $newObject = $classObject(...$arguments);
+                        $newObject = $classObject($methodName, ...$arguments);
                         break;
                 }
             } else {
-                $newObject = $objectref->instantiate(...$arguments);
+                $newObject = $objectref->instantiate($methodName, ...$arguments);
             }
 
             // NOTE: PHP has a problem which a reference object cannot replace to an object.

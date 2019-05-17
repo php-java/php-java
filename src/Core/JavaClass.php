@@ -147,8 +147,8 @@ class JavaClass implements JavaClassInterface
 
         // read super class
         $this->superClassIndex = $reader->getBinaryReader()->readUnsignedShort();
-
         $cpInfo = $this->getConstantPool();
+
         [$resolvedType, $superClass] = $this->options['class_resolver']->resolve(
             $cpInfo[$cpInfo[$this->superClassIndex]->getClassIndex()]->getString(),
             $this
@@ -229,22 +229,16 @@ class JavaClass implements JavaClassInterface
             $this,
             $options
         );
-
-        if ($this->invoker->getStatic()->getMethods()->has('<clinit>')) {
-            $this->invoker
-                ->getStatic()
-                ->getMethods()
-                ->call(
-                    '<clinit>'
-                );
-        }
     }
 
-    public function __invoke(...$arguments): JavaClass
+    public function __invoke($methodName, ...$arguments): JavaClass
     {
         return $this
             ->getInvoker()
-            ->construct(...$arguments)
+            ->construct(
+                $methodName,
+                ...$arguments
+            )
             ->getJavaClass();
     }
 
