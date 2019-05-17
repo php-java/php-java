@@ -25,7 +25,7 @@ class _Utf8 implements StructureInterface, FreezableInterface
         for ($i = 0; $i < $this->length; $i++) {
             $this->string .= chr($this->readUnsignedByte());
         }
-        $this->stringObject = ClassHandler::call(
+        $this->stringObject = ClassHandler::initialize(
             \PHPJava\Packages\java\lang\_String::class,
             $this
         );
