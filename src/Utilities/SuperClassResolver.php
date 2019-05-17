@@ -7,7 +7,7 @@ use PHPJava\Core\JVM\FlexibleMethod;
 class SuperClassResolver
 {
     /**
-     * PHPJava\Kernel\Structures\_MethodInfo[].
+     * @var PHPJava\Kernel\Structures\_MethodInfo[]
      */
     private $classes = [];
 

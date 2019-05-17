@@ -28,7 +28,7 @@ class ClassResolver
     private $resolves = [];
 
     /**
-     * (string|JavaClass)[][].
+     * @var (string|JavaClass)[][]
      */
     private $resolvedPaths = [];
 
