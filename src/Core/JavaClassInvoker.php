@@ -8,6 +8,7 @@ use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Provider\ProviderInterface;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Utilities\ClassHandler;
 
 class JavaClassInvoker
 {
@@ -98,7 +99,7 @@ class JavaClassInvoker
      * @param mixed ...$arguments
      * @return JavaClassInvoker
      */
-    public function construct($methodName, ...$arguments): self
+    public function construct(?string $methodName = null, ...$arguments): self
     {
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
@@ -108,7 +109,7 @@ class JavaClassInvoker
 
         if (isset($this->dynamicMethods[$methodName])) {
             $this->getDynamic()->getMethods()->call(
-                $methodName,
+                $methodName ?? ClassHandler::DEFAULT_INITIALIZER,
                 ...$arguments
             );
         }
