@@ -1,5 +1,4 @@
 <?php
-
 namespace PHPJava\Kernel\Types;
 
 class _Byte extends Type
@@ -10,7 +9,7 @@ class _Byte extends Type
     const MIN = -128;
     const MAX = 127;
 
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
         if (!ctype_digit((string) abs($value))) {
             return false;

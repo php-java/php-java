@@ -5,14 +5,27 @@ use PHPJava\Exceptions\BinaryReaderException;
 
 class BinaryReader
 {
+    /**
+     * @var resource
+     */
     private $handle;
+
+    /**
+     * @var int
+     */
     private $offset = 0;
 
+    /**
+     * @param resource $handle
+     */
     public function __construct($handle)
     {
         $this->handle = $handle;
     }
 
+    /**
+     * @throws BinaryReaderException
+     */
     final public function read(int $bytes = 1): string
     {
         $this->offset += $bytes;
@@ -72,21 +85,21 @@ class BinaryReader
         return hexdec(bin2hex($this->read(8)));
     }
 
-    public function seek($bytes)
+    public function seek(int $bytes): void
     {
         $this->offset += $bytes;
         fseek($this->handle, $bytes, SEEK_CUR);
         return $this;
     }
 
-    public function setOffset($pointer)
+    public function setOffset(int $pointer): void
     {
         $this->offset = $pointer;
         fseek($this->handle, $pointer, SEEK_SET);
         return $this;
     }
 
-    public function getOffset()
+    public function getOffset(): int
     {
         return $this->offset;
     }

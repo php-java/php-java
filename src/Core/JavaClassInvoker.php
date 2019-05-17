@@ -17,15 +17,25 @@ class JavaClassInvoker
      */
     private $javaClass;
 
-    private $hiddenMethods = [];
+    /**
+     * @var _MethodInfo
+     */
     private $dynamicMethods = [];
+
+    /**
+     * @var _MethodInfo
+     */
     private $staticMethods = [];
 
-    private $hiddenFields = [];
+    /**
+     * @var _FieldInfo
+     */
     private $dynamicFields = [];
-    private $staticFields = [];
 
-    private $debugTraces;
+    /**
+     * @var _FieldInfo
+     */
+    private $staticFields = [];
 
     /**
      * @var DynamicAccessor
@@ -37,15 +47,21 @@ class JavaClassInvoker
      */
     private $staticAccessor;
 
+    /**
+     * @var string[][]
+     */
     private $specialInvoked = [];
 
+    /**
+     * @var array
+     */
     private $options = [];
 
+    /**
+     * @var ProviderInterface[]
+     */
     private $providers = [];
 
-    /**
-     * JavaClassInvoker constructor.
-     */
     public function __construct(
         JavaClass $javaClass,
         array $options
@@ -56,9 +72,6 @@ class JavaClassInvoker
         $cpInfo = $javaClass->getConstantPool();
 
         foreach ($javaClass->getDefinedMethods() as $methodInfo) {
-            /**
-             * @var _MethodInfo $methodInfo
-             */
             $methodName = $cpInfo[$methodInfo->getNameIndex()]->getString();
 
             if (($methodInfo->getAccessFlag() & FieldAccessFlag::ACC_STATIC) !== 0) {
@@ -69,9 +82,6 @@ class JavaClassInvoker
         }
 
         foreach ($javaClass->getDefinedFields() as $fieldInfo) {
-            /**
-             * @var _FieldInfo $fieldInfo
-             */
             $fieldName = $cpInfo[$fieldInfo->getNameIndex()]->getString();
 
             if ($fieldInfo->getAccessFlag() === 0) {
@@ -94,11 +104,6 @@ class JavaClassInvoker
         );
     }
 
-    /**
-     * @param $methodName
-     * @param mixed ...$arguments
-     * @return JavaClassInvoker
-     */
     public function construct(?string $methodName = null, ...$arguments): self
     {
         $this->dynamicAccessor = new DynamicAccessor(
@@ -137,9 +142,6 @@ class JavaClassInvoker
         return in_array($signature, $this->specialInvoked[$name] ?? [], true);
     }
 
-    /**
-     * @return JavaClassInvoker
-     */
     public function addToSpecialInvokedList(string $name, string $signature): self
     {
         $this->specialInvoked[$name][] = $signature;
@@ -147,10 +149,9 @@ class JavaClassInvoker
     }
 
     /**
-     * @param $providerName
      * @throws IllegalJavaClassException
      */
-    public function getProvider($providerName): ProviderInterface
+    public function getProvider(string $providerName): ProviderInterface
     {
         if (!isset($this->providers[$providerName])) {
             throw new IllegalJavaClassException($providerName . ' not provided.');

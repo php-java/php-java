@@ -6,10 +6,17 @@ use PHPJava\Core\JVM\FlexibleMethod;
 
 class SuperClassResolver
 {
+    /**
+     * @var PHPJava\Kernel\Structures\_MethodInfo[]
+     */
     private $classes = [];
+
+    /**
+     * @var \PHPJava\Core\JVM\ConstantPool
+     */
     private $constantPool;
 
-    public function resolveMethod($methodName, JavaClassInterface $class)
+    public function resolveMethod(string $methodName, JavaClassInterface $class)
     {
         $cpInfo = $class->getConstantPool();
         if ($class->getSuperClass() instanceof JavaClassInterface) {

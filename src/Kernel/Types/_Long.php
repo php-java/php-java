@@ -1,5 +1,4 @@
 <?php
-
 namespace PHPJava\Kernel\Types;
 
 class _Long extends Type
@@ -10,7 +9,7 @@ class _Long extends Type
     const MIN = -9223372036854775808;
     const MAX = 9223372036854775807;
 
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
         if (!ctype_digit((string) abs($value))) {
             return false;

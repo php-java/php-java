@@ -14,6 +14,9 @@ class Map
         return null;
     }
 
+    /**
+     * @return string[]
+     */
     public function getValues(): array
     {
         try {

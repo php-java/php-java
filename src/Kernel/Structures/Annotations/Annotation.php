@@ -7,8 +7,19 @@ final class Annotation implements AnnotationInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $typeIndex = 0;
+
+    /**
+     * @var int
+     */
     private $numElementValuePairs = 0;
+
+    /**
+     * @var (int|null)[][]
+     */
     private $elementValuePairs = [];
 
     public function execute(): void

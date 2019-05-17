@@ -8,6 +8,9 @@ final class SourceFileAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $sourceFileIndex;
 
     public function execute(): void
@@ -15,7 +18,7 @@ final class SourceFileAttribute implements AttributeInterface
         $this->sourceFileIndex = $this->readUnsignedShort();
     }
 
-    public function getSourceFileIndex()
+    public function getSourceFileIndex(): int
     {
         return $this->sourceFileIndex;
     }

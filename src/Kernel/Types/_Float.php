@@ -1,5 +1,4 @@
 <?php
-
 namespace PHPJava\Kernel\Types;
 
 class _Float extends Type
@@ -10,7 +9,7 @@ class _Float extends Type
     const MIN = 1.4E-45;
     const MAX = 3.4028235E38;
 
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
         $value = (string) abs($value);
         if (!is_numeric($value)) {

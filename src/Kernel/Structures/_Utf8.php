@@ -9,9 +9,24 @@ class _Utf8 implements StructureInterface, FreezableInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $length = 0;
+
+    /**
+     * @var string
+     */
     private $string = '';
-    private $isWritable;
+
+    /**
+     * @var bool
+     */
+    private $isWritable = false;
+
+    /**
+     * @var bool
+     */
     private $isFrozen = false;
 
     /**

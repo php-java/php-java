@@ -7,6 +7,9 @@ class _StackMapFrame implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $frameType;
 
     /**

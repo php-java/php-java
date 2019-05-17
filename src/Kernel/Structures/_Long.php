@@ -7,6 +7,9 @@ class _Long implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $bytes = 0;
 
     public function execute(): void
@@ -14,7 +17,7 @@ class _Long implements StructureInterface
         $this->bytes = $this->readLong();
     }
 
-    public function getBytes()
+    public function getBytes(): int
     {
         return $this->bytes;
     }

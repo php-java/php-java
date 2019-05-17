@@ -8,14 +8,49 @@ final class CodeAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $maxStack;
+
+    /**
+     * @var int
+     */
     private $maxLocals;
+
+    /**
+     * @var int
+     */
     private $codeLength;
+
+    /**
+     * @var string
+     */
     private $rawCode = '';
+
+    /**
+     * @var int[]
+     */
     private $code = [];
+
+    /**
+     * @var int
+     */
     private $exceptionTableLength;
+
+    /**
+     * @var \PHPJava\Kernel\Structures\_ExceptionTable[]
+     */
     private $exceptionTables = [];
+
+    /**
+     * @var \PHPJava\Kernel\Attributes\AttributeInfo[]
+     */
     private $attributeInfo = [];
+
+    /**
+     * @var int
+     */
     private $attributeCount = 0;
 
     public function execute(): void
@@ -51,22 +86,25 @@ final class CodeAttribute implements AttributeInterface
         }
     }
 
-    public function getExceptionTables()
+    /**
+     * @return \PHPJava\Kernel\Structures\_ExceptionTable[]
+     */
+    public function getExceptionTables(): array
     {
         return $this->exceptionTables;
     }
 
-    public function getCode()
+    public function getCode(): string
     {
         return $this->rawCode;
     }
 
-    public function getOpCodes()
+    public function getOpCodes(): int
     {
         return $this->code;
     }
 
-    public function getOpCodeLength()
+    public function getOpCodeLength(): int
     {
         return (int) $this->codeLength;
     }

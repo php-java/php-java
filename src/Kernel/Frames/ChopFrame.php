@@ -6,7 +6,14 @@ class ChopFrame implements FrameInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    /**
+     * @var int
+     */
     private $frameType;
+
+    /**
+     * @var int
+     */
     private $offsetDelta;
 
     public function execute(): void

@@ -9,7 +9,14 @@ class _ParameterAnnotation implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $numAnnotations = 0;
+
+    /**
+     * @var Annotation[]
+     */
     private $annotations = [];
 
     public function execute(): void

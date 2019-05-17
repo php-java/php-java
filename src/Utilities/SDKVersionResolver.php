@@ -5,7 +5,10 @@ use PHPJava\Exceptions\UnknownVersionException;
 
 class SDKVersionResolver
 {
-    public static function resolve($version)
+    /**
+     * @throws UnknownVersionException
+     */
+    public static function resolve(string $version): string
     {
         if (version_compare($version, '45.0', '>=') &&
             version_compare($version, '45.3', '<=')
@@ -56,6 +59,6 @@ class SDKVersionResolver
         if (version_compare($version, '55.0', '<=')) {
             return '11';
         }
-        throw new UnknownVersionException('Does not supported JDK version ' . $version);
+        throw new UnknownVersionException('Unsupported JDK version ' . $version);
     }
 }

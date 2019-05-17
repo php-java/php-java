@@ -3,12 +3,26 @@ namespace PHPJava\Kernel\Types;
 
 use PHPJava\Exceptions\TypeException;
 
-class Type
+abstract class Type
 {
+    /**
+     * @var null|self
+     */
     protected $value;
+
+    /**
+     * @var string
+     */
     protected $nameInJava;
+
+    /**
+     * @var string
+     */
     protected $nameInPHP;
 
+    /**
+     * @throws TypeException
+     */
     public function __construct($value)
     {
         if (!($value instanceof self) &&
@@ -35,11 +49,9 @@ class Type
     }
 
     /**
-     * @param $value
      * @throws TypeException
-     * @return Type
      */
-    public static function get($value)
+    public static function get($value): self
     {
         static $instantiated = null;
         if (is_object($value)) {
@@ -58,22 +70,22 @@ class Type
         return $this->value;
     }
 
-    public function getTypeNameInJava()
+    public function getTypeNameInJava(): string
     {
         return $this->nameInJava;
     }
 
-    public function getTypeNameInPHP()
+    public function getTypeNameInPHP(): string
     {
         return $this->nameInPHP;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->getValue();
     }
 
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
         throw new TypeException('Not implemented type validation.');
     }

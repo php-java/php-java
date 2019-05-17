@@ -10,7 +10,14 @@ final class RuntimeInvisibleAnnotationsAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $numAnnotations = 0;
+
+    /**
+     * @var Annotation[]
+     */
     private $annotations = [];
 
     public function execute(): void

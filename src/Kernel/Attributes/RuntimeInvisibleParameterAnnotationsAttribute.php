@@ -10,7 +10,14 @@ final class RuntimeInvisibleParameterAnnotationsAttribute implements AttributeIn
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $numParameters;
+
+    /**
+     * @var _ParameterAnnotation[]
+     */
     private $annotations = [];
 
     public function execute(): void

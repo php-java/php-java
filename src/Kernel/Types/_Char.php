@@ -1,5 +1,4 @@
 <?php
-
 namespace PHPJava\Kernel\Types;
 
 class _Char extends Type
@@ -10,7 +9,7 @@ class _Char extends Type
     const MIN = 0;
     const MAX = 65535;
 
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
         if (ctype_alpha($value) && strlen($value) === 1) {
             $value = ord($value);
