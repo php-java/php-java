@@ -32,11 +32,29 @@ use PHPJava\Utilities\TypeResolver;
 
 trait Invokable
 {
+    /**
+     * @var JavaClassInvoker
+     */
     private $javaClassInvoker;
+
+    /**
+     * @var _MethodInfo[]
+     */
     private $methods = [];
+
+    /**
+     * @var array
+     */
     private $options = [];
+
+    /**
+     * @var DebugTool
+     */
     private $debugTool;
 
+    /**
+     * @param _MethodInfo[] $methods
+     */
     public function __construct(JavaClassInvoker $javaClassInvoker, array $methods, array $options = [])
     {
         $this->javaClassInvoker = $javaClassInvoker;
@@ -103,7 +121,7 @@ trait Invokable
         );
 
         if ($codeAttribute === null) {
-            throw new IllegalJavaClassException('Java class does not having code attribution.');
+            throw new IllegalJavaClassException('Java class does not have code attribute.');
         }
 
         $handle = fopen(
@@ -158,7 +176,7 @@ trait Invokable
         foreach ($arguments as $argument) {
             $localStorage[] = $argument;
             if ($argument instanceof _Double || $argument instanceof _Long) {
-                // Double and Long has problem which skipping next storage.
+                // Double and Long have a problem of skipping the next storage.
                 $localStorage[] = null;
             }
         }
@@ -310,6 +328,9 @@ trait Invokable
         return null;
     }
 
+    /**
+     * @return _MethodInfo[]
+     */
     public function getList(): array
     {
         return $this->methods;
@@ -321,8 +342,6 @@ trait Invokable
     }
 
     /**
-     * @param $name
-     * @param mixed ...$arguments
      * @throws NoSuchMethodException
      * @throws UndefinedMethodException
      * @throws \PHPJava\Exceptions\TypeException
@@ -392,9 +411,6 @@ trait Invokable
         throw new NoSuchMethodException('Call to undefined method ' . $name . '.');
     }
 
-    /**
-     * @param mixed ...$arguments
-     */
     private function stringifyArguments(...$arguments): string
     {
         return Formatter::buildArgumentsSignature(

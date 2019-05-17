@@ -7,7 +7,6 @@ use PHPJava\Packages\java\lang\NoSuchFieldException;
 trait FieldGettable
 {
     /**
-     * @param $name
      * @throws NoSuchFieldException
      */
     public function get(string $name)

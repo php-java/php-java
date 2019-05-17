@@ -23,6 +23,9 @@ class JavaClass implements JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    /**
+     * @var int[]
+     */
     private $versions = [
         'minor' => null,
         'major' => null,
@@ -53,8 +56,19 @@ class JavaClass implements JavaClassInterface
      */
     private $attributePool;
 
+    /**
+     * @var int
+     */
     private $accessFlag = 0;
+
+    /**
+     * @var int
+     */
     private $thisClass = 0;
+
+    /**
+     * @var int
+     */
     private $superClassIndex = 0;
 
     /**
@@ -62,6 +76,9 @@ class JavaClass implements JavaClassInterface
      */
     private $className;
 
+    /**
+     * @var mixed[]
+     */
     private $debugTraces = [];
 
     /**
@@ -69,16 +86,34 @@ class JavaClass implements JavaClassInterface
      */
     private $invoker;
 
+    /**
+     * @var PHPJava\Kernel\Structures\_Classes[]
+     */
     private $innerClasses = [];
 
+    /**
+     * @var JavaClass
+     */
     private $parentClass;
 
+    /**
+     * @var mixed
+     */
     private $superClass;
 
+    /**
+     * @var array
+     */
     private $options = [];
 
+    /**
+     * @var DebugTool
+     */
     private $debugTool;
 
+    /**
+     * @var float
+     */
     private $startTime = 0.0;
 
     /**
@@ -282,16 +317,25 @@ class JavaClass implements JavaClassInterface
         return str_replace('/', '.', $className);
     }
 
+    /**
+     * @return PHPJava\Kernel\Structures\_Classes[]
+     */
     public function getInnerClasses(): array
     {
         return $this->innerClasses;
     }
 
+    /**
+     * @return PHPJava\Core\JVM\_FieldInfo[]
+     */
     public function getDefinedFields(): array
     {
         return $this->fieldPool->getEntries();
     }
 
+    /**
+     * @return PHPJava\Core\JVM\_MethodInfo[]
+     */
     public function getDefinedMethods(): array
     {
         return $this->methodPool->getEntries();
@@ -302,7 +346,7 @@ class JavaClass implements JavaClassInterface
         return $this->invoker;
     }
 
-    public function appendDebug($log)
+    public function appendDebug($log): self
     {
         $this->debugTraces[] = $log;
         return $this;
@@ -329,6 +373,9 @@ class JavaClass implements JavaClassInterface
         return $this->superClass;
     }
 
+    /**
+     * @return PHPJava\Core\JVM\_AttributeInfo[]
+     */
     public function getAttributes(): array
     {
         return $this->attributePool->getEntries();

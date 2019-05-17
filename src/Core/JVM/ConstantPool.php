@@ -25,7 +25,14 @@ use PHPJava\Kernel\Structures\StructureInterface;
 
 class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
+    /**
+     * @var StructureInterface[]
+     */
     private $entries = [];
+
+    /**
+     * @var ReaderInterface
+     */
     private $reader;
 
     /**
@@ -59,7 +66,10 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
         return $this->entries;
     }
 
-    private function read($entryTag): ?StructureInterface
+    /**
+     * @throws ReadEntryException
+     */
+    private function read(int $entryTag): ?StructureInterface
     {
         switch ($entryTag) {
             case ConstantPoolTag::CONSTANT_Class:
@@ -106,6 +116,7 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
+     * @throws RuntimeException
      * @return StructureInterface
      */
     public function offsetGet($offset)
@@ -115,7 +126,7 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
         }
         if (!array_key_exists($offset, $this->entries)) {
             throw new RuntimeException(
-                'Cannot refer an entry on the Constant Pool (index: ' . $offset . ')'
+                'Cannot refer to an entry on the Constant Pool (index: ' . $offset . ')'
             );
         }
         return $this->entries[$offset];

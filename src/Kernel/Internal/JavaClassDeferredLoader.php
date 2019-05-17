@@ -11,9 +11,6 @@ final class JavaClassDeferredLoader implements JavaClassInterface
     private $options = [];
     private $javaClass;
 
-    /**
-     * JavaClassDeferredLoader constructor.
-     */
     public function __construct(
         string $deferLoadingReaderClass,
         array $arguments = [],

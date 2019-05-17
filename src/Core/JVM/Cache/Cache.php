@@ -3,6 +3,9 @@ namespace PHPJava\Core\JVM\Cache;
 
 class Cache
 {
+    /**
+     * @var mixed[]
+     */
     private $items = [];
 
     public function fetchOrPush(string $key, callable $pushFunction, ...$parameters)
