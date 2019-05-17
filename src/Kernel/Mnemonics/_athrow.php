@@ -12,6 +12,9 @@ final class _athrow implements OperationInterface
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    /**
+     * @throws UnableToCatchException
+     */
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool();
@@ -44,7 +47,7 @@ final class _athrow implements OperationInterface
 
         throw new UnableToCatchException(
             "Unable to catch {$className} exception. " .
-            'PHPJava has been stopped operations. ' .
+            'PHPJava has stopped operations. ' .
             'You may be running broken Java class. '
         );
     }

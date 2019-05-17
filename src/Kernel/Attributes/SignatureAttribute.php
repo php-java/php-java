@@ -8,6 +8,9 @@ final class SignatureAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $signatureIndex = 0;
 
     public function execute(): void
@@ -15,7 +18,7 @@ final class SignatureAttribute implements AttributeInterface
         $this->signatureIndex = $this->readUnsignedShort();
     }
 
-    public function getSignatureIndex()
+    public function getSignatureIndex(): int
     {
         return $this->signatureIndex;
     }

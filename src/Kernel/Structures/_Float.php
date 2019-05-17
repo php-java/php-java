@@ -7,7 +7,14 @@ class _Float implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $bytes;
+
+    /**
+     * @var int
+     */
     private $realByte;
 
     public function execute(): void
@@ -15,7 +22,7 @@ class _Float implements StructureInterface
         $this->bytes = $this->readUnsignedInt();
     }
 
-    public function getBytes()
+    public function getBytes(): float
     {
         if ($this->realByte) {
             return $this->realByte;

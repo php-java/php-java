@@ -7,7 +7,14 @@ class _InvokeDynamic implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $bootstrapMethodAttrIndex = 0;
+
+    /**
+     * @var int
+     */
     private $nameAndTypeIndex = 0;
 
     public function execute(): void

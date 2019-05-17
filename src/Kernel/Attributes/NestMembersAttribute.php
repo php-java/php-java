@@ -8,6 +8,9 @@ final class NestMembersAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var \PHPJava\Core\JVM\StructureInterface[]
+     */
     private $classes = [];
 
     public function execute(): void
@@ -20,6 +23,9 @@ final class NestMembersAttribute implements AttributeInterface
         }
     }
 
+    /**
+     * @var \PHPJava\Core\JVM\StructureInterface[]
+     */
     public function getClasses(): array
     {
         return $this->classes;

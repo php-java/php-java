@@ -1,5 +1,4 @@
 <?php
-
 namespace PHPJava\Kernel\Types;
 
 class _Int extends Type
@@ -10,7 +9,7 @@ class _Int extends Type
     const MIN = -2147483648;
     const MAX = 2147483647;
 
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
         if (ctype_alpha($value) && strlen($value) === 1) {
             $value = ord($value);

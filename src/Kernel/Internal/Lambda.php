@@ -1,16 +1,38 @@
 <?php
-
 namespace PHPJava\Kernel\Internal;
 
 use PHPJava\Core\JavaClass;
 
 class Lambda
 {
+    /**
+     * @var JavaClass
+     */
     private $javaClass;
+
+    /**
+     * @var string
+     */
     private $name;
+
+    /**
+     * @var string
+     */
     private $descriptor;
+
+    /**
+     * @var string
+     */
     private $class;
+
+    /**
+     * @var string
+     */
     private $resourceType;
+
+    /**
+     * @var JavaClass|string
+     */
     private $classObject;
 
     public function __construct(JavaClass $javaClass, string $name, string $descriptor, string $class)

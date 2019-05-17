@@ -7,10 +7,29 @@ class _MethodInfo implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $accessFlag;
+
+    /**
+     * @var int
+     */
     private $nameIndex;
+
+    /**
+     * @var int
+     */
     private $descriptorIndex;
+
+    /**
+     * @var int
+     */
     private $attributeCount = 0;
+
+    /**
+     * @var \PHPJava\Kernel\Attributes\AttributeInfo[]
+     */
     private $attributes = [];
 
     public function execute(): void
@@ -29,22 +48,25 @@ class _MethodInfo implements StructureInterface
         }
     }
 
-    public function getAccessFlag()
+    public function getAccessFlag(): int
     {
         return $this->accessFlag;
     }
 
-    public function getNameIndex()
+    public function getNameIndex(): int
     {
         return $this->nameIndex;
     }
 
-    public function getDescriptorIndex()
+    public function getDescriptorIndex(): int
     {
         return $this->descriptorIndex;
     }
 
-    public function getAttributes()
+    /**
+     * @return \PHPJava\Kernel\Attributes\AttributeInfo[]
+     */
+    public function getAttributes(): array
     {
         return $this->attributes;
     }

@@ -1,5 +1,4 @@
 <?php
-
 namespace PHPJava\Kernel\Types;
 
 class _Boolean extends Type
@@ -10,7 +9,7 @@ class _Boolean extends Type
     const TRUE = 'true';
     const FALSE = 'false';
 
-    public static function isValid($value)
+    public static function isValid($value): bool
     {
         return $value == 0 ||
             $value == 1 ||

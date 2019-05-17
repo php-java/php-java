@@ -8,7 +8,14 @@ final class StackMapTableAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $numberOfEntries;
+
+    /**
+     * @var \PHPJava\Kernel\Structures\_StackMapFrame[]
+     */
     private $stackMapFrames = [];
 
     public function execute(): void
@@ -23,7 +30,10 @@ final class StackMapTableAttribute implements AttributeInterface
         }
     }
 
-    public function getStackMapFrames()
+    /**
+     * @return \PHPJava\Kernel\Structures\_StackMapFrame[]
+     */
+    public function getStackMapFrames(): array
     {
         return $this->stackMapFrames;
     }

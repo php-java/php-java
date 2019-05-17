@@ -67,7 +67,6 @@ trait Invokable
     }
 
     /**
-     * @param mixed ...$arguments
      * @throws IllegalJavaClassException
      * @throws RuntimeException
      * @throws UndefinedOpCodeException

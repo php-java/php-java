@@ -8,6 +8,9 @@ final class MethodParametersAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int[][]
+     */
     private $parameters = [];
 
     public function execute(): void
@@ -21,6 +24,9 @@ final class MethodParametersAttribute implements AttributeInterface
         }
     }
 
+    /**
+     * @return int[][]
+     */
     public function getParameters(): array
     {
         return $this->parameters;

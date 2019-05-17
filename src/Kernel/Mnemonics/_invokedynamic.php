@@ -84,15 +84,15 @@ final class _invokedynamic implements OperationInterface
         $methodHandle = $cp[$bootstrapMethod->getBootstrapMethodRef()];
         switch ($methodHandle->getReferenceKind()) {
             case MethodHandleKind::REF_getField:
-                throw new NotImplementedException($methodHandle->getReferenceKind() . ' does not implemented in ' . __METHOD__);
+                throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_getStatic:
-                throw new NotImplementedException($methodHandle->getReferenceKind() . ' does not implemented in ' . __METHOD__);
+                throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_putField:
-                throw new NotImplementedException($methodHandle->getReferenceKind() . ' does not implemented in ' . __METHOD__);
+                throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_putStatic:
-                throw new NotImplementedException($methodHandle->getReferenceKind() . ' does not implemented in ' . __METHOD__);
+                throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_invokeVirtual:
-                throw new NotImplementedException($methodHandle->getReferenceKind() . ' does not implemented in ' . __METHOD__);
+                throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_invokeStatic:
                 $factoryClass = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . str_replace(
                     '/',
@@ -141,11 +141,11 @@ final class _invokedynamic implements OperationInterface
                 }
                 break;
             case MethodHandleKind::REF_invokeSpecial:
-                throw new NotImplementedException($methodHandle->getReferenceKind() . ' does not implemented in ' . __METHOD__);
+                throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_newInvokeSpecial:
-                throw new NotImplementedException($methodHandle->getReferenceKind() . ' does not implemented in ' . __METHOD__);
+                throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_invokeInterface:
-                throw new NotImplementedException($methodHandle->getReferenceKind() . ' does not implemented in ' . __METHOD__);
+                throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
         }
     }
 }

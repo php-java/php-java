@@ -6,7 +6,14 @@ class ObjectVariableInfo implements VariableInfoInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    /**
+     * @var int
+     */
     private $tag;
+
+    /**
+     * @var int
+     */
     private $cpoolIndex;
 
     public function execute(): void

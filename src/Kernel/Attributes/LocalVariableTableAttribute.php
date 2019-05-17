@@ -10,7 +10,14 @@ final class LocalVariableTableAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $localVariableTableLength;
+
+    /**
+     * @var _LocalVariableTable[]
+     */
     private $localVariableTables = [];
 
     public function execute(): void

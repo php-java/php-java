@@ -7,8 +7,19 @@ class _Double implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $highBytes;
+
+    /**
+     * @var int
+     */
     private $lowBytes;
+
+    /**
+     * @var int
+     */
     private $realByte;
 
     public function execute(): void
@@ -17,7 +28,7 @@ class _Double implements StructureInterface
         $this->lowBytes = $this->readUnsignedInt();
     }
 
-    public function getBytes()
+    public function getBytes(): float
     {
         if ($this->realByte) {
             return $this->realByte;

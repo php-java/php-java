@@ -7,6 +7,9 @@ class _Class implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $classIndex;
 
     public function execute(): void
@@ -14,7 +17,7 @@ class _Class implements StructureInterface
         $this->classIndex = $this->readUnsignedShort();
     }
 
-    public function getClassIndex()
+    public function getClassIndex(): int
     {
         return $this->classIndex;
     }

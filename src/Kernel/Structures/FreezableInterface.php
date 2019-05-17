@@ -1,5 +1,4 @@
 <?php
-
 namespace PHPJava\Kernel\Structures;
 
 interface FreezableInterface

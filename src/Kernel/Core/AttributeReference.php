@@ -5,6 +5,9 @@ use PHPJava\Kernel\Attributes\AttributeInterface;
 
 trait AttributeReference
 {
+    /**
+     * @var AttributeInterface
+     */
     private $attributeInfoReference;
 
     public function setAttributeReference(AttributeInterface $attributeInfo)
