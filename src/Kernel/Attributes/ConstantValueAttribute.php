@@ -8,6 +8,9 @@ final class ConstantValueAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $constantValueIndex = 0;
 
     public function execute(): void

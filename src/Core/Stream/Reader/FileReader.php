@@ -5,8 +5,14 @@ use PHPJava\Core\JVM\Stream\BinaryReader;
 
 class FileReader implements ReaderInterface
 {
-    private $fileName;
+    /**
+     * @var resource
+     */
     private $handle;
+
+    /**
+     * @var BinaryReader
+     */
     private $binaryReader;
 
     public function __construct(string $file)

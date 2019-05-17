@@ -5,31 +5,40 @@ use PHPJava\Utilities\ClassResolver;
 
 final class InstanceDeferredLoader
 {
+    /**
+     * @var object
+     */
     private $instance;
+
+    /**
+     * @var \PHPJava\Core\JavaClass|string
+     */
     private $classObject;
+
+    /**
+     * @var string
+     */
     private $resourceType;
+
+    /**
+     * @var string
+     */
     private $className;
 
     /**
-     * InstanceDeferredLoader constructor.
-     * @param $classObject
-     * @param $resourceType
-     * @param $className
+     * @param \PHPJava\Core\JavaClass|string $classObject
      */
     public function __construct(
         $classObject,
-        $resourceType,
-        $className
+        string $resourceType,
+        string $className
     ) {
         $this->classObject = $classObject;
         $this->resourceType = $resourceType;
         $this->className = $className;
     }
 
-    /**
-     * @param mixed ...$arguments
-     */
-    public function instantiate(...$arguments)
+    public function instantiate(...$arguments): object
     {
         $object = $this->classObject;
         switch ($this->resourceType) {
@@ -49,7 +58,7 @@ final class InstanceDeferredLoader
         return $this->className;
     }
 
-    public function getInstance()
+    public function getInstance(): object
     {
         return $this->instance;
     }

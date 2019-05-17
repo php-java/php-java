@@ -12,11 +12,9 @@ class Formatter
     const USER_DEFINED_PACKAGE = 'USER_DEFINED_PACKAGE';
 
     /**
-     * @param $signature
-     * @param int $i
      * @throws \PHPJava\Exceptions\TypeException
      */
-    public static function parseSignature($signature, $i = 0): array
+    public static function parseSignature(string $signature, int $i = 0): array
     {
         $data = [];
         $deepArray = 0;
@@ -76,7 +74,7 @@ class Formatter
         return $data;
     }
 
-    public static function buildArgumentsSignature($signatures): string
+    public static function buildArgumentsSignature(array $signatures): string
     {
         $string = '';
         foreach ($signatures as $signature) {
@@ -91,7 +89,7 @@ class Formatter
         return $string;
     }
 
-    public static function signatureConvertToAmbiguousForPHP($signatures)
+    public static function signatureConvertToAmbiguousForPHP(array $signatures): array
     {
         $result = [];
         foreach ($signatures as $signature) {
@@ -115,10 +113,7 @@ class Formatter
         return $result;
     }
 
-    /**
-     * @param $className
-     */
-    public static function convertPHPNamespacesToJava($className): string
+    public static function convertPHPNamespacesToJava(string $className): string
     {
         $className = str_replace('/', '\\', $className);
         $newClassName = explode(
@@ -136,10 +131,7 @@ class Formatter
         return implode('.', $newClassName);
     }
 
-    /**
-     * @param $className
-     */
-    public static function convertJavaNamespaceToPHP($className): array
+    public static function convertJavaNamespaceToPHP(string $className): array
     {
         $className = str_replace('.', '/', $className);
         $newClassName = explode(

@@ -14,7 +14,7 @@ trait Accumulator
     private $javaClass;
 
     /**
-     * @var array
+     * @var \PHPJava\Kernel\Attributes\AttributeInfo[]
      */
     private $attributes = [];
 
@@ -27,9 +27,25 @@ trait Accumulator
      * @var \PHPJava\Core\JVM\Stream\BinaryReader
      */
     private $reader;
+
+    /**
+     * @var array
+     */
     private $localStorage;
+
+    /**
+     * @var int
+     */
     private $pointer;
+
+    /**
+     * @var array
+     */
     private $stacks = [];
+
+    /**
+     * @var array
+     */
     private $options;
 
     /**
@@ -64,72 +80,72 @@ trait Accumulator
         return $this;
     }
 
-    final public function read($bytes = 1)
+    final public function read(int $bytes = 1): string
     {
         return $this->reader->read($bytes);
     }
 
-    public function readByte()
+    public function readByte(): int
     {
         return $this->reader->readByte();
     }
 
-    public function readUnsignedByte()
+    public function readUnsignedByte(): int
     {
         return $this->reader->readUnsignedByte();
     }
 
-    public function readUnsignedInt()
+    public function readUnsignedInt(): int
     {
         return $this->reader->readUnsignedInt();
     }
 
-    public function readUnsignedShort()
+    public function readUnsignedShort(): int
     {
         return $this->reader->readUnsignedShort();
     }
 
-    public function readInt()
+    public function readInt(): int
     {
         return $this->reader->readInt();
     }
 
-    public function readShort()
+    public function readShort(): int
     {
         return $this->reader->readShort();
     }
 
-    public function readUnsignedLong()
+    public function readUnsignedLong(): int
     {
         return $this->reader->readUnsignedLong();
     }
 
-    public function readLong()
+    public function readLong(): int
     {
         return $this->reader->readLong();
     }
 
-    public function seek($bytes)
+    public function seek(int $bytes): void
     {
         $this->reader->seek($bytes);
     }
 
-    public function setOffset($pointer)
+    public function setOffset(int $pointer): void
     {
         $this->reader->setOffset($pointer);
     }
 
-    public function getOffset()
+    public function getOffset(): int
     {
         return $this->reader->getOffset();
     }
 
-    public function pushToOperandStack($value)
+    public function pushToOperandStack($value): void
     {
         $this->stacks[] = $value;
     }
 
-    public function pushToOperandStackByReference(&$value)
+    public function pushToOperandStackByReference(&$value): void
     {
         $this->stacks[] = &$value;
     }
@@ -139,19 +155,19 @@ trait Accumulator
         return array_pop($this->stacks);
     }
 
-    public function getCurrentStackIndex()
+    public function getCurrentStackIndex(): int
     {
         return count($this->stacks) - 1;
     }
 
-    public function replaceReferredObject($searchObject, $newObject)
+    public function replaceReferredObject($searchObject, $newObject): void
     {
         while (($index = array_search($searchObject, $this->stacks)) !== false) {
             $this->stacks[$index] = $newObject;
         }
     }
 
-    public function popStack()
+    public function popStack(): void
     {
         array_pop($this->stacks);
     }
@@ -161,7 +177,7 @@ trait Accumulator
         return $this->stacks;
     }
 
-    public function setLocalStorage($index, $value)
+    public function setLocalStorage($index, $value): void
     {
         $this->localStorage[(int) $index] = $value;
     }
@@ -174,12 +190,12 @@ trait Accumulator
         return $this->localStorage[(int) $index];
     }
 
-    public function getLocalStorages()
+    public function getLocalStorages(): array
     {
         return $this->localStorage;
     }
 
-    public function getProgramCounter()
+    public function getProgramCounter(): int
     {
         return $this->pointer;
     }
@@ -189,6 +205,9 @@ trait Accumulator
         return $this->options[$key] ?? null;
     }
 
+    /**
+     * @return \PHPJava\Kernel\Attributes\AttributeInfo[]
+     */
     public function getAttributes(): array
     {
         return $this->attributes;

@@ -10,6 +10,9 @@ final class _checkcast implements OperationInterface
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    /**
+     * @throws ClassCastException
+     */
     public function execute(): void
     {
         $cp = $this->getConstantPool();

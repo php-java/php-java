@@ -7,6 +7,9 @@ class _Integer implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $bytes;
 
     public function execute(): void
@@ -14,7 +17,7 @@ class _Integer implements StructureInterface
         $this->bytes = $this->readInt();
     }
 
-    public function getBytes()
+    public function getBytes(): int
     {
         return $this->bytes;
     }

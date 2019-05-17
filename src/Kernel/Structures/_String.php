@@ -7,6 +7,9 @@ class _String implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $stringIndex;
 
     public function execute(): void
@@ -14,7 +17,7 @@ class _String implements StructureInterface
         $this->stringIndex = $this->readUnsignedShort();
     }
 
-    public function getStringIndex()
+    public function getStringIndex(): int
     {
         return $this->stringIndex;
     }

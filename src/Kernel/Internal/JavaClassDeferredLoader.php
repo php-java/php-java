@@ -6,14 +6,26 @@ use PHPJava\Core\JavaClassInterface;
 
 final class JavaClassDeferredLoader implements JavaClassInterface
 {
+    /**
+     * @var string
+     */
     private $deferLoadingReaderClass;
-    private $arguments = [];
-    private $options = [];
-    private $javaClass;
 
     /**
-     * JavaClassDeferredLoader constructor.
+     * @var string[]
      */
+    private $arguments = [];
+
+    /**
+     * @var array
+     */
+    private $options = [];
+
+    /**
+     * @var JavaClass
+     */
+    private $javaClass;
+
     public function __construct(
         string $deferLoadingReaderClass,
         array $arguments = [],
@@ -25,19 +37,16 @@ final class JavaClassDeferredLoader implements JavaClassInterface
     }
 
     /**
-     * @param $name
-     * @param $arguments
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\UnknownVersionException
      * @throws \PHPJava\Exceptions\ValidatorException
      */
-    public function __call($name, $arguments)
+    public function __call(string $name, $arguments)
     {
         return ($this->initializeIfNotInitiated())->{$name}(...$arguments);
     }
 
     /**
-     * @param mixed ...$arguments
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\UnknownVersionException
      * @throws \PHPJava\Exceptions\ValidatorException

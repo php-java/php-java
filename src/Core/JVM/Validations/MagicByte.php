@@ -4,6 +4,10 @@ namespace PHPJava\Core\JVM\Validations;
 class MagicByte implements ValidatorInterface
 {
     private const CAFEBABE = 0xCAFEBABE;
+
+    /**
+     * @var int
+     */
     private $magicByte;
 
     public function __construct($magicByte)

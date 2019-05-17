@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Types\_Array;
 
 class Generator
 {
-    public static function make(array $array, string $type)
+    public static function make(array $array, string $type): Collection
     {
         $values = $array;
         foreach ($values as &$item) {

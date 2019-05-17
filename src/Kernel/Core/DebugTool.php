@@ -3,6 +3,9 @@ namespace PHPJava\Kernel\Core;
 
 trait DebugTool
 {
+    /**
+     * @var \PHPJava\Utilities\DebugTool
+     */
     private $debugTool;
 
     public function setDebugTool(\PHPJava\Utilities\DebugTool $debugTool)

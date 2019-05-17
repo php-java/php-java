@@ -7,6 +7,9 @@ class _MethodType implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $descriptorIndex;
 
     public function execute(): void

@@ -7,8 +7,16 @@ class _BootstrapMethod implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $bootstrapMethodRef;
+
+    /**
+     * @var int
+     */
     private $numBootstrapArguments = 0;
+
     private $bootstrapArguments = [];
 
     public function execute(): void

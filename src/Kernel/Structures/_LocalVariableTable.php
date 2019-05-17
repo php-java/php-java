@@ -7,10 +7,29 @@ class _LocalVariableTable implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $startPc = 0;
+
+    /**
+     * @var int
+     */
     private $length = 0;
+
+    /**
+     * @var int
+     */
     private $nameIndex = 0;
+
+    /**
+     * @var int
+     */
     private $descriptorIndex = 0;
+
+    /**
+     * @var int
+     */
     private $index = 0;
 
     public function execute(): void

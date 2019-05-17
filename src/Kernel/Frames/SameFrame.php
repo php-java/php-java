@@ -6,6 +6,9 @@ class SameFrame implements FrameInterface
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    /**
+     * @var int
+     */
     private $frameType;
 
     public function execute(): void

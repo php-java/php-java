@@ -8,7 +8,14 @@ final class ExceptionsAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\AttributeReference;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $numberOfExceptions;
+
+    /**
+     * @var int[]
+     */
     private $exceptionIndexTable = [];
 
     public function execute(): void

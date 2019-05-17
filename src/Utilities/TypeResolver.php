@@ -80,7 +80,6 @@ class TypeResolver
     ];
 
     /**
-     * @param $signature
      * @throws TypeException
      */
     public static function getMappedSignatureType(string $signature): string
@@ -91,9 +90,6 @@ class TypeResolver
         throw new TypeException('Passed undefined signature ' . $signature);
     }
 
-    /**
-     * @param $type
-     */
     public static function resolve(string $type): string
     {
         $flipped = array_flip(static::SIGNATURE_MAP);
@@ -126,9 +122,9 @@ class TypeResolver
     /**
      * @param array $signatureArray a formatted signature array
      * @throws TypeException
-     * @return string
+     * @return string[]
      */
-    public static function getType(array $signatureArray)
+    public static function getType(array $signatureArray): array
     {
         $type = $signatureArray['type'];
         if ($type === 'class') {
@@ -149,8 +145,7 @@ class TypeResolver
     }
 
     /**
-     * @param $value
-     * @return bool|mixed|string
+     * @return null|mixed|string
      */
     public static function resolveFromPHPType($value)
     {
@@ -162,17 +157,14 @@ class TypeResolver
         return static::SIGNATURE_MAP[$type] ?? null;
     }
 
-    /**
-     * @param $type
-     */
     public static function convertJavaTypeSimplyForPHP(string $type): string
     {
         return static::AMBIGUOUS_TYPES_ON_PHP[$type] ?? $type;
     }
 
     /**
-     * @param $arguments
      * @throws TypeException
+     * @return (int|string)[]
      */
     public static function convertPHPtoJava($arguments, string $defaultJavaArgumentType = 'java.lang.String'): array
     {
@@ -282,7 +274,6 @@ class TypeResolver
     }
 
     /**
-     * @param $class
      * @throws TypeException
      * @throws \ReflectionException
      */
@@ -351,7 +342,6 @@ class TypeResolver
     }
 
     /**
-     * @param $value
      * @throws TypeException
      * @return _Boolean|_Double|_Float|_Int|_String|Collection
      */

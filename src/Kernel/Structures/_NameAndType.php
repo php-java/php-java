@@ -7,7 +7,14 @@ class _NameAndType implements StructureInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DebugTool;
 
+    /**
+     * @var int
+     */
     private $nameIndex;
+
+    /**
+     * @var int
+     */
     private $descriptorIndex;
 
     public function execute(): void
@@ -16,12 +23,12 @@ class _NameAndType implements StructureInterface
         $this->descriptorIndex = $this->readUnsignedShort();
     }
 
-    public function getNameIndex()
+    public function getNameIndex(): int
     {
         return $this->nameIndex;
     }
 
-    public function getDescriptorIndex()
+    public function getDescriptorIndex(): int
     {
         return $this->descriptorIndex;
     }
