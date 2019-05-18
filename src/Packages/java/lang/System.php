@@ -85,7 +85,7 @@ class System extends _Object // implements Logger, Map, Channel
      */
     public static function static_currentTimeMillis($a = null)
     {
-        throw new NotImplementedException(__METHOD__);
+        return (int) time() * 1000;
     }
 
     /**
@@ -162,7 +162,6 @@ class System extends _Object // implements Logger, Map, Channel
      */
     public static function static_getProperty($a = null, $b = null)
     {
-        var_dump((string) $a);
         return null;
     }
 

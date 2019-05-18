@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Internal;
 
+use PHPJava\Exceptions\CannotResolveException;
 use PHPJava\Utilities\ClassResolver;
 
 final class InstanceDeferredLoader
@@ -48,6 +49,10 @@ final class InstanceDeferredLoader
             case ClassResolver::RESOLVED_TYPE_PACKAGES:
                 $this->instance = new $object($methodName, ...$arguments);
                 break;
+            default:
+                throw new CannotResolveException(
+                    'Cannot resolve resource type ' . $this->className . '::' . $methodName . '.'
+                );
         }
 
         return $this->instance;

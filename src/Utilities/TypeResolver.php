@@ -226,6 +226,13 @@ class TypeResolver
                     'deep_array' => $deepArray,
                 ];
             }
+            if ($arguments instanceof JavaClassInterface) {
+                return [
+                    'type' => 'class',
+                    'class_name' => $arguments->getClassName(),
+                    'deep_array' => $deepArray,
+                ];
+            }
             throw new TypeException(get_class($arguments) . ' does not supported to convert to Java\'s argument.');
         }
         $resolveType = static::SIGNATURE_MAP[static::PHP_TYPE_MAP[$phpType][0]] ?? null;
@@ -360,7 +367,7 @@ class TypeResolver
                     $superClass = $classObject->getSuperClass();
                     if ($superClass instanceof JavaClassInterface) {
                         $beforeClass = $currentClass;
-                        $currentClass = $superClass;
+                        $currentClass = $superClass->getClassName();
                     } else {
                         [$extendedClasses, $interfaces] = static::getRecursiveRootsClassesByClassPath(
                             get_class($superClass)

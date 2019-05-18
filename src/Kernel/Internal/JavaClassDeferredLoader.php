@@ -57,6 +57,14 @@ final class JavaClassDeferredLoader implements JavaClassInterface
     }
 
     /**
+     * @return mixed|string
+     */
+    public function getClassName(bool $shortName = false)
+    {
+        return str_replace('/', '.', $this->arguments[0]);
+    }
+
+    /**
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\UnknownVersionException
      * @throws \PHPJava\Exceptions\ValidatorException

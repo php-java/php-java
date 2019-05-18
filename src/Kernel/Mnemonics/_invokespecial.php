@@ -65,8 +65,13 @@ final class _invokespecial implements OperationInterface
                         $newObject = $classObject($methodName, ...$arguments);
                         break;
                 }
-            } else {
+            } elseif ($objectref instanceof InstanceDeferredLoader) {
                 $newObject = $objectref->instantiate($methodName, ...$arguments);
+            } else {
+                /**
+                 * @var JavaClassInterface $objectref
+                 */
+                $newObject = $objectref($methodName, ...$arguments);
             }
 
             // NOTE: PHP has a problem which a reference object cannot replace to an object.

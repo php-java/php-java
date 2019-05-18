@@ -6,9 +6,11 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
+use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\TypeResolver;
 
 final class _invokestatic implements OperationInterface
 {
@@ -37,7 +39,7 @@ final class _invokestatic implements OperationInterface
             }
         }
 
-        $return = null;
+        $result = null;
 
         $prefix = $this->getOptions('prefix_static') ?? GlobalOptions::get('prefix_static') ?? Runtime::PREFIX_STATIC;
 
@@ -47,7 +49,7 @@ final class _invokestatic implements OperationInterface
                     /**
                      * @var \PHPJava\Core\JavaClass $classObject
                      */
-                    $return = $classObject
+                    $result = $classObject
                         ->getInvoker()
                         ->getStatic()
                         ->getMethods()
@@ -72,7 +74,7 @@ final class _invokestatic implements OperationInterface
                         }
                     }
 
-                    $return = forward_static_call_array(
+                    $result = forward_static_call_array(
                         [
                             $classObject,
                             "{$prefix}{$methodName}",
@@ -116,7 +118,16 @@ final class _invokestatic implements OperationInterface
         }
 
         if ($signature[0]['type'] !== 'void') {
-            $this->pushToOperandStack($return);
+            /**
+             * @var Type $typeClass
+             */
+            [$type, $typeClass] = TypeResolver::getType($signature[0]);
+
+            $this->pushToOperandStack(
+                $type === TypeResolver::IS_PRIMITIVE
+                    ? $typeClass::get($result)
+                    : $result
+            );
         }
     }
 }

@@ -12,11 +12,13 @@ trait FieldGettable
     public function get(string $name)
     {
         if (!isset($this->fields[$name])) {
-            throw new NoSuchFieldException('Get to undefined Field ' . $name);
+            $className = str_replace('/', '.', $this->javaClassInvoker->getJavaClass()->getClassName());
+            throw new NoSuchFieldException('Get to undefined field ' . $className . '::' . $name);
         }
         if ($this->fields[$name] instanceof _String) {
             return (string) $this->fields[$name];
         }
+
         return $this->fields[$name];
     }
 }

@@ -77,7 +77,13 @@ trait Invokable
      */
     public function call(string $name, ...$arguments)
     {
-        $this->callStaticInitializerIfNotInstantiated();
+        /**
+         * Call static initializer from static accessor.
+         */
+        $this->javaClassInvoker
+            ->getStatic()
+            ->getMethods()
+            ->callStaticInitializerIfNotInstantiated();
 
         $operationCache = new OperationCache();
         $this->debugTool->getLogger()->debug('Call method: ' . $name);
@@ -94,6 +100,10 @@ trait Invokable
         }
 
         $constantPool = $currentConstantPool->getEntries();
+        if ($name === 'tl_$eq') {
+            var_dump($arguments);
+            exit();
+        }
         $convertedPassedArguments = $this->stringifyArguments(...$arguments);
 
         /**
@@ -427,7 +437,7 @@ trait Invokable
         );
     }
 
-    private function callStaticInitializerIfNotInstantiated()
+    public function callStaticInitializerIfNotInstantiated()
     {
         if ($this->isInstantiatedStaticInitializer) {
             return $this;

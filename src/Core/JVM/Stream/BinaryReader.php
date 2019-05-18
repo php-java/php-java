@@ -82,7 +82,7 @@ class BinaryReader
 
     public function readLong(): int
     {
-        return hexdec(bin2hex($this->read(8)));
+        return current(unpack('q', $this->read(8)));
     }
 
     public function seek(int $bytes): self

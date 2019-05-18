@@ -41,13 +41,21 @@ final class _invokevirtual implements OperationInterface
         }
 
         $invokerClass = $this->popFromOperandStack();
-        $invokerClassName = $this->getOptions('class_resolver')
-            ->resolve($class);
+        [$resourceType, $invokerClassObject] = $this->getOptions('class_resolver')
+            ->resolve(
+                $class,
+                $this->javaClass
+            );
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
+        if ($methodName === 'tl_$eq') {
+            var_dump($arguments);
+            exit();
+        }
+
         try {
-            if ($invokerClass instanceof JavaClassInterface) {
-                $result = $invokerClass
+            if ($invokerClassObject instanceof JavaClassInterface) {
+                $result = $invokerClassObject
                     ->getInvoker()
                     ->getDynamic()
                     ->getMethods()

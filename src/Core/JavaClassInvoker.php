@@ -76,7 +76,7 @@ class JavaClassInvoker
 
             if (($methodInfo->getAccessFlag() & FieldAccessFlag::ACC_STATIC) !== 0) {
                 $this->staticMethods[$methodName][] = $methodInfo;
-            } elseif ($methodInfo->getAccessFlag() === 0 || ($methodInfo->getAccessFlag() & FieldAccessFlag::ACC_PUBLIC) !== 0) {
+            } else {
                 $this->dynamicMethods[$methodName][] = $methodInfo;
             }
         }
@@ -84,22 +84,24 @@ class JavaClassInvoker
         foreach ($javaClass->getDefinedFields() as $fieldInfo) {
             $fieldName = $cpInfo[$fieldInfo->getNameIndex()]->getString();
 
-            if ($fieldInfo->getAccessFlag() === 0) {
-                $this->dynamicFields[$fieldName] = $fieldInfo;
-            } elseif (($fieldInfo->getAccessFlag() & FieldAccessFlag::ACC_STATIC) !== 0) {
+            if (($fieldInfo->getAccessFlag() & FieldAccessFlag::ACC_STATIC) !== 0) {
                 $this->staticFields[$fieldName] = $fieldInfo;
+            } else {
+                $this->dynamicFields[$fieldName] = $fieldInfo;
             }
         }
 
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
             $this->dynamicMethods,
+            [],
             $this->options
         );
 
         $this->staticAccessor = new StaticAccessor(
             $this,
             $this->staticMethods,
+            $this->staticFields,
             $this->options
         );
     }
@@ -109,6 +111,7 @@ class JavaClassInvoker
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
             $this->dynamicMethods,
+            $this->dynamicFields,
             $this->options
         );
 
