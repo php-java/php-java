@@ -30,6 +30,9 @@ class Formatter
                 case 'S':
                 case 'V':
                 case 'Z':
+
+                // Original
+                case 'N':
                     $data[] = [
                         'type' => TypeResolver::getMappedSignatureType($signature[$i]),
                         'deep_array' => $deepArray,

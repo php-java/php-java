@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClassInterface;
+
 final class _putfield implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -14,6 +16,10 @@ final class _putfield implements OperationInterface
 
         $value = $this->popFromOperandStack();
         $name = $cpInfo[$class->getNameIndex()]->getString();
+
+        /**
+         * @var JavaClassInterface $objectref
+         */
         $objectref = $this->popFromOperandStack();
 
         $objectref->getInvoker()->getDynamic()->getFields()->set($name, $value);

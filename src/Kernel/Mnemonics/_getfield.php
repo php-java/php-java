@@ -23,7 +23,6 @@ final class _getfield implements OperationInterface
         $return = $objectref->getInvoker()->getDynamic()->getFields()->get($name);
 
         if ($return !== null) {
-            var_dump($return);
             $this->pushToOperandStack($return);
             return;
         }

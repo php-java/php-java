@@ -30,6 +30,9 @@ class TypeResolver
         'float' => 'F',
         'double' => 'F',
         'string' => 'Ljava.lang.String',
+
+        // for NULL
+        'NULL' => 'N',
     ];
 
     const AMBIGUOUS_TYPES_ON_PHP = [
@@ -52,6 +55,9 @@ class TypeResolver
         'V' => 'void',
         'Z' => 'boolean',
         'L' => 'class',
+
+        // Original signature (for NULL value)
+        'N' => 'null',
     ];
 
     const TYPES_MAP = [
@@ -92,8 +98,11 @@ class TypeResolver
         throw new TypeException('Passed undefined signature ' . $signature);
     }
 
-    public static function resolve(string $type): string
+    public static function resolve(?string $type): ?string
     {
+        if ($type === null) {
+            return null;
+        }
         $flipped = array_flip(static::SIGNATURE_MAP);
         if (isset($flipped[$type])) {
             if (!(GlobalOptions::get('strict') ?? Runtime::STRICT)) {
@@ -235,7 +244,7 @@ class TypeResolver
             }
             throw new TypeException(get_class($arguments) . ' does not supported to convert to Java\'s argument.');
         }
-        $resolveType = static::SIGNATURE_MAP[static::PHP_TYPE_MAP[$phpType][0]] ?? null;
+        $resolveType = static::SIGNATURE_MAP[static::PHP_TYPE_MAP[$phpType][0] ?? null] ?? null;
 
         if ($resolveType === 'class') {
             return [
@@ -273,6 +282,13 @@ class TypeResolver
 
             [$aClasses, $aInterfaces] = $a[$i];
             [$bClasses, $bInterfaces] = $b[$i];
+
+            if (in_array('null', $aClasses, true) ||
+                in_array('null', $bClasses, true)
+            ) {
+                $resultClassesComparison[] = true;
+                continue;
+            }
 
             $resultClassesComparison[] = count(array_intersect($aClasses, $bClasses)) > 0;
             $resultInterfacesComparison[] = count(array_intersect($aInterfaces, $bInterfaces)) > 0;
@@ -447,6 +463,8 @@ class TypeResolver
                     $collectionData[] = static::convertPHPTypeToJavaType($item);
                 }
                 return new Collection($collectionData);
+            case 'NULL':
+                return null;
         }
         throw new TypeException('Cannot convert your definition');
     }

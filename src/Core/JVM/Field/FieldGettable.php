@@ -11,7 +11,7 @@ trait FieldGettable
      */
     public function get(string $name)
     {
-        if (!isset($this->fields[$name])) {
+        if (!array_key_exists($name, $this->fields)) {
             $className = str_replace('/', '.', $this->javaClassInvoker->getJavaClass()->getClassName());
             throw new NoSuchFieldException('Get to undefined field ' . $className . '::' . $name);
         }

@@ -48,11 +48,6 @@ final class _invokevirtual implements OperationInterface
             );
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
-        if ($methodName === 'tl_$eq') {
-            var_dump($arguments);
-            exit();
-        }
-
         try {
             if ($invokerClassObject instanceof JavaClassInterface) {
                 $result = $invokerClassObject

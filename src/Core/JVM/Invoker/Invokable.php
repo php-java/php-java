@@ -100,10 +100,7 @@ trait Invokable
         }
 
         $constantPool = $currentConstantPool->getEntries();
-        if ($name === 'tl_$eq') {
-            var_dump($arguments);
-            exit();
-        }
+
         $convertedPassedArguments = $this->stringifyArguments(...$arguments);
 
         /**

@@ -3,6 +3,8 @@ namespace PHPJava\Kernel\Types;
 
 class _Byte extends Type
 {
+    const DEFAULT_VALUE = 0;
+
     protected $nameInJava = 'byte';
     protected $nameInPHP = 'int';
 

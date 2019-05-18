@@ -9,6 +9,7 @@ use PHPJava\Kernel\Provider\ProviderInterface;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\ClassHandler;
+use PHPJava\Utilities\Normalizer;
 
 class JavaClassInvoker
 {
@@ -18,22 +19,22 @@ class JavaClassInvoker
     private $javaClass;
 
     /**
-     * @var _MethodInfo
+     * @var _MethodInfo[]
      */
     private $dynamicMethods = [];
 
     /**
-     * @var _MethodInfo
+     * @var _MethodInfo[]
      */
     private $staticMethods = [];
 
     /**
-     * @var _FieldInfo
+     * @var _FieldInfo[]
      */
     private $dynamicFields = [];
 
     /**
-     * @var _FieldInfo
+     * @var _FieldInfo[]
      */
     private $staticFields = [];
 
@@ -111,7 +112,10 @@ class JavaClassInvoker
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
             $this->dynamicMethods,
-            $this->dynamicFields,
+            Normalizer::normalizeFields(
+                $this->dynamicFields,
+                $this->javaClass
+            ),
             $this->options
         );
 

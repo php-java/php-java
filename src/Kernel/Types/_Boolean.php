@@ -3,6 +3,8 @@ namespace PHPJava\Kernel\Types;
 
 class _Boolean extends Type
 {
+    const DEFAULT_VALUE = false;
+
     protected $nameInJava = 'boolean';
     protected $nameInPHP = 'boolean';
 

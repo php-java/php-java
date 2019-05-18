@@ -5,6 +5,8 @@ use PHPJava\Exceptions\TypeException;
 
 abstract class Type
 {
+    const DEFAULT_VALUE = null;
+
     /**
      * @var null|self
      */
@@ -49,11 +51,20 @@ abstract class Type
     }
 
     /**
+     * @param null|mixed $value
      * @throws TypeException
      */
-    public static function get($value): self
+    public static function get($value = null): self
     {
         static $instantiated = null;
+        if ($value === null) {
+            if (static::DEFAULT_VALUE === null) {
+                throw new TypeException('The type has not default value.');
+            }
+            return static::get(
+                static::DEFAULT_VALUE
+            );
+        }
         if (is_object($value)) {
             if ($value instanceof static) {
                 return $value;
