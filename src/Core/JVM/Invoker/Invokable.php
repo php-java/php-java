@@ -261,8 +261,9 @@ trait Invokable
 
             $this->debugTool->getLogger()->debug(
                 vsprintf(
-                    'OpCode: 0x%02X %-15.15s Stacks: %-4.4s PC: %-8.8s Used Memory: %-8.8s Used Memory Peak: %-8.8s',
+                    '[%d] OpCode: 0x%02X %-15.15s Stacks: %-4.4s PC: %-8.8s Used Memory: %-8.8s Used Memory Peak: %-8.8s',
                     [
+                        $GLOBALS['counter']++,
                         $opcode,
                         ltrim($mnemonic, '_'),
                         count($stacks),
@@ -373,7 +374,7 @@ trait Invokable
 
         if (empty($methodReferences)) {
             if (!isset($methodReferences)) {
-                throw new UndefinedMethodException('Call to undefined method ' . $name . '.');
+                throw new NoSuchMethodException('Call to undefined method ' . $name . '.');
             }
         }
 

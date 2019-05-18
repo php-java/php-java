@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClassInterface;
+use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
@@ -59,9 +60,16 @@ final class _invokevirtual implements OperationInterface
                         ...$arguments
                     );
             } else {
-                $reflectionClass = new \ReflectionClass($invokerClass);
-                $methodAccessor = $reflectionClass->getMethod($methodName);
+                try {
+                    $reflectionClass = new \ReflectionClass($invokerClass);
+                    $methodAccessor = $reflectionClass->getMethod($methodName);
+                } catch (\ReflectionException $e) {
+                    $invokerClass = $invokerClassObject;
 
+                    // Retry read.
+                    $reflectionClass = new \ReflectionClass($invokerClass);
+                    $methodAccessor = $reflectionClass->getMethod($methodName);
+                }
                 if ($document = $methodAccessor->getDocComment()) {
                     $prependInjections = $this->getAnnotateInjections($document);
                     if (!empty($prependInjections)) {
@@ -92,11 +100,24 @@ final class _invokevirtual implements OperationInterface
                 /**
                  * @var _ExceptionTable $exception
                  */
-                $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
-                if ($catchClass === $expectedClass &&
-                    $exception->getStartPc() <= $this->getProgramCounter() &&
-                    $exception->getEndPc() >= $this->getProgramCounter()
+                if (!($exception->getStartPc() <= $this->getProgramCounter() &&
+                    $exception->getEndPc() >= $this->getProgramCounter())
                 ) {
+                    continue;
+                }
+
+                /**
+                 * If the value of the catch_type item is zero, this exception handler is called for all exceptions.
+                 *
+                 * @see https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-4.html#jvms-4.7.3
+                 */
+                if ($exception->getCatchType() === 0) {
+                    $this->setOffset($exception->getHandlerPc());
+                    return;
+                }
+
+                $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
+                if ($catchClass === $expectedClass) {
                     $this->setOffset($exception->getHandlerPc());
                     return;
                 }

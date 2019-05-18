@@ -50,6 +50,10 @@ final class _invokeinterface implements OperationInterface
              */
             [$type, $typeClass] = TypeResolver::getType($signature[0]);
 
+            if ($result instanceof JavaClassInvoker) {
+                $result = $result->getJavaClass();
+            }
+
             $this->pushToOperandStack(
                 $type === TypeResolver::IS_PRIMITIVE
                     ? $typeClass::get($result)

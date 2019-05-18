@@ -17,8 +17,9 @@ class AbstractQueue extends AbstractCollection // implements Iterable, Collectio
     /**
      * Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function add($a = null)
     {
@@ -28,8 +29,9 @@ class AbstractQueue extends AbstractCollection // implements Iterable, Collectio
     /**
      * Adds all of the elements in the specified collection to this queue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addAll
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function addAll($a = null)
     {
@@ -39,8 +41,9 @@ class AbstractQueue extends AbstractCollection // implements Iterable, Collectio
     /**
      * Removes all of the elements from this queue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -50,8 +53,9 @@ class AbstractQueue extends AbstractCollection // implements Iterable, Collectio
     /**
      * Retrieves, but does not remove, the head of this queue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#element
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function element($a = null)
     {
@@ -61,8 +65,9 @@ class AbstractQueue extends AbstractCollection // implements Iterable, Collectio
     /**
      * Retrieves and removes the head of this queue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {

@@ -20,8 +20,9 @@ class LinkedHashSet extends HashSet // implements Serializable, Iterable, Set
     /**
      * Creates a late-binding and fail-fast Spliterator over the elements in this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function spliterator($a = null)
     {
