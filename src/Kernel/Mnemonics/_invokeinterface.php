@@ -1,7 +1,11 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClassInterface;
+use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\TypeResolver;
 
 final class _invokeinterface implements OperationInterface
 {
@@ -28,13 +32,29 @@ final class _invokeinterface implements OperationInterface
             $collection[$i] = $this->popFromOperandStack();
         }
 
+        /**
+         * @var JavaClassInvoker $objectref
+         */
         $objectref = $collection[0];
         $arguments = array_values(array_slice($collection, 1));
 
-        $result = $objectref($name, ...$arguments);
+        $from = $objectref;
+        if ($objectref instanceof JavaClassInterface) {
+            $from = $objectref->getInvoker();
+        }
+        $result = $from->construct($name, ...$arguments);
 
-        if ($signature[0] !== 'void') {
-            $this->pushToOperandStack($result);
+        if ($signature[0]['type'] !== 'void') {
+            /**
+             * @var Type $typeClass
+             */
+            [$type, $typeClass] = TypeResolver::getType($signature[0]);
+
+            $this->pushToOperandStack(
+                $type === TypeResolver::IS_PRIMITIVE
+                    ? $typeClass::get($result)
+                    : $result
+            );
         }
     }
 }

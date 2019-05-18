@@ -268,13 +268,17 @@ class JavaClass implements JavaClassInterface
 
     public function __invoke($methodName, ...$arguments): JavaClass
     {
-        return $this
+        $result = $this
             ->getInvoker()
             ->construct(
                 $methodName,
                 ...$arguments
-            )
-            ->getJavaClass();
+            );
+        if (!($result instanceof JavaClassInvoker)) {
+            var_dump($result, debug_backtrace(5));
+            exit();
+        }
+        return $result->getJavaClass();
     }
 
     public function getOptions($key = null)

@@ -43,6 +43,7 @@ final class _invokespecial implements OperationInterface
          * @var JavaClassInterface $newObject
          */
         $newObject = null;
+        $result = null;
         try {
             $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
 
@@ -73,11 +74,13 @@ final class _invokespecial implements OperationInterface
                 /**
                  * @var JavaClassInterface $objectref
                  */
-                $newObject = $objectref($methodName, ...$arguments);
+                $result = $objectref->getInvoker()->construct($methodName, ...$arguments);
             }
 
             // NOTE: PHP has a problem which a reference object cannot replace to an object.
-            if ($objectref !== $newObject) {
+            if ($parsedSignature[0]['type'] === 'void' &&
+                $objectref !== $newObject
+            ) {
                 $this->replaceReferredObject($objectref, $newObject);
             }
         } catch (\Exception $e) {
@@ -113,7 +116,7 @@ final class _invokespecial implements OperationInterface
         }
 
         if ($parsedSignature[0]['type'] !== 'void') {
-            $result = $newObject;
+            $result = $result ?? $newObject;
             /**
              * @var Type $typeClass
              */

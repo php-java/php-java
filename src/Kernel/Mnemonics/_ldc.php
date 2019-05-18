@@ -16,7 +16,6 @@ final class _ldc implements OperationInterface
     {
         $cpInfo = $this->getConstantPool();
         $data = $cpInfo[$this->readUnsignedByte()];
-
         $value = null;
 
         if ($data instanceof _String) {

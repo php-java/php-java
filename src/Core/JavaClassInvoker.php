@@ -107,7 +107,7 @@ class JavaClassInvoker
         );
     }
 
-    public function construct(?string $methodName = null, ...$arguments): self
+    public function construct(?string $methodName = null, ...$arguments)
     {
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
@@ -120,10 +120,13 @@ class JavaClassInvoker
         );
 
         if (isset($this->dynamicMethods[$methodName])) {
-            $this->getDynamic()->getMethods()->call(
+            $result = $this->getDynamic()->getMethods()->call(
                 $methodName ?? ClassHandler::DEFAULT_INITIALIZER,
                 ...$arguments
             );
+            if ($result !== null) {
+                return $result;
+            }
         }
 
         return $this;
