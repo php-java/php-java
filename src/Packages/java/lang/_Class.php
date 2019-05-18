@@ -629,6 +629,8 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
      */
     public function getResourceAsStream($a = null)
     {
+        $name = $a;
+
         throw new NotImplementedException(__METHOD__);
     }
 

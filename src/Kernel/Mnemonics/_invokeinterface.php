@@ -1,9 +1,11 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Kernel\Types\Type;
+use PHPJava\Packages\java\lang\UnsupportedOperationException;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\TypeResolver;
 
@@ -42,6 +44,7 @@ final class _invokeinterface implements OperationInterface
         if ($objectref instanceof JavaClassInterface) {
             $from = $objectref->getInvoker();
         }
+        var_dump($name);
         $result = $from->construct($name, ...$arguments);
 
         if ($signature[0]['type'] !== 'void') {

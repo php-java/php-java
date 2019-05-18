@@ -22,8 +22,8 @@ use PHPJava\Packages\java\lang\_String;
 
 class TypeResolver
 {
-    const IS_CLASS = 'class';
-    const IS_PRIMITIVE = 'primitive';
+    const IS_CLASS = 'IS_CLASS';
+    const IS_PRIMITIVE = 'IS_PRIMITIVE';
 
     const PHP_TYPE_MAP = [
         'integer' => 'I',

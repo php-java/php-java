@@ -124,6 +124,7 @@ class JavaClassInvoker
                 $methodName ?? ClassHandler::DEFAULT_INITIALIZER,
                 ...$arguments
             );
+
             if ($result !== null) {
                 return $result;
             }
