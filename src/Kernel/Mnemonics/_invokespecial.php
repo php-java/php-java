@@ -6,9 +6,11 @@ use PHPJava\Exceptions\UnableToCatchException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Internal\InstanceDeferredLoader;
 use PHPJava\Kernel\Structures\_ExceptionTable;
+use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\TypeResolver;
 
 final class _invokespecial implements OperationInterface
 {
@@ -75,7 +77,9 @@ final class _invokespecial implements OperationInterface
             }
 
             // NOTE: PHP has a problem which a reference object cannot replace to an object.
-            $this->replaceReferredObject($objectref, $newObject);
+            if ($objectref !== $newObject) {
+                $this->replaceReferredObject($objectref, $newObject);
+            }
         } catch (\Exception $e) {
             /**
              * @var CodeAttribute $codeAttribute
@@ -105,6 +109,20 @@ final class _invokespecial implements OperationInterface
                 $expectedClass . ': ' . $e->getMessage(),
                 0,
                 $e
+            );
+        }
+
+        if ($parsedSignature[0]['type'] !== 'void') {
+            $result = $newObject;
+            /**
+             * @var Type $typeClass
+             */
+            [$type, $typeClass] = TypeResolver::getType($parsedSignature[0]);
+
+            $this->pushToOperandStack(
+                $type === TypeResolver::IS_PRIMITIVE
+                    ? $typeClass::get($result)
+                    : $result
             );
         }
     }

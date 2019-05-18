@@ -21,6 +21,7 @@ final class _ireturn implements OperationInterface
             $value instanceof _Short ||
             $value instanceof _Byte ||
             $value instanceof _Boolean;
+
         return $isIntegerValue ? $value : _Int::get($value);
     }
 }

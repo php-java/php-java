@@ -270,7 +270,10 @@ trait Invokable
                         Metric::bytes(memory_get_usage())->format(),
                         Metric::bytes(memory_get_peak_usage())->format(),
                     ]
-                )
+                ),
+                [
+                    $name,
+                ]
             );
 
             $beforeTrigger = $this->options['operations']['injections']['before'] ?? GlobalOptions::get('operations.injections.before');

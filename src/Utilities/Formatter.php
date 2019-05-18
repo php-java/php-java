@@ -3,7 +3,7 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\Runtime;
-use PHPJava\Kernel\Maps\FieldAccessFlag;
+use PHPJava\Kernel\Maps\MethodAccessFlag;
 use PHPJava\Kernel\Structures\_MethodInfo;
 
 class Formatter
@@ -162,7 +162,7 @@ class Formatter
         $cpInfo = $constantPool->getEntries();
         $methodAccessFlags = $method->getAccessFlag();
         $accessFlags = [];
-        $accessFlag = new FieldAccessFlag();
+        $accessFlag = new MethodAccessFlag();
         foreach ($accessFlag->getValues() as $value) {
             if (($methodAccessFlags & $value) !== 0) {
                 $accessFlags[] = strtolower(str_replace('ACC_', '', $accessFlag->getName($value)));

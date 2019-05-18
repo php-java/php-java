@@ -162,8 +162,12 @@ trait Accumulator
 
     public function replaceReferredObject($searchObject, $newObject): void
     {
-        while (($index = array_search($searchObject, $this->stacks)) !== false) {
+        $replacedIndex = [];
+        while (($index = array_search($searchObject, $this->stacks)) !== false &&
+            !in_array($index, $replacedIndex, true)
+        ) {
             $this->stacks[$index] = $newObject;
+            $replacedIndex[] = $index;
         }
     }
 
