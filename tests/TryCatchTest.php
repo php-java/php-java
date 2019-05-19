@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPJava\Exceptions\UnableToCatchException;
+use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
 
 class TryCatchTest extends Base
@@ -63,7 +63,7 @@ class TryCatchTest extends Base
                 ->getStatic()
                 ->getMethods()
                 ->call('testImitationThrownExceptionHasPreviousException');
-        } catch (UnableToCatchException $e) {
+        } catch (UncaughtException $e) {
             // Unwrap the original exception
             throw $e->getPrevious();
         }

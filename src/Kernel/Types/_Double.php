@@ -5,6 +5,8 @@ use Brick\Math\BigDecimal;
 
 class _Double extends Type
 {
+    const DEFAULT_VALUE = '0';
+
     protected $nameInJava = 'double';
     protected $nameInPHP = 'float';
 

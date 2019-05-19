@@ -20,4 +20,6 @@ interface InvokerInterface
     public function getList(): array;
 
     public function has(string $name): bool;
+
+    public function callStaticInitializerIfNotInstantiated(): InvokerInterface;
 }

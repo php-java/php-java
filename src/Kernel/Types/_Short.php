@@ -3,6 +3,8 @@ namespace PHPJava\Kernel\Types;
 
 class _Short extends Type
 {
+    const DEFAULT_VALUE = 0;
+
     protected $nameInJava = 'short';
     protected $nameInPHP = 'integer';
 

@@ -19,6 +19,7 @@ use PHPJava\Core\Stream\Reader\ReaderInterface;
  * @method string getPackageName()
  * @method string getClassName(bool $shortName = false)
  * @method mixed getOptions($key = null)
+ * @method mixed __invoke(...$parameters)
  */
 interface JavaClassInterface
 {

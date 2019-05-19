@@ -1,9 +1,12 @@
 <?php
 namespace PHPJava\Utilities;
 
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NormalizerException;
+use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\Type;
+use PHPJava\Packages\java\lang\_Object;
 
 class Normalizer
 {
@@ -55,5 +58,34 @@ class Normalizer
         }
 
         return $values;
+    }
+
+    public static function normalizeFields(array $fields, JavaClassInterface $fromJavaClass = null): array
+    {
+        $newFields = [];
+        foreach ($fields as $name => $value) {
+            /**
+             * @var _FieldInfo $value
+             */
+            $cp = $value->getConstantPool();
+            $descriptor = Formatter::parseSignature($cp[$value->getDescriptorIndex()]->getString());
+            [$type, $class] = TypeResolver::getType($descriptor[0]);
+            switch ($type) {
+                case TypeResolver::IS_PRIMITIVE:
+                    /**
+                     * @var Type $class
+                     */
+                    $newFields[$name] = $class::get();
+                    break;
+                case TypeResolver::IS_CLASS:
+                    $newFields[$name] = ClassHandler::initialize(
+                        _Object::class
+                    );
+                    break;
+                default:
+                    throw new NormalizerException('Failed to normalize fields.');
+            }
+        }
+        return $newFields;
     }
 }

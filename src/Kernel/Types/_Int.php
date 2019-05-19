@@ -3,6 +3,8 @@ namespace PHPJava\Kernel\Types;
 
 class _Int extends Type
 {
+    const DEFAULT_VALUE = 0;
+
     protected $nameInJava = 'int';
     protected $nameInPHP = 'integer';
 

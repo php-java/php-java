@@ -122,7 +122,7 @@ trait Accumulator
 
     public function readLong(): int
     {
-        return $this->reader->readLong();
+        return current(unpack('q', $this->read(8)));
     }
 
     public function seek(int $bytes): void
@@ -162,14 +162,19 @@ trait Accumulator
 
     public function replaceReferredObject($searchObject, $newObject): void
     {
-        while (($index = array_search($searchObject, $this->stacks)) !== false) {
+        $replacedIndexes = [];
+        while (($index = array_search($searchObject, $this->stacks)) !== false &&
+            !in_array($index, $replacedIndexes, true)
+        ) {
             $this->stacks[$index] = $newObject;
+            $replacedIndexes[] = $index;
         }
     }
 
-    public function popStack(): void
+    public function popStack(): self
     {
         array_pop($this->stacks);
+        return $this;
     }
 
     public function getStacks()

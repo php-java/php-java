@@ -1,6 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClassInterface;
+use PHPJava\Packages\java\lang\NoSuchFieldException;
+
 final class _getfield implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -13,6 +16,10 @@ final class _getfield implements OperationInterface
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
 
         $name = $cpInfo[$class->getNameIndex()]->getString();
+
+        /**
+         * @var JavaClassInterface $objectref
+         */
         $objectref = $this->popFromOperandStack();
 
         $return = $objectref->getInvoker()->getDynamic()->getFields()->get($name);
@@ -22,6 +29,6 @@ final class _getfield implements OperationInterface
             return;
         }
 
-        throw new Exception('Cannot get to undefined Field ' . $name);
+        throw new NoSuchFieldException('Get to undefined field ' . $name);
     }
 }
