@@ -1,17 +1,16 @@
 <?php
-namespace PHPJava\Core\JVM\Invoker;
+namespace PHPJava\Core\JVM\Invoker\Extended;
 
 use ByteUnits\Metric;
-use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\Cache\OperationCache;
 use PHPJava\Core\JVM\FlexibleMethod;
+use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Exceptions\UnableToFindAttributionException;
-use PHPJava\Exceptions\UndefinedMethodException;
 use PHPJava\Exceptions\UndefinedOpCodeException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Core\Accumulator;
@@ -23,51 +22,14 @@ use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Long;
-use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Packages\java\lang\UnsupportedOperationException;
 use PHPJava\Utilities\AttributionResolver;
-use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\SuperClassResolver;
 use PHPJava\Utilities\TypeResolver;
 
-trait Invokable
+trait MethodCallable
 {
-    /**
-     * @var JavaClassInvoker
-     */
-    private $javaClassInvoker;
-
-    /**
-     * @var _MethodInfo[]
-     */
-    private $methods = [];
-
-    /**
-     * @var array
-     */
-    private $options = [];
-
-    /**
-     * @var DebugTool
-     */
-    private $debugTool;
-
     private $isInstantiatedStaticInitializer = false;
-
-    /**
-     * @param _MethodInfo[] $methods
-     */
-    public function __construct(JavaClassInvoker $javaClassInvoker, array $methods, array $options = [])
-    {
-        $this->javaClassInvoker = $javaClassInvoker;
-        $this->methods = $methods;
-        $this->options = $options;
-        $this->debugTool = new DebugTool(
-            str_replace('/', '.', $javaClassInvoker->getJavaClass()->getClassName()),
-            $this->options
-        );
-    }
 
     /**
      * @throws IllegalJavaClassException
@@ -262,7 +224,8 @@ trait Invokable
                         Metric::bytes(memory_get_usage())->format(),
                         Metric::bytes(memory_get_peak_usage())->format(),
                     ]
-                )
+                ),
+                [$name]
             );
 
             $beforeTrigger = $this->options['operations']['injections']['before'] ?? GlobalOptions::get('operations.injections.before');
@@ -329,103 +292,6 @@ trait Invokable
         }
         $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
         return null;
-    }
-
-    /**
-     * @return _MethodInfo[]
-     */
-    public function getList(): array
-    {
-        return $this->methods;
-    }
-
-    public function has(string $name): bool
-    {
-        return count($this->methods[$name] ?? []) > 0;
-    }
-
-    /**
-     * @throws NoSuchMethodException
-     * @throws UndefinedMethodException
-     * @throws \PHPJava\Exceptions\TypeException
-     * @throws \ReflectionException
-     */
-    private function findMethod(string $name, ...$arguments): _MethodInfo
-    {
-        $methodReferences = array_merge(
-            $this->methods[$name] ?? [],
-            (new SuperClassResolver())->resolveMethod(
-                $name,
-                $this->javaClassInvoker->getJavaClass()
-            )[$name] ?? []
-        );
-
-        if (empty($methodReferences)) {
-            if (!isset($methodReferences)) {
-                throw new NoSuchMethodException(
-                    'Call to undefined method ' . $name . '.'
-                );
-            }
-        }
-
-        $convertedPassedArguments = $this->stringifyArguments(...$arguments);
-
-        $this->debugTool->getLogger()->debug('Passed descriptor is ' . ($convertedPassedArguments ?: '(none)'));
-
-        $method = null;
-
-        foreach ($methodReferences as $methodReference) {
-            // If flexible method is available then Invoker use it all time.
-            if ($methodReference instanceof FlexibleMethod) {
-                return $methodReference;
-            }
-            $constantPool = $currentConstantPool = $methodReference->getConstantPool();
-            $formattedArguments = Formatter::parseSignature(
-                $constantPool[$methodReference->getDescriptorIndex()]->getString()
-            )['arguments'];
-
-            // does not strict mode can be PHP types
-            if (!($this->options['strict'] ?? GlobalOptions::get('strict') ?? Runtime::STRICT)) {
-                $formattedArguments = Formatter::signatureConvertToAmbiguousForPHP($formattedArguments);
-            }
-
-            /**
-             * @var _MethodInfo $methodReference
-             */
-            $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
-
-            $this->debugTool->getLogger()->debug('Find descriptor for ' . ($methodSignature ?: '(none)'));
-
-            if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
-                if (TypeResolver::compare($this->javaClassInvoker, $methodSignature, $convertedPassedArguments)) {
-                    return $methodReference;
-                }
-            }
-            if (($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY) === true) {
-                $size = count($formattedArguments);
-                $passedArgumentsSize = count(
-                    $arguments
-                );
-
-                if ($size === $passedArgumentsSize) {
-                    return $methodReference;
-                }
-            }
-        }
-
-        throw new NoSuchMethodException('Call to undefined method ' . $name . '.');
-    }
-
-    private function stringifyArguments(...$arguments): string
-    {
-        return Formatter::buildArgumentsSignature(
-            array_map(
-                function ($argument) {
-                    return TypeResolver::convertPHPtoJava($argument);
-                },
-                $arguments
-            )
-        );
     }
 
     public function callStaticInitializerIfNotInstantiated(): InvokerInterface
