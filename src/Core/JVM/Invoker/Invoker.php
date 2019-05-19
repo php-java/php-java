@@ -7,6 +7,7 @@ use PHPJava\Utilities\DebugTool;
 
 class Invoker implements InvokerInterface
 {
+    use Extended\SpecialMethodCallable;
     use Extended\MethodCallable;
     use Extended\MethodFindable;
     use Extended\MethodListable;

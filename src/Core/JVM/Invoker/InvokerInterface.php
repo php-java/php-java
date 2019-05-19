@@ -12,6 +12,8 @@ interface InvokerInterface
 
     public function call(string $name, ...$arguments);
 
+    public function callSpecial(string $name, ...$arguments);
+
     public function isDynamic(): bool;
 
     /**
