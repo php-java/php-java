@@ -1,10 +1,8 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker;
 
-class DynamicMethodInvoker implements InvokerInterface
+class DynamicMethodInvoker extends Invoker implements InvokerInterface
 {
-    use Invokable;
-
     public function isDynamic(): bool
     {
         return true;
