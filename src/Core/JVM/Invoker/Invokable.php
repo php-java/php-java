@@ -397,7 +397,7 @@ trait Invokable
             $this->debugTool->getLogger()->debug('Find descriptor for ' . ($methodSignature ?: '(none)'));
 
             if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
-                if (TypeResolver::compare($methodSignature, $convertedPassedArguments)) {
+                if (TypeResolver::compare($this->javaClassInvoker, $methodSignature, $convertedPassedArguments)) {
                     return $methodReference;
                 }
             }

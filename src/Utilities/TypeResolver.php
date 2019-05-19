@@ -2,6 +2,8 @@
 namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
+use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
@@ -20,8 +22,8 @@ use PHPJava\Packages\java\lang\_String;
 
 class TypeResolver
 {
-    const IS_CLASS = 'class';
-    const IS_PRIMITIVE = 'primitive';
+    const IS_CLASS = 'IS_CLASS';
+    const IS_PRIMITIVE = 'IS_PRIMITIVE';
 
     const PHP_TYPE_MAP = [
         'integer' => 'I',
@@ -245,14 +247,14 @@ class TypeResolver
      * @throws TypeException
      * @throws \ReflectionException
      */
-    public static function compare(string $a, string $b): bool
+    public static function compare(JavaClassInvoker $javaClassInvoker, string $a, string $b): bool
     {
         if ($a === $b) {
             return true;
         }
 
-        $a = static::getExtendedClasses($a);
-        $b = static::getExtendedClasses($b);
+        $a = static::getExtendedClasses($javaClassInvoker, $a);
+        $b = static::getExtendedClasses($javaClassInvoker, $b);
 
         $resultClassesComparison = [];
         $resultInterfacesComparison = [];
@@ -277,11 +279,10 @@ class TypeResolver
      * @throws TypeException
      * @throws \ReflectionException
      */
-    public static function getExtendedClasses(string $class): array
+    public static function getExtendedClasses(JavaClassInvoker $javaClassInvoker, string $class): array
     {
         static $loadedExtendedRoots = [];
         $result = [];
-
         foreach (Formatter::parseSignature($class) as $signature) {
             if ($signature['type'] !== 'class') {
                 $result[] = [[$signature['type']], []];
@@ -292,45 +293,78 @@ class TypeResolver
                 $path[] = Runtime::PHP_PACKAGES_MAPS[$name] ?? $name;
             }
             $classPath = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . implode('\\', $path);
-
             // Remove duplicated prefix
             $classPath = preg_replace(
                 '/^(?:' . preg_quote(Runtime::PHP_PACKAGES_DIRECTORY, '/') . ')+/',
                 Runtime::PHP_PACKAGES_DIRECTORY,
                 $classPath
             );
-
             if (isset($loadedExtendedRoots[$classPath])) {
                 $result[] = $loadedExtendedRoots[$classPath];
                 continue;
             }
-
-            $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
-            $interfaces = array_values(class_implements($classPath, true));
-
+            $extendedClasses = [];
+            $interfaces = [];
             if (class_exists($classPath)) {
+                $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
+                $interfaces = array_values(class_implements($classPath, true));
                 $reflectionClass = new \ReflectionClass($classPath);
-                if ($document = $reflectionClass->getDocComment()) {
-                    $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-                        ->create($document);
-                    if (!empty($documentBlock->getTagsByName('highPriority'))) {
-                        $extendedClasses = array_map(
-                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                                return (string) $item->getDescription();
-                            },
-                            $documentBlock->getTagsByName('parent')
-                        );
+                if (!($document = $reflectionClass->getDocComment())) {
+                    continue;
+                }
 
-                        $interfaces = array_map(
-                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                                return (string) $item->getDescription();
-                            },
-                            $documentBlock->getTagsByName('interface')
+                $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                    ->create($document);
+
+                if (!empty($documentBlock->getTagsByName('highPriority'))) {
+                    $extendedClasses = array_map(
+                        function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                            return (string) $item->getDescription();
+                        },
+                        $documentBlock->getTagsByName('parent')
+                    );
+                    $interfaces = array_map(
+                        function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                            return (string) $item->getDescription();
+                        },
+                        $documentBlock->getTagsByName('interface')
+                    );
+                }
+            } else {
+                // in package
+                $packagedClasses = [];
+                $packagedClasses[] = $currentClass = $signature['class_name'];
+                $packagedInterfaces = [];
+                $beforeClass = null;
+                for (;;) {
+                    if ($beforeClass === $currentClass) {
+                        // Stop loop if beforeClass and currentClass is same class.
+                        break;
+                    }
+                    /**
+                     * @var JavaClassInterface $classObject
+                     */
+                    [$resourceType, $classObject] = $javaClassInvoker
+                        ->getJavaClass()
+                        ->getOptions('class_resolver')
+                        ->resolve(
+                            $currentClass,
+                            $javaClassInvoker->getJavaClass()
                         );
+                    $superClass = $classObject->getSuperClass();
+                    if ($superClass instanceof JavaClassInterface) {
+                        $beforeClass = $currentClass;
+                        $currentClass = $superClass->getClassName();
+                    } else {
+                        [$extendedClasses, $interfaces] = static::getRecursiveRootsClassesByClassPath(
+                            get_class($superClass)
+                        );
+                        break;
                     }
                 }
+                $extendedClasses = array_merge($extendedClasses, $packagedClasses);
+                $interfaces = array_merge($interfaces, $packagedInterfaces);
             }
-
             $result[] = $loadedExtendedRoots[$classPath] = [$extendedClasses, $interfaces];
         }
 
@@ -339,6 +373,32 @@ class TypeResolver
         });
 
         return $result;
+    }
+
+    public static function getRecursiveRootsClassesByClassPath(string $classPath)
+    {
+        $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
+        $interfaces = array_values(class_implements($classPath, true));
+        $reflectionClass = new \ReflectionClass($classPath);
+        if ($document = $reflectionClass->getDocComment()) {
+            $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                ->create($document);
+            if (!empty($documentBlock->getTagsByName('highPriority'))) {
+                $extendedClasses = array_map(
+                    function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                        return (string) $item->getDescription();
+                    },
+                    $documentBlock->getTagsByName('parent')
+                );
+                $interfaces = array_map(
+                    function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                        return (string) $item->getDescription();
+                    },
+                    $documentBlock->getTagsByName('interface')
+                );
+            }
+        }
+        return [$extendedClasses, $interfaces];
     }
 
     /**
