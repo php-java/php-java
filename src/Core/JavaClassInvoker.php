@@ -119,7 +119,7 @@ class JavaClassInvoker
             $this->options
         );
 
-        if (isset($this->dynamicMethods[$methodName])) {
+        try {
             $result = $this->getDynamic()->getMethods()->call(
                 $methodName ?? ClassHandler::DEFAULT_INITIALIZER,
                 ...$arguments
@@ -128,6 +128,11 @@ class JavaClassInvoker
             if ($result !== null) {
                 return $result;
             }
+        } catch (\Exception $e) {
+            if ($methodName === ClassHandler::DEFAULT_INITIALIZER) {
+                return $this;
+            }
+            throw $e;
         }
 
         return $this;

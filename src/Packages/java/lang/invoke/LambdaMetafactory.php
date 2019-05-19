@@ -2,12 +2,15 @@
 namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Kernel\Internal\Lambda;
 use PHPJava\Kernel\Structures\_MethodHandle;
 use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
+use PHPJava\Utilities\Extractor;
 
 /**
  * The `LambdaMetafactory` class was auto generated.
@@ -41,22 +44,37 @@ class LambdaMetafactory extends _Object
      * Facilitates the creation of simple "function objects" that implement one or more interfaces by delegation to a provided MethodHandle, after appropriate type adaptation and partial evaluation of arguments.
      *
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#altMetafactory
+     * @native JavaClass
+     * @native ConstantPool
      * @param null|mixed $a
      * @param null|mixed $b
      * @param null|mixed $c
      * @param null|mixed $d
      * @throws NotImplementedException
      */
-    public static function altMetafactory($a = null, $b = null, $c = null, ...$d)
+    public static function altMetafactory(JavaClass $javaClass, ConstantPool $cp, $a = null, $b = null, $c = null, ...$d)
     {
         $caller = $a;
         $invokedName = $b;
         $invokedType = $c;
         $args = $d;
 
-//        var_dump(func_get_args());
+//        $samMethodType = $args[0];
+//        $implMethod = $args[1];
+//        $instantiatedMethodType = $args[2];
+//        $flags = Extractor::getRealValue($args[3]);
 //
-//        throw new NotImplementedException(__METHOD__);
+//        $lambdaInfo = $cp[$cp[$implMethod->getReferenceIndex()]->getNameAndTypeIndex()];
+//        $lambdaName = $cp[$lambdaInfo->getNameIndex()]->getString();
+//        $lambdaDescriptor = $cp[$lambdaInfo->getDescriptorIndex()]->getString();
+
+        if ($invokedType instanceof JavaClassInterface) {
+            return $invokedType->getInvoker()->getDynamic()->getMethods()->call(
+                $invokedName
+            );
+        }
+
+        throw new RuntimeException('Implementing now.');
     }
 
     /**

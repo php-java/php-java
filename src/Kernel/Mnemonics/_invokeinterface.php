@@ -38,13 +38,18 @@ final class _invokeinterface implements OperationInterface
          * @var JavaClassInvoker $objectref
          */
         $objectref = $collection[0];
+
         $arguments = array_values(array_slice($collection, 1));
 
         $from = $objectref;
         if ($objectref instanceof JavaClassInterface) {
             $from = $objectref->getInvoker();
         }
-        var_dump($name);
+
+        if ($name === 'underlying') {
+            var_dump($arguments);
+        }
+
         $result = $from->construct($name, ...$arguments);
 
         if ($signature[0]['type'] !== 'void') {
@@ -55,6 +60,11 @@ final class _invokeinterface implements OperationInterface
 
             if ($result instanceof JavaClassInvoker) {
                 $result = $result->getJavaClass();
+            }
+
+            if ($name === 'propFilename') {
+                var_dump($result, $interfaceMethodRef);
+                exit();
             }
 
             $this->pushToOperandStack(
