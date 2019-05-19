@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Packages;
 
-use PHPJava\Exceptions\UnableToCatchException;
+use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Packages\java\lang\_String;
 use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
 use PHPJava\Tests\Base;
@@ -43,7 +43,7 @@ class JavaLangStringTest extends Base
                     'abc',
                     -1
                 );
-        } catch (UnableToCatchException $e) {
+        } catch (UncaughtException $e) {
             throw $e->getPrevious();
         }
     }
@@ -63,7 +63,7 @@ class JavaLangStringTest extends Base
                     'abc',
                     3
                 );
-        } catch (UnableToCatchException $e) {
+        } catch (UncaughtException $e) {
             throw $e->getPrevious();
         }
     }

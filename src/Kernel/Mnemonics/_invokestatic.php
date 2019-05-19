@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
-use PHPJava\Exceptions\UnableToCatchException;
+use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
@@ -105,7 +105,7 @@ final class _invokestatic implements OperationInterface
                 }
             }
 
-            throw new UnableToCatchException(
+            throw new UncaughtException(
                 $expectedClass . ': ' . $e->getMessage(),
                 0,
                 $e

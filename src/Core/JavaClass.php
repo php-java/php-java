@@ -264,15 +264,6 @@ class JavaClass implements JavaClassInterface
             $this,
             $options
         );
-
-        if ($this->invoker->getStatic()->getMethods()->has('<clinit>')) {
-            $this->invoker
-                ->getStatic()
-                ->getMethods()
-                ->call(
-                    '<clinit>'
-                );
-        }
     }
 
     public function __invoke(...$arguments): JavaClass

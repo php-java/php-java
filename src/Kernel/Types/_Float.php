@@ -3,6 +3,8 @@ namespace PHPJava\Kernel\Types;
 
 class _Float extends Type
 {
+    const DEFAULT_VALUE = 0;
+
     protected $nameInJava = 'float';
     protected $nameInPHP = 'float';
 

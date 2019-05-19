@@ -3,6 +3,8 @@ namespace PHPJava\Kernel\Types;
 
 class _Char extends Type
 {
+    const DEFAULT_VALUE = 0;
+
     protected $nameInJava = 'char';
     protected $nameInPHP = 'string';
 

@@ -3,6 +3,8 @@ namespace PHPJava\Kernel\Types;
 
 class _Long extends Type
 {
+    const DEFAULT_VALUE = 0;
+
     protected $nameInJava = 'long';
     protected $nameInPHP = 'integer';
 

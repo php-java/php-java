@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\UnableToCatchException;
+use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Utilities\AttributionResolver;
@@ -13,7 +13,7 @@ final class _athrow implements OperationInterface
     use \PHPJava\Kernel\Core\ConstantPool;
 
     /**
-     * @throws UnableToCatchException
+     * @throws UncaughtException
      */
     public function execute(): void
     {
@@ -45,7 +45,7 @@ final class _athrow implements OperationInterface
             }
         }
 
-        throw new UnableToCatchException(
+        throw new UncaughtException(
             "Unable to catch {$className} exception. " .
             'PHPJava has stopped operations. ' .
             'You may be running broken Java class. '

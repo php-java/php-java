@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Exceptions\UnableToCatchException;
+use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Internal\InstanceDeferredLoader;
 use PHPJava\Kernel\Structures\_ExceptionTable;
@@ -62,7 +62,11 @@ final class _invokespecial implements OperationInterface
             }
 
             // NOTE: PHP has a problem which a reference object cannot replace to an object.
-            $this->replaceReferredObject($objectref, $newObject);
+            if ($parsedSignature[0]['type'] === 'void' &&
+                $objectref !== $newObject
+            ) {
+                $this->replaceReferredObject($objectref, $newObject);
+            }
         } catch (\Exception $e) {
             /**
              * @var CodeAttribute $codeAttribute
@@ -78,17 +82,22 @@ final class _invokespecial implements OperationInterface
                 /**
                  * @var _ExceptionTable $exception
                  */
-                $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
-                if ($catchClass === $expectedClass &&
-                    $exception->getStartPc() <= $this->getProgramCounter() &&
-                    $exception->getEndPc() >= $this->getProgramCounter()
+                if ($exception->getStartPc() > $this->getProgramCounter() ||
+                    $exception->getEndPc() < $this->getProgramCounter()
                 ) {
+                    continue;
+                }
+                if ($exception->getCatchType() === 0) {
+                    $this->setOffset($exception->getHandlerPc());
+                }
+                $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
+                if ($catchClass === $expectedClass) {
                     $this->setOffset($exception->getHandlerPc());
                     return;
                 }
             }
 
-            throw new UnableToCatchException(
+            throw new UncaughtException(
                 $expectedClass . ': ' . $e->getMessage(),
                 0,
                 $e

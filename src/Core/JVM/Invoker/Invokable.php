@@ -10,6 +10,7 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
+use PHPJava\Exceptions\UnableToFindAttributionException;
 use PHPJava\Exceptions\UndefinedMethodException;
 use PHPJava\Exceptions\UndefinedOpCodeException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
@@ -51,6 +52,8 @@ trait Invokable
      * @var DebugTool
      */
     private $debugTool;
+
+    private $isInstantiatedStaticInitializer = false;
 
     /**
      * @param _MethodInfo[] $methods
@@ -114,13 +117,13 @@ trait Invokable
             return $method(...$arguments);
         }
 
-        $codeAttribute = AttributionResolver::resolve(
-            $method->getAttributes(),
-            CodeAttribute::class
-        );
-
-        if ($codeAttribute === null) {
-            throw new IllegalJavaClassException('Java class does not have code attribute.');
+        try {
+            $codeAttribute = AttributionResolver::resolve(
+                $method->getAttributes(),
+                CodeAttribute::class
+            );
+        } catch (UnableToFindAttributionException $e) {
+            return null;
         }
 
         $handle = fopen(
@@ -129,6 +132,7 @@ trait Invokable
             Runtime::OPERATIONS_TEMPORARY_CODE_STREAM,
             'r+'
         );
+
         fwrite($handle, $codeAttribute->getCode());
         rewind($handle);
 
@@ -358,13 +362,15 @@ trait Invokable
 
         if (empty($methodReferences)) {
             if (!isset($methodReferences)) {
-                throw new UndefinedMethodException('Call to undefined method ' . $name . '.');
+                throw new NoSuchMethodException(
+                    'Call to undefined method ' . $name . '.'
+                );
             }
         }
 
         $convertedPassedArguments = $this->stringifyArguments(...$arguments);
 
-        $this->debugTool->getLogger()->debug('Passed descriptor is ' . $convertedPassedArguments);
+        $this->debugTool->getLogger()->debug('Passed descriptor is ' . ($convertedPassedArguments ?: '(none)'));
 
         $method = null;
 
@@ -388,7 +394,7 @@ trait Invokable
              */
             $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
 
-            $this->debugTool->getLogger()->debug('Find descriptor for ' . $methodSignature);
+            $this->debugTool->getLogger()->debug('Find descriptor for ' . ($methodSignature ?: '(none)'));
 
             if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
                 if (TypeResolver::compare($methodSignature, $convertedPassedArguments)) {
@@ -420,5 +426,22 @@ trait Invokable
                 $arguments
             )
         );
+    }
+
+    public function callStaticInitializerIfNotInstantiated(): InvokerInterface
+    {
+        if ($this->isInstantiatedStaticInitializer) {
+            return $this;
+        }
+        $this->isInstantiatedStaticInitializer = true;
+        if ($this->javaClassInvoker->getStatic()->getMethods()->has('<clinit>')) {
+            $this->javaClassInvoker
+                ->getStatic()
+                ->getMethods()
+                ->call(
+                    '<clinit>'
+                );
+        }
+        return $this;
     }
 }
