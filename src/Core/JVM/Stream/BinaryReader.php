@@ -29,6 +29,9 @@ class BinaryReader
     final public function read(int $bytes = 1): string
     {
         $this->offset += $bytes;
+        if ($bytes === 0) {
+            return '';
+        }
         $read = fread($this->handle, $bytes);
         if (strlen($read) !== $bytes) {
             throw new BinaryReaderException(
