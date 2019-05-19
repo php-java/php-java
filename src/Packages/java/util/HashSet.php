@@ -19,8 +19,9 @@ class HashSet extends AbstractSet // implements Serializable, Iterable, Set
     /**
      * Adds the specified element to this set if it is not already present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function add($a = null)
     {
@@ -30,8 +31,9 @@ class HashSet extends AbstractSet // implements Serializable, Iterable, Set
     /**
      * Removes all of the elements from this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -41,8 +43,9 @@ class HashSet extends AbstractSet // implements Serializable, Iterable, Set
     /**
      * Returns a shallow copy of this HashSet instance: the elements themselves are not cloned.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -52,8 +55,9 @@ class HashSet extends AbstractSet // implements Serializable, Iterable, Set
     /**
      * Returns true if this set contains the specified element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#contains
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function contains($a = null)
     {
@@ -63,8 +67,9 @@ class HashSet extends AbstractSet // implements Serializable, Iterable, Set
     /**
      * Returns true if this set contains no elements.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isEmpty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isEmpty($a = null)
     {
@@ -74,8 +79,9 @@ class HashSet extends AbstractSet // implements Serializable, Iterable, Set
     /**
      * Returns an iterator over the elements in this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function iterator($a = null)
     {
@@ -85,8 +91,9 @@ class HashSet extends AbstractSet // implements Serializable, Iterable, Set
     /**
      * Removes the specified element from this set if it is present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -96,8 +103,9 @@ class HashSet extends AbstractSet // implements Serializable, Iterable, Set
     /**
      * Returns the number of elements in this set (its cardinality).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {
@@ -107,8 +115,9 @@ class HashSet extends AbstractSet // implements Serializable, Iterable, Set
     /**
      * Creates a late-binding and fail-fast Spliterator over the elements in this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function spliterator($a = null)
     {

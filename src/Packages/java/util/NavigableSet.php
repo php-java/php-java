@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `NavigableSet` interface was auto generated.
@@ -13,8 +12,8 @@ interface NavigableSet
      * Returns the least element in this set greater than or equal to the given element, or null if there is no such element.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ceiling
      * @NotImplemented
      */
@@ -24,8 +23,8 @@ interface NavigableSet
      * Returns an iterator over the elements in this set, in descending order.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#descendingIterator
      * @NotImplemented
      */
@@ -35,8 +34,8 @@ interface NavigableSet
      * Returns a reverse order view of the elements contained in this set.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#descendingSet
      * @NotImplemented
      */
@@ -46,8 +45,8 @@ interface NavigableSet
      * Returns the greatest element in this set less than or equal to the given element, or null if there is no such element.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#floor
      * @NotImplemented
      */
@@ -59,8 +58,8 @@ interface NavigableSet
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#headSet
      * @NotImplemented
      */
@@ -70,8 +69,8 @@ interface NavigableSet
      * Returns the least element in this set strictly greater than the given element, or null if there is no such element.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#higher
      * @NotImplemented
      */
@@ -81,8 +80,8 @@ interface NavigableSet
      * Returns an iterator over the elements in this set, in ascending order.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
      * @NotImplemented
      */
@@ -92,8 +91,8 @@ interface NavigableSet
      * Returns the greatest element in this set strictly less than the given element, or null if there is no such element.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lower
      * @NotImplemented
      */
@@ -103,8 +102,8 @@ interface NavigableSet
      * Retrieves and removes the first (lowest) element, or returns null if this set is empty.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollFirst
      * @NotImplemented
      */
@@ -114,8 +113,8 @@ interface NavigableSet
      * Retrieves and removes the last (highest) element, or returns null if this set is empty.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollLast
      * @NotImplemented
      */
@@ -129,8 +128,8 @@ interface NavigableSet
      * @param mixed $b
      * @param mixed $c
      * @param mixed $d
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#subSet
      * @NotImplemented
      */
@@ -142,8 +141,8 @@ interface NavigableSet
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#tailSet
      * @NotImplemented
      */

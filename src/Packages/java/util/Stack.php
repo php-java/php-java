@@ -2,7 +2,7 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\util\Vector;
+
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Iterable;
 // use PHPJava\Packages\java\util\_List;
@@ -15,14 +15,11 @@ use PHPJava\Packages\java\util\Vector;
  * @parent \PHPJava\Packages\java\util\AbstractList
  * @parent \PHPJava\Packages\java\util\Vector
  */
-class Stack extends Vector /* implements Serializable, Iterable, _List */
+class Stack extends Vector // implements Serializable, Iterable, _List
 {
-
     /**
      * Tests if this stack is empty.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#empty
      */
@@ -34,8 +31,6 @@ class Stack extends Vector /* implements Serializable, Iterable, _List */
     /**
      * Looks at the object at the top of this stack without removing it from the stack.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peek
      */
@@ -47,8 +42,6 @@ class Stack extends Vector /* implements Serializable, Iterable, _List */
     /**
      * Removes the object at the top of this stack and returns that object as the value of this function.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pop
      */
@@ -60,8 +53,6 @@ class Stack extends Vector /* implements Serializable, Iterable, _List */
     /**
      * Pushes an item onto the top of this stack.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#push
      */
@@ -73,8 +64,6 @@ class Stack extends Vector /* implements Serializable, Iterable, _List */
     /**
      * Returns the 1-based position where an object is on this stack.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#search
      */

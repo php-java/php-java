@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang\Map;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `Entry` interface was auto generated.
@@ -14,8 +13,8 @@ interface Entry
      * Returns a comparator that compares Map.Entry by key using the given Comparator.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#comparingByKey
      * @NotImplemented
      */
@@ -26,8 +25,8 @@ interface Entry
      * Returns a comparator that compares Map.Entry by value using the given Comparator.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#comparingByValue
      * @NotImplemented
      */
@@ -37,8 +36,8 @@ interface Entry
      * Compares the specified object with this entry for equality.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
      * @NotImplemented
      */
@@ -48,8 +47,8 @@ interface Entry
      * Returns the key corresponding to this entry.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getKey
      * @NotImplemented
      */
@@ -59,8 +58,8 @@ interface Entry
      * Returns the value corresponding to this entry.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getValue
      * @NotImplemented
      */
@@ -70,8 +69,8 @@ interface Entry
      * Returns the hash code value for this map entry.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
      * @NotImplemented
      */
@@ -81,8 +80,8 @@ interface Entry
      * Replaces the value corresponding to this entry with the specified value (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setValue
      * @NotImplemented
      */

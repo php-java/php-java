@@ -2,7 +2,7 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\Number;
+
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Comparable;
 
@@ -12,49 +12,46 @@ use PHPJava\Packages\java\lang\Number;
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Number
  */
-class _Integer extends Number /* implements Serializable, Comparable */
+class _Integer extends Number // implements Serializable, Comparable
 {
-    /** 
+    /**
      * The number of bytes used to represent an int value in two's complement binary form.
-     * 
+     *
      * @var mixed $BYTES
      */
     public static $BYTES = null;
 
-    /** 
+    /**
      * A constant holding the maximum value an int can have, 231-1.
-     * 
+     *
      * @var mixed $MAX_VALUE
      */
     public static $MAX_VALUE = null;
 
-    /** 
+    /**
      * A constant holding the minimum value an int can have, -231.
-     * 
+     *
      * @var mixed $MIN_VALUE
      */
     public static $MIN_VALUE = null;
 
-    /** 
+    /**
      * The number of bits used to represent an int value in two's complement binary form.
-     * 
+     *
      * @var mixed $SIZE
      */
     public static $SIZE = null;
 
-    /** 
+    /**
      * The Class instance representing the primitive type int.
-     * 
+     *
      * @var mixed $TYPE
      */
     public static $TYPE = null;
 
-
     /**
      * Returns the number of one-bits in the two's complement binary representation of the specified int value.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#bitCount
      */
@@ -66,8 +63,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Integer as a byte after a narrowing primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#byteValue
      */
@@ -79,9 +74,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Compares two int values numerically.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compare
      */
@@ -93,8 +85,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Compares two Integer objects numerically.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
      */
@@ -106,9 +96,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Compares two int values numerically treating the values as unsigned.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareUnsigned
      */
@@ -120,8 +107,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Decodes a String into an Integer.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#decode
      */
@@ -133,9 +118,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the unsigned quotient of dividing the first argument by the second where each argument and the result is interpreted as an unsigned value.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#divideUnsigned
      */
@@ -147,8 +129,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Integer as a double after a widening primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#doubleValue
      */
@@ -160,8 +140,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Compares this object to the specified object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equals
      */
@@ -173,8 +151,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Integer as a float after a widening primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#floatValue
      */
@@ -188,9 +164,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
      * Determines the integer value of the system property with the specified name.
      * Returns the integer value of the system property with the specified name.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getInteger
      */
@@ -203,8 +176,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
      * Returns a hash code for this Integer.
      * Returns a hash code for an int value; compatible with Integer.hashCode().
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#hashCode
      */
@@ -216,8 +187,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns an int value with at most a single one-bit, in the position of the highest-order ("leftmost") one-bit in the specified int value.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#highestOneBit
      */
@@ -229,8 +198,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Integer as an int.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#intValue
      */
@@ -242,8 +209,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Integer as a long after a widening primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#longValue
      */
@@ -255,8 +220,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns an int value with at most a single one-bit, in the position of the lowest-order ("rightmost") one-bit in the specified int value.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#lowestOneBit
      */
@@ -268,9 +231,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the greater of two int values as if by calling Math.max.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#max
      */
@@ -282,9 +242,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the smaller of two int values as if by calling Math.min.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#min
      */
@@ -296,8 +253,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the number of zero bits preceding the highest-order ("leftmost") one-bit in the two's complement binary representation of the specified int value.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#numberOfLeadingZeros
      */
@@ -309,8 +264,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the number of zero bits following the lowest-order ("rightmost") one-bit in the two's complement binary representation of the specified int value.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#numberOfTrailingZeros
      */
@@ -324,11 +277,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
      * Parses the string argument as a signed decimal integer.
      * Parses the string argument as a signed integer in the radix specified by the second argument.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#parseInt
      */
@@ -342,11 +290,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
      * Parses the string argument as an unsigned decimal integer.
      * Parses the string argument as an unsigned integer in the radix specified by the second argument.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#parseUnsignedInt
      */
@@ -358,9 +301,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the unsigned remainder from dividing the first argument by the second where each argument and the result is interpreted as an unsigned value.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#remainderUnsigned
      */
@@ -372,8 +312,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value obtained by reversing the order of the bits in the two's complement binary representation of the specified int value.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#reverse
      */
@@ -385,8 +323,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value obtained by reversing the order of the bytes in the two's complement representation of the specified int value.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#reverseBytes
      */
@@ -398,9 +334,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value obtained by rotating the two's complement binary representation of the specified int value left by the specified number of bits.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#rotateLeft
      */
@@ -412,9 +345,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value obtained by rotating the two's complement binary representation of the specified int value right by the specified number of bits.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#rotateRight
      */
@@ -426,8 +356,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the value of this Integer as a short after a narrowing primitive conversion.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#shortValue
      */
@@ -439,8 +367,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns the signum function of the specified int value.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#signum
      */
@@ -452,9 +378,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Adds two integers together as per the + operator.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#sum
      */
@@ -466,8 +389,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns a string representation of the integer argument as an unsigned integer in base&nbsp;2.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toBinaryString
      */
@@ -479,8 +400,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns a string representation of the integer argument as an unsigned integer in base&nbsp;16.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toHexString
      */
@@ -492,8 +411,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Returns a string representation of the integer argument as an unsigned integer in base&nbsp;8.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toOctalString
      */
@@ -507,9 +424,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
      * Returns a String object representing the specified integer.
      * Returns a string representation of the first argument in the radix specified by the second argument.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
      */
@@ -521,8 +435,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
     /**
      * Converts the argument to a long by an unsigned conversion.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toUnsignedLong
      */
@@ -535,9 +447,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
      * Returns a string representation of the argument as an unsigned decimal value.
      * Returns a string representation of the first argument as an unsigned integer value in the radix specified by the second argument.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toUnsignedString
      */
@@ -551,9 +460,6 @@ class _Integer extends Number /* implements Serializable, Comparable */
      * Returns an Integer object holding the value of the specified String.
      * Returns an Integer object holding the value extracted from the specified String when parsed with the radix given by the second argument.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
      */

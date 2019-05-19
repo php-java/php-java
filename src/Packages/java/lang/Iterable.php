@@ -13,8 +13,8 @@ interface Iterable
      * Performs the given action for each element of the Iterable until all elements have been processed or the action throws an exception.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#forEach
      * @NotImplemented
      */
@@ -24,8 +24,8 @@ interface Iterable
      * Returns an iterator over elements of type T.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#iterator
      * @NotImplemented
      */
@@ -35,8 +35,8 @@ interface Iterable
      * Creates a Spliterator over the elements described by this Iterable.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#spliterator
      * @NotImplemented
      */

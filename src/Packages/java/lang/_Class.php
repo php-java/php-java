@@ -2,7 +2,7 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\reflect\AnnotatedType;
 // use PHPJava\Packages\java\lang\annotation\Annotation;
@@ -12,14 +12,11 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class _Class extends _Object /* implements Serializable, AnnotatedType, Annotation */
+class _Class extends _Object // implements Serializable, AnnotatedType, Annotation
 {
-
     /**
      * Casts this Class object to represent a subclass of the class represented by the specified class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#asSubclass
      */
@@ -31,8 +28,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Casts an object to the class or interface represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#cast
      */
@@ -44,8 +39,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the assertion status that would be assigned to this class if it were to be initialized at the time this method is invoked.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#desiredAssertionStatus
      */
@@ -59,10 +52,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
      * Returns the Class object associated with the class or interface with the given string name.
      * Returns the Class object associated with the class or interface with the given string name, using the given class loader.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#forName
      */
@@ -74,8 +63,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array of AnnotatedType objects that represent the use of types to specify superinterfaces of the entity represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getAnnotatedInterfaces
      */
@@ -87,8 +74,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an AnnotatedType object that represents the use of a type to specify the superclass of the entity represented by this  Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getAnnotatedSuperclass
      */
@@ -100,8 +85,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns this element's annotation for the specified type if such an annotation is present, else null.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getAnnotation
      */
@@ -113,8 +96,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns annotations that are present on this element.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getAnnotations
      */
@@ -126,8 +107,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns annotations that are associated with this element.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getAnnotationsByType
      */
@@ -139,8 +118,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the canonical name of the underlying class as defined by the Java Language Specification.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getCanonicalName
      */
@@ -152,8 +129,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array containing Class objects representing all the public classes and interfaces that are members of the class represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getClasses
      */
@@ -165,8 +140,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the class loader for the class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getClassLoader
      */
@@ -178,8 +151,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the Class representing the component type of an array.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getComponentType
      */
@@ -191,8 +162,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns a Constructor object that reflects the specified public constructor of the class represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getConstructor
      */
@@ -204,8 +173,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array containing Constructor objects reflecting all the public constructors of the class represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getConstructors
      */
@@ -217,8 +184,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns this element's annotation for the specified type if such an annotation is directly present, else null.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredAnnotation
      */
@@ -230,8 +195,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns annotations that are directly present on this element.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredAnnotations
      */
@@ -243,8 +206,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns this element's annotation(s) for the specified type if such annotations are either directly present or indirectly present.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredAnnotationsByType
      */
@@ -256,8 +217,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array of Class objects reflecting all the classes and interfaces declared as members of the class represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredClasses
      */
@@ -269,8 +228,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns a Constructor object that reflects the specified constructor of the class or interface represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredConstructor
      */
@@ -282,8 +239,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array of Constructor objects reflecting all the constructors declared by the class represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredConstructors
      */
@@ -295,8 +250,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns a Field object that reflects the specified declared field of the class or interface represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredField
      */
@@ -308,8 +261,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array of Field objects reflecting all the fields declared by the class or interface represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredFields
      */
@@ -321,9 +272,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns a Method object that reflects the specified declared method of the class or interface represented by this Class object.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredMethod
      */
@@ -335,8 +283,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array containing Method objects reflecting all the declared methods of the class or interface represented by this  Class object, including public, protected, default (package) access, and private methods, but excluding inherited methods.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaredMethods
      */
@@ -348,8 +294,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * If the class or interface represented by this Class object is a member of another class, returns the Class object representing the class in which it was declared.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getDeclaringClass
      */
@@ -361,8 +305,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the immediately enclosing class of the underlying class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getEnclosingClass
      */
@@ -374,8 +316,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * If this Class object represents a local or anonymous class within a constructor, returns a Constructor object representing the immediately enclosing constructor of the underlying class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getEnclosingConstructor
      */
@@ -387,8 +327,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * If this Class object represents a local or anonymous class within a method, returns a Method object representing the immediately enclosing method of the underlying class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getEnclosingMethod
      */
@@ -400,8 +338,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the elements of this enum class or null if this Class object does not represent an enum type.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getEnumConstants
      */
@@ -413,8 +349,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns a Field object that reflects the specified public member field of the class or interface represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getField
      */
@@ -426,8 +360,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array containing Field objects reflecting all the accessible public fields of the class or interface represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getFields
      */
@@ -439,8 +371,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the Types representing the interfaces directly implemented by the class or interface represented by this object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getGenericInterfaces
      */
@@ -452,8 +382,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the Type representing the direct superclass of the entity (class, interface, primitive type or void) represented by this Class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getGenericSuperclass
      */
@@ -465,8 +393,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the interfaces directly implemented by the class or interface represented by this object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getInterfaces
      */
@@ -478,9 +404,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns a Method object that reflects the specified public member method of the class or interface represented by this Class object.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getMethod
      */
@@ -492,8 +415,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array containing Method objects reflecting all the public methods of the class or interface represented by this  Class object, including those declared by the class or interface and those inherited from superclasses and superinterfaces.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getMethods
      */
@@ -505,8 +426,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the Java language modifiers for this class or interface, encoded in an integer.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getModifiers
      */
@@ -518,8 +437,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the module that this class or interface is a member of.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getModule
      */
@@ -531,8 +448,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the  name of the entity (class, interface, array class, primitive type, or void) represented by this Class object, as a String.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getName
      */
@@ -544,8 +459,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the nest host of the nest to which the class or interface represented by this Class object belongs.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getNestHost
      */
@@ -557,8 +470,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array containing Class objects representing all the classes and interfaces that are members of the nest to which the class or interface represented by this Class object belongs.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getNestMembers
      */
@@ -570,8 +481,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Gets the package of this class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getPackage
      */
@@ -583,8 +492,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the fully qualified package name.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getPackageName
      */
@@ -596,8 +503,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the ProtectionDomain of this class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getProtectionDomain
      */
@@ -609,8 +514,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Finds a resource with a given name.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getResource
      */
@@ -622,8 +525,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Finds a resource with a given name.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getResourceAsStream
      */
@@ -635,8 +536,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Gets the signers of this class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getSigners
      */
@@ -648,8 +547,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the simple name of the underlying class as given in the source code.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getSimpleName
      */
@@ -661,8 +558,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns the Class representing the direct superclass of the entity (class, interface, primitive type or void) represented by this Class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getSuperclass
      */
@@ -674,8 +569,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Return an informative string for the name of this type.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getTypeName
      */
@@ -687,8 +580,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns an array of TypeVariable objects that represent the type variables declared by the generic declaration represented by this GenericDeclaration object, in declaration order.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getTypeParameters
      */
@@ -700,8 +591,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns true if this Class object represents an annotation type.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isAnnotation
      */
@@ -713,8 +602,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns true if an annotation for the specified type is present on this element, else false.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isAnnotationPresent
      */
@@ -726,8 +613,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns true if and only if the underlying class is an anonymous class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isAnonymousClass
      */
@@ -739,8 +624,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Determines if this Class object represents an array class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isArray
      */
@@ -752,8 +635,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Determines if the class or interface represented by this Class object is either the same as, or is a superclass or superinterface of, the class or interface represented by the specified Class parameter.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isAssignableFrom
      */
@@ -765,8 +646,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns true if and only if this class was declared as an enum in the source code.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isEnum
      */
@@ -778,8 +657,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Determines if the specified Object is assignment-compatible with the object represented by this Class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isInstance
      */
@@ -791,8 +668,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Determines if the specified Class object represents an interface type.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isInterface
      */
@@ -804,8 +679,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns true if and only if the underlying class is a local class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isLocalClass
      */
@@ -817,8 +690,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns true if and only if the underlying class is a member class.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isMemberClass
      */
@@ -830,8 +701,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Determines if the given Class is a nestmate of the class or interface represented by this Class object.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isNestmateOf
      */
@@ -843,8 +712,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Determines if the specified Class object represents a primitive type.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isPrimitive
      */
@@ -856,8 +723,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns true if this class is a synthetic class; returns false otherwise.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#isSynthetic
      */
@@ -869,8 +734,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Deprecated.This method propagates any exception thrown by the nullary constructor, including a checked exception.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#newInstance
      */
@@ -882,8 +745,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Returns a string describing this Class, including information about modifiers and type parameters.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toGenericString
      */
@@ -895,8 +756,6 @@ class _Class extends _Object /* implements Serializable, AnnotatedType, Annotati
     /**
      * Converts the object to a string.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
      */

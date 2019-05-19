@@ -2,7 +2,7 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\util\AbstractSet;
+
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Iterable;
 // use PHPJava\Packages\java\util\Collection;
@@ -14,14 +14,11 @@ use PHPJava\Packages\java\util\AbstractSet;
  * @parent \PHPJava\Packages\java\util\AbstractCollection
  * @parent \PHPJava\Packages\java\util\AbstractSet
  */
-class EnumSet extends AbstractSet /* implements Serializable, Iterable, Collection */
+class EnumSet extends AbstractSet // implements Serializable, Iterable, Collection
 {
-
     /**
      * Creates an enum set containing all of the elements in the specified element type.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#allOf
      */
@@ -33,8 +30,6 @@ class EnumSet extends AbstractSet /* implements Serializable, Iterable, Collecti
     /**
      * Returns a copy of this set.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
      */
@@ -46,8 +41,6 @@ class EnumSet extends AbstractSet /* implements Serializable, Iterable, Collecti
     /**
      * Creates an enum set with the same element type as the specified enum set, initially containing all the elements of this type that are not contained in the specified set.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#complementOf
      */
@@ -60,8 +53,6 @@ class EnumSet extends AbstractSet /* implements Serializable, Iterable, Collecti
      * Creates an enum set initialized from the specified collection.
      * Creates an enum set with the same element type as the specified enum set, initially containing the same elements (if any).
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#copyOf
      */
@@ -73,8 +64,6 @@ class EnumSet extends AbstractSet /* implements Serializable, Iterable, Collecti
     /**
      * Creates an empty enum set with the specified element type.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#noneOf
      */
@@ -91,12 +80,6 @@ class EnumSet extends AbstractSet /* implements Serializable, Iterable, Collecti
      * Creates an enum set initially containing the specified elements.
      * Creates an enum set initially containing the specified elements.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @param mixed $c
-     * @param mixed $d
-     * @param mixed $e
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#of
      */
@@ -108,9 +91,6 @@ class EnumSet extends AbstractSet /* implements Serializable, Iterable, Collecti
     /**
      * Creates an enum set initially containing all of the elements in the range defined by the two specified endpoints.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#range
      */

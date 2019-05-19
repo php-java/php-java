@@ -18,8 +18,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Removes all of the mappings from this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -29,8 +30,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Returns a shallow copy of this identity hash map: the keys and values themselves are not cloned.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -40,8 +42,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Tests whether the specified object reference is a key in this identity hash map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#containsKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function containsKey($a = null)
     {
@@ -51,8 +54,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Tests whether the specified object reference is a value in this identity hash map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#containsValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function containsValue($a = null)
     {
@@ -62,8 +66,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Returns a Set view of the mappings contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#entrySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function entrySet($a = null)
     {
@@ -73,8 +78,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Compares the specified object with this map for equality.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -84,8 +90,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function get($a = null)
     {
@@ -95,8 +102,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Returns the hash code value for this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -106,8 +114,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Returns true if this identity hash map contains no key-value mappings.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isEmpty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isEmpty($a = null)
     {
@@ -117,8 +126,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Returns an identity-based set view of the keys contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#keySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function keySet($a = null)
     {
@@ -128,8 +138,10 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Associates the specified value with the specified key in this identity hash map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#put
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function put($a = null, $b = null)
     {
@@ -139,8 +151,10 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Copies all of the mappings from the specified map to this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#putAll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function putAll($a = null, $b = null)
     {
@@ -150,8 +164,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Removes the mapping for this key from this map if present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -161,8 +176,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Returns the number of key-value mappings in this identity hash map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {
@@ -172,8 +188,9 @@ class IdentityHashMap extends AbstractMap // implements Serializable, Cloneable,
     /**
      * Returns a Collection view of the values contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#values
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function values($a = null)
     {

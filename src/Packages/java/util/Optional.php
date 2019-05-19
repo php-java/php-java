@@ -3,6 +3,7 @@ namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
+
 // use PHPJava\Packages\java\util\function\Supplier;
 // use PHPJava\Packages\java\lang\Runnable;
 // use PHPJava\Packages\java\util\stream\Stream;
@@ -12,14 +13,11 @@ use PHPJava\Packages\java\lang\_Object;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Optional extends _Object /* implements Supplier, Runnable, Stream */
+class Optional extends _Object // implements Supplier, Runnable, Stream
 {
-
     /**
      * Returns an empty Optional instance.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#empty
      */
@@ -31,8 +29,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * Indicates whether some other object is "equal to" this Optional.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
      */
@@ -44,8 +40,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, and the value matches the given predicate, returns an Optional describing the value, otherwise returns an empty Optional.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#filter
      */
@@ -57,9 +51,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, returns the result of applying the given Optional-bearing mapping function to the value, otherwise returns an empty Optional.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#flatMap
      */
@@ -71,8 +62,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, returns the value, otherwise throws NoSuchElementException.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
      */
@@ -84,8 +73,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * Returns the hash code of the value, if present, otherwise 0 (zero) if no value is present.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
      */
@@ -97,8 +84,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, performs the given action with the value, otherwise does nothing.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ifPresent
      */
@@ -110,9 +95,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, performs the given action with the value, otherwise performs the given empty-based action.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ifPresentOrElse
      */
@@ -124,8 +106,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is  not present, returns true, otherwise false.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isEmpty
      */
@@ -137,8 +117,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, returns true, otherwise false.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isPresent
      */
@@ -150,9 +128,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, returns an Optional describing (as if by ofNullable(T)) the result of applying the given mapping function to the value, otherwise returns an empty Optional.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#map
      */
@@ -164,8 +139,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * Returns an Optional describing the given non-null value.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#of
      */
@@ -177,8 +150,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * Returns an Optional describing the given value, if non-null, otherwise returns an empty Optional.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ofNullable
      */
@@ -190,8 +161,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, returns an Optional describing the value, otherwise returns an Optional produced by the supplying function.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#or
      */
@@ -203,8 +172,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, returns the value, otherwise returns other.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#orElse
      */
@@ -216,8 +183,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, returns the value, otherwise returns the result produced by the supplying function.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#orElseGet
      */
@@ -230,8 +195,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
      * If a value is present, returns the value, otherwise throws NoSuchElementException.
      * If a value is present, returns the value, otherwise throws an exception produced by the exception supplying function.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#orElseThrow
      */
@@ -243,8 +206,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * If a value is present, returns a sequential Stream containing only that value, otherwise returns an empty Stream.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#stream
      */
@@ -256,8 +217,6 @@ class Optional extends _Object /* implements Supplier, Runnable, Stream */
     /**
      * Returns a non-empty string representation of this Optional suitable for debugging.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
      */

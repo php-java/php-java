@@ -16,8 +16,9 @@ class Dictionary extends _Object // implements Enumeration
     /**
      * Returns an enumeration of the values in this dictionary.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#elements
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function elements($a = null)
     {
@@ -27,8 +28,9 @@ class Dictionary extends _Object // implements Enumeration
     /**
      * Returns the value to which the key is mapped in this dictionary.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function get($a = null)
     {
@@ -38,8 +40,9 @@ class Dictionary extends _Object // implements Enumeration
     /**
      * Tests if this dictionary maps no keys to value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isEmpty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isEmpty($a = null)
     {
@@ -49,8 +52,9 @@ class Dictionary extends _Object // implements Enumeration
     /**
      * Returns an enumeration of the keys in this dictionary.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#keys
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function keys($a = null)
     {
@@ -60,8 +64,10 @@ class Dictionary extends _Object // implements Enumeration
     /**
      * Maps the specified key to the specified value in this dictionary.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#put
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function put($a = null, $b = null)
     {
@@ -71,8 +77,9 @@ class Dictionary extends _Object // implements Enumeration
     /**
      * Removes the key (and its corresponding value) from this dictionary.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -82,8 +89,9 @@ class Dictionary extends _Object // implements Enumeration
     /**
      * Returns the number of entries (distinct keys) in this dictionary.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {

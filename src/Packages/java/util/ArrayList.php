@@ -21,8 +21,10 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
      * Inserts the specified element at the specified position in this list.
      * Appends the specified element to the end of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function add($a = null, $b = null)
     {
@@ -33,8 +35,10 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
      * Inserts all of the elements in the specified collection into this list, starting at the specified position.
      * Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's Iterator.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addAll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function addAll($a = null, $b = null)
     {
@@ -44,8 +48,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Removes all of the elements from this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -55,8 +60,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Returns a shallow copy of this ArrayList instance.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -66,8 +72,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Returns true if this list contains the specified element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#contains
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function contains($a = null)
     {
@@ -77,8 +84,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Increases the capacity of this ArrayList instance, if necessary, to ensure that it can hold at least the number of elements specified by the minimum capacity argument.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ensureCapacity
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ensureCapacity($a = null)
     {
@@ -88,8 +96,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Performs the given action for each element of the Iterable until all elements have been processed or the action throws an exception.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#forEach
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function forEach($a = null)
     {
@@ -99,8 +108,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Returns the element at the specified position in this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function get($a = null)
     {
@@ -110,8 +120,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#indexOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function indexOf($a = null)
     {
@@ -121,8 +132,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Returns true if this list contains no elements.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isEmpty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isEmpty($a = null)
     {
@@ -132,8 +144,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Returns an iterator over the elements in this list in proper sequence.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function iterator($a = null)
     {
@@ -143,8 +156,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lastIndexOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lastIndexOf($a = null)
     {
@@ -155,8 +169,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
      * Returns a list iterator over the elements in this list (in proper sequence).
      * Returns a list iterator over the elements in this list (in proper sequence), starting at the specified position in the list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#listIterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function listIterator($a = null)
     {
@@ -167,8 +182,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
      * Removes the element at the specified position in this list.
      * Removes the first occurrence of the specified element from this list, if it is present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -178,8 +194,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Removes from this list all of its elements that are contained in the specified collection.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeAll
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeAll($a = null)
     {
@@ -189,8 +206,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Removes all of the elements of this collection that satisfy the given predicate.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeIf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeIf($a = null)
     {
@@ -200,8 +218,10 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Removes from this list all of the elements whose index is between fromIndex, inclusive, and toIndex, exclusive.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeRange
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     protected function removeRange($a = null, $b = null)
     {
@@ -211,8 +231,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Retains only the elements in this list that are contained in the specified collection.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#retainAll
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function retainAll($a = null)
     {
@@ -222,8 +243,10 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Replaces the element at the specified position in this list with the specified element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#set
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function set($a = null, $b = null)
     {
@@ -233,8 +256,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Returns the number of elements in this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {
@@ -244,8 +268,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Creates a late-binding and fail-fast Spliterator over the elements in this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function spliterator($a = null)
     {
@@ -255,8 +280,10 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#subList
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function subList($a = null, $b = null)
     {
@@ -267,8 +294,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
      * Returns an array containing all of the elements in this list in proper sequence (from first to last element).
      * Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toArray($a = null)
     {
@@ -278,8 +306,9 @@ class ArrayList extends AbstractList // implements Serializable, Iterable, Colle
     /**
      * Trims the capacity of this ArrayList instance to be the list's current size.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#trimToSize
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function trimToSize($a = null)
     {

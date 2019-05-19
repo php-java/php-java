@@ -18,8 +18,10 @@ class AbstractSequentialList extends AbstractList // implements Iterable, _List
     /**
      * Inserts the specified element at the specified position in this list (optional operation).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function add($a = null, $b = null)
     {
@@ -29,8 +31,10 @@ class AbstractSequentialList extends AbstractList // implements Iterable, _List
     /**
      * Inserts all of the elements in the specified collection into this list at the specified position (optional operation).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addAll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function addAll($a = null, $b = null)
     {
@@ -40,8 +44,9 @@ class AbstractSequentialList extends AbstractList // implements Iterable, _List
     /**
      * Returns the element at the specified position in this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function get($a = null)
     {
@@ -51,8 +56,9 @@ class AbstractSequentialList extends AbstractList // implements Iterable, _List
     /**
      * Returns an iterator over the elements in this list (in proper sequence).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function iterator($a = null)
     {
@@ -62,8 +68,9 @@ class AbstractSequentialList extends AbstractList // implements Iterable, _List
     /**
      * Returns a list iterator over the elements in this list (in proper sequence).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#listIterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function listIterator($a = null)
     {
@@ -73,8 +80,9 @@ class AbstractSequentialList extends AbstractList // implements Iterable, _List
     /**
      * Removes the element at the specified position in this list (optional operation).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -84,8 +92,10 @@ class AbstractSequentialList extends AbstractList // implements Iterable, _List
     /**
      * Replaces the element at the specified position in this list with the specified element (optional operation).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#set
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function set($a = null, $b = null)
     {

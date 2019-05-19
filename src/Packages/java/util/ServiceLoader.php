@@ -18,8 +18,9 @@ class ServiceLoader extends _Object // implements Iterable, Provider, Stream
     /**
      * Load the first available service provider of this loader's service.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#findFirst
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function findFirst($a = null)
     {
@@ -29,8 +30,9 @@ class ServiceLoader extends _Object // implements Iterable, Provider, Stream
     /**
      * Returns an iterator to lazily load and instantiate the available providers of this loader's service.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function iterator($a = null)
     {
@@ -42,8 +44,10 @@ class ServiceLoader extends _Object // implements Iterable, Provider, Stream
      * Creates a new service loader for the given service.
      * Creates a new service loader for the given service type to load service providers from modules in the given module layer and its ancestors.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#load
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function load($a = null, $b = null)
     {
@@ -53,8 +57,9 @@ class ServiceLoader extends _Object // implements Iterable, Provider, Stream
     /**
      * Creates a new service loader for the given service type, using the platform class loader.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#loadInstalled
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function loadInstalled($a = null)
     {
@@ -64,8 +69,9 @@ class ServiceLoader extends _Object // implements Iterable, Provider, Stream
     /**
      * Clear this loader's provider cache so that all providers will be reloaded.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#reload
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function reload($a = null)
     {
@@ -75,8 +81,9 @@ class ServiceLoader extends _Object // implements Iterable, Provider, Stream
     /**
      * Returns a stream to lazily load available providers of this loader's service.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#stream
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function stream($a = null)
     {
@@ -86,8 +93,9 @@ class ServiceLoader extends _Object // implements Iterable, Provider, Stream
     /**
      * Returns a string describing this service.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

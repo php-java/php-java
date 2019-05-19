@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `Set` interface was auto generated.
@@ -13,8 +12,8 @@ interface Set
      * Adds the specified element to this set if it is not already present (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
      * @NotImplemented
      */
@@ -24,8 +23,8 @@ interface Set
      * Adds all of the elements in the specified collection to this set if they're not already present (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addAll
      * @NotImplemented
      */
@@ -35,8 +34,8 @@ interface Set
      * Removes all of the elements from this set (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
      * @NotImplemented
      */
@@ -46,8 +45,8 @@ interface Set
      * Returns true if this set contains the specified element.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#contains
      * @NotImplemented
      */
@@ -57,8 +56,8 @@ interface Set
      * Returns true if this set contains all of the elements of the specified collection.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#containsAll
      * @NotImplemented
      */
@@ -68,8 +67,8 @@ interface Set
      * Returns an unmodifiable Set containing the elements of the given Collection.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#copyOf
      * @NotImplemented
      */
@@ -79,8 +78,8 @@ interface Set
      * Compares the specified object with this set for equality.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
      * @NotImplemented
      */
@@ -90,8 +89,8 @@ interface Set
      * Returns the hash code value for this set.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
      * @NotImplemented
      */
@@ -101,8 +100,8 @@ interface Set
      * Returns true if this set contains no elements.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isEmpty
      * @NotImplemented
      */
@@ -112,8 +111,8 @@ interface Set
      * Returns an iterator over the elements in this set.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
      * @NotImplemented
      */
@@ -143,8 +142,8 @@ interface Set
      * @param mixed $h
      * @param mixed $i
      * @param mixed $j
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#of
      * @NotImplemented
      */
@@ -154,8 +153,8 @@ interface Set
      * Removes the specified element from this set if it is present (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
      * @NotImplemented
      */
@@ -165,8 +164,8 @@ interface Set
      * Removes from this set all of its elements that are contained in the specified collection (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeAll
      * @NotImplemented
      */
@@ -176,8 +175,8 @@ interface Set
      * Retains only the elements in this set that are contained in the specified collection (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#retainAll
      * @NotImplemented
      */
@@ -187,8 +186,8 @@ interface Set
      * Returns the number of elements in this set (its cardinality).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
      * @NotImplemented
      */
@@ -198,8 +197,8 @@ interface Set
      * Creates a Spliterator over the elements in this set.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
      * @NotImplemented
      */
@@ -210,8 +209,8 @@ interface Set
      * Returns an array containing all of the elements in this set; the runtime type of the returned array is that of the specified array.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toArray
      * @NotImplemented
      */

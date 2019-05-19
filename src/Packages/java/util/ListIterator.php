@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `ListIterator` interface was auto generated.
@@ -13,8 +12,8 @@ interface ListIterator
      * Inserts the specified element into the list (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
      * @NotImplemented
      */
@@ -24,8 +23,8 @@ interface ListIterator
      * Returns true if this list iterator has more elements when traversing the list in the forward direction.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hasNext
      * @NotImplemented
      */
@@ -35,8 +34,8 @@ interface ListIterator
      * Returns true if this list iterator has more elements when traversing the list in the reverse direction.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hasPrevious
      * @NotImplemented
      */
@@ -46,8 +45,8 @@ interface ListIterator
      * Returns the next element in the list and advances the cursor position.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#next
      * @NotImplemented
      */
@@ -57,8 +56,8 @@ interface ListIterator
      * Returns the index of the element that would be returned by a subsequent call to next().
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#nextIndex
      * @NotImplemented
      */
@@ -68,8 +67,8 @@ interface ListIterator
      * Returns the previous element in the list and moves the cursor position backwards.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#previous
      * @NotImplemented
      */
@@ -79,8 +78,8 @@ interface ListIterator
      * Returns the index of the element that would be returned by a subsequent call to previous().
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#previousIndex
      * @NotImplemented
      */
@@ -90,8 +89,8 @@ interface ListIterator
      * Removes from the list the last element that was returned by next() or previous() (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
      * @NotImplemented
      */
@@ -101,8 +100,8 @@ interface ListIterator
      * Replaces the last element returned by next() or previous() with the specified element (optional operation).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#set
      * @NotImplemented
      */

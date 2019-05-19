@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `SortedMap` interface was auto generated.
@@ -13,8 +12,8 @@ interface SortedMap
      * Returns the comparator used to order the keys in this map, or null if this map uses the natural ordering of its keys.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#comparator
      * @NotImplemented
      */
@@ -24,8 +23,8 @@ interface SortedMap
      * Returns a Set view of the mappings contained in this map.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#entrySet
      * @NotImplemented
      */
@@ -35,8 +34,8 @@ interface SortedMap
      * Returns the first (lowest) key currently in this map.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#firstKey
      * @NotImplemented
      */
@@ -46,8 +45,8 @@ interface SortedMap
      * Returns a view of the portion of this map whose keys are strictly less than toKey.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#headMap
      * @NotImplemented
      */
@@ -57,8 +56,8 @@ interface SortedMap
      * Returns a Set view of the keys contained in this map.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#keySet
      * @NotImplemented
      */
@@ -68,8 +67,8 @@ interface SortedMap
      * Returns the last (highest) key currently in this map.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lastKey
      * @NotImplemented
      */
@@ -80,8 +79,8 @@ interface SortedMap
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#subMap
      * @NotImplemented
      */
@@ -91,8 +90,8 @@ interface SortedMap
      * Returns a view of the portion of this map whose keys are greater than or equal to fromKey.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#tailMap
      * @NotImplemented
      */
@@ -102,8 +101,8 @@ interface SortedMap
      * Returns a Collection view of the values contained in this map.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#values
      * @NotImplemented
      */

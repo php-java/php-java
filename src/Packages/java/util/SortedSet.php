@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `SortedSet` interface was auto generated.
@@ -13,8 +12,8 @@ interface SortedSet
      * Returns the comparator used to order the elements in this set, or null if this set uses the natural ordering of its elements.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#comparator
      * @NotImplemented
      */
@@ -24,8 +23,8 @@ interface SortedSet
      * Returns the first (lowest) element currently in this set.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#first
      * @NotImplemented
      */
@@ -35,8 +34,8 @@ interface SortedSet
      * Returns a view of the portion of this set whose elements are strictly less than toElement.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#headSet
      * @NotImplemented
      */
@@ -46,8 +45,8 @@ interface SortedSet
      * Returns the last (highest) element currently in this set.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#last
      * @NotImplemented
      */
@@ -57,8 +56,8 @@ interface SortedSet
      * Creates a Spliterator over the elements in this sorted set.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
      * @NotImplemented
      */
@@ -69,8 +68,8 @@ interface SortedSet
      *
      * @param mixed $a
      * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#subSet
      * @NotImplemented
      */
@@ -80,8 +79,8 @@ interface SortedSet
      * Returns a view of the portion of this set whose elements are greater than or equal to fromElement.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#tailSet
      * @NotImplemented
      */

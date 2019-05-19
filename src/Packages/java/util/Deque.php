@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang;
 
 /**
  * The `Deque` interface was auto generated.
@@ -13,8 +12,8 @@ interface Deque
      * Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
      * @NotImplemented
      */
@@ -24,8 +23,8 @@ interface Deque
      * Adds all of the elements in the specified collection at the end of this deque, as if by calling addLast(E) on each one, in the order that they are returned by the collection's iterator.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addAll
      * @NotImplemented
      */
@@ -35,8 +34,8 @@ interface Deque
      * Inserts the specified element at the front of this deque if it is possible to do so immediately without violating capacity restrictions, throwing an IllegalStateException if no space is currently available.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addFirst
      * @NotImplemented
      */
@@ -46,8 +45,8 @@ interface Deque
      * Inserts the specified element at the end of this deque if it is possible to do so immediately without violating capacity restrictions, throwing an IllegalStateException if no space is currently available.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addLast
      * @NotImplemented
      */
@@ -57,8 +56,8 @@ interface Deque
      * Returns true if this deque contains the specified element.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#contains
      * @NotImplemented
      */
@@ -68,8 +67,8 @@ interface Deque
      * Returns an iterator over the elements in this deque in reverse sequential order.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#descendingIterator
      * @NotImplemented
      */
@@ -79,8 +78,8 @@ interface Deque
      * Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque).
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#element
      * @NotImplemented
      */
@@ -90,8 +89,8 @@ interface Deque
      * Retrieves, but does not remove, the first element of this deque.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getFirst
      * @NotImplemented
      */
@@ -101,8 +100,8 @@ interface Deque
      * Retrieves, but does not remove, the last element of this deque.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getLast
      * @NotImplemented
      */
@@ -112,8 +111,8 @@ interface Deque
      * Returns an iterator over the elements in this deque in proper sequence.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
      * @NotImplemented
      */
@@ -123,8 +122,8 @@ interface Deque
      * Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and false if no space is currently available.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offer
      * @NotImplemented
      */
@@ -134,8 +133,8 @@ interface Deque
      * Inserts the specified element at the front of this deque unless it would violate capacity restrictions.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offerFirst
      * @NotImplemented
      */
@@ -145,8 +144,8 @@ interface Deque
      * Inserts the specified element at the end of this deque unless it would violate capacity restrictions.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offerLast
      * @NotImplemented
      */
@@ -156,8 +155,8 @@ interface Deque
      * Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peek
      * @NotImplemented
      */
@@ -167,8 +166,8 @@ interface Deque
      * Retrieves, but does not remove, the first element of this deque, or returns null if this deque is empty.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peekFirst
      * @NotImplemented
      */
@@ -178,8 +177,8 @@ interface Deque
      * Retrieves, but does not remove, the last element of this deque, or returns null if this deque is empty.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peekLast
      * @NotImplemented
      */
@@ -189,8 +188,8 @@ interface Deque
      * Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#poll
      * @NotImplemented
      */
@@ -200,8 +199,8 @@ interface Deque
      * Retrieves and removes the first element of this deque, or returns null if this deque is empty.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollFirst
      * @NotImplemented
      */
@@ -211,8 +210,8 @@ interface Deque
      * Retrieves and removes the last element of this deque, or returns null if this deque is empty.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollLast
      * @NotImplemented
      */
@@ -222,8 +221,8 @@ interface Deque
      * Pops an element from the stack represented by this deque.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pop
      * @NotImplemented
      */
@@ -233,8 +232,8 @@ interface Deque
      * Pushes an element onto the stack represented by this deque (in other words, at the head of this deque) if it is possible to do so immediately without violating capacity restrictions, throwing an IllegalStateException if no space is currently available.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#push
      * @NotImplemented
      */
@@ -245,8 +244,8 @@ interface Deque
      * Removes the first occurrence of the specified element from this deque.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
      * @NotImplemented
      */
@@ -256,8 +255,8 @@ interface Deque
      * Retrieves and removes the first element of this deque.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeFirst
      * @NotImplemented
      */
@@ -267,8 +266,8 @@ interface Deque
      * Removes the first occurrence of the specified element from this deque.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeFirstOccurrence
      * @NotImplemented
      */
@@ -278,8 +277,8 @@ interface Deque
      * Retrieves and removes the last element of this deque.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeLast
      * @NotImplemented
      */
@@ -289,8 +288,8 @@ interface Deque
      * Removes the last occurrence of the specified element from this deque.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeLastOccurrence
      * @NotImplemented
      */
@@ -300,8 +299,8 @@ interface Deque
      * Returns the number of elements in this deque.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
      * @NotImplemented
      */

@@ -13,8 +13,8 @@ interface Comparable
      * Compares this object with the specified object for order.
      *
      * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
+     * @return mixed
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
      * @NotImplemented
      */

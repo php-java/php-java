@@ -2,7 +2,7 @@
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\util\AbstractSequentialList;
+
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Iterable;
 // use PHPJava\Packages\java\util\_List;
@@ -15,16 +15,12 @@ use PHPJava\Packages\java\util\AbstractSequentialList;
  * @parent \PHPJava\Packages\java\util\AbstractList
  * @parent \PHPJava\Packages\java\util\AbstractSequentialList
  */
-class LinkedList extends AbstractSequentialList /* implements Serializable, Iterable, _List */
+class LinkedList extends AbstractSequentialList // implements Serializable, Iterable, _List
 {
-
     /**
      * Inserts the specified element at the specified position in this list.
      * Appends the specified element to the end of this list.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
      */
@@ -37,9 +33,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
      * Inserts all of the elements in the specified collection into this list, starting at the specified position.
      * Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addAll
      */
@@ -51,8 +44,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Inserts the specified element at the beginning of this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addFirst
      */
@@ -64,8 +55,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Appends the specified element to the end of this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addLast
      */
@@ -77,8 +66,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Removes all of the elements from this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
      */
@@ -90,8 +77,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns a shallow copy of this LinkedList.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
      */
@@ -103,8 +88,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns true if this list contains the specified element.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#contains
      */
@@ -116,8 +99,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns an iterator over the elements in this deque in reverse sequential order.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#descendingIterator
      */
@@ -129,8 +110,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Retrieves, but does not remove, the head (first element) of this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#element
      */
@@ -142,8 +121,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns the element at the specified position in this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
      */
@@ -155,8 +132,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns the first element in this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getFirst
      */
@@ -168,8 +143,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns the last element in this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getLast
      */
@@ -181,8 +154,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#indexOf
      */
@@ -194,8 +165,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lastIndexOf
      */
@@ -207,8 +176,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns a list-iterator of the elements in this list (in proper sequence), starting at the specified position in the list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#listIterator
      */
@@ -220,8 +187,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Adds the specified element as the tail (last element) of this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offer
      */
@@ -233,8 +198,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Inserts the specified element at the front of this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offerFirst
      */
@@ -246,8 +209,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Inserts the specified element at the end of this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offerLast
      */
@@ -259,8 +220,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Retrieves, but does not remove, the head (first element) of this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peek
      */
@@ -272,8 +231,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Retrieves, but does not remove, the first element of this list, or returns null if this list is empty.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peekFirst
      */
@@ -285,8 +242,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Retrieves, but does not remove, the last element of this list, or returns null if this list is empty.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peekLast
      */
@@ -298,8 +253,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Retrieves and removes the head (first element) of this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#poll
      */
@@ -311,8 +264,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Retrieves and removes the first element of this list, or returns null if this list is empty.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollFirst
      */
@@ -324,8 +275,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Retrieves and removes the last element of this list, or returns null if this list is empty.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollLast
      */
@@ -337,8 +286,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Pops an element from the stack represented by this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pop
      */
@@ -350,8 +297,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Pushes an element onto the stack represented by this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#push
      */
@@ -365,8 +310,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
      * Removes the element at the specified position in this list.
      * Removes the first occurrence of the specified element from this list, if it is present.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
      */
@@ -378,8 +321,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Removes and returns the first element from this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeFirst
      */
@@ -391,8 +332,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Removes the first occurrence of the specified element in this list (when traversing the list from head to tail).
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeFirstOccurrence
      */
@@ -404,8 +343,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Removes and returns the last element from this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeLast
      */
@@ -417,8 +354,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Removes the last occurrence of the specified element in this list (when traversing the list from head to tail).
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeLastOccurrence
      */
@@ -430,9 +365,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Replaces the element at the specified position in this list with the specified element.
      *
-     * @param mixed $a
-     * @param mixed $b
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#set
      */
@@ -444,8 +376,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Returns the number of elements in this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
      */
@@ -457,8 +387,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
     /**
      * Creates a late-binding and fail-fast Spliterator over the elements in this list.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
      */
@@ -471,8 +399,6 @@ class LinkedList extends AbstractSequentialList /* implements Serializable, Iter
      * Returns an array containing all of the elements in this list in proper sequence (from first to last element).
      * Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array.
      *
-     * @param mixed $a
-     * @return mixed
      * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toArray
      */

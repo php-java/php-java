@@ -19,8 +19,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Adds the specified element to this set if it is not already present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function add($a = null)
     {
@@ -30,8 +31,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Adds all of the elements in the specified collection to this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addAll
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function addAll($a = null)
     {
@@ -41,8 +43,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns the least element in this set greater than or equal to the given element, or null if there is no such element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ceiling
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ceiling($a = null)
     {
@@ -52,8 +55,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Removes all of the elements from this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -63,8 +67,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns a shallow copy of this TreeSet instance.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -74,8 +79,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns true if this set contains the specified element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#contains
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function contains($a = null)
     {
@@ -85,8 +91,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns an iterator over the elements in this set in descending order.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#descendingIterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function descendingIterator($a = null)
     {
@@ -96,8 +103,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns a reverse order view of the elements contained in this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#descendingSet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function descendingSet($a = null)
     {
@@ -107,8 +115,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns the first (lowest) element currently in this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#first
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function first($a = null)
     {
@@ -118,8 +127,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns the greatest element in this set less than or equal to the given element, or null if there is no such element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#floor
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function floor($a = null)
     {
@@ -130,8 +140,10 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
      * Returns a view of the portion of this set whose elements are strictly less than toElement.
      * Returns a view of the portion of this set whose elements are less than (or equal to, if inclusive is true) toElement.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#headSet
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function headSet($a = null, $b = null)
     {
@@ -141,8 +153,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns the least element in this set strictly greater than the given element, or null if there is no such element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#higher
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function higher($a = null)
     {
@@ -152,8 +165,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns true if this set contains no elements.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isEmpty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isEmpty($a = null)
     {
@@ -163,8 +177,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns an iterator over the elements in this set in ascending order.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function iterator($a = null)
     {
@@ -174,8 +189,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns the last (highest) element currently in this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#last
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function last($a = null)
     {
@@ -185,8 +201,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns the greatest element in this set strictly less than the given element, or null if there is no such element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lower
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lower($a = null)
     {
@@ -196,8 +213,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Retrieves and removes the first (lowest) element, or returns null if this set is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollFirst
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function pollFirst($a = null)
     {
@@ -207,8 +225,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Retrieves and removes the last (highest) element, or returns null if this set is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollLast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function pollLast($a = null)
     {
@@ -218,8 +237,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Removes the specified element from this set if it is present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -229,8 +249,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Returns the number of elements in this set (its cardinality).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {
@@ -240,8 +261,9 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
     /**
      * Creates a late-binding and fail-fast Spliterator over the elements in this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function spliterator($a = null)
     {
@@ -252,8 +274,12 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
      * Returns a view of the portion of this set whose elements range from fromElement to toElement.
      * Returns a view of the portion of this set whose elements range from fromElement, inclusive, to toElement, exclusive.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#subSet
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public function subSet($a = null, $b = null, $c = null, $d = null)
     {
@@ -264,8 +290,10 @@ class TreeSet extends AbstractSet // implements Serializable, Iterable, SortedSe
      * Returns a view of the portion of this set whose elements are greater than or equal to fromElement.
      * Returns a view of the portion of this set whose elements are greater than (or equal to, if inclusive is true) fromElement.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#tailSet
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function tailSet($a = null, $b = null)
     {
