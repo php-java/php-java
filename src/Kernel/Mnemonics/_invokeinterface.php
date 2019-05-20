@@ -1,7 +1,10 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Internal\Lambda;
+use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\TypeResolver;
 
 final class _invokeinterface implements OperationInterface
 {
@@ -31,10 +34,25 @@ final class _invokeinterface implements OperationInterface
         $objectref = $collection[0];
         $arguments = array_values(array_slice($collection, 1));
 
-        $result = $objectref(...$arguments);
+        if ($objectref instanceof Lambda) {
+            $result = $objectref(...$arguments);
+        } else {
+            $result = $objectref->getInvoker()->getDynamic()->getMethods()->call(
+                $name,
+                ...$arguments
+            );
+        }
 
-        if ($signature[0] !== 'void') {
-            $this->pushToOperandStack($result);
+        if ($signature[0]['type'] !== 'void') {
+            /**
+             * @var Type $typeClass
+             */
+            [$type, $typeClass] = TypeResolver::getType($signature[0]);
+            $this->pushToOperandStack(
+                $type === TypeResolver::IS_PRIMITIVE
+                    ? $typeClass::get($result)
+                    : $result
+            );
         }
     }
 }

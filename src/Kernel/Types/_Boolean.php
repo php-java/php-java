@@ -13,6 +13,10 @@ class _Boolean extends Type
 
     public static function isValid($value): bool
     {
+        if (!is_scalar($value)) {
+            return false;
+        }
+
         return $value == 0 ||
             $value == 1 ||
             $value === true ||

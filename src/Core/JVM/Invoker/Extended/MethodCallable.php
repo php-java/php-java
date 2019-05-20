@@ -40,6 +40,14 @@ trait MethodCallable
      */
     public function call(string $name, ...$arguments)
     {
+        /**
+         * Call static initializer from static accessor.
+         */
+        $this->javaClassInvoker
+            ->getStatic()
+            ->getMethods()
+            ->callStaticInitializerIfNotInstantiated();
+
         $operationCache = new OperationCache();
         $this->debugTool->getLogger()->debug('Call method: ' . $name);
 

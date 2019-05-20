@@ -43,7 +43,7 @@ final class InstanceDeferredLoader
         $object = $this->classObject;
         switch ($this->resourceType) {
             case ClassResolver::RESOLVED_TYPE_CLASS:
-                $this->instance = $object(...$arguments);
+                $this->instance = $object;
                 break;
             case ClassResolver::RESOLVED_TYPE_PACKAGES:
                 $this->instance = new $object(...$arguments);

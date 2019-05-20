@@ -154,7 +154,7 @@ class ClassResolver
             str_replace(
                 [Runtime::PHP_PACKAGES_DIRECTORY . '\\', '\\'],
                 ['', '.'],
-                get_class($path)
+                '\\' . ltrim(get_class($path))
             )
         );
 
