@@ -13,6 +13,9 @@ class _Long extends Type
 
     public static function isValid($value): bool
     {
+        if (!is_scalar($value)) {
+            return false;
+        }
         if (!ctype_digit((string) abs($value))) {
             return false;
         }

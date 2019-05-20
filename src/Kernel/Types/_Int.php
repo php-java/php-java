@@ -13,6 +13,9 @@ class _Int extends Type
 
     public static function isValid($value): bool
     {
+        if (!is_scalar($value)) {
+            return false;
+        }
         if (ctype_alpha($value) && strlen($value) === 1) {
             $value = ord($value);
         }

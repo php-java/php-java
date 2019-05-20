@@ -15,7 +15,7 @@ final class _ldc_w implements OperationInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool();
-        $data = $cpInfo[$this->readUnsignedByte()];
+        $data = $cpInfo[$this->readUnsignedShort()];
 
         $value = null;
 

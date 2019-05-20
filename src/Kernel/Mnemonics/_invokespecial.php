@@ -1,13 +1,18 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Internal\InstanceDeferredLoader;
 use PHPJava\Kernel\Structures\_ExceptionTable;
+use PHPJava\Kernel\Types\Type;
+use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Utilities\AttributionResolver;
+use PHPJava\Utilities\ClassHandler;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
+use PHPJava\Utilities\TypeResolver;
 
 final class _invokespecial implements OperationInterface
 {
@@ -34,8 +39,7 @@ final class _invokespecial implements OperationInterface
         /**
          * @var InstanceDeferredLoader $objectref
          */
-        $objectref = $this->popFromOperandStack();
-        $newObject = null;
+        $newObject = $objectref = $this->popFromOperandStack();
         try {
             $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
 
@@ -54,11 +58,24 @@ final class _invokespecial implements OperationInterface
                         $newObject = new $classObject(...$arguments);
                         break;
                     case ClassResolver::RESOLVED_TYPE_CLASS:
-                        $newObject = $classObject(...$arguments);
+                        $newObject = $classObject;
                         break;
                 }
-            } else {
+            } elseif ($objectref instanceof InstanceDeferredLoader) {
                 $newObject = $objectref->instantiate(...$arguments);
+            }
+
+            $result = $newObject;
+            if ($newObject instanceof JavaClassInterface) {
+                /**
+                 * @var JavaClassInterface $newObject
+                 */
+                $result = $newObject->getInvoker()->getDynamic()->getMethods()->callSpecial(
+                    $methodName,
+                    ...$arguments
+                );
+            } elseif ($newObject instanceof _Object && $methodName !== ClassHandler::DEFAULT_INITIALIZER) {
+                $result = $newObject->{$methodName}(...$arguments);
             }
 
             // NOTE: PHP has a problem which a reference object cannot replace to an object.
@@ -101,6 +118,18 @@ final class _invokespecial implements OperationInterface
                 $expectedClass . ': ' . $e->getMessage(),
                 0,
                 $e
+            );
+        }
+
+        if ($parsedSignature[0]['type'] !== 'void') {
+            /**
+             * @var Type $typeClass
+             */
+            [$type, $typeClass] = TypeResolver::getType($parsedSignature[0]);
+            $this->pushToOperandStack(
+                $type === TypeResolver::IS_PRIMITIVE
+                    ? $typeClass::get($result)
+                    : $result
             );
         }
     }

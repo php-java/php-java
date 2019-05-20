@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Utilities;
 
-use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
@@ -24,6 +23,7 @@ class TypeResolver
 {
     const IS_CLASS = 'IS_CLASS';
     const IS_PRIMITIVE = 'IS_PRIMITIVE';
+    const IS_ARRAY = 'IS_ARRAY';
 
     const PHP_TYPE_MAP = [
         'integer' => 'I',
@@ -129,20 +129,22 @@ class TypeResolver
     public static function getType(array $signatureArray): array
     {
         $type = $signatureArray['type'];
+        $signatureType = static::IS_PRIMITIVE;
+        $typeName = static::TYPES_MAP[strtolower($type)] ?? null;
         if ($type === 'class') {
-            $className = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . str_replace('/', '\\', $signatureArray['class_name']);
-            return [
-                static::IS_CLASS,
-                $className,
-            ];
+            $typeName = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . str_replace('/', '\\', $signatureArray['class_name']);
+            $signatureType = static::IS_CLASS;
         }
-        $result = static::TYPES_MAP[strtolower($type)] ?? null;
-        if ($result === null) {
+        if ($signatureArray['deep_array'] > 0) {
+            $signatureType = static::IS_ARRAY;
+        }
+        if ($typeName === null) {
             throw new TypeException('Unknown type: ' . $type);
         }
         return [
-            static::IS_PRIMITIVE,
-            $result,
+            $signatureType,
+            $typeName,
+            $signatureArray['deep_array'],
         ];
     }
 
@@ -176,7 +178,7 @@ class TypeResolver
             $deepArray++;
             $getNestedValues = [];
             foreach ($arguments as $argument) {
-                $getNestedValues[] = static::convertPHPtoJava($argument);
+                $getNestedValues[] = static::convertPHPtoJava($argument, $defaultJavaArgumentType);
             }
             if (empty($getNestedValues)) {
                 $flipped = array_flip(static::PHP_TYPE_MAP);
@@ -200,10 +202,10 @@ class TypeResolver
             return $firstParameter;
         }
         if ($phpType === 'object') {
-            if ($arguments instanceof JavaClass) {
+            if ($arguments instanceof JavaClassInterface) {
                 return [
                     'type' => 'class',
-                    'class_name' => $arguments->getClassName(false),
+                    'class_name' => $arguments->getClassName(),
                     'deep_array' => $deepArray,
                 ];
             }
@@ -293,12 +295,14 @@ class TypeResolver
                 $path[] = Runtime::PHP_PACKAGES_MAPS[$name] ?? $name;
             }
             $classPath = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . implode('\\', $path);
+
             // Remove duplicated prefix
             $classPath = preg_replace(
                 '/^(?:' . preg_quote(Runtime::PHP_PACKAGES_DIRECTORY, '/') . ')+/',
                 Runtime::PHP_PACKAGES_DIRECTORY,
                 $classPath
             );
+
             if (isset($loadedExtendedRoots[$classPath])) {
                 $result[] = $loadedExtendedRoots[$classPath];
                 continue;
@@ -309,26 +313,25 @@ class TypeResolver
                 $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
                 $interfaces = array_values(class_implements($classPath, true));
                 $reflectionClass = new \ReflectionClass($classPath);
-                if (!($document = $reflectionClass->getDocComment())) {
-                    continue;
-                }
 
-                $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-                    ->create($document);
+                if ($document = $reflectionClass->getDocComment()) {
+                    $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                        ->create($document);
 
-                if (!empty($documentBlock->getTagsByName('highPriority'))) {
-                    $extendedClasses = array_map(
-                        function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                            return (string) $item->getDescription();
-                        },
-                        $documentBlock->getTagsByName('parent')
-                    );
-                    $interfaces = array_map(
-                        function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                            return (string) $item->getDescription();
-                        },
-                        $documentBlock->getTagsByName('interface')
-                    );
+                    if (!empty($documentBlock->getTagsByName('highPriority'))) {
+                        $extendedClasses = array_map(
+                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                                return (string) $item->getDescription();
+                            },
+                            $documentBlock->getTagsByName('parent')
+                        );
+                        $interfaces = array_map(
+                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
+                                return (string) $item->getDescription();
+                            },
+                            $documentBlock->getTagsByName('interface')
+                        );
+                    }
                 }
             } else {
                 // in package
