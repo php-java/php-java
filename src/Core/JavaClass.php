@@ -277,7 +277,7 @@ class JavaClass implements JavaClassInterface
                     return Formatter::beatifyMethodFromConstantPool(
                         $method,
                         $this->constantPool
-                        );
+                    );
                 },
                 $this->methodPool->getEntries()
             ),
