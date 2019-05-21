@@ -25,14 +25,14 @@ final class _invokeinterface implements OperationInterface
         $descriptor = $cp[$interfaceMethodRef->getDescriptorIndex()]->getString();
 
         $signature = Formatter::parseSignature($descriptor);
+
         // POP with right-to-left (objectref + arguments)
-        $collection = array_fill(0, $signature['arguments_count'] + 1, null);
-        for ($i = count($collection) - 1; $i >= 0; $i--) {
-            $collection[$i] = $this->popFromOperandStack();
+        $arguments = array_fill(0, $signature['arguments_count'], null);
+        for ($i = count($arguments) - 1; $i >= 0; $i--) {
+            $arguments[$i] = $this->popFromOperandStack();
         }
 
-        $objectref = $collection[0];
-        $arguments = array_values(array_slice($collection, 1));
+        $objectref = $this->popFromOperandStack();
 
         if ($objectref instanceof Lambda) {
             $result = $objectref(...$arguments);

@@ -9,6 +9,7 @@ use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryReader;
 use PHPJava\Exceptions\IllegalJavaClassException;
+use PHPJava\Exceptions\NoSuchCodeAttributeException;
 use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Exceptions\UnableToFindAttributionException;
 use PHPJava\Exceptions\UndefinedOpCodeException;
@@ -87,13 +88,19 @@ trait MethodCallable
             return $method(...$arguments);
         }
 
+        $methodBeautified = Formatter::beatifyMethodFromConstantPool(
+            $method,
+            $currentConstantPool
+        );
+
         try {
             $codeAttribute = AttributionResolver::resolve(
                 $method->getAttributes(),
                 CodeAttribute::class
             );
         } catch (UnableToFindAttributionException $e) {
-            return null;
+            $this->debugTool->getLogger()->info('No code attribution: ' . $methodBeautified);
+            throw new NoSuchCodeAttributeException($methodBeautified);
         }
 
         $handle = fopen(
@@ -130,11 +137,6 @@ trait MethodCallable
         $executedCounter = 0;
         $executionTime = microtime(true);
         $maxExecutionTime = ($this->options['max_execution_time'] ?? GlobalOptions::get('max_execution_time') ?? Runtime::MAX_EXECUTION_TIME);
-
-        $methodBeautified = Formatter::beatifyMethodFromConstantPool(
-            $method,
-            $currentConstantPool
-        );
 
         $this->debugTool->getLogger()->info('Start operations: ' . $methodBeautified);
 

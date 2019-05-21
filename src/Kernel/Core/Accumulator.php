@@ -3,6 +3,7 @@ namespace PHPJava\Kernel\Core;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Exceptions\IllegalOperationException;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Structures\_MethodInfo;
 
@@ -152,6 +153,9 @@ trait Accumulator
 
     public function popFromOperandStack()
     {
+        if (empty($this->stacks)) {
+            throw new IllegalOperationException('Cannot pop an item from stack.');
+        }
         return array_pop($this->stacks);
     }
 
