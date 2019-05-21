@@ -98,11 +98,6 @@ final class _invokevirtual implements OperationInterface
                 }
                 $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
                 if ($catchClass === $expectedClass) {
-                    [$resourceType, $classObject] = $this->getOptions('class_resolver')
-                        ->resolve(
-                            $catchClass,
-                            $this->javaClass
-                        );
                     $this->pushToOperandStack($e);
                     $this->setOffset($exception->getHandlerPc());
                     return;

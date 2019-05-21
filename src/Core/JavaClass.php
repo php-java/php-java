@@ -275,12 +275,12 @@ class JavaClass implements JavaClassInterface
             'methods' => array_map(
                 function (_MethodInfo $method) {
                     return Formatter::beatifyMethodFromConstantPool(
-                            $method,
-                            $this->constantPool
+                        $method,
+                        $this->constantPool
                         );
                 },
                 $this->methodPool->getEntries()
-                ),
+            ),
         ];
     }
 
