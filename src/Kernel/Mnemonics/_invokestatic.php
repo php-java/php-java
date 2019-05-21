@@ -103,12 +103,11 @@ final class _invokestatic implements OperationInterface
                 }
                 if ($exception->getCatchType() === 0) {
                     $this->setOffset($exception->getHandlerPc());
+                    return;
                 }
                 $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
-                if ($catchClass === $expectedClass &&
-                    $exception->getStartPc() <= $this->getProgramCounter() &&
-                    $exception->getEndPc() >= $this->getProgramCounter()
-                ) {
+                if ($catchClass === $expectedClass) {
+                    $this->pushToOperandStack($e);
                     $this->setOffset($exception->getHandlerPc());
                     return;
                 }
