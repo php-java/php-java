@@ -13,6 +13,7 @@ use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\DebugTraceIsDisabledException;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
+use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
@@ -264,6 +265,23 @@ class JavaClass implements JavaClassInterface
             $this,
             $options
         );
+    }
+
+    public function __debugInfo()
+    {
+        return [
+            'JDKVersion' => SDKVersionResolver::resolve($this->versions['major'] . '.' . $this->versions['minor']),
+            'name' => str_replace('/', '.', $this->getClassName()),
+            'methods' => array_map(
+                function (_MethodInfo $method) {
+                    return Formatter::beatifyMethodFromConstantPool(
+                        $method,
+                        $this->constantPool
+                    );
+                },
+                $this->methodPool->getEntries()
+            ),
+        ];
     }
 
     public function __invoke(...$arguments): JavaClass

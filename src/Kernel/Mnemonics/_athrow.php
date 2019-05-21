@@ -30,16 +30,24 @@ final class _athrow implements OperationInterface
             CodeAttribute::class
         );
 
+        $this->pushToOperandStackByReference($objectref);
+
         $className = Formatter::convertPHPNamespacesToJava($className);
         foreach ($codeAttribute->getExceptionTables() as $exception) {
             /**
              * @var _ExceptionTable $exception
              */
-            $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
-            if ($catchClass === $className &&
-                $exception->getStartPc() <= $this->getProgramCounter() &&
-                $exception->getEndPc() >= $this->getProgramCounter()
+            if ($exception->getStartPc() > $this->getProgramCounter() ||
+                $exception->getEndPc() < $this->getProgramCounter()
             ) {
+                continue;
+            }
+            if ($exception->getCatchType() === 0) {
+                $this->setOffset($exception->getHandlerPc());
+                return;
+            }
+            $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
+            if ($catchClass === $className) {
                 $this->setOffset($exception->getHandlerPc());
                 return;
             }

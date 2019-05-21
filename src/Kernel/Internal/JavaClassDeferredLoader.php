@@ -40,6 +40,17 @@ final class JavaClassDeferredLoader implements JavaClassInterface
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\UnknownVersionException
      * @throws \PHPJava\Exceptions\ValidatorException
+     * @return array
+     */
+    public function __debugInfo()
+    {
+        return ($this->initializeIfNotInitiated())->__debugInfo();
+    }
+
+    /**
+     * @throws \PHPJava\Exceptions\ReadEntryException
+     * @throws \PHPJava\Exceptions\UnknownVersionException
+     * @throws \PHPJava\Exceptions\ValidatorException
      */
     public function __call(string $name, $arguments)
     {

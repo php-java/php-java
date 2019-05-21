@@ -41,8 +41,6 @@ final class _invokevirtual implements OperationInterface
         }
 
         $invokerClass = $this->popFromOperandStack();
-        $invokerClassName = $this->getOptions('class_resolver')
-            ->resolve($class);
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
         try {
@@ -96,9 +94,11 @@ final class _invokevirtual implements OperationInterface
                 }
                 if ($exception->getCatchType() === 0) {
                     $this->setOffset($exception->getHandlerPc());
+                    return;
                 }
                 $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
                 if ($catchClass === $expectedClass) {
+                    $this->pushToOperandStack($e);
                     $this->setOffset($exception->getHandlerPc());
                     return;
                 }
