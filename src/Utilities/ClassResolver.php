@@ -42,7 +42,7 @@ class ClassResolver
         $this->options = $options;
     }
 
-    public function resolve(string $javaPath, JavaClass $class = null, bool $instantiate = true): array
+    public function resolve(string $javaPath, JavaClass $class = null, bool $instantiation = true): array
     {
         $javaPath = str_replace('/', '.', $javaPath);
         $namespaces = explode('.', $javaPath);
@@ -76,7 +76,7 @@ class ClassResolver
                     if ($path === false) {
                         break;
                     }
-                    if (!$instantiate) {
+                    if (!$instantiation) {
                         foreach ($this->resolvedPaths as [$resolvedPath, $class]) {
                             if ($relativePath === $class->getClassName()) {
                                 return [$resolvedPath, $class];
@@ -101,7 +101,7 @@ class ClassResolver
                     }
                     break;
                 case static::RESOURCE_TYPE_CLASS:
-                    if (!$instantiate) {
+                    if (!$instantiation) {
                         foreach ($this->resolvedPaths as [$resolvedPath, $class]) {
                             if ($value->getClassName() === $class->getClassName()) {
                                 return [$resolvedPath, $class];
