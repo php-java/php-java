@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPJava\Core\JavaSingleClass;
+use PHPJava\Core\JavaCompiledClass;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Kernel\Types\_Byte;
 use PHPJava\Kernel\Types\_Char;
@@ -25,7 +25,7 @@ class CallToAmbiguousMethodsTest extends Base
             ]
         );
         $this->ambiguousInitiatedClass = new \PHPJava\Core\JavaClass(
-            new JavaSingleClass(
+            new JavaCompiledClass(
                 new \PHPJava\Core\Stream\Reader\FileReader(
                     $this->getClassName($this->fixtures[0])
                 )

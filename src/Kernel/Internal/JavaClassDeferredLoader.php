@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Internal;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
-use PHPJava\Core\JavaSingleClass;
+use PHPJava\Core\JavaCompiledClass;
 
 final class JavaClassDeferredLoader implements JavaClassInterface
 {
@@ -79,7 +79,7 @@ final class JavaClassDeferredLoader implements JavaClassInterface
             return $this->javaClass;
         }
         return $this->javaClass = new JavaClass(
-            new JavaSingleClass(
+            new JavaCompiledClass(
                 new $this->deferLoadingReaderClass(...$this->arguments),
                 $this->options
             )

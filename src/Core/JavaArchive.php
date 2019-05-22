@@ -151,7 +151,7 @@ class JavaArchive
 
             switch ($fileType = FileTypeResolver::resolve($resolvePath)) {
                 case ClassResolver::RESOLVED_TYPE_CLASS:
-                    $value = new JavaSingleClass(
+                    $value = new JavaCompiledClass(
                         new Stream\Reader\FileReader($value),
                         $this->options
                     );

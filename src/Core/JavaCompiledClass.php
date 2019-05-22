@@ -25,7 +25,7 @@ use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 
-class JavaSingleClass implements JavaGenericClassInterface, JavaClassInterface
+class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
     use ParentClassExtendable;

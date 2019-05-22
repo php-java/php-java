@@ -4,8 +4,8 @@ namespace PHPJava\Kernel\Resolvers;
 use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
+use PHPJava\Core\JavaCompiledClass;
 use PHPJava\Core\JavaGenericClassInterface;
-use PHPJava\Core\JavaSingleClass;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\FileReader;
 use PHPJava\Packages\java\lang\ClassNotFoundException;
@@ -90,7 +90,7 @@ class ClassResolver
                      */
                     if (is_file($path)) {
                         $initiatedClass = new JavaClass(
-                            new JavaSingleClass(
+                            new JavaCompiledClass(
                                 new FileReader($path),
                                 $this->options
                             )
@@ -119,10 +119,7 @@ class ClassResolver
                     try {
                         return $this->resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
-                            new JavaClass(
-                                $value,
-                                $this->options
-                            ),
+                            new JavaClass($value),
                         ];
                     } catch (ClassNotFoundException $e) {
                     }

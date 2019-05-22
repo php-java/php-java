@@ -19,7 +19,7 @@ use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\DebugTool;
 
-class JavaBuiltinClass implements JavaGenericClassInterface, JavaClassInterface
+class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
     use ParentClassExtendable;
