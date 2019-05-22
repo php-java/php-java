@@ -21,7 +21,7 @@ class _StackMapFrame implements StructureInterface
     {
         $this->frameType = $this->readUnsignedByte();
         // back by frametype
-        $this->reader->getBinaryReader()->seek(-1);
+        $this->reader->getReader()->seek(-1);
 
         if ($this->frameType >= 0 && $this->frameType <= 63) {
             $this->frame = new \PHPJava\Kernel\Frames\SameFrame($this->reader);

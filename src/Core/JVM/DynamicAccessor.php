@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Core\JVM;
 
-use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\Field\DynamicField;
 use PHPJava\Core\JVM\Field\FieldInterface;
 use PHPJava\Core\JVM\Invoker\DynamicMethodInvoker;
@@ -22,7 +21,7 @@ class DynamicAccessor implements AccessorInterface
     /**
      * @param PHPJava\Kernel\Structures\_MethodInfo[] $methods
      */
-    public function __construct(JavaClassInvoker $invoker, array $methods, array $fields, array $options = [])
+    public function __construct(JavaClassInvokerInterface $invoker, array $methods, array $fields, array $options = [])
     {
         $this->methodAccessor = new DynamicMethodInvoker($invoker, $methods, $options);
         $this->fieldAccessor = new DynamicField($invoker, $fields);

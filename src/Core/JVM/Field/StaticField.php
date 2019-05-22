@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM\Field;
 
-use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Core\JVM\JavaClassInvokerInterface;
 
 class StaticField implements FieldInterface
 {
@@ -9,7 +9,7 @@ class StaticField implements FieldInterface
     use FieldSettable;
 
     /**
-     * @var JavaClassInvoker
+     * @var JavaClassInvokerInterface
      */
     private $javaClassInvoker;
 
@@ -18,7 +18,7 @@ class StaticField implements FieldInterface
      */
     private $fields = [];
 
-    public function __construct(JavaClassInvoker $javaClassInvoker, array $fields)
+    public function __construct(JavaClassInvokerInterface $javaClassInvoker, array $fields)
     {
         $this->javaClassInvoker = $javaClassInvoker;
         $this->fields = $fields;

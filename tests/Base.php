@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Tests;
 
+use PHPJava\Core\JavaCompiledClass;
 use PHPUnit\Framework\TestCase;
 
 class Base extends TestCase
@@ -18,8 +19,10 @@ class Base extends TestCase
         foreach ($this->fixtures as $fixture) {
             exec('javac -classpath ' . $pathRoot . ':' . $pathRoot . 'caches -encoding UTF8 ' . $pathRoot . str_replace(['../', './'], '', $fixture) . '.java -d ' . __DIR__ . '/caches');
             $this->initiatedJavaClasses[$fixture] = new \PHPJava\Core\JavaClass(
-                new \PHPJava\Core\Stream\Reader\FileReader(
-                    $this->getClassName($fixture)
+                new JavaCompiledClass(
+                    new \PHPJava\Core\Stream\Reader\FileReader(
+                        $this->getClassName($fixture)
+                    )
                 )
             );
         }

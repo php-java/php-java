@@ -3,6 +3,7 @@ namespace PHPJava\Console\Commands\JVM;
 
 use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaCompiledClass;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\Stream\Reader\FileReader;
 use Symfony\Component\Console\Command\Command;
@@ -75,7 +76,9 @@ class RunCommand extends Command
     private function runClass(string $file, array $parameters)
     {
         $class = new JavaClass(
-            new FileReader($file)
+            new JavaCompiledClass(
+                new FileReader($file)
+            )
         );
         $class
             ->getInvoker()

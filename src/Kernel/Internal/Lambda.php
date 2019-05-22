@@ -1,12 +1,12 @@
 <?php
 namespace PHPJava\Kernel\Internal;
 
-use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
 
 class Lambda
 {
     /**
-     * @var JavaClass
+     * @var JavaClassInterface
      */
     private $javaClass;
 
@@ -31,11 +31,11 @@ class Lambda
     private $resourceType;
 
     /**
-     * @var JavaClass|string
+     * @var JavaClassInterface|string
      */
     private $classObject;
 
-    public function __construct(JavaClass $javaClass, string $name, string $descriptor, string $class)
+    public function __construct(JavaClassInterface $javaClass, string $name, string $descriptor, string $class)
     {
         $this->javaClass = $javaClass;
         $this->name = $name;

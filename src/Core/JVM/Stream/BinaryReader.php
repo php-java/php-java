@@ -3,7 +3,7 @@ namespace PHPJava\Core\JVM\Stream;
 
 use PHPJava\Exceptions\BinaryReaderException;
 
-class BinaryReader
+class BinaryReader implements StreamReaderInterface
 {
     /**
      * @var resource

@@ -3,9 +3,11 @@ namespace PHPJava\Kernel\Resolvers;
 
 use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
+use PHPJava\Core\JavaCompiledClass;
+use PHPJava\Core\JavaGenericClassInterface;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\FileReader;
-use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Packages\java\lang\ClassNotFoundException;
 
 class ClassResolver
@@ -42,7 +44,7 @@ class ClassResolver
         $this->options = $options;
     }
 
-    public function resolve(string $javaPath, JavaClass $class = null, bool $instantiation = true): array
+    public function resolve(string $javaPath, JavaClassInterface $class = null, bool $instantiation = true): array
     {
         $javaPath = str_replace('/', '.', $javaPath);
         $namespaces = explode('.', $javaPath);
@@ -88,8 +90,10 @@ class ClassResolver
                      */
                     if (is_file($path)) {
                         $initiatedClass = new JavaClass(
-                            new FileReader($path),
-                            $this->options
+                            new JavaCompiledClass(
+                                new FileReader($path),
+                                $this->options
+                            )
                         );
                         if (strpos($relativePath, '$') !== false && $class !== null) {
                             $initiatedClass->setParentClass($class);
@@ -110,15 +114,12 @@ class ClassResolver
                     }
 
                     /**
-                     * @var ReaderInterface $value
+                     * @var JavaGenericClassInterface $value
                      */
                     try {
                         return $this->resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
-                            new JavaClass(
-                                $value,
-                                $this->options
-                            ),
+                            new JavaClass($value),
                         ];
                     } catch (ClassNotFoundException $e) {
                     }

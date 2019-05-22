@@ -1,342 +1,37 @@
 <?php
 namespace PHPJava\Core;
 
-use PHPJava\Core\JVM\AttributePool;
 use PHPJava\Core\JVM\ConstantPool;
-use PHPJava\Core\JVM\FieldPool;
-use PHPJava\Core\JVM\InterfacePool;
-use PHPJava\Core\JVM\MethodPool;
-use PHPJava\Core\JVM\Parameters\GlobalOptions;
-use PHPJava\Core\JVM\Parameters\Runtime;
-use PHPJava\Core\JVM\Validations\MagicByte;
-use PHPJava\Core\Stream\Reader\ReaderInterface;
-use PHPJava\Exceptions\DebugTraceIsDisabledException;
-use PHPJava\Exceptions\ValidatorException;
-use PHPJava\Kernel\Attributes\InnerClassesAttribute;
-use PHPJava\Kernel\Resolvers\ClassResolver;
-use PHPJava\Kernel\Resolvers\SDKVersionResolver;
-use PHPJava\Kernel\Structures\_MethodInfo;
-use PHPJava\Kernel\Structures\_Utf8;
-use PHPJava\Packages\java\lang\_Class;
-use PHPJava\Utilities\DebugTool;
-use PHPJava\Utilities\Formatter;
+use PHPJava\Core\JVM\JavaClassInvokerInterface;
+use PHPJava\Core\Traits\ClassInvokable;
 
 class JavaClass implements JavaClassInterface
 {
-    use \PHPJava\Kernel\Core\ConstantPool;
+    use ClassInvokable;
 
     /**
-     * @var int[]
+     * @var JavaGenericClassInterface
      */
-    private $versions = [
-        'minor' => null,
-        'major' => null,
-    ];
-
-    /**
-     * @var ConstantPool
-     */
-    private $constantPool;
-
-    /**
-     * @var InterfacePool
-     */
-    private $interfacePool;
-
-    /**
-     * @var FieldPool
-     */
-    private $fieldPool;
-
-    /**
-     * @var MethodPool
-     */
-    private $methodPool;
-
-    /**
-     * @var AttributePool
-     */
-    private $attributePool;
-
-    /**
-     * @var int
-     */
-    private $accessFlag = 0;
-
-    /**
-     * @var int
-     */
-    private $thisClass = 0;
-
-    /**
-     * @var int
-     */
-    private $superClassIndex = 0;
-
-    /**
-     * @var null|_Utf8
-     */
-    private $className;
-
-    /**
-     * @var mixed[]
-     */
-    private $debugTraces = [];
-
-    /**
-     * @var JavaClassInvoker
-     */
-    private $invoker;
-
-    /**
-     * @var PHPJava\Kernel\Structures\_Classes[]
-     */
-    private $innerClasses = [];
-
-    /**
-     * @var JavaClass
-     */
-    private $parentClass;
-
-    /**
-     * @var mixed
-     */
-    private $superClass;
+    private $genericClass;
 
     /**
      * @var array
      */
     private $options = [];
 
-    /**
-     * @var DebugTool
-     */
-    private $debugTool;
-
-    /**
-     * @var float
-     */
-    private $startTime = 0.0;
-
-    /**
-     * @throws ValidatorException
-     * @throws \PHPJava\Exceptions\ReadEntryException
-     * @throws \PHPJava\Exceptions\UnknownVersionException
-     */
-    public function __construct(ReaderInterface $reader, array $options = [])
+    public function __construct(JavaGenericClassInterface $genericClass)
     {
-        $this->startTime = microtime(true);
-
-        // Validate Java file
-        if (!(new MagicByte($reader->getBinaryReader()->readUnsignedInt()))->isValid()) {
-            throw new ValidatorException($reader . ' has broken or not Java class.');
-        }
-
-        // options
-        $this->options = $options;
-
-        if (!(($this->options['class_resolver'] ?? null) instanceof ClassResolver)) {
-            $this->options['class_resolver'] = new ClassResolver(
-                $this->options
-            );
-        }
-
-        $this->options['class_resolver']->add([
-            [ClassResolver::RESOURCE_TYPE_FILE, dirname($reader->getFileName())],
-            [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
-        ]);
-
-        // Debug tool
-        $this->debugTool = new DebugTool(
-            $reader->getJavaPathName(),
-            $options
-        );
-
-        $this->debugTool->getLogger()->info('Start class emulation');
-
-        // read minor version
-        $this->versions['minor'] = $reader->getBinaryReader()->readUnsignedShort();
-
-        $this->debugTool->getLogger()->info('Minor version: ' . $this->versions['minor']);
-
-        // read major version
-        $this->versions['major'] = $reader->getBinaryReader()->readUnsignedShort();
-
-        $this->debugTool->getLogger()->info('Major version: ' . $this->versions['major']);
-
-        $this->debugTool->getLogger()->info('JDK version: ' . SDKVersionResolver::resolve($this->versions['major'] . '.' . $this->versions['minor']));
-
-        // read constant pool size
-        $this->constantPool = new ConstantPool(
-            $reader,
-            $reader->getBinaryReader()->readUnsignedShort()
-        );
-
-        $this->debugTool->getLogger()->info('Constant Pools: ' . count($this->constantPool));
-
-        // read access flag
-        $this->accessFlag = $reader->getBinaryReader()->readUnsignedShort();
-
-        // read this class
-        $this->thisClass = $reader->getBinaryReader()->readUnsignedShort();
-
-        $this->className = $this->constantPool[$this->constantPool[$this->thisClass]->getClassIndex()];
-
-        // read super class
-        $this->superClassIndex = $reader->getBinaryReader()->readUnsignedShort();
-
-        $cpInfo = $this->getConstantPool();
-        [$resolvedType, $superClass] = $this->options['class_resolver']->resolve(
-            $cpInfo[$cpInfo[$this->superClassIndex]->getClassIndex()]->getString(),
-            $this
-        );
-
-        $this->debugTool->getLogger()->info(
-            'Load super class: ' .
-            ($superClass instanceof JavaClassInterface ? $superClass->getClassName() : $superClass)
-        );
-
-        switch ($resolvedType) {
-            case ClassResolver::RESOLVED_TYPE_PACKAGES:
-                $this->superClass = new $superClass();
-                break;
-            default:
-                $this->superClass = $superClass;
-                break;
-        }
-
-        // read interfaces
-        $this->interfacePool = new InterfacePool(
-            $reader,
-            $reader->getBinaryReader()->readUnsignedShort(),
-            $this->constantPool,
-            $this->debugTool
-        );
-
-        $this->debugTool->getLogger()->info('Extracted interfaces: ' . count($this->interfacePool));
-
-        // read fields
-        $this->fieldPool = new FieldPool(
-            $reader,
-            $reader->getBinaryReader()->readUnsignedShort(),
-            $this->constantPool,
-            $this->debugTool
-        );
-
-        $this->debugTool->getLogger()->info('Extracted fields: ' . count($this->fieldPool));
-
-        // read methods
-        $this->methodPool = new MethodPool(
-            $reader,
-            $reader->getBinaryReader()->readUnsignedShort(),
-            $this->constantPool,
-            $this->debugTool
-        );
-
-        $this->debugTool->getLogger()->info('Extracted methods: ' . count($this->methodPool));
-
-        // read Attributes
-        $this->attributePool = new AttributePool(
-            $reader,
-            $reader->getBinaryReader()->readUnsignedShort(),
-            $this->constantPool,
-            $this->debugTool
-        );
-
-        $this->debugTool->getLogger()->info('Extracted attributes: ' . count($this->attributePool));
-
-        $innerClasses = [];
-        foreach ($this->attributePool as $entry) {
-            if ($entry->getAttributeData() instanceof InnerClassesAttribute) {
-                $innerClasses = array_merge(
-                    $innerClasses,
-                    $entry->getAttributeData()->getClasses()
-                );
-            }
-        }
-
-        // Add to class resolver
-        foreach ($innerClasses as $innerClass) {
-            $this->options['class_resolver']->add([
-                [
-                    ClassResolver::RESOURCE_TYPE_INNER_CLASS,
-                    $innerClass,
-                ],
-            ]);
-        }
-
-        $this->debugTool->getLogger()->info('End of Class');
-
-        $this->invoker = new JavaClassInvoker(
-            $this,
-            $options
-        );
-    }
-
-    public function __debugInfo()
-    {
-        $superClass = $this->getSuperClass();
-        return [
-            'JDKVersion' => SDKVersionResolver::resolve($this->versions['major'] . '.' . $this->versions['minor']),
-            'name' => str_replace('/', '.', $this->getClassName()),
-            'super' => str_replace('/', '.', ($superClass instanceof JavaClassInterface ? $this->getSuperClass()->getClassName() : get_class($superClass))),
-            'methods' => array_map(
-                function (_MethodInfo $method) {
-                    return Formatter::beatifyMethodFromConstantPool(
-                        $method,
-                        $this->constantPool
-                    );
-                },
-                $this->methodPool->getEntries()
-            ),
-        ];
-    }
-
-    public function getClass()
-    {
-        return new _Class($this);
-    }
-
-    public function __invoke(...$arguments): JavaClass
-    {
-        return $this
-            ->getInvoker()
-            ->construct(...$arguments)
-            ->getJavaClass();
-    }
-
-    public function getOptions($key = null)
-    {
-        if (isset($key)) {
-            return $this->options[$key];
-        }
-        return $this->options;
-    }
-
-    public function __destruct()
-    {
-        $this->debugTool->getLogger()->info(
-            'Spent time: ' . (microtime(true) - $this->startTime) . ' sec.'
-        );
+        $this->genericClass = $genericClass;
     }
 
     public function getClassName(bool $shortName = false): string
     {
-        $className = $this->className->getString();
-        if ($shortName === true) {
-            $split = explode('$', $className);
-            return $split[count($split) - 1];
-        }
-        return $className;
+        return $this->genericClass->getClassName($shortName);
     }
 
     public function getPackageName(): ?string
     {
-        $className = dirname($this->className->getString());
-        if ($className === '') {
-            return null;
-        }
-        return str_replace('/', '.', $className);
+        return $this->genericClass->getPackageName();
     }
 
     /**
@@ -344,7 +39,7 @@ class JavaClass implements JavaClassInterface
      */
     public function getInnerClasses(): array
     {
-        return $this->innerClasses;
+        return $this->genericClass->getInnerClasses();
     }
 
     /**
@@ -352,7 +47,7 @@ class JavaClass implements JavaClassInterface
      */
     public function getDefinedFields(): array
     {
-        return $this->fieldPool->getEntries();
+        return $this->genericClass->getDefinedFields();
     }
 
     /**
@@ -360,39 +55,17 @@ class JavaClass implements JavaClassInterface
      */
     public function getDefinedMethods(): array
     {
-        return $this->methodPool->getEntries();
+        return $this->genericClass->getDefinedMethods();
     }
 
-    public function getInvoker(): JavaClassInvoker
+    public function getInvoker(): JavaClassInvokerInterface
     {
-        return $this->invoker;
-    }
-
-    public function appendDebug($log): self
-    {
-        $this->debugTraces[] = $log;
-        return $this;
-    }
-
-    public function hasParentClass(): bool
-    {
-        return isset($this->parentClass);
-    }
-
-    public function setParentClass(JavaClass $class): self
-    {
-        $this->parentClass = $class;
-        return $this;
-    }
-
-    public function getParentClass(): JavaClass
-    {
-        return $this->parentClass;
+        return $this->genericClass->getInvoker();
     }
 
     public function getSuperClass()
     {
-        return $this->superClass;
+        return $this->genericClass->getSuperClass();
     }
 
     /**
@@ -400,84 +73,48 @@ class JavaClass implements JavaClassInterface
      */
     public function getAttributes(): array
     {
-        return $this->attributePool->getEntries();
+        return $this->genericClass->getAttributes();
+    }
+
+    public function getClass()
+    {
+        return $this->genericClass->getClass();
+    }
+
+    public function getOptions($key = null)
+    {
+        return $this->genericClass->getOptions($key);
+    }
+
+    public function hasParentClass(): bool
+    {
+        return $this->genericClass->hasParentClass();
+    }
+
+    public function setParentClass(JavaClassInterface $class): self
+    {
+        $this->genericClass->setParentClass($class);
+        return $this;
+    }
+
+    public function getParentClass(): JavaClassInterface
+    {
+        return $this->genericClass->getParentClass();
+    }
+
+    public function getConstantPool(): ConstantPool
+    {
+        return $this->genericClass->getConstantPool();
+    }
+
+    public function appendDebug($log): self
+    {
+        $this->genericClass->appendDebug($log);
+        return $this;
     }
 
     public function debug(): void
     {
-        $isEnabledTrace = $this->options['operations']['enable_trace'] ?? GlobalOptions::get('operations.enable_trace') ?? Runtime::OPERATIONS_ENABLE_TRACE;
-        if (!$isEnabledTrace) {
-            throw new DebugTraceIsDisabledException(
-                'Debug trace is disabled. If you want to show debug trace then enable to `enable_trace` option.'
-            );
-        }
-        $cpInfo = $this->getConstantPool();
-        foreach ($this->debugTraces as $debugTraces) {
-            printf("[method]\n");
-            printf(Formatter::beatifyMethodFromConstantPool($debugTraces['method'], $this->getConstantPool()) . "\n");
-            printf("\n");
-            printf("[code]\n");
-
-            $codeCounter = 0;
-            printf(
-                "%s\n",
-                implode(
-                    "\n",
-                    array_map(
-                        function ($codes) use (&$codeCounter, &$debugTraces) {
-                            return implode(
-                                ' ',
-                                array_map(
-                                    function ($code) use (&$codeCounter, &$debugTraces) {
-                                        $isMnemonic = in_array($codeCounter, $debugTraces['mnemonic_indexes']);
-                                        $codeCounter++;
-                                        return ($isMnemonic ? "\e[1m\e[35m" : '') . "<0x{$code}>" . ($isMnemonic ? "\e[m" : '');
-                                    },
-                                    $codes
-                                )
-                            );
-                        },
-                        array_chunk(str_split(bin2hex($debugTraces['raw_code']), 2), 20)
-                    )
-                )
-            );
-            printf("\n");
-            printf("[executed]\n");
-
-            printf(
-                "% 8s | %-6.6s | %-20.20s | %-10.10s | %-15.15s\n",
-                'PC',
-                'OPCODE',
-                'MNEMONIC',
-                'OPERANDS',
-                'LOCAL STORAGE'
-            );
-
-            $line = sprintf(
-                "%8s+%8s+%22s+%12s+%17s\n",
-                '---------',
-                '--------',
-                '----------------------',
-                '------------',
-                '-----------------'
-            );
-
-            printf($line);
-
-            foreach ($debugTraces['executed'] as [$opcode, $mnemonic, $localStorage, $stacks, $pointer]) {
-                printf(
-                    "% 8s | 0x%02X   | %-20.20s | %-10.10s | %-15.15s\n",
-                    (int) $pointer,
-                    $opcode,
-                    // Remove prefix
-                    ltrim($mnemonic, '_'),
-                    count($stacks),
-                    count($localStorage)
-                );
-            }
-
-            printf($line);
-            printf("\n");
-        }
+        $this->genericClass->debug();
     }
 }

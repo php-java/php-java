@@ -1,8 +1,7 @@
 <?php
-namespace PHPJava\Core;
+namespace PHPJava\Core\JVM;
 
-use PHPJava\Core\JVM\DynamicAccessor;
-use PHPJava\Core\JVM\StaticAccessor;
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
@@ -11,10 +10,10 @@ use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\Normalizer;
 
-class JavaClassInvoker
+class JavaClassInvoker implements JavaClassInvokerInterface
 {
     /**
-     * @var JavaClass
+     * @var JavaClassInterface
      */
     private $javaClass;
 
@@ -64,7 +63,7 @@ class JavaClassInvoker
     private $providers = [];
 
     public function __construct(
-        JavaClass $javaClass,
+        JavaClassInterface $javaClass,
         array $options
     ) {
         $this->javaClass = $javaClass;
@@ -119,7 +118,7 @@ class JavaClassInvoker
     /**
      * @return JavaClassInvoker
      */
-    public function construct(...$arguments): self
+    public function construct(...$arguments): JavaClassInvokerInterface
     {
         $this->dynamicAccessor = new DynamicAccessor(
             $this,
@@ -139,17 +138,17 @@ class JavaClassInvoker
         return $this;
     }
 
-    public function getJavaClass(): JavaClass
+    public function getJavaClass(): JavaClassInterface
     {
         return $this->javaClass;
     }
 
-    public function getDynamic(): DynamicAccessor
+    public function getDynamic(): AccessorInterface
     {
         return $this->dynamicAccessor;
     }
 
-    public function getStatic(): StaticAccessor
+    public function getStatic(): AccessorInterface
     {
         $this->staticAccessor
             ->getMethods()

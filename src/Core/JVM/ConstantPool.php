@@ -44,7 +44,7 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
 
         for ($i = 1; $i < $entries; $i++) {
             $this->entries[$i] = $this->read(
-                $reader->getBinaryReader()->readUnsignedByte()
+                $reader->getReader()->readUnsignedByte()
             );
 
             // execute
