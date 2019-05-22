@@ -7,10 +7,10 @@ use PHPJava\Core\Stream\Reader\ReaderInterface;
 /**
  * @method __construct(ReaderInterface $reader, array $options = [])
  * @method ConstantPool getConstantPool()
- * @method JavaClass getSuperClass()
+ * @method JavaFileClass getSuperClass()
  * @method void debug()
  * @method array getAttributes()
- * @method JavaClass getParentClass()
+ * @method JavaFileClass getParentClass()
  * @method bool hasParentClass()
  * @method JavaClassInvoker getInvoker()
  * @method array getDefinedMethods()

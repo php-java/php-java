@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Resolvers;
 
 use PHPJava\Core\JavaArchive;
-use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaFileClass;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\FileReader;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
@@ -28,7 +28,7 @@ class ClassResolver
     private $resolves = [];
 
     /**
-     * @var (string|JavaClass)[][]
+     * @var (string|JavaFileClass)[][]
      */
     private $resolvedPaths = [];
 
@@ -42,7 +42,7 @@ class ClassResolver
         $this->options = $options;
     }
 
-    public function resolve(string $javaPath, JavaClass $class = null, bool $instantiation = true): array
+    public function resolve(string $javaPath, JavaFileClass $class = null, bool $instantiation = true): array
     {
         $javaPath = str_replace('/', '.', $javaPath);
         $namespaces = explode('.', $javaPath);
@@ -84,10 +84,10 @@ class ClassResolver
                         }
                     }
                     /**
-                     * @var JavaClass $initiatedClass
+                     * @var JavaFileClass $initiatedClass
                      */
                     if (is_file($path)) {
-                        $initiatedClass = new JavaClass(
+                        $initiatedClass = new JavaFileClass(
                             new FileReader($path),
                             $this->options
                         );
@@ -115,7 +115,7 @@ class ClassResolver
                     try {
                         return $this->resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
-                            new JavaClass(
+                            new JavaFileClass(
                                 $value,
                                 $this->options
                             ),

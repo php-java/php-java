@@ -162,7 +162,7 @@ trait MethodCallable
                 $currentConstantPool
             )
             ->add(
-                'JavaClass',
+                'JavaFileClass',
                 $this->javaClassInvoker->getJavaClass()
             )
             ->add(

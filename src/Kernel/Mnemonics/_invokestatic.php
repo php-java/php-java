@@ -43,7 +43,7 @@ final class _invokestatic implements OperationInterface
             switch ($resourceType) {
                 case ClassResolver::RESOLVED_TYPE_CLASS:
                     /**
-                     * @var \PHPJava\Core\JavaClass $classObject
+                     * @var \PHPJava\Core\JavaFileClass $classObject
                      */
                     $result = $classObject
                         ->getInvoker()

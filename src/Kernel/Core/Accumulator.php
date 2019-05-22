@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Core;
 
-use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaFileClass;
 use PHPJava\Core\JVM\JavaClassInvokerInterface;
 use PHPJava\Exceptions\IllegalOperationException;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
@@ -10,7 +10,7 @@ use PHPJava\Kernel\Structures\_MethodInfo;
 trait Accumulator
 {
     /**
-     * @var null|JavaClass
+     * @var null|JavaFileClass
      */
     private $javaClass;
 

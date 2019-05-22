@@ -67,7 +67,7 @@ final class _invokedynamic implements OperationInterface
          * @var BootstrapMethodsAttribute $bootstrapMethodAttribute
          */
         $bootstrapMethodAttribute = AttributionResolver::resolve(
-            // NOTE: bootstrapMethods attribution is defined in JavaClass class.
+            // NOTE: bootstrapMethods attribution is defined in JavaFileClass class.
             $this->javaClass->getAttributes(),
             BootstrapMethodsAttribute::class
         );

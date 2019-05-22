@@ -2,7 +2,7 @@
 namespace PHPJava\Console\Commands\JVM;
 
 use PHPJava\Core\JavaArchive;
-use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaFileClass;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\Stream\Reader\FileReader;
 use Symfony\Component\Console\Command\Command;
@@ -74,7 +74,7 @@ class RunCommand extends Command
 
     private function runClass(string $file, array $parameters)
     {
-        $class = new JavaClass(
+        $class = new JavaFileClass(
             new FileReader($file)
         );
         $class

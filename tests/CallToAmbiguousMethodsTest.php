@@ -23,7 +23,7 @@ class CallToAmbiguousMethodsTest extends Base
                 'strict' => false,
             ]
         );
-        $this->ambiguousInitiatedClass = new \PHPJava\Core\JavaClass(
+        $this->ambiguousInitiatedClass = new \PHPJava\Core\JavaFileClass(
             new \PHPJava\Core\Stream\Reader\FileReader(
                 $this->getClassName($this->fixtures[0])
             )

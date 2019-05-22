@@ -24,7 +24,7 @@ use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 
-class JavaClass implements JavaClassInterface
+class JavaFileClass implements JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
     use ParentClassExtendable;
@@ -98,7 +98,7 @@ class JavaClass implements JavaClassInterface
     private $innerClasses = [];
 
     /**
-     * @var JavaClass
+     * @var JavaFileClass
      */
     private $parentClass;
 

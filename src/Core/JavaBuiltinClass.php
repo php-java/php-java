@@ -18,7 +18,7 @@ use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\DebugTool;
 
-class JavaPackageClass implements JavaClassInterface
+class JavaBuiltinClass implements JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
     use ParentClassExtendable;
@@ -92,7 +92,7 @@ class JavaPackageClass implements JavaClassInterface
     private $innerClasses = [];
 
     /**
-     * @var JavaClass
+     * @var JavaFileClass
      */
     private $parentClass;
 
