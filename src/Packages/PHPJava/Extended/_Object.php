@@ -7,11 +7,17 @@ use PHPJava\Packages\PHPJava\Kernel\Behavior\System;
 
 trait _Object
 {
-    private $parameters;
+    protected $parameters;
+    protected static $staticInitializerIsInstantiated = false;
 
     public function __construct(...$parameters)
     {
         $this->parameters = $parameters;
+    }
+
+    public static function __staticConstruct(...$parameters)
+    {
+        static::$staticInitializerIsInstantiated = true;
     }
 
     /**

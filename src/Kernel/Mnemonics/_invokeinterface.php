@@ -1,8 +1,10 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Exceptions\NoSuchCodeAttributeException;
 use PHPJava\Kernel\Internal\Lambda;
 use PHPJava\Kernel\Types\Type;
+use PHPJava\Packages\java\lang\_String;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\TypeResolver;
 
@@ -34,13 +36,22 @@ final class _invokeinterface implements OperationInterface
 
         $objectref = $this->popFromOperandStack();
 
-        if ($objectref instanceof Lambda) {
-            $result = $objectref(...$arguments);
-        } else {
-            $result = $objectref->getInvoker()->getDynamic()->getMethods()->call(
-                $name,
-                ...$arguments
-            );
+        try {
+            if ($objectref instanceof Lambda) {
+                $result = $objectref(...$arguments);
+            } else {
+                $result = $objectref->getInvoker()->getDynamic()->getMethods()->call(
+                    $name,
+                    ...$arguments
+                );
+            }
+        } catch (NoSuchCodeAttributeException $e) {
+            if ($signature[0]['class_name'] === 'java/lang/Class') {
+                $result = $objectref->getClass();
+            }
+            if ($signature[0]['class_name'] === 'java/lang/String') {
+                $result = new _String();
+            }
         }
 
         if ($signature[0]['type'] !== 'void') {

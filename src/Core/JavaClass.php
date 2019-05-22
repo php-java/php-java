@@ -15,6 +15,7 @@ use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Packages\java\lang\_Class;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
@@ -190,6 +191,11 @@ class JavaClass implements JavaClassInterface
             $this
         );
 
+        $this->debugTool->getLogger()->info(
+            'Load super class: ' .
+            ($superClass instanceof JavaClassInterface ? $superClass->getClassName() : $superClass)
+        );
+
         switch ($resolvedType) {
             case ClassResolver::RESOLVED_TYPE_PACKAGES:
                 $this->superClass = new $superClass();
@@ -269,9 +275,11 @@ class JavaClass implements JavaClassInterface
 
     public function __debugInfo()
     {
+        $superClass = $this->getSuperClass();
         return [
             'JDKVersion' => SDKVersionResolver::resolve($this->versions['major'] . '.' . $this->versions['minor']),
             'name' => str_replace('/', '.', $this->getClassName()),
+            'super' => str_replace('/', '.', ($superClass instanceof JavaClassInterface ? $this->getSuperClass()->getClassName() : get_class($superClass))),
             'methods' => array_map(
                 function (_MethodInfo $method) {
                     return Formatter::beatifyMethodFromConstantPool(
@@ -282,6 +290,11 @@ class JavaClass implements JavaClassInterface
                 $this->methodPool->getEntries()
             ),
         ];
+    }
+
+    public function getClass()
+    {
+        return new _Class($this);
     }
 
     public function __invoke(...$arguments): JavaClass

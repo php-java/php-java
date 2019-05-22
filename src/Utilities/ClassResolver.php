@@ -42,9 +42,10 @@ class ClassResolver
         $this->options = $options;
     }
 
-    public function resolve(string $javaPath, JavaClass $class = null): array
+    public function resolve(string $javaPath, JavaClass $class = null, bool $instantiate = true): array
     {
-        $namespaces = explode('.', str_replace('/', '.', $javaPath));
+        $javaPath = str_replace('/', '.', $javaPath);
+        $namespaces = explode('.', $javaPath);
         $buildClassPath = [];
         foreach ($namespaces as $namespace) {
             $buildClassPath[] = static::MAPS[$namespace] ?? $namespace;
@@ -52,15 +53,13 @@ class ClassResolver
 
         // resolve something approaching
         $relativePath = implode('/', $namespaces);
+
         foreach ($this->resolves as [$resourceType, $value]) {
             switch ($resourceType) {
                 case static::RESOURCE_TYPE_INNER_CLASS:
                     // TODO: Implement here
                     break;
                 case static::RESOURCE_TYPE_JAR:
-                    if (($key = array_search($relativePath, $this->resolvedPaths, true)) !== false) {
-                        return $this->resolvedPaths[$relativePath];
-                    }
                     /**
                      * @var JavaArchive $value
                      */
@@ -77,8 +76,12 @@ class ClassResolver
                     if ($path === false) {
                         break;
                     }
-                    if (($key = array_search($path, $this->resolvedPaths, true)) !== false) {
-                        return $this->resolvedPaths[$key];
+                    if (!$instantiate) {
+                        foreach ($this->resolvedPaths as [$resolvedPath, $class]) {
+                            if ($relativePath === $class->getClassName()) {
+                                return [$resolvedPath, $class];
+                            }
+                        }
                     }
                     /**
                      * @var JavaClass $initiatedClass
@@ -98,6 +101,14 @@ class ClassResolver
                     }
                     break;
                 case static::RESOURCE_TYPE_CLASS:
+                    if (!$instantiate) {
+                        foreach ($this->resolvedPaths as [$resolvedPath, $class]) {
+                            if ($value->getClassName() === $class->getClassName()) {
+                                return [$resolvedPath, $class];
+                            }
+                        }
+                    }
+
                     /**
                      * @var ReaderInterface $value
                      */

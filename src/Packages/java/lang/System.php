@@ -2,6 +2,7 @@
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Packages\java\io\PrintStream;
 use PHPJava\Packages\PHPJava\Kernel\Behavior\System as SystemBehavior;
 
 // use PHPJava\Packages\java\lang\System\Logger;
@@ -35,6 +36,14 @@ class System extends _Object // implements Logger, Map, Channel
      * @var mixed $out
      */
     public static $out = null;
+
+    public static function __staticConstruct(...$parameters)
+    {
+        if (!static::$staticInitializerIsInstantiated) {
+            static::$out = new PrintStream();
+        }
+        parent::__staticConstruct(...$parameters);
+    }
 
     /**
      * Copies an array from the specified source array, beginning at the specified position, to the specified position of the destination array.

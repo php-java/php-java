@@ -1,7 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Structures\_Fieldref;
+use PHPJava\Core\JavaClassInterface;
+use PHPJava\Utilities\ClassHandler;
 use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
 
@@ -17,30 +18,28 @@ final class _getstatic implements OperationInterface
         $cp = $cpInfo[$this->readUnsignedShort()];
         $class = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
+        $fieldName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
-        if ($cp instanceof _Fieldref) {
-            foreach ($this->javaClass->getDefinedFields() as $field) {
-                if ($cpInfo[$field->getNameIndex()]->getString() === $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString()) {
-                    // push stack
-                    $fieldName = $cpInfo[$field->getNameIndex()]->getString();
-                    $this->pushToOperandStack($this->javaClassInvoker->getStatic()->getFields()->get($fieldName));
-                    return;
-                }
-            }
-        }
+        [$resourceType, $classObject] = $this->javaClass->getOptions('class_resolver')
+            ->resolve(
+                $class,
+                $this->javaClass,
+                false
+            );
 
-        if (isset($signature[0]['class_name'])) {
-            [$resourceType, $classObject] = $this->getOptions('class_resolver')
-                ->resolve($signature[0]['class_name']);
-            if ($resourceType === ClassResolver::RESOLVED_TYPE_CLASS) {
-                /**
-                 * @var \PHPJava\Core\JavaClass $className
-                 */
-                $this->pushToOperandStack($classObject);
-                return;
-            }
-            $this->pushToOperandStack(new $classObject());
+        if ($resourceType === ClassResolver::RESOLVED_TYPE_CLASS) {
+            /**
+             * @var JavaClassInterface $className
+             */
+            $this->pushToOperandStack($classObject->getInvoker()->getStatic()->getFields()->get($fieldName));
             return;
         }
+
+        $this->pushToOperandStack(
+            ClassHandler::getStaticField(
+                $classObject,
+                $fieldName
+            )
+        );
     }
 }

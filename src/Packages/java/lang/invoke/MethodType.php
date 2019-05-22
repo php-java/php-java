@@ -14,7 +14,7 @@ use PHPJava\Packages\java\lang\_Object;
  */
 class MethodType extends _Object // implements Serializable, _List
 {
-    private $parameters = [];
+    protected $parameters = [];
 
     public function __construct(...$parameters)
     {
