@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker\Extended;
 
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\TypeResolver;
 
 trait ArgumentsStringifyable
 {

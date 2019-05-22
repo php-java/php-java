@@ -13,8 +13,22 @@ final class _putstatic implements OperationInterface
         $cp = $cpInfo[$this->readUnsignedShort()];
 
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
+        $className = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
         $fieldName = $cpInfo[$class->getNameIndex()]->getString();
 
-        $this->javaClassInvoker->getStatic()->getFields()->set($fieldName, $this->popFromOperandStack());
+        $classObject = $this->javaClass;
+        if ($this->javaClass->getClassName() !== $className) {
+            [$resourceType, $classObject] = $this->javaClass->getOptions('class_resolver')
+                ->resolve(
+                    $className,
+                    $this->javaClass,
+                    false
+                );
+        }
+
+        $classObject->getInvoker()->getStatic()->getFields()->set(
+            $fieldName,
+            $this->popFromOperandStack()
+        );
     }
 }

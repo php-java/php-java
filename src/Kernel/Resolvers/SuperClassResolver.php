@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Utilities;
+namespace PHPJava\Kernel\Resolvers;
 
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JVM\FlexibleMethod;

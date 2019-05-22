@@ -1,9 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Packages\java\lang\ClassCastException;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\TypeResolver;
 
 final class _checkcast implements OperationInterface
 {

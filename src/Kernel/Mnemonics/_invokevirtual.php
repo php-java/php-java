@@ -4,12 +4,12 @@ namespace PHPJava\Kernel\Mnemonics;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
+use PHPJava\Kernel\Resolvers\AttributionResolver;
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Kernel\Types\Type;
-use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\Normalizer;
-use PHPJava\Utilities\TypeResolver;
 
 final class _invokevirtual implements OperationInterface
 {

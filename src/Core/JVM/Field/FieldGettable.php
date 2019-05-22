@@ -10,6 +10,11 @@ trait FieldGettable
      */
     public function get(string $name)
     {
+        $this->javaClassInvoker
+            ->getStatic()
+            ->getMethods()
+            ->callStaticInitializerIfNotInstantiated();
+
         if (!array_key_exists($name, $this->fields)) {
             throw new NoSuchFieldException('Get to undefined field ' . $name);
         }

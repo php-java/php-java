@@ -1,9 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Types\_Array;
 
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Packages\java\lang\ArrayIndexOutOfBoundsException;
 use PHPJava\Utilities\Extractor;
-use PHPJava\Utilities\TypeResolver;
 
 class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 {

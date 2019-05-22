@@ -4,6 +4,7 @@ namespace PHPJava\Utilities;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
 
 class Formatter
