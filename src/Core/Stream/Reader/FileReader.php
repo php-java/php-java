@@ -2,6 +2,7 @@
 namespace PHPJava\Core\Stream\Reader;
 
 use PHPJava\Core\JVM\Stream\BinaryReader;
+use PHPJava\Core\JVM\Stream\StreamReaderInterface;
 
 class FileReader implements ReaderInterface
 {
@@ -25,7 +26,7 @@ class FileReader implements ReaderInterface
         $this->binaryReader = new BinaryReader($this->handle);
     }
 
-    public function getBinaryReader(): BinaryReader
+    public function getReader(): StreamReaderInterface
     {
         return $this->binaryReader;
     }

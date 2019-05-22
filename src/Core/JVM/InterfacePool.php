@@ -25,7 +25,7 @@ class InterfacePool implements \ArrayAccess, \Countable, \IteratorAggregate
     ) {
         $this->reader = $reader;
         for ($i = 0; $i < $entries; $i++) {
-            $this->entries[$i] = $reader->getBinaryReader()->readUnsignedShort();
+            $this->entries[$i] = $reader->getReader()->readUnsignedShort();
         }
     }
 

@@ -2,6 +2,7 @@
 namespace PHPJava\Core\Stream\Reader;
 
 use PHPJava\Core\JVM\Stream\BinaryReader;
+use PHPJava\Core\JVM\Stream\StreamReaderInterface;
 
 class InlineReader implements ReaderInterface
 {
@@ -29,7 +30,7 @@ class InlineReader implements ReaderInterface
         $this->binaryReader = new BinaryReader($this->handle);
     }
 
-    public function getBinaryReader(): BinaryReader
+    public function getReader(): StreamReaderInterface
     {
         return $this->binaryReader;
     }

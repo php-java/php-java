@@ -6,24 +6,32 @@ use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\FieldPool;
 use PHPJava\Core\JVM\InterfacePool;
 use PHPJava\Core\JVM\MethodPool;
-use PHPJava\Core\JVM\Parameters\GlobalOptions;
-use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
-use PHPJava\Exceptions\DebugTraceIsDisabledException;
+use PHPJava\Core\Traits\Classifiable;
+use PHPJava\Core\Traits\ClassInvokable;
+use PHPJava\Core\Traits\Debuggable;
+use PHPJava\Core\Traits\Finalizable;
+use PHPJava\Core\Traits\OptionExtendable;
+use PHPJava\Core\Traits\ParentClassExtendable;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Structures\_Utf8;
-use PHPJava\Packages\java\lang\_Class;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 
 class JavaClass implements JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
+    use ParentClassExtendable;
+    use Classifiable;
+    use Debuggable;
+    use OptionExtendable;
+    use Finalizable;
+    use ClassInvokable;
 
     /**
      * @var int[]
@@ -79,11 +87,6 @@ class JavaClass implements JavaClassInterface
     private $className;
 
     /**
-     * @var mixed[]
-     */
-    private $debugTraces = [];
-
-    /**
      * @var JavaClassInvoker
      */
     private $invoker;
@@ -104,16 +107,6 @@ class JavaClass implements JavaClassInterface
     private $superClass;
 
     /**
-     * @var array
-     */
-    private $options = [];
-
-    /**
-     * @var DebugTool
-     */
-    private $debugTool;
-
-    /**
      * @var float
      */
     private $startTime = 0.0;
@@ -128,7 +121,7 @@ class JavaClass implements JavaClassInterface
         $this->startTime = microtime(true);
 
         // Validate Java file
-        if (!(new MagicByte($reader->getBinaryReader()->readUnsignedInt()))->isValid()) {
+        if (!(new MagicByte($reader->getReader()->readUnsignedInt()))->isValid()) {
             throw new ValidatorException($reader . ' has broken or not Java class.');
         }
 
@@ -155,12 +148,12 @@ class JavaClass implements JavaClassInterface
         $this->debugTool->getLogger()->info('Start class emulation');
 
         // read minor version
-        $this->versions['minor'] = $reader->getBinaryReader()->readUnsignedShort();
+        $this->versions['minor'] = $reader->getReader()->readUnsignedShort();
 
         $this->debugTool->getLogger()->info('Minor version: ' . $this->versions['minor']);
 
         // read major version
-        $this->versions['major'] = $reader->getBinaryReader()->readUnsignedShort();
+        $this->versions['major'] = $reader->getReader()->readUnsignedShort();
 
         $this->debugTool->getLogger()->info('Major version: ' . $this->versions['major']);
 
@@ -169,21 +162,21 @@ class JavaClass implements JavaClassInterface
         // read constant pool size
         $this->constantPool = new ConstantPool(
             $reader,
-            $reader->getBinaryReader()->readUnsignedShort()
+            $reader->getReader()->readUnsignedShort()
         );
 
         $this->debugTool->getLogger()->info('Constant Pools: ' . count($this->constantPool));
 
         // read access flag
-        $this->accessFlag = $reader->getBinaryReader()->readUnsignedShort();
+        $this->accessFlag = $reader->getReader()->readUnsignedShort();
 
         // read this class
-        $this->thisClass = $reader->getBinaryReader()->readUnsignedShort();
+        $this->thisClass = $reader->getReader()->readUnsignedShort();
 
         $this->className = $this->constantPool[$this->constantPool[$this->thisClass]->getClassIndex()];
 
         // read super class
-        $this->superClassIndex = $reader->getBinaryReader()->readUnsignedShort();
+        $this->superClassIndex = $reader->getReader()->readUnsignedShort();
 
         $cpInfo = $this->getConstantPool();
         [$resolvedType, $superClass] = $this->options['class_resolver']->resolve(
@@ -208,7 +201,7 @@ class JavaClass implements JavaClassInterface
         // read interfaces
         $this->interfacePool = new InterfacePool(
             $reader,
-            $reader->getBinaryReader()->readUnsignedShort(),
+            $reader->getReader()->readUnsignedShort(),
             $this->constantPool,
             $this->debugTool
         );
@@ -218,7 +211,7 @@ class JavaClass implements JavaClassInterface
         // read fields
         $this->fieldPool = new FieldPool(
             $reader,
-            $reader->getBinaryReader()->readUnsignedShort(),
+            $reader->getReader()->readUnsignedShort(),
             $this->constantPool,
             $this->debugTool
         );
@@ -228,7 +221,7 @@ class JavaClass implements JavaClassInterface
         // read methods
         $this->methodPool = new MethodPool(
             $reader,
-            $reader->getBinaryReader()->readUnsignedShort(),
+            $reader->getReader()->readUnsignedShort(),
             $this->constantPool,
             $this->debugTool
         );
@@ -238,7 +231,7 @@ class JavaClass implements JavaClassInterface
         // read Attributes
         $this->attributePool = new AttributePool(
             $reader,
-            $reader->getBinaryReader()->readUnsignedShort(),
+            $reader->getReader()->readUnsignedShort(),
             $this->constantPool,
             $this->debugTool
         );
@@ -292,34 +285,6 @@ class JavaClass implements JavaClassInterface
         ];
     }
 
-    public function getClass()
-    {
-        return new _Class($this);
-    }
-
-    public function __invoke(...$arguments): JavaClass
-    {
-        return $this
-            ->getInvoker()
-            ->construct(...$arguments)
-            ->getJavaClass();
-    }
-
-    public function getOptions($key = null)
-    {
-        if (isset($key)) {
-            return $this->options[$key];
-        }
-        return $this->options;
-    }
-
-    public function __destruct()
-    {
-        $this->debugTool->getLogger()->info(
-            'Spent time: ' . (microtime(true) - $this->startTime) . ' sec.'
-        );
-    }
-
     public function getClassName(bool $shortName = false): string
     {
         $className = $this->className->getString();
@@ -368,28 +333,6 @@ class JavaClass implements JavaClassInterface
         return $this->invoker;
     }
 
-    public function appendDebug($log): self
-    {
-        $this->debugTraces[] = $log;
-        return $this;
-    }
-
-    public function hasParentClass(): bool
-    {
-        return isset($this->parentClass);
-    }
-
-    public function setParentClass(JavaClass $class): self
-    {
-        $this->parentClass = $class;
-        return $this;
-    }
-
-    public function getParentClass(): JavaClass
-    {
-        return $this->parentClass;
-    }
-
     public function getSuperClass()
     {
         return $this->superClass;
@@ -401,83 +344,5 @@ class JavaClass implements JavaClassInterface
     public function getAttributes(): array
     {
         return $this->attributePool->getEntries();
-    }
-
-    public function debug(): void
-    {
-        $isEnabledTrace = $this->options['operations']['enable_trace'] ?? GlobalOptions::get('operations.enable_trace') ?? Runtime::OPERATIONS_ENABLE_TRACE;
-        if (!$isEnabledTrace) {
-            throw new DebugTraceIsDisabledException(
-                'Debug trace is disabled. If you want to show debug trace then enable to `enable_trace` option.'
-            );
-        }
-        $cpInfo = $this->getConstantPool();
-        foreach ($this->debugTraces as $debugTraces) {
-            printf("[method]\n");
-            printf(Formatter::beatifyMethodFromConstantPool($debugTraces['method'], $this->getConstantPool()) . "\n");
-            printf("\n");
-            printf("[code]\n");
-
-            $codeCounter = 0;
-            printf(
-                "%s\n",
-                implode(
-                    "\n",
-                    array_map(
-                        function ($codes) use (&$codeCounter, &$debugTraces) {
-                            return implode(
-                                ' ',
-                                array_map(
-                                    function ($code) use (&$codeCounter, &$debugTraces) {
-                                        $isMnemonic = in_array($codeCounter, $debugTraces['mnemonic_indexes']);
-                                        $codeCounter++;
-                                        return ($isMnemonic ? "\e[1m\e[35m" : '') . "<0x{$code}>" . ($isMnemonic ? "\e[m" : '');
-                                    },
-                                    $codes
-                                )
-                            );
-                        },
-                        array_chunk(str_split(bin2hex($debugTraces['raw_code']), 2), 20)
-                    )
-                )
-            );
-            printf("\n");
-            printf("[executed]\n");
-
-            printf(
-                "% 8s | %-6.6s | %-20.20s | %-10.10s | %-15.15s\n",
-                'PC',
-                'OPCODE',
-                'MNEMONIC',
-                'OPERANDS',
-                'LOCAL STORAGE'
-            );
-
-            $line = sprintf(
-                "%8s+%8s+%22s+%12s+%17s\n",
-                '---------',
-                '--------',
-                '----------------------',
-                '------------',
-                '-----------------'
-            );
-
-            printf($line);
-
-            foreach ($debugTraces['executed'] as [$opcode, $mnemonic, $localStorage, $stacks, $pointer]) {
-                printf(
-                    "% 8s | 0x%02X   | %-20.20s | %-10.10s | %-15.15s\n",
-                    (int) $pointer,
-                    $opcode,
-                    // Remove prefix
-                    ltrim($mnemonic, '_'),
-                    count($stacks),
-                    count($localStorage)
-                );
-            }
-
-            printf($line);
-            printf("\n");
-        }
     }
 }

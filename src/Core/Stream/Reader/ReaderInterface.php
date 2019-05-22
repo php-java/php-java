@@ -2,12 +2,16 @@
 namespace PHPJava\Core\Stream\Reader;
 
 use PHPJava\Core\JVM\Stream\BinaryReader;
+use PHPJava\Core\JVM\Stream\StreamReaderInterface;
 
 interface ReaderInterface
 {
     public function __toString(): string;
 
-    public function getBinaryReader(): BinaryReader;
+    /**
+     * @return BinaryReader|PackageReader|StreamReaderInterface
+     */
+    public function getReader(): StreamReaderInterface;
 
     public function getFileName(): string;
 

@@ -24,7 +24,7 @@ class _VerificationTypeInfo implements StructureInterface
         $this->tag = $this->readUnsignedByte();
 
         // back by tag
-        $this->reader->getBinaryReader()->seek(-1);
+        $this->reader->getReader()->seek(-1);
 
         switch ($this->tag) {
             case 0:
