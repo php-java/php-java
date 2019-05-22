@@ -1,14 +1,14 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker;
 
-use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Core\JVM\JavaClassInvokerInterface;
 
 interface InvokerInterface
 {
     /**
      * @param PHPJava\Kernel\Structures\_MethodInfo[] $methods
      */
-    public function __construct(JavaClassInvoker $javaClassInvoker, array $methods);
+    public function __construct(JavaClassInvokerInterface $javaClassInvoker, array $methods);
 
     public function call(string $name, ...$arguments);
 

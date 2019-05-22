@@ -29,7 +29,7 @@ class PackageReader implements ReaderInterface
 
     public function getJavaPathName(): string
     {
-        return Formatter::convertJavaNamespaceToPHP($this->classPath);
+        return Formatter::convertJavaNamespaceToPHP($this->classPath)[1];
     }
 
     public function getFileName(): string

@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Core\JVM;
 
-use PHPJava\Core\JavaClassInvoker;
 use PHPJava\Core\JVM\Field\FieldInterface;
 use PHPJava\Core\JVM\Field\StaticField;
 use PHPJava\Core\JVM\Invoker\InvokerInterface;
@@ -22,7 +21,7 @@ class StaticAccessor implements AccessorInterface
     /**
      * @param PHPJava\Kernel\Structures\_MethodInfo[] $methods
      */
-    public function __construct(JavaClassInvoker $invoker, array $methods, array $fields, array $options = [])
+    public function __construct(JavaClassInvokerInterface $invoker, array $methods, array $fields, array $options = [])
     {
         $this->methodAccessor = new StaticMethodInvoker($invoker, $methods, $options);
         $this->fieldAccessor = new StaticField($invoker, $fields);

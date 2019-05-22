@@ -5,6 +5,7 @@ use PHPJava\Core\JVM\AttributePool;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\FieldPool;
 use PHPJava\Core\JVM\InterfacePool;
+use PHPJava\Core\JVM\JavaClassInvoker;
 use PHPJava\Core\JVM\MethodPool;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Core\Stream\Reader\ReaderInterface;

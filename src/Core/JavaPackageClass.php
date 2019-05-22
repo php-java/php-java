@@ -14,7 +14,9 @@ use PHPJava\Core\Traits\Finalizable;
 use PHPJava\Core\Traits\OptionExtendable;
 use PHPJava\Core\Traits\ParentClassExtendable;
 use PHPJava\Exceptions\ValidatorException;
+use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Utilities\DebugTool;
 
 class JavaPackageClass implements JavaClassInterface
 {
@@ -111,10 +113,30 @@ class JavaPackageClass implements JavaClassInterface
      */
     public function __construct(ReaderInterface $reader, array $options = [])
     {
+        // options
+        $this->options = $options;
+
+        if (!(($this->options['class_resolver'] ?? null) instanceof ClassResolver)) {
+            $this->options['class_resolver'] = new ClassResolver(
+                $this->options
+            );
+        }
+
+        $this->options['class_resolver']->add([
+            [ClassResolver::RESOURCE_TYPE_FILE, dirname($reader->getFileName())],
+            [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
+        ]);
+
+        // Debug tool
+        $this->debugTool = new DebugTool(
+            $reader->getJavaPathName(),
+            $options
+        );
     }
 
     public function __debugInfo()
     {
+        return [];
     }
 
     public function getClassName(bool $shortName = false): string

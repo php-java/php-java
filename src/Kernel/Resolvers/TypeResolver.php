@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Resolvers;
 
 use PHPJava\Core\JavaClassInterface;
-use PHPJava\Core\JavaClassInvoker;
+use PHPJava\Core\JVM\JavaClassInvokerInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
@@ -250,7 +250,7 @@ class TypeResolver
      * @throws TypeException
      * @throws \ReflectionException
      */
-    public static function compare(JavaClassInvoker $javaClassInvoker, string $a, string $b): bool
+    public static function compare(JavaClassInvokerInterface $javaClassInvoker, string $a, string $b): bool
     {
         if ($a === $b) {
             return true;
@@ -282,7 +282,7 @@ class TypeResolver
      * @throws TypeException
      * @throws \ReflectionException
      */
-    public static function getExtendedClasses(JavaClassInvoker $javaClassInvoker, string $class): array
+    public static function getExtendedClasses(JavaClassInvokerInterface $javaClassInvoker, string $class): array
     {
         static $loadedExtendedRoots = [];
         $result = [];
