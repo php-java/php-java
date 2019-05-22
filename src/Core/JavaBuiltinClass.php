@@ -5,6 +5,7 @@ use PHPJava\Core\JVM\AttributePool;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\FieldPool;
 use PHPJava\Core\JVM\InterfacePool;
+use PHPJava\Core\JVM\JavaClassInvokerInterface;
 use PHPJava\Core\JVM\MethodPool;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Core\Traits\Classifiable;
@@ -18,7 +19,7 @@ use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\DebugTool;
 
-class JavaBuiltinClass implements JavaClassInterface
+class JavaBuiltinClass implements JavaGenericClassInterface, JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
     use ParentClassExtendable;
@@ -92,7 +93,7 @@ class JavaBuiltinClass implements JavaClassInterface
     private $innerClasses = [];
 
     /**
-     * @var JavaFileClass
+     * @var JavaClass
      */
     private $parentClass;
 
@@ -171,7 +172,7 @@ class JavaBuiltinClass implements JavaClassInterface
         return [];
     }
 
-    public function getInvoker(): JavaClassInvoker
+    public function getInvoker(): JavaClassInvokerInterface
     {
         return $this->invoker;
     }

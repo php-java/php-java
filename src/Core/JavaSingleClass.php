@@ -6,6 +6,7 @@ use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\FieldPool;
 use PHPJava\Core\JVM\InterfacePool;
 use PHPJava\Core\JVM\JavaClassInvoker;
+use PHPJava\Core\JVM\JavaClassInvokerInterface;
 use PHPJava\Core\JVM\MethodPool;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
@@ -24,7 +25,7 @@ use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 
-class JavaFileClass implements JavaClassInterface
+class JavaSingleClass implements JavaGenericClassInterface, JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
     use ParentClassExtendable;
@@ -98,7 +99,7 @@ class JavaFileClass implements JavaClassInterface
     private $innerClasses = [];
 
     /**
-     * @var JavaFileClass
+     * @var JavaClass
      */
     private $parentClass;
 
@@ -329,7 +330,7 @@ class JavaFileClass implements JavaClassInterface
         return $this->methodPool->getEntries();
     }
 
-    public function getInvoker(): JavaClassInvoker
+    public function getInvoker(): JavaClassInvokerInterface
     {
         return $this->invoker;
     }

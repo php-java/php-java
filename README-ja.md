@@ -79,10 +79,10 @@ $ javac -UTF8 /path/to/HelloWorld.java
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+(new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -134,10 +134,10 @@ use PHPJava\Core\JavaArchive;
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$staticFieldAccessor = (new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+$staticFieldAccessor = (new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
     ->getFields();
@@ -155,10 +155,10 @@ echo $staticFieldAccessor->get('fieldName');
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+(new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -171,7 +171,7 @@ use PHPJava\Core\Stream\Reader\FileReader;
     );
 
 // または、メソッドが返り値をもつ場合は、下記のようにして、返り値を変数に代入することが可能です。
-$result = (new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+$result = (new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
    ->getInvoker()
    ->getStatic()
    ->getMethods()
@@ -193,14 +193,14 @@ echo $result;
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$JavaFileClass = new JavaFileClass(new FileReader('/path/to/HelloWorld.class'));
+$javaClass = new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class')));
 
-$JavaFileClass->getInvoker()->construct();
+$javaClass->getInvoker()->construct();
 
-$dynamicFieldAccessor = $JavaFileClass
+$dynamicFieldAccessor = $javaClass
     ->getInvoker()
     ->getDynamic()
     ->getFields();
@@ -218,10 +218,10 @@ echo $dynamicFieldAccessor->get('fieldName');
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$dynamicMethodAccessor = (new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+$dynamicMethodAccessor = (new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
      ->getInvoker()
      ->construct()
      ->getDynamic()
@@ -269,7 +269,7 @@ class Test
 ##### PHP
 ```php
 <?php
-$JavaFileClass->getInvoker()->getStatic()->getMethods()->call(
+$javaClass->getInvoker()->getStatic()->getMethods()->call(
     'includingLongTypeParameter',
     new \PHPJava\Kernel\Types\_Long(1234)
 );
@@ -281,11 +281,11 @@ $JavaFileClass->getInvoker()->getStatic()->getMethods()->call(
 ##### PHP
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$JavaFileClass = new JavaFileClass(
-    new Stream\Reader\FileReader('Test'),
+$javaClass = new JavaClass(
+    new JavaSingleClass(new FileReader('Test')),
     [
         'strict' => false,
     ]
@@ -293,32 +293,32 @@ $JavaFileClass = new JavaFileClass(
 ```
 
 ### ラインタイムオプション
-- `JavaFileClass` または、 `JavaArchive` で使用可能なランタイムオプションは下記のとおりです。
+- `JavaClass` または、 `JavaArchive` で使用可能なランタイムオプションは下記のとおりです。
 
 | オプション名 | 型 | デフォルト値 | 概要 | 対象 |
 |:--------|:------|:--------|:------------|:---------|
 | entrypoint | string または、 null | null | Jar のエントリーポイントを指定します | JavaArchive |
-| max_stack_exceeded | integer | 9999 | オペレーションを最大何回実行できるかを指定します。 | JavaFileClass |
-| max_execution_time | integer | 30 | 最大実行時間を指定します。 | JavaFileClass |
+| max_stack_exceeded | integer | 9999 | オペレーションを最大何回実行できるかを指定します。 | JavaClass |
+| max_execution_time | integer | 30 | 最大実行時間を指定します。 | JavaClass |
 | strict | boolean | true | このオプションが `true` の場合、 PHPJava はメソッド、変数などを厳格に評価し実行します。 `false` の場合は、曖昧に評価して実行します。. | Both |
-| validation.method.arguments_count_only | boolean | false | このオプションが `true` の場合、 クラス解決をして、メソッドを呼び出す際に、引数の数のみを比較します。 | JavaFileClass |
-| operations.enable_trace | boolean | false | このオプションが `true` の場合、 PHPJava はオペレーションの実行ログを記録します。 | JavaFileClass |
-| operations.temporary_code_stream | string | php://memory | 実行用のバイトコードの一時保存先を指定します。 | JavaFileClass |
-| operations.injector.before | callable | null | オペレーション実行前に処理をするトリガーを設定します。 | JavaFileClass |
-| operations.injector.after | callable | null | オペレーション実行後に処理をするトリガーを設定します。 | JavaFileClass |
+| validation.method.arguments_count_only | boolean | false | このオプションが `true` の場合、 クラス解決をして、メソッドを呼び出す際に、引数の数のみを比較します。 | JavaClass |
+| operations.enable_trace | boolean | false | このオプションが `true` の場合、 PHPJava はオペレーションの実行ログを記録します。 | JavaClass |
+| operations.temporary_code_stream | string | php://memory | 実行用のバイトコードの一時保存先を指定します。 | JavaClass |
+| operations.injector.before | callable | null | オペレーション実行前に処理をするトリガーを設定します。 | JavaClass |
+| operations.injector.after | callable | null | オペレーション実行後に処理をするトリガーを設定します。 | JavaClass |
 | log.level | int | Logger::EMERGENCY | `Monolog` によるログの出力レベルを設定します | Both |
 | log.path | string または resource | php://stdout | `Monolog` の出力先を指定します。. | Both |
-| dry_run (未実装) | boolean | false | このオプションが `true` の場合、 JavaFileClass または JavaArchive の構造のチェックのみを行います。 | Both |
+| dry_run (未実装) | boolean | false | このオプションが `true` の場合、 JavaClass または JavaArchive の構造のチェックのみを行います。 | Both |
 | env (未実装) | enum | Environment::EXPERIMENTAL | あなたの実行時環境を設定します。 | Both |
 
-- JavaFileClass でオプションを指定する場合は下記のとおりです。
+- JavaClass でオプションを指定する場合は下記のとおりです。
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$JavaFileClass = new JavaFileClass(
-    new FileReader('Test'),
+$javaClass = new JavaClass(
+    new JavaSingleClass(new FileReader('Test')),
     [
         'max_stack_exceeded' => 12345,
         'validation' => [
@@ -355,12 +355,12 @@ GlobalOptions::set([
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$JavaFileClass = new JavaFileClass(new FileReader('/path/to/HelloWorld.class'));
+$javaClass = new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class')));
 
-$JavaFileClass
+$javaClass
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -370,7 +370,7 @@ $JavaFileClass
     );
 
 // デバッグトレースを表示します。
-$JavaFileClass->debug();
+$javaClass->debug();
 ```
 
 - デバッグトレースを出力します。

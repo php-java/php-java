@@ -2,10 +2,12 @@
 namespace PHPJava\Kernel\Resolvers;
 
 use PHPJava\Core\JavaArchive;
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
+use PHPJava\Core\JavaGenericClassInterface;
+use PHPJava\Core\JavaSingleClass;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\FileReader;
-use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Packages\java\lang\ClassNotFoundException;
 
 class ClassResolver
@@ -28,7 +30,7 @@ class ClassResolver
     private $resolves = [];
 
     /**
-     * @var (string|JavaFileClass)[][]
+     * @var (string|JavaClass)[][]
      */
     private $resolvedPaths = [];
 
@@ -42,7 +44,7 @@ class ClassResolver
         $this->options = $options;
     }
 
-    public function resolve(string $javaPath, JavaFileClass $class = null, bool $instantiation = true): array
+    public function resolve(string $javaPath, JavaClassInterface $class = null, bool $instantiation = true): array
     {
         $javaPath = str_replace('/', '.', $javaPath);
         $namespaces = explode('.', $javaPath);
@@ -84,12 +86,14 @@ class ClassResolver
                         }
                     }
                     /**
-                     * @var JavaFileClass $initiatedClass
+                     * @var JavaClass $initiatedClass
                      */
                     if (is_file($path)) {
-                        $initiatedClass = new JavaFileClass(
-                            new FileReader($path),
-                            $this->options
+                        $initiatedClass = new JavaClass(
+                            new JavaSingleClass(
+                                new FileReader($path),
+                                $this->options
+                            )
                         );
                         if (strpos($relativePath, '$') !== false && $class !== null) {
                             $initiatedClass->setParentClass($class);
@@ -110,12 +114,12 @@ class ClassResolver
                     }
 
                     /**
-                     * @var ReaderInterface $value
+                     * @var JavaGenericClassInterface $value
                      */
                     try {
                         return $this->resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
-                            new JavaFileClass(
+                            new JavaClass(
                                 $value,
                                 $this->options
                             ),

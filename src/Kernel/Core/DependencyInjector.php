@@ -7,7 +7,7 @@ trait DependencyInjector
      * @throws \PHPJava\Exceptions\ProviderException
      * @return (
      *           \PHPJava\Core\JVM\ConstantPool|
-     *           \PHPJava\Core\JavaFileClass|
+     *           \PHPJava\Core\JavaClass|
      *           \PHPJava\Core\JavaClassInvoker|
      *           \PHPJava\Kernel\Attributes\AttributeInfo|
      *           \PHPJava\Kernel\Provider\ProviderInterface|
@@ -26,7 +26,7 @@ trait DependencyInjector
      * @throws \PHPJava\Exceptions\ProviderException
      * @return (
      *           \PHPJava\Core\JVM\ConstantPool|
-     *           \PHPJava\Core\JavaFileClass|
+     *           \PHPJava\Core\JavaClass|
      *           \PHPJava\Core\JavaClassInvoker|
      *           \PHPJava\Kernel\Attributes\AttributeInfo|
      *           array

@@ -3,9 +3,11 @@ namespace PHPJava\Core;
 
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\JavaClassInvokerInterface;
+use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Packages\java\lang\_Class;
 
 /**
+ * @method __construct(ReaderInterface $reader, array $options = [])
  * @method ConstantPool getConstantPool()
  * @method JavaClass getSuperClass()
  * @method void debug()
@@ -23,6 +25,6 @@ use PHPJava\Packages\java\lang\_Class;
  * @method _Class getClass()
  * @method setParentClass(JavaClassInterface $class)
  */
-interface JavaClassInterface
+interface JavaGenericClassInterface
 {
 }

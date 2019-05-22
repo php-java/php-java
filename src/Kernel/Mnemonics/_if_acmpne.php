@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Packages\java\lang\_String;
 
@@ -15,8 +15,8 @@ final class _if_acmpne implements OperationInterface
         $offset = $this->readShort();
 
         /**
-         * @var _String|_Utf8|JavaFileClass $rightOperand
-         * @var _String|_Utf8|JavaFileClass $leftOperand
+         * @var _String|_Utf8|JavaClass $rightOperand
+         * @var _String|_Utf8|JavaClass $leftOperand
          */
         $rightOperand = $this->popFromOperandStack();
         $leftOperand = $this->popFromOperandStack();

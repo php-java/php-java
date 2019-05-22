@@ -151,7 +151,10 @@ class JavaArchive
 
             switch ($fileType = FileTypeResolver::resolve($resolvePath)) {
                 case ClassResolver::RESOLVED_TYPE_CLASS:
-                    $value = new Stream\Reader\FileReader($value);
+                    $value = new JavaSingleClass(
+                        new Stream\Reader\FileReader($value),
+                        $this->options
+                    );
                     break;
                 case ClassResolver::RESOURCE_TYPE_JAR:
                     $value = new JavaArchive($value, $this->options);

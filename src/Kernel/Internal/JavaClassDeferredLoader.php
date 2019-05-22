@@ -1,8 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Internal;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaSingleClass;
 
 final class JavaClassDeferredLoader implements JavaClassInterface
 {
@@ -22,7 +23,7 @@ final class JavaClassDeferredLoader implements JavaClassInterface
     private $options = [];
 
     /**
-     * @var JavaFileClass
+     * @var JavaClass
      */
     private $javaClass;
 
@@ -72,14 +73,16 @@ final class JavaClassDeferredLoader implements JavaClassInterface
      * @throws \PHPJava\Exceptions\UnknownVersionException
      * @throws \PHPJava\Exceptions\ValidatorException
      */
-    private function initializeIfNotInitiated(): JavaFileClass
+    private function initializeIfNotInitiated(): JavaClass
     {
         if (isset($this->javaClass)) {
             return $this->javaClass;
         }
-        return $this->javaClass = new JavaFileClass(
-            new $this->deferLoadingReaderClass(...$this->arguments),
-            $this->options
+        return $this->javaClass = new JavaClass(
+            new JavaSingleClass(
+                new $this->deferLoadingReaderClass(...$this->arguments),
+                $this->options
+            )
         );
     }
 }

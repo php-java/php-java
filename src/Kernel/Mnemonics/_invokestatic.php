@@ -25,8 +25,12 @@ final class _invokestatic implements OperationInterface
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
 
-        [$resourceType, $classObject] = $this->getOptions('class_resolver')
-            ->resolve($cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString());
+        [$resourceType, $classObject] = $this->javaClass->getOptions('class_resolver')
+            ->resolve(
+                $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString(),
+                $this->javaClass,
+                false
+            );
 
         $arguments = [];
         if (($length = $signature['arguments_count'] - 1) >= 0) {
@@ -43,7 +47,7 @@ final class _invokestatic implements OperationInterface
             switch ($resourceType) {
                 case ClassResolver::RESOLVED_TYPE_CLASS:
                     /**
-                     * @var \PHPJava\Core\JavaFileClass $classObject
+                     * @var \PHPJava\Core\JavaClass $classObject
                      */
                     $result = $classObject
                         ->getInvoker()

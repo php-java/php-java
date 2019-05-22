@@ -78,10 +78,10 @@ $ javac -UTF8 /path/to/HelloWorld.java
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+(new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -132,10 +132,10 @@ e.g., Set or Get static fields:
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$staticFieldAccessor = (new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+$staticFieldAccessor = (new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
     ->getFields();
@@ -153,10 +153,10 @@ e.g., Call a static method:
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+(new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -169,7 +169,7 @@ use PHPJava\Core\Stream\Reader\FileReader;
     );
 
 // Or, if the called method has a return value, you can store it to a variable.
-$result = (new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+$result = (new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
    ->getInvoker()
    ->getStatic()
    ->getMethods()
@@ -193,14 +193,14 @@ e.g., Call dynamic field:
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$JavaFileClass = new JavaFileClass(new FileReader('/path/to/HelloWorld.class'));
+$javaClass = new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class')));
 
-$JavaFileClass->getInvoker()->construct();
+$javaClass->getInvoker()->construct();
 
-$dynamicFieldAccessor = $JavaFileClass
+$dynamicFieldAccessor = $javaClass
     ->getInvoker()
     ->getDynamic()
     ->getFields();
@@ -219,10 +219,10 @@ e.g., Call dynamic method:
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$dynamicMethodAccessor = (new JavaFileClass(new FileReader('/path/to/HelloWorld.class')))
+$dynamicMethodAccessor = (new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
      ->getInvoker()
      ->construct()
      ->getDynamic()
@@ -271,7 +271,7 @@ class Test
 ##### In PHP
 ```php
 <?php
-$JavaFileClass->getInvoker()->getStatic()->getMethods()->call(
+$javaClass->getInvoker()->getStatic()->getMethods()->call(
     'includingLongTypeParameter',
     new \PHPJava\Kernel\Types\_Long(1234)
 );
@@ -283,11 +283,11 @@ The example will return `1234`.
 ##### In PHP
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$JavaFileClass = new JavaFileClass(
-    new Stream\Reader\FileReader('Test'),
+$javaClass = new JavaClass(
+    new JavaSingleClass(new FileReader('Test')),
     [
         'strict' => false,
     ]
@@ -295,32 +295,32 @@ $JavaFileClass = new JavaFileClass(
 ```
 
 ### Runtime options
-- Available options on `JavaFileClass` or `JavaArchive`:
+- Available options on `JavaClass` or `JavaArchive`:
 
 | Options | Value | Default | Description | Targeted |
 |:--------|:------|:--------|:------------|:---------|
 | entrypoint | string or null | null | The entrypoint in JAR. | JavaArchive |
-| max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaFileClass |
-| max_execution_time | integer | 30 | Maximum execution time. | JavaFileClass |
+| max_stack_exceeded | integer | 9999 | Execute more than the specified number of times be stopped the operation. | JavaClass |
+| max_execution_time | integer | 30 | Maximum execution time. | JavaClass |
 | strict | boolean | true | When `true`, PHPJava calls a method, variables, and so on strictly; otherwise, it calls them ambiguously. | Both |
-| validation.method.arguments_count_only | boolean | false | When `true`, ClassResolver validates arguments by their number only. | JavaFileClass |
-| operations.enable_trace | boolean | false | When `true`, PHPJava stores the operation history. | JavaFileClass |
-| operations.temporary_code_stream | string | php://memory | Operation code will be output to temporary stream. Change this if your code is heavy so you'll be happy. | JavaFileClass |
-| operations.injector.before | callable | null | Inject an executor before executing an operation. | JavaFileClass |
-| operations.injector.after | callable | null | Inject an executor after executing an operation. | JavaFileClass |
+| validation.method.arguments_count_only | boolean | false | When `true`, ClassResolver validates arguments by their number only. | JavaClass |
+| operations.enable_trace | boolean | false | When `true`, PHPJava stores the operation history. | JavaClass |
+| operations.temporary_code_stream | string | php://memory | Operation code will be output to temporary stream. Change this if your code is heavy so you'll be happy. | JavaClass |
+| operations.injector.before | callable | null | Inject an executor before executing an operation. | JavaClass |
+| operations.injector.after | callable | null | Inject an executor after executing an operation. | JavaClass |
 | log.level | int | Logger::EMERGENCY | The output level of `Monolog`. | Both |
 | log.path | string or resource | php://stdout | The output destination of `Monolog`. | Both |
-| dry_run (Not Implemented) | boolean | false | Checking JavaFileClass/JavaArchive structure only. When `true`, PHPJava runs in dry-run mode. | Both |
+| dry_run (Not Implemented) | boolean | false | Checking JavaClass/JavaArchive structure only. When `true`, PHPJava runs in dry-run mode. | Both |
 | env (Not Implemented) | enum | Environment::EXPERIMENTAL | Your environment. | Both |
 
-- Example of JavaFileClass:
+- Example of JavaClass:
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$JavaFileClass = new JavaFileClass(
-    new FileReader('Test'),
+$javaClass = new JavaClass(
+    new JavaSingleClass(new FileReader('Test')),
     [
         'max_stack_exceeded' => 12345,
         'validation' => [
@@ -357,12 +357,12 @@ GlobalOptions::set([
 
 ```php
 <?php
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$JavaFileClass = new JavaFileClass(new FileReader('/path/to/HelloWorld.class'));
+$javaClass = new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class')));
 
-$JavaFileClass
+$javaClass
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -372,7 +372,7 @@ $JavaFileClass
     );
 
 // Show debug traces.
-$JavaFileClass->debug();
+$javaClass->debug();
 ```
 
 - Output debug trace:

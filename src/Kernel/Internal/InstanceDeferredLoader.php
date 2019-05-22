@@ -11,7 +11,7 @@ final class InstanceDeferredLoader
     private $instance;
 
     /**
-     * @var \PHPJava\Core\JavaFileClass|string
+     * @var \PHPJava\Core\JavaClass|string
      */
     private $classObject;
 
@@ -26,7 +26,7 @@ final class InstanceDeferredLoader
     private $className;
 
     /**
-     * @param \PHPJava\Core\JavaFileClass|string $classObject
+     * @param \PHPJava\Core\JavaClass|string $classObject
      */
     public function __construct(
         $classObject,

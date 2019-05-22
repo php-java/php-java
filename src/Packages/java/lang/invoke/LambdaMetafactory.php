@@ -1,7 +1,8 @@
 <?php
 namespace PHPJava\Packages\java\lang\invoke;
 
-use PHPJava\Core\JavaFileClass;
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Internal\Lambda;
@@ -55,7 +56,7 @@ class LambdaMetafactory extends _Object
     /**
      * Facilitates the creation of simple "function objects" that implement one or more interfaces by delegation to a provided MethodHandle, after appropriate type adaptation and partial evaluation of arguments.
      *
-     * @native JavaFileClass
+     * @native JavaClass
      * @native ConstantPool
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#metafactory
      * @param null|mixed $a
@@ -67,7 +68,7 @@ class LambdaMetafactory extends _Object
      * @throws NotImplementedException
      */
     public static function metafactory(
-        JavaFileClass $javaClass,
+        JavaClassInterface $javaClass,
         ConstantPool $cp,
         $a = null,
         $b = null,
