@@ -81,7 +81,7 @@ $ javac -UTF8 /path/to/HelloWorld.java
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
+(new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -135,7 +135,7 @@ e.g., Set or Get static fields:
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$staticFieldAccessor = (new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
+$staticFieldAccessor = (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
     ->getFields();
@@ -156,7 +156,7 @@ e.g., Call a static method:
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
+(new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -169,7 +169,7 @@ use PHPJava\Core\Stream\Reader\FileReader;
     );
 
 // Or, if the called method has a return value, you can store it to a variable.
-$result = (new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
+$result = (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
    ->getInvoker()
    ->getStatic()
    ->getMethods()
@@ -196,7 +196,7 @@ e.g., Call dynamic field:
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class')));
+$javaClass = new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class')));
 
 $javaClass->getInvoker()->construct();
 
@@ -222,7 +222,7 @@ e.g., Call dynamic method:
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$dynamicMethodAccessor = (new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class'))))
+$dynamicMethodAccessor = (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
      ->getInvoker()
      ->construct()
      ->getDynamic()
@@ -287,7 +287,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
 $javaClass = new JavaClass(
-    new JavaSingleClass(new FileReader('Test')),
+    new JavaCompiledClass(new FileReader('Test')),
     [
         'strict' => false,
     ]
@@ -320,7 +320,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
 $javaClass = new JavaClass(
-    new JavaSingleClass(new FileReader('Test')),
+    new JavaCompiledClass(new FileReader('Test')),
     [
         'max_stack_exceeded' => 12345,
         'validation' => [
@@ -360,7 +360,7 @@ GlobalOptions::set([
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(new JavaSingleClass(new FileReader('/path/to/HelloWorld.class')));
+$javaClass = new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class')));
 
 $javaClass
     ->getInvoker()
