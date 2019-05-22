@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Utilities;
+namespace PHPJava\Kernel\Resolvers;
 
 class FileTypeResolver
 {

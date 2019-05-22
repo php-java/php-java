@@ -3,6 +3,7 @@ namespace PHPJava\Utilities;
 
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NormalizerException;
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\Type;

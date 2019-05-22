@@ -5,14 +5,14 @@ use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Internal\InstanceDeferredLoader;
+use PHPJava\Kernel\Resolvers\AttributionResolver;
+use PHPJava\Kernel\Resolvers\ClassResolver;
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Packages\java\lang\_Object;
-use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\ClassHandler;
-use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\TypeResolver;
 
 final class _invokespecial implements OperationInterface
 {

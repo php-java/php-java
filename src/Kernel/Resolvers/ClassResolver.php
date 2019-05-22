@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Utilities;
+namespace PHPJava\Kernel\Resolvers;
 
 use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;

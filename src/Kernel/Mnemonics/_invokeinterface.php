@@ -3,10 +3,10 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\NoSuchCodeAttributeException;
 use PHPJava\Kernel\Internal\Lambda;
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Packages\java\lang\_String;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\TypeResolver;
 
 final class _invokeinterface implements OperationInterface
 {

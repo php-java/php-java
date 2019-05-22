@@ -2,8 +2,8 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClassInterface;
+use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Utilities\ClassHandler;
-use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\Formatter;
 
 final class _getstatic implements OperationInterface

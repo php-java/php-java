@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Utilities;
+namespace PHPJava\Kernel\Resolvers;
 
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JavaClassInvoker;
@@ -18,6 +18,7 @@ use PHPJava\Kernel\Types\_Short;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\_String;
+use PHPJava\Utilities\Formatter;
 
 class TypeResolver
 {

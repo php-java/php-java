@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Utilities;
+namespace PHPJava\Kernel\Resolvers;
 
 use PHPJava\Exceptions\UnableToFindAttributionException;
 use PHPJava\Kernel\Attributes\AttributeInfo;

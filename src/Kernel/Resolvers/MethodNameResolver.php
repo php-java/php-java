@@ -1,10 +1,11 @@
 <?php
-namespace PHPJava\Utilities;
+namespace PHPJava\Kernel\Resolvers;
 
 class MethodNameResolver
 {
     const PHP_METHOD_MAP = [
         '__construct' => '<init>',
+        '__staticConstruct' => '<clinit>',
     ];
 
     public static function resolve(string $name): string

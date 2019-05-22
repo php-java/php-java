@@ -19,14 +19,14 @@ use PHPJava\Kernel\Core\ConstantPool;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Mnemonics\OperationInterface;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
+use PHPJava\Kernel\Resolvers\AttributionResolver;
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Packages\java\lang\UnsupportedOperationException;
-use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\TypeResolver;
 
 trait MethodCallable
 {

@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Internal;
 
-use PHPJava\Utilities\ClassResolver;
+use PHPJava\Kernel\Resolvers\ClassResolver;
 
 final class InstanceDeferredLoader
 {

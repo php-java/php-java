@@ -5,11 +5,11 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\InlineReader;
 use PHPJava\Exceptions\UndefinedEntrypointException;
 use PHPJava\Kernel\Internal\JavaClassDeferredLoader;
+use PHPJava\Kernel\Resolvers\ClassResolver;
+use PHPJava\Kernel\Resolvers\FileTypeResolver;
 use PHPJava\Packages\java\io\FileNotFoundException;
 use PHPJava\Packages\java\lang\ClassNotFoundException;
-use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
-use PHPJava\Utilities\FileTypeResolver;
 
 class JavaArchive
 {

@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Utilities;
 
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Types\Type;
 
 class Extractor

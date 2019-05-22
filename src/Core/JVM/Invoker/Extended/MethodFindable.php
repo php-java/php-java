@@ -5,11 +5,11 @@ use PHPJava\Core\JVM\FlexibleMethod;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\UndefinedMethodException;
+use PHPJava\Kernel\Resolvers\SuperClassResolver;
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\SuperClassResolver;
-use PHPJava\Utilities\TypeResolver;
 
 trait MethodFindable
 {

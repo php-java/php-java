@@ -13,13 +13,13 @@ use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\DebugTraceIsDisabledException;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
+use PHPJava\Kernel\Resolvers\ClassResolver;
+use PHPJava\Kernel\Resolvers\SDKVersionResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Packages\java\lang\_Class;
-use PHPJava\Utilities\ClassResolver;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\SDKVersionResolver;
 
 class JavaClass implements JavaClassInterface
 {

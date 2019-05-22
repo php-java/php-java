@@ -3,8 +3,8 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
+use PHPJava\Kernel\Resolvers\AttributionResolver;
 use PHPJava\Kernel\Structures\_ExceptionTable;
-use PHPJava\Utilities\AttributionResolver;
 use PHPJava\Utilities\Formatter;
 
 final class _athrow implements OperationInterface
