@@ -16,7 +16,7 @@ trait FieldGettable
             ->callStaticInitializerIfNotInstantiated();
 
         if (!array_key_exists($name, $this->fields)) {
-            throw new NoSuchFieldException('Get to undefined field ' . $name);
+            throw new NoSuchFieldException('Tried to get undefined field ' . $name);
         }
 
         return $this->fields[$name];

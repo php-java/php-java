@@ -82,6 +82,16 @@ $ javac -UTF8 /path/to/HelloWorld.java
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
+JavaClass::load('HelloWorld')
+    ->getInvoker()
+    ->getStatic()
+    ->getMethods()
+    ->call(
+        'main',
+        ["Hello World!"]
+    );
+
+// または、以下のようにファイルパスを指定することも可能です。 
 (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
@@ -137,7 +147,7 @@ use PHPJava\Core\JavaArchive;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$staticFieldAccessor = (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
+$staticFieldAccessor = JavaClass::load('HelloWorld')
     ->getInvoker()
     ->getStatic()
     ->getFields();
@@ -158,7 +168,7 @@ echo $staticFieldAccessor->get('fieldName');
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
+JavaClass::load('HelloWorld')
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -171,7 +181,7 @@ use PHPJava\Core\Stream\Reader\FileReader;
     );
 
 // または、メソッドが返り値をもつ場合は、下記のようにして、返り値を変数に代入することが可能です。
-$result = (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
+$result = JavaClass::load('HelloWorld')
    ->getInvoker()
    ->getStatic()
    ->getMethods()
@@ -196,7 +206,7 @@ echo $result;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class')));
+$javaClass = JavaClass::load('HelloWorld');
 
 $javaClass->getInvoker()->construct();
 
@@ -221,7 +231,7 @@ echo $dynamicFieldAccessor->get('fieldName');
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$dynamicMethodAccessor = (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
+$dynamicMethodAccessor = JavaClass::load('HelloWorld')
      ->getInvoker()
      ->construct()
      ->getDynamic()
@@ -249,6 +259,30 @@ $dynamicMethodAccessor
 // 返り値を出力します。
 echo $result;
 ```
+
+### Java のビルトインパッケージ内のメソッドの呼び出し
+Ver. 0.0.8.5 より通常の `JavaClass::load` と同様の呼び出し方法でビルトインパッケージの呼び出しが可能になりました。
+なお、これは `PHP` の `ReflectionClass` を用いてエミュレートされており、静的なメソッドやフィールドも実際には動的に生成されます。
+
+下記は `java.lang.Math` の呼び出し例です。
+```php
+<?php
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\Stream\Reader\FileReader;
+
+echo JavaClass::load('java.lang.Math')
+     ->getInvoker()
+     ->getStatic()
+     ->getMethods()
+     ->call(
+         'pow',
+         2,
+         4
+     ); 
+````
+
+上記の結果は `16` となります。
+
 
 ### あいまいなメソッドを PHPJava から呼び出す場合
 - PHP は Java と比べると型がだいぶ曖昧です。そのため、 PHPJava では正確にメソッドを呼び出すための手段をいくつか用意しています。
@@ -284,8 +318,8 @@ $javaClass->getInvoker()->getStatic()->getMethods()->call(
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(
-    new JavaCompiledClass(new FileReader('Test')),
+$javaClass = JavaClass::load(
+    'HelloWorld',
     [
         'strict' => false,
     ]
@@ -317,8 +351,8 @@ $javaClass = new JavaClass(
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(
-    new JavaCompiledClass(new FileReader('Test')),
+$javaClass = JavaClass::load(
+    'HelloWorld',
     [
         'max_stack_exceeded' => 12345,
         'validation' => [
@@ -358,7 +392,7 @@ GlobalOptions::set([
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class')));
+$javaClass = JavaClass::load('HelloWorld');
 
 $javaClass
     ->getInvoker()

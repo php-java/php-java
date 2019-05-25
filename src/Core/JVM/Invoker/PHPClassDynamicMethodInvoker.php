@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker;
 
-class DynamicMethodInvoker extends Invoker implements InvokerInterface
+class PHPClassDynamicMethodInvoker extends PHPClassMethodInvoker implements InvokerInterface
 {
     public function isDynamic(): bool
     {

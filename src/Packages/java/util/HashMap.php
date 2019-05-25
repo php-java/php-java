@@ -19,8 +19,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Removes all of the mappings from this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -30,8 +31,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Returns a shallow copy of this HashMap instance: the keys and values themselves are not cloned.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -41,8 +43,12 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Attempts to compute a mapping for the specified key and its current mapped value (or null if there is no current mapping).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#compute
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public function compute($a = null, $b = null, $c = null, $d = null)
     {
@@ -52,8 +58,11 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * If the specified key is not already associated with a value (or is mapped to null), attempts to compute its value using the given mapping function and enters it into this map unless null.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#computeIfAbsent
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function computeIfAbsent($a = null, $b = null, $c = null)
     {
@@ -63,8 +72,12 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * If the value for the specified key is present and non-null, attempts to compute a new mapping given the key and its current mapped value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#computeIfPresent
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public function computeIfPresent($a = null, $b = null, $c = null, $d = null)
     {
@@ -74,8 +87,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Returns true if this map contains a mapping for the specified key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#containsKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function containsKey($a = null)
     {
@@ -85,8 +99,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Returns true if this map maps one or more keys to the specified value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#containsValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function containsValue($a = null)
     {
@@ -96,8 +111,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Returns a Set view of the mappings contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#entrySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function entrySet($a = null)
     {
@@ -107,8 +123,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function get($a = null)
     {
@@ -118,8 +135,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Returns true if this map contains no key-value mappings.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#isEmpty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function isEmpty($a = null)
     {
@@ -129,8 +147,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Returns a Set view of the keys contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#keySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function keySet($a = null)
     {
@@ -140,8 +159,13 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#merge
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @throws NotImplementedException
      */
     public function merge($a = null, $b = null, $c = null, $d = null, $e = null)
     {
@@ -151,8 +175,10 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Associates the specified value with the specified key in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#put
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function put($a = null, $b = null)
     {
@@ -162,8 +188,10 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Copies all of the mappings from the specified map to this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#putAll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function putAll($a = null, $b = null)
     {
@@ -173,8 +201,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Removes the mapping for the specified key from this map if present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -184,8 +213,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Returns the number of key-value mappings in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {
@@ -195,8 +225,9 @@ class HashMap extends AbstractMap // implements Serializable, Cloneable, Map, Bi
     /**
      * Returns a Collection view of the values contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#values
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function values($a = null)
     {

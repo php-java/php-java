@@ -1,16 +1,14 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\UncaughtException;
-use PHPJava\Kernel\Attributes\CodeAttribute;
-use PHPJava\Kernel\Resolvers\AttributionResolver;
-use PHPJava\Kernel\Structures\_ExceptionTable;
-use PHPJava\Utilities\Formatter;
 
 final class _athrow implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+    use \PHPJava\Kernel\Core\ExceptionTableInspectable;
 
     /**
      * @throws UncaughtException
@@ -18,45 +16,22 @@ final class _athrow implements OperationInterface
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool();
-        $objectref = $this->popFromOperandStack();
-
-        $className = str_replace('\\', '/', get_class($objectref));
 
         /**
-         * @var CodeAttribute $codeAttribute
+         * @var JavaClass $objectref
          */
-        $codeAttribute = AttributionResolver::resolve(
-            $this->getAttributes(),
-            CodeAttribute::class
-        );
+        $objectref = $this->popFromOperandStack();
 
-        $this->pushToOperandStackByReference($objectref);
-
-        $className = Formatter::convertPHPNamespacesToJava($className);
-        foreach ($codeAttribute->getExceptionTables() as $exception) {
-            /**
-             * @var _ExceptionTable $exception
-             */
-            if ($exception->getStartPc() > $this->getProgramCounter() ||
-                $exception->getEndPc() < $this->getProgramCounter()
-            ) {
-                continue;
-            }
-            if ($exception->getCatchType() === 0) {
-                $this->setOffset($exception->getHandlerPc());
-                return;
-            }
-            $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
-            if ($catchClass === $className) {
-                $this->setOffset($exception->getHandlerPc());
-                return;
-            }
+        try {
+            $this->inspectExceptionTable(
+                $objectref
+            );
+        } catch (\Exception $e) {
+            throw new UncaughtException(
+                "Unable to catch {$objectref->getClassName()} exception. " .
+                'PHPJava has stopped operations. ' .
+                'You may be running broken Java class. '
+            );
         }
-
-        throw new UncaughtException(
-            "Unable to catch {$className} exception. " .
-            'PHPJava has stopped operations. ' .
-            'You may be running broken Java class. '
-        );
     }
 }

@@ -2,23 +2,27 @@
 namespace PHPJava\Core\JVM;
 
 use PHPJava\Core\JavaClassInterface;
+use PHPJava\Core\JVM\Field\JavaDynamicField;
+use PHPJava\Core\JVM\Field\JavaStaticField;
+use PHPJava\Core\JVM\Field\PHPDynamicField;
+use PHPJava\Core\JVM\Field\PHPStaticField;
 use PHPJava\Kernel\Provider\ProviderInterface;
 
-interface JavaClassInvokerInterface
+interface ClassInvokerInterface
 {
     public function __construct(JavaClassInterface $javaClass, array $options);
 
     public function getJavaClass(): JavaClassInterface;
 
-    public function construct(...$arguments): JavaClassInvokerInterface;
+    public function construct(...$arguments): ClassInvokerInterface;
 
     /**
-     * @return AccessorInterface|DynamicAccessor
+     * @return AccessorInterface|JavaDynamicField|PHPDynamicField
      */
     public function getDynamic(): AccessorInterface;
 
     /**
-     * @return AccessorInterface|StaticAccessor
+     * @return AccessorInterface|JavaStaticField|PHPStaticField
      */
     public function getStatic(): AccessorInterface;
 

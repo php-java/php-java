@@ -3,8 +3,6 @@ namespace PHPJava\Core\JVM\Invoker\Extended;
 
 use ByteUnits\Metric;
 use PHPJava\Core\JVM\Cache\OperationCache;
-use PHPJava\Core\JVM\FlexibleMethod;
-use PHPJava\Core\JVM\Invoker\InvokerInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryReader;
@@ -28,10 +26,8 @@ use PHPJava\Kernel\Types\_Long;
 use PHPJava\Packages\java\lang\UnsupportedOperationException;
 use PHPJava\Utilities\Formatter;
 
-trait MethodCallable
+trait JavaMethodCallable
 {
-    private $isInstantiatedStaticInitializer = false;
-
     /**
      * @throws IllegalJavaClassException
      * @throws RuntimeException
@@ -80,13 +76,6 @@ trait MethodCallable
         );
 
         $currentConstantPool = $method->getConstantPool() ?? $currentConstantPool;
-
-        if ($method instanceof FlexibleMethod) {
-            /**
-             * @var FlexibleMethod $method
-             */
-            return $method(...$arguments);
-        }
 
         $methodBeautified = Formatter::beatifyMethodFromConstantPool(
             $method,
@@ -302,22 +291,5 @@ trait MethodCallable
         }
         $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
         return null;
-    }
-
-    public function callStaticInitializerIfNotInstantiated(): InvokerInterface
-    {
-        if ($this->isInstantiatedStaticInitializer) {
-            return $this;
-        }
-        $this->isInstantiatedStaticInitializer = true;
-        if ($this->javaClassInvoker->getStatic()->getMethods()->has('<clinit>')) {
-            $this->javaClassInvoker
-                ->getStatic()
-                ->getMethods()
-                ->call(
-                    '<clinit>'
-                );
-        }
-        return $this;
     }
 }

@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
+use PHPJava\Core\JavaClass;
+
 class _Utf8 implements StructureInterface, FreezableInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
@@ -28,7 +30,7 @@ class _Utf8 implements StructureInterface, FreezableInterface
     private $isFrozen = false;
 
     /**
-     * @var \PHPJava\Packages\java\lang\_String $stringObject
+     * @var JavaClass $stringObject
      */
     private $stringObject;
 
@@ -38,7 +40,8 @@ class _Utf8 implements StructureInterface, FreezableInterface
         for ($i = 0; $i < $this->length; $i++) {
             $this->string .= chr($this->readUnsignedByte());
         }
-        $this->stringObject = new \PHPJava\Packages\java\lang\_String($this);
+        $this->stringObject = JavaClass::load('java.lang.String');
+        $this->stringObject->getInvoker()->construct($this->string);
     }
 
     public function getLength(): int
@@ -65,13 +68,14 @@ class _Utf8 implements StructureInterface, FreezableInterface
         return $this->string;
     }
 
-    public function getStringObject(): \PHPJava\Packages\java\lang\_String
+    public function getStringObject(): JavaClass
     {
         return $this->stringObject;
     }
 
-    public function setStringObject(\PHPJava\Packages\java\lang\_String $stringObject): self
+    public function setStringObject(JavaClass $stringObject): self
     {
+        // TODO: Add validation that checks $stringObject is a java.lang.String.
         if ($this->isWritable) {
             $this->stringObject = $stringObject;
             $this->freeze();

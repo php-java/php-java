@@ -1,21 +1,21 @@
 <?php
 namespace PHPJava\Core;
 
+use PHPJava\Core\Extended\Classifiable;
+use PHPJava\Core\Extended\ClassInvokable;
+use PHPJava\Core\Extended\Debuggable;
+use PHPJava\Core\Extended\Finalizable;
+use PHPJava\Core\Extended\InvokerProvidable;
+use PHPJava\Core\Extended\OptionExtendable;
 use PHPJava\Core\JVM\AttributePool;
+use PHPJava\Core\JVM\ClassInvokerInterface;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\FieldPool;
 use PHPJava\Core\JVM\InterfacePool;
 use PHPJava\Core\JVM\JavaClassInvoker;
-use PHPJava\Core\JVM\JavaClassInvokerInterface;
 use PHPJava\Core\JVM\MethodPool;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
-use PHPJava\Core\Traits\Classifiable;
-use PHPJava\Core\Traits\ClassInvokable;
-use PHPJava\Core\Traits\Debuggable;
-use PHPJava\Core\Traits\Finalizable;
-use PHPJava\Core\Traits\OptionExtendable;
-use PHPJava\Core\Traits\ParentClassExtendable;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Resolvers\ClassResolver;
@@ -28,12 +28,12 @@ use PHPJava\Utilities\Formatter;
 class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
-    use ParentClassExtendable;
     use Classifiable;
     use Debuggable;
     use OptionExtendable;
     use Finalizable;
     use ClassInvokable;
+    use InvokerProvidable;
 
     /**
      * @var int[]
@@ -99,11 +99,6 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
     private $innerClasses = [];
 
     /**
-     * @var JavaClass
-     */
-    private $parentClass;
-
-    /**
      * @var mixed
      */
     private $superClass;
@@ -136,7 +131,7 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
             );
         }
 
-        $this->options['class_resolver']->add([
+        ClassResolver::add([
             [ClassResolver::RESOURCE_TYPE_FILE, dirname($reader->getFileName())],
             [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
         ]);
@@ -181,24 +176,15 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
         $this->superClassIndex = $reader->getReader()->readUnsignedShort();
 
         $cpInfo = $this->getConstantPool();
-        [$resolvedType, $superClass] = $this->options['class_resolver']->resolve(
+
+        $this->superClass = JavaClass::load(
             $cpInfo[$cpInfo[$this->superClassIndex]->getClassIndex()]->getString(),
-            $this
+            $this->options
         );
 
         $this->debugTool->getLogger()->info(
-            'Load super class: ' .
-            ($superClass instanceof JavaClassInterface ? $superClass->getClassName() : $superClass)
+            'Load super class: ' . $this->superClass->getClassName()
         );
-
-        switch ($resolvedType) {
-            case ClassResolver::RESOLVED_TYPE_PACKAGES:
-                $this->superClass = new $superClass();
-                break;
-            default:
-                $this->superClass = $superClass;
-                break;
-        }
 
         // read interfaces
         $this->interfacePool = new InterfacePool(
@@ -252,7 +238,7 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
 
         // Add to class resolver
         foreach ($innerClasses as $innerClass) {
-            $this->options['class_resolver']->add([
+            ClassResolver::add([
                 [
                     ClassResolver::RESOURCE_TYPE_INNER_CLASS,
                     $innerClass,
@@ -274,7 +260,7 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
         return [
             'JDKVersion' => SDKVersionResolver::resolve($this->versions['major'] . '.' . $this->versions['minor']),
             'name' => str_replace('/', '.', $this->getClassName()),
-            'super' => str_replace('/', '.', ($superClass instanceof JavaClassInterface ? $this->getSuperClass()->getClassName() : get_class($superClass))),
+            'super' => str_replace('/', '.', $this->getSuperClass() ? $this->getSuperClass()->getClassName() : null),
             'methods' => array_map(
                 function (_MethodInfo $method) {
                     return Formatter::beatifyMethodFromConstantPool(
@@ -330,7 +316,26 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
         return $this->methodPool->getEntries();
     }
 
-    public function getInvoker(): JavaClassInvokerInterface
+    public function getDefinedExtendedClasses(): array
+    {
+        $beforeClass = null;
+        $currentClass = Formatter::convertPHPNamespacesToJava($this->getClassName());
+        $parents = [];
+        var_dump($parents);
+        for (;;) {
+            $parents[] = $currentClass = $this->getSuperClass();
+            var_dump($currentClass);
+            exit();
+        }
+        return [];
+    }
+
+    public function getDefinedInterfaceClasses(): array
+    {
+        return [];
+    }
+
+    public function getInvoker(): ClassInvokerInterface
     {
         return $this->invoker;
     }

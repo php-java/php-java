@@ -8,6 +8,7 @@ final class _dup implements OperationInterface
 
     public function execute(): void
     {
-        $this->stacks[] = $this->stacks[$this->getCurrentStackIndex()] ?? null;
+        $dup = $this->stacks[$this->getCurrentStackIndex()];
+        $this->pushToOperandStackByReference($dup);
     }
 }

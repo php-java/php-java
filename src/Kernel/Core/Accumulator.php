@@ -2,7 +2,7 @@
 namespace PHPJava\Kernel\Core;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JVM\JavaClassInvokerInterface;
+use PHPJava\Core\JVM\ClassInvokerInterface;
 use PHPJava\Exceptions\IllegalOperationException;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Structures\_MethodInfo;
@@ -20,7 +20,7 @@ trait Accumulator
     private $attributes = [];
 
     /**
-     * @var JavaClassInvokerInterface
+     * @var ClassInvokerInterface
      */
     private $javaClassInvoker;
 
@@ -61,7 +61,7 @@ trait Accumulator
 
     public function setParameters(
         _MethodInfo $method,
-        JavaClassInvokerInterface $javaClassInvoker,
+        ClassInvokerInterface $javaClassInvoker,
         \PHPJava\Core\JVM\Stream\BinaryReader $reader,
         array &$localStorage,
         array &$stacks,

@@ -1,15 +1,15 @@
 <?php
 namespace PHPJava\Core\JVM\Field;
 
-use PHPJava\Core\JVM\JavaClassInvokerInterface;
+use PHPJava\Core\JVM\ClassInvokerInterface;
 
-class DynamicField implements FieldInterface
+class JavaDynamicField implements FieldInterface
 {
     use FieldGettable;
     use FieldSettable;
 
     /**
-     * @var JavaClassInvokerInterface
+     * @var ClassInvokerInterface
      */
     private $javaClassInvoker;
 
@@ -18,7 +18,7 @@ class DynamicField implements FieldInterface
      */
     private $fields = [];
 
-    public function __construct(JavaClassInvokerInterface $javaClassInvoker, array $fields)
+    public function __construct(ClassInvokerInterface $javaClassInvoker, array $fields)
     {
         $this->javaClassInvoker = $javaClassInvoker;
         $this->fields = $fields;

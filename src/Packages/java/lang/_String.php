@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Packages\java\lang;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Structures\_Utf8;
@@ -150,7 +151,10 @@ class _String extends _Object implements CharSequence
      */
     public function concat($a = null)
     {
-        return new static($this . $a);
+        return JavaClass::load('java.lang.String', $this->javaClass->getOptions())
+            ->getInvoker()
+            ->construct($this . $a)
+            ->getJavaClass();
     }
 
     /**
@@ -340,11 +344,13 @@ class _String extends _Object implements CharSequence
             if ((string) $value === (string) $this->object) {
                 $this->object = $value
                     ->enableWrite(true)
-                    ->setStringObject($this);
+                    ->setStringObject(
+                        $this->javaClass
+                    );
                 break;
             }
         }
-        return $this;
+        return $this->javaClass;
     }
 
     /**
@@ -489,7 +495,10 @@ class _String extends _Object implements CharSequence
      */
     public function replace($a = null, $b = null)
     {
-        return new static(str_replace($a, $b, $this));
+        return JavaClass::load('java.lang.String', $this->javaClass->getOptions())
+            ->getInvoker()
+            ->construct(str_replace($a, $b, $this))
+            ->getJavaClass();
     }
 
     /**
@@ -635,8 +644,12 @@ class _String extends _Object implements CharSequence
         if ($locale) {
             throw new NotImplementedException(__METHOD__);
         }
-
-        return new static(strtolower($this));
+        return JavaClass::load('java.lang.String', $this->javaClass->getOptions())
+            ->getInvoker()
+            ->construct(
+                strtolower($this)
+            )
+            ->getJavaClass();
     }
 
     /**
@@ -666,7 +679,10 @@ class _String extends _Object implements CharSequence
             throw new NotImplementedException(__METHOD__);
         }
 
-        return new static(strtoupper($this));
+        return JavaClass::load('java.lang.String', $this->javaClass->getOptions())
+            ->getInvoker()
+            ->construct(strtoupper($this))
+            ->getJavaClass();
     }
 
     /**

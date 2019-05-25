@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Packages\java\util;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
 
@@ -117,6 +118,14 @@ class Objects extends _Object // implements Comparator, Supplier
     {
         if ($a === null) {
             return 0;
+        }
+
+        if ($a instanceof JavaClass) {
+            return $a
+                ->getInvoker()
+                ->getDynamic()
+                ->getMethods()
+                ->call('hashCode');
         }
 
         return $a->hashCode();

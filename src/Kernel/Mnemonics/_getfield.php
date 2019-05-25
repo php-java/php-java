@@ -29,6 +29,6 @@ final class _getfield implements OperationInterface
             return;
         }
 
-        throw new NoSuchFieldException('Get to undefined field ' . $name);
+        throw new NoSuchFieldException('Tried to get undefined field ' . $name);
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Core\Traits;
+namespace PHPJava\Core\Extended;
 
 trait OptionExtendable
 {
@@ -10,7 +10,7 @@ trait OptionExtendable
 
     public function getOptions($key = null)
     {
-        if (isset($key)) {
+        if (isset($this->options[$key])) {
             return $this->options[$key];
         }
         return $this->options;

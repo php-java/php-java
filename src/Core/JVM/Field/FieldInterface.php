@@ -1,11 +1,11 @@
 <?php
 namespace PHPJava\Core\JVM\Field;
 
-use PHPJava\Core\JVM\JavaClassInvokerInterface;
+use PHPJava\Core\JVM\ClassInvokerInterface;
 
 interface FieldInterface
 {
-    public function __construct(JavaClassInvokerInterface $javaClassInvoker, array $fields);
+    public function __construct(ClassInvokerInterface $javaClassInvoker, array $fields);
 
     public function get(string $name);
 

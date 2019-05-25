@@ -14,11 +14,11 @@ trait DependencyInjector
      *           array
      *           )[]
      */
-    public function getAnnotateInjections(string $phpDocument): array
+    public function getAnnotateInjections(array $annotations): array
     {
         return array_merge(
-            $this->getNativeAnnotateInjections($phpDocument),
-            $this->getProviderAnnotateInjections($phpDocument)
+            $this->getNativeAnnotateInjections($annotations),
+            $this->getProviderAnnotateInjections($annotations)
         );
     }
 
@@ -32,38 +32,32 @@ trait DependencyInjector
      *           array
      *           )[]
      */
-    private function getNativeAnnotateInjections(string $phpDocument): array
+    private function getNativeAnnotateInjections(array $annotations): array
     {
-        $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-            ->create($phpDocument);
-
         // Native annotation will inject a dependency.
-        if (!empty($documentBlock->getTagsByName('native'))) {
-            $injections = [];
-            foreach ($documentBlock->getTagsByName('native') as $native) {
-                $injections[] = $this->dependencyInjectionProvider->get(trim($native));
-            }
-            return $injections;
+        $injections = [];
+        foreach (($annotations['native'] ?? []) as $native) {
+            $injections[] = $this->dependencyInjectionProvider
+                ->get(
+                    trim($native)
+                );
         }
-        return [];
+        return $injections;
     }
 
     /**
      * @throws \PHPJava\Exceptions\ProviderException
      * @return \PHPJava\Kernel\Provider\ProviderInterface[]
      */
-    private function getProviderAnnotateInjections(string $phpDocument): array
+    private function getProviderAnnotateInjections(array $annotations): array
     {
-        $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-            ->create($phpDocument);
-
-        if (!empty($documentBlock->getTagsByName('provider'))) {
-            $injections = [];
-            foreach ($documentBlock->getTagsByName('provider') as $provider) {
-                $injections[] = $this->javaClassInvoker->getProvider(trim($provider));
-            }
-            return $injections;
+        $injections = [];
+        foreach (($annotations['provider'] ?? []) as $provider) {
+            $injections[] = $this->javaClassInvoker
+                ->getProvider(
+                    trim($provider)
+                );
         }
-        return [];
+        return $injections;
     }
 }

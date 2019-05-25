@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Packages\java\lang\invoke;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
@@ -80,6 +81,9 @@ class StringConcatFactory extends _Object
             $concatType->returnType()
         );
 
-        return new $returnType($newString);
+        return JavaClass::load('java.lang.String')
+            ->getInvoker()
+            ->construct($newString)
+            ->getJavaClass();
     }
 }

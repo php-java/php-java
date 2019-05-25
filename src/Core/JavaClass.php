@@ -1,9 +1,12 @@
 <?php
 namespace PHPJava\Core;
 
-use PHPJava\Core\JVM\ConstantPool;
-use PHPJava\Core\JVM\JavaClassInvokerInterface;
-use PHPJava\Core\Traits\ClassInvokable;
+use PHPJava\Core\Extended\ClassInvokable;
+use PHPJava\Core\Stream\Reader\FileReader;
+use PHPJava\Core\Stream\Reader\PackageReader;
+use PHPJava\Kernel\Resolvers\ClassResolver;
+use PHPJava\Packages\java\lang\ClassNotFoundException;
+use PHPJava\Utilities\Formatter;
 
 class JavaClass implements JavaClassInterface
 {
@@ -24,97 +27,131 @@ class JavaClass implements JavaClassInterface
         $this->genericClass = $genericClass;
     }
 
-    public function getClassName(bool $shortName = false): string
+    /**
+     * @param $methodName
+     * @param $arguments
+     */
+    public function __call($methodName, $arguments)
     {
-        return $this->genericClass->getClassName($shortName);
+        return $this->genericClass->{$methodName}(...$arguments);
     }
 
-    public function getPackageName(): ?string
+    public function isCompiledClass(): bool
     {
-        return $this->genericClass->getPackageName();
+        return $this->genericClass instanceof JavaCompiledClass;
+    }
+
+    public function isSimpleClass(): bool
+    {
+        return $this->genericClass instanceof JavaSimpleClass;
     }
 
     /**
-     * @return PHPJava\Kernel\Structures\_Classes[]
+     * @return JavaClass
      */
-    public function getInnerClasses(): array
+    public static function of(JavaClassInterface $javaClass)
     {
-        return $this->genericClass->getInnerClasses();
+        if ($javaClass instanceof JavaClass) {
+            return $javaClass;
+        }
+        return new JavaClass($javaClass);
+    }
+
+    public function is(string $className): bool
+    {
+        $className = Formatter::convertPHPNamespacesToJava($className);
+
+        // get parents
+        $extendedClasses = $this->genericClass->getDefinedExtendedClasses();
+        $interfaceClasses = $this->genericClass->getDefinedInterfaceClasses();
+
+        return in_array($className, $extendedClasses, true) ||
+            in_array($className, $interfaceClasses, true);
+    }
+
+    public function __toString(): string
+    {
+        return $this
+            ->genericClass
+            ->getInvoker()
+            ->getDynamic()
+            ->getMethods()
+            ->call(
+                'toString'
+            );
     }
 
     /**
-     * @return PHPJava\Core\JVM\_FieldInfo[]
+     * @throws ClassNotFoundException
+     * @throws \PHPJava\Exceptions\ReadEntryException
+     * @throws \PHPJava\Exceptions\UnknownVersionException
+     * @throws \PHPJava\Exceptions\ValidatorException
      */
-    public function getDefinedFields(): array
+    public static function load(string $classPath, array $options = [], bool $enableInstantiated = true): JavaClass
     {
-        return $this->genericClass->getDefinedFields();
-    }
+        static $loaded = [];
 
-    /**
-     * @return PHPJava\Core\JVM\_MethodInfo[]
-     */
-    public function getDefinedMethods(): array
-    {
-        return $this->genericClass->getDefinedMethods();
-    }
+        $classPath = str_replace('/', '.', $classPath);
 
-    public function getInvoker(): JavaClassInvokerInterface
-    {
-        return $this->genericClass->getInvoker();
-    }
+        if (isset($loaded[$classPath]) && !$enableInstantiated) {
+            return $loaded[$classPath];
+        }
 
-    public function getSuperClass()
-    {
-        return $this->genericClass->getSuperClass();
-    }
+        [$type, ] = Formatter::convertJavaNamespaceToPHP(
+            $classPath
+        );
 
-    /**
-     * @return PHPJava\Core\JVM\_AttributeInfo[]
-     */
-    public function getAttributes(): array
-    {
-        return $this->genericClass->getAttributes();
-    }
+        // Add resolving path.
+        ClassResolver::add(
+            [
+                [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
+            ]
+        );
 
-    public function getClass()
-    {
-        return $this->genericClass->getClass();
-    }
+        $instance = null;
+        if ($type === Formatter::BUILT_IN_PACKAGE) {
+            $instance = new JavaSimpleClass(
+                new PackageReader(
+                    $classPath
+                ),
+                $options
+            );
+        } else {
+            foreach (ClassResolver::getClassPaths() as [$resourceType, $value]) {
+                try {
+                    switch ($resourceType) {
+                        case ClassResolver::RESOURCE_TYPE_JAR:
+                            /**
+                             * @var JavaArchive $value
+                             */
+                            $instance = $value->getClassByName($classPath);
+                            break;
+                        case ClassResolver::RESOURCE_TYPE_FILE:
+                            $path = realpath(
+                                $value . '/' . ltrim(str_replace('.', '/', $classPath) . '.class', '/')
+                            );
+                            if ($path === false) {
+                                break;
+                            }
+                            $instance = new JavaCompiledClass(
+                                new FileReader($path),
+                                $options
+                            );
+                            break;
+                    }
+                    if ($instance !== null) {
+                        break;
+                    }
+                } catch (ClassNotFoundException $e) {
+                    // do nothing
+                }
+            }
+        }
 
-    public function getOptions($key = null)
-    {
-        return $this->genericClass->getOptions($key);
-    }
+        if ($instance === null) {
+            throw new ClassNotFoundException('Class ' . $classPath . ' does not exist.');
+        }
 
-    public function hasParentClass(): bool
-    {
-        return $this->genericClass->hasParentClass();
-    }
-
-    public function setParentClass(JavaClassInterface $class): self
-    {
-        $this->genericClass->setParentClass($class);
-        return $this;
-    }
-
-    public function getParentClass(): JavaClassInterface
-    {
-        return $this->genericClass->getParentClass();
-    }
-
-    public function getConstantPool(): ConstantPool
-    {
-        return $this->genericClass->getConstantPool();
-    }
-
-    public function appendDebug($log): self
-    {
-        $this->genericClass->appendDebug($log);
-        return $this;
-    }
-
-    public function debug(): void
-    {
-        $this->genericClass->debug();
+        return $loaded[$classPath] = static::of($instance);
     }
 }

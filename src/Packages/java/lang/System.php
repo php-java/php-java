@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Packages\java\lang;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\io\PrintStream;
 use PHPJava\Packages\PHPJava\Kernel\Behavior\System as SystemBehavior;
 
 // use PHPJava\Packages\java\lang\System\Logger;
@@ -33,16 +33,14 @@ class System extends _Object // implements Logger, Map, Channel
     /**
      * The "standard" output stream.
      *
-     * @var mixed $out
+     * @var _Object $out
      */
     public static $out = null;
 
     public static function __staticConstruct(...$parameters)
     {
-        if (!static::$staticInitializerIsInstantiated) {
-            static::$out = new PrintStream();
-        }
-        parent::__staticConstruct(...$parameters);
+        static::$out = JavaClass::load('java.io.PrintStream');
+        static::$out->getInvoker()->construct();
     }
 
     /**

@@ -19,8 +19,9 @@ class EnumSet extends AbstractSet // implements Serializable, Iterable, Collecti
     /**
      * Creates an enum set containing all of the elements in the specified element type.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#allOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function allOf($a = null)
     {
@@ -30,8 +31,9 @@ class EnumSet extends AbstractSet // implements Serializable, Iterable, Collecti
     /**
      * Returns a copy of this set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -41,8 +43,9 @@ class EnumSet extends AbstractSet // implements Serializable, Iterable, Collecti
     /**
      * Creates an enum set with the same element type as the specified enum set, initially containing all the elements of this type that are not contained in the specified set.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#complementOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function complementOf($a = null)
     {
@@ -53,8 +56,9 @@ class EnumSet extends AbstractSet // implements Serializable, Iterable, Collecti
      * Creates an enum set initialized from the specified collection.
      * Creates an enum set with the same element type as the specified enum set, initially containing the same elements (if any).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#copyOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function copyOf($a = null)
     {
@@ -64,8 +68,9 @@ class EnumSet extends AbstractSet // implements Serializable, Iterable, Collecti
     /**
      * Creates an empty enum set with the specified element type.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#noneOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function noneOf($a = null)
     {
@@ -80,8 +85,13 @@ class EnumSet extends AbstractSet // implements Serializable, Iterable, Collecti
      * Creates an enum set initially containing the specified elements.
      * Creates an enum set initially containing the specified elements.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#of
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @param null|mixed $e
+     * @throws NotImplementedException
      */
     public static function of($a = null, $b = null, $c = null, $d = null, $e = null)
     {
@@ -91,8 +101,10 @@ class EnumSet extends AbstractSet // implements Serializable, Iterable, Collecti
     /**
      * Creates an enum set initially containing all of the elements in the range defined by the two specified endpoints.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#range
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function range($a = null, $b = null)
     {

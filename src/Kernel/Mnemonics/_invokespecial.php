@@ -1,17 +1,10 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
-use PHPJava\Exceptions\UncaughtException;
-use PHPJava\Kernel\Attributes\CodeAttribute;
-use PHPJava\Kernel\Internal\InstanceDeferredLoader;
-use PHPJava\Kernel\Resolvers\AttributionResolver;
-use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Kernel\Types\Type;
-use PHPJava\Packages\java\lang\_Object;
-use PHPJava\Utilities\ClassHandler;
 use PHPJava\Utilities\Formatter;
 
 final class _invokespecial implements OperationInterface
@@ -19,6 +12,7 @@ final class _invokespecial implements OperationInterface
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DependencyInjector;
+    use \PHPJava\Kernel\Core\ExceptionTableInspectable;
 
     public function execute(): void
     {
@@ -37,101 +31,51 @@ final class _invokespecial implements OperationInterface
         }
 
         /**
-         * @var InstanceDeferredLoader $objectref
+         * @var JavaClassInterface $objectref
          */
         $newObject = $objectref = $this->popFromOperandStack();
         try {
             $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
 
             if ($objectref->getClassName() !== $className) {
-                // If $objectref is not match $className, then change current class (I have no confidence).
-                // See also: https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-6.html#jvms-6.5.invokespecial
-
-                // FIXME: if $objectref has superclass, then refer superclass from $objectref
-                // NOTE: This implementation is a ** first aid **.
-                [$resourceType, $classObject] = $objectref
-                    ->getOptions('class_resolver')
-                    ->resolve($className);
-
-                switch ($resourceType) {
-                    case ClassResolver::RESOLVED_TYPE_PACKAGES:
-                        $newObject = new $classObject(...$arguments);
-                        break;
-                    case ClassResolver::RESOLVED_TYPE_CLASS:
-                        $newObject = $classObject;
-                        break;
-                }
-            } elseif ($objectref instanceof InstanceDeferredLoader) {
-                $newObject = $objectref->instantiate(...$arguments);
-            }
-
-            $result = $newObject;
-            if ($newObject instanceof JavaClassInterface) {
-                /**
-                 * @var JavaClassInterface $newObject
-                 */
-                $result = $newObject->getInvoker()->getDynamic()->getMethods()->callSpecial(
-                    $methodName,
-                    ...$arguments
+                $newObject = JavaClass::load(
+                    $className,
+                    $this->javaClass->getOptions()
                 );
-            } elseif ($newObject instanceof _Object && $methodName !== ClassHandler::DEFAULT_INITIALIZER) {
-                $result = $newObject->{$methodName}(...$arguments);
             }
+
+            /**
+             * @var JavaClassInterface $newObject
+             */
+            $result = $newObject->getInvoker()->getDynamic()->getMethods()->call(
+                $methodName,
+                ...$arguments
+            );
 
             // NOTE: PHP has a problem which a reference object cannot replace to an object.
-            if ($parsedSignature[0]['type'] === 'void' &&
-                $objectref !== $newObject
-            ) {
+            if ($parsedSignature[0]['type'] === 'void') {
                 $this->replaceReferredObject($objectref, $newObject);
             }
         } catch (\Exception $e) {
-            /**
-             * @var CodeAttribute $codeAttribute
-             */
-            $codeAttribute = AttributionResolver::resolve(
-                $this->getAttributes(),
-                CodeAttribute::class
+            $this->inspectExceptionTable(
+                JavaClass::load(Formatter::convertPHPNamespacesToJava(get_class($e)), $this->javaClass->getOptions())
+                    ->getInvoker()
+                    ->construct($e->getMessage(), 0, $e)
+                    ->getJavaClass()
             );
-
-            $expectedClass = Formatter::convertPHPNamespacesToJava(get_class($e));
-
-            foreach ($codeAttribute->getExceptionTables() as $exception) {
-                /**
-                 * @var _ExceptionTable $exception
-                 */
-                if ($exception->getStartPc() > $this->getProgramCounter() ||
-                    $exception->getEndPc() < $this->getProgramCounter()
-                ) {
-                    continue;
-                }
-                if ($exception->getCatchType() === 0) {
-                    $this->setOffset($exception->getHandlerPc());
-                    return;
-                }
-                $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
-                if ($catchClass === $expectedClass) {
-                    $this->pushToOperandStack($e);
-                    $this->setOffset($exception->getHandlerPc());
-                    return;
-                }
-            }
-
-            throw new UncaughtException(
-                $expectedClass . ': ' . $e->getMessage(),
-                0,
-                $e
-            );
+            return;
         }
 
         if ($parsedSignature[0]['type'] !== 'void') {
+            [$type, $typeClass] = TypeResolver::getType($signature[0]);
+
             /**
              * @var Type $typeClass
              */
-            [$type, $typeClass] = TypeResolver::getType($parsedSignature[0]);
             $this->pushToOperandStack(
                 $type === TypeResolver::IS_PRIMITIVE
                     ? $typeClass::get($result)
-                    : $result
+                    : $newObject
             );
         }
     }

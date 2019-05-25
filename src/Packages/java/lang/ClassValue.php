@@ -13,8 +13,9 @@ class ClassValue extends _Object
     /**
      * Computes the given class's derived value for this ClassValue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#computeValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function computeValue($a = null)
     {
@@ -24,8 +25,9 @@ class ClassValue extends _Object
     /**
      * Returns the value for the given class.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#get
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function get($a = null)
     {
@@ -35,8 +37,9 @@ class ClassValue extends _Object
     /**
      * Removes the associated value for the given class.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {

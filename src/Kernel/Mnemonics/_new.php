@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Internal\InstanceDeferredLoader;
+use PHPJava\Core\JavaClass;
 
 final class _new implements OperationInterface
 {
@@ -14,17 +14,11 @@ final class _new implements OperationInterface
         $class = $cpInfo[$this->readUnsignedShort()];
         $className = $cpInfo[$class->getClassIndex()]->getString();
 
-        [$resourceType, $classObject] = $this->getOptions('class_resolver')
-            ->resolve($className, $this->javaClass);
-
-        $instanceDeferredLoader = new InstanceDeferredLoader(
-            $classObject,
-            $resourceType,
-            $className
+        $javaClass = JavaClass::load(
+            $className,
+            $this->javaClass->getOptions()
         );
 
-        $this->pushToOperandStackByReference(
-            $instanceDeferredLoader
-        );
+        $this->pushToOperandStackByReference($javaClass);
     }
 }

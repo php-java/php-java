@@ -2,7 +2,6 @@
 namespace PHPJava\Tests\Packages;
 
 use PHPJava\Exceptions\UncaughtException;
-use PHPJava\Packages\java\lang\_String;
 use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
 use PHPJava\Tests\Base;
 
@@ -168,12 +167,12 @@ class JavaLangStringTest extends Base
             ->getMethods()
             ->call(
                 'replace',
-                'abcabc',
-                new _String('b'),
-                new _String('c')
+                'aabbccaabbcc',
+                'bb',
+                'cc'
             );
         $value = ob_get_clean();
-        $this->assertEquals('accacc', $value);
+        $this->assertEquals('aaccccaacccc', $value);
     }
 
     public function testToLowerCase()

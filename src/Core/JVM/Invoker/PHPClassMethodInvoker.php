@@ -1,21 +1,21 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker;
 
-use PHPJava\Core\JavaClassInvoker;
-use PHPJava\Core\JVM\JavaClassInvokerInterface;
+use PHPJava\Core\JVM\ClassInvokerInterface;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\DebugTool;
 
-class Invoker implements InvokerInterface
+class PHPClassMethodInvoker implements InvokerInterface
 {
-    use Extended\SpecialMethodCallable;
-    use Extended\MethodCallable;
-    use Extended\MethodFindable;
+    use Extended\PHPMethodCallable;
     use Extended\MethodListable;
-    use Extended\ArgumentsStringifyable;
+    use Extended\StaticConstructorInitializable;
+    use Extended\PHPMethodAnnotationAffectable;
+    use Extended\PHPMethodFindable;
 
     /**
-     * @var JavaClassInvoker
+     * @var ClassInvokerInterface
      */
     private $javaClassInvoker;
 
@@ -37,13 +37,20 @@ class Invoker implements InvokerInterface
     /**
      * @param _MethodInfo[] $methods
      */
-    public function __construct(JavaClassInvokerInterface $javaClassInvoker, array $methods, array $options = [])
+    public function __construct(ClassInvokerInterface $javaClassInvoker, array $methods, array $options = [])
     {
         $this->javaClassInvoker = $javaClassInvoker;
         $this->methods = $methods;
         $this->options = $options;
         $this->debugTool = new DebugTool(
-            str_replace('/', '.', $javaClassInvoker->getJavaClass()->getClassName()),
+            ltrim(
+                str_replace(
+                    [Runtime::PHP_PACKAGES_DIRECTORY, '\\'],
+                    ['', '.'],
+                    $javaClassInvoker->getJavaClass()->getClassName()
+                ),
+                '.'
+            ),
             $this->options
         );
     }

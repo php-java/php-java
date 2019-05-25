@@ -2,20 +2,22 @@
 namespace PHPJava\Core\JVM;
 
 use PHPJava\Core\JavaClassInterface;
-use PHPJava\Exceptions\IllegalJavaClassException;
+use PHPJava\Core\JVM\Field\JavaDynamicField;
+use PHPJava\Core\JVM\Field\JavaStaticField;
+use PHPJava\Core\JVM\Invoker\JavaClassDynamicMethodInvoker;
+use PHPJava\Core\JVM\Invoker\JavaClassStaticMethodInvoker;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
-use PHPJava\Kernel\Provider\ProviderInterface;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Utilities\Normalizer;
 
-class JavaClassInvoker implements JavaClassInvokerInterface
+class JavaClassInvoker implements ClassInvokerInterface
 {
-    /**
-     * @var JavaClassInterface
-     */
-    private $javaClass;
+    use Extended\ProviderProvidable;
+    use Extended\JavaClassProvidable;
+    use Extended\DynamicAccessorProvidable;
+    use Extended\StaticAccessorProvidable;
 
     /**
      * @var _MethodInfo[]
@@ -38,37 +40,17 @@ class JavaClassInvoker implements JavaClassInvokerInterface
     private $staticFields = [];
 
     /**
-     * @var DynamicAccessor
-     */
-    private $dynamicAccessor;
-
-    /**
-     * @var StaticAccessor
-     */
-    private $staticAccessor;
-
-    /**
-     * @var string[][]
-     */
-    private $specialInvoked = [];
-
-    /**
      * @var array
      */
     private $options = [];
-
-    /**
-     * @var ProviderInterface[]
-     */
-    private $providers = [];
 
     public function __construct(
         JavaClassInterface $javaClass,
         array $options
     ) {
         $this->javaClass = $javaClass;
-
         $this->options = $options;
+
         $cpInfo = $javaClass->getConstantPool();
 
         foreach ($javaClass->getDefinedMethods() as $methodInfo) {
@@ -97,15 +79,19 @@ class JavaClassInvoker implements JavaClassInvokerInterface
             }
         }
 
-        $this->dynamicAccessor = new DynamicAccessor(
+        $this->dynamicAccessor = new Accessor(
             $this,
+            JavaClassDynamicMethodInvoker::class,
+            JavaDynamicField::class,
             $this->dynamicMethods,
             [],
             $this->options
         );
 
-        $this->staticAccessor = new StaticAccessor(
+        $this->staticAccessor = new Accessor(
             $this,
+            JavaClassStaticMethodInvoker::class,
+            JavaStaticField::class,
             $this->staticMethods,
             Normalizer::normalizeFields(
                 $this->staticFields,
@@ -115,13 +101,12 @@ class JavaClassInvoker implements JavaClassInvokerInterface
         );
     }
 
-    /**
-     * @return JavaClassInvoker
-     */
-    public function construct(...$arguments): JavaClassInvokerInterface
+    public function construct(...$arguments): ClassInvokerInterface
     {
-        $this->dynamicAccessor = new DynamicAccessor(
+        $this->dynamicAccessor = new Accessor(
             $this,
+            JavaClassDynamicMethodInvoker::class,
+            JavaDynamicField::class,
             $this->dynamicMethods,
             Normalizer::normalizeFields(
                 $this->dynamicFields,
@@ -136,36 +121,5 @@ class JavaClassInvoker implements JavaClassInvokerInterface
         );
 
         return $this;
-    }
-
-    public function getJavaClass(): JavaClassInterface
-    {
-        return $this->javaClass;
-    }
-
-    public function getDynamic(): AccessorInterface
-    {
-        return $this->dynamicAccessor;
-    }
-
-    public function getStatic(): AccessorInterface
-    {
-        $this->staticAccessor
-            ->getMethods()
-            ->callStaticInitializerIfNotInstantiated();
-
-        return $this->staticAccessor;
-    }
-
-    /**
-     * @throws IllegalJavaClassException
-     */
-    public function getProvider(string $providerName): ProviderInterface
-    {
-        if (!isset($this->providers[$providerName])) {
-            throw new IllegalJavaClassException($providerName . ' not provided.');
-        }
-
-        return $this->providers[$providerName];
     }
 }

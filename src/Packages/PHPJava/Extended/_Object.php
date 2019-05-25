@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Packages\PHPJava\Extended;
 
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Packages\java\lang\CloneNotSupportedException;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Packages\PHPJava\Kernel\Behavior\System;
@@ -8,16 +10,21 @@ use PHPJava\Packages\PHPJava\Kernel\Behavior\System;
 trait _Object
 {
     protected $parameters;
-    protected static $staticInitializerIsInstantiated = false;
+
+    /**
+     * @var JavaClass
+     */
+    protected $javaClass;
 
     public function __construct(...$parameters)
     {
         $this->parameters = $parameters;
     }
 
-    public static function __staticConstruct(...$parameters)
+    public function setJavaClass(JavaClass $javaClass): self
     {
-        static::$staticInitializerIsInstantiated = true;
+        $this->javaClass = $javaClass;
+        return $this;
     }
 
     /**
@@ -33,7 +40,7 @@ trait _Object
      */
     public function __call(string $name, array $arguments)
     {
-        $defaultName = '__default_' . $name;
+        $defaultName = Runtime::PREFIX_DEFAULT . $name;
         if (method_exists($this, $defaultName)) {
             return $this->{$defaultName}(...$arguments);
         }
