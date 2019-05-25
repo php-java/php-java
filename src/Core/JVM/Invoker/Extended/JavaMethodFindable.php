@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker\Extended;
 
-use PHPJava\Core\JVM\FlexibleMethod;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\UndefinedMethodException;
@@ -11,7 +10,7 @@ use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Utilities\Formatter;
 
-trait MethodFindable
+trait JavaMethodFindable
 {
     /**
      * @throws NoSuchMethodException
@@ -21,20 +20,19 @@ trait MethodFindable
      */
     protected function findMethod(string $name, ...$arguments): _MethodInfo
     {
+        $superClassMethods = $this->isDynamic()
+            ? SuperClassResolver::resolveDynamicMethods($name, $this->javaClassInvoker->getJavaClass())
+            : SuperClassResolver::resolveStaticMethods($name, $this->javaClassInvoker->getJavaClass());
+
         $methodReferences = array_merge(
             $this->methods[$name] ?? [],
-            (new SuperClassResolver())->resolveMethod(
-                $name,
-                $this->javaClassInvoker->getJavaClass()
-            )[$name] ?? []
+            $superClassMethods[$name] ?? []
         );
 
         if (empty($methodReferences)) {
-            if (!isset($methodReferences)) {
-                throw new NoSuchMethodException(
-                    'Call to undefined method ' . $name . '.'
-                );
-            }
+            throw new NoSuchMethodException(
+                'Call to undefined method ' . $name . '.'
+            );
         }
 
         $convertedPassedArguments = $this->stringifyArguments(...$arguments);
@@ -44,10 +42,6 @@ trait MethodFindable
         $method = null;
 
         foreach ($methodReferences as $methodReference) {
-            // If flexible method is available then Invoker use it all time.
-            if ($methodReference instanceof FlexibleMethod) {
-                return $methodReference;
-            }
             $constantPool = $currentConstantPool = $methodReference->getConstantPool();
             $formattedArguments = Formatter::parseSignature(
                 $constantPool[$methodReference->getDescriptorIndex()]->getString()
@@ -66,7 +60,7 @@ trait MethodFindable
             $this->debugTool->getLogger()->debug('Find descriptor for ' . ($methodSignature ?: '(none)'));
 
             if (!($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY)) {
-                if (TypeResolver::compare($this->javaClassInvoker, $methodSignature, $convertedPassedArguments)) {
+                if (TypeResolver::compare($this->javaClassInvoker->getJavaClass(), $methodSignature, $convertedPassedArguments)) {
                     return $methodReference;
                 }
             }

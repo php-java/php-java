@@ -1,7 +1,8 @@
 <?php
 namespace PHPJava\Tests;
 
-use PHPJava\Core\JavaCompiledClass;
+use PHPJava\Core\JavaClass;
+use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPUnit\Framework\TestCase;
 
 class Base extends TestCase
@@ -16,14 +17,14 @@ class Base extends TestCase
 
         $pathRoot = __DIR__ . '/fixtures/java/';
 
+        ClassResolver::add([
+            [ClassResolver::RESOURCE_TYPE_FILE, __DIR__ . '/caches'],
+        ]);
+
         foreach ($this->fixtures as $fixture) {
-            exec('javac -classpath ' . $pathRoot . ':' . $pathRoot . 'caches -encoding UTF8 ' . $pathRoot . str_replace(['../', './'], '', $fixture) . '.java -d ' . __DIR__ . '/caches');
-            $this->initiatedJavaClasses[$fixture] = new \PHPJava\Core\JavaClass(
-                new JavaCompiledClass(
-                    new \PHPJava\Core\Stream\Reader\FileReader(
-                        $this->getClassName($fixture)
-                    )
-                )
+            exec('javac -classpath ' . $pathRoot . ' -encoding UTF8 ' . $pathRoot . str_replace(['../', './'], '', $fixture) . '.java -d ' . __DIR__ . '/caches');
+            $this->initiatedJavaClasses[$fixture] = JavaClass::load(
+                $fixture
             );
         }
     }

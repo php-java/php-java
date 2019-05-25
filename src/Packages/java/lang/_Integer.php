@@ -52,8 +52,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the number of one-bits in the two's complement binary representation of the specified int value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#bitCount
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function bitCount($a = null)
     {
@@ -63,8 +64,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value of this Integer as a byte after a narrowing primitive conversion.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#byteValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function byteValue($a = null)
     {
@@ -74,8 +76,10 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Compares two int values numerically.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compare
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function compare($a = null, $b = null)
     {
@@ -85,8 +89,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Compares two Integer objects numerically.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareTo
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function compareTo($a = null)
     {
@@ -96,8 +101,10 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Compares two int values numerically treating the values as unsigned.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#compareUnsigned
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function compareUnsigned($a = null, $b = null)
     {
@@ -107,8 +114,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Decodes a String into an Integer.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#decode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function decode($a = null)
     {
@@ -118,8 +126,10 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the unsigned quotient of dividing the first argument by the second where each argument and the result is interpreted as an unsigned value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#divideUnsigned
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function divideUnsigned($a = null, $b = null)
     {
@@ -129,8 +139,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value of this Integer as a double after a widening primitive conversion.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#doubleValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function doubleValue($a = null)
     {
@@ -140,8 +151,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Compares this object to the specified object.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -151,8 +163,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value of this Integer as a float after a widening primitive conversion.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#floatValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function floatValue($a = null)
     {
@@ -164,8 +177,10 @@ class _Integer extends Number // implements Serializable, Comparable
      * Determines the integer value of the system property with the specified name.
      * Returns the integer value of the system property with the specified name.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#getInteger
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function getInteger($a = null, $b = null)
     {
@@ -176,8 +191,9 @@ class _Integer extends Number // implements Serializable, Comparable
      * Returns a hash code for this Integer.
      * Returns a hash code for an int value; compatible with Integer.hashCode().
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function hashCode($a = null)
     {
@@ -187,8 +203,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns an int value with at most a single one-bit, in the position of the highest-order ("leftmost") one-bit in the specified int value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#highestOneBit
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function highestOneBit($a = null)
     {
@@ -198,8 +215,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value of this Integer as an int.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#intValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function intValue($a = null)
     {
@@ -209,8 +227,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value of this Integer as a long after a widening primitive conversion.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#longValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function longValue($a = null)
     {
@@ -220,8 +239,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns an int value with at most a single one-bit, in the position of the lowest-order ("rightmost") one-bit in the specified int value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#lowestOneBit
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function lowestOneBit($a = null)
     {
@@ -231,8 +251,10 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the greater of two int values as if by calling Math.max.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#max
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function max($a = null, $b = null)
     {
@@ -242,8 +264,10 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the smaller of two int values as if by calling Math.min.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#min
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function min($a = null, $b = null)
     {
@@ -253,8 +277,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the number of zero bits preceding the highest-order ("leftmost") one-bit in the two's complement binary representation of the specified int value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#numberOfLeadingZeros
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function numberOfLeadingZeros($a = null)
     {
@@ -264,8 +289,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the number of zero bits following the lowest-order ("rightmost") one-bit in the two's complement binary representation of the specified int value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#numberOfTrailingZeros
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function numberOfTrailingZeros($a = null)
     {
@@ -277,8 +303,12 @@ class _Integer extends Number // implements Serializable, Comparable
      * Parses the string argument as a signed decimal integer.
      * Parses the string argument as a signed integer in the radix specified by the second argument.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#parseInt
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function parseInt($a = null, $b = null, $c = null, $d = null)
     {
@@ -290,8 +320,12 @@ class _Integer extends Number // implements Serializable, Comparable
      * Parses the string argument as an unsigned decimal integer.
      * Parses the string argument as an unsigned integer in the radix specified by the second argument.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#parseUnsignedInt
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public static function parseUnsignedInt($a = null, $b = null, $c = null, $d = null)
     {
@@ -301,8 +335,10 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the unsigned remainder from dividing the first argument by the second where each argument and the result is interpreted as an unsigned value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#remainderUnsigned
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function remainderUnsigned($a = null, $b = null)
     {
@@ -312,8 +348,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value obtained by reversing the order of the bits in the two's complement binary representation of the specified int value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#reverse
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function reverse($a = null)
     {
@@ -323,8 +360,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value obtained by reversing the order of the bytes in the two's complement representation of the specified int value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#reverseBytes
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function reverseBytes($a = null)
     {
@@ -334,8 +372,10 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value obtained by rotating the two's complement binary representation of the specified int value left by the specified number of bits.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#rotateLeft
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function rotateLeft($a = null, $b = null)
     {
@@ -345,8 +385,10 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value obtained by rotating the two's complement binary representation of the specified int value right by the specified number of bits.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#rotateRight
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function rotateRight($a = null, $b = null)
     {
@@ -356,8 +398,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the value of this Integer as a short after a narrowing primitive conversion.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#shortValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function shortValue($a = null)
     {
@@ -367,8 +410,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns the signum function of the specified int value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#signum
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function signum($a = null)
     {
@@ -378,8 +422,10 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Adds two integers together as per the + operator.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#sum
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function sum($a = null, $b = null)
     {
@@ -389,8 +435,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns a string representation of the integer argument as an unsigned integer in base&nbsp;2.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toBinaryString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function toBinaryString($a = null)
     {
@@ -400,8 +447,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns a string representation of the integer argument as an unsigned integer in base&nbsp;16.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toHexString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function toHexString($a = null)
     {
@@ -411,8 +459,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Returns a string representation of the integer argument as an unsigned integer in base&nbsp;8.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toOctalString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function toOctalString($a = null)
     {
@@ -424,8 +473,10 @@ class _Integer extends Number // implements Serializable, Comparable
      * Returns a String object representing the specified integer.
      * Returns a string representation of the first argument in the radix specified by the second argument.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toString
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function toString($a = null, $b = null)
     {
@@ -435,8 +486,9 @@ class _Integer extends Number // implements Serializable, Comparable
     /**
      * Converts the argument to a long by an unsigned conversion.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toUnsignedLong
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public static function toUnsignedLong($a = null)
     {
@@ -447,8 +499,10 @@ class _Integer extends Number // implements Serializable, Comparable
      * Returns a string representation of the argument as an unsigned decimal value.
      * Returns a string representation of the first argument as an unsigned integer value in the radix specified by the second argument.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#toUnsignedString
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function toUnsignedString($a = null, $b = null)
     {
@@ -460,8 +514,10 @@ class _Integer extends Number // implements Serializable, Comparable
      * Returns an Integer object holding the value of the specified String.
      * Returns an Integer object holding the value extracted from the specified String when parsed with the radix given by the second argument.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/package-summary.html#valueOf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public static function valueOf($a = null, $b = null)
     {

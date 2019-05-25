@@ -4,8 +4,9 @@ namespace PHPJava\Kernel\Internal;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JavaCompiledClass;
+use PHPJava\Core\JavaGenericClassInterface;
 
-final class JavaClassDeferredLoader implements JavaClassInterface
+final class JavaClassDeferredLoader implements JavaClassInterface, JavaGenericClassInterface
 {
     /**
      * @var string

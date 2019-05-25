@@ -21,7 +21,6 @@ final class _ldc implements OperationInterface
 
         if ($data instanceof _String) {
             $value = $cpInfo[$data->getStringIndex()];
-
             if ($value instanceof _Utf8) {
                 $value = $value->getStringObject();
             }

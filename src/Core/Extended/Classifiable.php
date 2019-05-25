@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Core\Traits;
+namespace PHPJava\Core\Extended;
 
 use PHPJava\Packages\java\lang\_Class;
 

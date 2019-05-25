@@ -1,9 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
-use PHPJava\Kernel\Resolvers\ClassResolver;
-use PHPJava\Utilities\ClassHandler;
 use PHPJava\Utilities\Formatter;
 
 final class _getstatic implements OperationInterface
@@ -20,26 +19,21 @@ final class _getstatic implements OperationInterface
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
         $fieldName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
-        [$resourceType, $classObject] = $this->javaClass->getOptions('class_resolver')
-            ->resolve(
-                $class,
-                $this->javaClass,
-                false
-            );
+        $classObject = JavaClass::load(
+            $class,
+            $this->javaClass->getOptions(),
+            false
+        );
 
-        if ($resourceType === ClassResolver::RESOLVED_TYPE_CLASS) {
-            /**
-             * @var JavaClassInterface $className
-             */
-            $this->pushToOperandStack($classObject->getInvoker()->getStatic()->getFields()->get($fieldName));
-            return;
-        }
-
+        /**
+         * @var JavaClassInterface $className
+         */
         $this->pushToOperandStack(
-            ClassHandler::getStaticField(
-                $classObject,
-                $fieldName
-            )
+            $classObject
+                ->getInvoker()
+                ->getStatic()
+                ->getFields()
+                ->get($fieldName)
         );
     }
 }

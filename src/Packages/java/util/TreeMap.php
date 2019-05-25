@@ -20,8 +20,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a key-value mapping associated with the least key greater than or equal to the given key, or null if there is no such key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ceilingEntry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ceilingEntry($a = null)
     {
@@ -31,8 +32,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns the least key greater than or equal to the given key, or null if there is no such key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#ceilingKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function ceilingKey($a = null)
     {
@@ -42,8 +44,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Removes all of the mappings from this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -53,8 +56,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a shallow copy of this TreeMap instance.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -64,8 +68,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns true if this map contains a mapping for the specified key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#containsKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function containsKey($a = null)
     {
@@ -75,8 +80,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns true if this map maps one or more keys to the specified value.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#containsValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function containsValue($a = null)
     {
@@ -86,8 +92,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a reverse order NavigableSet view of the keys contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#descendingKeySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function descendingKeySet($a = null)
     {
@@ -97,8 +104,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a reverse order view of the mappings contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#descendingMap
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function descendingMap($a = null)
     {
@@ -108,8 +116,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a Set view of the mappings contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#entrySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function entrySet($a = null)
     {
@@ -119,8 +128,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a key-value mapping associated with the least key in this map, or null if the map is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#firstEntry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function firstEntry($a = null)
     {
@@ -130,8 +140,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns the first (lowest) key currently in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#firstKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function firstKey($a = null)
     {
@@ -141,8 +152,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a key-value mapping associated with the greatest key less than or equal to the given key, or null if there is no such key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#floorEntry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function floorEntry($a = null)
     {
@@ -152,8 +164,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns the greatest key less than or equal to the given key, or null if there is no such key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#floorKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function floorKey($a = null)
     {
@@ -163,8 +176,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function get($a = null)
     {
@@ -175,8 +189,10 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
      * Returns a view of the portion of this map whose keys are strictly less than toKey.
      * Returns a view of the portion of this map whose keys are less than (or equal to, if inclusive is true) toKey.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#headMap
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function headMap($a = null, $b = null)
     {
@@ -186,8 +202,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a key-value mapping associated with the least key strictly greater than the given key, or null if there is no such key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#higherEntry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function higherEntry($a = null)
     {
@@ -197,8 +214,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns the least key strictly greater than the given key, or null if there is no such key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#higherKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function higherKey($a = null)
     {
@@ -208,8 +226,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a Set view of the keys contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#keySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function keySet($a = null)
     {
@@ -219,8 +238,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a key-value mapping associated with the greatest key in this map, or null if the map is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lastEntry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lastEntry($a = null)
     {
@@ -230,8 +250,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns the last (highest) key currently in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lastKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lastKey($a = null)
     {
@@ -241,8 +262,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a key-value mapping associated with the greatest key strictly less than the given key, or null if there is no such key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lowerEntry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lowerEntry($a = null)
     {
@@ -252,8 +274,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns the greatest key strictly less than the given key, or null if there is no such key.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lowerKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lowerKey($a = null)
     {
@@ -263,8 +286,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a NavigableSet view of the keys contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#navigableKeySet
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function navigableKeySet($a = null)
     {
@@ -274,8 +298,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Removes and returns a key-value mapping associated with the least key in this map, or null if the map is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollFirstEntry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function pollFirstEntry($a = null)
     {
@@ -285,8 +310,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Removes and returns a key-value mapping associated with the greatest key in this map, or null if the map is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollLastEntry
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function pollLastEntry($a = null)
     {
@@ -296,8 +322,10 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Associates the specified value with the specified key in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#put
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function put($a = null, $b = null)
     {
@@ -307,8 +335,10 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Copies all of the mappings from the specified map to this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#putAll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function putAll($a = null, $b = null)
     {
@@ -318,8 +348,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Removes the mapping for this key from this TreeMap if present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -329,8 +360,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns the number of key-value mappings in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {
@@ -341,8 +373,12 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
      * Returns a view of the portion of this map whose keys range from fromKey to toKey.
      * Returns a view of the portion of this map whose keys range from fromKey, inclusive, to toKey, exclusive.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#subMap
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @param null|mixed $d
+     * @throws NotImplementedException
      */
     public function subMap($a = null, $b = null, $c = null, $d = null)
     {
@@ -353,8 +389,10 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
      * Returns a view of the portion of this map whose keys are greater than or equal to fromKey.
      * Returns a view of the portion of this map whose keys are greater than (or equal to, if inclusive is true) fromKey.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#tailMap
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function tailMap($a = null, $b = null)
     {
@@ -364,8 +402,9 @@ class TreeMap extends AbstractMap /* implements Serializable, natural
     /**
      * Returns a Collection view of the values contained in this map.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#values
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function values($a = null)
     {

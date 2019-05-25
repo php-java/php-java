@@ -20,8 +20,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Inserts the specified element into this priority queue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function add($a = null)
     {
@@ -31,8 +32,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Removes all of the elements from this priority queue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -42,8 +44,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Returns the comparator used to order the elements in this queue, or null if this queue is sorted according to the natural ordering of its elements.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#comparator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function comparator($a = null)
     {
@@ -53,8 +56,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Returns true if this queue contains the specified element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#contains
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function contains($a = null)
     {
@@ -64,8 +68,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Performs the given action for each element of the Iterable until all elements have been processed or the action throws an exception.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#forEach
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function forEach($a = null)
     {
@@ -75,8 +80,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Returns an iterator over the elements in this queue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#iterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function iterator($a = null)
     {
@@ -86,8 +92,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Inserts the specified element into this priority queue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function offer($a = null)
     {
@@ -97,8 +104,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Removes a single instance of the specified element from this queue, if it is present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -108,8 +116,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Removes all of this collection's elements that are also contained in the specified collection (optional operation).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeAll
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeAll($a = null)
     {
@@ -119,8 +128,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Removes all of the elements of this collection that satisfy the given predicate.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeIf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeIf($a = null)
     {
@@ -130,8 +140,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Retains only the elements in this collection that are contained in the specified collection (optional operation).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#retainAll
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function retainAll($a = null)
     {
@@ -141,8 +152,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
     /**
      * Creates a late-binding and fail-fast Spliterator over the elements in this queue.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function spliterator($a = null)
     {
@@ -153,8 +165,9 @@ class PriorityQueue extends AbstractQueue // implements Serializable, Iterable, 
      * Returns an array containing all of the elements in this queue.
      * Returns an array containing all of the elements in this queue; the runtime type of the returned array is that of the specified array.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toArray($a = null)
     {

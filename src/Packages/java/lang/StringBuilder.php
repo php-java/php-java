@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Packages\java\lang;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 
 // use PHPJava\Packages\java\io\Serializable;
@@ -36,6 +37,7 @@ class StringBuilder extends _Object // implements Serializable, CharSequence, In
      * @param null|mixed $b
      * @param null|mixed $c
      * @throws NotImplementedException
+     * @nekology nekology
      */
     public function append($a = null, $b = null, $c = null)
     {
@@ -47,7 +49,7 @@ class StringBuilder extends _Object // implements Serializable, CharSequence, In
             }
             $this->sequence .= $a;
         }
-        return $this;
+        return $this->javaClass;
     }
 
     /**
@@ -382,7 +384,10 @@ class StringBuilder extends _Object // implements Serializable, CharSequence, In
 
     public function toString()
     {
-        return new _String((string) $this);
+        return JavaClass::load('java.lang.String', $this->javaClass->getOptions())
+            ->getInvoker()
+            ->construct((string) $this)
+            ->getJavaClass();
     }
 
     public function __toString(): string

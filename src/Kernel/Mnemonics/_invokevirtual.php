@@ -1,13 +1,10 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Core\JavaClassInterface;
-use PHPJava\Exceptions\UncaughtException;
-use PHPJava\Kernel\Attributes\CodeAttribute;
-use PHPJava\Kernel\Resolvers\AttributionResolver;
+use PHPJava\Core\JavaClass;
 use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Structures\_ExceptionTable;
 use PHPJava\Kernel\Types\Type;
+use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Utilities\Formatter;
 use PHPJava\Utilities\Normalizer;
 
@@ -16,6 +13,7 @@ final class _invokevirtual implements OperationInterface
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DependencyInjector;
+    use \PHPJava\Kernel\Core\ExceptionTableInspectable;
 
     public function execute(): void
     {
@@ -43,72 +41,43 @@ final class _invokevirtual implements OperationInterface
         $invokerClass = $this->popFromOperandStack();
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 
+        if ($invokerClass === null) {
+            throw new NullPointerException(
+                str_replace('/', '.', $class) . ' is a NULL.'
+            );
+        }
+
         try {
-            if ($invokerClass instanceof JavaClassInterface) {
-                $result = $invokerClass
+            $annotations = $this->getAnnotateInjections(
+                $invokerClass
                     ->getInvoker()
                     ->getDynamic()
                     ->getMethods()
-                    ->call(
-                        $methodName,
-                        ...$arguments
-                    );
-            } else {
-                $reflectionClass = new \ReflectionClass($invokerClass);
-                $methodAccessor = $reflectionClass->getMethod($methodName);
+                    ->getAnnotations(
+                        $methodName
+                    )
+            );
 
-                if ($document = $methodAccessor->getDocComment()) {
-                    $prependInjections = $this->getAnnotateInjections($document);
-                    if (!empty($prependInjections)) {
-                        array_unshift(
-                            $arguments,
-                            ...$prependInjections
-                        );
-                    }
-                }
+            if (!empty($annotations)) {
+                array_unshift($arguments, ...$annotations);
+            }
 
-                $result = call_user_func_array(
-                    [$invokerClass, $methodName],
-                    $arguments
+            $result = $invokerClass
+                ->getInvoker()
+                ->getDynamic()
+                ->getMethods()
+                ->call(
+                    $methodName,
+                    ...$arguments
                 );
-            }
         } catch (\Exception $e) {
-            /**
-             * @var CodeAttribute $codeAttribute
-             */
-            $codeAttribute = AttributionResolver::resolve(
-                $this->getAttributes(),
-                CodeAttribute::class
+            $this->inspectExceptionTable(
+                JavaClass::load(Formatter::convertPHPNamespacesToJava(get_class($e)), $this->javaClass->getOptions())
+                    ->getInvoker()
+                    ->construct($e->getMessage(), 0, $e)
+                    ->getJavaClass()
             );
-
-            $expectedClass = Formatter::convertPHPNamespacesToJava(get_class($e));
-
-            foreach ($codeAttribute->getExceptionTables() as $exception) {
-                /**
-                 * @var _ExceptionTable $exception
-                 */
-                if ($exception->getStartPc() > $this->getProgramCounter() ||
-                    $exception->getEndPc() < $this->getProgramCounter()
-                ) {
-                    continue;
-                }
-                if ($exception->getCatchType() === 0) {
-                    $this->setOffset($exception->getHandlerPc());
-                    return;
-                }
-                $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
-                if ($catchClass === $expectedClass) {
-                    $this->pushToOperandStack($e);
-                    $this->setOffset($exception->getHandlerPc());
-                    return;
-                }
-            }
-
-            throw new UncaughtException(
-                $expectedClass . ': ' . $e->getMessage(),
-                0,
-                $e
-            );
+            return;
         }
 
         if ($signature[0]['type'] !== 'void') {

@@ -88,7 +88,7 @@ class JavaArchive
             );
         }
         // Add resolving path
-        $this->options['class_resolver']->add(
+        ClassResolver::add(
             [
                 [ClassResolver::RESOURCE_TYPE_FILE, dirname($jarFile)],
                 [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
@@ -162,7 +162,7 @@ class JavaArchive
                 case ClassResolver::RESOURCE_TYPE_FILE:
                     break;
             }
-            $this->options['class_resolver']->add($fileType, $value);
+            ClassResolver::add($fileType, $value);
         }
 
         $this->debugTool->getLogger()->info('End of jar');

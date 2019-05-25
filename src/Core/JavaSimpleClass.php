@@ -1,33 +1,32 @@
 <?php
 namespace PHPJava\Core;
 
-use PHPJava\Core\JVM\AttributePool;
-use PHPJava\Core\JVM\ConstantPool;
-use PHPJava\Core\JVM\FieldPool;
-use PHPJava\Core\JVM\InterfacePool;
-use PHPJava\Core\JVM\JavaClassInvokerInterface;
-use PHPJava\Core\JVM\MethodPool;
+use PHPJava\Core\Extended\Classifiable;
+use PHPJava\Core\Extended\ClassInvokable;
+use PHPJava\Core\Extended\Debuggable;
+use PHPJava\Core\Extended\Finalizable;
+use PHPJava\Core\Extended\InvokerProvidable;
+use PHPJava\Core\Extended\OptionExtendable;
+use PHPJava\Core\JVM\PHPClassInvoker;
+use PHPJava\Core\JVM\Stream\ReflectionClassReader;
+use PHPJava\Core\Stream\Reader\PackageReader;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
-use PHPJava\Core\Traits\Classifiable;
-use PHPJava\Core\Traits\ClassInvokable;
-use PHPJava\Core\Traits\Debuggable;
-use PHPJava\Core\Traits\Finalizable;
-use PHPJava\Core\Traits\OptionExtendable;
-use PHPJava\Core\Traits\ParentClassExtendable;
 use PHPJava\Exceptions\ValidatorException;
+use PHPJava\Kernel\Maps\ClassAccessFlag;
 use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Utilities\DebugTool;
+use PHPJava\Utilities\Formatter;
 
 class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
 {
     use \PHPJava\Kernel\Core\ConstantPool;
-    use ParentClassExtendable;
     use Classifiable;
     use Debuggable;
     use OptionExtendable;
     use Finalizable;
     use ClassInvokable;
+    use InvokerProvidable;
 
     /**
      * @var int[]
@@ -38,44 +37,9 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
     ];
 
     /**
-     * @var ConstantPool
-     */
-    private $constantPool;
-
-    /**
-     * @var InterfacePool
-     */
-    private $interfacePool;
-
-    /**
-     * @var FieldPool
-     */
-    private $fieldPool;
-
-    /**
-     * @var MethodPool
-     */
-    private $methodPool;
-
-    /**
-     * @var AttributePool
-     */
-    private $attributePool;
-
-    /**
      * @var int
      */
     private $accessFlag = 0;
-
-    /**
-     * @var int
-     */
-    private $thisClass = 0;
-
-    /**
-     * @var int
-     */
-    private $superClassIndex = 0;
 
     /**
      * @var null|_Utf8
@@ -83,29 +47,16 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
     private $className;
 
     /**
-     * @var JavaClassInvoker
-     */
-    private $invoker;
-
-    /**
-     * @var PHPJava\Kernel\Structures\_Classes[]
-     */
-    private $innerClasses = [];
-
-    /**
-     * @var JavaClass
-     */
-    private $parentClass;
-
-    /**
-     * @var mixed
-     */
-    private $superClass;
-
-    /**
      * @var float
      */
     private $startTime = 0.0;
+
+    /**
+     * @var PackageReader
+     */
+    private $reader;
+
+    private $superClass;
 
     /**
      * @throws ValidatorException
@@ -114,6 +65,10 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
      */
     public function __construct(ReaderInterface $reader, array $options = [])
     {
+        $this->accessFlag = ClassAccessFlag::ACC_PUBLIC;
+        $this->startTime = microtime(true);
+        $this->reader = $reader;
+
         // options
         $this->options = $options;
 
@@ -123,7 +78,7 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
             );
         }
 
-        $this->options['class_resolver']->add([
+        ClassResolver::add([
             [ClassResolver::RESOURCE_TYPE_FILE, dirname($reader->getFileName())],
             [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],
         ]);
@@ -133,15 +88,23 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
             $reader->getJavaPathName(),
             $options
         );
+
+        $this->invoker = new PHPClassInvoker(
+            $this,
+            $this->options
+        );
     }
 
     public function __debugInfo()
     {
-        return [];
+        return [
+            'name' => $this->getClassName(),
+        ];
     }
 
     public function getClassName(bool $shortName = false): string
     {
+        return $this->reader->getFileName();
     }
 
     public function getPackageName(): ?string
@@ -161,7 +124,11 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
      */
     public function getDefinedFields(): array
     {
-        return [];
+        /**
+         * @var ReflectionClassReader $reader
+         */
+        $reader = $this->reader->getReader();
+        return $reader->getFields();
     }
 
     /**
@@ -169,14 +136,49 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
      */
     public function getDefinedMethods(): array
     {
-        return [];
+        /**
+         * @var ReflectionClassReader $reader
+         */
+        $reader = $this->reader->getReader();
+        return $reader->getMethods();
     }
 
-    public function getInvoker(): JavaClassInvokerInterface
+    public function getDefinedExtendedClasses(): array
     {
-        return $this->invoker;
+        $className = $this->getClassName();
+        return array_map(
+            function ($value) {
+                return Formatter::convertPHPNamespacesToJava(
+                    $value
+                );
+            },
+            array_merge(
+                array_values(
+                    class_parents($className)
+                ),
+                [$className]
+            )
+        );
     }
 
+    public function getDefinedInterfaceClasses(): array
+    {
+        $className = $this->getClassName();
+        return array_map(
+            function ($value) {
+                return Formatter::convertPHPNamespacesToJava(
+                    $value
+                );
+            },
+            array_values(
+                class_implements($className)
+            )
+        );
+    }
+
+    /**
+     * @return JavaClass
+     */
     public function getSuperClass()
     {
         return $this->superClass;

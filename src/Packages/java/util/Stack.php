@@ -20,8 +20,9 @@ class Stack extends Vector // implements Serializable, Iterable, _List
     /**
      * Tests if this stack is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#empty
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function empty($a = null)
     {
@@ -31,8 +32,9 @@ class Stack extends Vector // implements Serializable, Iterable, _List
     /**
      * Looks at the object at the top of this stack without removing it from the stack.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peek
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function peek($a = null)
     {
@@ -42,8 +44,9 @@ class Stack extends Vector // implements Serializable, Iterable, _List
     /**
      * Removes the object at the top of this stack and returns that object as the value of this function.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pop
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function pop($a = null)
     {
@@ -53,8 +56,9 @@ class Stack extends Vector // implements Serializable, Iterable, _List
     /**
      * Pushes an item onto the top of this stack.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#push
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function push($a = null)
     {
@@ -64,8 +68,9 @@ class Stack extends Vector // implements Serializable, Iterable, _List
     /**
      * Returns the 1-based position where an object is on this stack.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#search
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function search($a = null)
     {

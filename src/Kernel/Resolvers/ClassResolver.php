@@ -27,7 +27,7 @@ class ClassResolver
     /**
      * @var array
      */
-    private $resolves = [];
+    private static $resolves = [];
 
     /**
      * @var (string|JavaClass)[][]
@@ -56,7 +56,7 @@ class ClassResolver
         // resolve something approaching
         $relativePath = implode('/', $namespaces);
 
-        foreach ($this->resolves as [$resourceType, $value]) {
+        foreach (static::$resolves as [$resourceType, $value]) {
             switch ($resourceType) {
                 case static::RESOURCE_TYPE_INNER_CLASS:
                     // TODO: Implement here
@@ -95,9 +95,7 @@ class ClassResolver
                                 $this->options
                             )
                         );
-                        if (strpos($relativePath, '$') !== false && $class !== null) {
-                            $initiatedClass->setParentClass($class);
-                        }
+
                         return $this->resolvedPaths[] = [
                             static::RESOLVED_TYPE_CLASS,
                             $initiatedClass,
@@ -145,18 +143,23 @@ class ClassResolver
         ];
     }
 
-    public function add($valuesOrResourceType = self::RESOURCE_TYPE_FILE, $value = null): void
+    public static function getClassPaths(): array
+    {
+        return static::$resolves;
+    }
+
+    public static function add($valuesOrResourceType = self::RESOURCE_TYPE_FILE, $value = null): void
     {
         if (is_array($valuesOrResourceType)) {
             foreach ($valuesOrResourceType as [$resourceType, $value]) {
-                $this->add($resourceType, $value);
+                static::add($resourceType, $value);
             }
             return;
         }
-        if (in_array([$valuesOrResourceType, $value], $this->resolves, true)) {
+        if (in_array([$valuesOrResourceType, $value], static::$resolves, true)) {
             return;
         }
-        $this->resolves[] = [$valuesOrResourceType, $value];
+        static::$resolves[] = [$valuesOrResourceType, $value];
     }
 
     public static function resolveNameByPath($path): string

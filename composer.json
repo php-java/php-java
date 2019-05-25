@@ -39,7 +39,7 @@
         "brainmaestro/composer-git-hooks": "^2.6"
     },
     "scripts": {
-        "test": "phpunit tests --stop-on-failure",
+        "test": "phpunit",
         "cs": "phpcs -n --standard=phpcs.xml src",
         "fix": "php-cs-fixer fix",
         "tests": [

@@ -1,5 +1,5 @@
 <?php
-namespace PHPJava\Core\Traits;
+namespace PHPJava\Core\Extended;
 
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;

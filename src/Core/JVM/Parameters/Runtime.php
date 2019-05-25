@@ -33,7 +33,13 @@ final class Runtime
         'Object' => '_Object',
     ];
 
+    const CLASS_INITIALIZER_CLASS_MAPS = [
+        '__construct' => '<init>',
+        '__staticConstruct' => '<clinit>',
+    ];
+
     const PHP_PACKAGES_DIRECTORY = '\\PHPJava\\Packages';
 
     const PREFIX_STATIC = 'static_';
+    const PREFIX_DEFAULT = '__default_';
 }

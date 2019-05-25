@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Core\JVM\Parameters\Runtime;
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Attributes\BootstrapMethodsAttribute;
 use PHPJava\Kernel\Maps\MethodHandleKind;
@@ -94,11 +94,8 @@ final class _invokedynamic implements OperationInterface
             case MethodHandleKind::REF_invokeVirtual:
                 throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_invokeStatic:
-                $factoryClass = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . str_replace(
-                    '/',
-                    '\\',
-                    $cp[$cp[$cp[$methodHandle->getReferenceIndex()]->getClassIndex()]->getClassIndex()]->getString()
-                );
+                $factoryClassName = $cp[$cp[$cp[$methodHandle->getReferenceIndex()]->getClassIndex()]->getClassIndex()]->getString();
+
                 $methodHandleLookup = new Lookup();
 
                 $methodHandleNameAndTypeConstant = $cp[$cp[$methodHandle->getReferenceIndex()]->getNameAndTypeIndex()];
@@ -107,9 +104,6 @@ final class _invokedynamic implements OperationInterface
 
                 // NOTE: Must be a class name.
                 $methodHandleType = MethodType::methodType($signature[0]['class_name']);
-
-                $reflectionClass = new \ReflectionClass($factoryClass);
-                $methodAccessor = $reflectionClass->getMethod($methodHandledName);
 
                 $arguments = array_merge(
                     [
@@ -121,20 +115,27 @@ final class _invokedynamic implements OperationInterface
                     $arguments
                 );
 
-                if ($document = $methodAccessor->getDocComment()) {
-                    $prependInjections = $this->getAnnotateInjections($document);
-                    if (!empty($prependInjections)) {
-                        array_unshift(
-                            $arguments,
-                            ...$prependInjections
-                        );
-                    }
+                $invokerClass = JavaClass::load(
+                    $factoryClassName,
+                    $this->javaClass->getOptions(),
+                    false
+                );
+                $annotations = $this->getAnnotateInjections(
+                    $invokerClass->getInvoker()->getStatic()->getMethods()->getAnnotations($methodHandledName)
+                );
+
+                if (!empty($annotations)) {
+                    array_unshift($arguments, ...$annotations);
                 }
 
-                $result = forward_static_call_array(
-                    [$factoryClass, $methodHandledName],
-                    $arguments
-                );
+                $result = $invokerClass
+                    ->getInvoker()
+                    ->getStatic()
+                    ->getMethods()
+                    ->call(
+                        $methodHandledName,
+                        ...$arguments
+                    );
 
                 if ($signature[0]['type'] !== 'void') {
                     $this->pushToOperandStack($result);

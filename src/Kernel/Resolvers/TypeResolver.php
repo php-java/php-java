@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Resolvers;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
-use PHPJava\Core\JVM\JavaClassInvokerInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
@@ -16,7 +16,6 @@ use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Kernel\Types\_Short;
 use PHPJava\Kernel\Types\Type;
-use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\_String;
 use PHPJava\Utilities\Formatter;
 
@@ -68,7 +67,6 @@ class TypeResolver
 
     const PHP_SCALAR_MAP = [
         // [ TypeClass, Instantiation ]
-        'string' => [_String::class, true],
         'float' => [_Float::class, false],
         'double' => [_Float::class, false],
         'integer' => [_Int::class, false],
@@ -206,20 +204,15 @@ class TypeResolver
             if ($arguments instanceof JavaClassInterface) {
                 return [
                     'type' => 'class',
-                    'class_name' => $arguments->getClassName(),
+                    'class_name' => Formatter::convertPHPNamespacesToJava(
+                        $arguments->getClassName()
+                    ),
                     'deep_array' => $deepArray,
                 ];
             }
             if ($arguments instanceof Type) {
                 return [
                     'type' => $arguments->getTypeNameInJava(),
-                    'deep_array' => $deepArray,
-                ];
-            }
-            if ($arguments instanceof _Object) {
-                return [
-                    'type' => 'class',
-                    'class_name' => ClassResolver::resolveNameByPath($arguments),
                     'deep_array' => $deepArray,
                 ];
             }
@@ -250,14 +243,14 @@ class TypeResolver
      * @throws TypeException
      * @throws \ReflectionException
      */
-    public static function compare(JavaClassInvokerInterface $javaClassInvoker, string $a, string $b): bool
+    public static function compare(JavaClassInterface $javaClass, string $a, string $b): bool
     {
         if ($a === $b) {
             return true;
         }
 
-        $a = static::getExtendedClasses($javaClassInvoker, $a);
-        $b = static::getExtendedClasses($javaClassInvoker, $b);
+        $a = static::getExtendedClasses($javaClass, $a);
+        $b = static::getExtendedClasses($javaClass, $b);
 
         $resultClassesComparison = [];
         $resultInterfacesComparison = [];
@@ -282,7 +275,7 @@ class TypeResolver
      * @throws TypeException
      * @throws \ReflectionException
      */
-    public static function getExtendedClasses(JavaClassInvokerInterface $javaClassInvoker, string $class): array
+    public static function getExtendedClasses(JavaClassInterface $javaClass, string $class): array
     {
         static $loadedExtendedRoots = [];
         $result = [];
@@ -291,85 +284,11 @@ class TypeResolver
                 $result[] = [[$signature['type']], []];
                 continue;
             }
-            $path = [];
-            foreach (explode('.', $signature['class_name']) as $name) {
-                $path[] = Runtime::PHP_PACKAGES_MAPS[$name] ?? $name;
-            }
-            $classPath = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . implode('\\', $path);
 
-            // Remove duplicated prefix
-            $classPath = preg_replace(
-                '/^(?:' . preg_quote(Runtime::PHP_PACKAGES_DIRECTORY, '/') . ')+/',
-                Runtime::PHP_PACKAGES_DIRECTORY,
-                $classPath
-            );
-
-            if (isset($loadedExtendedRoots[$classPath])) {
-                $result[] = $loadedExtendedRoots[$classPath];
-                continue;
-            }
-            $extendedClasses = [];
-            $interfaces = [];
-            if (class_exists($classPath)) {
-                $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
-                $interfaces = array_values(class_implements($classPath, true));
-                $reflectionClass = new \ReflectionClass($classPath);
-
-                if ($document = $reflectionClass->getDocComment()) {
-                    $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-                        ->create($document);
-
-                    if (!empty($documentBlock->getTagsByName('highPriority'))) {
-                        $extendedClasses = array_map(
-                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                                return (string) $item->getDescription();
-                            },
-                            $documentBlock->getTagsByName('parent')
-                        );
-                        $interfaces = array_map(
-                            function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                                return (string) $item->getDescription();
-                            },
-                            $documentBlock->getTagsByName('interface')
-                        );
-                    }
-                }
-            } else {
-                // in package
-                $packagedClasses = [];
-                $packagedClasses[] = $currentClass = $signature['class_name'];
-                $packagedInterfaces = [];
-                $beforeClass = null;
-                for (;;) {
-                    if ($beforeClass === $currentClass) {
-                        // Stop loop if beforeClass and currentClass is same class.
-                        break;
-                    }
-                    /**
-                     * @var JavaClassInterface $classObject
-                     */
-                    [$resourceType, $classObject] = $javaClassInvoker
-                        ->getJavaClass()
-                        ->getOptions('class_resolver')
-                        ->resolve(
-                            $currentClass,
-                            $javaClassInvoker->getJavaClass()
-                        );
-                    $superClass = $classObject->getSuperClass();
-                    if ($superClass instanceof JavaClassInterface) {
-                        $beforeClass = $currentClass;
-                        $currentClass = $superClass->getClassName();
-                    } else {
-                        [$extendedClasses, $interfaces] = static::getRecursiveRootsClassesByClassPath(
-                            get_class($superClass)
-                        );
-                        break;
-                    }
-                }
-                $extendedClasses = array_merge($extendedClasses, $packagedClasses);
-                $interfaces = array_merge($interfaces, $packagedInterfaces);
-            }
-            $result[] = $loadedExtendedRoots[$classPath] = [$extendedClasses, $interfaces];
+            $javaClass = JavaClass::load($signature['class_name'], [], false);
+            $extendedClasses = $javaClass->getDefinedExtendedClasses();
+            $interfaces = $javaClass->getDefinedInterfaceClasses();
+            $result[] = $loadedExtendedRoots[$signature['class_name']] = [$extendedClasses, $interfaces];
         }
 
         array_walk_recursive($result, function (&$className) {
@@ -377,32 +296,6 @@ class TypeResolver
         });
 
         return $result;
-    }
-
-    public static function getRecursiveRootsClassesByClassPath(string $classPath)
-    {
-        $extendedClasses = array_merge(array_values(class_parents($classPath, true)), [$classPath]);
-        $interfaces = array_values(class_implements($classPath, true));
-        $reflectionClass = new \ReflectionClass($classPath);
-        if ($document = $reflectionClass->getDocComment()) {
-            $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-                ->create($document);
-            if (!empty($documentBlock->getTagsByName('highPriority'))) {
-                $extendedClasses = array_map(
-                    function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                        return (string) $item->getDescription();
-                    },
-                    $documentBlock->getTagsByName('parent')
-                );
-                $interfaces = array_map(
-                    function (\phpDocumentor\Reflection\DocBlock\Tags\Generic $item) {
-                        return (string) $item->getDescription();
-                    },
-                    $documentBlock->getTagsByName('interface')
-                );
-            }
-        }
-        return [$extendedClasses, $interfaces];
     }
 
     /**
@@ -425,6 +318,11 @@ class TypeResolver
         }
 
         switch ($type) {
+            case 'string':
+                return JavaClass::load('java.lang.String')
+                    ->getInvoker()
+                    ->construct($value)
+                    ->getJavaClass();
             case 'object':
                 return $value;
             case 'array':

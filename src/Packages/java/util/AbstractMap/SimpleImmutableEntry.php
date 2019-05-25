@@ -17,8 +17,9 @@ class SimpleImmutableEntry extends _Object // implements Serializable, Entry
     /**
      * Compares the specified object with this entry for equality.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#equals
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function equals($a = null)
     {
@@ -28,8 +29,9 @@ class SimpleImmutableEntry extends _Object // implements Serializable, Entry
     /**
      * Returns the key corresponding to this entry.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getKey
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getKey($a = null)
     {
@@ -39,8 +41,9 @@ class SimpleImmutableEntry extends _Object // implements Serializable, Entry
     /**
      * Returns the value corresponding to this entry.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getValue($a = null)
     {
@@ -50,8 +53,9 @@ class SimpleImmutableEntry extends _Object // implements Serializable, Entry
     /**
      * Returns the hash code value for this map entry.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#hashCode
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function hashCode($a = null)
     {
@@ -61,8 +65,9 @@ class SimpleImmutableEntry extends _Object // implements Serializable, Entry
     /**
      * Replaces the value corresponding to this entry with the specified value (optional operation).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#setValue
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function setValue($a = null)
     {
@@ -72,8 +77,9 @@ class SimpleImmutableEntry extends _Object // implements Serializable, Entry
     /**
      * Returns a String representation of this map entry.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toString
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toString($a = null)
     {

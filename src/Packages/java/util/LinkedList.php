@@ -21,8 +21,10 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
      * Inserts the specified element at the specified position in this list.
      * Appends the specified element to the end of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#add
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function add($a = null, $b = null)
     {
@@ -33,8 +35,10 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
      * Inserts all of the elements in the specified collection into this list, starting at the specified position.
      * Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addAll
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function addAll($a = null, $b = null)
     {
@@ -44,8 +48,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Inserts the specified element at the beginning of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addFirst
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function addFirst($a = null)
     {
@@ -55,8 +60,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Appends the specified element to the end of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#addLast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function addLast($a = null)
     {
@@ -66,8 +72,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Removes all of the elements from this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clear
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clear($a = null)
     {
@@ -77,8 +84,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns a shallow copy of this LinkedList.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#clone
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function clone($a = null)
     {
@@ -88,8 +96,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns true if this list contains the specified element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#contains
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function contains($a = null)
     {
@@ -99,8 +108,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns an iterator over the elements in this deque in reverse sequential order.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#descendingIterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function descendingIterator($a = null)
     {
@@ -110,8 +120,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Retrieves, but does not remove, the head (first element) of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#element
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function element($a = null)
     {
@@ -121,8 +132,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns the element at the specified position in this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#get
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function get($a = null)
     {
@@ -132,8 +144,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns the first element in this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getFirst
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getFirst($a = null)
     {
@@ -143,8 +156,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns the last element in this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#getLast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function getLast($a = null)
     {
@@ -154,8 +168,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#indexOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function indexOf($a = null)
     {
@@ -165,8 +180,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#lastIndexOf
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function lastIndexOf($a = null)
     {
@@ -176,8 +192,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns a list-iterator of the elements in this list (in proper sequence), starting at the specified position in the list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#listIterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function listIterator($a = null)
     {
@@ -187,8 +204,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Adds the specified element as the tail (last element) of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offer
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function offer($a = null)
     {
@@ -198,8 +216,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Inserts the specified element at the front of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offerFirst
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function offerFirst($a = null)
     {
@@ -209,8 +228,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Inserts the specified element at the end of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#offerLast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function offerLast($a = null)
     {
@@ -220,8 +240,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Retrieves, but does not remove, the head (first element) of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peek
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function peek($a = null)
     {
@@ -231,8 +252,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Retrieves, but does not remove, the first element of this list, or returns null if this list is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peekFirst
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function peekFirst($a = null)
     {
@@ -242,8 +264,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Retrieves, but does not remove, the last element of this list, or returns null if this list is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#peekLast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function peekLast($a = null)
     {
@@ -253,8 +276,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Retrieves and removes the head (first element) of this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#poll
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function poll($a = null)
     {
@@ -264,8 +288,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Retrieves and removes the first element of this list, or returns null if this list is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollFirst
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function pollFirst($a = null)
     {
@@ -275,8 +300,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Retrieves and removes the last element of this list, or returns null if this list is empty.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pollLast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function pollLast($a = null)
     {
@@ -286,8 +312,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Pops an element from the stack represented by this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#pop
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function pop($a = null)
     {
@@ -297,8 +324,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Pushes an element onto the stack represented by this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#push
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function push($a = null)
     {
@@ -310,8 +338,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
      * Removes the element at the specified position in this list.
      * Removes the first occurrence of the specified element from this list, if it is present.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#remove
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function remove($a = null)
     {
@@ -321,8 +350,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Removes and returns the first element from this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeFirst
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeFirst($a = null)
     {
@@ -332,8 +362,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Removes the first occurrence of the specified element in this list (when traversing the list from head to tail).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeFirstOccurrence
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeFirstOccurrence($a = null)
     {
@@ -343,8 +374,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Removes and returns the last element from this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeLast
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeLast($a = null)
     {
@@ -354,8 +386,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Removes the last occurrence of the specified element in this list (when traversing the list from head to tail).
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#removeLastOccurrence
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function removeLastOccurrence($a = null)
     {
@@ -365,8 +398,10 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Replaces the element at the specified position in this list with the specified element.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#set
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @throws NotImplementedException
      */
     public function set($a = null, $b = null)
     {
@@ -376,8 +411,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Returns the number of elements in this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#size
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function size($a = null)
     {
@@ -387,8 +423,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
     /**
      * Creates a late-binding and fail-fast Spliterator over the elements in this list.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#spliterator
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function spliterator($a = null)
     {
@@ -399,8 +436,9 @@ class LinkedList extends AbstractSequentialList // implements Serializable, Iter
      * Returns an array containing all of the elements in this list in proper sequence (from first to last element).
      * Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html#toArray
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function toArray($a = null)
     {

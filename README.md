@@ -80,7 +80,17 @@ $ javac -UTF8 /path/to/HelloWorld.java
 <?php
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
+ 
+JavaClass::load('HelloWorld')
+    ->getInvoker()
+    ->getStatic()
+    ->getMethods()
+    ->call(
+        'main',
+        ["Hello World!"]
+    );
 
+// Or, you can specify file path as follows. 
 (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
     ->getInvoker()
     ->getStatic()
@@ -135,7 +145,7 @@ e.g., Set or Get static fields:
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$staticFieldAccessor = (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
+$staticFieldAccessor = JavaClass::load('HelloWorld')
     ->getInvoker()
     ->getStatic()
     ->getFields();
@@ -156,7 +166,7 @@ e.g., Call a static method:
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-(new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
+JavaClass::load('HelloWorld')
     ->getInvoker()
     ->getStatic()
     ->getMethods()
@@ -169,7 +179,7 @@ use PHPJava\Core\Stream\Reader\FileReader;
     );
 
 // Or, if the called method has a return value, you can store it to a variable.
-$result = (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
+$result = JavaClass::load('HelloWorld')
    ->getInvoker()
    ->getStatic()
    ->getMethods()
@@ -196,7 +206,7 @@ e.g., Call dynamic field:
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class')));
+$javaClass = JavaClass::load('HelloWorld');
 
 $javaClass->getInvoker()->construct();
 
@@ -222,7 +232,7 @@ e.g., Call dynamic method:
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$dynamicMethodAccessor = (new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class'))))
+$dynamicMethodAccessor = JavaClass::load('HelloWorld')
      ->getInvoker()
      ->construct()
      ->getDynamic()
@@ -250,6 +260,29 @@ $dynamicMethodAccessor
 // Output the $result you want
 echo $result;
 ```
+
+### Call a method in a built-in package on Java
+PHPJava can call a built-in package in the same way as `JavaClass::load` after the version 0.0.8.5.
+This feature is emulated by `ReflectionClass` on `PHP` and any static methods/fields will dynamically be generated in fact.
+
+e.g.) To Call `java.lang.Math` is below. 
+```php
+<?php
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\Stream\Reader\FileReader;
+
+echo JavaClass::load('java.lang.Math')
+     ->getInvoker()
+     ->getStatic()
+     ->getMethods()
+     ->call(
+         'pow',
+         2,
+         4
+     ); 
+````
+
+The example will return `16`.
 
 ### Call ambiguous methods in Java from PHP
 - In PHP, types are more ambiguous than Java.
@@ -286,8 +319,8 @@ The example will return `1234`.
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(
-    new JavaCompiledClass(new FileReader('Test')),
+$javaClass = JavaClass::load(
+    'HelloWorld',
     [
         'strict' => false,
     ]
@@ -319,8 +352,8 @@ $javaClass = new JavaClass(
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(
-    new JavaCompiledClass(new FileReader('Test')),
+$javaClass = JavaClass::load(
+    'HelloWorld',
     [
         'max_stack_exceeded' => 12345,
         'validation' => [
@@ -360,7 +393,7 @@ GlobalOptions::set([
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\Stream\Reader\FileReader;
 
-$javaClass = new JavaClass(new JavaCompiledClass(new FileReader('/path/to/HelloWorld.class')));
+$javaClass = JavaClass::load('HelloWorld');
 
 $javaClass
     ->getInvoker()

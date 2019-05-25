@@ -1,8 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Internal;
 
-use PHPJava\Kernel\Resolvers\ClassResolver;
-
 final class InstanceDeferredLoader
 {
     /**
@@ -25,32 +23,9 @@ final class InstanceDeferredLoader
      */
     private $className;
 
-    /**
-     * @param \PHPJava\Core\JavaClass|string $classObject
-     */
-    public function __construct(
-        $classObject,
-        string $resourceType,
-        string $className
-    ) {
-        $this->classObject = $classObject;
-        $this->resourceType = $resourceType;
-        $this->className = $className;
-    }
-
-    public function instantiate(...$arguments): object
+    public function __construct(string $className)
     {
-        $object = $this->classObject;
-        switch ($this->resourceType) {
-            case ClassResolver::RESOLVED_TYPE_CLASS:
-                $this->instance = $object;
-                break;
-            case ClassResolver::RESOLVED_TYPE_PACKAGES:
-                $this->instance = new $object(...$arguments);
-                break;
-        }
-
-        return $this->instance;
+        $this->className = $className;
     }
 
     public function getClassName(): string
