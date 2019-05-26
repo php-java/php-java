@@ -125,12 +125,6 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
         // options
         $this->options = $options;
 
-        if (!(($this->options['class_resolver'] ?? null) instanceof ClassResolver)) {
-            $this->options['class_resolver'] = new ClassResolver(
-                $this->options
-            );
-        }
-
         ClassResolver::add([
             [ClassResolver::RESOURCE_TYPE_FILE, dirname($reader->getFileName())],
             [ClassResolver::RESOURCE_TYPE_FILE, getcwd()],

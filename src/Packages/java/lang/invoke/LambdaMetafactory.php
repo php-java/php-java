@@ -2,7 +2,6 @@
 namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Internal\Lambda;
@@ -68,7 +67,7 @@ class LambdaMetafactory extends _Object
      * @throws NotImplementedException
      */
     public static function metafactory(
-        JavaClassInterface $javaClass,
+        JavaClass $javaClass,
         ConstantPool $cp,
         $a = null,
         $b = null,
@@ -101,6 +100,7 @@ class LambdaMetafactory extends _Object
         // Create a lambda class.
         return new Lambda(
             $javaClass,
+            $invokedName,
             $lambdaName,
             $lambdaDescriptor,
             $class

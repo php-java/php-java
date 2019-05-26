@@ -1,15 +1,12 @@
 <?php
 namespace PHPJava\Kernel\Internal;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
+use PHPJava\Kernel\Structures\_MethodInfo;
 
-class Lambda
+class Lambda implements JavaClassInterface
 {
-    /**
-     * @var JavaClassInterface
-     */
-    private $javaClass;
-
     /**
      * @var string
      */
@@ -26,35 +23,43 @@ class Lambda
     private $class;
 
     /**
-     * @var string
+     * @var _MethodInfo|\ReflectionMethod
      */
-    private $resourceType;
+    private $methodEntity;
 
     /**
      * @var JavaClassInterface|string
      */
     private $classObject;
 
-    public function __construct(JavaClassInterface $javaClass, string $name, string $descriptor, string $class)
+    public function __construct(JavaClassInterface $javaClass, string $invokedName, string $name, string $descriptor, string $class)
     {
-        $this->javaClass = $javaClass;
         $this->name = $name;
         $this->descriptor = $descriptor;
         $this->class = $class;
 
-        [$this->resourceType, $this->classObject] = $javaClass
-            ->getOptions('class_resolver')
-            ->resolve($this->class);
+        $this->methodEntity = [
+            $name,
+            $invokedName,
+            $javaClass,
+        ];
+
+        $this->classObject = JavaClass::load(
+            $class,
+            $javaClass->getOptions()
+        );
     }
 
-    public function __invoke(...$arguments)
+    public function __invoke(string $name, ...$arguments)
     {
-        return $this->javaClass
+        [$actualMethodName, $entityMethodName, $referredClassObject] = $this->methodEntity;
+
+        return $referredClassObject
             ->getInvoker()
             ->getStatic()
             ->getMethods()
             ->call(
-                $this->name,
+                $actualMethodName,
                 ...$arguments
             );
     }
