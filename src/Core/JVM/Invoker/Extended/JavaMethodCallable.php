@@ -83,6 +83,9 @@ trait JavaMethodCallable
         );
 
         try {
+            /**
+             * @var CodeAttribute $codeAttribute
+             */
             $codeAttribute = AttributionResolver::resolve(
                 $method->getAttributes(),
                 CodeAttribute::class

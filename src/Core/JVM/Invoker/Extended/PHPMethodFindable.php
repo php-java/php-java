@@ -5,7 +5,7 @@ use PHPJava\Packages\java\lang\NoSuchMethodException;
 
 trait PHPMethodFindable
 {
-    public function findMethod(string $name): \ReflectionMethod
+    protected function findMethod(string $name): \ReflectionMethod
     {
         if (!isset($this->methods[$name])) {
             throw new NoSuchMethodException(

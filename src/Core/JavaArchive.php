@@ -82,11 +82,6 @@ class JavaArchive
 
         $this->manifestData['main-class'] = $options['entrypoint'] ?? Runtime::ENTRYPOINT;
 
-        if (!(($this->options['class_resolver'] ?? null) instanceof ClassResolver)) {
-            $this->options['class_resolver'] = new ClassResolver(
-                $this->options
-            );
-        }
         // Add resolving path
         ClassResolver::add(
             [
@@ -150,7 +145,7 @@ class JavaArchive
             $value = $realpath;
 
             switch ($fileType = FileTypeResolver::resolve($resolvePath)) {
-                case ClassResolver::RESOLVED_TYPE_CLASS:
+                case ClassResolver::RESOURCE_TYPE_CLASS:
                     $value = new JavaCompiledClass(
                         new Stream\Reader\FileReader($value),
                         $this->options

@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClass;
+
 final class _putstatic implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -11,24 +13,18 @@ final class _putstatic implements OperationInterface
         $cpInfo = $this->getConstantPool();
 
         $cp = $cpInfo[$this->readUnsignedShort()];
-
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
+
         $className = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
         $fieldName = $cpInfo[$class->getNameIndex()]->getString();
 
-        $classObject = $this->javaClass;
-        if ($this->javaClass->getClassName() !== $className) {
-            [$resourceType, $classObject] = $this->javaClass->getOptions('class_resolver')
-                ->resolve(
-                    $className,
-                    $this->javaClass,
-                    false
-                );
-        }
-
-        $classObject->getInvoker()->getStatic()->getFields()->set(
-            $fieldName,
-            $this->popFromOperandStack()
-        );
+        JavaClass::load($className, $this->javaClass->getOptions(), false)
+            ->getInvoker()
+            ->getStatic()
+            ->getFields()
+            ->set(
+                $fieldName,
+                $this->popFromOperandStack()
+            );
     }
 }
