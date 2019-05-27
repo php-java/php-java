@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Double;
-use PHPJava\Utilities\Extractor;
 
 final class _drem implements OperationInterface
 {
@@ -11,8 +11,8 @@ final class _drem implements OperationInterface
 
     public function execute(): void
     {
-        $rightOperand = Extractor::getRealValue($this->popFromOperandStack());
-        $leftOperand = Extractor::getRealValue($this->popFromOperandStack());
+        $rightOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
+        $leftOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(
             _Double::get(

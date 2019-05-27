@@ -1,9 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Internal\Lambda;
-use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\Formatter;
 
 final class _invokeinterface implements OperationInterface
@@ -44,14 +43,11 @@ final class _invokeinterface implements OperationInterface
         }
 
         if ($signature[0]['type'] !== 'void') {
-            /**
-             * @var Type $typeClass
-             */
-            [$type, $typeClass] = TypeResolver::getType($signature[0]);
             $this->pushToOperandStack(
-                $type === TypeResolver::IS_PRIMITIVE
-                    ? $typeClass::get($result)
-                    : $result
+                Normalizer::normalizeReturnValue(
+                    $result,
+                    $signature[0]
+                )
             );
         }
     }

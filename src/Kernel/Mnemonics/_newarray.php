@@ -2,8 +2,8 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\RuntimeException;
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Array\Collection;
-use PHPJava\Utilities\Extractor;
 
 final class _newarray implements OperationInterface
 {
@@ -13,7 +13,7 @@ final class _newarray implements OperationInterface
     public function execute(): void
     {
         $atype = $this->readUnsignedByte();
-        $count = Extractor::getRealValue($this->popFromOperandStack());
+        $count = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $array = array_fill(0, $count, null);
 

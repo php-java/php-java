@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\Extractor;
+use PHPJava\Kernel\Filters\Normalizer;
 
 final class _dstore implements OperationInterface
 {
@@ -14,7 +14,7 @@ final class _dstore implements OperationInterface
     public function execute(): void
     {
         $index = $this->readUnsignedByte();
-        $value = Extractor::getRealValue($this->popFromOperandStack());
+        $value = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $this->setLocalStorage(
             $index,

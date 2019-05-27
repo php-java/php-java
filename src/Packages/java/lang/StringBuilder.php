@@ -37,7 +37,6 @@ class StringBuilder extends _Object // implements Serializable, CharSequence, In
      * @param null|mixed $b
      * @param null|mixed $c
      * @throws NotImplementedException
-     * @nekology nekology
      */
     public function append($a = null, $b = null, $c = null)
     {

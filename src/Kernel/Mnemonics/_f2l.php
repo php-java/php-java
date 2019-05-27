@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Long;
-use PHPJava\Utilities\Extractor;
 
 final class _f2l implements OperationInterface
 {
@@ -11,7 +11,7 @@ final class _f2l implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::getRealValue(
+        $value = Normalizer::getPrimitiveValue(
             $this->popFromOperandStack()
         );
 

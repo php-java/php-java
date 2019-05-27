@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\Extractor;
+use PHPJava\Kernel\Filters\Normalizer;
 
 final class _tableswitch implements OperationInterface
 {
@@ -10,7 +10,7 @@ final class _tableswitch implements OperationInterface
 
     public function execute(): void
     {
-        $key = Extractor::getRealValue(
+        $key = Normalizer::getPrimitiveValue(
             $this->popFromOperandStack()
         );
 
