@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Core\JavaClass;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Utilities\Formatter;
@@ -69,12 +68,7 @@ final class _invokevirtual implements OperationInterface
                     ...$arguments
                 );
         } catch (\Exception $e) {
-            $this->inspectExceptionTable(
-                JavaClass::load(Formatter::convertPHPNamespacesToJava(get_class($e)), $this->javaClass->getOptions())
-                    ->getInvoker()
-                    ->construct($e->getMessage(), 0, $e)
-                    ->getJavaClass()
-            );
+            $this->inspectExceptionTable($e);
             return;
         }
 

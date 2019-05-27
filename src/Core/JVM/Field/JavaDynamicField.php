@@ -7,6 +7,7 @@ class JavaDynamicField implements FieldInterface
 {
     use FieldGettable;
     use FieldSettable;
+    use FieldListable;
 
     /**
      * @var ClassInvokerInterface

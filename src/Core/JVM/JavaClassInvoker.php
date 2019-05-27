@@ -44,16 +44,16 @@ class JavaClassInvoker implements ClassInvokerInterface
      */
     private $options = [];
 
-    public function __construct(
-        JavaClassInterface $javaClass,
-        array $options
-    ) {
+    /**
+     * @throws \PHPJava\Exceptions\NormalizerException
+     */
+    public function __construct(JavaClassInterface $javaClass, array $options)
+    {
         $this->javaClass = $javaClass;
         $this->options = $options;
+        $cpInfo = $this->javaClass->getConstantPool();
 
-        $cpInfo = $javaClass->getConstantPool();
-
-        foreach ($javaClass->getDefinedMethods() as $methodInfo) {
+        foreach ($this->javaClass->getDefinedMethods() as $methodInfo) {
             /**
              * @var _MethodInfo $methodInfo
              */
@@ -66,7 +66,7 @@ class JavaClassInvoker implements ClassInvokerInterface
             }
         }
 
-        foreach ($javaClass->getDefinedFields() as $fieldInfo) {
+        foreach ($this->javaClass->getDefinedFields() as $fieldInfo) {
             /**
              * @var _FieldInfo $fieldInfo
              */
@@ -84,7 +84,10 @@ class JavaClassInvoker implements ClassInvokerInterface
             JavaClassDynamicMethodInvoker::class,
             JavaDynamicField::class,
             $this->dynamicMethods,
-            [],
+            Normalizer::normalizeFields(
+                $this->dynamicFields,
+                $this->javaClass
+            ),
             $this->options
         );
 
@@ -121,5 +124,13 @@ class JavaClassInvoker implements ClassInvokerInterface
         );
 
         return $this;
+    }
+
+    /**
+     * @return JavaClassInterface
+     */
+    public function getClassObject()
+    {
+        return $this->javaClass;
     }
 }

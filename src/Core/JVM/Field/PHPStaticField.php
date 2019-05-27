@@ -6,6 +6,8 @@ use PHPJava\Packages\java\lang\NoSuchFieldException;
 
 class PHPStaticField implements FieldInterface
 {
+    use FieldListable;
+
     /**
      * @var ClassInvokerInterface
      */

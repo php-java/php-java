@@ -23,9 +23,7 @@ final class _athrow implements OperationInterface
         $objectref = $this->popFromOperandStack();
 
         try {
-            $this->inspectExceptionTable(
-                $objectref
-            );
+            $this->inspectExceptionTable($objectref->getInvoker()->getClassObject());
         } catch (\Exception $e) {
             throw new UncaughtException(
                 "Unable to catch {$objectref->getClassName()} exception. " .

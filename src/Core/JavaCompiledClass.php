@@ -240,12 +240,12 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
             ]);
         }
 
-        $this->debugTool->getLogger()->info('End of Class');
-
         $this->invoker = new JavaClassInvoker(
             $this,
             $options
         );
+
+        $this->debugTool->getLogger()->info('End of Class');
     }
 
     public function __debugInfo()
@@ -312,16 +312,14 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
 
     public function getDefinedExtendedClasses(): array
     {
-        $beforeClass = null;
-        $currentClass = Formatter::convertPHPNamespacesToJava($this->getClassName());
         $parents = [];
-        var_dump($parents);
-        for (;;) {
-            $parents[] = $currentClass = $this->getSuperClass();
-            var_dump($currentClass);
-            exit();
+        $currentClassObject = $this;
+        while ($parentClass = $currentClassObject->getSuperClass()) {
+            $parents[] = Formatter::convertPHPNamespacesToJava($parentClass->getClassName());
+            $currentClassObject = $parentClass;
         }
-        return [];
+        $parents[] = Formatter::convertPHPNamespacesToJava($this->getClassName());
+        return $parents;
     }
 
     public function getDefinedInterfaceClasses(): array
