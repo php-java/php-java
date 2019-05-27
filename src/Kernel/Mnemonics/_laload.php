@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\Extractor;
+use PHPJava\Kernel\Filters\Normalizer;
 
 final class _laload implements OperationInterface
 {
@@ -13,7 +13,7 @@ final class _laload implements OperationInterface
      */
     public function execute(): void
     {
-        $index = Extractor::getRealValue($this->popFromOperandStack());
+        $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $arrayref = $this->popFromOperandStack();
 
         $this->pushToOperandStack($arrayref[$index]);

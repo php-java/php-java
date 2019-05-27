@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\Extractor;
+use PHPJava\Kernel\Filters\Normalizer;
 
 final class _anewarray implements OperationInterface
 {
@@ -19,7 +19,7 @@ final class _anewarray implements OperationInterface
         $this->readUnsignedShort();
 
         // Get an array size
-        $count = Extractor::getRealValue(
+        $count = Normalizer::getPrimitiveValue(
             $this->popFromOperandStack()
         );
 

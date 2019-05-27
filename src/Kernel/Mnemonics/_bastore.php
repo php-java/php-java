@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\Type;
-use PHPJava\Utilities\Extractor;
 
 final class _bastore implements OperationInterface
 {
@@ -12,7 +12,7 @@ final class _bastore implements OperationInterface
     public function execute(): void
     {
         $value = $this->popFromOperandStack();
-        $index = Extractor::getRealValue($this->popFromOperandStack());
+        $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         /**
          * @var Type $arrayref

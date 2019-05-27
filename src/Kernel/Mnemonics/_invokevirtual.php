@@ -2,11 +2,9 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Types\Type;
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\Normalizer;
 
 final class _invokevirtual implements OperationInterface
 {
@@ -81,15 +79,11 @@ final class _invokevirtual implements OperationInterface
         }
 
         if ($signature[0]['type'] !== 'void') {
-            /**
-             * @var Type $typeClass
-             */
-            [$type, $typeClass] = TypeResolver::getType($signature[0]);
-
             $this->pushToOperandStack(
-                $type === TypeResolver::IS_PRIMITIVE
-                    ? $typeClass::get($result)
-                    : $result
+                Normalizer::normalizeReturnValue(
+                    $result,
+                    $signature[0]
+                )
             );
         }
     }

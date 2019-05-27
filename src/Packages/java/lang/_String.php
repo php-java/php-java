@@ -4,9 +4,9 @@ namespace PHPJava\Packages\java\lang;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Structures\_Utf8;
 use PHPJava\Kernel\Types\_Char;
-use PHPJava\Utilities\Extractor;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\util\Comparator;
@@ -48,7 +48,7 @@ class _String extends _Object implements CharSequence
      */
     public function charAt($a)
     {
-        $index = Extractor::realValue($a);
+        $index = Normalizer::getPrimitiveValue($a);
         $length = $this->length();
 
         if ($index < 0 || $length <= $index) {

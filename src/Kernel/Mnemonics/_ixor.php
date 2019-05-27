@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Int;
-use PHPJava\Utilities\Extractor;
 
 final class _ixor implements OperationInterface
 {
@@ -11,8 +11,8 @@ final class _ixor implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = (int) Extractor::getRealValue($this->popFromOperandStack());
-        $value1 = (int) Extractor::getRealValue($this->popFromOperandStack());
+        $value2 = (int) Normalizer::getPrimitiveValue($this->popFromOperandStack());
+        $value1 = (int) Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(_Int::get($value1 ^ $value2));
     }

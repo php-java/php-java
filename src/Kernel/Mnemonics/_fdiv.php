@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Float;
-use PHPJava\Utilities\Extractor;
 
 final class _fdiv implements OperationInterface
 {
@@ -11,8 +11,8 @@ final class _fdiv implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = (float) Extractor::getRealValue($this->popFromOperandStack());
-        $value1 = (float) Extractor::getRealValue($this->popFromOperandStack());
+        $value2 = (float) Normalizer::getPrimitiveValue($this->popFromOperandStack());
+        $value1 = (float) Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(_Float::get($value1 / $value2));
     }

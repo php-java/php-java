@@ -2,8 +2,8 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use Brick\Math\BigInteger;
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Long;
-use PHPJava\Utilities\Extractor;
 
 final class _ladd implements OperationInterface
 {
@@ -12,8 +12,8 @@ final class _ladd implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = Extractor::getRealValue($this->popFromOperandStack());
-        $value1 = Extractor::getRealValue($this->popFromOperandStack());
+        $value2 = Normalizer::getPrimitiveValue($this->popFromOperandStack());
+        $value1 = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $result = (string) BigInteger::of($value1)
             ->plus(BigInteger::of($value2));

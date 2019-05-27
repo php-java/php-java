@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\Extractor;
+use PHPJava\Kernel\Filters\Normalizer;
 
 final class _ifeq implements OperationInterface
 {
@@ -11,7 +11,7 @@ final class _ifeq implements OperationInterface
     public function execute(): void
     {
         $offset = $this->readShort();
-        $operand = Extractor::getRealValue($this->popFromOperandStack());
+        $operand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         if ($operand == 0) {
             $this->setOffset($this->getProgramCounter() + $offset);

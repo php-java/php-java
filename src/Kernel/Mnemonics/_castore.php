@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\Type;
-use PHPJava\Utilities\Extractor;
 
 final class _castore implements OperationInterface
 {
@@ -11,8 +11,8 @@ final class _castore implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::getRealValue($this->popFromOperandStack());
-        $index = Extractor::getRealValue($this->popFromOperandStack());
+        $value = Normalizer::getPrimitiveValue($this->popFromOperandStack());
+        $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         /**
          * @var Type $arrayref

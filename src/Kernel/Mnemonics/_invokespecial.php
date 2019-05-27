@@ -3,8 +3,8 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
-use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Types\Type;
+use PHPJava\Kernel\Filters\Normalizer;
+use PHPJava\Kernel\Resolvers\MethodNameResolver;
 use PHPJava\Utilities\Formatter;
 
 final class _invokespecial implements OperationInterface
@@ -52,6 +52,10 @@ final class _invokespecial implements OperationInterface
                 ...$arguments
             );
 
+            if (MethodNameResolver::isSpecialMethod($methodName)) {
+                $result = $newObject;
+            }
+
             // NOTE: PHP has a problem which a reference object cannot replace to an object.
             if ($parsedSignature[0]['type'] === 'void') {
                 $this->replaceReferredObject($objectref, $newObject);
@@ -67,15 +71,11 @@ final class _invokespecial implements OperationInterface
         }
 
         if ($parsedSignature[0]['type'] !== 'void') {
-            [$type, $typeClass] = TypeResolver::getType($signature[0]);
-
-            /**
-             * @var Type $typeClass
-             */
             $this->pushToOperandStack(
-                $type === TypeResolver::IS_PRIMITIVE
-                    ? $typeClass::get($result)
-                    : $newObject
+                Normalizer::normalizeReturnValue(
+                    $result,
+                    $parsedSignature[0]
+                )
             );
         }
     }

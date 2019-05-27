@@ -6,11 +6,11 @@ use PHPJava\Core\JVM\Field\JavaDynamicField;
 use PHPJava\Core\JVM\Field\JavaStaticField;
 use PHPJava\Core\JVM\Invoker\JavaClassDynamicMethodInvoker;
 use PHPJava\Core\JVM\Invoker\JavaClassStaticMethodInvoker;
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Structures\_MethodInfo;
-use PHPJava\Utilities\Normalizer;
 
 class JavaClassInvoker implements ClassInvokerInterface
 {

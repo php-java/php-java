@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\Extractor;
+use PHPJava\Kernel\Filters\Normalizer;
 
 final class _lastore implements OperationInterface
 {
@@ -14,7 +14,7 @@ final class _lastore implements OperationInterface
     public function execute(): void
     {
         $value = $this->popFromOperandStack();
-        $index = Extractor::getRealValue($this->popFromOperandStack());
+        $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $arrayref = $this->popFromOperandStack();
 
         $arrayref[$index] = $value;

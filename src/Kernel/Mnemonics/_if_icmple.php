@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\Extractor;
+use PHPJava\Kernel\Filters\Normalizer;
 
 final class _if_icmple implements OperationInterface
 {
@@ -12,8 +12,8 @@ final class _if_icmple implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $rightOperand = Extractor::getRealValue($this->popFromOperandStack());
-        $leftOperand = Extractor::getRealValue($this->popFromOperandStack());
+        $rightOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
+        $leftOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         if ($leftOperand <= $rightOperand) {
             $this->setOffset($this->getProgramCounter() + $offset);
