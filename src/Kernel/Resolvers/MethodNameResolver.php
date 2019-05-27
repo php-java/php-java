@@ -17,7 +17,7 @@ class MethodNameResolver
         return $name;
     }
 
-    public static function isSpecialMethod(string $name): bool
+    public static function isConstructorMethod(string $name): bool
     {
         $flipped = array_flip(static::PHP_METHOD_MAP);
         return isset($flipped[$name]);

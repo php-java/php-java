@@ -27,4 +27,6 @@ interface ClassInvokerInterface
     public function getStatic(): AccessorInterface;
 
     public function getProvider(string $providerName): ProviderInterface;
+
+    public function getClassObject();
 }

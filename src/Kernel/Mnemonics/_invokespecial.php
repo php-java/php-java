@@ -5,6 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Resolvers\MethodNameResolver;
+use PHPJava\Utilities\CompareTool;
 use PHPJava\Utilities\Formatter;
 
 final class _invokespecial implements OperationInterface
@@ -33,11 +34,12 @@ final class _invokespecial implements OperationInterface
         /**
          * @var JavaClassInterface $objectref
          */
-        $newObject = $objectref = $this->popFromOperandStack();
+        $objectref = $newObject = $this->popFromOperandStack();
         try {
             $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
 
-            if ($objectref->getClassName() !== $className) {
+            // load a class dynamically if not match class name and objectref class
+            if (!CompareTool::compareClassName($className, $objectref->getClassName())) {
                 $newObject = JavaClass::load(
                     $className,
                     $this->javaClass->getOptions()
@@ -52,21 +54,46 @@ final class _invokespecial implements OperationInterface
                 ...$arguments
             );
 
-            if (MethodNameResolver::isSpecialMethod($methodName)) {
-                $result = $newObject;
-            }
+            // Call special method (e.g., <init>, <clinit> and soon)
+            if (MethodNameResolver::isConstructorMethod($methodName)) {
+                $result = $objectref;
 
-            // NOTE: PHP has a problem which a reference object cannot replace to an object.
-            if ($parsedSignature[0]['type'] === 'void') {
-                $this->replaceReferredObject($objectref, $newObject);
+                // Set initialized parent parameters
+
+                // Static field is written below.
+                $existFieldList = array_keys($objectref->getInvoker()->getStatic()->getFields()->getList());
+                foreach ($newObject->getInvoker()->getStatic()->getFields()->getList() as $fieldName => $value) {
+                    if (in_array($fieldName, $existFieldList, true)) {
+                        continue;
+                    }
+                    $objectref
+                        ->getInvoker()
+                        ->getStatic()
+                        ->getFields()
+                        ->set(
+                            $fieldName,
+                            $value
+                        );
+                }
+
+                // Dynamic field is written below.
+                $existFieldList = array_keys($objectref->getInvoker()->getDynamic()->getFields()->getList());
+                foreach ($newObject->getInvoker()->getDynamic()->getFields()->getList() as $fieldName => $value) {
+                    if (in_array($fieldName, $existFieldList, true)) {
+                        continue;
+                    }
+                    $objectref
+                        ->getInvoker()
+                        ->getDynamic()
+                        ->getFields()
+                        ->set(
+                            $fieldName,
+                            $value
+                        );
+                }
             }
         } catch (\Exception $e) {
-            $this->inspectExceptionTable(
-                JavaClass::load(Formatter::convertPHPNamespacesToJava(get_class($e)), $this->javaClass->getOptions())
-                    ->getInvoker()
-                    ->construct($e->getMessage(), 0, $e)
-                    ->getJavaClass()
-            );
+            $this->inspectExceptionTable($e);
             return;
         }
 

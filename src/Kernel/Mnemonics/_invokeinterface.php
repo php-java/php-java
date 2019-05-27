@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Internal\Lambda;
 use PHPJava\Utilities\Formatter;
@@ -31,6 +32,9 @@ final class _invokeinterface implements OperationInterface
             $arguments[$i] = $this->popFromOperandStack();
         }
 
+        /**
+         * @var JavaClassInterface|Lambda $objectref
+         */
         $objectref = $this->popFromOperandStack();
 
         if ($objectref instanceof Lambda) {

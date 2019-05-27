@@ -4,6 +4,7 @@ namespace PHPJava\Core\JVM\Invoker\Extended;
 use PHPJava\Exceptions\IllegalJavaClassException;
 use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Exceptions\UndefinedOpCodeException;
+use PHPJava\Kernel\Resolvers\MethodNameResolver;
 
 trait PHPMethodCallable
 {
@@ -24,12 +25,21 @@ trait PHPMethodCallable
             ->getMethods()
             ->callStaticInitializerIfNotInstantiated();
 
+        $realPHPMethodName = MethodNameResolver::resolve($name);
+
+        /**
+         * @var \ReflectionMethod $method
+         */
         $method = $this->findMethod($name);
 
-        $this->debugTool->getLogger()->debug('Call method: ' . $name);
+        $suffix = ($realPHPMethodName !== $name ? ' (Actual calling is the ' . $realPHPMethodName . ' method)' : '');
+        $this->debugTool->getLogger()->debug(
+            'Call method: ' . $name . $suffix
+        );
 
-        if ($this->isDynamic() && $this->javaClassInvoker->getClassObject() === null) {
-            $this->javaClassInvoker->construct();
+        if ($this->isDynamic() && MethodNameResolver::isConstructorMethod($name)) {
+            $this->javaClassInvoker->construct(...$arguments);
+            return $this->javaClassInvoker->getJavaClass();
         }
 
         $executed = $method
@@ -38,7 +48,9 @@ trait PHPMethodCallable
                 $arguments
             );
 
-        $this->debugTool->getLogger()->debug('Finish operation: ' . $name);
+        $this->debugTool->getLogger()->debug(
+            'Finish operation: ' . $name . $suffix
+        );
 
         return $executed;
     }

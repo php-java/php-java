@@ -7,6 +7,8 @@ use PHPJava\Packages\java\lang\NoSuchFieldException;
 
 class PHPDynamicField implements FieldInterface
 {
+    use FieldListable;
+
     /**
      * @var ClassInvokerInterface|PHPClassInvoker
      */

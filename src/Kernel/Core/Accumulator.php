@@ -164,17 +164,6 @@ trait Accumulator
         return count($this->stacks) - 1;
     }
 
-    public function replaceReferredObject($searchObject, $newObject): void
-    {
-        $replacedIndexes = [];
-        while (($index = array_search($searchObject, $this->stacks)) !== false &&
-            !in_array($index, $replacedIndexes, true)
-        ) {
-            $this->stacks[$index] = $newObject;
-            $replacedIndexes[] = $index;
-        }
-    }
-
     public function popStack(): self
     {
         array_pop($this->stacks);

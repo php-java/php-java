@@ -18,7 +18,7 @@ trait ExceptionTableInspectable
      * @throws \PHPJava\Exceptions\UnableToFindAttributionException
      * @return bool succeeded or failed
      */
-    public function inspectExceptionTable(JavaClass $e): bool
+    public function inspectExceptionTable(\Exception $e): bool
     {
         /**
          * @var CodeAttribute $codeAttribute
@@ -29,7 +29,7 @@ trait ExceptionTableInspectable
         );
 
         $expectedClass = Formatter::convertPHPNamespacesToJava(
-            $e->getClassName()
+            get_class($e)
         );
 
         $cpInfo = $this->getConstantPool();
@@ -51,21 +51,23 @@ trait ExceptionTableInspectable
             }
             $catchClass = Formatter::convertPHPNamespacesToJava($cpInfo[$cpInfo[$exception->getCatchType()]->getClassIndex()]->getString());
             if ($catchClass === $expectedClass) {
-                $this->pushToOperandStack($e);
+                $instance = JavaClass::load($catchClass)
+                    ->getInvoker()
+                    ->construct(
+                        $e->getMessage(),
+                        $e->getCode(),
+                        $e
+                    );
+                $this->pushToOperandStack($instance);
                 $this->setOffset($exception->getHandlerPc());
                 return true;
             }
         }
 
-        /**
-         * @var \Exception $exceptionObject
-         */
-        $exceptionObject = $e->getInvoker()->getClassObject();
-
         throw new UncaughtException(
-            $expectedClass . ': ' . $exceptionObject->getMessage(),
+            $expectedClass . ': ' . $e->getMessage(),
             0,
-            $exceptionObject
+            $e
         );
     }
 }
