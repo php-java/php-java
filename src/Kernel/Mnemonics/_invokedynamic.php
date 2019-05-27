@@ -4,6 +4,7 @@ namespace PHPJava\Kernel\Mnemonics;
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Attributes\BootstrapMethodsAttribute;
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Maps\MethodHandleKind;
 use PHPJava\Kernel\Resolvers\AttributionResolver;
 use PHPJava\Kernel\Structures\_BootstrapMethod;
@@ -13,7 +14,6 @@ use PHPJava\Packages\java\lang\invoke\MethodHandles;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 use PHPJava\Packages\java\lang\invoke\MethodType;
 use PHPJava\Utilities\Formatter;
-use PHPJava\Utilities\Normalizer;
 
 final class _invokedynamic implements OperationInterface
 {
@@ -82,6 +82,8 @@ final class _invokedynamic implements OperationInterface
          * @var _MethodHandle $methodHandle
          */
         $methodHandle = $cp[$bootstrapMethod->getBootstrapMethodRef()];
+
+        $result = null;
         switch ($methodHandle->getReferenceKind()) {
             case MethodHandleKind::REF_getField:
                 throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
@@ -136,10 +138,6 @@ final class _invokedynamic implements OperationInterface
                         $methodHandledName,
                         ...$arguments
                     );
-
-                if ($signature[0]['type'] !== 'void') {
-                    $this->pushToOperandStack($result);
-                }
                 break;
             case MethodHandleKind::REF_invokeSpecial:
                 throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
@@ -147,6 +145,15 @@ final class _invokedynamic implements OperationInterface
                 throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
             case MethodHandleKind::REF_invokeInterface:
                 throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
+        }
+
+        if ($signature[0]['type'] !== 'void') {
+            $this->pushToOperandStack(
+                Normalizer::normalizeReturnValue(
+                    $result,
+                    $signature[0]
+                )
+            );
         }
     }
 }

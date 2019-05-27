@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Int;
-use PHPJava\Utilities\Extractor;
 
 final class _ineg implements OperationInterface
 {
@@ -11,7 +11,7 @@ final class _ineg implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::getRealValue($this->popFromOperandStack());
+        $value = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(_Int::get($value * -1));
     }

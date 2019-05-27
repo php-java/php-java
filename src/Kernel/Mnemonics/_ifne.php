@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Utilities\Extractor;
+use PHPJava\Kernel\Filters\Normalizer;
 
 final class _ifne implements OperationInterface
 {
@@ -12,7 +12,7 @@ final class _ifne implements OperationInterface
     {
         $offset = $this->readShort();
 
-        $operand = Extractor::getRealValue($this->popFromOperandStack());
+        $operand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         if ($operand != 0) {
             $this->setOffset($this->getProgramCounter() + $offset);

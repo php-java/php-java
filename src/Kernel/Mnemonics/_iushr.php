@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Int;
-use PHPJava\Utilities\Extractor;
 
 final class _iushr implements OperationInterface
 {
@@ -11,8 +11,8 @@ final class _iushr implements OperationInterface
 
     public function execute(): void
     {
-        $value2 = (int) Extractor::getRealValue($this->popFromOperandStack());
-        $value1 = (int) Extractor::getRealValue($this->popFromOperandStack());
+        $value2 = (int) Normalizer::getPrimitiveValue($this->popFromOperandStack());
+        $value1 = (int) Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         // See: https://stackoverflow.com/questions/14428193/php-unsigned-right-shift-malfunctioning
         $this->pushToOperandStack(

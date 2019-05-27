@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Short;
-use PHPJava\Utilities\Extractor;
 
 final class _i2s implements OperationInterface
 {
@@ -11,7 +11,7 @@ final class _i2s implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::getRealValue(
+        $value = Normalizer::getPrimitiveValue(
             $this->popFromOperandStack()
         );
 

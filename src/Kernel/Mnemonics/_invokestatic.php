@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Utilities\Formatter;
 
 final class _invokestatic implements OperationInterface
@@ -64,7 +65,12 @@ final class _invokestatic implements OperationInterface
         }
 
         if ($signature[0]['type'] !== 'void') {
-            $this->pushToOperandStack($result);
+            $this->pushToOperandStack(
+                Normalizer::normalizeReturnValue(
+                    $result,
+                    $signature[0]
+                )
+            );
         }
     }
 }

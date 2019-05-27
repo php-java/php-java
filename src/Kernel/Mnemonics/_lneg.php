@@ -2,8 +2,8 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use Brick\Math\BigInteger;
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Long;
-use PHPJava\Utilities\Extractor;
 
 final class _lneg implements OperationInterface
 {
@@ -12,7 +12,7 @@ final class _lneg implements OperationInterface
 
     public function execute(): void
     {
-        $value = Extractor::getRealValue(
+        $value = Normalizer::getPrimitiveValue(
             $this->popFromOperandStack()
         );
 

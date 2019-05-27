@@ -1,9 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Types\_Array;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Packages\java\lang\ArrayIndexOutOfBoundsException;
-use PHPJava\Utilities\Extractor;
 
 class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 {
@@ -39,7 +39,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
             return $this->type ?? $default;
         }
         return TypeResolver::resolveFromPHPType(
-            Extractor::getRealValue($this->data[0])
+            Normalizer::getPrimitiveValue($this->data[0])
         ) ?? $this->type ?? $default;
     }
 

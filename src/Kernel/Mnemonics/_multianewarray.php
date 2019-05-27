@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Array\Collection;
-use PHPJava\Utilities\Extractor;
 use PHPJava\Utilities\Formatter;
 
 final class _multianewarray implements OperationInterface
@@ -23,7 +23,7 @@ final class _multianewarray implements OperationInterface
         $counts = array_fill(0, $dimensions, 0);
 
         for ($i = $dimensions - 1; $i >= 0; $i--) {
-            $counts[$i] = Extractor::getRealValue(
+            $counts[$i] = Normalizer::getPrimitiveValue(
                 $this->popFromOperandStack()
             );
         }

@@ -1,13 +1,14 @@
 <?php
-namespace PHPJava\Utilities;
+namespace PHPJava\Kernel\Filters;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NormalizerException;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\Type;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Utilities\Formatter;
 
 class Normalizer
 {
@@ -54,7 +55,7 @@ class Normalizer
              * @var Type $initiateClass
              */
             $value = $initiateClass::get(
-                Extractor::getRealValue($value)
+                static::getPrimitiveValue($value)
             );
         }
 
@@ -79,14 +80,40 @@ class Normalizer
                     $newFields[$name] = $class::get();
                     break;
                 case TypeResolver::IS_CLASS:
-                    $newFields[$name] = ClassHandler::initialize(
-                        _Object::class
-                    );
+                    $newFields[$name] = JavaClass::load('java.lang.Object');
                     break;
                 default:
                     throw new NormalizerException('Failed to normalize fields.');
             }
         }
         return $newFields;
+    }
+
+    /**
+     * @throws \PHPJava\Exceptions\TypeException
+     * @return Type
+     */
+    public static function normalizeReturnValue($value, array $signatureArray)
+    {
+        /**
+         * @var Type $typeClass
+         */
+        [$type, $typeClass] = TypeResolver::getType($signatureArray);
+
+        return $type === TypeResolver::IS_PRIMITIVE
+            ? $typeClass::get($value)
+            : $value;
+    }
+
+    /**
+     * @param $value
+     * @return bool|float|int|string
+     */
+    public static function getPrimitiveValue($value)
+    {
+        if ($value instanceof Type) {
+            return TypeResolver::extractPrimitiveValueFromType($value);
+        }
+        return $value;
     }
 }

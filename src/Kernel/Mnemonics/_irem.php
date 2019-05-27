@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Int;
-use PHPJava\Utilities\Extractor;
 
 final class _irem implements OperationInterface
 {
@@ -14,8 +14,8 @@ final class _irem implements OperationInterface
         // JVM spec wrote `value1 - (value1 / value2) * value2`
         // But PHP can modulo calculation.
 
-        $rightOperand = Extractor::getRealValue($this->popFromOperandStack());
-        $leftOperand = Extractor::getRealValue($this->popFromOperandStack());
+        $rightOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
+        $leftOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(
             _Int::get(
