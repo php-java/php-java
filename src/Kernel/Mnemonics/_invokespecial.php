@@ -5,6 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Resolvers\MethodNameResolver;
+use PHPJava\Utilities\CompareTool;
 use PHPJava\Utilities\Formatter;
 
 final class _invokespecial implements OperationInterface
@@ -33,11 +34,12 @@ final class _invokespecial implements OperationInterface
         /**
          * @var JavaClassInterface $objectref
          */
-        $newObject = $objectref = $this->popFromOperandStack();
+        $objectref = $newObject = $this->popFromOperandStack();
         try {
             $methodName = $cpInfo[$nameAndTypeIndex->getNameIndex()]->getString();
 
-            if ($className !== $objectref->getClassName()) {
+            // load a class dynamically if not match class name and objectref class
+            if (!CompareTool::compareClassName($className, $objectref->getClassName())) {
                 $newObject = JavaClass::load(
                     $className,
                     $this->javaClass->getOptions()
@@ -53,7 +55,7 @@ final class _invokespecial implements OperationInterface
             );
 
             // Call special method (e.g., <init>, <clinit> and soon)
-            if (MethodNameResolver::isSpecialMethod($methodName)) {
+            if (MethodNameResolver::isConstructorMethod($methodName)) {
                 $result = $objectref;
 
                 // Set initialized parent parameters

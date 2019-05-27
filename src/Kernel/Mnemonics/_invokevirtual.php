@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Utilities\Formatter;
@@ -35,6 +36,9 @@ final class _invokevirtual implements OperationInterface
             );
         }
 
+        /**
+         * @var JavaClassInterface $invokerClass
+         */
         $invokerClass = $this->popFromOperandStack();
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
 

@@ -24,6 +24,7 @@ final class _tableswitch implements OperationInterface
         $offsets['default'] = $this->readInt();
         $lowByte = $this->readInt();
         $highByte = $this->readInt();
+
         for ($i = $lowByte; $i <= $highByte; $i++) {
             $offsets[$i] = $this->readInt();
         }

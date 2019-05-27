@@ -14,7 +14,7 @@ class _Integer implements StructureInterface
 
     public function execute(): void
     {
-        $this->bytes = $this->readInt();
+        $this->bytes = $this->readUnsignedInt();
     }
 
     public function getBytes(): int
