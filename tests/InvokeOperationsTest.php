@@ -10,7 +10,7 @@ class InvokeOperationsTest extends Base
     public function testInvokeInterface()
     {
         ob_start();
-        $this->initiatedJavaClasses['InvokeDynamicTest']
+        static::$initiatedJavaClasses['InvokeDynamicTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

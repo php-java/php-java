@@ -9,7 +9,7 @@ class GetFieldTest extends Base
 
     public function testGetField()
     {
-        $actual = $this->initiatedJavaClasses['GetFieldTest']
+        $actual = static::$initiatedJavaClasses['GetFieldTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

@@ -9,7 +9,7 @@ class IntegerCalculationTest extends Base
 
     private function call($name, ...$parameters)
     {
-        return $this->initiatedJavaClasses['IntegerCalculationTest']
+        return static::$initiatedJavaClasses['IntegerCalculationTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

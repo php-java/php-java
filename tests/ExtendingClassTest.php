@@ -12,7 +12,7 @@ class ExtendingClassTest extends Base
     public function testExtendingClassPattern1()
     {
         ob_start();
-        $this->initiatedJavaClasses['ExtendingClassTest1']
+        static::$initiatedJavaClasses['ExtendingClassTest1']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -27,7 +27,7 @@ class ExtendingClassTest extends Base
     public function testExtendingClassPattern2()
     {
         ob_start();
-        $this->initiatedJavaClasses['ExtendingClassTest2']
+        static::$initiatedJavaClasses['ExtendingClassTest2']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

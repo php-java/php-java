@@ -12,7 +12,7 @@ class FloatOfTypesComparingTest extends Base
     public function testLessThan()
     {
         ob_start();
-        $this->initiatedJavaClasses['FloatOfTypesComparingTest']
+        static::$initiatedJavaClasses['FloatOfTypesComparingTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -27,7 +27,7 @@ class FloatOfTypesComparingTest extends Base
     public function testLessThanAndEquals()
     {
         ob_start();
-        $this->initiatedJavaClasses['FloatOfTypesComparingTest']
+        static::$initiatedJavaClasses['FloatOfTypesComparingTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -42,7 +42,7 @@ class FloatOfTypesComparingTest extends Base
     public function testGraterThan()
     {
         ob_start();
-        $this->initiatedJavaClasses['FloatOfTypesComparingTest']
+        static::$initiatedJavaClasses['FloatOfTypesComparingTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -57,7 +57,7 @@ class FloatOfTypesComparingTest extends Base
     public function testGraterThanAndEquals()
     {
         ob_start();
-        $this->initiatedJavaClasses['FloatOfTypesComparingTest']
+        static::$initiatedJavaClasses['FloatOfTypesComparingTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

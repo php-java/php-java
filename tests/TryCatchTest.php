@@ -12,7 +12,7 @@ class TryCatchTest extends Base
 
     public function testPassthroughTryStatement()
     {
-        $result = $this->initiatedJavaClasses['TryCatchTest']
+        $result = static::$initiatedJavaClasses['TryCatchTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -26,7 +26,7 @@ class TryCatchTest extends Base
 
     public function testPassthroughCatchStatement()
     {
-        $result = $this->initiatedJavaClasses['TryCatchTest']
+        $result = static::$initiatedJavaClasses['TryCatchTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -40,7 +40,7 @@ class TryCatchTest extends Base
 
     public function testImitationThrowException()
     {
-        $result = $this->initiatedJavaClasses['TryCatchTest']
+        $result = static::$initiatedJavaClasses['TryCatchTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -58,7 +58,7 @@ class TryCatchTest extends Base
         $this->expectExceptionMessage('String index out of range: -1');
 
         try {
-            $result = $this->initiatedJavaClasses['TryCatchTest']
+            $result = static::$initiatedJavaClasses['TryCatchTest']
                 ->getInvoker()
                 ->getStatic()
                 ->getMethods()

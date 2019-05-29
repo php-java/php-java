@@ -13,7 +13,7 @@ class MethodParameterTest extends Base
     {
         $e = null;
         try {
-            $value = $this->initiatedJavaClasses['MethodParameterTest']
+            $value = static::$initiatedJavaClasses['MethodParameterTest']
                 ->getInvoker()
                 ->getStatic()
                 ->getMethods()
@@ -33,7 +33,7 @@ class MethodParameterTest extends Base
     public function testMethodParameterIsEmpty()
     {
         ob_start();
-        $value = $this->initiatedJavaClasses['MethodParameterTest']
+        $value = static::$initiatedJavaClasses['MethodParameterTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -49,7 +49,7 @@ class MethodParameterTest extends Base
     {
         $e = null;
         try {
-            $value = $this->initiatedJavaClasses['MethodParameterTest']
+            $value = static::$initiatedJavaClasses['MethodParameterTest']
                 ->getInvoker()
                 ->getStatic()
                 ->getMethods()

@@ -35,7 +35,7 @@ class CallToAmbiguousMethodsTest extends Base
 
     private function call($name, ...$parameters)
     {
-        return $this->initiatedJavaClasses['CallToAmbiguousMethodsTest']
+        return static::$initiatedJavaClasses['CallToAmbiguousMethodsTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

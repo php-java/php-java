@@ -12,7 +12,7 @@ class JavaLangMathTest extends Base
     public function testAbs()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -27,7 +27,7 @@ class JavaLangMathTest extends Base
     public function testAcos()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -42,7 +42,7 @@ class JavaLangMathTest extends Base
     public function testAddExact()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -58,7 +58,7 @@ class JavaLangMathTest extends Base
     public function testAsin()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -73,7 +73,7 @@ class JavaLangMathTest extends Base
     public function testAtan()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -88,7 +88,7 @@ class JavaLangMathTest extends Base
     public function testAtan2()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -104,7 +104,7 @@ class JavaLangMathTest extends Base
     public function testCbrt()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -119,7 +119,7 @@ class JavaLangMathTest extends Base
     public function testCeil()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -134,7 +134,7 @@ class JavaLangMathTest extends Base
     public function testCopySign()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -150,7 +150,7 @@ class JavaLangMathTest extends Base
     public function testCos()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -165,7 +165,7 @@ class JavaLangMathTest extends Base
     public function testCosh()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -180,7 +180,7 @@ class JavaLangMathTest extends Base
     public function testDecrementExact()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -195,7 +195,7 @@ class JavaLangMathTest extends Base
     public function testExp()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -210,7 +210,7 @@ class JavaLangMathTest extends Base
     public function testExpm1()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -225,7 +225,7 @@ class JavaLangMathTest extends Base
     public function testFloor()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -241,7 +241,7 @@ class JavaLangMathTest extends Base
     // public function testFloorDiv()
     // {
     //     ob_start();
-    //     $this->initiatedJavaClasses['JavaLangMathTest']
+    //     static::$initiatedJavaClasses['JavaLangMathTest']
     //         ->getInvoker()
     //         ->getStatic()
     //         ->getMethods()
@@ -258,7 +258,7 @@ class JavaLangMathTest extends Base
     // public function testFloorMod()
     // {
     //     ob_start();
-    //     $this->initiatedJavaClasses['JavaLangMathTest']
+    //     static::$initiatedJavaClasses['JavaLangMathTest']
     //         ->getInvoker()
     //         ->getStatic()
     //         ->getMethods()
@@ -274,7 +274,7 @@ class JavaLangMathTest extends Base
     public function testIncrementExact()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -289,7 +289,7 @@ class JavaLangMathTest extends Base
     public function testLog()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -304,7 +304,7 @@ class JavaLangMathTest extends Base
     public function testLog10()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -319,7 +319,7 @@ class JavaLangMathTest extends Base
     public function testLog1p()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -334,7 +334,7 @@ class JavaLangMathTest extends Base
     public function testMax()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -350,7 +350,7 @@ class JavaLangMathTest extends Base
     public function testMin()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -367,7 +367,7 @@ class JavaLangMathTest extends Base
     // public function testMultiplyExact()
     // {
     //     ob_start();
-    //     $this->initiatedJavaClasses['JavaLangMathTest']
+    //     static::$initiatedJavaClasses['JavaLangMathTest']
     //         ->getInvoker()
     //         ->getStatic()
     //         ->getMethods()
@@ -384,7 +384,7 @@ class JavaLangMathTest extends Base
     // public function testMultiplyFull()
     // {
     //     ob_start();
-    //     $this->initiatedJavaClasses['JavaLangMathTest']
+    //     static::$initiatedJavaClasses['JavaLangMathTest']
     //         ->getInvoker()
     //         ->getStatic()
     //         ->getMethods()
@@ -400,7 +400,7 @@ class JavaLangMathTest extends Base
     public function testPow()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -418,7 +418,7 @@ class JavaLangMathTest extends Base
         mt_srand(1234);
 
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -432,7 +432,7 @@ class JavaLangMathTest extends Base
     public function testRound()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -447,7 +447,7 @@ class JavaLangMathTest extends Base
     public function testSin()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -462,7 +462,7 @@ class JavaLangMathTest extends Base
     public function testSinh()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -477,7 +477,7 @@ class JavaLangMathTest extends Base
     public function testSqrt()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -492,7 +492,7 @@ class JavaLangMathTest extends Base
     public function testSubtractExact()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -508,7 +508,7 @@ class JavaLangMathTest extends Base
     public function testTan()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -523,7 +523,7 @@ class JavaLangMathTest extends Base
     public function testTanh()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangMathTest']
+        static::$initiatedJavaClasses['JavaLangMathTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

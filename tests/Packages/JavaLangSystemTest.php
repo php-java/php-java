@@ -12,7 +12,7 @@ class JavaLangSystemTest extends Base
     public function testIdentityHashCode()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangSystemTest']
+        static::$initiatedJavaClasses['JavaLangSystemTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

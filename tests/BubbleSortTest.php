@@ -10,7 +10,7 @@ class BubbleSortTest extends Base
     public function testBubbleSortAsc()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['BubbleSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['BubbleSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -25,7 +25,7 @@ class BubbleSortTest extends Base
     public function testBubbleSortDesc()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['BubbleSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['BubbleSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -40,7 +40,7 @@ class BubbleSortTest extends Base
     public function testBubbleSortAscByParam()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['BubbleSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['BubbleSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -58,7 +58,7 @@ class BubbleSortTest extends Base
     public function testBubbleSortDescByParam()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['BubbleSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['BubbleSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
