@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class Base extends TestCase
 {
     protected $fixtures = [];
-    protected $initiatedJavaClasses = [];
+    protected static $initiatedJavaClasses = [];
 
     public function setUp(): void
     {
@@ -22,8 +22,11 @@ class Base extends TestCase
         ]);
 
         foreach ($this->fixtures as $fixture) {
+            if (isset(static::$initiatedJavaClasses[$fixture])) {
+                continue;
+            }
             exec('javac -classpath ' . $pathRoot . ' -encoding UTF8 ' . $pathRoot . str_replace(['../', './'], '', $fixture) . '.java -d ' . __DIR__ . '/caches');
-            $this->initiatedJavaClasses[$fixture] = JavaClass::load(
+            static::$initiatedJavaClasses[$fixture] = JavaClass::load(
                 $fixture
             );
         }

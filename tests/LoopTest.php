@@ -9,7 +9,7 @@ class LoopTest extends Base
 
     public function testCallCalculateByFor()
     {
-        $calculatedValue = $this->initiatedJavaClasses['LoopTest']
+        $calculatedValue = static::$initiatedJavaClasses['LoopTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -19,7 +19,7 @@ class LoopTest extends Base
             (string) $calculatedValue
         );
 
-        $calculatedValue = $this->initiatedJavaClasses['LoopTest']
+        $calculatedValue = static::$initiatedJavaClasses['LoopTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -32,7 +32,7 @@ class LoopTest extends Base
 
     public function testCallCalculateByWhile()
     {
-        $calculatedValue = $this->initiatedJavaClasses['LoopTest']
+        $calculatedValue = static::$initiatedJavaClasses['LoopTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -42,7 +42,7 @@ class LoopTest extends Base
             (string) $calculatedValue
         );
 
-        $calculatedValue = $this->initiatedJavaClasses['LoopTest']
+        $calculatedValue = static::$initiatedJavaClasses['LoopTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

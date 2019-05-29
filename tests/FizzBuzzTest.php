@@ -11,7 +11,7 @@ class FizzBuzzTest extends Base
     {
         ob_start();
 
-        $calculatedValue = $this->initiatedJavaClasses['FizzBuzzTest']
+        $calculatedValue = static::$initiatedJavaClasses['FizzBuzzTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

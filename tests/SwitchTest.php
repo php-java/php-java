@@ -10,7 +10,7 @@ class SwitchTest extends Base
     public function testCallTableswitchPattern1()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
+        $calculatedValue = static::$initiatedJavaClasses['SwitchTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -29,7 +29,7 @@ class SwitchTest extends Base
     public function testTableswitchPattern2()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
+        $calculatedValue = static::$initiatedJavaClasses['SwitchTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -48,7 +48,7 @@ class SwitchTest extends Base
     public function testTableswitchPattern3()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
+        $calculatedValue = static::$initiatedJavaClasses['SwitchTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -67,7 +67,7 @@ class SwitchTest extends Base
     public function testCallLookupswitchPattern1()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
+        $calculatedValue = static::$initiatedJavaClasses['SwitchTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -86,7 +86,7 @@ class SwitchTest extends Base
     public function testCallLookupswitchPattern2()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
+        $calculatedValue = static::$initiatedJavaClasses['SwitchTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -105,7 +105,7 @@ class SwitchTest extends Base
     public function testCallLookupswitchPattern3()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['SwitchTest']
+        $calculatedValue = static::$initiatedJavaClasses['SwitchTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

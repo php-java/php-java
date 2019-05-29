@@ -12,7 +12,7 @@ class ConstructTest extends Base
     public function testConstructorWithParametersPattern1()
     {
         ob_start();
-        $result = $this->initiatedJavaClasses['ConstructorWithParametersTest']
+        $result = static::$initiatedJavaClasses['ConstructorWithParametersTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -27,7 +27,7 @@ class ConstructTest extends Base
     public function testConstructorWithParametersPattern2()
     {
         ob_start();
-        $result = $this->initiatedJavaClasses['ConstructorWithParametersTest']
+        $result = static::$initiatedJavaClasses['ConstructorWithParametersTest']
             ->getInvoker()
             ->construct('Hello World!')
             ->getDynamic()
@@ -40,7 +40,7 @@ class ConstructTest extends Base
     public function testConstructorNoParameterPattern1()
     {
         ob_start();
-        $result = $this->initiatedJavaClasses['ConstructorNoParameterTest']
+        $result = static::$initiatedJavaClasses['ConstructorNoParameterTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -55,7 +55,7 @@ class ConstructTest extends Base
     public function testConstructorNoParameterPattern2()
     {
         ob_start();
-        $result = $this->initiatedJavaClasses['ConstructorNoParameterTest']
+        $result = static::$initiatedJavaClasses['ConstructorNoParameterTest']
             ->getInvoker()
             ->construct()
             ->getDynamic()
@@ -67,7 +67,7 @@ class ConstructTest extends Base
 
     public function testDynamicField()
     {
-        $text = $this->initiatedJavaClasses['ConstructTest']
+        $text = static::$initiatedJavaClasses['ConstructTest']
             ->getInvoker()
             ->construct()
             ->getDynamic()
@@ -76,7 +76,7 @@ class ConstructTest extends Base
 
         $this->assertEquals('Default Text', $text);
 
-        $text = $this->initiatedJavaClasses['ConstructTest']
+        $text = static::$initiatedJavaClasses['ConstructTest']
             ->getInvoker()
             ->getDynamic()
             ->getFields()
@@ -87,7 +87,7 @@ class ConstructTest extends Base
 
         // Re-construction will be changed to default text
 
-        $text = $this->initiatedJavaClasses['ConstructTest']
+        $text = static::$initiatedJavaClasses['ConstructTest']
             ->getInvoker()
             ->construct()
             ->getDynamic()

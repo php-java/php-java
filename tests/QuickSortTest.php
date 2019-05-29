@@ -10,7 +10,7 @@ class QuickSortTest extends Base
     public function testQuickSortAsc()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['QuickSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['QuickSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -28,7 +28,7 @@ class QuickSortTest extends Base
     public function testQuickSortDesc()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['QuickSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['QuickSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

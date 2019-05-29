@@ -9,7 +9,7 @@ class IntConstTest extends Base
 
     private function call($method)
     {
-        $calculatedValue = $this->initiatedJavaClasses['IntConstTest']
+        $calculatedValue = static::$initiatedJavaClasses['IntConstTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

@@ -11,7 +11,7 @@ class BinaryOperatorTest extends Base
 
     private function call($method, $value1, $value2)
     {
-        $calculatedValue = $this->initiatedJavaClasses['BinaryOperatorTest']
+        $calculatedValue = static::$initiatedJavaClasses['BinaryOperatorTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -22,7 +22,7 @@ class BinaryOperatorTest extends Base
 
     private function callWithLong($method, $value1, $value2)
     {
-        $calculatedValue = $this->initiatedJavaClasses['BinaryOperatorTest']
+        $calculatedValue = static::$initiatedJavaClasses['BinaryOperatorTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

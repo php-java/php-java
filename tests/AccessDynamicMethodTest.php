@@ -11,7 +11,7 @@ class AccessDynamicMethodTest extends Base
     {
         ob_start();
         // call main
-        $this->initiatedJavaClasses['AccessDynamicMethodTest']
+        static::$initiatedJavaClasses['AccessDynamicMethodTest']
             ->getInvoker()
             ->construct()
             ->getDynamic()
@@ -29,7 +29,7 @@ class AccessDynamicMethodTest extends Base
     {
         ob_start();
         // call main
-        $this->initiatedJavaClasses['AccessDynamicMethodTest']
+        static::$initiatedJavaClasses['AccessDynamicMethodTest']
             ->getInvoker()
             ->construct()
             ->getDynamic()
@@ -46,7 +46,7 @@ class AccessDynamicMethodTest extends Base
     public function testCallReturnTest()
     {
         // call main
-        $result = $this->initiatedJavaClasses['AccessDynamicMethodTest']
+        $result = static::$initiatedJavaClasses['AccessDynamicMethodTest']
             ->getInvoker()
             ->construct()
             ->getDynamic()

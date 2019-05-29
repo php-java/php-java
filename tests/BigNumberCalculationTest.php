@@ -12,7 +12,7 @@ class BigNumberCalculationTest extends Base
 
     private function call($method, ...$arguments)
     {
-        return $this->initiatedJavaClasses['BigNumberCalculationTest']
+        return static::$initiatedJavaClasses['BigNumberCalculationTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

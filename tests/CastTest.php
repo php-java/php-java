@@ -17,7 +17,7 @@ class CastTest extends Base
 
     public function testIntToShort()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -32,7 +32,7 @@ class CastTest extends Base
 
     public function testIntToDouble()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -48,7 +48,7 @@ class CastTest extends Base
 
     public function testIntToFloat()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -65,7 +65,7 @@ class CastTest extends Base
     public function testIntToByte()
     {
         // Byte processing is special.
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -82,7 +82,7 @@ class CastTest extends Base
     public function testIntToChar()
     {
         // Char processing is special.
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -98,7 +98,7 @@ class CastTest extends Base
 
     public function testLongToDouble()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -113,7 +113,7 @@ class CastTest extends Base
 
     public function testLongToFloat()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -129,7 +129,7 @@ class CastTest extends Base
 
     public function testLongToInt()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -145,7 +145,7 @@ class CastTest extends Base
 
     public function testDoubleToFloat()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -160,7 +160,7 @@ class CastTest extends Base
 
     public function testDoubleToInt()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -176,7 +176,7 @@ class CastTest extends Base
 
     public function testDoubleToLong()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -192,7 +192,7 @@ class CastTest extends Base
 
     public function testFloatToDouble()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -207,7 +207,7 @@ class CastTest extends Base
 
     public function testFloatToInt()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -223,7 +223,7 @@ class CastTest extends Base
 
     public function testFloatToLong()
     {
-        $result = $this->initiatedJavaClasses['CastTest']
+        $result = static::$initiatedJavaClasses['CastTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

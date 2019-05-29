@@ -10,7 +10,7 @@ class ObjectCompareTest extends Base
     public function testObjectCompareTest()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['ObjectCompareTest']
+        $calculatedValue = static::$initiatedJavaClasses['ObjectCompareTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

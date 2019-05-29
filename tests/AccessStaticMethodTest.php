@@ -11,7 +11,7 @@ class AccessStaticMethodTest extends Base
     {
         ob_start();
         // call main
-        $this->initiatedJavaClasses['AccessStaticMethodTest']
+        static::$initiatedJavaClasses['AccessStaticMethodTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -28,7 +28,7 @@ class AccessStaticMethodTest extends Base
     {
         ob_start();
         // call main
-        $this->initiatedJavaClasses['AccessStaticMethodTest']
+        static::$initiatedJavaClasses['AccessStaticMethodTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -44,7 +44,7 @@ class AccessStaticMethodTest extends Base
     public function testCallReturnTest()
     {
         // call main
-        $result = $this->initiatedJavaClasses['AccessStaticMethodTest']
+        $result = static::$initiatedJavaClasses['AccessStaticMethodTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

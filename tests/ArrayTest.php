@@ -9,7 +9,7 @@ class ArrayTest extends Base
 
     private function call($method)
     {
-        return $this->initiatedJavaClasses['ArrayTest']
+        return static::$initiatedJavaClasses['ArrayTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

@@ -10,7 +10,7 @@ class EnclosingMethodTest extends Base
     public function testEnclosingMethod()
     {
         ob_start();
-        $this->initiatedJavaClasses['EnclosingMethodTest']
+        static::$initiatedJavaClasses['EnclosingMethodTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

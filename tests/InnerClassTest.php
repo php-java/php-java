@@ -11,7 +11,7 @@ class InnerClassTest extends Base
     {
         ob_start();
         // call main
-        $this->initiatedJavaClasses['InnerClassTest']
+        static::$initiatedJavaClasses['InnerClassTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

@@ -11,7 +11,7 @@ class FloatCalculationTest extends Base
 
     private function call($name, ...$parameters)
     {
-        return (string) $this->initiatedJavaClasses['FloatCalculationTest']
+        return (string) static::$initiatedJavaClasses['FloatCalculationTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

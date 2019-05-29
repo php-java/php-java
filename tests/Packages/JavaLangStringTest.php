@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Tests\Packages;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
 use PHPJava\Tests\Base;
@@ -14,7 +15,7 @@ class JavaLangStringTest extends Base
     public function testCharAtIndex()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangStringTest']
+        static::$initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -33,7 +34,7 @@ class JavaLangStringTest extends Base
         $this->expectExceptionMessage('String index out of range: -1');
 
         try {
-            $this->initiatedJavaClasses['JavaLangStringTest']
+            static::$initiatedJavaClasses['JavaLangStringTest']
                 ->getInvoker()
                 ->getStatic()
                 ->getMethods()
@@ -53,7 +54,7 @@ class JavaLangStringTest extends Base
         $this->expectExceptionMessage('String index out of range: 3');
 
         try {
-            $this->initiatedJavaClasses['JavaLangStringTest']
+            static::$initiatedJavaClasses['JavaLangStringTest']
                 ->getInvoker()
                 ->getStatic()
                 ->getMethods()
@@ -70,7 +71,7 @@ class JavaLangStringTest extends Base
     public function testConcat()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangStringTest']
+        static::$initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -86,7 +87,7 @@ class JavaLangStringTest extends Base
     public function testHashCode()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangStringTest']
+        static::$initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -104,7 +105,7 @@ class JavaLangStringTest extends Base
     public function testIntern()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangStringTest']
+        static::$initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -122,7 +123,7 @@ class JavaLangStringTest extends Base
     public function testNotInterned()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangStringTest']
+        static::$initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -139,8 +140,11 @@ class JavaLangStringTest extends Base
 
     public function testNotInternedAfterLiteral()
     {
+        // This test need dynamic loading.
+        static::$initiatedJavaClasses['JavaLangStringTest'] = JavaClass::load('JavaLangStringTest');
+
         ob_start();
-        $this->initiatedJavaClasses['JavaLangStringTest']
+        static::$initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -161,7 +165,7 @@ class JavaLangStringTest extends Base
     public function testReplace()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangStringTest']
+        static::$initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -178,7 +182,7 @@ class JavaLangStringTest extends Base
     public function testToLowerCase()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangStringTest']
+        static::$initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -193,7 +197,7 @@ class JavaLangStringTest extends Base
     public function testToUpperCase()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaLangStringTest']
+        static::$initiatedJavaClasses['JavaLangStringTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

@@ -9,7 +9,7 @@ class InstanceOfTest extends Base
 
     private function call($method)
     {
-        return $this->initiatedJavaClasses['InstanceOfTest']
+        return static::$initiatedJavaClasses['InstanceOfTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

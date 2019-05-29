@@ -11,7 +11,7 @@ class BranchIfTest extends Base
 
     private function call($method, $value1, $value2)
     {
-        $calculatedValue = $this->initiatedJavaClasses['BranchIfTest']
+        $calculatedValue = static::$initiatedJavaClasses['BranchIfTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
