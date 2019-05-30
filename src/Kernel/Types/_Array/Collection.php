@@ -81,9 +81,6 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
         unset($this->data[$offset]);
     }
 
-    /**
-     * @param int $offset
-     */
     public function offsetSet($offset, $value)
     {
         if ($offset === null) {

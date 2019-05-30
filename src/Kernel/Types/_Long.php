@@ -8,13 +8,18 @@ class _Long extends Type
     protected $nameInJava = 'long';
     protected $nameInPHP = 'integer';
 
-    const MIN = -9223372036854775808;
-    const MAX = 9223372036854775807;
+    const MIN = PHP_INT_MIN;
+    const MAX = PHP_INT_MAX;
 
     public static function isValid($value): bool
     {
         if (!is_scalar($value)) {
             return false;
+        }
+
+        // Adjustment negative value for PHP problems
+        if ($value === static::MIN) {
+            $value++;
         }
         if (!ctype_digit((string) abs($value))) {
             return false;

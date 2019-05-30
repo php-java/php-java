@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
+use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\Type;
 
 final class _fastore implements OperationInterface
@@ -20,10 +21,6 @@ final class _fastore implements OperationInterface
         $arrayref = $this->popFromOperandStack();
 
         // The value is a ref.
-        $arrayref[$index] = $value;
-
-        $this->pushToOperandStack(
-            $arrayref
-        );
+        $arrayref[$index] = _Float::get($value);
     }
 }

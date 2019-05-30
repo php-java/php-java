@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
+use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\Type;
 
 final class _dastore implements OperationInterface
@@ -23,10 +24,6 @@ final class _dastore implements OperationInterface
         $arrayref = $this->popFromOperandStack();
 
         // The value is a ref.
-        $arrayref[$index] = $value;
-
-        $this->pushToOperandStack(
-            $arrayref
-        );
+        $arrayref[$index] = _Double::get($value);
     }
 }

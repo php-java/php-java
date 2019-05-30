@@ -71,16 +71,17 @@ class Normalizer
              */
             $cp = $value->getConstantPool();
             $descriptor = Formatter::parseSignature($cp[$value->getDescriptorIndex()]->getString());
-            [$type, $class] = TypeResolver::getType($descriptor[0]);
+            [$type, $class, $deepArray] = TypeResolver::getType($descriptor[0]);
+
             switch ($type) {
                 case TypeResolver::IS_PRIMITIVE:
-                    /**
-                     * @var Type $class
-                     */
                     $newFields[$name] = $class::get();
                     break;
                 case TypeResolver::IS_CLASS:
                     $newFields[$name] = JavaClass::load('java.lang.Object');
+                    break;
+                case TypeResolver::IS_ARRAY:
+                    $newFields[$name] = null;
                     break;
                 default:
                     throw new NormalizerException('Failed to normalize fields.');

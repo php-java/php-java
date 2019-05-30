@@ -16,7 +16,6 @@ final class _aastore implements OperationInterface
         $value = $this->popFromOperandStack();
         $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $arrayref = $this->popFromOperandStack();
-
         $arrayref[$index] = $value;
     }
 }

@@ -21,9 +21,5 @@ final class _bastore implements OperationInterface
 
         // The value is a ref.
         $arrayref[$index] = $value;
-
-        $this->pushToOperandStack(
-            $arrayref
-        );
     }
 }
