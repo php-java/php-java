@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-class _Integer implements StructureInterface
+class LongInfo implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
@@ -10,11 +10,11 @@ class _Integer implements StructureInterface
     /**
      * @var int
      */
-    private $bytes;
+    private $bytes = 0;
 
     public function execute(): void
     {
-        $this->bytes = $this->readUnsignedInt();
+        $this->bytes = $this->readUnsignedLong();
     }
 
     public function getBytes(): int

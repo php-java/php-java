@@ -17,7 +17,7 @@ class AppendFrame implements FrameInterface
     private $offsetDelta;
 
     /**
-     * @var \PHPJava\Kernel\Structures\_VerificationTypeInfo[]
+     * @var \PHPJava\Kernel\Structures\VerificationTypeInfo[]
      */
     private $locals = [];
 
@@ -26,7 +26,7 @@ class AppendFrame implements FrameInterface
         $this->frameType = $this->readUnsignedByte();
         $this->offsetDelta = $this->readUnsignedShort();
         for ($i = 0, $s = $this->frameType - 251; $i < $s; $i++) {
-            $local = new \PHPJava\Kernel\Structures\_VerificationTypeInfo($this->reader);
+            $local = new \PHPJava\Kernel\Structures\VerificationTypeInfo($this->reader);
             $local->execute();
             $this->locals[] = $local;
         }

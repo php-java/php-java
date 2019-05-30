@@ -51,7 +51,7 @@ class StringConcatFactory extends _Object
         $name = $b;
         $concatType = $c;
         $recipe = $d;
-        if ($recipe instanceof \PHPJava\Kernel\Structures\_String) {
+        if ($recipe instanceof \PHPJava\Kernel\Structures\StringInfo) {
             $recipe = $cp[$recipe->getStringIndex()]->getString();
         }
         $constants = $e;

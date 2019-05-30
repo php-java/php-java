@@ -1,9 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Structures\_Integer;
-use PHPJava\Kernel\Structures\_String;
-use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Kernel\Structures\IntegerInfo;
+use PHPJava\Kernel\Structures\StringInfo;
+use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\_Int;
 
@@ -19,13 +19,13 @@ final class _ldc_w implements OperationInterface
 
         $value = null;
 
-        if ($data instanceof _String) {
+        if ($data instanceof StringInfo) {
             $value = $cpInfo[$data->getStringIndex()];
 
-            if ($value instanceof _Utf8) {
+            if ($value instanceof Utf8Info) {
                 $value = $value->getStringObject();
             }
-        } elseif (($data instanceof _Integer)) {
+        } elseif (($data instanceof IntegerInfo)) {
             $value = _Int::get($data->getBytes());
         } elseif ($data instanceof _Float) {
             $value = \PHPJava\Kernel\Types\_Float::get($data->getBytes());

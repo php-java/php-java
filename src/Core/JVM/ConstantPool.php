@@ -6,22 +6,22 @@ use PHPJava\Exceptions\ReadEntryException;
 use PHPJava\Exceptions\ReadOnlyException;
 use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Kernel\Maps\ConstantPoolTag;
-use PHPJava\Kernel\Structures\_Class;
-use PHPJava\Kernel\Structures\_Double;
-use PHPJava\Kernel\Structures\_Fieldref;
-use PHPJava\Kernel\Structures\_Float;
-use PHPJava\Kernel\Structures\_Integer;
-use PHPJava\Kernel\Structures\_InterfaceMethodref;
-use PHPJava\Kernel\Structures\_InvokeDynamic;
-use PHPJava\Kernel\Structures\_Long;
-use PHPJava\Kernel\Structures\_MethodHandle;
-use PHPJava\Kernel\Structures\_Methodref;
-use PHPJava\Kernel\Structures\_MethodType;
-use PHPJava\Kernel\Structures\_NameAndType;
-use PHPJava\Kernel\Structures\_String;
-use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Kernel\Structures\ClassInfo;
+use PHPJava\Kernel\Structures\DoubleInfo;
+use PHPJava\Kernel\Structures\FieldrefInfo;
+use PHPJava\Kernel\Structures\FloatInfo;
 use PHPJava\Kernel\Structures\FreezableInterface;
+use PHPJava\Kernel\Structures\IntegerInfo;
+use PHPJava\Kernel\Structures\InterfaceMethodrefInfo;
+use PHPJava\Kernel\Structures\InvokeDynamicInfo;
+use PHPJava\Kernel\Structures\LongInfo;
+use PHPJava\Kernel\Structures\MethodHandleInfo;
+use PHPJava\Kernel\Structures\MethodrefInfo;
+use PHPJava\Kernel\Structures\MethodTypeInfo;
+use PHPJava\Kernel\Structures\NameAndTypeInfo;
+use PHPJava\Kernel\Structures\StringInfo;
 use PHPJava\Kernel\Structures\StructureInterface;
+use PHPJava\Kernel\Structures\Utf8Info;
 
 class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
@@ -51,8 +51,8 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
             $this->entries[$i]->execute();
 
             // Java's Long and Double problem.
-            if ($this->entries[$i] instanceof _Long ||
-                $this->entries[$i] instanceof _Double) {
+            if ($this->entries[$i] instanceof LongInfo ||
+                $this->entries[$i] instanceof DoubleInfo) {
                 $i++;
             }
         }
@@ -73,33 +73,33 @@ class ConstantPool implements \ArrayAccess, \Countable, \IteratorAggregate
     {
         switch ($entryTag) {
             case ConstantPoolTag::CONSTANT_Class:
-                return new _Class($this->reader);
+                return new ClassInfo($this->reader);
             case ConstantPoolTag::CONSTANT_Fieldref:
-                return new _Fieldref($this->reader);
+                return new FieldrefInfo($this->reader);
             case ConstantPoolTag::CONSTANT_Methodref:
-                return new _Methodref($this->reader);
+                return new MethodrefInfo($this->reader);
             case ConstantPoolTag::CONSTANT_String:
-                return new _String($this->reader);
+                return new StringInfo($this->reader);
             case ConstantPoolTag::CONSTANT_Integer:
-                return new _Integer($this->reader);
+                return new IntegerInfo($this->reader);
             case ConstantPoolTag::CONSTANT_Float:
-                return new _Float($this->reader);
+                return new FloatInfo($this->reader);
             case ConstantPoolTag::CONSTANT_Long:
-                return new _Long($this->reader);
+                return new LongInfo($this->reader);
             case ConstantPoolTag::CONSTANT_Double:
-                return new _Double($this->reader);
+                return new DoubleInfo($this->reader);
             case ConstantPoolTag::CONSTANT_NameAndType:
-                return new _NameAndType($this->reader);
+                return new NameAndTypeInfo($this->reader);
             case ConstantPoolTag::CONSTANT_Utf8:
-                return new _Utf8($this->reader);
+                return new Utf8Info($this->reader);
             case ConstantPoolTag::CONSTANT_InterfaceMethodref:
-                return new _InterfaceMethodref($this->reader);
+                return new InterfaceMethodrefInfo($this->reader);
             case ConstantPoolTag::CONSTANT_InvokeDynamic:
-                return new _InvokeDynamic($this->reader);
+                return new InvokeDynamicInfo($this->reader);
             case ConstantPoolTag::CONSTANT_MethodHandle:
-                return new _MethodHandle($this->reader);
+                return new MethodHandleInfo($this->reader);
             case ConstantPoolTag::CONSTANT_MethodType:
-                return new _MethodType($this->reader);
+                return new MethodTypeInfo($this->reader);
             case ConstantPoolTag::CONSTANT_Module:
             case ConstantPoolTag::CONSTANT_Package:
                 throw new ReadEntryException('Entry tag ' . sprintf('0x%04X', $entryTag) . ' is not implemented.');

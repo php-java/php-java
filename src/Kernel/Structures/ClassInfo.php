@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-class _String implements StructureInterface
+class ClassInfo implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
@@ -10,15 +10,15 @@ class _String implements StructureInterface
     /**
      * @var int
      */
-    private $stringIndex;
+    private $classIndex;
 
     public function execute(): void
     {
-        $this->stringIndex = $this->readUnsignedShort();
+        $this->classIndex = $this->readUnsignedShort();
     }
 
-    public function getStringIndex(): int
+    public function getClassIndex(): int
     {
-        return $this->stringIndex;
+        return $this->classIndex;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-class _Methodref implements StructureInterface
+class InvokeDynamicInfo implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
@@ -10,22 +10,22 @@ class _Methodref implements StructureInterface
     /**
      * @var int
      */
-    private $classIndex;
+    private $bootstrapMethodAttrIndex = 0;
 
     /**
      * @var int
      */
-    private $nameAndTypeIndex;
+    private $nameAndTypeIndex = 0;
 
     public function execute(): void
     {
-        $this->classIndex = $this->readUnsignedShort();
+        $this->bootstrapMethodAttrIndex = $this->readUnsignedShort();
         $this->nameAndTypeIndex = $this->readUnsignedShort();
     }
 
-    public function getClassIndex(): int
+    public function getBootstrapMethodAttrIndex(): int
     {
-        return $this->classIndex;
+        return $this->bootstrapMethodAttrIndex;
     }
 
     public function getNameAndTypeIndex(): int

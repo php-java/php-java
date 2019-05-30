@@ -14,7 +14,7 @@ final class StackMapTableAttribute implements AttributeInterface
     private $numberOfEntries;
 
     /**
-     * @var \PHPJava\Kernel\Structures\_StackMapFrame[]
+     * @var \PHPJava\Kernel\Structures\StackMapFrameInfo[]
      */
     private $stackMapFrames = [];
 
@@ -22,7 +22,7 @@ final class StackMapTableAttribute implements AttributeInterface
     {
         $this->numberOfEntries = $this->readUnsignedShort();
         for ($i = 0; $i < $this->numberOfEntries; $i++) {
-            $stackMapFrame = new \PHPJava\Kernel\Structures\_StackMapFrame($this->reader);
+            $stackMapFrame = new \PHPJava\Kernel\Structures\StackMapFrameInfo($this->reader);
             $stackMapFrame->setConstantPool($this->getConstantPool());
             $stackMapFrame->setDebugTool($this->getDebugTool());
             $stackMapFrame->execute();
@@ -31,7 +31,7 @@ final class StackMapTableAttribute implements AttributeInterface
     }
 
     /**
-     * @return \PHPJava\Kernel\Structures\_StackMapFrame[]
+     * @return \PHPJava\Kernel\Structures\StackMapFrameInfo[]
      */
     public function getStackMapFrames(): array
     {

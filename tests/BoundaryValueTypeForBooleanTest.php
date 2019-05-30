@@ -13,7 +13,7 @@ class BoundaryValueTypeForBooleanTest extends Base
     public function testStaticB0()
     {
         $this->assertStaticField(
-            '1',
+            'true',
             'b0'
         );
     }
@@ -21,7 +21,7 @@ class BoundaryValueTypeForBooleanTest extends Base
     public function testStaticB1()
     {
         $this->assertStaticField(
-            '0',
+            'false',
             'b1'
         );
     }
@@ -29,7 +29,7 @@ class BoundaryValueTypeForBooleanTest extends Base
     public function testDynamicB0()
     {
         $this->assertDynamicField(
-            '1',
+            'true',
             'b0'
         );
     }
@@ -37,7 +37,7 @@ class BoundaryValueTypeForBooleanTest extends Base
     public function testDynamicB1()
     {
         $this->assertDynamicField(
-            '0',
+            'false',
             'b1'
         );
     }
@@ -47,8 +47,8 @@ class BoundaryValueTypeForBooleanTest extends Base
         $array = $this->getStaticField('s_a_b');
         $this->assertCount(2, $array);
 
-        $this->assertEquals('1', (string) $array[0]);
-        $this->assertEquals('0', (string) $array[1]);
+        $this->assertEquals('true', (string) $array[0]);
+        $this->assertEquals('false', (string) $array[1]);
     }
 
     public function testDynamicArrayBooleans()
@@ -56,8 +56,8 @@ class BoundaryValueTypeForBooleanTest extends Base
         $array = $this->getDynamicField('d_a_b');
         $this->assertCount(2, $array);
 
-        $this->assertEquals('1', (string) $array[0]);
-        $this->assertEquals('0', (string) $array[1]);
+        $this->assertEquals('true', (string) $array[0]);
+        $this->assertEquals('false', (string) $array[1]);
     }
 
     public function testStaticMultiDimensionArrayBooleans()
@@ -67,11 +67,11 @@ class BoundaryValueTypeForBooleanTest extends Base
         $this->assertCount(2, $array[0]);
         $this->assertCount(2, $array[1]);
 
-        $this->assertEquals('1', (string) $array[0][0]);
-        $this->assertEquals('0', (string) $array[0][1]);
+        $this->assertEquals('true', (string) $array[0][0]);
+        $this->assertEquals('false', (string) $array[0][1]);
 
-        $this->assertEquals('0', (string) $array[1][0]);
-        $this->assertEquals('1', (string) $array[1][1]);
+        $this->assertEquals('false', (string) $array[1][0]);
+        $this->assertEquals('true', (string) $array[1][1]);
     }
 
     public function testDynamicMultiDimensionArrayBooleans()
@@ -81,10 +81,10 @@ class BoundaryValueTypeForBooleanTest extends Base
         $this->assertCount(2, $array[0]);
         $this->assertCount(2, $array[1]);
 
-        $this->assertEquals('1', (string) $array[0][0]);
-        $this->assertEquals('0', (string) $array[0][1]);
+        $this->assertEquals('true', (string) $array[0][0]);
+        $this->assertEquals('false', (string) $array[0][1]);
 
-        $this->assertEquals('0', (string) $array[1][0]);
-        $this->assertEquals('1', (string) $array[1][1]);
+        $this->assertEquals('false', (string) $array[1][0]);
+        $this->assertEquals('true', (string) $array[1][1]);
     }
 }

@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Structures;
 
 use PHPJava\Core\JavaClass;
 
-class _Utf8 implements StructureInterface, FreezableInterface
+class Utf8Info implements StructureInterface, FreezableInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;

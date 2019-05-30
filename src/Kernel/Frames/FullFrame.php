@@ -27,12 +27,12 @@ class FullFrame implements FrameInterface
     private $numberOfStackItems;
 
     /**
-     * @var \PHPJava\Kernel\Structures\_VerificationTypeInfo
+     * @var \PHPJava\Kernel\Structures\VerificationTypeInfo
      */
     private $locals = [];
 
     /**
-     * @var \PHPJava\Kernel\Structures\_VerificationTypeInfo
+     * @var \PHPJava\Kernel\Structures\VerificationTypeInfo
      */
     private $stack = [];
 
@@ -42,13 +42,13 @@ class FullFrame implements FrameInterface
         $this->offsetDelta = $this->readUnsignedShort();
         $this->numberOfLocals = $this->readUnsignedShort();
         for ($i = 0; $i < $this->numberOfLocals; $i++) {
-            $local = new \PHPJava\Kernel\Structures\_VerificationTypeInfo($this->reader);
+            $local = new \PHPJava\Kernel\Structures\VerificationTypeInfo($this->reader);
             $local->execute();
             $this->locals = $local;
         }
         $this->numberOfStackItems = $this->readUnsignedShort();
         for ($i = 0; $i < $this->numberOfStackItems; $i++) {
-            $stack = new \PHPJava\Kernel\Structures\_VerificationTypeInfo($this->reader);
+            $stack = new \PHPJava\Kernel\Structures\VerificationTypeInfo($this->reader);
             $stack->execute();
             $this->stack[] = $stack;
         }

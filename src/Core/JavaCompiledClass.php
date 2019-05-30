@@ -21,7 +21,7 @@ use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
-use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 
@@ -84,7 +84,7 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
     private $superClassIndex = 0;
 
     /**
-     * @var null|_Utf8
+     * @var null|Utf8Info
      */
     private $className;
 

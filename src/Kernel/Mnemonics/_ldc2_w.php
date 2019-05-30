@@ -16,9 +16,9 @@ final class _ldc2_w implements OperationInterface
         $data = $cpInfo[$this->readUnsignedShort()];
         $value = null;
 
-        if (($data instanceof \PHPJava\Kernel\Structures\_Long)) {
+        if (($data instanceof \PHPJava\Kernel\Structures\LongInfo)) {
             $value = _Long::get($data->getBytes());
-        } elseif ($data instanceof \PHPJava\Kernel\Structures\_Double) {
+        } elseif ($data instanceof \PHPJava\Kernel\Structures\DoubleInfo) {
             $value = _Double::get($data->getBytes());
         } else {
             throw new UnsupportedOperationException('Unsupported operation.');

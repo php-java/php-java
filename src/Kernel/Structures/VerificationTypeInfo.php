@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Structures;
 
 use PHPJava\Kernel\Variables\VariableInfoInterface;
 
-class _VerificationTypeInfo implements StructureInterface
+class VerificationTypeInfo implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;
