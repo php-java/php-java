@@ -15,7 +15,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testStaticC0()
     {
         $this->assertStaticField(
-            '0',
+            $this->makeUnicodeChar(0x0000),
             'c0'
         );
     }
@@ -23,7 +23,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testStaticC1()
     {
         $this->assertStaticField(
-            '65535',
+            $this->makeUnicodeChar(0xFFFF),
             'c1'
         );
     }
@@ -31,7 +31,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testStaticC2()
     {
         $this->assertStaticField(
-            '32767',
+            $this->makeUnicodeChar(0x7FFF),
             'c2'
         );
     }
@@ -39,7 +39,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testStaticC3()
     {
         $this->assertStaticField(
-            '32768',
+            $this->makeUnicodeChar(0x8000),
             'c3'
         );
     }
@@ -47,7 +47,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testStaticC4()
     {
         $this->assertStaticField(
-            '37155',
+            $this->makeUnicodeChar(0x9123),
             'c4'
         );
     }
@@ -55,7 +55,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testDynamicC0()
     {
         $this->assertDynamicField(
-            '0',
+            $this->makeUnicodeChar(0x0000),
             'c0'
         );
     }
@@ -63,7 +63,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testDynamicC1()
     {
         $this->assertDynamicField(
-            '65535',
+            $this->makeUnicodeChar(0xFFFF),
             'c1'
         );
     }
@@ -71,7 +71,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testDynamicC2()
     {
         $this->assertDynamicField(
-            '32767',
+            $this->makeUnicodeChar(0x7FFF),
             'c2'
         );
     }
@@ -79,7 +79,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testDynamicC3()
     {
         $this->assertDynamicField(
-            '32768',
+            $this->makeUnicodeChar(0x8000),
             'c3'
         );
     }
@@ -87,7 +87,7 @@ class BoundaryValueTypeForCharTest extends Base
     public function testDynamicC4()
     {
         $this->assertDynamicField(
-            '37155',
+            $this->makeUnicodeChar(0x9123),
             'c4'
         );
     }

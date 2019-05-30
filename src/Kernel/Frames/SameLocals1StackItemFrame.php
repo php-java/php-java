@@ -12,14 +12,14 @@ class SameLocals1StackItemFrame implements FrameInterface
     private $frameType;
 
     /**
-     * @var \PHPJava\Kernel\Structures\_VerificationTypeInfo[]
+     * @var \PHPJava\Kernel\Structures\VerificationTypeInfo[]
      */
     private $stack = [];
 
     public function execute(): void
     {
         $this->frameType = $this->readUnsignedByte();
-        $stack = new \PHPJava\Kernel\Structures\_VerificationTypeInfo($this->reader);
+        $stack = new \PHPJava\Kernel\Structures\VerificationTypeInfo($this->reader);
         $stack->execute();
         $this->stack[] = $stack;
     }

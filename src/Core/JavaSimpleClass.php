@@ -14,7 +14,7 @@ use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\ValidatorException;
 use PHPJava\Kernel\Maps\ClassAccessFlag;
 use PHPJava\Kernel\Resolvers\ClassResolver;
-use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
 
@@ -42,7 +42,7 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
     private $accessFlag = 0;
 
     /**
-     * @var null|_Utf8
+     * @var null|Utf8Info
      */
     private $className;
 

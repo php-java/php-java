@@ -30,6 +30,7 @@ class TypeResolver
         'float' => 'F',
         'double' => 'F',
         'string' => 'Ljava.lang.String',
+        'boolean' => 'Z',
     ];
 
     const AMBIGUOUS_TYPES_ON_PHP = [
@@ -107,7 +108,7 @@ class TypeResolver
     public static function extractPrimitiveValueFromType(Type $value)
     {
         $extractedValue = (string) $value->getValue();
-        if ($value instanceof _Int || $value instanceof _Long) {
+        if ($value instanceof _Int || $value instanceof _Long || $value instanceof _Byte) {
             return (int) $extractedValue;
         }
         if ($value instanceof _Float || $value instanceof _Double) {

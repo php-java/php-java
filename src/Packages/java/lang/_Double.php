@@ -7,7 +7,7 @@ use PHPJava\Exceptions\NotImplementedException;
 // use PHPJava\Packages\java\lang\Comparable;
 
 /**
- * The `_Double` class was auto generated.
+ * The `DoubleInfo` class was auto generated.
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Number

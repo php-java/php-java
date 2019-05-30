@@ -2,6 +2,10 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClassInterface;
+use PHPJava\Kernel\Filters\Normalizer;
+use PHPJava\Kernel\Resolvers\TypeResolver;
+use PHPJava\Kernel\Types\Type;
+use PHPJava\Utilities\Formatter;
 
 final class _putfield implements OperationInterface
 {
@@ -15,12 +19,29 @@ final class _putfield implements OperationInterface
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
 
         $value = $this->popFromOperandStack();
-        $name = $cpInfo[$class->getNameIndex()]->getString();
+        $fieldName = $cpInfo[$class->getNameIndex()]->getString();
+
+        $signature = Formatter::parseSignature($cpInfo[$class->getDescriptorIndex()]->getString());
+        [$type, $typeClass] = TypeResolver::getType($signature[0]);
+
+        if ($type === TypeResolver::IS_PRIMITIVE) {
+            /**
+             * @var Type $typeClass
+             */
+            $value = $typeClass::get(
+                Normalizer::getPrimitiveValue(
+                    $value
+                )
+            );
+        }
 
         /**
          * @var JavaClassInterface $objectref
          */
         $objectref = $this->popFromOperandStack();
-        $objectref->getInvoker()->getDynamic()->getFields()->set($name, $value);
+        $objectref->getInvoker()->getDynamic()->getFields()->set(
+            $fieldName,
+            $value
+        );
     }
 }

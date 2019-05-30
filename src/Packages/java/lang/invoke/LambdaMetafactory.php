@@ -5,7 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Internal\Lambda;
-use PHPJava\Kernel\Structures\_MethodHandle;
+use PHPJava\Kernel\Structures\MethodHandleInfo;
 use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 
@@ -81,7 +81,7 @@ class LambdaMetafactory extends _Object
          * @var string $invokedName
          * @var MethodType $invokedType
          * @var MethodType $samMethodType
-         * @var _MethodHandle $implMethod
+         * @var MethodHandleInfo $implMethod
          * @var MethodType $instantiatedMethodType
          */
         $caller = $a;

@@ -9,7 +9,7 @@ use PHPJava\Packages\java\io\InputStream;
 // use PHPJava\Packages\java\lang\annotation\Annotation;
 
 /**
- * The `_Class` class was auto generated.
+ * The `ClassInfo` class was auto generated.
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */

@@ -2,7 +2,7 @@
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Core\JavaClass;
-use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Packages\java\util\IllegalFormatException;
@@ -13,7 +13,7 @@ class PrintStream
 
     public function println($arg)
     {
-        if ($arg instanceof _Utf8) {
+        if ($arg instanceof Utf8Info) {
             echo $arg->getString() . "\n";
             return;
         }
@@ -36,7 +36,7 @@ class PrintStream
 
     public function print($arg)
     {
-        if ($arg instanceof _Utf8) {
+        if ($arg instanceof Utf8Info) {
             echo $arg->getString();
             return;
         }

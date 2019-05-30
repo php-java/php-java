@@ -8,7 +8,7 @@ use PHPJava\Kernel\Types\_Int;
 // use PHPJava\Packages\java\lang\Comparable;
 
 /**
- * The `_Integer` class was auto generated.
+ * The `IntegerInfo` class was auto generated.
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  * @parent \PHPJava\Packages\java\lang\Number

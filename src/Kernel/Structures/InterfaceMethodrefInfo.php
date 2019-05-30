@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
-class _Fieldref implements StructureInterface
+class InterfaceMethodrefInfo implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;

@@ -8,8 +8,8 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Maps\MethodHandleKind;
 use PHPJava\Kernel\Resolvers\AttributionResolver;
 use PHPJava\Kernel\Structures\_BootstrapMethod;
-use PHPJava\Kernel\Structures\_MethodHandle;
-use PHPJava\Kernel\Structures\_NameAndType;
+use PHPJava\Kernel\Structures\MethodHandleInfo;
+use PHPJava\Kernel\Structures\NameAndTypeInfo;
 use PHPJava\Packages\java\lang\invoke\MethodHandles;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 use PHPJava\Packages\java\lang\invoke\MethodType;
@@ -34,7 +34,7 @@ final class _invokedynamic implements OperationInterface
     {
         $cp = $this->getConstantPool();
         /**
-         * @var \PHPJava\Kernel\Structures\_InvokeDynamic $invokeDynamicStructure
+         * @var \PHPJava\Kernel\Structures\InvokeDynamicInfo $invokeDynamicStructure
          */
         $invokeDynamicStructure = $cp[$this->readUnsignedShort()];
 
@@ -43,7 +43,7 @@ final class _invokedynamic implements OperationInterface
         $forthByte = $this->read();
 
         /**
-         * @var _NameAndType $nameAndTypeIndex
+         * @var NameAndTypeInfo $nameAndTypeIndex
          */
         $nameAndTypeIndex = $cp[$invokeDynamicStructure->getNameAndTypeIndex()];
 
@@ -79,7 +79,7 @@ final class _invokedynamic implements OperationInterface
         $bootstrapMethodArguments = $bootstrapMethod->getBootstrapArguments();
 
         /**
-         * @var _MethodHandle $methodHandle
+         * @var MethodHandleInfo $methodHandle
          */
         $methodHandle = $cp[$bootstrapMethod->getBootstrapMethodRef()];
 

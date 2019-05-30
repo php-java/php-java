@@ -5,7 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Structures\_Utf8;
+use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Char;
 
 // use PHPJava\Packages\java\io\Serializable;
@@ -30,7 +30,7 @@ class _String extends _Object implements CharSequence
     public static $CASE_INSENSITIVE_ORDER = null;
 
     /**
-     * _String constructor.
+     * StringInfo constructor.
      * @param null $object
      */
     public function __construct($object = null)
@@ -217,7 +217,7 @@ class _String extends _Object implements CharSequence
      */
     public function equals($a = null)
     {
-        if (!($this->object instanceof _Utf8)) {
+        if (!($this->object instanceof Utf8Info)) {
             return false;
         }
         if ($a instanceof _String) {
@@ -335,11 +335,11 @@ class _String extends _Object implements CharSequence
     {
         // Find the string from the Constant Pool.
         foreach ($cp as $key => $value) {
-            if (!($value instanceof _Utf8)) {
+            if (!($value instanceof Utf8Info)) {
                 continue;
             }
             /**
-             * @var _Utf8 $value
+             * @var Utf8Info $value
              */
             if ((string) $value === (string) $this->object) {
                 $this->object = $value
@@ -721,7 +721,7 @@ class _String extends _Object implements CharSequence
 
     public function __toString(): string
     {
-        if (!($this->object instanceof _Utf8)) {
+        if (!($this->object instanceof Utf8Info)) {
             return (string) $this->object;
         }
         return $this->object->getString();

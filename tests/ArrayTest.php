@@ -71,9 +71,9 @@ class ArrayTest extends Base
         $actual = $this->call('createBooleanArray');
 
         $this->assertEquals(3, $actual->count());
-        $this->assertEquals('1', $actual->offsetGet(0));
-        $this->assertEquals('0', $actual->offsetGet(1));
-        $this->assertEquals('1', $actual->offsetGet(2));
+        $this->assertEquals('true', $actual->offsetGet(0));
+        $this->assertEquals('false', $actual->offsetGet(1));
+        $this->assertEquals('true', $actual->offsetGet(2));
     }
 
     public function testCreateCharArray()
