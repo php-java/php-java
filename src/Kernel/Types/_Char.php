@@ -33,6 +33,6 @@ class _Char extends Type
         if (ctype_alpha($value) && strlen($value) === 1) {
             return $value;
         }
-        return chr($value);
+        return json_decode(sprintf('"\\u%04X"', $value));
     }
 }

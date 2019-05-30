@@ -2,6 +2,7 @@
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\Type;
 
 final class _iastore implements OperationInterface
@@ -20,10 +21,6 @@ final class _iastore implements OperationInterface
         $arrayref = $this->popFromOperandStack();
 
         // The value is a ref.
-        $arrayref[$index] = $value;
-
-        $this->pushToOperandStack(
-            $arrayref
-        );
+        $arrayref[$index] = _Int::get($value);
     }
 }

@@ -14,7 +14,7 @@ class _Long implements StructureInterface
 
     public function execute(): void
     {
-        $this->bytes = $this->readLong();
+        $this->bytes = $this->readUnsignedLong();
     }
 
     public function getBytes(): int

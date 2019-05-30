@@ -12,7 +12,7 @@ class JavaUtilObjectsTest extends Base
     public function testHashCode()
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaUtilObjectsTest']
+        static::$initiatedJavaClasses['JavaUtilObjectsTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

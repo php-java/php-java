@@ -14,7 +14,7 @@ class NegationTest extends Base
 
     private function call($method, ...$arguments)
     {
-        $calculatedValue = $this->initiatedJavaClasses['NegationTest']
+        $calculatedValue = static::$initiatedJavaClasses['NegationTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

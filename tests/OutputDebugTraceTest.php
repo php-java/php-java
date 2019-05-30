@@ -19,7 +19,7 @@ class OutputDebugTraceTest extends Base
             ],
         ]);
 
-        $calculatedValue = $this->initiatedJavaClasses['OutputDebugTraceTest']
+        $calculatedValue = static::$initiatedJavaClasses['OutputDebugTraceTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -30,7 +30,7 @@ class OutputDebugTraceTest extends Base
         ob_end_clean();
 
         ob_start();
-        $this->initiatedJavaClasses['OutputDebugTraceTest']->debug();
+        static::$initiatedJavaClasses['OutputDebugTraceTest']->debug();
         $result = ob_get_clean();
         $this->assertEquals(
             file_get_contents(__DIR__ . '/templates/DebugTraceTest.txt'),

@@ -11,7 +11,7 @@ class LongCalculationTest extends Base
 
     private function call($name, ...$parameters)
     {
-        return $this->initiatedJavaClasses['LongCalculationTest']
+        return static::$initiatedJavaClasses['LongCalculationTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

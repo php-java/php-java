@@ -10,7 +10,7 @@ class InsertionSortTest extends Base
     public function testInsertionSortAsc()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['InsertionSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['InsertionSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -25,7 +25,7 @@ class InsertionSortTest extends Base
     public function testInsertionSortDesc()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['InsertionSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['InsertionSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -40,7 +40,7 @@ class InsertionSortTest extends Base
     public function testInsertionSortAscByParam()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['InsertionSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['InsertionSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
@@ -58,7 +58,7 @@ class InsertionSortTest extends Base
     public function testInsertionSortDescByParam()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['InsertionSortTest']
+        $calculatedValue = static::$initiatedJavaClasses['InsertionSortTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

@@ -11,7 +11,7 @@ class OuterClassTest extends Base
     public function testCallMain()
     {
         ob_start();
-        $calculatedValue = $this->initiatedJavaClasses['OuterClassTest']
+        $calculatedValue = static::$initiatedJavaClasses['OuterClassTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

@@ -11,7 +11,7 @@ class DoubleCalculationTest extends Base
 
     private function call($name, ...$parameters)
     {
-        return (string) $this->initiatedJavaClasses['DoubleCalculationTest']
+        return (string) static::$initiatedJavaClasses['DoubleCalculationTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()

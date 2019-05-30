@@ -12,7 +12,7 @@ class JavaIoPrintStreamClassTest extends Base
     private function call($method, ...$arguments)
     {
         ob_start();
-        $this->initiatedJavaClasses['JavaIoPrintStreamClassTest']
+        static::$initiatedJavaClasses['JavaIoPrintStreamClassTest']
             ->getInvoker()
             ->getStatic()
             ->getMethods()
