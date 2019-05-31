@@ -50,6 +50,15 @@ class Lambda implements JavaClassInterface
         );
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     */
+    public function __call($name, $arguments)
+    {
+        return $this->classObject->{$name}(...$arguments);
+    }
+
     public function __invoke(string $name, ...$arguments)
     {
         [$actualMethodName, $entityMethodName, $referredClassObject] = $this->methodEntity;
