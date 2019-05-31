@@ -22,6 +22,9 @@ Contribution guide is here:
 - [English](https://github.com/php-java/php-java/blob/master/README.md)
 - [日本語](https://github.com/php-java/php-java/blob/master/README-ja.md)
 
+## DEMO
+![DEMO](https://user-images.githubusercontent.com/1282995/58679222-87070880-839d-11e9-8c98-978fdd0bb015.gif)
+
 ## Requirements
 - PHP >= 7.2
 - Composer
@@ -71,7 +74,7 @@ class HelloWorld
 
 3) Compile Java:
 ```
-$ javac -UTF8 /path/to/HelloWorld.java
+$ javac -encoding UTF8 /path/to/HelloWorld.java
 ```
 
 4) Call the main method as follows:

@@ -23,6 +23,9 @@ PHPJava は **100% PHP のみ** で動きます
 - [English](https://github.com/php-java/php-java/blob/master/README.md)
 - [日本語](https://github.com/php-java/php-java/blob/master/README-ja.md)
 
+## デモ
+![DEMO](https://user-images.githubusercontent.com/1282995/58679222-87070880-839d-11e9-8c98-978fdd0bb015.gif)
+
 ## 必須環境
 - PHP >= 7.2
 - Composer
@@ -72,7 +75,7 @@ class HelloWorld
 
 3) Java をコンパイルします。
 ```
-$ javac -UTF8 /path/to/HelloWorld.java
+$ javac -encoding UTF8 /path/to/HelloWorld.java
 ```
 
 4) main メソッドを呼びます。
