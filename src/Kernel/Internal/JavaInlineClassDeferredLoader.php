@@ -3,30 +3,30 @@ namespace PHPJava\Kernel\Internal;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
+use PHPJava\Core\JavaCompiledClass;
 use PHPJava\Core\JavaGenericClassInterface;
+use PHPJava\Core\Stream\Reader\InlineReader;
 
-final class JavaClassDeferredLoader extends ClassDeferredLoader implements JavaClassInterface, JavaGenericClassInterface
+final class JavaInlineClassDeferredLoader extends ClassDeferredLoader implements JavaClassInterface, JavaGenericClassInterface
 {
     /**
-     * @var string
+     * @var string[]
      */
-    private $loadingClassName;
-
+    private $arguments = [];
     /**
      * @var array
      */
     private $options = [];
-
     /**
      * @var JavaClass
      */
     private $javaClass;
 
     public function __construct(
-        string $loadingClassName,
+        array $arguments = [],
         array $options = []
     ) {
-        $this->loadingClassName = $loadingClassName;
+        $this->arguments = $arguments;
         $this->options = $options;
     }
 
@@ -34,16 +34,17 @@ final class JavaClassDeferredLoader extends ClassDeferredLoader implements JavaC
      * @throws \PHPJava\Exceptions\ReadEntryException
      * @throws \PHPJava\Exceptions\UnknownVersionException
      * @throws \PHPJava\Exceptions\ValidatorException
-     * @throws \PHPJava\Packages\java\lang\ClassNotFoundException
      */
     protected function initializeIfNotInitiated(): JavaClass
     {
         if (isset($this->javaClass)) {
             return $this->javaClass;
         }
-        return $this->javaClass = JavaClass::load(
-            $this->loadingClassName,
-            $this->options
+        return $this->javaClass = new JavaClass(
+            new JavaCompiledClass(
+                new InlineReader(...$this->arguments),
+                $this->options
+            )
         );
     }
 }

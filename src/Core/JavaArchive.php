@@ -2,9 +2,8 @@
 namespace PHPJava\Core;
 
 use PHPJava\Core\JVM\Parameters\Runtime;
-use PHPJava\Core\Stream\Reader\InlineReader;
 use PHPJava\Exceptions\UndefinedEntrypointException;
-use PHPJava\Kernel\Internal\JavaClassDeferredLoader;
+use PHPJava\Kernel\Internal\JavaInlineClassDeferredLoader;
 use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Resolvers\FileTypeResolver;
 use PHPJava\Packages\java\io\FileNotFoundException;
@@ -127,8 +126,7 @@ class JavaArchive
                 continue;
             }
             $classPath = str_replace('/', '.', $className);
-            $this->classes[$classPath] = new JavaClassDeferredLoader(
-                InlineReader::class,
+            $this->classes[$classPath] = new JavaInlineClassDeferredLoader(
                 [$className, $code],
                 $this->options
             );

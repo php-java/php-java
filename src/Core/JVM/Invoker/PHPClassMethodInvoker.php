@@ -13,6 +13,7 @@ class PHPClassMethodInvoker implements InvokerInterface
     use Extended\StaticConstructorInitializable;
     use Extended\PHPMethodAnnotationAffectable;
     use Extended\PHPMethodFindable;
+    use Extended\PHPMethodSpecifiable;
 
     /**
      * @var ClassInvokerInterface

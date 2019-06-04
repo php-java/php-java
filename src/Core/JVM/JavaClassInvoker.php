@@ -45,6 +45,11 @@ class JavaClassInvoker implements ClassInvokerInterface
     private $options = [];
 
     /**
+     * @var array
+     */
+    private $innerClasses = [];
+
+    /**
      * @throws \PHPJava\Exceptions\NormalizerException
      */
     public function __construct(JavaClassInterface $javaClass, array $options)

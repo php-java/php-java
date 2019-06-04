@@ -1,9 +1,12 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
+use PHPJava\Exceptions\NoSuchCodeAttributeException;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Internal\Lambda;
+use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Utilities\Formatter;
 
 final class _invokeinterface implements OperationInterface
@@ -21,6 +24,7 @@ final class _invokeinterface implements OperationInterface
         $this->readByte();
 
         $interfaceMethodRef = $cp[$cp[$index]->getNameAndTypeIndex()];
+        $className = $cp[$cp[$cp[$index]->getClassIndex()]->getClassIndex()]->getString();
         $name = $cp[$interfaceMethodRef->getNameIndex()]->getString();
         $descriptor = $cp[$interfaceMethodRef->getDescriptorIndex()]->getString();
 
@@ -40,10 +44,28 @@ final class _invokeinterface implements OperationInterface
         if ($objectref instanceof Lambda) {
             $result = $objectref($name, ...$arguments);
         } else {
-            $result = $objectref->getInvoker()->getDynamic()->getMethods()->call(
-                $name,
-                ...$arguments
-            );
+            try {
+                $result = $objectref->getInvoker()->getDynamic()->getMethods()->call(
+                    $name,
+                    ...$arguments
+                );
+            } catch (NoSuchMethodException | NoSuchCodeAttributeException $e) {
+                // If targeted method is an abstract or method is undefined, then to find in InnerClass.
+                // NOTE: Currently, nested InnerClass does not supported.
+
+                foreach ($objectref->getDefinedInnerClasses() as [$class]) {
+                    /**
+                     * @var JavaClass $class
+                     */
+                    if ($class->getClassName() === $className) {
+                        $class->getInvoker()->getDynamic()->getMethods()->call(
+                            $name,
+                            ...$arguments
+                        );
+                        break;
+                    }
+                }
+            }
         }
 
         if ($signature[0]['type'] !== 'void') {

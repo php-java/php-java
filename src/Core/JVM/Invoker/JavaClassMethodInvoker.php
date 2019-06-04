@@ -14,6 +14,7 @@ class JavaClassMethodInvoker implements InvokerInterface
     use Extended\ArgumentsStringifyable;
     use Extended\StaticConstructorInitializable;
     use Extended\JavaMethodAnnotationAffectable;
+    use Extended\JavaMethodSpecifiable;
 
     /**
      * @var ClassInvokerInterface

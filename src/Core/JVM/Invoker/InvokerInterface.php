@@ -2,6 +2,7 @@
 namespace PHPJava\Core\JVM\Invoker;
 
 use PHPJava\Core\JVM\ClassInvokerInterface;
+use PHPJava\Core\JVM\Invoker\Extended\Specifics\MethodSpecificsInterface;
 
 interface InvokerInterface
 {
@@ -24,4 +25,6 @@ interface InvokerInterface
     public function callStaticInitializerIfNotInstantiated(): InvokerInterface;
 
     public function getAnnotations(string $name): array;
+
+    public function getSpecifics(string $methodName, ...$arguments): MethodSpecificsInterface;
 }

@@ -17,7 +17,7 @@ use PHPJava\Packages\java\lang\_Class;
  * @method array getDefinedFields()
  * @method array getDefinedExtendedClasses()
  * @method array getDefinedInterfaceClasses()
- * @method array getInnerClasses()
+ * @method array getDefinedInnerClasses()
  * @method string getPackageName()
  * @method string getClassName(bool $shortName = false)
  * @method mixed getOptions($key = null)
