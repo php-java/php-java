@@ -108,7 +108,7 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
     /**
      * @return PHPJava\Kernel\Structures\_Classes[]
      */
-    public function getInnerClasses(): array
+    public function getDefinedInnerClasses(): array
     {
         return [];
     }

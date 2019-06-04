@@ -17,9 +17,11 @@ use PHPJava\Core\JVM\MethodPool;
 use PHPJava\Core\JVM\Validations\MagicByte;
 use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\ValidatorException;
+use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
+use PHPJava\Kernel\Structures\_Classes;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Utilities\DebugTool;
@@ -220,25 +222,38 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
 
         $this->debugTool->getLogger()->info('Extracted attributes: ' . count($this->attributePool));
 
+        $this->debugTool->getLogger()->info('Load inner classes');
+
         $innerClasses = [];
         foreach ($this->attributePool as $entry) {
+            /**
+             * @var AttributeInfo $entry
+             */
             if ($entry->getAttributeData() instanceof InnerClassesAttribute) {
-                $innerClasses = array_merge(
-                    $innerClasses,
-                    $entry->getAttributeData()->getClasses()
-                );
+                /**
+                 * @var InnerClassesAttribute $attributeData
+                 */
+                $attributeData = $entry->getAttributeData();
+                foreach ($attributeData->getClasses() as $innerClassInfo) {
+                    /**
+                     * @var _Classes $innerClassInfo
+                     */
+                    $info = $this->constantPool[$innerClassInfo->getInnerClassInfoIndex()];
+                    $className = $this->constantPool[$info->getClassIndex()]->getString();
+
+                    $innerClasses[] = [
+                        JavaClass::deferred($className),
+                        $this->options,
+                        $innerClassInfo,
+                        $this->constantPool,
+                    ];
+                }
             }
         }
 
-        // Add to class resolver
-        foreach ($innerClasses as $innerClass) {
-            ClassResolver::add([
-                [
-                    ClassResolver::RESOURCE_TYPE_INNER_CLASS,
-                    $innerClass,
-                ],
-            ]);
-        }
+        $this->innerClasses = $innerClasses;
+
+        $this->debugTool->getLogger()->info('Loaded inner classes');
 
         $this->invoker = new JavaClassInvoker(
             $this,
@@ -287,14 +302,6 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
     }
 
     /**
-     * @return PHPJava\Kernel\Structures\_Classes[]
-     */
-    public function getInnerClasses(): array
-    {
-        return $this->innerClasses;
-    }
-
-    /**
      * @return PHPJava\Core\JVM\_FieldInfo[]
      */
     public function getDefinedFields(): array
@@ -322,9 +329,14 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
         return $parents;
     }
 
+    public function getDefinedInnerClasses(): array
+    {
+        return $this->innerClasses;
+    }
+
     public function getDefinedInterfaceClasses(): array
     {
-        return [];
+        return $this->interfacePool->getEntries();
     }
 
     public function getInvoker(): ClassInvokerInterface

@@ -4,6 +4,7 @@ namespace PHPJava\Core;
 use PHPJava\Core\Extended\ClassInvokable;
 use PHPJava\Core\Stream\Reader\FileReader;
 use PHPJava\Core\Stream\Reader\PackageReader;
+use PHPJava\Kernel\Internal\JavaClassDeferredLoader;
 use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Packages\java\lang\ClassNotFoundException;
 use PHPJava\Utilities\Formatter;
@@ -153,5 +154,16 @@ class JavaClass implements JavaClassInterface
         }
 
         return $loaded[$classPath] = static::of($instance);
+    }
+
+    /**
+     * @return JavaClassDeferredLoader
+     */
+    public static function deferred(string $classPath, array $options = [])
+    {
+        return new JavaClassDeferredLoader(
+            $classPath,
+            $options
+        );
     }
 }
