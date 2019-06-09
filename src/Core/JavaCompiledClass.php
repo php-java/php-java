@@ -21,8 +21,8 @@ use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
-use PHPJava\Kernel\Structures\_Classes;
 use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\InnerClasses;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
@@ -236,7 +236,7 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
                 $attributeData = $entry->getAttributeData();
                 foreach ($attributeData->getClasses() as $innerClassInfo) {
                     /**
-                     * @var _Classes $innerClassInfo
+                     * @var InnerClasses $innerClassInfo
                      */
                     $info = $this->constantPool[$innerClassInfo->getInnerClassInfoIndex()];
                     $className = $this->constantPool[$info->getClassIndex()]->getString();
