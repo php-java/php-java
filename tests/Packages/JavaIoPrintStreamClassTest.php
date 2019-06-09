@@ -23,6 +23,12 @@ class JavaIoPrintStreamClassTest extends Base
         return ob_get_clean();
     }
 
+    public function testPrintlnWithoutParams()
+    {
+        $result = $this->call(explode('::', __METHOD__)[1]);
+        $this->assertEquals("\n", $result);
+    }
+
     public function testPrintlnWithStringParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);

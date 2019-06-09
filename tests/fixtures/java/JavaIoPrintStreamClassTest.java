@@ -1,5 +1,10 @@
 class JavaIoPrintStreamClassTest
 {
+    public static void testPrintlnWithoutParams()
+    {
+	System.out.println();
+    }
+
     public static void testPrintlnWithStringParams()
     {
         String x = "Hello World";
