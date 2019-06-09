@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Kernel\Structures\_Classes;
+use PHPJava\Kernel\Structures\InnerClasses;
 
 final class InnerClassesAttribute implements AttributeInterface
 {
@@ -16,7 +16,7 @@ final class InnerClassesAttribute implements AttributeInterface
     private $numberOfClasses = 0;
 
     /**
-     * @var _Classes[]
+     * @var InnerClasses[]
      */
     private $classes = [];
 
@@ -24,7 +24,7 @@ final class InnerClassesAttribute implements AttributeInterface
     {
         $this->numberOfClasses = $this->readUnsignedShort();
         for ($i = 0; $i < $this->numberOfClasses; $i++) {
-            $class = new _Classes($this->reader);
+            $class = new InnerClasses($this->reader);
             $class->setConstantPool($this->getConstantPool())
                 ->setDebugTool($this->getDebugTool());
             $class->execute();
@@ -33,7 +33,7 @@ final class InnerClassesAttribute implements AttributeInterface
     }
 
     /**
-     * @return _Classes[]
+     * @return InnerClasses[]
      */
     public function getClasses(): array
     {
