@@ -1,6 +1,9 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
+/**
+ * @see https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-4.html#jvms-4.7.6
+ */
 class InnerClasses implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
@@ -18,6 +21,8 @@ class InnerClasses implements StructureInterface
     private $outerClassInfoIndex = 0;
 
     /**
+     * If this class is an anonymous, value is must be zero.
+     *
      * @var int
      */
     private $innerNameIndex = 0;

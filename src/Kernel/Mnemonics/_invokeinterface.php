@@ -62,7 +62,7 @@ final class _invokeinterface implements OperationInterface
                         continue;
                     }
 
-                    $class->getInvoker()->getDynamic()->getMethods()->call(
+                    $result = $class->getInvoker()->getDynamic()->getMethods()->call(
                         $name,
                         ...$arguments
                     );
@@ -71,8 +71,16 @@ final class _invokeinterface implements OperationInterface
                     break;
                 }
 
-                // Throw an exception if not found a class.
-                if (!$foundClass) {
+                try {
+                    // NOTICE: This implementation is a trial.
+                    // I don't know how to refer SuperClass from anonymous type InnerClass.
+                    if (!$foundClass) {
+                        $result = $this->javaClass->getInvoker()->getDynamic()->getMethods()->call(
+                            $name,
+                            ...$arguments
+                        );
+                    }
+                } catch (NoSuchMethodException | NoSuchCodeAttributeException $e) {
                     throw $e;
                 }
             }
