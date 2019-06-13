@@ -242,8 +242,10 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
                     $className = $this->constantPool[$info->getClassIndex()]->getString();
 
                     $innerClasses[] = [
-                        JavaClass::deferred($className),
-                        $this->options,
+                        JavaClass::deferred(
+                            $className,
+                            $this->options
+                        ),
                         $innerClassInfo,
                         $this->constantPool,
                     ];

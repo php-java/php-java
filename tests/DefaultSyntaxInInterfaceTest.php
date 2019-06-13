@@ -5,6 +5,7 @@ class DefaultSyntaxInInterfaceTest extends Base
 {
     protected $fixtures = [
         'DefaultSyntaxInInterfaceTest',
+        'DefaultInterfaceCallsInterfaceMethodTest',
     ];
 
     public function testDefaultInterfaceMethod1()
@@ -16,6 +17,25 @@ class DefaultSyntaxInInterfaceTest extends Base
             ->getMethods()
             ->call(
                 'defaultInterfaceMethodTest1'
+            );
+        $result = ob_get_clean();
+
+        $this->assertEquals(
+            "Hello World!\n",
+            $result
+        );
+    }
+
+    public function testDefaultInterfaceCallsInterfaceMethod()
+    {
+        ob_start();
+        static::$initiatedJavaClasses['DefaultInterfaceCallsInterfaceMethodTest']
+            ->getInvoker()
+            ->getStatic()
+            ->getMethods()
+            ->call(
+                'main',
+                []
             );
         $result = ob_get_clean();
 

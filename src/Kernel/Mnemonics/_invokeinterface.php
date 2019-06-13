@@ -53,17 +53,35 @@ final class _invokeinterface implements OperationInterface
                 // If targeted method is an abstract or method is undefined, then to find in InnerClass.
                 // NOTE: Currently, nested InnerClass does not supported.
 
+                $foundClass = false;
                 foreach ($objectref->getDefinedInnerClasses() as [$class]) {
                     /**
                      * @var JavaClass $class
                      */
-                    if ($class->getClassName() === $className) {
-                        $class->getInvoker()->getDynamic()->getMethods()->call(
+                    if ($class->getClassName() !== $className) {
+                        continue;
+                    }
+
+                    $result = $class->getInvoker()->getDynamic()->getMethods()->call(
+                        $name,
+                        ...$arguments
+                    );
+
+                    $foundClass = true;
+                    break;
+                }
+
+                try {
+                    // NOTICE: This implementation is a trial.
+                    // I don't know how to refer SuperClass from anonymous type InnerClass.
+                    if (!$foundClass) {
+                        $result = $this->javaClass->getInvoker()->getDynamic()->getMethods()->call(
                             $name,
                             ...$arguments
                         );
-                        break;
                     }
+                } catch (NoSuchMethodException | NoSuchCodeAttributeException $e) {
+                    throw $e;
                 }
             }
         }
