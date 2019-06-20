@@ -15,6 +15,7 @@ use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\PrimitiveValueInterface;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Packages\java\lang\_String;
 use PHPJava\Utilities\Formatter;
@@ -211,7 +212,7 @@ class TypeResolver
                     'deep_array' => $deepArray,
                 ];
             }
-            if ($arguments instanceof Type) {
+            if ($arguments instanceof PrimitiveValueInterface) {
                 return [
                     'type' => $arguments->getTypeNameInJava(),
                     'deep_array' => $deepArray,

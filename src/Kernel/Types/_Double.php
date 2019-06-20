@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Types;
 
 use Brick\Math\BigDecimal;
 
-class _Double extends Type
+class _Double extends Type implements PrimitiveValueInterface
 {
     const DEFAULT_VALUE = '0';
 

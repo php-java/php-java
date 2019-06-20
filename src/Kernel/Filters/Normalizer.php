@@ -7,6 +7,7 @@ use PHPJava\Exceptions\NormalizerException;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_FieldInfo;
 use PHPJava\Kernel\Types\_Array\Collection;
+use PHPJava\Kernel\Types\PrimitiveValueInterface;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\Formatter;
 
@@ -112,7 +113,7 @@ class Normalizer
      */
     public static function getPrimitiveValue($value)
     {
-        if ($value instanceof Type) {
+        if ($value instanceof PrimitiveValueInterface) {
             return TypeResolver::extractPrimitiveValueFromType($value);
         }
         return $value;

@@ -5,7 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\InvalidArgumentException;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Array\Collection;
-use PHPJava\Kernel\Types\Type;
+use PHPJava\Kernel\Types\PrimitiveValueInterface;
 use PHPJava\Packages\java\util\IllegalFormatException;
 
 class PrintStream
@@ -34,7 +34,7 @@ class PrintStream
         }
         if (is_scalar($arg) ||
             $arg instanceof Collection ||
-            $arg instanceof Type
+            $arg instanceof PrimitiveValueInterface
         ) {
             echo $arg . "\n";
             return;
@@ -57,7 +57,7 @@ class PrintStream
         }
         if (is_scalar($arg) ||
             $arg instanceof Collection ||
-            $arg instanceof Type
+            $arg instanceof PrimitiveValueInterface
         ) {
             echo $arg;
             return;

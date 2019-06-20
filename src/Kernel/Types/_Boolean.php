@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Types;
 
-class _Boolean extends Type
+class _Boolean extends Type implements PrimitiveValueInterface
 {
     const DEFAULT_VALUE = false;
 

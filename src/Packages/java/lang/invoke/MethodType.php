@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Packages\java\lang\invoke;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
 
@@ -213,7 +214,14 @@ class MethodType extends _Object // implements Serializable, _List
      */
     public static function methodType($a = null, $b = null, $c = null)
     {
-        return new static($a);
+        return JavaClass::load(
+            'java.lang.invoke.MethodType',
+            [
+                'inherit' => true,
+            ]
+        )->getInvoker()
+            ->construct(...func_get_args())
+            ->getJavaClass();
     }
 
     /**

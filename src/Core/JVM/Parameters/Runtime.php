@@ -31,6 +31,7 @@ final class Runtime
     const PHP_PACKAGES_MAPS = [
         'String' => '_String',
         'Object' => '_Object',
+        'Void' => '_Void',
     ];
 
     const CLASS_INITIALIZER_CLASS_MAPS = [
