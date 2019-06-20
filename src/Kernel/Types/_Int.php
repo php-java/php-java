@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Types;
 
-class _Int extends Type
+class _Int extends Type implements PrimitiveValueInterface
 {
     const DEFAULT_VALUE = 0;
 

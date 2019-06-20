@@ -21,6 +21,13 @@ trait _Object
         $this->parameters = $parameters;
     }
 
+    /**
+     * This method covers <clinit> processing on PHPJava.
+     */
+    public static function __staticConstruct()
+    {
+    }
+
     public function setJavaClass(JavaClass $javaClass): self
     {
         $this->javaClass = $javaClass;

@@ -23,6 +23,11 @@ class JavaClass implements JavaClassInterface
      */
     private $options = [];
 
+    /**
+     * @var array
+     */
+    private static $lastOptions = [];
+
     public function __construct(JavaGenericClassInterface $genericClass)
     {
         $this->genericClass = $genericClass;

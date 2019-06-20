@@ -1,7 +1,9 @@
 <?php
 namespace PHPJava\Packages\java\lang\invoke;
 
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Types\_Void;
 use PHPJava\Packages\java\lang\_Object;
 
 // use PHPJava\Packages\java\util\_List;
@@ -107,12 +109,42 @@ class MethodHandle extends _Object // implements _List
      * Invokes the method handle, allowing any caller type descriptor, but requiring an exact type match.
      *
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/package-summary.html#invokeExact
-     * @param null|mixed $a
-     * @throws NotImplementedException
      */
-    public function invokeExact($a = null)
+    public function invokeExact(...$args)
     {
-        throw new NotImplementedException(__METHOD__);
+        /**
+         * @var JavaClassInterface $class
+         * @var JavaClassInterface $refc
+         * @var string $name
+         * @var JavaClassInterface $methodType
+         */
+        [$refc, $name, $methodType] = $this->parameters;
+        $class = $args[0] ?? null;
+
+        $result = $class
+            ->getInvoker()
+            ->getDynamic()
+            ->getMethods()
+            ->call(
+                $name,
+                ...array_slice($args, 1)
+            );
+
+        /**
+         * @var JavaClassInterface $returnType
+         */
+        $returnType = $methodType
+            ->getInvoker()
+            ->getDynamic()
+            ->getMethods()
+            ->call(
+                'returnType'
+            );
+
+        if ($returnType instanceof _Void) {
+            return null;
+        }
+        return $result;
     }
 
     /**

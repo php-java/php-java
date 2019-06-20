@@ -37,7 +37,7 @@ class System extends _Object // implements Logger, Map, Channel
      */
     public static $out = null;
 
-    public static function __staticConstruct(...$parameters)
+    public static function __staticConstruct()
     {
         static::$out = JavaClass::load('java.io.PrintStream');
         static::$out->getInvoker()->construct();

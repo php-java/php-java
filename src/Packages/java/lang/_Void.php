@@ -6,7 +6,7 @@ namespace PHPJava\Packages\java\lang;
  *
  * @parent \PHPJava\Packages\java\lang\_Object
  */
-class Void extends _Object
+class _Void extends _Object
 {
     /**
      * The Class object representing the pseudo-type corresponding to the keyword void.
@@ -14,4 +14,9 @@ class Void extends _Object
      * @var mixed $TYPE
      */
     public static $TYPE = null;
+
+    public static function __staticConstruct()
+    {
+        static::$TYPE = new \PHPJava\Kernel\Types\_Void();
+    }
 }

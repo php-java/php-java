@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Types;
 
-class _Float extends Type
+class _Float extends Type implements PrimitiveValueInterface
 {
     const DEFAULT_VALUE = 0;
 

@@ -2,6 +2,7 @@
 namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Internal\Lambda;
@@ -79,10 +80,10 @@ class LambdaMetafactory extends _Object
         /**
          * @var Lookup $a
          * @var string $invokedName
-         * @var MethodType $invokedType
-         * @var MethodType $samMethodType
+         * @var JavaClassInterface $invokedType
+         * @var JavaClassInterface $samMethodType
          * @var MethodHandleInfo $implMethod
-         * @var MethodType $instantiatedMethodType
+         * @var JavaClassInterface $instantiatedMethodType
          */
         $caller = $a;
         $invokedName = $b;
@@ -91,7 +92,13 @@ class LambdaMetafactory extends _Object
         $implMethod = $e;
         $instantiatedMethodType = $f;
 
-        $class = $invokedType->returnType();
+        $class = $invokedType
+            ->getInvoker()
+            ->getDynamic()
+            ->getMethods()
+            ->call(
+                'returnType'
+            );
 
         $lambdaInfo = $cp[$cp[$implMethod->getReferenceIndex()]->getNameAndTypeIndex()];
         $lambdaName = $cp[$lambdaInfo->getNameIndex()]->getString();

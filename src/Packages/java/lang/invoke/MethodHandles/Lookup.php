@@ -1,8 +1,11 @@
 <?php
 namespace PHPJava\Packages\java\lang\invoke\MethodHandles;
 
+use PHPJava\Core\JavaClass;
+use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\invoke\MethodType;
 
 // use PHPJava\Packages\java\lang\invoke\MethodHandleInfo;
 
@@ -254,7 +257,31 @@ class Lookup extends _Object // implements MethodHandleInfo
      */
     public function findVirtual($a = null, $b = null, $c = null)
     {
-        throw new NotImplementedException(__METHOD__);
+        /**
+         * @var JavaClassInterface $refc
+         * @var string $name
+         * @var MethodType $type
+         */
+        $refc = $a;
+        $name = $b;
+        $type = $c;
+
+        /**
+         * Returns java.lang.invoke.MethodHandle instantiated class.
+         * @see https://docs.oracle.com/javase/jp/8/docs/api/java/lang/invoke/MethodHandles.Lookup.html#findVirtual-java.lang.Class-java.lang.String-java.lang.invoke.MethodType-
+         */
+        return JavaClass::load(
+            'java.lang.invoke.MethodHandle',
+            [
+                'inherit' => true,
+            ]
+        )->getInvoker()
+            ->construct(
+                $refc,
+                $name,
+                $type
+            )
+            ->getJavaClass();
     }
 
     /**

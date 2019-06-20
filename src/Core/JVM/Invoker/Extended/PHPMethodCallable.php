@@ -42,9 +42,18 @@ trait PHPMethodCallable
             return $this->javaClassInvoker->getJavaClass();
         }
 
+        $classObject = $this->javaClassInvoker->getClassObject();
+        if ($this->isDynamic() && $classObject === null) {
+            throw new RuntimeException(
+                'Failed to call the method because the given JavaClass does not have ClassObject.'
+            );
+        }
+
         $executed = $method
             ->invokeArgs(
-                $this->isDynamic() ? $this->javaClassInvoker->getClassObject() : null,
+                $this->isDynamic()
+                    ? $classObject
+                    : null,
                 $arguments
             );
 

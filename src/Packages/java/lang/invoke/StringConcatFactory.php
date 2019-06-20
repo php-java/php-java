@@ -42,7 +42,7 @@ class StringConcatFactory extends _Object
     {
         /**
          * @var Lookup $lookup
-         * @var MethodType $concatType
+         * @var JavaClass $concatType
          * @var null|_String $name
          * @var string recipe
          * @var _Object[] $constants
@@ -78,7 +78,13 @@ class StringConcatFactory extends _Object
         }
 
         [, $returnType] = Formatter::convertJavaNamespaceToPHP(
-            $concatType->returnType()
+            $concatType
+                ->getInvoker()
+                ->getDynamic()
+                ->getMethods()
+                ->call(
+                    'returnType'
+                )
         );
 
         return JavaClass::load('java.lang.String')

@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Packages\java\lang\invoke;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
@@ -355,7 +356,14 @@ class MethodHandles extends _Object // implements _List, Member
      */
     public static function lookup($a = null)
     {
-        return new Lookup($a);
+        return JavaClass::load(
+            'java.lang.invoke.MethodHandles.Lookup',
+            [
+                'inherit' => true,
+            ]
+        )->getInvoker()
+            ->construct($a)
+            ->getJavaClass();
     }
 
     /**
