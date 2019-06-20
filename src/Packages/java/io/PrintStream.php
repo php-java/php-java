@@ -6,6 +6,7 @@ use PHPJava\Exceptions\InvalidArgumentException;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
+use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Packages\java\util\IllegalFormatException;
 
 class PrintStream
@@ -46,6 +47,12 @@ class PrintStream
         }
 
         $type = gettype($arg);
+
+        if ($type === 'NULL') {
+            echo "null\n";
+            throw new NullPointerException();
+        }
+
         throw new IllegalFormatException('Cannot pass "' . ($type === 'object' ? get_class($arg) : $type) . '" in ' . __METHOD__);
     }
 
@@ -69,6 +76,12 @@ class PrintStream
         }
 
         $type = gettype($arg);
+
+        if ($type === 'NULL') {
+            echo 'null';
+            throw new NullPointerException();
+        }
+
         throw new IllegalFormatException('Cannot pass "' . ($type === 'object' ? get_class($arg) : $type) . '" in ' . __METHOD__);
     }
 
