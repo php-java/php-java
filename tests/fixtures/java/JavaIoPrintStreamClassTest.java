@@ -11,6 +11,12 @@ class JavaIoPrintStreamClassTest
         System.out.println(x);
     }
 
+    public static void testPrintlnWithNullStringParams()
+    {
+        String x = null;
+        System.out.println(x);
+    }
+
     public static void testPrintlnWithCharParams()
     {
         char x = 'A';
@@ -20,6 +26,12 @@ class JavaIoPrintStreamClassTest
     public static void testPrintlnWithCharArrayParams()
     {
         char[] x = {'A', 'B', 'C'};
+        System.out.println(x);
+    }
+
+    public static void testPrintlnWithNullCharArrayParams()
+    {
+        char[] x = null;
         System.out.println(x);
     }
 
@@ -53,6 +65,12 @@ class JavaIoPrintStreamClassTest
         System.out.print(x);
     }
 
+    public static void testPrintWithNullStringParams()
+    {
+        String x = null;
+        System.out.print(x);
+    }
+
     public static void testPrintWithCharParams()
     {
         char x = 'A';
@@ -62,6 +80,12 @@ class JavaIoPrintStreamClassTest
     public static void testPrintWithCharArrayParams()
     {
         char[] x = {'A', 'B', 'C'};
+        System.out.print(x);
+    }
+
+    public static void testPrintWithNullCharArrayParams()
+    {
+        char[] x = null;
         System.out.print(x);
     }
 

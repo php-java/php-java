@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Tests\Packages\java\io;
 
+use PHPJava\Exceptions\UncaughtException;
+use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Tests\Base;
 
 class JavaIoPrintStreamClassTest extends Base
@@ -9,17 +11,23 @@ class JavaIoPrintStreamClassTest extends Base
         'JavaIoPrintStreamClassTest',
     ];
 
+    protected $expectedSpecialException;
+
     private function call($method, ...$arguments)
     {
         ob_start();
-        static::$initiatedJavaClasses['JavaIoPrintStreamClassTest']
-            ->getInvoker()
-            ->getStatic()
-            ->getMethods()
-            ->call(
-                $method,
-                ...$arguments
-            );
+        try {
+            static::$initiatedJavaClasses['JavaIoPrintStreamClassTest']
+                ->getInvoker()
+                ->getStatic()
+                ->getMethods()
+                ->call(
+                    $method,
+                    ...$arguments
+                );
+        } catch (UncaughtException $e) {
+            $this->expectedSpecialException = get_class($e->getPrevious());
+        }
         return ob_get_clean();
     }
 
@@ -35,6 +43,16 @@ class JavaIoPrintStreamClassTest extends Base
         $this->assertEquals("Hello World\n", $result);
     }
 
+    public function testPrintlnWithNullStringParams()
+    {
+        $result = $this->call(explode('::', __METHOD__)[1]);
+        $this->assertEquals("null\n", $result);
+        $this->assertSame(
+            NullPointerException::class,
+            $this->expectedSpecialException
+        );
+    }
+
     public function testPrintlnWithCharParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
@@ -45,6 +63,16 @@ class JavaIoPrintStreamClassTest extends Base
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
         $this->assertEquals("ABC\n", $result);
+    }
+
+    public function testPrintlnWithNullCharArrayParams()
+    {
+        $result = $this->call(explode('::', __METHOD__)[1]);
+        $this->assertEquals("\n", $result);
+        $this->assertSame(
+            NullPointerException::class,
+            $this->expectedSpecialException
+        );
     }
 
     public function testPrintlnWithFloatParams()
@@ -74,6 +102,16 @@ class JavaIoPrintStreamClassTest extends Base
         $this->assertEquals('Hello World', $result);
     }
 
+    public function testPrintWithNullStringParams()
+    {
+        $result = $this->call(explode('::', __METHOD__)[1]);
+        $this->assertEquals('null', $result);
+        $this->assertSame(
+            NullPointerException::class,
+            $this->expectedSpecialException
+        );
+    }
+
     public function testPrintWithCharParams()
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
@@ -84,6 +122,16 @@ class JavaIoPrintStreamClassTest extends Base
     {
         $result = $this->call(explode('::', __METHOD__)[1]);
         $this->assertEquals('ABC', $result);
+    }
+
+    public function testPrintWithNullCharArrayParams()
+    {
+        $result = $this->call(explode('::', __METHOD__)[1]);
+        $this->assertEquals('', $result);
+        $this->assertSame(
+            NullPointerException::class,
+            $this->expectedSpecialException
+        );
     }
 
     public function testPrintWithFloatParams()

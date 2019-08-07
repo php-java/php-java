@@ -17,9 +17,34 @@ trait DependencyInjector
     public function getAnnotateInjections(array $annotations): array
     {
         return array_merge(
+            $this->getInfoAnnotateInjections($annotations),
             $this->getNativeAnnotateInjections($annotations),
             $this->getProviderAnnotateInjections($annotations)
         );
+    }
+
+    /**
+     * @throws \PHPJava\Exceptions\ProviderException
+     * @return (
+     *           \PHPJava\Core\JVM\ConstantPool|
+     *           \PHPJava\Core\JavaClass|
+     *           \PHPJava\Core\JavaClassInvoker|
+     *           \PHPJava\Kernel\Attributes\AttributeInfo|
+     *           array
+     *           )[]
+     */
+    private function getInfoAnnotateInjections(array $annotations): array
+    {
+        // Native annotation will inject a dependency.
+        $injections = [];
+        foreach (($annotations['depended-info'] ?? []) as $info) {
+            switch (strtolower(trim($info))) {
+                case 'signature':
+                    $injections[] = $this->methodSignature;
+                    break;
+            }
+        }
+        return $injections;
     }
 
     /**
