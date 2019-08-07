@@ -28,8 +28,11 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
      * Appends the specified character sequence to this output stream.
      * Appends a subsequence of the specified character sequence to this output stream.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#append
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function append($a = null, $b = null, $c = null)
     {
@@ -42,8 +45,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
     /**
      * Flushes the stream and checks its error state.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#checkError
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function checkError($a = null)
     {
@@ -53,8 +57,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
     /**
      * Clears the internal error state of this stream.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#clearError
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function clearError($a = null)
     {
@@ -64,8 +69,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
     /**
      * Closes the stream.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#close
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function close($a = null)
     {
@@ -75,8 +81,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
     /**
      * Flushes the stream.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#flush
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function flush($a = null)
     {
@@ -87,8 +94,11 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
      * Writes a formatted string to this output stream using the specified format string and arguments.
      * Writes a formatted string to this output stream using the specified format string and arguments.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#format
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function format($a = null, $b = null, $c = null)
     {
@@ -107,11 +117,17 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
      * Prints a string.
      *
      * @depended-info signature
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#print
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function print($methodSignature, $a = null)
     {
+        // Did not pass a parameter.
+        if (!isset($methodSignature['arguments'][0])) {
+            return;
+        }
+
         $arg = $a;
 
         if ($arg instanceof Utf8Info) {
@@ -144,8 +160,11 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
      * A convenience method to write a formatted string to this output stream using the specified format string and arguments.
      * A convenience method to write a formatted string to this output stream using the specified format string and arguments.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#printf
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function printf($a = null, $b = null, $c = null)
     {
@@ -165,8 +184,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
      * Prints a String and then terminate the line.
      *
      * @depended-info signature
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#println
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     public function println($methodSignature, $a = null)
     {
@@ -183,8 +203,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
     /**
      * Sets the error state of the stream to true.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#setError
+     * @param null|mixed $a
+     * @throws NotImplementedException
      */
     protected function setError($a = null)
     {
@@ -195,8 +216,11 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
      * Writes len bytes from the specified byte array starting at offset off to this stream.
      * Writes the specified byte to this stream.
      *
-     * @throws NotImplementedException
      * @see https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/package-summary.html#write
+     * @param null|mixed $a
+     * @param null|mixed $b
+     * @param null|mixed $c
+     * @throws NotImplementedException
      */
     public function write($a = null, $b = null, $c = null)
     {
