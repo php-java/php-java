@@ -123,6 +123,11 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
      */
     public function print($methodSignature, $a = null)
     {
+        /**
+         * TODO: Rewrite here.
+         * This method is very weak.
+         * We need to judge parameters type with methodSignature parameter.
+         */
         // Did not pass a parameter.
         if (!isset($methodSignature['arguments'][0])) {
             return;
@@ -138,8 +143,10 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
             $arg instanceof Collection ||
             $arg instanceof PrimitiveValueInterface
         ) {
-            echo $arg;
-            return;
+            if (((string) $arg) !== "\x00") {
+                echo $arg;
+                return;
+            }
         }
 
         if ($arg instanceof JavaClass) {
