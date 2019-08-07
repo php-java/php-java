@@ -8,11 +8,21 @@ use PHPJava\Utilities\Formatter;
 
 final class _invokevirtual implements OperationInterface
 {
+    protected $methodSignature;
+
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DependencyInjector;
     use \PHPJava\Kernel\Core\ExceptionTableInspectable;
 
+    /**
+     * @throws NullPointerException
+     * @throws \PHPJava\Exceptions\IllegalOperationException
+     * @throws \PHPJava\Exceptions\NormalizerException
+     * @throws \PHPJava\Exceptions\TypeException
+     * @throws \PHPJava\Exceptions\UnableToFindAttributionException
+     * @throws \PHPJava\Exceptions\UncaughtException
+     */
     public function execute(): void
     {
         $cpInfo = $this->getConstantPool();
@@ -35,6 +45,8 @@ final class _invokevirtual implements OperationInterface
                 $signature['arguments']
             );
         }
+
+        $this->methodSignature = $signature;
 
         /**
          * @var JavaClassInterface $invokerClass
