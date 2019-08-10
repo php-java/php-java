@@ -21,7 +21,12 @@ final class _invokevirtual extends AbstractOperationCode implements OperationCod
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+
+        $indexbyte = $this->readUnsignedShort();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']]
+        );
     }
 
     /**
@@ -36,7 +41,7 @@ final class _invokevirtual extends AbstractOperationCode implements OperationCod
     {
         parent::execute();
         $cpInfo = $this->getConstantPool();
-        $cp = $cpInfo[$this->readUnsignedShort()];
+        $cp = $cpInfo[$this->getOperands()['indexbyte']];
         $class = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];
 

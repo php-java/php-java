@@ -1,18 +1,36 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Exceptions\OperationException;
+
 final class Operands implements \ArrayAccess
 {
     private $operands = [];
 
-    public function __construct(array $operands = [])
+    public function __construct(...$operands)
     {
-        $this->operands = $operands;
+        foreach ($operands as [$alias, $value, $operandNames]) {
+            $this->operands[$alias] = [$value, $operandNames];
+        }
     }
 
     public function count()
     {
-        return count($this->operands);
+        return count($this->getInfo());
+    }
+
+    public function getInfo(): array
+    {
+        $operands = [];
+        foreach ($this->operands as [, $operandParameters]) {
+            array_push($operands, ...$operandParameters);
+        }
+        return $operands;
+    }
+
+    public function getElements(): array
+    {
+        return $this->operands;
     }
 
     public function offsetExists($offset)
@@ -22,17 +40,16 @@ final class Operands implements \ArrayAccess
 
     public function offsetGet($offset)
     {
-        return $this->operands[$offset];
+        return $this->operands[$offset][0];
     }
 
     public function offsetSet($offset, $value)
     {
-        $this->operands[$offset] = $value;
+        throw new OperationException('Operands class is not supported overwrite.');
     }
 
     public function offsetUnset($offset)
     {
-        unset($this->operands[$offset]);
-        $this->operands = array_values($this->operands);
+        throw new OperationException('Operands class is not supported unset an element.');
     }
 }
