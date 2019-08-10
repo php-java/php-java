@@ -8,10 +8,16 @@ use PHPJava\Kernel\Structures\StringInfo;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Int;
 
-final class _ldc implements OperationInterface
+final class _ldc extends AbstractOperationCode implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        return $this->operands ?? new Operands();
+    }
 
     public function execute(): void
     {

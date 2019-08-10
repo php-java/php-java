@@ -5,10 +5,16 @@ use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Packages\java\lang\ClassCastException;
 use PHPJava\Utilities\Formatter;
 
-final class _checkcast implements OperationInterface
+final class _checkcast extends AbstractOperationCode implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        return $this->operands ?? new Operands();
+    }
 
     /**
      * @throws ClassCastException

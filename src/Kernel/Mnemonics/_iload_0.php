@@ -3,10 +3,16 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Types\_Int;
 
-final class _iload_0 implements OperationInterface
+final class _iload_0 extends AbstractOperationCode implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        return $this->operands ?? new Operands();
+    }
 
     public function execute(): void
     {

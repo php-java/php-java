@@ -5,10 +5,16 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\Type;
 
-final class _iastore implements OperationInterface
+final class _iastore extends AbstractOperationCode implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        return $this->operands ?? new Operands();
+    }
 
     public function execute(): void
     {

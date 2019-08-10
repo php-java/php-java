@@ -5,10 +5,16 @@ use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Packages\java\lang\UnsupportedOperationException;
 
-final class _ldc2_w implements OperationInterface
+final class _ldc2_w extends AbstractOperationCode implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        return $this->operands ?? new Operands();
+    }
 
     public function execute(): void
     {

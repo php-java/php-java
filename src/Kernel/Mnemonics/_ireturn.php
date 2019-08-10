@@ -7,10 +7,16 @@ use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Short;
 
-final class _ireturn implements OperationInterface
+final class _ireturn extends AbstractOperationCode implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        return $this->operands ?? new Operands();
+    }
 
     // return an integer from a method
     public function execute()
