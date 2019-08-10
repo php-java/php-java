@@ -16,7 +16,11 @@ final class _checkcast extends AbstractOperationCode implements OperationCodeInt
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $indexbyte = $this->readUnsignedShort();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']]
+        );
     }
 
     /**
@@ -26,7 +30,7 @@ final class _checkcast extends AbstractOperationCode implements OperationCodeInt
     {
         parent::execute();
         $cp = $this->getConstantPool();
-        $index = $this->readUnsignedShort();
+        $index = $this->getOperands()['indexbyte'];
         $objectref = $this->popFromOperandStack();
 
         if ($objectref === null) {

@@ -12,13 +12,17 @@ final class _fstore extends AbstractOperationCode implements OperationCodeInterf
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $index = $this->readUnsignedByte();
+
+        return $this->operands = new Operands(
+            ['index', $index, ['index']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
-        $index = $this->readUnsignedByte();
+        $index = $this->getOperands()['index'];
         $this->setLocalStorage($index, $this->popFromOperandStack());
     }
 }

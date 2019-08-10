@@ -27,7 +27,11 @@ final class _invokedynamic extends AbstractOperationCode implements OperationCod
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $indexbyte = $this->readUnsignedShort();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']]
+        );
     }
 
     /**
@@ -46,7 +50,7 @@ final class _invokedynamic extends AbstractOperationCode implements OperationCod
         /**
          * @var \PHPJava\Kernel\Structures\InvokeDynamicInfo $invokeDynamicStructure
          */
-        $invokeDynamicStructure = $cp[$this->readUnsignedShort()];
+        $invokeDynamicStructure = $cp[$this->getOperands()['indexbyte']];
 
         // NOTE: The values of the third and fourth operand bytes must always be zero.
         $thirdByte = $this->read();

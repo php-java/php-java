@@ -14,13 +14,17 @@ final class _lload extends AbstractOperationCode implements OperationCodeInterfa
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $index = $this->readUnsignedByte();
+
+        return $this->operands = new Operands(
+            ['index', $index, ['index']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
-        $index = $this->readUnsignedByte();
+        $index = $this->getOperands()['index'];
 
         $this->pushToOperandStack(
             _Long::get(

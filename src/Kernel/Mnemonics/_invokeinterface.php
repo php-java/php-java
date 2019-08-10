@@ -20,18 +20,24 @@ final class _invokeinterface extends AbstractOperationCode implements OperationC
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $indexbyte = $this->readUnsignedShort();
+        $count = $this->readUnsignedByte();
+
+        // NOTE: The value of the fourth operand byte must always be zero.
+        $this->readByte();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']],
+            ['count', $count, ['count']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
         $cp = $this->getConstantPool();
-        $index = $this->readUnsignedShort();
-        $count = $this->readUnsignedByte();
-
-        // NOTE: The value of the fourth operand byte must always be zero.
-        $this->readByte();
+        $index = $this->getOperands()['indexbyte'];
+        $count = $this->getOperands()['count'];
 
         $interfaceMethodRef = $cp[$cp[$index]->getNameAndTypeIndex()];
         $className = $cp[$cp[$cp[$index]->getClassIndex()]->getClassIndex()]->getString();

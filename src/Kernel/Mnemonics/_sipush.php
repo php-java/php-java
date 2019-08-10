@@ -14,12 +14,16 @@ final class _sipush extends AbstractOperationCode implements OperationCodeInterf
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $byte = $this->readShort();
+
+        return $this->operands = new Operands(
+            ['byte', $byte, ['byte1', 'byte2']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
-        $this->pushToOperandStack(_Short::get($this->readShort()));
+        $this->pushToOperandStack(_Short::get($this->getOperands()['byte']));
     }
 }

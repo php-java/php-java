@@ -18,14 +18,18 @@ final class _putfield extends AbstractOperationCode implements OperationCodeInte
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $indexbyte = $this->readUnsignedShort();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
         $cpInfo = $this->getConstantPool();
-        $cp = $cpInfo[$this->readUnsignedShort()];
+        $cp = $cpInfo[$this->getOperands()['indexbyte']];
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
 
         $value = $this->popFromOperandStack();

@@ -16,7 +16,11 @@ final class _getstatic extends AbstractOperationCode implements OperationCodeInt
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $indexbyte = $this->readUnsignedShort();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']]
+        );
     }
 
     public function execute(): void
@@ -24,7 +28,7 @@ final class _getstatic extends AbstractOperationCode implements OperationCodeInt
         parent::execute();
         $cpInfo = $this->getConstantPool();
 
-        $cp = $cpInfo[$this->readUnsignedShort()];
+        $cp = $cpInfo[$this->getOperands()['indexbyte']];
         $class = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());
         $fieldName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();

@@ -16,13 +16,17 @@ final class _newarray extends AbstractOperationCode implements OperationCodeInte
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $atype = $this->readUnsignedByte();
+
+        return $this->operands = new Operands(
+            ['atype', $atype, ['atype']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
-        $atype = $this->readUnsignedByte();
+        $atype = $this->getOperands()['atype'];
         $count = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $array = array_fill(0, $count, null);

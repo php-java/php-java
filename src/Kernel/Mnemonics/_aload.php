@@ -12,7 +12,11 @@ final class _aload extends AbstractOperationCode implements OperationCodeInterfa
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $index = $this->readByte();
+
+        return $this->operands = new Operands(
+            ['index', $index, ['index']]
+        );
     }
 
     /**
@@ -21,7 +25,7 @@ final class _aload extends AbstractOperationCode implements OperationCodeInterfa
     public function execute(): void
     {
         parent::execute();
-        $index = $this->readByte();
+        $index = $this->getOperands()['index'];
         $this->pushToOperandStack($this->getLocalStorage($index));
     }
 }

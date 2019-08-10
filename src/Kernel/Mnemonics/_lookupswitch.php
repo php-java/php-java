@@ -14,7 +14,26 @@ final class _lookupswitch extends AbstractOperationCode implements OperationCode
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        // padding data
+        $paddingData = 4 - (($this->getOffset()) % 4);
+        if ($paddingData != 4) {
+            $this->read($paddingData);
+        }
+
+        $default = $this->readInt();
+        $npairs = $this->readUnsignedInt();
+        $offsets = [];
+
+        for ($i = 0; $i < $npairs; $i++) {
+            $label = $this->readUnsignedInt();
+            $offsets[(string) $label] = $this->readInt();
+        }
+
+        return $this->operands = new Operands(
+            ['default', $default, ['defaultbyte1', 'defaultbyte2', 'defaultbyte3', 'defaultbyte4']],
+            ['npairs', $npairs, ['npairs1', 'npairs2', 'npairs3', 'npairs4']],
+            ['offsets', $offsets, ['match-offset']]
+        );
     }
 
     public function execute(): void
@@ -24,20 +43,7 @@ final class _lookupswitch extends AbstractOperationCode implements OperationCode
             $this->popFromOperandStack()
         );
 
-        // padding data
-        $paddingData = 4 - (($this->getOffset()) % 4);
-        if ($paddingData != 4) {
-            $this->read($paddingData);
-        }
-
-        $offsets = [];
-        $offsets['default'] = $this->readInt();
-        $switchSize = $this->readUnsignedInt();
-
-        for ($i = 0; $i < $switchSize; $i++) {
-            $label = $this->readUnsignedInt();
-            $offsets[(string) $label] = $this->readInt();
-        }
+        $offsets = $this->getOperands()['offsets'];
 
         if (isset($offsets[$key])) {
             // goto PC
@@ -46,6 +52,6 @@ final class _lookupswitch extends AbstractOperationCode implements OperationCode
         }
 
         // goto default
-        $this->setOffset($this->getProgramCounter() + $offsets['default']);
+        $this->setOffset($this->getProgramCounter() + $this->getOperands()['default']);
     }
 }
