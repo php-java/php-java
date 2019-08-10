@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class DefaultSyntaxInInterfaceTest extends Base
 {
@@ -20,7 +20,7 @@ class DefaultSyntaxInInterfaceTest extends Base
             ->call(
                 'defaultInterfaceMethodTest1'
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
 
         $this->assertEquals(
             "Hello World!\n",
@@ -38,7 +38,7 @@ class DefaultSyntaxInInterfaceTest extends Base
                 'main',
                 []
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
 
         $this->assertEquals(
             "Hello World!\n",
@@ -56,7 +56,7 @@ class DefaultSyntaxInInterfaceTest extends Base
                 'main',
                 []
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
 
         $this->assertEquals(
             "Hello World!\n",

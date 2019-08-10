@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class FizzBuzzTest extends Base
 {
@@ -19,7 +19,7 @@ class FizzBuzzTest extends Base
                 'main',
                 ['100']
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals(
             file_get_contents(__DIR__ . '/templates/FizzBuzzTest.txt'),
             $result

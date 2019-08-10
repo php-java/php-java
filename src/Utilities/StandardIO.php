@@ -4,7 +4,7 @@ namespace PHPJava\Utilities;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 
-final class PrintTool
+final class StandardIO
 {
     private static $outputHeapspace = '';
 

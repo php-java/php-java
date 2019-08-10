@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class ObjectCompareTest extends Base
 {
@@ -18,7 +18,7 @@ class ObjectCompareTest extends Base
             ->call(
                 'compareInitiatedObjects'
             );
-        $result = trim(PrintTool::getHeapspace());
+        $result = trim(StandardIO::getHeapspace());
 
         $this->assertEquals(
             'NotSame',

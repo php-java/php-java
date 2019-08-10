@@ -8,7 +8,7 @@ use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
 use PHPJava\Packages\java\lang\NullPointerException;
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\Appendable;
@@ -137,7 +137,7 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
         $arg = $a;
 
         if ($arg instanceof Utf8Info) {
-            PrintTool::output($arg->getString());
+            StandardIO::output($arg->getString());
             return;
         }
         if (is_scalar($arg) ||
@@ -145,20 +145,20 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
             $arg instanceof PrimitiveValueInterface
         ) {
             if (((string) $arg) !== "\x00") {
-                PrintTool::output($arg);
+                StandardIO::output($arg);
                 return;
             }
         }
 
         if ($arg instanceof JavaClass) {
-            PrintTool::output($arg);
+            StandardIO::output($arg);
             return;
         }
 
         [ $signatureType, $typeName ] = TypeResolver::getType($methodSignature['arguments'][0]);
 
         if ($typeName === \PHPJava\Packages\java\lang\String::class) {
-            PrintTool::output('null');
+            StandardIO::output('null');
         }
 
         throw new NullPointerException();
@@ -201,9 +201,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
         try {
             $this->print($methodSignature, $a);
             // output break line
-            PrintTool::output("\n");
+            StandardIO::output("\n");
         } catch (\Exception $e) {
-            PrintTool::output("\n");
+            StandardIO::output("\n");
             throw $e;
         }
     }

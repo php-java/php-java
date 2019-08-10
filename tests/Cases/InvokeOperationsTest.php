@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class InvokeOperationsTest extends Base
 {
@@ -19,7 +19,7 @@ class InvokeOperationsTest extends Base
                 'main',
                 []
             );
-        $getHelloWorld = PrintTool::getHeapspace();
+        $getHelloWorld = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\n", $getHelloWorld);
     }
 }

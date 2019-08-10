@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class ConstructTest extends Base
 {
@@ -21,7 +21,7 @@ class ConstructTest extends Base
                 'main',
                 []
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 
@@ -33,7 +33,7 @@ class ConstructTest extends Base
             ->getDynamic()
             ->getMethods()
             ->call('entrypoint');
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\nEntrypoint\n", $result);
     }
 
@@ -47,7 +47,7 @@ class ConstructTest extends Base
                 'main',
                 []
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 
@@ -59,7 +59,7 @@ class ConstructTest extends Base
             ->getDynamic()
             ->getMethods()
             ->call('entrypoint');
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\nEntrypoint\n", $result);
     }
 

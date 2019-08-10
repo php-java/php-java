@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class QuickSortTest extends Base
 {
@@ -19,7 +19,7 @@ class QuickSortTest extends Base
                 'asc',
                 [-14, 5, 111, 44, 2, 9999, 99, 123, 1, -10, 33, -50]
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals(
             file_get_contents(__DIR__ . '/templates/QuickSortAsc.txt'),
             $result
@@ -36,7 +36,7 @@ class QuickSortTest extends Base
                 'desc',
                 [-14, 5, 111, 44, 2, 9999, 99, 123, 1, -10, 33, -50]
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals(
             file_get_contents(__DIR__ . '/templates/QuickSortDesc.txt'),
             $result

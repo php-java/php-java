@@ -2,7 +2,7 @@
 namespace PHPJava\Tests\Cases\Packages;
 
 use PHPJava\Tests\Cases\Base;
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class JavaLangSystemTest extends Base
 {
@@ -20,7 +20,7 @@ class JavaLangSystemTest extends Base
                 'identityHashCode'
             );
 
-        $values = array_filter(explode("\n", PrintTool::getHeapspace()));
+        $values = array_filter(explode("\n", StandardIO::getHeapspace()));
         $this->assertCount(2, $values);
 
         $hashCodes = [];

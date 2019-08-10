@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class InnerClassTest extends Base
 {
@@ -20,7 +20,7 @@ class InnerClassTest extends Base
                 'main',
                 ['Hello', 'World']
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
 
         $this->assertEquals('Hello World', $result);
     }

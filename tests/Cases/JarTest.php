@@ -2,7 +2,7 @@
 namespace PHPJava\Tests\Cases;
 
 use PHPJava\Core\JavaArchive;
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class JarTest extends Base
 {
@@ -46,7 +46,7 @@ class JarTest extends Base
     public function testCallWithEntryPoint()
     {
         (new JavaArchive(__DIR__ . '/caches/JarTest.jar'))->execute([]);
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
 
         $this->assertEquals(
             'Called Static Method AND Called Dynamic Method',
@@ -65,7 +65,7 @@ class JarTest extends Base
                 'main',
                 []
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
 
         $this->assertEquals(
             'Called Static Method AND Called Dynamic Method',
@@ -84,7 +84,7 @@ class JarTest extends Base
                 'main',
                 []
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("TEST\n", $result);
     }
 
@@ -99,7 +99,7 @@ class JarTest extends Base
                 'main',
                 []
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 }

@@ -2,7 +2,7 @@
 namespace PHPJava\Tests\Cases;
 
 use PHPJava\Kernel\Types\_Double;
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class DoubleOfTypesComparingTest extends Base
 {
@@ -20,7 +20,7 @@ class DoubleOfTypesComparingTest extends Base
                 'l',
                 new _Double(-1.0)
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 
@@ -34,7 +34,7 @@ class DoubleOfTypesComparingTest extends Base
                 'le',
                 new _Double(0)
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 
@@ -48,7 +48,7 @@ class DoubleOfTypesComparingTest extends Base
                 'g',
                 new _Double(2.0)
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 
@@ -62,7 +62,7 @@ class DoubleOfTypesComparingTest extends Base
                 'ge',
                 new _Double(0)
             );
-        $result = PrintTool::getHeapspace();
+        $result = StandardIO::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 }

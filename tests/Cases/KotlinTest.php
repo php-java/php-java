@@ -2,7 +2,7 @@
 namespace PHPJava\Tests\Cases;
 
 use PHPJava\Core\JavaArchive;
-use PHPJava\Utilities\PrintTool;
+use PHPJava\Utilities\StandardIO;
 
 class KotlinTest extends Base
 {
@@ -23,7 +23,7 @@ class KotlinTest extends Base
 
         $jar = new JavaArchive(__DIR__ . '/caches/HelloWorldKotlin.jar');
         $jar->execute([]);
-        $result = rtrim(PrintTool::getHeapspace());
+        $result = rtrim(StandardIO::getHeapspace());
 
         $this->assertEquals('Hello World!', $result);
     }
