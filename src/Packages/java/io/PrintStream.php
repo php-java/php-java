@@ -3,12 +3,12 @@ namespace PHPJava\Packages\java\io;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\IO\Standard\Output;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
 use PHPJava\Packages\java\lang\NullPointerException;
-use PHPJava\Utilities\Standard;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\Appendable;
@@ -137,7 +137,7 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
         $arg = $a;
 
         if ($arg instanceof Utf8Info) {
-            Standard::output($arg->getString());
+            Output::output($arg->getString());
             return;
         }
         if (is_scalar($arg) ||
@@ -145,20 +145,20 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
             $arg instanceof PrimitiveValueInterface
         ) {
             if (((string) $arg) !== "\x00") {
-                Standard::output($arg);
+                Output::output($arg);
                 return;
             }
         }
 
         if ($arg instanceof JavaClass) {
-            Standard::output($arg);
+            Output::output($arg);
             return;
         }
 
         [ $signatureType, $typeName ] = TypeResolver::getType($methodSignature['arguments'][0]);
 
         if ($typeName === \PHPJava\Packages\java\lang\String::class) {
-            Standard::output('null');
+            Output::output('null');
         }
 
         throw new NullPointerException();
@@ -201,9 +201,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
         try {
             $this->print($methodSignature, $a);
             // output break line
-            Standard::output("\n");
+            Output::output("\n");
         } catch (\Exception $e) {
-            Standard::output("\n");
+            Output::output("\n");
             throw $e;
         }
     }
