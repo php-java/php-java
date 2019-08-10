@@ -3,11 +3,11 @@ namespace PHPJava\Tests\Cases;
 
 use PHPJava\Core\JavaCompiledClass;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
+use PHPJava\IO\Standard\Output;
 use PHPJava\Kernel\Types\_Byte;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Double;
 use PHPJava\Kernel\Types\_Long;
-use PHPJava\Utilities\StandardIO;
 
 class CallToAmbiguousMethodsTest extends Base
 {
@@ -65,7 +65,7 @@ class CallToAmbiguousMethodsTest extends Base
             new _Long(1234)
         );
 
-        $result = (int) StandardIO::getHeapspace();
+        $result = (int) Output::getHeapspace();
         $this->assertEquals(1234, $result);
     }
 
@@ -76,7 +76,7 @@ class CallToAmbiguousMethodsTest extends Base
             new _Byte(32)
         );
 
-        $result = (int) StandardIO::getHeapspace();
+        $result = (int) Output::getHeapspace();
         $this->assertEquals(32, $result);
     }
 
@@ -87,7 +87,7 @@ class CallToAmbiguousMethodsTest extends Base
             new _Char('a')
         );
 
-        $result = rtrim(StandardIO::getHeapspace());
+        $result = rtrim(Output::getHeapspace());
         $this->assertEquals('a', $result);
     }
 
@@ -98,7 +98,7 @@ class CallToAmbiguousMethodsTest extends Base
             new _Double(0.01)
         );
 
-        $result = rtrim(StandardIO::getHeapspace());
+        $result = rtrim(Output::getHeapspace());
         $this->assertEquals('0.01', $result);
     }
 
@@ -109,7 +109,7 @@ class CallToAmbiguousMethodsTest extends Base
             1234
         );
 
-        $result = (int) StandardIO::getHeapspace();
+        $result = (int) Output::getHeapspace();
         $this->assertEquals(1234, $result);
     }
 
@@ -120,7 +120,7 @@ class CallToAmbiguousMethodsTest extends Base
             32
         );
 
-        $result = (int) StandardIO::getHeapspace();
+        $result = (int) Output::getHeapspace();
         $this->assertEquals(32, $result);
     }
 
@@ -131,7 +131,7 @@ class CallToAmbiguousMethodsTest extends Base
             'a'
         );
 
-        $result = rtrim(StandardIO::getHeapspace());
+        $result = rtrim(Output::getHeapspace());
         $this->assertEquals('a', $result);
     }
 
@@ -142,7 +142,7 @@ class CallToAmbiguousMethodsTest extends Base
             0.01
         );
 
-        $result = rtrim(StandardIO::getHeapspace());
+        $result = rtrim(Output::getHeapspace());
         $this->assertEquals('0.01', $result);
     }
 }

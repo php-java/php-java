@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
+use PHPJava\IO\Standard\Output;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
-use PHPJava\Utilities\StandardIO;
 
 class MethodParameterTest extends Base
 {
@@ -40,7 +40,7 @@ class MethodParameterTest extends Base
             ->call(
                 'noParameterMethod'
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals('Hello World!', $result);
     }

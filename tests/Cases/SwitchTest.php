@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\StandardIO;
+use PHPJava\IO\Standard\Output;
 
 class SwitchTest extends Base
 {
@@ -19,7 +19,7 @@ class SwitchTest extends Base
                 'tableswitch',
                 -1
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals(
             'Cat',
@@ -37,7 +37,7 @@ class SwitchTest extends Base
                 'tableswitch',
                 0
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals(
             'Dog',
@@ -55,7 +55,7 @@ class SwitchTest extends Base
                 'tableswitch',
                 1
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals(
             'Hamster',
@@ -73,7 +73,7 @@ class SwitchTest extends Base
                 'lookupswitch',
                 1234
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals(
             'Lion',
@@ -91,7 +91,7 @@ class SwitchTest extends Base
                 'lookupswitch',
                 5678
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals(
             'Panda',
@@ -109,7 +109,7 @@ class SwitchTest extends Base
                 'lookupswitch',
                 9999
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals(
             'Elephant',

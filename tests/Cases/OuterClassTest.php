@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\StandardIO;
+use PHPJava\IO\Standard\Output;
 
 class OuterClassTest extends Base
 {
@@ -20,7 +20,7 @@ class OuterClassTest extends Base
                 'main',
                 []
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals(
             'Called Static Method AND Called Dynamic Method',

@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
+use PHPJava\IO\Standard\Output;
 use PHPJava\Kernel\Types\_Float;
-use PHPJava\Utilities\StandardIO;
 
 class FloatOfTypesComparingTest extends Base
 {
@@ -20,7 +20,7 @@ class FloatOfTypesComparingTest extends Base
                 'l',
                 new _Float(-1.0)
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 
@@ -34,7 +34,7 @@ class FloatOfTypesComparingTest extends Base
                 'le',
                 new _Float(0)
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 
@@ -48,7 +48,7 @@ class FloatOfTypesComparingTest extends Base
                 'g',
                 new _Float(2.0)
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 
@@ -62,7 +62,7 @@ class FloatOfTypesComparingTest extends Base
                 'ge',
                 new _Float(0)
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 }

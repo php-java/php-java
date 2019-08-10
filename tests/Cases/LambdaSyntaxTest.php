@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\StandardIO;
+use PHPJava\IO\Standard\Output;
 
 class LambdaSyntaxTest extends Base
 {
@@ -23,7 +23,7 @@ class LambdaSyntaxTest extends Base
         $this->call(
             'testParameterWithLambdaSyntax'
         );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 }

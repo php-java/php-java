@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\StandardIO;
+use PHPJava\IO\Standard\Output;
 
 class ExtendingClassTest extends Base
 {
@@ -21,7 +21,7 @@ class ExtendingClassTest extends Base
                 'main',
                 []
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals("99999\n", $result);
     }
 
@@ -35,7 +35,7 @@ class ExtendingClassTest extends Base
                 'main',
                 []
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals("12345\n", $result);
     }
 }

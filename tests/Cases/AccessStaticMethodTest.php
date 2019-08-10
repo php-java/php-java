@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\StandardIO;
+use PHPJava\IO\Standard\Output;
 
 class AccessStaticMethodTest extends Base
 {
@@ -20,7 +20,7 @@ class AccessStaticMethodTest extends Base
                 'main',
                 ['Hello', 'World']
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals('HelloWorld', $result);
     }
@@ -36,7 +36,7 @@ class AccessStaticMethodTest extends Base
                 'main',
                 [1234, 5678]
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals(246811356, $result);
     }

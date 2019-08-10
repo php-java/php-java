@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\StandardIO;
+use PHPJava\IO\Standard\Output;
 
 class EnclosingMethodTest extends Base
 {
@@ -19,7 +19,7 @@ class EnclosingMethodTest extends Base
                 'main',
                 []
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
     }
 }

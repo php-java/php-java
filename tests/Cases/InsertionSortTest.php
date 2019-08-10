@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\StandardIO;
+use PHPJava\IO\Standard\Output;
 
 class InsertionSortTest extends Base
 {
@@ -16,7 +16,7 @@ class InsertionSortTest extends Base
             ->getStatic()
             ->getMethods()
             ->call('asc');
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals(
             file_get_contents(__DIR__ . '/templates/InsertionSortAsc.txt'),
             $result
@@ -30,7 +30,7 @@ class InsertionSortTest extends Base
             ->getStatic()
             ->getMethods()
             ->call('desc');
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals(
             file_get_contents(__DIR__ . '/templates/InsertionSortDesc.txt'),
             $result
@@ -47,7 +47,7 @@ class InsertionSortTest extends Base
                 'ascByParam',
                 [-14, 5, 111, 44, 2, 9999, 99, 123, 1, -10, 33, -50]
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals(
             file_get_contents(__DIR__ . '/templates/InsertionSortAsc.txt'),
             $result
@@ -64,7 +64,7 @@ class InsertionSortTest extends Base
                 'descByParam',
                 [-14, 5, 111, 44, 2, 9999, 99, 123, 1, -10, 33, -50]
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals(
             file_get_contents(__DIR__ . '/templates/InsertionSortDesc.txt'),
             $result

@@ -2,8 +2,8 @@
 namespace PHPJava\Tests\Cases;
 
 use PHPJava\Core\JavaClass;
+use PHPJava\IO\Standard\Output;
 use PHPJava\Kernel\Resolvers\ClassResolver;
-use PHPJava\Utilities\StandardIO;
 use PHPUnit\Framework\TestCase;
 
 class Base extends TestCase
@@ -35,7 +35,7 @@ class Base extends TestCase
 
     public function tearDown(): void
     {
-        StandardIO::clearHeapspace();
+        Output::clearHeapspace();
 
         parent::tearDown();
     }

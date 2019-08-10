@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\StandardIO;
+use PHPJava\IO\Standard\Output;
 
 class InstanceOfTest extends Base
 {
@@ -21,7 +21,7 @@ class InstanceOfTest extends Base
     public function testInstanceOfString()
     {
         $this->call('instanceOfString');
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals(
             "Hello World\n",
             $result
@@ -31,7 +31,7 @@ class InstanceOfTest extends Base
     public function testInstanceOfObject()
     {
         $this->call('instanceOfObject');
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
         $this->assertEquals(
             "Hello World\n",
             $result

@@ -2,9 +2,9 @@
 namespace PHPJava\Tests\Packages\java\io;
 
 use PHPJava\Exceptions\UncaughtException;
+use PHPJava\IO\Standard\Output;
 use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Tests\Cases\Base;
-use PHPJava\Utilities\StandardIO;
 
 class JavaIoPrintStreamClassTest extends Base
 {
@@ -28,7 +28,7 @@ class JavaIoPrintStreamClassTest extends Base
         } catch (UncaughtException $e) {
             $this->expectedSpecialException = get_class($e->getPrevious());
         }
-        return StandardIO::getHeapspace();
+        return Output::getHeapspace();
     }
 
     public function testPrintlnWithoutParams()

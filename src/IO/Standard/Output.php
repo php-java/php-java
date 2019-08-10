@@ -1,10 +1,10 @@
 <?php
-namespace PHPJava\Utilities;
+namespace PHPJava\IO\Standard;
 
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 
-final class StandardIO
+final class Output
 {
     private static $outputHeapspace = '';
 

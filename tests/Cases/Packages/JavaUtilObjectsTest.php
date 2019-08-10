@@ -1,8 +1,8 @@
 <?php
 namespace PHPJava\Tests\Cases\Packages;
 
+use PHPJava\IO\Standard\Output;
 use PHPJava\Tests\Cases\Base;
-use PHPJava\Utilities\StandardIO;
 
 class JavaUtilObjectsTest extends Base
 {
@@ -20,7 +20,7 @@ class JavaUtilObjectsTest extends Base
                 'testHashCode'
             );
 
-        $values = array_filter(explode("\n", StandardIO::getHeapspace()));
+        $values = array_filter(explode("\n", Output::getHeapspace()));
         $this->assertCount(3, $values);
         $this->assertSame('-640608884', $values[0]);
         $this->assertSame('-640608884', $values[1]);

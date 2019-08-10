@@ -3,9 +3,9 @@ namespace PHPJava\Tests\Cases\Packages;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\UncaughtException;
+use PHPJava\IO\Standard\Output;
 use PHPJava\Packages\java\lang\IndexOutOfBoundsException;
 use PHPJava\Tests\Cases\Base;
-use PHPJava\Utilities\StandardIO;
 
 class JavaLangStringTest extends Base
 {
@@ -24,7 +24,7 @@ class JavaLangStringTest extends Base
                 'abc',
                 1
             );
-        $value = StandardIO::getHeapspace();
+        $value = Output::getHeapspace();
         $this->assertEquals('b', $value);
     }
 
@@ -79,7 +79,7 @@ class JavaLangStringTest extends Base
                 'abc',
                 'def'
             );
-        $value = StandardIO::getHeapspace();
+        $value = Output::getHeapspace();
         $this->assertEquals('abcdef', $value);
     }
 
@@ -93,7 +93,7 @@ class JavaLangStringTest extends Base
                 'testHashCode'
             );
 
-        $values = array_filter(explode("\n", StandardIO::getHeapspace()));
+        $values = array_filter(explode("\n", Output::getHeapspace()));
         $this->assertCount(3, $values);
         $this->assertSame('-640608884', $values[0]);
         $this->assertSame('-640608884', $values[1]);
@@ -109,7 +109,7 @@ class JavaLangStringTest extends Base
             ->call(
                 'intern'
             );
-        [ $intern, $literal ] = array_filter(explode("\n", StandardIO::getHeapspace()));
+        [ $intern, $literal ] = array_filter(explode("\n", Output::getHeapspace()));
 
         $this->assertIsNumeric($intern);
         $this->assertIsNumeric($literal);
@@ -126,7 +126,7 @@ class JavaLangStringTest extends Base
             ->call(
                 'notInterned'
             );
-        [ $intern, $literal ] = array_filter(explode("\n", StandardIO::getHeapspace()));
+        [ $intern, $literal ] = array_filter(explode("\n", Output::getHeapspace()));
 
         $this->assertIsNumeric($intern);
         $this->assertIsNumeric($literal);
@@ -146,7 +146,7 @@ class JavaLangStringTest extends Base
             ->call(
                 'notInternedAfterLiteral'
             );
-        [ $intern, $literal1, $literal2 ] = array_filter(explode("\n", StandardIO::getHeapspace()));
+        [ $intern, $literal1, $literal2 ] = array_filter(explode("\n", Output::getHeapspace()));
 
         $this->assertIsNumeric($intern);
         $this->assertIsNumeric($literal1);
@@ -169,7 +169,7 @@ class JavaLangStringTest extends Base
                 'bb',
                 'cc'
             );
-        $value = StandardIO::getHeapspace();
+        $value = Output::getHeapspace();
         $this->assertEquals('aaccccaacccc', $value);
     }
 
@@ -183,7 +183,7 @@ class JavaLangStringTest extends Base
                 'toLowerCase',
                 'Hello, World'
             );
-        $value = StandardIO::getHeapspace();
+        $value = Output::getHeapspace();
         $this->assertEquals('hello, world', $value);
     }
 
@@ -197,7 +197,7 @@ class JavaLangStringTest extends Base
                 'toUpperCase',
                 'Hello, World'
             );
-        $value = StandardIO::getHeapspace();
+        $value = Output::getHeapspace();
         $this->assertEquals('HELLO, WORLD', $value);
     }
 }

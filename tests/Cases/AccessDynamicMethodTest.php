@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Utilities\StandardIO;
+use PHPJava\IO\Standard\Output;
 
 class AccessDynamicMethodTest extends Base
 {
@@ -21,7 +21,7 @@ class AccessDynamicMethodTest extends Base
                 'main',
                 ['Hello', 'World']
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals('HelloWorld', $result);
     }
@@ -38,7 +38,7 @@ class AccessDynamicMethodTest extends Base
                 'main',
                 [1234, 5678]
             );
-        $result = StandardIO::getHeapspace();
+        $result = Output::getHeapspace();
 
         $this->assertEquals(246811356, $result);
     }
