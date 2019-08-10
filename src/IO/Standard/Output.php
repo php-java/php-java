@@ -20,7 +20,7 @@ final class Output
         return $outputHandle;
     }
 
-    public static function output(...$texts): void
+    public static function write(...$texts): void
     {
         if ((GlobalOptions::get('output.heapspace') ?? Runtime::OUTPUT_HEAPSPACE) === true) {
             foreach ($texts as $text) {

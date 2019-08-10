@@ -137,7 +137,7 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
         $arg = $a;
 
         if ($arg instanceof Utf8Info) {
-            Output::output($arg->getString());
+            Output::write($arg->getString());
             return;
         }
         if (is_scalar($arg) ||
@@ -145,20 +145,20 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
             $arg instanceof PrimitiveValueInterface
         ) {
             if (((string) $arg) !== "\x00") {
-                Output::output($arg);
+                Output::write($arg);
                 return;
             }
         }
 
         if ($arg instanceof JavaClass) {
-            Output::output($arg);
+            Output::write($arg);
             return;
         }
 
         [ $signatureType, $typeName ] = TypeResolver::getType($methodSignature['arguments'][0]);
 
         if ($typeName === \PHPJava\Packages\java\lang\String::class) {
-            Output::output('null');
+            Output::write('null');
         }
 
         throw new NullPointerException();
@@ -201,9 +201,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
         try {
             $this->print($methodSignature, $a);
             // output break line
-            Output::output("\n");
+            Output::write("\n");
         } catch (\Exception $e) {
-            Output::output("\n");
+            Output::write("\n");
             throw $e;
         }
     }
