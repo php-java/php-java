@@ -13,7 +13,10 @@ final class _ldc2_w extends AbstractOperationCode implements OperationCodeInterf
     public function getOperands(): ?Operands
     {
         parent::getOperands();
-        return $this->operands ?? new Operands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
     }
 
     public function execute(): void

@@ -11,7 +11,10 @@ final class _anewarray extends AbstractOperationCode implements OperationCodeInt
     public function getOperands(): ?Operands
     {
         parent::getOperands();
-        return $this->operands ?? new Operands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
     }
 
     /**

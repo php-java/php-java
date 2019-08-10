@@ -12,7 +12,10 @@ final class _i2c extends AbstractOperationCode implements OperationCodeInterface
     public function getOperands(): ?Operands
     {
         parent::getOperands();
-        return $this->operands ?? new Operands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
     }
 
     public function execute(): void
