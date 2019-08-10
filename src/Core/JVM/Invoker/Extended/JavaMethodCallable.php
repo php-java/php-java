@@ -198,7 +198,7 @@ trait JavaMethodCallable
             }
             $pointer = $reader->getOffset() - 1;
 
-            $fullName = '\\PHPJava\\Kernel\\Mnemonics\\' . $mnemonic;
+            $fullName = Runtime::MNEMONIC_NAMESPACE . '\\' . $mnemonic;
 
             if (!class_exists($fullName)) {
                 throw new UnsupportedOperationException(

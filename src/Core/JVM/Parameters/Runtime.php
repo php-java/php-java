@@ -39,7 +39,8 @@ final class Runtime
         '__staticConstruct' => '<clinit>',
     ];
 
-    const PHP_PACKAGES_DIRECTORY = 'PHPJava\\Packages';
+    const PHP_PACKAGES_NAMESPACE = 'PHPJava\\Packages';
+    const MNEMONIC_NAMESPACE = 'PHPJava\\Kernel\\Mnemonics';
 
     const PREFIX_STATIC = 'static_';
     const PREFIX_DEFAULT = '__default_';

@@ -120,7 +120,7 @@ class Formatter
         $newClassName = explode(
             '.',
             str_replace(
-                [ltrim(Runtime::PHP_PACKAGES_DIRECTORY, '\\') . '\\', '\\'],
+                [ltrim(Runtime::PHP_PACKAGES_NAMESPACE, '\\') . '\\', '\\'],
                 ['', '.'],
                 ltrim($className, '\\')
             )
@@ -145,7 +145,7 @@ class Formatter
         }
 
         $newClassName = explode('$', implode('\\', $newClassName));
-        $inPackage = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . $newClassName[0];
+        $inPackage = Runtime::PHP_PACKAGES_NAMESPACE . '\\' . $newClassName[0];
         if (class_exists($inPackage)) {
             return [static::BUILT_IN_PACKAGE, $inPackage];
         }
