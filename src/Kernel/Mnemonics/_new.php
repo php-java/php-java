@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClass;
 
-final class _new extends AbstractOperationCode implements OperationInterface
+final class _new extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

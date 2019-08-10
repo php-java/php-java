@@ -4,7 +4,7 @@ namespace PHPJava\Kernel\Mnemonics;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Packages\java\lang\NoSuchFieldException;
 
-final class _getfield extends AbstractOperationCode implements OperationInterface
+final class _getfield extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

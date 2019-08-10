@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Types\_Int;
 
-final class _bipush extends AbstractOperationCode implements OperationInterface
+final class _bipush extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

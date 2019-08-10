@@ -6,7 +6,7 @@ use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\_Boolean;
 use PHPJava\Kernel\Types\_Byte;
 
-final class _bastore extends AbstractOperationCode implements OperationInterface
+final class _bastore extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

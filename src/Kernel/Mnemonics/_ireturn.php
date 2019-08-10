@@ -7,7 +7,7 @@ use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Short;
 
-final class _ireturn extends AbstractOperationCode implements OperationInterface
+final class _ireturn extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

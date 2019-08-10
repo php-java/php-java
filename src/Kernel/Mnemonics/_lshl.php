@@ -5,7 +5,7 @@ use Brick\Math\BigInteger;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Long;
 
-final class _lshl extends AbstractOperationCode implements OperationInterface
+final class _lshl extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

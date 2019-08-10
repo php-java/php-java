@@ -9,7 +9,7 @@ use PHPJava\Kernel\Internal\Lambda;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Utilities\Formatter;
 
-final class _invokeinterface extends AbstractOperationCode implements OperationInterface
+final class _invokeinterface extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

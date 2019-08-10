@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Types\_Float;
 
-final class _fconst_2 extends AbstractOperationCode implements OperationInterface
+final class _fconst_2 extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

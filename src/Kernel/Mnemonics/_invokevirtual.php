@@ -6,7 +6,7 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Utilities\Formatter;
 
-final class _invokevirtual extends AbstractOperationCode implements OperationInterface
+final class _invokevirtual extends AbstractOperationCode implements OperationCodeInterface
 {
     protected $methodSignature;
 

@@ -5,7 +5,7 @@ use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Packages\java\lang\ClassCastException;
 use PHPJava\Utilities\Formatter;
 
-final class _checkcast extends AbstractOperationCode implements OperationInterface
+final class _checkcast extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

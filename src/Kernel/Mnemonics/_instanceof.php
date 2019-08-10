@@ -5,7 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\Formatter;
 
-final class _instanceof extends AbstractOperationCode implements OperationInterface
+final class _instanceof extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

@@ -15,7 +15,7 @@ use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 use PHPJava\Packages\java\lang\invoke\MethodType;
 use PHPJava\Utilities\Formatter;
 
-final class _invokedynamic extends AbstractOperationCode implements OperationInterface
+final class _invokedynamic extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

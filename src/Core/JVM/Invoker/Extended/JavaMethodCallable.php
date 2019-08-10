@@ -15,7 +15,7 @@ use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Core\Accumulator;
 use PHPJava\Kernel\Core\ConstantPool;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Mnemonics\OperationInterface;
+use PHPJava\Kernel\Mnemonics\OperationCodeInterface;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Resolvers\AttributionResolver;
 use PHPJava\Kernel\Resolvers\TypeResolver;
@@ -242,7 +242,7 @@ trait JavaMethodCallable
             }
 
             /**
-             * @var Accumulator|ConstantPool|OperationInterface $executor
+             * @var Accumulator|ConstantPool|OperationCodeInterface $executor
              */
             $executor = $operationCache->fetchOrPush(
                 $fullName,

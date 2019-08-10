@@ -5,7 +5,7 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Utilities\Formatter;
 
-final class _multianewarray extends AbstractOperationCode implements OperationInterface
+final class _multianewarray extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

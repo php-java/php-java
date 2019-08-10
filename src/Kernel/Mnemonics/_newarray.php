@@ -5,7 +5,7 @@ use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Array\Collection;
 
-final class _newarray extends AbstractOperationCode implements OperationInterface
+final class _newarray extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

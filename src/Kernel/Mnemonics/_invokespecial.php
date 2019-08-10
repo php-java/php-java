@@ -8,7 +8,7 @@ use PHPJava\Kernel\Resolvers\MethodNameResolver;
 use PHPJava\Utilities\CompareTool;
 use PHPJava\Utilities\Formatter;
 
-final class _invokespecial extends AbstractOperationCode implements OperationInterface
+final class _invokespecial extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

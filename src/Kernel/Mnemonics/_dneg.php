@@ -5,7 +5,7 @@ use Brick\Math\BigDecimal;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Double;
 
-final class _dneg extends AbstractOperationCode implements OperationInterface
+final class _dneg extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

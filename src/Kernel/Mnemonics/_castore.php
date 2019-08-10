@@ -5,7 +5,7 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\Type;
 
-final class _castore extends AbstractOperationCode implements OperationInterface
+final class _castore extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

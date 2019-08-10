@@ -5,7 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Kernel\Structures\StringInfo;
 use PHPJava\Kernel\Structures\Utf8Info;
 
-final class _if_acmpeq extends AbstractOperationCode implements OperationInterface
+final class _if_acmpeq extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

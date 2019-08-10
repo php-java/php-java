@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-abstract class AbstractOperationCode implements OperationInterface
+abstract class AbstractOperationCode implements OperationCodeInterface
 {
     /**
      * @var null|Operands

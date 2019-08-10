@@ -5,7 +5,7 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Short;
 use PHPJava\Kernel\Types\Type;
 
-final class _sastore extends AbstractOperationCode implements OperationInterface
+final class _sastore extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

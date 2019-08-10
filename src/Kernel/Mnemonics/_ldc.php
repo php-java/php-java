@@ -8,7 +8,7 @@ use PHPJava\Kernel\Structures\StringInfo;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Int;
 
-final class _ldc extends AbstractOperationCode implements OperationInterface
+final class _ldc extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

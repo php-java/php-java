@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
-interface OperationInterface
+interface OperationCodeInterface
 {
     public function getOperands(): ?Operands;
 

@@ -5,7 +5,7 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\Type;
 
-final class _iastore extends AbstractOperationCode implements OperationInterface
+final class _iastore extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

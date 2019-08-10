@@ -4,7 +4,7 @@ namespace PHPJava\Kernel\Mnemonics;
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\UncaughtException;
 
-final class _athrow extends AbstractOperationCode implements OperationInterface
+final class _athrow extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;

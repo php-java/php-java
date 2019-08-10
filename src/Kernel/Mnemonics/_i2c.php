@@ -4,7 +4,7 @@ namespace PHPJava\Kernel\Mnemonics;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Char;
 
-final class _i2c extends AbstractOperationCode implements OperationInterface
+final class _i2c extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
