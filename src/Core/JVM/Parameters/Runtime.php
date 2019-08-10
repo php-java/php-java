@@ -17,6 +17,9 @@ final class Runtime
 
     const VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY = false;
 
+    const OUTPUT_HANDLER = 'php://stdout';
+    const OUTPUT_HEAPSPACE = false;
+
     const LOG_PATH = 'php://stderr';
     const LOG_LEVEL = Logger::EMERGENCY;
 

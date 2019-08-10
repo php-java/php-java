@@ -3,6 +3,7 @@ namespace PHPJava\Packages\java\io;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\IO\Standard\Output;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Array\Collection;
@@ -136,7 +137,7 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
         $arg = $a;
 
         if ($arg instanceof Utf8Info) {
-            echo $arg->getString();
+            Output::write($arg->getString());
             return;
         }
         if (is_scalar($arg) ||
@@ -144,20 +145,20 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
             $arg instanceof PrimitiveValueInterface
         ) {
             if (((string) $arg) !== "\x00") {
-                echo $arg;
+                Output::write($arg);
                 return;
             }
         }
 
         if ($arg instanceof JavaClass) {
-            echo $arg;
+            Output::write($arg);
             return;
         }
 
         [ $signatureType, $typeName ] = TypeResolver::getType($methodSignature['arguments'][0]);
 
         if ($typeName === \PHPJava\Packages\java\lang\String::class) {
-            echo 'null';
+            Output::write('null');
         }
 
         throw new NullPointerException();
@@ -200,9 +201,9 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
         try {
             $this->print($methodSignature, $a);
             // output break line
-            echo "\n";
+            Output::write("\n");
         } catch (\Exception $e) {
-            echo "\n";
+            Output::write("\n");
             throw $e;
         }
     }
