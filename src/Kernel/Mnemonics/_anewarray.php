@@ -3,10 +3,19 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
 
-final class _anewarray implements OperationInterface
+final class _anewarray extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
+
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
 
     /**
      * create a new array of references of length count and component
@@ -15,6 +24,7 @@ final class _anewarray implements OperationInterface
      */
     public function execute(): void
     {
+        parent::execute();
         // Current class index for Constant Pool
         $this->readUnsignedShort();
 

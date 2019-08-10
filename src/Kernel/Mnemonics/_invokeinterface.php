@@ -9,13 +9,23 @@ use PHPJava\Kernel\Internal\Lambda;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Utilities\Formatter;
 
-final class _invokeinterface implements OperationInterface
+final class _invokeinterface extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
+
     public function execute(): void
     {
+        parent::execute();
         $cp = $this->getConstantPool();
         $index = $this->readUnsignedShort();
         $count = $this->readUnsignedByte();

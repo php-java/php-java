@@ -5,13 +5,23 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Utilities\Formatter;
 
-final class _multianewarray implements OperationInterface
+final class _multianewarray extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
+
     public function execute(): void
     {
+        parent::execute();
         $cp = $this->getConstantPool();
         $index = $this->readUnsignedShort();
         $dimensions = $this->readByte();

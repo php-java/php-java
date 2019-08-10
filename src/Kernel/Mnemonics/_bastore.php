@@ -6,13 +6,23 @@ use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\_Boolean;
 use PHPJava\Kernel\Types\_Byte;
 
-final class _bastore implements OperationInterface
+final class _bastore extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
+
     public function execute(): void
     {
+        parent::execute();
         $value = $this->popFromOperandStack();
         $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

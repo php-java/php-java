@@ -15,11 +15,20 @@ use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 use PHPJava\Packages\java\lang\invoke\MethodType;
 use PHPJava\Utilities\Formatter;
 
-final class _invokedynamic implements OperationInterface
+final class _invokedynamic extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DependencyInjector;
+
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
 
     /**
      * `invokedynamic` is a trial implementation.
@@ -32,6 +41,7 @@ final class _invokedynamic implements OperationInterface
      */
     public function execute(): void
     {
+        parent::execute();
         $cp = $this->getConstantPool();
         /**
          * @var \PHPJava\Kernel\Structures\InvokeDynamicInfo $invokeDynamicStructure

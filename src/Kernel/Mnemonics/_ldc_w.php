@@ -7,13 +7,23 @@ use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\_Int;
 
-final class _ldc_w implements OperationInterface
+final class _ldc_w extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
+
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
         $data = $cpInfo[$this->readUnsignedShort()];
 

@@ -6,7 +6,7 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Utilities\Formatter;
 
-final class _invokevirtual implements OperationInterface
+final class _invokevirtual extends AbstractOperationCode implements OperationCodeInterface
 {
     protected $methodSignature;
 
@@ -14,6 +14,15 @@ final class _invokevirtual implements OperationInterface
     use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DependencyInjector;
     use \PHPJava\Kernel\Core\ExceptionTableInspectable;
+
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
 
     /**
      * @throws NullPointerException
@@ -25,6 +34,7 @@ final class _invokevirtual implements OperationInterface
      */
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $class = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();

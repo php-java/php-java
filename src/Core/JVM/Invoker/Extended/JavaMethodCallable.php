@@ -15,7 +15,7 @@ use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Core\Accumulator;
 use PHPJava\Kernel\Core\ConstantPool;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Mnemonics\OperationInterface;
+use PHPJava\Kernel\Mnemonics\OperationCodeInterface;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Resolvers\AttributionResolver;
 use PHPJava\Kernel\Resolvers\TypeResolver;
@@ -198,7 +198,7 @@ trait JavaMethodCallable
             }
             $pointer = $reader->getOffset() - 1;
 
-            $fullName = '\\PHPJava\\Kernel\\Mnemonics\\' . $mnemonic;
+            $fullName = Runtime::MNEMONIC_NAMESPACE . '\\' . $mnemonic;
 
             if (!class_exists($fullName)) {
                 throw new UnsupportedOperationException(
@@ -231,7 +231,7 @@ trait JavaMethodCallable
             );
 
             /**
-             * @var Accumulator|ConstantPool|OperationInterface $executor
+             * @var Accumulator|ConstantPool|OperationCodeInterface $executor
              */
             $executor = $operationCache->fetchOrPush(
                 $fullName,
@@ -255,7 +255,9 @@ trait JavaMethodCallable
                     $mnemonic
                 );
             }
-            $returnValue = $executor
+
+            // Run executor
+            $executor
                 ->setConstantPool($currentConstantPool)
                 ->setParameters(
                     $method,
@@ -284,18 +286,24 @@ trait JavaMethodCallable
                 );
             }
 
-            if ($opcode === OpCode::_return ||
-                $opcode === OpCode::_areturn ||
-                $opcode === OpCode::_freturn ||
-                $opcode === OpCode::_dreturn ||
-                $opcode === OpCode::_ireturn ||
-                $opcode === OpCode::_lreturn
-            ) {
+            /**
+             * Return processing as following:
+             *  - areturn (Return an object)
+             *  - ireturn (Return integer object)
+             *  - dreturn (Return double obejct)
+             *  - freturn (Return float object)
+             *  - lreturn (Return long object)
+             *  - return  (Return void obejct).
+             */
+            if ($executor->returnValue() !== null) {
                 if ($isEnabledTrace) {
                     $this->javaClassInvoker->getJavaClass()->appendDebug($debugTraces);
                 }
                 $this->debugTool->getLogger()->info('Finish operations: ' . $methodBeautified);
-                return $returnValue;
+
+                // return values
+                return $executor
+                    ->returnValue();
             }
         }
 

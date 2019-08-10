@@ -133,7 +133,7 @@ class TypeResolver
         $signatureType = static::IS_PRIMITIVE;
         $typeName = static::TYPES_MAP[strtolower($type)] ?? null;
         if ($type === 'class') {
-            $typeName = Runtime::PHP_PACKAGES_DIRECTORY . '\\' . str_replace('/', '\\', $signatureArray['class_name']);
+            $typeName = Runtime::PHP_PACKAGES_NAMESPACE . '\\' . str_replace('/', '\\', $signatureArray['class_name']);
             $signatureType = static::IS_CLASS;
         }
         if ($signatureArray['deep_array'] > 0) {

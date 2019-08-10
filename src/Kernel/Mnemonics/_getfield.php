@@ -4,13 +4,23 @@ namespace PHPJava\Kernel\Mnemonics;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Packages\java\lang\NoSuchFieldException;
 
-final class _getfield implements OperationInterface
+final class _getfield extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
+
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $class = $cpInfo[$cp->getNameAndTypeIndex()];

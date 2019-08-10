@@ -46,7 +46,7 @@ class PHPClassMethodInvoker implements InvokerInterface
         $this->debugTool = new DebugTool(
             ltrim(
                 str_replace(
-                    [Runtime::PHP_PACKAGES_DIRECTORY, '\\'],
+                    [Runtime::PHP_PACKAGES_NAMESPACE, '\\'],
                     ['', '.'],
                     $javaClassInvoker->getJavaClass()->getClassName()
                 ),

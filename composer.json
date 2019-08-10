@@ -1,9 +1,9 @@
 {
     "name": "php-java/php-java",
-    "description": "JVM emulator by PHP",
+    "description": "Implement JVM by PHP",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.8.2-dev",
+    "version": "0.0.8.3-dev",
     "authors": [
         {
             "name": "memory"

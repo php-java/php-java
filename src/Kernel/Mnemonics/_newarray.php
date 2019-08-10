@@ -5,13 +5,23 @@ use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Array\Collection;
 
-final class _newarray implements OperationInterface
+final class _newarray extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
+
     public function execute(): void
     {
+        parent::execute();
         $atype = $this->readUnsignedByte();
         $count = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

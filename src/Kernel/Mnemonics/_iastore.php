@@ -5,13 +5,23 @@ use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\Type;
 
-final class _iastore implements OperationInterface
+final class _iastore extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
+
     public function execute(): void
     {
+        parent::execute();
         $value = $this->popFromOperandStack();
         $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

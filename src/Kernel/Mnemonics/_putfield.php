@@ -7,13 +7,23 @@ use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\Formatter;
 
-final class _putfield implements OperationInterface
+final class _putfield extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
     use \PHPJava\Kernel\Core\ConstantPool;
 
+    public function getOperands(): ?Operands
+    {
+        parent::getOperands();
+        if ($this->operands !== null) {
+            return $this->operands;
+        }
+        return $this->operands = new Operands();
+    }
+
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $class = $cpInfo[$cp->getNameAndTypeIndex()];
