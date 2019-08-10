@@ -14,7 +14,28 @@ final class _tableswitch extends AbstractOperationCode implements OperationCodeI
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+
+        // padding data
+        $paddingData = 4 - (($this->getOffset()) % 4);
+        if ($paddingData != 4) {
+            $this->read($paddingData);
+        }
+
+        $offsets = [];
+        $offsets['default'] = $default = $this->readInt();
+        $lowByte = $this->readInt();
+        $highByte = $this->readInt();
+
+        for ($i = $lowByte; $i <= $highByte; $i++) {
+            $offsets[$i] = $this->readInt();
+        }
+
+        return $this->operands = new Operands(
+            ['default', $default, ['defaultbyte1', 'defaultbyte2', 'defaultbyte3', 'defaultbyte4']],
+            ['lowByte', $lowByte, ['lowbyte1', 'lowbyte2', 'lowbyte3', 'lowbyte4']],
+            ['highByte', $lowByte, ['highByte1', 'highByte2', 'highByte3', 'highByte4']],
+            ['offsets', $offsets, ['jump offsets']]
+        );
     }
 
     public function execute(): void
@@ -24,20 +45,7 @@ final class _tableswitch extends AbstractOperationCode implements OperationCodeI
             $this->popFromOperandStack()
         );
 
-        // padding data
-        $paddingData = 4 - (($this->getOffset()) % 4);
-        if ($paddingData != 4) {
-            $this->read($paddingData);
-        }
-
-        $offsets = [];
-        $offsets['default'] = $this->readInt();
-        $lowByte = $this->readInt();
-        $highByte = $this->readInt();
-
-        for ($i = $lowByte; $i <= $highByte; $i++) {
-            $offsets[$i] = $this->readInt();
-        }
+        $offsets = $this->getOperands()['offsets'];
 
         if (isset($offsets[$key])) {
             // goto PC
@@ -46,6 +54,6 @@ final class _tableswitch extends AbstractOperationCode implements OperationCodeI
         }
 
         // goto default
-        $this->setOffset($this->getProgramCounter() + $offsets['default']);
+        $this->setOffset($this->getProgramCounter() + $this->getOperands()['default']);
     }
 }

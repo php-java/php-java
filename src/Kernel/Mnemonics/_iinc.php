@@ -15,14 +15,20 @@ final class _iinc extends AbstractOperationCode implements OperationCodeInterfac
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $index = $this->readUnsignedByte();
+        $const = $this->readByte();
+
+        return $this->operands = new Operands(
+            ['index', $index, ['index']],
+            ['const', $const, ['const']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
-        $index = $this->readUnsignedByte();
-        $const = $this->readByte();
+        $index = $this->getOperands()['index'];
+        $const = $this->getOperands()['const'];
 
         $value = Normalizer::getPrimitiveValue($this->getLocalStorage($index));
 

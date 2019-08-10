@@ -233,12 +233,7 @@ trait JavaMethodCallable
             /**
              * @var Accumulator|ConstantPool|OperationCodeInterface $executor
              */
-            $executor = $operationCache->fetchOrPush(
-                $fullName,
-                function () use ($fullName) {
-                    return new $fullName();
-                }
-            );
+            $executor = new $fullName();
 
             $beforeTrigger = $this->options['operations']['injections']['before'] ?? GlobalOptions::get('operations.injections.before');
             if (is_callable($beforeTrigger)) {

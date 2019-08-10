@@ -14,7 +14,11 @@ final class _anewarray extends AbstractOperationCode implements OperationCodeInt
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $indexbyte = $this->readUnsignedShort();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']]
+        );
     }
 
     /**
@@ -26,7 +30,7 @@ final class _anewarray extends AbstractOperationCode implements OperationCodeInt
     {
         parent::execute();
         // Current class index for Constant Pool
-        $this->readUnsignedShort();
+        $this->getOperands()['indexbyte'];
 
         // Get an array size
         $count = Normalizer::getPrimitiveValue(

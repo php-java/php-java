@@ -19,14 +19,18 @@ final class _ldc extends AbstractOperationCode implements OperationCodeInterface
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $index = $this->readUnsignedByte();
+
+        return $this->operands = new Operands(
+            ['index', $index, ['index']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
         $cpInfo = $this->getConstantPool();
-        $data = $cpInfo[$this->readUnsignedByte()];
+        $data = $cpInfo[$this->getOperands()['index']];
 
         $value = null;
 

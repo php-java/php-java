@@ -18,14 +18,18 @@ final class _invokestatic extends AbstractOperationCode implements OperationCode
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $indexbyte = $this->readUnsignedShort();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
         $cpInfo = $this->getConstantPool();
-        $cp = $cpInfo[$this->readUnsignedShort()];
+        $cp = $cpInfo[$this->getOperands()['indexbyte']];
         $className = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();
         $methodName = $cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getNameIndex()]->getString();
         $signature = Formatter::parseSignature($cpInfo[$cpInfo[$cp->getNameAndTypeIndex()]->getDescriptorIndex()]->getString());

@@ -16,15 +16,21 @@ final class _multianewarray extends AbstractOperationCode implements OperationCo
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $indexbyte = $this->readUnsignedShort();
+        $dimensions = $this->readByte();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']],
+            ['dimensions', $dimensions, ['dimensions']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
         $cp = $this->getConstantPool();
-        $index = $this->readUnsignedShort();
-        $dimensions = $this->readByte();
+        $index = $this->getOperands()['indexbyte'];
+        $dimensions = $this->getOperands()['dimensions'];
 
         $descriptor = Formatter::parseSignature(
             $cp[$cp[$index]->getClassIndex()]->getString()

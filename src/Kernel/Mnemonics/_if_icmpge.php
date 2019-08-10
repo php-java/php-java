@@ -14,13 +14,17 @@ final class _if_icmpge extends AbstractOperationCode implements OperationCodeInt
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $branchbyte = $this->readShort();
+
+        return $this->operands = new Operands(
+            ['branchbyte', $branchbyte, ['branchbyte1', 'branchbyte2']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
-        $offset = $this->readShort();
+        $offset = $this->getOperands()['branchbyte'];
 
         $rightOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $leftOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());

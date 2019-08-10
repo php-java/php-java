@@ -14,12 +14,16 @@ final class _bipush extends AbstractOperationCode implements OperationCodeInterf
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $byte = $this->readByte();
+
+        return $this->operands = new Operands(
+            ['byte', $byte, ['byte']]
+        );
     }
 
     public function execute(): void
     {
         parent::execute();
-        $this->pushToOperandStack(_Int::get($this->readByte()));
+        $this->pushToOperandStack(_Int::get($this->getOperands()['byte']));
     }
 }

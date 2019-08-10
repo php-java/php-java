@@ -16,7 +16,11 @@ final class _instanceof extends AbstractOperationCode implements OperationCodeIn
         if ($this->operands !== null) {
             return $this->operands;
         }
-        return $this->operands = new Operands();
+        $indexbyte = $this->readUnsignedShort();
+
+        return $this->operands = new Operands(
+            ['indexbyte', $indexbyte, ['indexbyte1', 'indexbyte2']]
+        );
     }
 
     public function execute(): void
@@ -29,7 +33,7 @@ final class _instanceof extends AbstractOperationCode implements OperationCodeIn
          */
         $objectref = $this->popFromOperandStack();
 
-        $targetClass = $cp[$cp[$this->readUnsignedShort()]->getClassIndex()];
+        $targetClass = $cp[$cp[$this->getOperands()['indexbyte']]->getClassIndex()];
 
         [, $className] = Formatter::convertJavaNamespaceToPHP($targetClass);
 
