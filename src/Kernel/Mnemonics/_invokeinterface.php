@@ -22,6 +22,7 @@ final class _invokeinterface extends AbstractOperationCode implements OperationI
 
     public function execute(): void
     {
+        parent::execute();
         $cp = $this->getConstantPool();
         $index = $this->readUnsignedShort();
         $count = $this->readUnsignedByte();

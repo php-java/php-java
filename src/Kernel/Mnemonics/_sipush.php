@@ -16,6 +16,7 @@ final class _sipush extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $this->pushToOperandStack(_Short::get($this->readShort()));
     }
 }

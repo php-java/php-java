@@ -20,6 +20,7 @@ final class _ldc_w extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
         $data = $cpInfo[$this->readUnsignedShort()];
 

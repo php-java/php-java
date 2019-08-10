@@ -19,14 +19,15 @@ final class _ireturn extends AbstractOperationCode implements OperationInterface
     }
 
     // return an integer from a method
-    public function execute()
+    public function execute(): void
     {
+        parent::execute();
         $value = $this->popFromOperandStack();
         $isIntegerValue = $value instanceof _Int ||
             $value instanceof _Char ||
             $value instanceof _Short ||
             $value instanceof _Byte ||
             $value instanceof _Boolean;
-        return $isIntegerValue ? $value : _Int::get($value);
+        $this->returnValue = $isIntegerValue ? $value : _Int::get($value);
     }
 }

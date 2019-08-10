@@ -19,6 +19,7 @@ final class _daload extends AbstractOperationCode implements OperationInterface
      */
     public function execute(): void
     {
+        parent::execute();
         $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $arrayref = $this->popFromOperandStack();
 

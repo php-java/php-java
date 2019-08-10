@@ -16,6 +16,7 @@ final class _iconst_m1 extends AbstractOperationCode implements OperationInterfa
 
     public function execute(): void
     {
+        parent::execute();
         $this->pushToOperandStack(_Int::get(-1));
     }
 }

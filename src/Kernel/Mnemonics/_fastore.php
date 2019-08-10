@@ -18,6 +18,7 @@ final class _fastore extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $value = $this->popFromOperandStack();
         $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

@@ -18,6 +18,7 @@ final class _getstatic extends AbstractOperationCode implements OperationInterfa
 
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
 
         $cp = $cpInfo[$this->readUnsignedShort()];

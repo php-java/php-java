@@ -18,6 +18,7 @@ final class _lcmp extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $value2 = (string) Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $value1 = (string) Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

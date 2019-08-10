@@ -16,6 +16,7 @@ final class _ifnull extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $offset = $this->readShort();
 
         $branch = Normalizer::getPrimitiveValue($this->popFromOperandStack());

@@ -19,6 +19,7 @@ final class _dstore extends AbstractOperationCode implements OperationInterface
      */
     public function execute(): void
     {
+        parent::execute();
         $index = $this->readUnsignedByte();
         $value = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

@@ -16,6 +16,7 @@ final class _new extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
         $class = $cpInfo[$this->readUnsignedShort()];
         $className = $cpInfo[$class->getClassIndex()]->getString();

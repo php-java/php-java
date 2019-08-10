@@ -16,6 +16,7 @@ final class _fload_0 extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $this->pushToOperandStack(
             _Float::get(
                 $this->getLocalStorage(0)

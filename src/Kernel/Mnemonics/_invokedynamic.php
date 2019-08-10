@@ -38,6 +38,7 @@ final class _invokedynamic extends AbstractOperationCode implements OperationInt
      */
     public function execute(): void
     {
+        parent::execute();
         $cp = $this->getConstantPool();
         /**
          * @var \PHPJava\Kernel\Structures\InvokeDynamicInfo $invokeDynamicStructure

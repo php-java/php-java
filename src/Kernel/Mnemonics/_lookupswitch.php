@@ -16,6 +16,7 @@ final class _lookupswitch extends AbstractOperationCode implements OperationInte
 
     public function execute(): void
     {
+        parent::execute();
         $key = Normalizer::getPrimitiveValue(
             $this->popFromOperandStack()
         );

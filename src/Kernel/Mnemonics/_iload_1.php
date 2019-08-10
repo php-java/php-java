@@ -16,6 +16,7 @@ final class _iload_1 extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $this->pushToOperandStack(
             _Int::get(
                 $this->getLocalStorage(1)

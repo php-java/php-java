@@ -18,6 +18,7 @@ final class _if_acmpne extends AbstractOperationCode implements OperationInterfa
 
     public function execute(): void
     {
+        parent::execute();
         $offset = $this->readShort();
 
         /**

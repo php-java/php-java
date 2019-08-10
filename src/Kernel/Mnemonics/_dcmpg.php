@@ -17,6 +17,7 @@ final class _dcmpg extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $rightOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $leftOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

@@ -16,6 +16,7 @@ final class _tableswitch extends AbstractOperationCode implements OperationInter
 
     public function execute(): void
     {
+        parent::execute();
         $key = Normalizer::getPrimitiveValue(
             $this->popFromOperandStack()
         );

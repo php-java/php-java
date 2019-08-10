@@ -24,5 +24,5 @@ final class PHPJava
     /**
      * As same as composer version.
      */
-    const VERSION = 0x000082;
+    const VERSION = 0x000083;
 }

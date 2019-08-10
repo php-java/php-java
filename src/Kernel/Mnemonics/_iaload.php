@@ -16,6 +16,7 @@ final class _iaload extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $index = Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $arrayref = $this->popFromOperandStack();
 

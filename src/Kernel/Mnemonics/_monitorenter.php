@@ -16,6 +16,7 @@ final class _monitorenter extends AbstractOperationCode implements OperationInte
 
     public function execute(): void
     {
+        parent::execute();
         throw new NotImplementedException(__CLASS__);
     }
 }

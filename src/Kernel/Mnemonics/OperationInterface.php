@@ -8,4 +8,6 @@ interface OperationInterface
     public function execute(): void;
 
     public function returnValue();
+
+    public function isExecuted(): bool;
 }

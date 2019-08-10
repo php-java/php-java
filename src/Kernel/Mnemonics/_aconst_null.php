@@ -17,6 +17,7 @@ final class _aconst_null extends AbstractOperationCode implements OperationInter
      */
     public function execute(): void
     {
+        parent::execute();
         $this->pushToOperandStack(null);
     }
 }

@@ -23,6 +23,7 @@ final class _invokespecial extends AbstractOperationCode implements OperationInt
 
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $nameAndTypeIndex = $cpInfo[$cp->getNameAndTypeIndex()];

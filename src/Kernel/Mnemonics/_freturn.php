@@ -14,10 +14,11 @@ final class _freturn extends AbstractOperationCode implements OperationInterface
         return $this->operands ?? new Operands();
     }
 
-    public function execute()
+    public function execute(): void
     {
+        parent::execute();
         $value = $this->popFromOperandStack();
-        return ($value instanceof _Float)
+        $this->returnValue = ($value instanceof _Float)
             ? $value
             : _Float::get($value);
     }

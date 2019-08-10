@@ -18,6 +18,7 @@ final class _ddiv extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $value2 = Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $value1 = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

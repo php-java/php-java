@@ -14,6 +14,7 @@ final class _dstore_0 extends AbstractOperationCode implements OperationInterfac
 
     public function execute(): void
     {
+        parent::execute();
         $this->setLocalStorage(0, $this->popFromOperandStack());
     }
 }

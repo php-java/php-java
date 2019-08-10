@@ -20,6 +20,7 @@ final class _putstatic extends AbstractOperationCode implements OperationInterfa
 
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
 
         $value = $this->popFromOperandStack();

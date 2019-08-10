@@ -16,6 +16,7 @@ final class _dload_3 extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $this->pushToOperandStack(
             _Double::get(
                 $this->getLocalStorage(3)

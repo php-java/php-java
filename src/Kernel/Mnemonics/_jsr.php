@@ -16,6 +16,7 @@ final class _jsr extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         throw new NotImplementedException(__CLASS__);
     }
 }

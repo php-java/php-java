@@ -17,6 +17,7 @@ final class _iushr extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $value2 = (int) Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $value1 = (int) Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

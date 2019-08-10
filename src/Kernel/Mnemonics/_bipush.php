@@ -16,6 +16,7 @@ final class _bipush extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $this->pushToOperandStack(_Int::get($this->readByte()));
     }
 }

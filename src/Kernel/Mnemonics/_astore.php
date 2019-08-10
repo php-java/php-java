@@ -14,6 +14,7 @@ final class _astore extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $index = $this->readUnsignedByte();
         $this->setLocalStorage($index, $this->popFromOperandStack());
     }

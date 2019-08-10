@@ -17,6 +17,7 @@ final class _aload_0 extends AbstractOperationCode implements OperationInterface
      */
     public function execute(): void
     {
+        parent::execute();
         $index = 0;
         $this->pushToOperandStack($this->getLocalStorage($index));
     }

@@ -16,6 +16,7 @@ final class _dconst_0 extends AbstractOperationCode implements OperationInterfac
 
     public function execute(): void
     {
+        parent::execute();
         $this->pushToOperandStack(
             _Double::get(0)
         );

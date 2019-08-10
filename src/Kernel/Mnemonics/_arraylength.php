@@ -14,6 +14,7 @@ final class _arraylength extends AbstractOperationCode implements OperationInter
 
     public function execute(): void
     {
+        parent::execute();
         $arrayref = $this->popFromOperandStack();
         $this->pushToOperandStack(
             count($arrayref)

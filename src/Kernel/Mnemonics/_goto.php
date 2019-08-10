@@ -14,6 +14,7 @@ final class _goto extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $offset = $this->readShort();
 
         $this->setOffset($this->getProgramCounter() + $offset);

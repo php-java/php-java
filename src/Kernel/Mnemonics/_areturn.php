@@ -12,8 +12,9 @@ final class _areturn extends AbstractOperationCode implements OperationInterface
         return $this->operands ?? new Operands();
     }
 
-    public function execute()
+    public function execute(): void
     {
-        return $this->popFromOperandStack();
+        parent::execute();
+        $this->returnValue = $this->popFromOperandStack();
     }
 }

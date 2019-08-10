@@ -16,6 +16,7 @@ final class _fload extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $index = $this->readUnsignedByte();
         $this->pushToOperandStack(
             _Float::get(

@@ -16,6 +16,7 @@ final class _monitorexit extends AbstractOperationCode implements OperationInter
 
     public function execute(): void
     {
+        parent::execute();
         throw new NotImplementedException(__CLASS__);
     }
 }

@@ -17,6 +17,7 @@ final class _fsub extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $value2 = (float) Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $value1 = (float) Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

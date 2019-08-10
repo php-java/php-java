@@ -18,6 +18,7 @@ final class _dneg extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $value = Normalizer::getPrimitiveValue(
             $this->popFromOperandStack()
         );

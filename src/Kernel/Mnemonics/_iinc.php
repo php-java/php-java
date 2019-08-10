@@ -17,6 +17,7 @@ final class _iinc extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $index = $this->readUnsignedByte();
         $const = $this->readByte();
 

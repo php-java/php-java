@@ -31,6 +31,7 @@ final class _invokevirtual extends AbstractOperationCode implements OperationInt
      */
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $class = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();

@@ -17,6 +17,7 @@ final class _irem extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         // JVM spec wrote `value1 - (value1 / value2) * value2`
         // But PHP can modulo calculation.
 

@@ -16,6 +16,7 @@ final class _ifgt extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $offset = $this->readShort();
         $value = Normalizer::getPrimitiveValue($this->popFromOperandStack());
         if ($value > 0) {

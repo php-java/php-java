@@ -16,6 +16,7 @@ final class _lload_2 extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $this->pushToOperandStack(
             _Long::get(
                 $this->getLocalStorage(2)

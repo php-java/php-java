@@ -14,6 +14,7 @@ final class _dup extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $dup = $this->stacks[$this->getCurrentStackIndex()];
         $this->pushToOperandStackByReference($dup);
     }

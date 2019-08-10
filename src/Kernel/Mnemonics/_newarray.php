@@ -18,6 +18,7 @@ final class _newarray extends AbstractOperationCode implements OperationInterfac
 
     public function execute(): void
     {
+        parent::execute();
         $atype = $this->readUnsignedByte();
         $count = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 

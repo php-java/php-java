@@ -8,15 +8,30 @@ abstract class AbstractOperationCode implements OperationInterface
      */
     protected $operands;
 
+    protected $returnValue;
+
+    /**
+     * @var bool
+     */
+    protected $isExecuted = false;
+
     public function getOperands(): ?Operands
     {
         return $this->operands ?? null;
     }
 
-    abstract public function execute(): void;
+    public function execute(): void
+    {
+        $this->isExecuted = true;
+    }
 
     public function returnValue()
     {
-        return null;
+        return $this->returnValue;
+    }
+
+    public function isExecuted(): bool
+    {
+        return $this->isExecuted;
     }
 }

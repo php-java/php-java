@@ -14,10 +14,11 @@ final class _lreturn extends AbstractOperationCode implements OperationInterface
         return $this->operands ?? new Operands();
     }
 
-    public function execute()
+    public function execute(): void
     {
+        parent::execute();
         $value = $this->popFromOperandStack();
-        return ($value instanceof _Long)
+        $this->returnValue = ($value instanceof _Long)
             ? $value
             : _Long::get($value);
     }

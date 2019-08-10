@@ -21,6 +21,7 @@ final class _checkcast extends AbstractOperationCode implements OperationInterfa
      */
     public function execute(): void
     {
+        parent::execute();
         $cp = $this->getConstantPool();
         $index = $this->readUnsignedShort();
         $objectref = $this->popFromOperandStack();

@@ -18,6 +18,7 @@ final class _instanceof extends AbstractOperationCode implements OperationInterf
 
     public function execute(): void
     {
+        parent::execute();
         $cp = $this->getConstantPool();
 
         /**

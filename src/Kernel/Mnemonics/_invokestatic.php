@@ -20,6 +20,7 @@ final class _invokestatic extends AbstractOperationCode implements OperationInte
 
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
         $cp = $cpInfo[$this->readUnsignedShort()];
         $className = $cpInfo[$cpInfo[$cp->getClassIndex()]->getClassIndex()]->getString();

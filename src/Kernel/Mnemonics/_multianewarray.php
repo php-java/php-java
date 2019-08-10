@@ -18,6 +18,7 @@ final class _multianewarray extends AbstractOperationCode implements OperationIn
 
     public function execute(): void
     {
+        parent::execute();
         $cp = $this->getConstantPool();
         $index = $this->readUnsignedShort();
         $dimensions = $this->readByte();

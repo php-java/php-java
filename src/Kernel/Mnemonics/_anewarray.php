@@ -21,6 +21,7 @@ final class _anewarray extends AbstractOperationCode implements OperationInterfa
      */
     public function execute(): void
     {
+        parent::execute();
         // Current class index for Constant Pool
         $this->readUnsignedShort();
 

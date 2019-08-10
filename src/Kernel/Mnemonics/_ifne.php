@@ -16,6 +16,7 @@ final class _ifne extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
         $offset = $this->readShort();
 
         $operand = Normalizer::getPrimitiveValue($this->popFromOperandStack());

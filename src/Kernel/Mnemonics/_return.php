@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Kernel\Mnemonics;
 
+use PHPJava\Kernel\Types\_Void;
+
 final class _return extends AbstractOperationCode implements OperationInterface
 {
     use \PHPJava\Kernel\Core\Accumulator;
@@ -14,5 +16,7 @@ final class _return extends AbstractOperationCode implements OperationInterface
 
     public function execute(): void
     {
+        parent::execute();
+        $this->returnValue = new _Void();
     }
 }

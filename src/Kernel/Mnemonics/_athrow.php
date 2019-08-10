@@ -21,6 +21,7 @@ final class _athrow extends AbstractOperationCode implements OperationInterface
      */
     public function execute(): void
     {
+        parent::execute();
         $cpInfo = $this->getConstantPool();
 
         /**

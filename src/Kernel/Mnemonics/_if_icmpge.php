@@ -16,6 +16,7 @@ final class _if_icmpge extends AbstractOperationCode implements OperationInterfa
 
     public function execute(): void
     {
+        parent::execute();
         $offset = $this->readShort();
 
         $rightOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());

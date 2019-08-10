@@ -14,6 +14,7 @@ final class _ifnonnull extends AbstractOperationCode implements OperationInterfa
 
     public function execute(): void
     {
+        parent::execute();
         $offset = $this->readShort();
         $operand = $this->popFromOperandStack();
 
