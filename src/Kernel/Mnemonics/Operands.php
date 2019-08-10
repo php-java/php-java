@@ -40,6 +40,9 @@ final class Operands implements \ArrayAccess
 
     public function offsetGet($offset)
     {
+        if (!$this->offsetExists($offset)) {
+            throw new OperationException('Does not exist an operand.');
+        }
         return $this->operands[$offset][0];
     }
 
