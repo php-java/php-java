@@ -509,7 +509,7 @@ You'll get the result: `Hello World!`.
 
 - To run a PHPUnit test:
 ```
-$ ./vendor/bin/phpunit tests
+$ ./vendor/bin/phpunit tests/Cases
 ```
 
 - To run PHP Coding standards test:

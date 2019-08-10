@@ -5,7 +5,7 @@ vendor
 composer.lock
 .php_cs.cache
 .phpunit.result.cache
-tests/caches/
-!tests/caches/.gitkeep
+tests/Cases/caches/
+!tests/Cases/caches/.gitkeep
 tools
 cghooks.lock

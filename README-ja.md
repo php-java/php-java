@@ -510,7 +510,7 @@ $jar->execute([]);
 
 - PHPUnit でテストを動かします。
 ```
-$ ./vendor/bin/phpunit tests
+$ ./vendor/bin/phpunit tests/Cases
 ```
 
 - コーディングルールをチェックします。
