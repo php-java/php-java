@@ -230,17 +230,6 @@ trait JavaMethodCallable
                 [$name]
             );
 
-            $beforeTrigger = $this->options['operations']['injections']['before'] ?? GlobalOptions::get('operations.injections.before');
-            if (is_callable($beforeTrigger)) {
-                $beforeTrigger(
-                    $this->javaClassInvoker,
-                    $stacks,
-                    $localStorage,
-                    $reader,
-                    $currentConstantPool
-                );
-            }
-
             /**
              * @var Accumulator|ConstantPool|OperationCodeInterface $executor
              */
@@ -250,6 +239,22 @@ trait JavaMethodCallable
                     return new $fullName();
                 }
             );
+
+            $beforeTrigger = $this->options['operations']['injections']['before'] ?? GlobalOptions::get('operations.injections.before');
+            if (is_callable($beforeTrigger)) {
+                $beforeTrigger(
+                    $executor,
+                    $method,
+                    $this->javaClassInvoker,
+                    $reader,
+                    $localStorage,
+                    $stacks,
+                    $pointer,
+                    $dependencyInjectionProvider,
+                    $opcode,
+                    $mnemonic
+                );
+            }
 
             // Run executor
             $executor
@@ -268,11 +273,16 @@ trait JavaMethodCallable
             $afterTrigger = $this->options['operations']['injections']['after'] ?? GlobalOptions::get('operations.injections.after');
             if (is_callable($afterTrigger)) {
                 $afterTrigger(
+                    $executor,
+                    $method,
                     $this->javaClassInvoker,
-                    $stacks,
-                    $localStorage,
                     $reader,
-                    $currentConstantPool
+                    $localStorage,
+                    $stacks,
+                    $pointer,
+                    $dependencyInjectionProvider,
+                    $opcode,
+                    $mnemonic
                 );
             }
 
