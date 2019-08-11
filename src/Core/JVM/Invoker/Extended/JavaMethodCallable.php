@@ -2,6 +2,7 @@
 namespace PHPJava\Core\JVM\Invoker\Extended;
 
 use ByteUnits\Metric;
+use Monolog\Logger;
 use PHPJava\Core\JVM\Cache\OperationCache;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
@@ -105,7 +106,7 @@ trait JavaMethodCallable
         fwrite($handle, $codeAttribute->getCode());
         rewind($handle);
 
-        // debug code attribution with HEX
+        // Debug code attribution with HEX
         $isEnabledTrace = $this->options['operations']['enable_trace'] ?? GlobalOptions::get('operations.enable_trace') ?? Runtime::OPERATIONS_ENABLE_TRACE;
         $debugTraces = [];
         if ($isEnabledTrace) {
@@ -215,21 +216,6 @@ trait JavaMethodCallable
                 $debugTraces['mnemonic_indexes'][] = $pointer;
             }
 
-            $this->debugTool->getLogger()->debug(
-                vsprintf(
-                    'OpCode: 0x%02X %-15.15s Stacks: %-4.4s PC: %-8.8s Used Memory: %-8.8s Used Memory Peak: %-8.8s',
-                    [
-                        $opcode,
-                        ltrim($mnemonic, '_'),
-                        count($stacks),
-                        $pointer,
-                        Metric::bytes(memory_get_usage())->format(),
-                        Metric::bytes(memory_get_peak_usage())->format(),
-                    ]
-                ),
-                [$name]
-            );
-
             /**
              * @var Accumulator|ConstantPool|OperationCodeInterface $executor
              */
@@ -266,6 +252,47 @@ trait JavaMethodCallable
                 \Closure::bind($beforeTrigger, $this);
 
                 $afterTrigger($executor);
+            }
+
+            if ($this->debugTool->getLogLevel() <= Logger::DEBUG) {
+                $this->debugTool->getLogger()->debug(
+                    vsprintf(
+                        'OpCode: 0x%02X %-15.15s Stacks: %-4.4s PC: %-8.8s Used Memory: %-8.8s Used Memory Peak: %-8.8s',
+                        [
+                            $opcode,
+                            ltrim($mnemonic, '_'),
+                            count($stacks),
+                            $pointer,
+                            Metric::bytes(memory_get_usage())->format(),
+                            Metric::bytes(memory_get_peak_usage())->format(),
+                        ]
+                    ),
+                    [$name]
+                );
+
+                $this->debugTool->getLogger()->debug(
+                    vsprintf(
+                        'Consumed Operand Stacks: %s',
+                        [
+                            Formatter::beatifyOperandStackItems(
+                                $executor->getPoppedOperandStacks()
+                            ),
+                        ]
+                    ),
+                    [$name]
+                );
+
+                $this->debugTool->getLogger()->debug(
+                    vsprintf(
+                        'Pushed Operand Stacks: %s',
+                        [
+                            Formatter::beatifyOperandStackItems(
+                                $executor->getPushedOperandStacks()
+                            ),
+                        ]
+                    ),
+                    [$name]
+                );
             }
 
             $executor->afterExecute();
