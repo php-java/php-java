@@ -5,9 +5,6 @@ use PHPJava\Kernel\Types\_Float;
 
 final class _fload_0 extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

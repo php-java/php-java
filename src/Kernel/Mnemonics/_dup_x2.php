@@ -5,9 +5,6 @@ use PHPJava\Exceptions\NotImplementedException;
 
 final class _dup_x2 extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

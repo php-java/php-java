@@ -9,9 +9,6 @@ use PHPJava\Kernel\Types\_Int;
 
 final class _ldc_w extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

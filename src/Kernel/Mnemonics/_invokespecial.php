@@ -10,8 +10,6 @@ use PHPJava\Utilities\Formatter;
 
 final class _invokespecial extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DependencyInjector;
     use \PHPJava\Kernel\Core\ExceptionTableInspectable;
 

@@ -46,11 +46,6 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
     ];
 
     /**
-     * @var ConstantPool
-     */
-    private $constantPool;
-
-    /**
      * @var InterfacePool
      */
     private $interfacePool;

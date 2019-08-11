@@ -7,9 +7,6 @@ use PHPJava\Packages\java\lang\UnsupportedOperationException;
 
 final class _ldc2_w extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

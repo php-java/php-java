@@ -10,8 +10,6 @@ final class _invokevirtual extends AbstractOperationCode implements OperationCod
 {
     protected $methodSignature;
 
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DependencyInjector;
     use \PHPJava\Kernel\Core\ExceptionTableInspectable;
 

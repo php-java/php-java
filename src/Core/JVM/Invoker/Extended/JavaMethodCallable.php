@@ -247,23 +247,14 @@ trait JavaMethodCallable
                     $dependencyInjectionProvider
                 );
 
+            $executor->beforeExecute();
+
             $beforeTrigger = $this->options['operations']['injections']['before'] ?? GlobalOptions::get('operations.injections.before');
             if (is_callable($beforeTrigger)) {
                 // Bind class
                 \Closure::bind($beforeTrigger, $this);
 
-                $beforeTrigger(
-                    $executor,
-                    $method,
-                    $this->javaClassInvoker,
-                    $reader,
-                    $localStorage,
-                    $stacks,
-                    $pointer,
-                    $dependencyInjectionProvider,
-                    $opcode,
-                    $mnemonic
-                );
+                $beforeTrigger($executor);
             }
 
             // Run executor
@@ -274,19 +265,10 @@ trait JavaMethodCallable
                 // Bind class
                 \Closure::bind($beforeTrigger, $this);
 
-                $afterTrigger(
-                    $executor,
-                    $method,
-                    $this->javaClassInvoker,
-                    $reader,
-                    $localStorage,
-                    $stacks,
-                    $pointer,
-                    $dependencyInjectionProvider,
-                    $opcode,
-                    $mnemonic
-                );
+                $afterTrigger($executor);
             }
+
+            $executor->afterExecute();
 
             /**
              * Return processing as following:

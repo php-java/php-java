@@ -17,8 +17,6 @@ use PHPJava\Utilities\Formatter;
 
 final class _invokedynamic extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\DependencyInjector;
 
     public function getOperands(): ?Operands
