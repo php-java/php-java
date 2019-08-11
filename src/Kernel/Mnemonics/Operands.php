@@ -3,7 +3,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\OperationException;
 
-final class Operands implements \ArrayAccess
+final class Operands implements \ArrayAccess, \Countable
 {
     private $operands = [];
 

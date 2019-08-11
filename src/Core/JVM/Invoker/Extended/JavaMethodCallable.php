@@ -235,8 +235,23 @@ trait JavaMethodCallable
              */
             $executor = new $fullName();
 
+            $executor
+                ->setConstantPool($currentConstantPool)
+                ->setParameters(
+                    $method,
+                    $this->javaClassInvoker,
+                    $reader,
+                    $localStorage,
+                    $stacks,
+                    $pointer,
+                    $dependencyInjectionProvider
+                );
+
             $beforeTrigger = $this->options['operations']['injections']['before'] ?? GlobalOptions::get('operations.injections.before');
             if (is_callable($beforeTrigger)) {
+                // Bind class
+                \Closure::bind($beforeTrigger, $this);
+
                 $beforeTrigger(
                     $executor,
                     $method,
@@ -252,21 +267,13 @@ trait JavaMethodCallable
             }
 
             // Run executor
-            $executor
-                ->setConstantPool($currentConstantPool)
-                ->setParameters(
-                    $method,
-                    $this->javaClassInvoker,
-                    $reader,
-                    $localStorage,
-                    $stacks,
-                    $pointer,
-                    $dependencyInjectionProvider
-                )
-                ->execute();
+            $executor->execute();
 
             $afterTrigger = $this->options['operations']['injections']['after'] ?? GlobalOptions::get('operations.injections.after');
             if (is_callable($afterTrigger)) {
+                // Bind class
+                \Closure::bind($beforeTrigger, $this);
+
                 $afterTrigger(
                     $executor,
                     $method,
