@@ -38,6 +38,11 @@ class DebugTool
         $this->logger->pushHandler($stream);
     }
 
+    public function getLogLevel(): int
+    {
+        return $this->options['log']['level'] ?? GlobalOptions::get('log.level') ?? Runtime::LOG_LEVEL;
+    }
+
     public function getLogger(): Logger
     {
         return $this->logger;

@@ -21,6 +21,7 @@ use PHPJava\Packages\java\lang\_Class;
  * @method mixed getOptions($key = null)
  * @method mixed __invoke(...$parameters)
  * @method _Class getClass()
+ * @method string __toString()
  */
 interface JavaClassInterface
 {

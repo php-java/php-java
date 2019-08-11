@@ -1,11 +1,13 @@
 <?php
 namespace PHPJava\Utilities;
 
+use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Types\PrimitiveValueInterface;
 
 class Formatter
 {
@@ -196,5 +198,24 @@ class Formatter
         $methodAccessibility = implode(' ', $accessFlags);
 
         return ltrim("{$methodAccessibility} {$type} {$methodName}({$formattedArguments})");
+    }
+
+    public static function beatifyOperandStackItems(array $operandStacks = []): string
+    {
+        $formattedItems = [];
+
+        foreach ($operandStacks as $operandStack) {
+            if ($operandStack instanceof JavaClass) {
+                $formattedItems[] = '< class: ' . ((string) $operandStack->getClassName()) . ' >';
+                continue;
+            }
+            if ($operandStack instanceof PrimitiveValueInterface) {
+                $formattedItems[] = '< primitive value: ' . ((string) $operandStack) . ' >';
+                continue;
+            }
+            $formattedItems[] = '< unknown: ' . ((string) $operandStack) . ' >';
+        }
+
+        return '[' . implode(', ', $formattedItems) . ']';
     }
 }
