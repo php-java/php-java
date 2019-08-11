@@ -58,6 +58,16 @@ final class _invokespecial extends AbstractOperationCode implements OperationCod
                 );
             }
 
+            $this->getDebugTool()->getLogger()->debug(
+                vsprintf(
+                    'Call a method: %s, parameters: %d',
+                    [
+                        $methodName,
+                        count($arguments),
+                    ]
+                )
+            );
+
             /**
              * @var JavaClassInterface $newObject
              */

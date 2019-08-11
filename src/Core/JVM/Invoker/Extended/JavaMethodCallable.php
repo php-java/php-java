@@ -231,6 +231,9 @@ trait JavaMethodCallable
                     $stacks,
                     $pointer,
                     $dependencyInjectionProvider
+                )
+                ->setDebugTool(
+                    $this->debugTool
                 );
 
             $executor->beforeExecute();
