@@ -16,6 +16,7 @@ final class _getstatic extends AbstractOperationCode implements OperationCodeInt
         if ($this->operands !== null) {
             return $this->operands;
         }
+
         $indexbyte = $this->readUnsignedShort();
 
         return $this->operands = new Operands(
