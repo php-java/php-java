@@ -54,6 +54,16 @@ final class _invokeinterface extends AbstractOperationCode implements OperationC
          */
         $objectref = $this->popFromOperandStack();
 
+        $this->getDebugTool()->getLogger()->debug(
+            vsprintf(
+                'Call a method: %s, parameters: %d',
+                [
+                    $name,
+                    count($arguments),
+                ]
+            )
+        );
+
         if ($objectref instanceof Lambda) {
             $result = $objectref($name, ...$arguments);
         } else {

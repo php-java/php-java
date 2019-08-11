@@ -135,12 +135,26 @@ final class _invokedynamic extends AbstractOperationCode implements OperationCod
                     false
                 );
                 $annotations = $this->getAnnotateInjections(
-                    $invokerClass->getInvoker()->getStatic()->getMethods()->getAnnotations($methodHandledName)
+                    $invokerClass
+                        ->getInvoker()
+                        ->getStatic()
+                        ->getMethods()
+                        ->getAnnotations($methodHandledName)
                 );
 
                 if (!empty($annotations)) {
                     array_unshift($arguments, ...$annotations);
                 }
+
+                $this->getDebugTool()->getLogger()->debug(
+                    vsprintf(
+                        'Call a method: %s, parameters: %d',
+                        [
+                            $methodHandledName,
+                            count($arguments),
+                        ]
+                    )
+                );
 
                 $result = $invokerClass
                     ->getInvoker()

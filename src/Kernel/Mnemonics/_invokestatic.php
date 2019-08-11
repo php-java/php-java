@@ -58,6 +58,16 @@ final class _invokestatic extends AbstractOperationCode implements OperationCode
                 array_unshift($arguments, ...$annotations);
             }
 
+            $this->getDebugTool()->getLogger()->debug(
+                vsprintf(
+                    'Call a method: %s, parameters: %d',
+                    [
+                        $methodName,
+                        count($arguments),
+                    ]
+                )
+            );
+
             $result = $classObject
                 ->getInvoker()
                 ->getStatic()

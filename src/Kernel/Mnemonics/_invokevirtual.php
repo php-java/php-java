@@ -88,6 +88,16 @@ final class _invokevirtual extends AbstractOperationCode implements OperationCod
                 array_unshift($arguments, ...$annotations);
             }
 
+            $this->getDebugTool()->getLogger()->debug(
+                vsprintf(
+                    'Call a method: %s, parameters: %d',
+                    [
+                        $methodName,
+                        count($arguments),
+                    ]
+                )
+            );
+
             $result = $invokerClass
                 ->getInvoker()
                 ->getDynamic()
