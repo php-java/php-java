@@ -7,9 +7,6 @@ use PHPJava\Packages\java\lang\_String;
 
 final class _if_acmpne extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

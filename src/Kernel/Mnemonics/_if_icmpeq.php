@@ -5,9 +5,6 @@ use PHPJava\Kernel\Filters\Normalizer;
 
 final class _if_icmpeq extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

@@ -12,52 +12,56 @@ trait Accumulator
     /**
      * @var null|JavaClass
      */
-    private $javaClass;
+    protected $javaClass;
 
     /**
      * @var \PHPJava\Kernel\Attributes\AttributeInfo[]
      */
-    private $attributes = [];
+    protected $attributes = [];
 
     /**
      * @var ClassInvokerInterface
      */
-    private $javaClassInvoker;
+    protected $javaClassInvoker;
 
     /**
      * @var \PHPJava\Core\JVM\Stream\BinaryReader
      */
-    private $reader;
+    protected $reader;
 
     /**
      * @var array
      */
-    private $localStorage;
+    protected $localStorage;
 
     /**
      * @var int
      */
-    private $pointer;
+    protected $pointer;
 
     /**
      * @var array
      */
-    private $stacks = [];
+    protected $stacks = [];
 
     /**
      * @var array
      */
-    private $options;
+    protected $options;
 
     /**
      * @var _MethodInfo $method
      */
-    private $method;
+    protected $method;
 
     /**
      * @var DependencyInjectionProvider
      */
-    private $dependencyInjectionProvider;
+    protected $dependencyInjectionProvider;
+
+    protected $poppedOperandStacks = [];
+
+    protected $pushedOperandStacks = [];
 
     public function setParameters(
         _MethodInfo $method,
@@ -143,12 +147,12 @@ trait Accumulator
 
     public function pushToOperandStack($value): void
     {
-        $this->stacks[] = $value;
+        $this->pushedOperandStacks[] = $this->stacks[] = $value;
     }
 
     public function pushToOperandStackByReference(&$value): void
     {
-        $this->stacks[] = &$value;
+        $this->pushedOperandStacks[] = $this->stacks[] = &$value;
     }
 
     public function popFromOperandStack()
@@ -156,7 +160,7 @@ trait Accumulator
         if (empty($this->stacks)) {
             throw new IllegalOperationException('Cannot pop an item from stack.');
         }
-        return array_pop($this->stacks);
+        return $this->poppedOperandStacks[] = array_pop($this->stacks);
     }
 
     public function getCurrentStackIndex(): int
@@ -166,7 +170,7 @@ trait Accumulator
 
     public function popStack(): self
     {
-        array_pop($this->stacks);
+        $this->poppedOperandStacks[] = array_pop($this->stacks);
         return $this;
     }
 

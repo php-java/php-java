@@ -6,9 +6,6 @@ use PHPJava\Kernel\Types\_Double;
 
 final class _f2d extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

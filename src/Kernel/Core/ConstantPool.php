@@ -6,7 +6,7 @@ trait ConstantPool
     /**
      * @var \PHPJava\Core\JVM\ConstantPool
      */
-    private $constantPool;
+    protected $constantPool;
 
     public function setConstantPool(\PHPJava\Core\JVM\ConstantPool $constantPool)
     {

@@ -6,9 +6,6 @@ use PHPJava\Kernel\Types\_Char;
 
 final class _i2c extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

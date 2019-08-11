@@ -7,9 +7,6 @@ use PHPJava\Kernel\Types\Type;
 
 final class _sastore extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

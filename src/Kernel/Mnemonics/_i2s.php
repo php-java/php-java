@@ -6,9 +6,6 @@ use PHPJava\Kernel\Types\_Short;
 
 final class _i2s extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

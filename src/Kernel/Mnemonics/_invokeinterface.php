@@ -11,9 +11,6 @@ use PHPJava\Utilities\Formatter;
 
 final class _invokeinterface extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
-
     public function getOperands(): ?Operands
     {
         parent::getOperands();

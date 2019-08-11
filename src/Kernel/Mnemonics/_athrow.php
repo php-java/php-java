@@ -6,8 +6,6 @@ use PHPJava\Exceptions\UncaughtException;
 
 final class _athrow extends AbstractOperationCode implements OperationCodeInterface
 {
-    use \PHPJava\Kernel\Core\Accumulator;
-    use \PHPJava\Kernel\Core\ConstantPool;
     use \PHPJava\Kernel\Core\ExceptionTableInspectable;
 
     public function getOperands(): ?Operands
