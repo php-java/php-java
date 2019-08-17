@@ -159,6 +159,7 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
 
         if ($typeName === \PHPJava\Packages\java\lang\String::class) {
             Output::write('null');
+            return;
         }
 
         throw new NullPointerException();
