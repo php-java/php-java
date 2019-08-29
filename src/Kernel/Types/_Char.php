@@ -35,4 +35,10 @@ class _Char extends Type implements PrimitiveValueInterface
         }
         return json_decode(sprintf('"\\u%04X"', $value));
     }
+
+    public function __toString(): string
+    {
+        // TODO: Allows to convert to UTF-16
+        return (string) ord($this->value);
+    }
 }
