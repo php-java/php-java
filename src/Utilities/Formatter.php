@@ -213,6 +213,18 @@ class Formatter
                 $formattedItems[] = '< primitive value: ' . ((string) $operandStack) . ' >';
                 continue;
             }
+            if ($operandStack instanceof \ArrayIterator) {
+                $formattedItems[] = '< array: ' . implode(
+                    ', ',
+                    array_map(
+                        function ($value) {
+                            return static::beatifyOperandStackItems([$value]);
+                        },
+                        $operandStack->getArrayCopy()
+                    )
+                ) . ' >';
+                continue;
+            }
             $formattedItems[] = '< unknown: ' . ((string) $operandStack) . ' >';
         }
 
