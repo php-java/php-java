@@ -140,6 +140,7 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
             Output::write($arg->getString());
             return;
         }
+
         if (is_scalar($arg) ||
             $arg instanceof Collection ||
             $arg instanceof PrimitiveValueInterface

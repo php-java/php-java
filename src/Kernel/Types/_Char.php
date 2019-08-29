@@ -31,8 +31,13 @@ class _Char extends Type implements PrimitiveValueInterface
     protected static function filter($value)
     {
         if (ctype_alpha($value) && strlen($value) === 1) {
-            return $value;
+            return ord($value);
         }
-        return json_decode(sprintf('"\\u%04X"', $value));
+        return $value;
+    }
+
+    public function __toString(): string
+    {
+        return json_decode(sprintf('"\\u%04X"', $this->value));
     }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Core\JVM\Invoker\Extended;
 
-trait JavaMethodAnnotationAffectable
+trait JavaMethodAnnotationInjectable
 {
     public function getAnnotations(string $name): array
     {
