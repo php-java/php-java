@@ -134,6 +134,14 @@ class Formatter
         return implode('.', $newClassName);
     }
 
+    public static function convertPrimitiveValueToJavaSignature(string $className): string
+    {
+        $signatureMap = array_flip(TypeResolver::SIGNATURE_MAP);
+        $typeMap = array_flip(TypeResolver::TYPES_MAP);
+
+        return $signatureMap[$typeMap[$className]] ?? null;
+    }
+
     public static function convertJavaNamespaceToPHP(string $className): array
     {
         $className = str_replace('.', '/', $className);
