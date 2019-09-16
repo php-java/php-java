@@ -4,6 +4,10 @@ The PHPJava Intermediate Code Compiler is PHPJava's another feature that generat
 And, This is able to self-hosting  generated intermediate code on PHPJava.
 But This is an experimental implementation. 
 
+# DEMO
+![DEMO](../img/php_compiler.gif)
+
+
 # Get started
 The following is an example of output `Hello World`.
 
