@@ -17,12 +17,11 @@ final class PHPJava
 {
     /**
      * The code name is based on language of flowers.
-     * It meaning currently is "Expectation".
      */
-    const CODE_NAME = 'ZEPHYRANTHES';
+    const CODE_NAME = 'CHERRY_BLOSSOM';
 
     /**
      * As same as composer version.
      */
-    const VERSION = 0x000083;
+    const VERSION = 0x000090;
 }
