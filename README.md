@@ -7,7 +7,7 @@
 <p align="center"><img src="./docs/img/logo.png" height="300"></p>
 
 # What is PHPJava?
-PHPJava is an experimental library which emulates JVM (a.k.a. Java Virtual Machine) by PHP 🐘
+PHPJava is an experimental library which emulates JVM (a.k.a. Java Virtual Machine) and compiling intermediate code by PHP 🐘
 And PHPJava reads binary from pre-compiled Java file(s) ☕
 So, PHPJava is **NOT** bridge to Java. This library can be run 100% in PHP.
 This project referred to [Java Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se11/html/index.html) documentation at the time we made it.
@@ -19,8 +19,14 @@ Contribution guide is here:
 
 ## Documents
 
-- [English](https://github.com/php-java/php-java/blob/master/README.md)
-- [日本語](https://github.com/php-java/php-java/blob/master/README-ja.md)
+## Java Virtual Machine
+- [English](./README.md)
+- [日本語](./README-ja.md)
+
+## Intermediate Code Compiler
+- [English](./docs/compiler/README.md)
+- [日本語](./docs/compiler/README-ja.md)
+
 
 ## DEMO
 ![DEMO](https://user-images.githubusercontent.com/1282995/58679222-87070880-839d-11e9-8c98-978fdd0bb015.gif)
