@@ -478,8 +478,8 @@ var_dump(
 | enableSynthetic |
 
 ## Descriptor Signature Builder
-`Descriptor Signature Builder` とは、メソッドの引数及び返却値の中間コード向けの書式の生成を手助けするためのビルダークラスです。
-`Java` は例えば `public static void main (String[] args)` がコンパイルされると `String[] args` と `void` は `([Ljava/lang/String;)V` のように中間コードに解釈されます。
+`Descriptor Signature Builder` とは、メソッドの引数及び返り値の中間コード向けの書式の生成を手助けするためのビルダークラスです。
+`Java` は例えば `public static void main(String[] args)` がコンパイルされると `String[] args` と `void` は `([Ljava/lang/String;)V` のように中間コードに解釈されます。
 しかし、これを人間が相互に読み直すのは非効率であるため、このビルダークラスを用いてその課題を解決します。
 
 `Descriptor Signature Builder` は下記のように使用します。
@@ -500,9 +500,9 @@ use PHPJava\Packages\java\lang\_String;
         // 配列の深さを指定する。デフォルトは 0
         1
     )
-    // 返却値をセットする
+    // 返り値をセットする
     ->setReturn(
-        // 返却値は void 型
+        // 返り値は void 型
         _Void::class
     )
     ->make();
@@ -553,7 +553,7 @@ $compiler = new Compiler(
                             Utf8Info::class, 
                             'main'
                         ),
-                        // 引数及び返却値の情報を Constant Pool から探す
+                        // 引数及び返り値の情報を Constant Pool から探す
                         $finder->find(
                             Utf8Info::class,
                             (new Descriptor())
