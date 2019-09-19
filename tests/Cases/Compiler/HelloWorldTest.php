@@ -49,24 +49,24 @@ class HelloWorldTest extends Base
                 ->setMajorVersion($majorVersion)
                 ->setConstantPool(
                     $constantPool
-                        ->add(new Utf8Info('Hello PHPJava Compiler!'))
-                        ->add(new Utf8Info('HelloWorld'))
-                        ->add(new Utf8Info('java/lang/Object'))
-                        ->add(new Utf8Info('java/lang/System'))
-                        ->add(new Utf8Info('out'))
-                        ->add(new Utf8Info('Ljava/io/PrintStream;'))
-                        ->add(new Utf8Info('java/io/PrintStream'))
-                        ->add(new Utf8Info('println'))
-                        ->add(new Utf8Info('Code'))
-                        ->add(new Utf8Info('main'))
+                        ->add(Utf8Info::factory('Hello PHPJava Compiler!'))
+                        ->add(Utf8Info::factory('HelloWorld'))
+                        ->add(Utf8Info::factory('java/lang/Object'))
+                        ->add(Utf8Info::factory('java/lang/System'))
+                        ->add(Utf8Info::factory('out'))
+                        ->add(Utf8Info::factory('Ljava/io/PrintStream;'))
+                        ->add(Utf8Info::factory('java/io/PrintStream'))
+                        ->add(Utf8Info::factory('println'))
+                        ->add(Utf8Info::factory('Code'))
+                        ->add(Utf8Info::factory('main'))
                         ->add(
-                            new MethodrefInfo(
+                            MethodrefInfo::factory(
                                 $finder->find(ClassInfo::class, 'java/lang/Object'),
                                 $finder->find(NameAndTypeInfo::class, '<init>', '()V')
                             )
                         )
                         ->add(
-                            new FieldrefInfo(
+                            FieldrefInfo::factory(
                                 $finder->find(ClassInfo::class, 'java/lang/System'),
                                 $finder->find(
                                     NameAndTypeInfo::class,
@@ -78,12 +78,12 @@ class HelloWorldTest extends Base
                             )
                         )
                         ->add(
-                            new StringInfo(
+                            StringInfo::factory(
                                 $finder->find(Utf8Info::class, 'Hello PHPJava Compiler!')
                             )
                         )
                         ->add(
-                            new MethodrefInfo(
+                            MethodrefInfo::factory(
                                 $finder->find(ClassInfo::class, 'java/io/PrintStream'),
                                 $finder->find(
                                     NameAndTypeInfo::class,
@@ -96,29 +96,29 @@ class HelloWorldTest extends Base
                             )
                         )
                         ->add(
-                            new ClassInfo(
+                            ClassInfo::factory(
                                 $finder->find(Utf8Info::class, 'HelloWorld')
                             )
                         )
                         ->add(
-                            new ClassInfo(
+                            ClassInfo::factory(
                                 $finder->find(Utf8Info::class, 'java/lang/Object')
                             )
                         )
-                        ->add(new Utf8Info('<init>'))
-                        ->add(new Utf8Info(
+                        ->add(Utf8Info::factory('<init>'))
+                        ->add(Utf8Info::factory(
                             (new Descriptor())
                                 ->setReturn(_Void::class)
                                 ->make()
                         ))
-                        ->add(new Utf8Info(
+                        ->add(Utf8Info::factory(
                             (new Descriptor())
                                 ->addArgument(_String::class, 1)
                                 ->setReturn(_Void::class)
                                 ->make()
                         ))
                         ->add(
-                            new NameAndTypeInfo(
+                            NameAndTypeInfo::factory(
                                 $finder->find(Utf8Info::class, '<init>'),
                                 $finder->find(
                                     Utf8Info::class,
@@ -129,12 +129,12 @@ class HelloWorldTest extends Base
                             )
                         )
                         ->add(
-                            new ClassInfo(
+                            ClassInfo::factory(
                                 $finder->find(Utf8Info::class, 'java/lang/System')
                             )
                         )
                         ->add(
-                            new NameAndTypeInfo(
+                            NameAndTypeInfo::factory(
                                 $finder->find(Utf8Info::class, 'out'),
                                 $finder->find(
                                     Utf8Info::class,
@@ -145,12 +145,12 @@ class HelloWorldTest extends Base
                             )
                         )
                         ->add(
-                            new ClassInfo(
+                            ClassInfo::factory(
                                 $finder->find(Utf8Info::class, 'java/io/PrintStream')
                             )
                         )
                         ->add(
-                            new NameAndTypeInfo(
+                            NameAndTypeInfo::factory(
                                 $finder->find(Utf8Info::class, 'println'),
                                 $finder->find(
                                     Utf8Info::class,
@@ -161,7 +161,7 @@ class HelloWorldTest extends Base
                                 )
                             )
                         )
-                        ->add(new Utf8Info(
+                        ->add(Utf8Info::factory(
                             (new Descriptor())
                                 ->addArgument(_String::class)
                                 ->setReturn(_Void::class)

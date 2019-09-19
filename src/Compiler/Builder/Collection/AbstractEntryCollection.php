@@ -8,10 +8,23 @@ use PHPJava\Exceptions\NotAllowedDeleteException;
 abstract class AbstractEntryCollection implements EntryCollectionInterface, \ArrayAccess, \IteratorAggregate
 {
     protected $entries = [];
+    protected $enableIntern = true;
 
     public function add(EntryInterface $entry): EntryCollectionInterface
     {
-        $entryNumber = count($this->entries);
+        // Find same entry
+        foreach ($this->entries as $validateableEntry) {
+            if ($validateableEntry === null) {
+                continue;
+            }
+            /**
+             * @var EntryInterface $validateableEntry
+             */
+            if (spl_object_hash($validateableEntry) === spl_object_hash($entry)) {
+                return $this;
+            }
+        }
+
         $this->entries[] = $entry;
         return $this;
     }
@@ -47,5 +60,11 @@ abstract class AbstractEntryCollection implements EntryCollectionInterface, \Arr
     public function getIterator()
     {
         return new \ArrayIterator($this->entries);
+    }
+
+    public function enableIntern(bool $enable): EntryCollectionInterface
+    {
+        $this->enableIntern = $enable;
+        return $this;
     }
 }

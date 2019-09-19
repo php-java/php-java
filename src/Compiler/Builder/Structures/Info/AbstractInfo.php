@@ -46,4 +46,16 @@ abstract class AbstractInfo implements InfoInterface, EntryInterface
             []
         );
     }
+
+    public static function factory(...$arguments): self
+    {
+        static $interned = [];
+        $normalizedArguments = md5(serialize($arguments));
+
+        if (isset($interned[$normalizedArguments])) {
+            return $interned[$normalizedArguments];
+        }
+
+        return $interned[$normalizedArguments] = new static(...$arguments);
+    }
 }
