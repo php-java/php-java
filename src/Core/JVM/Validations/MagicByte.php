@@ -19,4 +19,9 @@ class MagicByte implements ValidatorInterface
     {
         return static::CAFEBABE === $this->magicByte ?? 0;
     }
+
+    public static function getMagicByte(): int
+    {
+        return static::CAFEBABE;
+    }
 }

@@ -15,6 +15,7 @@ use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\_Void;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Packages\java\lang\_String;
@@ -65,6 +66,7 @@ class TypeResolver
         'long' => _Long::class,
         'short' => _Short::class,
         'boolean' => _Boolean::class,
+        'void' => _Void::class,
     ];
 
     const PHP_SCALAR_MAP = [

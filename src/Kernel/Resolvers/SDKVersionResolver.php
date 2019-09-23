@@ -5,59 +5,42 @@ use PHPJava\Exceptions\UnknownVersionException;
 
 class SDKVersionResolver
 {
+    const VERSION_MAP = [
+        '45.3' => '1.0.2',
+        '45.65535' => '1.1',
+        '46.0' => '1.2',
+        '47.0' => '1.3',
+        '48.0' => '1.4',
+        '49.0' => '5.0',
+        '50.0' => '6',
+        '51.0' => '7',
+        '52.0' => '8',
+        '53.0' => '9',
+        '54.0' => '10',
+        '55.0' => '11',
+    ];
+
+    public static function resolveByVersion(string $version): array
+    {
+        $version = array_flip(static::VERSION_MAP)[$version] ?? null;
+
+        if (isset($version)) {
+            [$majorVersion, $minorVersion] = explode('.', $version);
+            return [
+                (int) $majorVersion,
+                (int) $minorVersion,
+            ];
+        }
+        throw new UnknownVersionException('Unsupported JDK version ' . $version);
+    }
+
     /**
      * @throws UnknownVersionException
      */
     public static function resolve(string $version): string
     {
-        if (version_compare($version, '45.0', '>=') &&
-            version_compare($version, '45.3', '<=')
-        ) {
-            return '1.0.2';
-        }
-
-        if (version_compare($version, '45.65535', '<=')) {
-            return '1.1';
-        }
-
-        if (version_compare($version, '46.0', '<=')) {
-            return '1.2';
-        }
-
-        if (version_compare($version, '47.0', '<=')) {
-            return '1.3';
-        }
-
-        if (version_compare($version, '48.0', '<=')) {
-            return '1.4';
-        }
-
-        if (version_compare($version, '49.0', '<=')) {
-            return '5.0';
-        }
-
-        if (version_compare($version, '50.0', '<=')) {
-            return '6';
-        }
-
-        if (version_compare($version, '51.0', '<=')) {
-            return '7';
-        }
-
-        if (version_compare($version, '52.0', '<=')) {
-            return '8';
-        }
-
-        if (version_compare($version, '53.0', '<=')) {
-            return '9';
-        }
-
-        if (version_compare($version, '54.0', '<=')) {
-            return '10';
-        }
-
-        if (version_compare($version, '55.0', '<=')) {
-            return '11';
+        if (isset(static::VERSION_MAP[$version])) {
+            return static::VERSION_MAP[$version];
         }
         throw new UnknownVersionException('Unsupported JDK version ' . $version);
     }

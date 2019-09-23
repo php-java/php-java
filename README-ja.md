@@ -7,7 +7,7 @@
 <p align="center"><img src="./docs/img/logo.png" height="300"></p>
 
 # What is PHPJava?
-PHPJava は PHP で JVM (Java Virtual Machine) をエミュレーションさせるための実験的なライブラリです 🐘
+PHPJava は PHP で JVM (Java Virtual Machine) をエミュレーションさせたり、JVM 上で実行できる中間コードのコンパイラを提供している実験的なライブラリです 🐘
 PHPJava は予めコンパイルされた Java ファイル(一般的には class ファイル)を読み込み逐次処理をしていきます ☕ 
 そして、 PHPJava は Java を **ブリッジや通信をするためのライブラリではありません**。
 PHPJava は **100% PHP のみ** で動きます
@@ -20,8 +20,13 @@ PHPJava は **100% PHP のみ** で動きます
 
 ## ドキュメント
 
-- [English](https://github.com/php-java/php-java/blob/master/README.md)
-- [日本語](https://github.com/php-java/php-java/blob/master/README-ja.md)
+## Java Virtual Machine
+- [English](./README.md)
+- [日本語](./README-ja.md)
+
+## 中間コードコンパイラ
+- [English](./docs/compiler/README.md)
+- [日本語](./docs/compiler/README-ja.md)
 
 ## デモ
 ![DEMO](https://user-images.githubusercontent.com/1282995/58679222-87070880-839d-11e9-8c98-978fdd0bb015.gif)
