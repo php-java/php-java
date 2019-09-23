@@ -59,7 +59,7 @@ class Method implements BuilderInterface, EntryInterface
         return $this->attributes;
     }
 
-    public function setAttributes(array $attributes): EntryInterface
+    public function setAttributes(array $attributes): self
     {
         $this->attributes = $attributes;
         return $this;

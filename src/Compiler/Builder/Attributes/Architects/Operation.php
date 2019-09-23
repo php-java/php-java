@@ -7,6 +7,7 @@ use PHPJava\Compiler\Builder\Types\Uint32;
 use PHPJava\Compiler\Builder\Types\Uint64;
 use PHPJava\Compiler\Builder\Types\Uint8;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
+use PHPJava\Exceptions\CompilerException;
 
 class Operation extends Architect implements ArchitectInterface
 {
@@ -45,6 +46,8 @@ class Operation extends Architect implements ArchitectInterface
                     case Uint64::class:
                         $writer->writeUnsignedLong($value);
                         break;
+                    default:
+                        throw new CompilerException('Unsupported type: ' . $type);
                 }
             }
         }

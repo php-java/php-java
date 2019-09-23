@@ -6,6 +6,7 @@ use PHPJava\Compiler\Builder\Types\Bytes;
 use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Builder\Types\Uint32;
 use PHPJava\Compiler\Builder\Types\Uint64;
+use PHPJava\Exceptions\CompilerException;
 
 class ConstantPool extends AbstractSegment implements SegmentInterface
 {
@@ -36,6 +37,8 @@ class ConstantPool extends AbstractSegment implements SegmentInterface
                     case Bytes::class:
                         $this->binaryWriter->write($structureEntry);
                         break;
+                    default:
+                        throw new CompilerException('Unsupported type: ' . $type);
                 }
             }
         }

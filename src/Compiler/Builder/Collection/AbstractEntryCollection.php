@@ -37,7 +37,7 @@ abstract class AbstractEntryCollection implements EntryCollectionInterface, \Arr
     public function offsetSet($offset, $value)
     {
         if (!($value instanceof EntryInterface)) {
-            throw new NotAllowedDeleteException('The value is not allowed type.');
+            throw new NotAllowedDeleteException('The value is not allowed.');
         }
         $this->entries[$offset] = $value;
     }

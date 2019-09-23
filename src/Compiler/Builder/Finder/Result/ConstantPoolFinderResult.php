@@ -102,7 +102,7 @@ class ConstantPoolFinderResult extends AbstractFinderResult implements FinderRes
             }
         }
 
-        throw new FinderException('Not found an entry. (arguments: ' . implode(', ', $this->arguments) . ')');
+        throw new FinderException('The entry is not found. (arguments: ' . implode(', ', $this->arguments) . ')');
     }
 
     private function isValidText(array $texts): bool

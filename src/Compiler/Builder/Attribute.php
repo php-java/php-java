@@ -46,7 +46,7 @@ class Attribute implements BuilderInterface, EntryInterface
         return $this->value;
     }
 
-    public function setValue(string $value): EntryInterface
+    public function setValue(string $value): self
     {
         $this->value = $value;
         return $this;
@@ -62,7 +62,7 @@ class Attribute implements BuilderInterface, EntryInterface
         return $this->attributes;
     }
 
-    public function setAttributes(array $attributes): EntryInterface
+    public function setAttributes(array $attributes): self
     {
         $this->attributes = $attributes;
         return $this;
