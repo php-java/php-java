@@ -708,8 +708,8 @@ use PHPJava\Packages\java\io\PrintStream;
     ->add(OpCode::_return);
 ```
 
-Operation Code can be specified based on the specification of the Java Virtual Machine.
-And, `Uint8` and `Uint16` means a parameters length that having below meanings.
+Operation Code can have arguments based on the specification of the Java Virtual Machine.
+The `Uint8` and `Uint16` which appeared in the examples mean the size of the parameters to be passed that mean:
 
 | Class | Meaning |
 | ---- | --- |
