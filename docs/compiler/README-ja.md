@@ -334,7 +334,7 @@ $ java HelloWorld
 | Required | `setAccessFlags(int)` | クラスに対するアクセス修飾子を設定します。この値は `AccessFlag Signature Builder` を用いて生成するか直接数字を指定します。 |
 | Required | `setThisClass(FinderResultInterface)` | どのクラスにマッピングするかを設定します。これは Constant Pool からエントリーを探索する際に返される `ConstantPoolFinder` を用いた検索結果のオブジェクトを渡します。 |
 | Required | `setSuperClass(FinderResultInterface)` | どの親クラスにマッピングするかを設定します。これは Constant Pool からエントリーを探索する際に返される `ConstantPoolFinder` を用いた検索結果のオブジェクトを渡します。 |
-|          | `setInterfaces(EntryInterface[])` | クラスに実装されているインタフェースのエントリーを定義します。これは現時点では **未実装** です。 | 
+|          | `setInterfaces(EntryInterface[])` | クラスに実装されているインタフェースのエントリーを定義します。これは現時点では **未実装** です。 |
 |          | `setFields(EntryInterface[])` | クラスに実装されているフィールドのエントリーを定義します。これは現時点では **未実装** です。|
 |          | `setMethods(EntryInterface[])` | クラスに定義されているメソッドのエントリーを定義します。定義するメソッドは `EntryCollection` 上で `Method` エントリーを追加していく必要があります。 |
 |          | `setAttributes(EntryInterface[])` | クラスに定義されている属性のエントリーを定義します。 |
@@ -353,7 +353,7 @@ use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Builder\Structures\Info\Utf8Info;
 use PHPJava\Exceptions\FinderException;
 
-// ConstantPool の EntryCollection を定義します。 
+// ConstantPool の EntryCollection を定義します。
 $constantPool = new ConstantPool();
 
 // 定義した EntryCollection を Finder に渡します。
@@ -368,7 +368,7 @@ try {
     var_dump(
         $finder->find(Utf8Info::class, 'Hello World!')
     );
-    
+
     // 即時実行の場合は下記のようにします。
     var_dump(
         $finder->find(Utf8Info::class, 'Hello World!')
@@ -481,8 +481,8 @@ var_dump(
 | enableSynthetic |
 
 ## Descriptor Signature Builder
-`Descriptor Signature Builder` とは、メソッドの引数及び返却値の中間コード向けの書式の生成を手助けするためのビルダークラスです。
-`Java` は例えば `public static void main (String[] args)` がコンパイルされると `String[] args` と `void` は `([Ljava/lang/String;)V` のように中間コードに解釈されます。
+`Descriptor Signature Builder` とは、メソッドの引数及び返り値の中間コード向けの書式の生成を手助けするためのビルダークラスです。
+`Java` は例えば `public static void main(String[] args)` がコンパイルされると `String[] args` と `void` は `([Ljava/lang/String;)V` のように中間コードに解釈されます。
 しかし、これを人間が相互に読み直すのは非効率であるため、このビルダークラスを用いてその課題を解決します。
 
 `Descriptor Signature Builder` は下記のように使用します。
@@ -499,13 +499,13 @@ use PHPJava\Packages\java\lang\_String;
     // 引数を追加します。 addArgument は何回でも呼ぶことが可能です。
     ->addArgument(
         // 第一引数は java.lang.String
-        _String::class, 
+        _String::class,
         // 配列の深さを指定する。デフォルトは 0
         1
     )
-    // 返却値をセットする
+    // 返り値をセットする
     ->setReturn(
-        // 返却値は void 型
+        // 返り値は void 型
         _Void::class
     )
     ->make();
@@ -553,10 +553,10 @@ $compiler = new Compiler(
                             ->make(),
                         // メソッド名を Constant Pool から探す
                         $finder->find(
-                            Utf8Info::class, 
+                            Utf8Info::class,
                             'main'
                         ),
-                        // 引数及び返却値の情報を Constant Pool から探す
+                        // 引数及び返り値の情報を Constant Pool から探す
                         $finder->find(
                             Utf8Info::class,
                             (new Descriptor())
@@ -602,7 +602,7 @@ use PHPJava\Kernel\Maps\OpCode;
 var_dump(
     ""
     // attribute_name_index
-    . pack('n', $finder->find(Utf8Info::class, 'Code')->getResult()->getEntryIndex()) // 
+    . pack('n', $finder->find(Utf8Info::class, 'Code')->getResult()->getEntryIndex()) //
     // attribute_length
     . pack('N', 2 + 2 + 4 + 1 + 2 + 2) // (u2 + u2 + u4 + u1 + u2 + u2)
     // max_stack
@@ -629,8 +629,8 @@ var_dump(
 | `setMaxLocals(int)` | 定義できるローカル変数の最大値を指定します。これは将来、 Operation Code から逆算可能であるため、廃止される予定です。 |
 | `setCode(string)` | オペレーションコード及びオペランドを定義します。 |
 | `setExceptionTable(ExceptionTable[])` | 例外が発生するテーブル情報を登録します。これは現在**未実装**です。 |
-| `setAttributes(Attributes[])` | Code Attribute に付属する属性情報を追加します。 |  
-| `getValue()` | 指定した値を用いて Code Attribute の形式のバイナリ文字列を生成します。 |  
+| `setAttributes(Attributes[])` | Code Attribute に付属する属性情報を追加します。 |
+| `getValue()` | 指定した値を用いて Code Attribute の形式のバイナリ文字列を生成します。 |
 
 
 ## Operation Code Builder
@@ -658,7 +658,7 @@ use PHPJava\Packages\java\lang\_String;
 use PHPJava\Packages\java\io\PrintStream;
 
 (new Operation())
-    // getstatic コマンドを設定する 
+    // getstatic コマンドを設定する
     ->add(
         OpCode::_getstatic,
         [
