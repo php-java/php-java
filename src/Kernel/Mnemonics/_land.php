@@ -7,6 +7,8 @@ use PHPJava\Kernel\Types\_Long;
 
 final class _land extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

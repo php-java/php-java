@@ -95,6 +95,26 @@ class TypeResolver
         throw new TypeException('Passed undefined signature ' . $signature);
     }
 
+    public static function resolveSignatureByType(string $classType): string
+    {
+        $typesMap = array_flip(static::TYPES_MAP);
+        $signatureMap = array_flip(static::SIGNATURE_MAP);
+
+        $typeName = $typesMap[$classType] ?? null;
+
+        if ($typeName === null) {
+            throw new TypeException('Unknown type name: ' . $typeName);
+        }
+
+        $signatureName = $signatureMap[$typeName] ?? null;
+
+        if ($signatureName === null) {
+            throw new TypeException('Unknown signature: ' . $typeName);
+        }
+
+        return $signatureName;
+    }
+
     public static function resolve(string $type): string
     {
         $flipped = array_flip(static::SIGNATURE_MAP);

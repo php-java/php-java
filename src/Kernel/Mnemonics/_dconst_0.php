@@ -5,6 +5,8 @@ use PHPJava\Kernel\Types\_Double;
 
 final class _dconst_0 extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

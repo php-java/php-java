@@ -3,7 +3,10 @@ namespace PHPJava\Compiler\Builder\Collection;
 
 use PHPJava\Compiler\Builder\EntryInterface;
 use PHPJava\Compiler\Builder\Structures\EntryCollectionInterface;
+use PHPJava\Compiler\Builder\Structures\Info\AbstractInfo;
+use PHPJava\Compiler\Builder\Structures\InfoInterface;
 use PHPJava\Exceptions\NotAllowedDeleteException;
+use PHPJava\Utilities\ArrayTool;
 
 abstract class AbstractEntryCollection implements EntryCollectionInterface, \ArrayAccess, \IteratorAggregate
 {
@@ -13,14 +16,20 @@ abstract class AbstractEntryCollection implements EntryCollectionInterface, \Arr
     public function add(EntryInterface $entry): EntryCollectionInterface
     {
         // Find same entry
-        foreach ($this->entries as $validateableEntry) {
-            if ($validateableEntry === null) {
+        foreach ($this->entries as $fromEntry) {
+            if ($fromEntry === null) {
                 continue;
             }
+
             /**
-             * @var EntryInterface $validateableEntry
+             * @var AbstractInfo|EntryInterface $validateableEntry
+             * @var AbstractInfo|EntryInterface $entry
              */
-            if (spl_object_hash($validateableEntry) === spl_object_hash($entry)) {
+            if ($fromEntry instanceof InfoInterface
+                && $entry instanceof InfoInterface
+                && get_class($fromEntry) === get_class($entry)
+                && ArrayTool::compare($fromEntry->getEntries(), $entry->getEntries())
+            ) {
                 return $this;
             }
         }

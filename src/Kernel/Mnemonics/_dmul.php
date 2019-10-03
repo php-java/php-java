@@ -7,6 +7,8 @@ use PHPJava\Kernel\Types\_Double;
 
 final class _dmul extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

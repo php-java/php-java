@@ -23,10 +23,13 @@ Contribution guide is here:
 - [English](./README.md)
 - [日本語](./README-ja.md)
 
-## Intermediate Code Compiler
+## The Intermediate Code Compiler
 - [English](./docs/compiler/README.md)
 - [日本語](./docs/compiler/README-ja.md)
 
+## The JVM language of PHP syntax
+- [English](./docs/jvm-lang/README.md)
+- [日本語](./docs/jvm-lang/README-ja.md)
 
 ## DEMO
 ![DEMO](https://user-images.githubusercontent.com/1282995/58679222-87070880-839d-11e9-8c98-978fdd0bb015.gif)

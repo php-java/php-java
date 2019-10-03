@@ -3,6 +3,8 @@ namespace PHPJava\Kernel\Mnemonics;
 
 final class _aload_0 extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

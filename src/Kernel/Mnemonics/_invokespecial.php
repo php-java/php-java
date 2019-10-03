@@ -10,6 +10,8 @@ use PHPJava\Utilities\Formatter;
 
 final class _invokespecial extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     use \PHPJava\Kernel\Core\DependencyInjector;
     use \PHPJava\Kernel\Core\ExceptionTableInspectable;
 

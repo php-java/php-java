@@ -625,8 +625,6 @@ var_dump(
 
 | メソッド名 | 概要 |
 | ------- | --- |
-| `setMaxStacks(int)` | オペランドスタックに最大詰め込めるスタックの数を指定します。これは将来、 Operation Code から逆算可能であるため、廃止される予定です。 |
-| `setMaxLocals(int)` | 定義できるローカル変数の最大値を指定します。これは将来、 Operation Code から逆算可能であるため、廃止される予定です。 |
 | `setCode(string)` | オペレーションコード及びオペランドを定義します。 |
 | `setExceptionTable(ExceptionTable[])` | 例外が発生するテーブル情報を登録します。これは現在**未実装**です。 |
 | `setAttributes(Attributes[])` | Code Attribute に付属する属性情報を追加します。 |

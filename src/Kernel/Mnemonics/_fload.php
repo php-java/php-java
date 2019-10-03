@@ -5,6 +5,8 @@ use PHPJava\Kernel\Types\_Float;
 
 final class _fload extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

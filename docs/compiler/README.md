@@ -623,8 +623,6 @@ var_dump(
 
 | Method name | Summary |
 | ------- | --- |
-| `setMaxStacks(int)` | Specify the max size for the operand stack. This will be deprecated by in the future. |
-| `setMaxLocals(int)` | Specify the max size of local variable. This will be deprecated in the future. |
 | `setCode(string)` |  Define an opcode and operands. |
 | `setExceptionTable(ExceptionTable[])` | Define an exception tables to be thrown. This is **not yet implemented**. |
 | `setAttributes(Attributes[])` | Set the attributes for Code Attribute. |

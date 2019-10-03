@@ -198,8 +198,6 @@ class HelloWorldTest extends Base
                                     (new Attributes())
                                         ->add(
                                             (new Code($finder->find(Utf8Info::class, 'Code')))
-                                                ->setMaxStacks(1)
-                                                ->setMaxLocals(1)
                                                 ->setCode(
                                                     (new Operation())
                                                         ->add(OpCode::_aload_0)
@@ -244,8 +242,6 @@ class HelloWorldTest extends Base
                                     (new Attributes())
                                         ->add(
                                             (new Code($finder->find(Utf8Info::class, 'Code')))
-                                                ->setMaxStacks(2)
-                                                ->setMaxLocals(1)
                                                 ->setCode(
                                                     (new Operation())
                                                         ->add(

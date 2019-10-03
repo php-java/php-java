@@ -116,7 +116,7 @@ class Formatter
         return $result;
     }
 
-    public static function convertPHPNamespacesToJava(string $className): string
+    public static function convertPHPNamespacesToJava(string $className, string $mergeChar = '.'): string
     {
         $className = str_replace('/', '\\', $className);
         $newClassName = explode(
@@ -131,15 +131,15 @@ class Formatter
             $newClassName[$key] = array_flip(Runtime::PHP_PACKAGES_MAPS)[$value] ?? $value;
         }
 
-        return implode('.', $newClassName);
+        return implode($mergeChar, $newClassName);
     }
 
-    public static function convertPrimitiveValueToJavaSignature(string $className): string
+    public static function convertPrimitiveValueToJavaSignature(string $className): ?string
     {
         $signatureMap = array_flip(TypeResolver::SIGNATURE_MAP);
         $typeMap = array_flip(TypeResolver::TYPES_MAP);
 
-        return $signatureMap[$typeMap[$className]] ?? null;
+        return $signatureMap[$typeMap[$className] ?? null] ?? null;
     }
 
     public static function convertJavaNamespaceToPHP(string $className): array

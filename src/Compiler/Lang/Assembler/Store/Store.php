@@ -1,0 +1,85 @@
+<?php
+namespace PHPJava\Compiler\Lang\Assembler\Store;
+
+use PHPJava\Exceptions\CoordinateStructureException;
+
+class Store
+{
+    protected $hashTable = [];
+
+    protected $storedNumber = [
+        // [iadf]store_0 / [iadf]load_0
+        0 => true,
+        // [iadf]store_1 / [iadf]load_1
+        1 => false,
+        // [iadf]store_2 / [iadf]load_2
+        2 => false,
+        // [iadf]store_3 / [iadf]load_3
+        3 => false,
+    ];
+
+    /**
+     * Store on memory.
+     *
+     * @return int the store method returns settled local storage number
+     */
+    public function store(string $name, $value): int
+    {
+        $availableLocalStorageNumber = $this->getAvailableLocalStorageNumber();
+
+        if ($availableLocalStorageNumber === -1) {
+            // Allocate localStorage
+            $storedNumber[] = false;
+
+            // Retry to get
+            $availableLocalStorageNumber = $this->getAvailableLocalStorageNumber();
+        }
+
+        $this->hashTable[$name] = [$availableLocalStorageNumber, $value];
+
+        // Use available localStorage number
+        $this->storedNumber[$availableLocalStorageNumber] = true;
+
+        // Returns available localstorage number.
+        return $availableLocalStorageNumber;
+    }
+
+    public function get(string $name, bool $free = true): array
+    {
+        $value = $this->hashTable[$name] ?? null;
+
+        if ($value === null) {
+            throw new CoordinateStructureException(
+                'Specified variable name is not set (' . $name . ').'
+            );
+        }
+
+        if ($free) {
+            $this->storedNumber[$value[0]] = false;
+        }
+        return $value;
+    }
+
+    public function getStoredNumber(string $name): int
+    {
+        $value = $this->hashTable[$name] ?? null;
+        if ($value === null) {
+            throw new CoordinateStructureException(
+                'Specified variable name is not set (' . $name . ').'
+            );
+        }
+
+        // 0 is a localstorage number.
+        return $value[0];
+    }
+
+    protected function getAvailableLocalStorageNumber(): int
+    {
+        foreach ($this->storedNumber as $index => $storedNumber) {
+            if ($storedNumber === false) {
+                return $index;
+            }
+        }
+        return -1;
+    }
+}

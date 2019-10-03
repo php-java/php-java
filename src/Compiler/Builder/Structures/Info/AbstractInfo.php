@@ -17,6 +17,11 @@ abstract class AbstractInfo implements InfoInterface, EntryInterface
         return $this->tag;
     }
 
+    public function getEntries(): array
+    {
+        return $this->entries;
+    }
+
     public function getStructure(): array
     {
         return $this->structure;
@@ -49,13 +54,6 @@ abstract class AbstractInfo implements InfoInterface, EntryInterface
 
     public static function factory(...$arguments): self
     {
-        static $interned = [];
-        $normalizedArguments = md5(serialize($arguments));
-
-        if (isset($interned[$normalizedArguments])) {
-            return $interned[$normalizedArguments];
-        }
-
-        return $interned[$normalizedArguments] = new static(...$arguments);
+        return new static(...$arguments);
     }
 }

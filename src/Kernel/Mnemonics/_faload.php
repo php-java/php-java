@@ -5,6 +5,8 @@ use PHPJava\Kernel\Filters\Normalizer;
 
 final class _faload extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();
