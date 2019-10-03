@@ -9,6 +9,8 @@ use PHPJava\Kernel\Types\_Int;
 
 final class _ldc_w extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

@@ -39,5 +39,10 @@ abstract class AbstractFinderResult implements FinderResultInterface
         $this->arguments = $arguments;
     }
 
+    public function getArguments(): array
+    {
+        return $this->arguments;
+    }
+
     abstract public function getResult();
 }

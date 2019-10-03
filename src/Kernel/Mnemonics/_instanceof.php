@@ -7,6 +7,8 @@ use PHPJava\Utilities\Formatter;
 
 final class _instanceof extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

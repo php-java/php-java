@@ -17,6 +17,8 @@ use PHPJava\Utilities\Formatter;
 
 final class _invokedynamic extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     use \PHPJava\Kernel\Core\DependencyInjector;
 
     public function getOperands(): ?Operands

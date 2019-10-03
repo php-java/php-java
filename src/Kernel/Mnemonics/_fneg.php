@@ -6,6 +6,8 @@ use PHPJava\Kernel\Types\_Float;
 
 final class _fneg extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

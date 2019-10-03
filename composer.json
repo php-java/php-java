@@ -57,5 +57,8 @@
                 "git update-index --again"
             ]
         }
+    },
+    "suggest": {
+        "nikic/php-parser": "Allows to compile the plain PHP file to a bytecode file of the JVM language."
     }
 }

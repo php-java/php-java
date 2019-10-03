@@ -5,6 +5,8 @@ use PHPJava\Kernel\Types\_Int;
 
 final class _bipush extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

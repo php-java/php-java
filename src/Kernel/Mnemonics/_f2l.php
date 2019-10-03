@@ -6,6 +6,8 @@ use PHPJava\Kernel\Types\_Long;
 
 final class _f2l extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

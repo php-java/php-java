@@ -5,6 +5,8 @@ use PHPJava\Kernel\Types\_Short;
 
 final class _sipush extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

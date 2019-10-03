@@ -9,8 +9,10 @@ use PHPJava\Compiler\Builder\Types\Uint8;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
 use PHPJava\Exceptions\CompilerException;
 
-class Operation extends Architect implements ArchitectInterface
+class Operation extends Architect implements ArchitectInterface, \IteratorAggregate
 {
+    protected $calculateLDCWideOperationAutomatically = true;
+
     /**
      * @var array
      */
@@ -22,7 +24,23 @@ class Operation extends Architect implements ArchitectInterface
         return $this;
     }
 
-    public function getValue(): string
+    public function set(int $index, int $opcode, array $arguments = []): self
+    {
+        $this->codes[$index] = [$opcode, $arguments];
+        return $this;
+    }
+
+    public function get(int $index): ?array
+    {
+        return $this->codes[$index] ?? null;
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->codes);
+    }
+
+    public function make(): string
     {
         $writer = new BinaryWriter(fopen('php://memory', 'r+'));
         foreach ($this->codes as [$opcode, $arguments]) {
@@ -56,6 +74,6 @@ class Operation extends Architect implements ArchitectInterface
 
     public function __toString(): string
     {
-        return $this->getValue();
+        return $this->make();
     }
 }

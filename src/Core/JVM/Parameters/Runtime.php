@@ -44,6 +44,10 @@ final class Runtime
 
     const PHP_PACKAGES_NAMESPACE = 'PHPJava\\Packages';
     const MNEMONIC_NAMESPACE = 'PHPJava\\Kernel\\Mnemonics';
+    const BUILD_PACKAGE_NAMESPACE = 'PHPJava\\Compiler\\Lang\\Assembler\\Bundler\\Packages\\';
+
+    const PHP_STANDARD_CLASS_NAME = 'PHPStandardClass';
+    const PHP_STANDARD_CLASS_METHOD_PREFIX = 'PHP_STANDARD_CLASS@';
 
     const PREFIX_STATIC = 'static_';
     const PREFIX_DEFAULT = '__default_';

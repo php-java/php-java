@@ -6,6 +6,8 @@ use PHPJava\Kernel\Types\_Byte;
 
 final class _i2b extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

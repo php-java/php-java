@@ -7,6 +7,8 @@ use PHPJava\Kernel\Types\_Array\Collection;
 
 final class _newarray extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

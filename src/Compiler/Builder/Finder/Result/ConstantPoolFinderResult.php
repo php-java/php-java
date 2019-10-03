@@ -7,6 +7,7 @@ use PHPJava\Compiler\Builder\Maps\EntryMap;
 use PHPJava\Compiler\Builder\Structures\Info\AbstractInfo;
 use PHPJava\Compiler\Builder\Structures\Info\ClassInfo;
 use PHPJava\Compiler\Builder\Structures\Info\FieldrefInfo;
+use PHPJava\Compiler\Builder\Structures\Info\IntegerInfo;
 use PHPJava\Compiler\Builder\Structures\Info\MethodrefInfo;
 use PHPJava\Compiler\Builder\Structures\Info\NameAndTypeInfo;
 use PHPJava\Compiler\Builder\Structures\Info\StringInfo;
@@ -35,7 +36,8 @@ class ConstantPoolFinderResult extends AbstractFinderResult implements FinderRes
             if (!($entry instanceof $this->type)) {
                 continue;
             }
-            $key = md5($this->type . implode($this->arguments) . spl_object_hash($entry));
+
+            $key = 'INTERNED_' . crc32($this->type . implode($this->arguments));
 
             if (isset($this->resultCaches[$key])) {
                 return $this->resultCaches[$key];
@@ -87,6 +89,12 @@ class ConstantPoolFinderResult extends AbstractFinderResult implements FinderRes
                         $this->constantPool[$constantPoolIndex]->getStructureEntries()
                     );
                     break;
+                case IntegerInfo::class:
+                    [[$type, $value]] = $entry->getStructureEntries();
+                    if ($this->arguments[0] === $value) {
+                        return $this->resultCaches[$key] = new EntryMap($index, $entry);
+                    }
+                    break;
                 case Utf8Info::class:
                     $texts[] = $this->filterUtf8EntryTextByStructureEntry(
                         $entry->getStructureEntries()
@@ -103,6 +111,11 @@ class ConstantPoolFinderResult extends AbstractFinderResult implements FinderRes
         }
 
         throw new FinderException('The entry is not found. (arguments: ' . implode(', ', $this->arguments) . ')');
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     private function isValidText(array $texts): bool

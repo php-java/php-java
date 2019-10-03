@@ -7,6 +7,8 @@ use PHPJava\Packages\java\lang\UnsupportedOperationException;
 
 final class _ldc2_w extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

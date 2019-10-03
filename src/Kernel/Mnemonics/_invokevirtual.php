@@ -8,6 +8,8 @@ use PHPJava\Utilities\Formatter;
 
 final class _invokevirtual extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     protected $methodSignature;
 
     use \PHPJava\Kernel\Core\DependencyInjector;

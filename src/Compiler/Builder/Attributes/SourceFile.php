@@ -1,0 +1,36 @@
+<?php
+namespace PHPJava\Compiler\Builder\Attributes;
+
+use PHPJava\Compiler\Builder\Attribute;
+use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;
+use PHPJava\Core\JVM\Stream\BinaryWriter;
+use PHPJava\Core\PHPJava;
+
+class SourceFile extends Attribute
+{
+    /**
+     * @var ConstantPoolFinderResult
+     */
+    protected $finderResult;
+
+    public function setFileNameIndexInConstantPool(ConstantPoolFinderResult $finderResult): self
+    {
+        $this->finderResult = $finderResult;
+        return $this;
+    }
+
+    public function getValue(): string
+    {
+        $writer = new BinaryWriter(
+            fopen('php://memory', 'r+')
+        );
+
+        $writer->writeUnsignedShort(
+            $this->finderResult
+                ->getResult()
+                ->getEntryIndex()
+        );
+
+        return $writer->getStreamContents();
+    }
+}

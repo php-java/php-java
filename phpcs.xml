@@ -8,6 +8,7 @@
     </rule>
 
     <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
+        <exclude-pattern>./src/Compiler/Lang/Assembler/Bundler/Packages</exclude-pattern>
         <exclude-pattern>./src/Kernel/Types</exclude-pattern>
         <exclude-pattern>./src/Kernel/Mnemonics</exclude-pattern>
         <exclude-pattern>./src/Kernel/Structures</exclude-pattern>

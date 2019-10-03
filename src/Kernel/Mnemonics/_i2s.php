@@ -6,6 +6,8 @@ use PHPJava\Kernel\Types\_Short;
 
 final class _i2s extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

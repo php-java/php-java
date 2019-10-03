@@ -27,6 +27,8 @@ abstract class AbstractOperationCode implements OperationCodeInterface
      */
     protected $freezeOperandStacks = [];
 
+    protected $isStackingOperation = false;
+
     public function getOperands(): ?Operands
     {
         return $this->operands ?? null;
@@ -49,6 +51,11 @@ abstract class AbstractOperationCode implements OperationCodeInterface
     public function isExecuted(): bool
     {
         return $this->isExecuted;
+    }
+
+    public function isStackingOperation(): bool
+    {
+        return $this->isStackingOperation;
     }
 
     public function getName(): string

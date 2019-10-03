@@ -14,6 +14,17 @@ class Map
         return null;
     }
 
+    public function getValue(string $name)
+    {
+        try {
+            $reflectionClass = new \ReflectionClass($this);
+            return $reflectionClass->getConstant($name);
+        } catch (\ReflectionException $e) {
+        }
+
+        return null;
+    }
+
     /**
      * @return string[]
      */

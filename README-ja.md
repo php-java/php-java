@@ -28,6 +28,10 @@ PHPJava は **100% PHP のみ** で動きます
 - [English](./docs/compiler/README.md)
 - [日本語](./docs/compiler/README-ja.md)
 
+## PHP のシンタックスによる JVM 言語
+- [English](./docs/jvm-lang/README.md)
+- [日本語](./docs/jvm-lang/README-ja.md)
+
 ## デモ
 ![DEMO](https://user-images.githubusercontent.com/1282995/58679222-87070880-839d-11e9-8c98-978fdd0bb015.gif)
 

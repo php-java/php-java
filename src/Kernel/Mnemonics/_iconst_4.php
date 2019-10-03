@@ -5,6 +5,8 @@ use PHPJava\Kernel\Types\_Int;
 
 final class _iconst_4 extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();

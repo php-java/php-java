@@ -11,6 +11,8 @@ interface OperationCodeInterface
 
     public function isExecuted(): bool;
 
+    public function isStackingOperation(): bool;
+
     public function getName(): string;
 
     public function getCode(): int;

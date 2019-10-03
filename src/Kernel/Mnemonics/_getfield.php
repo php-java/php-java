@@ -6,6 +6,8 @@ use PHPJava\Packages\java\lang\NoSuchFieldException;
 
 final class _getfield extends AbstractOperationCode implements OperationCodeInterface
 {
+    protected $isStackingOperation = true;
+
     public function getOperands(): ?Operands
     {
         parent::getOperands();
