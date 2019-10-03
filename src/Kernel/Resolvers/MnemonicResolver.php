@@ -20,6 +20,12 @@ class MnemonicResolver
             case OpCode::_iload_1:
             case OpCode::_iload_2:
             case OpCode::_iload_3:
+            case OpCode::_iconst_0:
+            case OpCode::_iconst_1:
+            case OpCode::_iconst_2:
+            case OpCode::_iconst_3:
+            case OpCode::_iconst_4:
+            case OpCode::_iconst_5:
                 return _Int::class;
             case OpCode::_fload:
             case OpCode::_fload_1:

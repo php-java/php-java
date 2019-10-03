@@ -43,7 +43,7 @@ trait MethodConstantValueReturnable
             $returnOperation = OpCode::_ireturn;
             array_push(
                 $operations,
-                ...$this->assembleStoreNumber(
+                ...$this->assembleLoadNumber(
                     $value
                 )
             );

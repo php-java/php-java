@@ -5,13 +5,13 @@ namespace PHPJava\Compiler\Lang\Assembler\Bundler\Packages;
 use PHPJava\Compiler\Lang\Assembler\Bundler\PackageBundlerInterface;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\MethodConstantValueReturnable;
-use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberStorable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
 
 class Constants extends AbstractPackageBundler implements PackageBundlerInterface
 {
     use ConstantPoolEnhanceable;
     use MethodConstantValueReturnable;
-    use NumberStorable;
+    use NumberLoadable;
 
     public function getPHPVersion(): array
     {

@@ -54,10 +54,21 @@ trait StringConcatable
         );
 
         foreach ($arguments as $operation) {
+            try {
+                $convertedOperations = $this->assembleCastToString(
+                    MnemonicResolver::isLDCOperation($operation->getOpCode())
+                        ? $operation->getOperand(0)->getValue()->getType()
+                        : MnemonicResolver::resolveTypeByOpCode($operation->getOpCode()),
+                    $operation
+                );
+            } catch (ResolverException $e) {
+                $convertedOperations = [$operation];
+            }
+
             array_push(
                 $operations,
                 // Load value.
-                $operation,
+                ...$convertedOperations,
                 // Call the append method.
                 ...$this->assembleCallMethodOperations(
                     \PHPJava\Packages\java\lang\StringBuilder::class,

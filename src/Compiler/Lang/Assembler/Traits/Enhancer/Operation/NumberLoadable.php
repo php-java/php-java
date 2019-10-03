@@ -5,6 +5,7 @@ use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Builder\Generator\Operation\Operand;
 use PHPJava\Compiler\Builder\Structures\Info\IntegerInfo;
+use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Builder\Types\Uint8;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
@@ -12,7 +13,6 @@ use PHPJava\Exceptions\CoordinateStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Byte;
 use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Long;
 use PHPJava\Kernel\Types\_Short;
 
 /**
@@ -21,9 +21,9 @@ use PHPJava\Kernel\Types\_Short;
  * @method ConstantPoolFinder getConstantPoolFinder()
  * @method ConstantPoolEnhancer getEnhancedConstantPool()
  */
-trait NumberStorable
+trait NumberLoadable
 {
-    public function assembleStoreNumber(int $value, string &$type = null)
+    public function assembleLoadNumber(int $value, string &$type = null)
     {
         $loadOperation = null;
         $loadOperand = null;
@@ -64,11 +64,6 @@ trait NumberStorable
                     IntegerInfo::class,
                     $value
                 );
-        } elseif ($value >= _Long::MIN && $value <= _Long::MAX) {
-//                $this->getEnhancedConstantPool()
-//                    ->addLong($value);
-//                $type = _Long::class;
-//                $loadOperation = OpCode::_ldc_w;
         } else {
             throw new CoordinateStructureException(
                 sprintf(
@@ -87,7 +82,7 @@ trait NumberStorable
                     $size = Uint8::class;
                     break;
                 case OpCode::_sipush:
-                    $size = Uint8::class;
+                    $size = Uint16::class;
                     break;
                 default:
                     throw new CoordinateStructureException(

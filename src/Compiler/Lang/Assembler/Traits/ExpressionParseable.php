@@ -18,6 +18,8 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\CoordinateStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\MnemonicResolver;
+use PHPJava\Kernel\Types\_Byte;
+use PHPJava\Packages\java\lang\_String;
 use PhpParser\Node;
 
 /**
@@ -29,23 +31,40 @@ use PhpParser\Node;
  */
 trait ExpressionParseable
 {
-    protected function parseExpression(array $expressions): array
+    protected function parseExpression(array $expressions, ?callable $callback = null): array
     {
         $operations = [];
+        $classType = null;
         foreach ($expressions as $expression) {
             $coordinatedOperationCode = null;
-            switch (get_class($expression)) {
+            $nodeType = get_class($expression);
+            switch ($nodeType) {
                 case \PhpParser\Node\Scalar\String_::class:
                     $coordinatedOperationCode = $this
-                        ->assembleStringNodeToOperationCode($expression);
+                        ->assembleStringNodeToOperationCode(
+                            $expression,
+                            $classType
+                        );
+                    break;
+                case \PhpParser\Node\Scalar\LNumber::class:
+                    $coordinatedOperationCode = $this->assembleLoadNumber(
+                        $expression->value,
+                        $classType
+                    );
                     break;
                 case \PhpParser\Node\Expr\Variable::class:
                     $coordinatedOperationCode = $this
-                        ->assembleVariableNodeToOperationCode($expression);
+                        ->assembleVariableNodeToOperationCode(
+                            $expression,
+                            $classType
+                        );
                     break;
                 case \PhpParser\Node\Expr\ConstFetch::class:
                     $coordinatedOperationCode = $this
-                        ->assembleConstFetchNodeToOperationCode($expression);
+                        ->assembleConstFetchNodeToOperationCode(
+                            $expression,
+                            $classType
+                        );
                     break;
                 case \PhpParser\Node\Scalar\MagicConst\Class_::class: // __CLASS__
                 case \PhpParser\Node\Scalar\MagicConst\Method::class: // __METHOD__
@@ -56,7 +75,10 @@ trait ExpressionParseable
                 case \PhpParser\Node\Scalar\MagicConst\Trait_::class: // __TRAIT__
                 case \PhpParser\Node\Scalar\MagicConst\Line::class: // __LINE__
                     $coordinatedOperationCode = $this
-                        ->assembleMagicConstNodeToOperationCode($expression);
+                        ->assembleMagicConstNodeToOperationCode(
+                            $expression,
+                            $classType
+                        );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\Concat::class:
                     $coordinatedOperationCode = $this
@@ -64,7 +86,8 @@ trait ExpressionParseable
                             [
                                 $expression->left,
                                 $expression->right,
-                            ]
+                            ],
+                            $callback
                         );
                     break;
                 default:
@@ -80,11 +103,26 @@ trait ExpressionParseable
                 $operations,
                 ...$coordinatedOperationCode
             );
+
+            if ($callback !== null
+                && !in_array(
+                    $nodeType,
+                    [
+                        \PhpParser\Node\Expr\BinaryOp\Concat::class,
+                    ],
+                    true
+                )
+            ) {
+                $callback(
+                    $classType,
+                    $coordinatedOperationCode
+                );
+            }
         }
         return $operations;
     }
 
-    private function assembleStringNodeToOperationCode(Node $expression): array
+    private function assembleStringNodeToOperationCode(Node $expression, ?string &$classType = null): array
     {
         $operations = [];
         /**
@@ -107,13 +145,15 @@ trait ExpressionParseable
             )
         );
 
+        $classType = _String::class;
+
         return $operations;
     }
 
     /**
      * @throws CoordinateStructureException
      */
-    private function assembleVariableNodeToOperationCode(Node $expression): array
+    private function assembleVariableNodeToOperationCode(Node $expression, ?string &$classType = null): array
     {
         $operations = [];
 
@@ -121,7 +161,7 @@ trait ExpressionParseable
          * @var \PhpParser\Node\Expr\Variable $expression
          */
         $variableName = $expression->name;
-        [$storedNumber, [$classType, ]] = $this
+        [$storedNumber, $classType] = $this
             ->getStore()
             ->get($variableName);
 
@@ -147,7 +187,7 @@ trait ExpressionParseable
     /**
      * @throws CoordinateStructureException
      */
-    private function assembleConstFetchNodeToOperationCode(Node $expression): array
+    private function assembleConstFetchNodeToOperationCode(Node $expression, ?string &$classType = null): array
     {
         $operations = [];
 
@@ -155,6 +195,24 @@ trait ExpressionParseable
          * @var \PhpParser\Node\Expr\ConstFetch $expression
          */
         $constName = $expression->name->parts[0];
+
+        if (strtolower($constName) === 'true') {
+            $classType = _Byte::class;
+            return [
+                \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                    OpCode::_iconst_1
+                ),
+            ];
+        }
+        if (strtolower($constName) === 'false') {
+            $classType = _Byte::class;
+            return [
+                \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                    OpCode::_iconst_0
+                ),
+            ];
+        }
+
         $basedClass = str_replace(
             Runtime::BUILD_PACKAGE_NAMESPACE,
             '',
@@ -172,6 +230,9 @@ trait ExpressionParseable
         }
 
         [$methodName, $arguments, $return] = $constantMappedMethodName;
+
+        // Overwrite class type
+        $classType = $return;
 
         $methodName = Runtime::PHP_STANDARD_CLASS_METHOD_PREFIX . $methodName;
 
@@ -203,7 +264,7 @@ trait ExpressionParseable
         return $operations;
     }
 
-    private function assembleMagicConstNodeToOperationCode(Node $expression): array
+    private function assembleMagicConstNodeToOperationCode(Node $expression, ?string &$classType = null): array
     {
         $operations = [];
         switch (get_class($expression)) {
@@ -355,6 +416,8 @@ trait ExpressionParseable
 
                 break;
         }
+
+        $classType = _String::class;
 
         return $operations;
     }
