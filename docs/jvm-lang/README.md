@@ -7,7 +7,7 @@ This feature is a experimental implementation more than any other.
 ![DEMO](../img/php_jvm_lang.gif)
 
 # Get started
-1. Create a `HelloWorld.php`
+1. Create `HelloWorld.php`
 ```php
 <?php
 class HelloWorld
@@ -19,7 +19,7 @@ class HelloWorld
 }
 ```
 
-2. Run `PackageAssembler`, and coordinate an intermediately code.
+2. To run `PackageAssembler`, and assemble an intermediately code.
 
 ```php
 <?php 
