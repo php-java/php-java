@@ -38,7 +38,7 @@ trait StatementParseable
                         ...IfStatementAssembler::factory($statement)
                             ->setOperation($this->getOperation())
                             ->setStore($this->getStore())
-                            ->setParentCoordinator($this)
+                            ->setParentAssembler($this)
                             ->setStreamReader($this->getStreamReader())
                             ->setNamespace($this->getNamespace())
                             ->assemble()
@@ -53,7 +53,7 @@ trait StatementParseable
                         ...EchoStatementAssembler::factory($statement)
                             ->setOperation($this->getOperation())
                             ->setStore($this->getStore())
-                            ->setParentCoordinator($this)
+                            ->setParentAssembler($this)
                             ->setStreamReader($this->getStreamReader())
                             ->setNamespace($this->getNamespace())
                             ->assemble()
@@ -68,7 +68,7 @@ trait StatementParseable
                         ...ExpressionStatementAssembler::factory($statement)
                             ->setOperation($this->getOperation())
                             ->setStore($this->getStore())
-                            ->setParentCoordinator($this)
+                            ->setParentAssembler($this)
                             ->setStreamReader($this->getStreamReader())
                             ->setNamespace($this->getNamespace())
                             ->assemble()
@@ -78,7 +78,7 @@ trait StatementParseable
                     break;
                 default:
                     throw new AssembleStructureException(
-                        'Unknown statement: ' . get_class($node) . ' on ' . get_class($this)
+                        'Unknown statement: ' . get_class($this->node) . ' on ' . get_class($this)
                     );
             }
         }

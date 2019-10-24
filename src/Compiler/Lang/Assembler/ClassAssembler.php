@@ -45,7 +45,7 @@ class ClassAssembler extends AbstractAssembler implements AssemblerInterface
             MethodAssembler::factory($method)
                 ->setStore(new Store())
                 ->setOperation(new Operation())
-                ->setParentCoordinator($this)
+                ->setParentAssembler($this)
                 ->setStreamReader($this->getStreamReader())
                 ->setNamespace($this->getNamespace())
                 ->assemble();

@@ -23,10 +23,10 @@ use PHPJava\Kernel\Types\_Void;
 use PHPJava\Utilities\Formatter;
 
 /**
- * @method MethodAssembler getParentCoordinator()
+ * @method MethodAssembler getParentAssembler()
  * @property \PhpParser\Node\Stmt\Echo_ $node
  */
-class EchoStatementAssembler extends AbstractAssembler implements StatementCoordinatorInterface, AssemblerInterface
+class EchoStatementAssembler extends AbstractAssembler implements StatementAssemblerInterface, AssemblerInterface
 {
     use ConstantPoolEnhanceable;
     use StringConcatable;
