@@ -2,6 +2,7 @@
 namespace PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation;
 
 use PHPJava\Compiler\Builder\Generator\Operation\Operand;
+use PHPJava\Compiler\Builder\Generator\Operation\Operation;
 use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Kernel\Maps\OpCode;
@@ -11,9 +12,12 @@ use PHPJava\Kernel\Maps\OpCode;
  */
 trait ClassConstractable
 {
-    public function assembleClassConstructor(string $classPath, string $descriptor, bool $returnClass, ...$arguments)
+    public function assembleClassConstructor(string $classPath, string $descriptor, bool $returnClass = true, Operation ...$arguments)
     {
         $this->getEnhancedConstantPool()
+            ->addClass(
+                $classPath
+            )
             ->addMethodref(
                 $classPath,
                 '<init>',

@@ -4,26 +4,31 @@ namespace PHPJava\Compiler\Builder\Attributes;
 use PHPJava\Compiler\Builder\Attribute;
 use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;
+use PHPJava\Compiler\Builder\Generator\Operation\Operand;
 use PHPJava\Compiler\Builder\Types\Uint16;
+use PHPJava\Compiler\Lang\Assembler\Traits\Validatable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
-use PHPJava\Exceptions\CoordinateStructureException;
+use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Mnemonics\OperationCodeInterface;
 
 class Code extends Attribute
 {
+    use Validatable;
+
     protected $hasAttribute = true;
 
     /**
-     * @var Operation
+     * @var \PHPJava\Compiler\Builder\Generator\Operation\Operation[]
      */
-    protected $code;
+    protected $operations = [];
     protected $exceptionTables = [];
 
-    public function setCode(Operation $code): self
+    public function setCode(array $operations): self
     {
-        $this->code = $code;
+        $this->validateOperationArray($operations);
+        $this->operations = $operations;
         return $this;
     }
 
@@ -45,11 +50,9 @@ class Code extends Attribute
 
         // Calculate max stack size from operations
         $opcodeMap = new OpCode();
-        foreach ($this->code as $index => $operation) {
-            $opcode = $operation[0] ?? null;
-            $operands = $operation[1] ?? null;
 
-            $mnemonic = Runtime::MNEMONIC_NAMESPACE . '\\' . ($opcodeMap->getName($opcode));
+        foreach ($this->operations as $index => $operation) {
+            $mnemonic = Runtime::MNEMONIC_NAMESPACE . '\\' . ($opcodeMap->getName($operation->getOpCode()));
             /**
              * @var OperationCodeInterface $opcodeInstance
              */
@@ -59,7 +62,7 @@ class Code extends Attribute
                 $maxStacks++;
             }
 
-            switch ($opcode) {
+            switch ($operation->getOpCode()) {
                 case OpCode::_astore:
                 case OpCode::_astore_0:
                 case OpCode::_astore_1:
@@ -118,31 +121,39 @@ class Code extends Attribute
                     /**
                      * @var ConstantPoolFinderResult $result
                      */
-                    [, $result] = $operands[0];
+                    $result = $operation->getOperand(0)
+                        ->getValue();
+
                     if ($result->getResult()->getEntryIndex() > 0xff) {
                         // Change opcode automatically.
-                        $this->code->set(
-                            $index,
+                        $this->operations[$index] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
                             OpCode::_ldc_w,
-                            [
-                                [
-                                    Uint16::class,
-                                    $operands[0][1],
-                                ],
-                            ]
+                            Operand::factory(
+                                Uint16::class,
+                                $result
+                            )
                         );
                     }
                     break;
             }
 
             if ($maxLocals < 0) {
-                throw new CoordinateStructureException(
-                    'max locals is not correct.'
+                throw new AssembleStructureException(
+                    'max locals is underflow.'
                 );
             }
         }
 
-        $code = $this->code->make();
+        $code = new Operation();
+
+        foreach ($this->operations as $operation) {
+            $code->add(
+                $operation->getOpCode(),
+                $operation->getOperands()
+            );
+        }
+
+        $code = $code->make();
 
         // max stack
         $writer->writeUnsignedShort($maxStacks);
@@ -175,6 +186,13 @@ class Code extends Attribute
             /**
              * @var Attribute $attribute
              */
+            $writer->writeUnsignedShort(
+                $this->getEnhancedConstantPool()
+                    ->findUtf8($attribute->getName())
+                    ->getResult(false)
+                    ->getEntryIndex()
+            );
+            $writer->writeUnsignedInt(strlen($attribute->getValue()));
             $writer->write($attribute->getValue());
         }
 

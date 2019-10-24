@@ -43,4 +43,37 @@ trait MethodCallable
 
         return $operations;
     }
+
+    public function assembleStaticCallMethodOperations(
+        string $classPath,
+        string $methodName,
+        string $descriptor
+    ): array {
+        // Register required methods
+        $this->getEnhancedConstantPool()
+            ->addClass($classPath)
+            ->addMethodref(
+                $classPath,
+                $methodName,
+                $descriptor
+            );
+
+        $operations = [];
+
+        // Call a method
+        $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+            OpCode::_invokestatic,
+            Operand::factory(
+                Uint16::class,
+                $this->getEnhancedConstantPool()
+                    ->findMethod(
+                        $classPath,
+                        $methodName,
+                        $descriptor
+                    )
+            )
+        );
+
+        return $operations;
+    }
 }

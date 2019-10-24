@@ -1,7 +1,6 @@
 <?php
 namespace PHPJava\Compiler\Lang\Assembler\Bundler;
 
-use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Attributes\Code;
 use PHPJava\Compiler\Builder\Attributes\PHPJavaSignature;
 use PHPJava\Compiler\Builder\Attributes\SourceFile;
@@ -64,19 +63,8 @@ class PHPStandardClass extends AbstractBundler
                         $descriptor
                     );
 
-                $operation = new Operation();
-
                 // Call functions
                 $functionOperationCodes = call_user_func([$packageInstance, $defaultMethodName]);
-                foreach ($functionOperationCodes as $functionOperationCode) {
-                    /**
-                     * @var \PHPJava\Compiler\Builder\Generator\Operation\Operation $functionOperationCode
-                     */
-                    $operation->add(
-                        $functionOperationCode->getOpCode(),
-                        $functionOperationCode->getOperands()
-                    );
-                }
 
                 $this->methods
                     ->add(
@@ -98,11 +86,11 @@ class PHPStandardClass extends AbstractBundler
                             ->setAttributes(
                                 (new Attributes())
                                     ->add(
-                                        (new Code(
-                                            $this->getConstantPoolFinder()
-                                                ->find(Utf8Info::class, 'Code')
-                                        ))
-                                            ->setCode($operation)
+                                        (new Code())
+                                            ->setConstantPool($this->getConstantPool())
+                                            ->setConstantPoolFinder($this->getConstantPoolFinder())
+                                            ->setCode($functionOperationCodes)
+                                            ->beginPrepare()
                                     )
                                     ->toArray()
                             )
@@ -118,15 +106,6 @@ class PHPStandardClass extends AbstractBundler
             (new ClassFileStructure())
                 ->setMinorVersion($minorVersion)
                 ->setMajorVersion($majorVersion)
-                ->setConstantPool(
-                    $this
-                        ->constantPool
-                        ->add(Utf8Info::factory('Code'))
-                        ->add(Utf8Info::factory('PHPJavaSignature'))
-                        ->add(Utf8Info::factory('SourceFile'))
-                        ->add(Utf8Info::factory($className . '.php'))
-                        ->toArray()
-                )
                 ->setThisClass(
                     $this->getEnhancedConstantPool()
                         ->findClass($className)
@@ -143,22 +122,15 @@ class PHPStandardClass extends AbstractBundler
                 ->setAttributes(
                     (new Attributes())
                         ->add(
-                            (new PHPJavaSignature(
-                                $this->getConstantPoolFinder()
-                                    ->find(
-                                        Utf8Info::class,
-                                        'PHPJavaSignature'
-                                    )
-                            ))
+                            (new PHPJavaSignature())
+                                ->setConstantPool($this->getConstantPool())
+                                ->setConstantPoolFinder($this->getConstantPoolFinder())
+                                ->beginPrepare()
                         )
                         ->add(
-                            (new SourceFile(
-                                $this->getConstantPoolFinder()
-                                    ->find(
-                                        Utf8Info::class,
-                                        'SourceFile'
-                                    )
-                            ))
+                            (new SourceFile())
+                                ->setConstantPool($this->getConstantPool())
+                                ->setConstantPoolFinder($this->getConstantPoolFinder())
                                 ->setFileNameIndexInConstantPool(
                                     $this->getConstantPoolFinder()
                                         ->find(
@@ -166,7 +138,14 @@ class PHPStandardClass extends AbstractBundler
                                             $className . '.php'
                                         )
                                 )
+                                ->beginPrepare()
                         )
+                        ->toArray()
+                )
+                ->setConstantPool(
+                    $this
+                        ->constantPool
+                        ->add(Utf8Info::factory($className . '.php'))
                         ->toArray()
                 )
         );

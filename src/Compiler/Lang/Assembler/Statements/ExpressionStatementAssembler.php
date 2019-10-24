@@ -7,9 +7,9 @@ use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\Expressions\AssignExpressionAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\Expressions\PostDecrementExpressionAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\Expressions\PostIncrementExpressionAssembler;
-use PHPJava\Compiler\Lang\Assembler\Statements\Expressions\PrintExpressionCoordinator;
+use PHPJava\Compiler\Lang\Assembler\Statements\Expressions\PrintExpressionAssembler;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
-use PHPJava\Exceptions\CoordinateStructureException;
+use PHPJava\Exceptions\AssembleStructureException;
 
 /**
  * @method MethodAssembler getParentCoordinator()
@@ -19,38 +19,43 @@ class ExpressionStatementAssembler extends AbstractAssembler implements Statemen
 {
     use OperationManageable;
 
-    public function assemble(): void
+    public function assemble(): array
     {
+        $operations = [];
         switch (get_class($this->node->expr)) {
             case \PhpParser\Node\Expr\Assign::class:
-                $this->bindRequired(AssignExpressionAssembler::factory($this->node->expr))
-                    ->assemble();
+                array_push(
+                    $operations,
+                    ...$this->bindRequired(AssignExpressionAssembler::factory($this->node->expr))
+                        ->assemble()
+                );
                 break;
             case \PhpParser\Node\Expr\PostInc::class:
-                $this->bindRequired(PostIncrementExpressionAssembler::factory($this->node->expr))
-                    ->assemble();
+                array_push(
+                    $operations,
+                    ...$this->bindRequired(PostIncrementExpressionAssembler::factory($this->node->expr))
+                        ->assemble()
+                );
                 break;
             case \PhpParser\Node\Expr\PostDec::class:
-                $this->bindRequired(PostDecrementExpressionAssembler::factory($this->node->expr))
-                    ->assemble();
+                array_push(
+                    $operations,
+                    ...$this->bindRequired(PostDecrementExpressionAssembler::factory($this->node->expr))
+                        ->assemble()
+                );
                 break;
             case \PhpParser\Node\Expr\Print_::class:
-                $this->bindRequired(PrintExpressionCoordinator::factory($this->node->expr))
-                    ->assemble();
+                array_push(
+                    $operations,
+                    ...$this->bindRequired(PrintExpressionAssembler::factory($this->node->expr))
+                        ->assemble()
+                );
                 break;
             default:
-                throw new CoordinateStructureException(
+                throw new AssembleStructureException(
                     'Unsupported expression: ' . get_class($this->node->expr)
                 );
         }
-    }
-
-    protected function bindRequired(AssemblerInterface $coordinator): AssemblerInterface
-    {
-        return $coordinator
-            ->setStore($this->getStore())
-            ->setOperation($this->getOperation())
-            ->setParentCoordinator($this)
-            ->setNamespace($this->getNamespace());
+        return $operations;
     }
 }

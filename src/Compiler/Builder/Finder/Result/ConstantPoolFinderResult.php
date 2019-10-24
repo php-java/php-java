@@ -26,7 +26,7 @@ class ConstantPoolFinderResult extends AbstractFinderResult implements FinderRes
      */
     protected $resultCaches = [];
 
-    public function getResult()
+    public function getResult(bool $enableCache = true)
     {
         // Find in constant pool
         foreach ($this->constantPool as $index => $entry) {
@@ -39,7 +39,7 @@ class ConstantPoolFinderResult extends AbstractFinderResult implements FinderRes
 
             $key = 'INTERNED_' . crc32($this->type . implode($this->arguments));
 
-            if (isset($this->resultCaches[$key])) {
+            if ($enableCache === true && isset($this->resultCaches[$key])) {
                 return $this->resultCaches[$key];
             }
 
@@ -105,8 +105,12 @@ class ConstantPoolFinderResult extends AbstractFinderResult implements FinderRes
             }
 
             if ($this->isValidText($texts)) {
+                $entryMap = new EntryMap($index, $entry);
+                if ($enableCache === false) {
+                    return $entryMap;
+                }
                 // Returns found index.
-                return $this->resultCaches[$key] = new EntryMap($index, $entry);
+                return $this->resultCaches[$key] = $entryMap;
             }
         }
 

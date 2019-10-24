@@ -5,7 +5,7 @@ use PHPJava\Compiler\Builder\Signatures\Descriptor;
 use PHPJava\Compiler\Builder\Structures\Info\IntegerInfo;
 use PHPJava\Compiler\Builder\Structures\Info\StringInfo;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
-use PHPJava\Exceptions\CoordinateStructureException;
+use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Void;
 
@@ -29,7 +29,7 @@ trait Castable
                 // Nothing to do.
                 return $arguments;
             default:
-                throw new CoordinateStructureException(
+                throw new AssembleStructureException(
                     sprintf(
                         'Not supported cast: %s',
                         $classType

@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Compiler\Lang\Stream;
 
-use PHPJava\Exceptions\CoordinateStructureException;
+use PHPJava\Exceptions\AssembleStructureException;
 
 abstract class AbstractStream implements StreamReaderInterface
 {
@@ -19,7 +19,7 @@ abstract class AbstractStream implements StreamReaderInterface
     public function getFilePath(): string
     {
         if ($this->filePath === null) {
-            throw new CoordinateStructureException(
+            throw new AssembleStructureException(
                 'File path is not specified.'
             );
         }
@@ -35,7 +35,7 @@ abstract class AbstractStream implements StreamReaderInterface
     public function getDistributeDirectory(): string
     {
         if (!isset($this->distributeDirectory)) {
-            throw new CoordinateStructureException(
+            throw new AssembleStructureException(
                 'Distribution directory is not set. ' .
                 'You must to set distribution directory with the `setDistributeDirectory` method on StreamInterface.'
             );

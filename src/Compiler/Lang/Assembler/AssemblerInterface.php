@@ -12,6 +12,8 @@ use PhpParser\Node;
  * <Only for use from `OperationManageable` trait>.
  * @method Operation getOperation()
  * @method AssemblerInterface setOperation(Operation $operation)
+ * @method AssemblerInterface setStore(Store $store)
+ * @method Store getStore()
  */
 interface AssemblerInterface
 {
@@ -19,7 +21,12 @@ interface AssemblerInterface
 
     public static function factory(Node $node): AssemblerInterface;
 
-    public function assemble(): void;
+    /**
+     * Must to set array or void.
+     *
+     * @return array|void
+     */
+    public function assemble();
 
     public function setParentCoordinator(AssemblerInterface $parentCoordinator): AssemblerInterface;
 
@@ -30,10 +37,6 @@ interface AssemblerInterface
     public function setStreamReader(StreamReaderInterface $stream): AssemblerInterface;
 
     public function getStreamReader(): StreamReaderInterface;
-
-    public function setStore(Store $store): AssemblerInterface;
-
-    public function getStore(): Store;
 
     public function setNamespace(?array $namespace): AssemblerInterface;
 

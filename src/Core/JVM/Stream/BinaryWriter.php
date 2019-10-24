@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Core\JVM\Stream;
 
+use PHPJava\Exceptions\CompilerException;
+
 class BinaryWriter implements StreamWriterInterface
 {
     /**
@@ -70,6 +72,9 @@ class BinaryWriter implements StreamWriterInterface
 
     public function writeLong(int $value): self
     {
+        throw new CompilerException(
+            'Write a long size value to a binary file is not implemented yet.'
+        );
         return $this;
     }
 

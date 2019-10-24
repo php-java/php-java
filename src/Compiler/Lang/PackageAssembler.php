@@ -4,7 +4,7 @@ namespace PHPJava\Compiler\Lang;
 use PHPJava\Compiler\Lang\Assembler\Bundler\PHPStandardClass;
 use PHPJava\Compiler\Lang\Assembler\ClassAssembler;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
-use PHPJava\Exceptions\CoordinateStructureException;
+use PHPJava\Exceptions\AssembleStructureException;
 use PhpParser\Error;
 use PhpParser\Node;
 use PhpParser\ParserFactory;
@@ -34,7 +34,7 @@ class PackageAssembler
                     $stream->getCode()
                 );
         } catch (Error $error) {
-            throw new CoordinateStructureException(
+            throw new AssembleStructureException(
                 'Failed to coordinate a class file. (reason: ' . $error->getMessage() . ')'
             );
         }
@@ -81,7 +81,7 @@ class PackageAssembler
             case \PhpParser\Node\Stmt\Nop::class:
                 break;
             default:
-                throw new CoordinateStructureException(
+                throw new AssembleStructureException(
                     sprintf(
                         'Compiler cannot parse %s',
                         get_class($node)

@@ -3,9 +3,14 @@ namespace PHPJava\Compiler\Builder;
 
 use PHPJava\Compiler\Builder\Finder\Result\FinderResultInterface;
 use PHPJava\Compiler\Builder\Maps\EntryMap;
+use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 
 class Attribute implements BuilderInterface, EntryInterface
 {
+    use ConstantPoolManageable;
+    use ConstantPoolEnhanceable;
+
     /**
      * @var string
      */
@@ -25,11 +30,6 @@ class Attribute implements BuilderInterface, EntryInterface
      * @var FinderResultInterface
      */
     protected $constantPoolIndex;
-
-    public function __construct(FinderResultInterface $constantPoolIndex)
-    {
-        $this->constantPoolIndex = $constantPoolIndex;
-    }
 
     public function getConstantPoolIndex(): int
     {
@@ -65,6 +65,33 @@ class Attribute implements BuilderInterface, EntryInterface
     public function setAttributes(array $attributes): self
     {
         $this->attributes = $attributes;
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return current(
+            array_slice(
+                explode(
+                    '\\',
+                    get_class($this)
+                ),
+                -1,
+                1
+            )
+        );
+    }
+
+    public function beginPrepare(): Attribute
+    {
+        $attributeName = $this->getName();
+
+        $this->getEnhancedConstantPool()
+            ->addUtf8($attributeName);
+
+        $this->constantPoolIndex = $this->getEnhancedConstantPool()
+            ->findUtf8($attributeName);
+
         return $this;
     }
 }

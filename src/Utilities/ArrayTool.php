@@ -11,6 +11,9 @@ class ArrayTool
                     if (is_object($value)) {
                         return spl_object_hash($value);
                     }
+                    if (is_array($value)) {
+                        return static::stringify($value);
+                    }
                     return $value;
                 },
                 $array

@@ -3,15 +3,15 @@ namespace PHPJava\Compiler\Lang\Assembler;
 
 use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Attributes\Code;
+use PHPJava\Compiler\Builder\Attributes\StackMapTable;
 use PHPJava\Compiler\Builder\Collection\Attributes;
 use PHPJava\Compiler\Builder\Method;
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
-use PHPJava\Compiler\Builder\Structures\Info\Utf8Info;
-use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
-use PHPJava\Compiler\Lang\Assembler\Statements\EchoStatementAssembler;
-use PHPJava\Compiler\Lang\Assembler\Statements\ExpressionStatementAssembler;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
-use PHPJava\Exceptions\CoordinateStructureException;
+use PHPJava\Compiler\Lang\Assembler\Traits\StatementParseable;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Void;
 
@@ -22,6 +22,10 @@ use PHPJava\Kernel\Types\_Void;
 class MethodAssembler extends AbstractAssembler implements AssemblerInterface
 {
     use OperationManageable;
+    use StatementParseable;
+    use ConstantPoolEnhanceable;
+    use LocalVariableAssignable;
+    use LocalVariableLoadable;
 
     protected $attribute;
 
@@ -31,11 +35,6 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
     {
         $this->methodName = $this->node->name->name;
 
-        $enhancedConstantPool = ConstantPoolEnhancer::factory(
-            $this->getConstantPool(),
-            $this->getConstantPoolFinder()
-        );
-
         $descriptor = Descriptor::factory()
             ->addArgument(
                 \PHPJava\Packages\java\lang\String::class,
@@ -44,25 +43,21 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
             ->setReturn(_Void::class)
             ->make();
 
-        $enhancedConstantPool->addNameAndType(
-            $this->methodName,
-            $descriptor
-        );
+        $this->getEnhancedConstantPool()
+            ->addNameAndType(
+                $this->methodName,
+                $descriptor
+            );
 
         $method = (new Method(
             (new \PHPJava\Compiler\Builder\Signatures\MethodAccessFlag())
                 ->enablePublic()
                 ->enableStatic()
                 ->make(),
-            $this->getConstantPoolFinder()
-                ->find(
-                    Utf8Info::class,
-                    $this->methodName
-                ),
-            $this->getConstantPoolFinder()->find(
-                Utf8Info::class,
-                $descriptor
-            )
+            $this->getEnhancedConstantPool()
+                ->findUtf8($this->methodName),
+            $this->getEnhancedConstantPool()
+                ->findUtf8($descriptor)
         ));
 
         // Add to methods section
@@ -73,47 +68,84 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
 
         $this->attribute = new Attributes();
 
-        foreach ($this->node->getStmts() as $node) {
-            switch (get_class($node)) {
-                case \PhpParser\Node\Stmt\Echo_::class:
-                    EchoStatementAssembler::factory($node)
-                        ->setOperation($this->getOperation())
-                        ->setStore($this->getStore())
-                        ->setParentCoordinator($this)
-                        ->setStreamReader($this->getStreamReader())
-                        ->setNamespace($this->getNamespace())
-                        ->assemble();
-                    break;
-                case \PhpParser\Node\Stmt\Expression::class:
-                    ExpressionStatementAssembler::factory($node)
-                        ->setOperation($this->getOperation())
-                        ->setStore($this->getStore())
-                        ->setParentCoordinator($this)
-                        ->setStreamReader($this->getStreamReader())
-                        ->setNamespace($this->getNamespace())
-                        ->assemble();
-                        // no break
-                case \PhpParser\Node\Stmt\Nop::class:
-                    break;
-                default:
-                    throw new CoordinateStructureException(
-                        'Unknown statement: ' . get_class($node) . ' on ' . get_class($this)
-                    );
+        // Get parameters
+        $parameters = [
+            // variable name => literal type
+        ];
+        foreach ($this->node->getParams() as $parameter) {
+            /**
+             * @var \PhpParser\Node\Param $parameter
+             */
+            $parameters[$parameter->var->name] = $parameter->type;
+        }
+
+        foreach ($this->node->getAttribute('comments') as $commentAttribute) {
+            /**
+             * @var \PhpParser\Comment\Doc $commentAttribute
+             */
+            $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
+                ->create($commentAttribute->getText());
+
+            foreach ($documentBlock->getTagsByName('param') as $documentParameter) {
+                /**
+                 * @var \phpDocumentor\Reflection\DocBlock\Tags\Param $documentParameter
+                 */
+                if (!array_key_exists($documentParameter->getVariableName(), $parameters)) {
+                    // Does not add a variable detail and object ref if local variable parameter is not defined.
+                    continue;
+                }
+
+                // Update variable detail.
+                $parameters[$documentParameter->getVariableName()] = ltrim(
+                    (string) $documentParameter->getType(),
+                    '\\'
+                );
+
+                // Fill local storage number.
+                $this->assembleAssignVariable(
+                    $documentParameter->getVariableName(),
+                    $parameters[$documentParameter->getVariableName()]
+                );
             }
         }
 
-        $this->getOperation()->add(
+        $operations = [];
+        $defaultLocalVariableOperations = $this->getStore()->getAll();
+
+        array_push(
+            $operations,
+            ...$this->parseStatement(
+                $this->node->getStmts()
+            )
+        );
+
+        $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
             OpCode::_return
         );
 
         // Add operation codes for print expressions.
-        $this->getAttribute()->add(
-            (new Code(
-                $this->getConstantPoolFinder()
-                    ->find(Utf8Info::class, 'Code')
-            ))
-                ->setCode($this->getOperation())
-        );
+        $this->getAttribute()
+            ->add(
+                (new Code())
+                    ->setConstantPool($this->getConstantPool())
+                    ->setConstantPoolFinder($this->getConstantPoolFinder())
+                    ->setCode($operations)
+                    ->setAttributes(
+                        (new Attributes())
+                            ->add(
+                                (new StackMapTable())
+                                    ->setConstantPool($this->getConstantPool())
+                                    ->setConstantPoolFinder($this->getConstantPoolFinder())
+                                    ->setDefaultLocalVariables($defaultLocalVariableOperations)
+                                    ->setOperation(
+                                        $operations
+                                    )
+                                    ->beginPrepare()
+                            )
+                            ->toArray()
+                    )
+                    ->beginPrepare()
+            );
 
         $method
             ->setAttributes(

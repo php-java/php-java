@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Structures;
 
+use PHPJava\Kernel\Maps\VerificationTypeTag;
 use PHPJava\Kernel\Variables\VariableInfoInterface;
 
 class VerificationTypeInfo implements StructureInterface
@@ -27,31 +28,31 @@ class VerificationTypeInfo implements StructureInterface
         $this->reader->getReader()->seek(-1);
 
         switch ($this->tag) {
-            case 0:
+            case VerificationTypeTag::ITEM_Top:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\TopVariableInfo($this->reader);
                 break;
-            case 1:
+            case VerificationTypeTag::ITEM_Integer:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\IntegerVariableInfo($this->reader);
                 break;
-            case 2:
+            case VerificationTypeTag::ITEM_Float:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\FloatVariableInfo($this->reader);
                 break;
-            case 3:
+            case VerificationTypeTag::ITEM_Long:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\LongVariableInfo($this->reader);
                 break;
-            case 4:
+            case VerificationTypeTag::ITEM_Double:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\DoubleVariableInfo($this->reader);
                 break;
-            case 5:
+            case VerificationTypeTag::ITEM_Null:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\NullVariableInfo($this->reader);
                 break;
-            case 6:
+            case VerificationTypeTag::ITEM_UninitializedThis:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\UninitializedThisVariableInfo($this->reader);
                 break;
-            case 7:
+            case VerificationTypeTag::ITEM_Object:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\ObjectVariableInfo($this->reader);
                 break;
-            case 8:
+            case VerificationTypeTag::ITEM_Uninitialized:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\UninitializedVariableInfo($this->reader);
                 break;
         }
