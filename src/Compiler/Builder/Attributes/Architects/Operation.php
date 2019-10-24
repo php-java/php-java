@@ -6,7 +6,7 @@ use PHPJava\Compiler\Builder\Generator\Operation\Operand;
 use PHPJava\Compiler\Builder\Types\Int16;
 use PHPJava\Compiler\Builder\Types\Int32;
 use PHPJava\Compiler\Builder\Types\Int64;
-use PHPJava\Compiler\Builder\Types\int8;
+use PHPJava\Compiler\Builder\Types\Int8;
 use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Builder\Types\Uint32;
 use PHPJava\Compiler\Builder\Types\Uint64;
@@ -78,7 +78,7 @@ class Operation extends Architect implements ArchitectInterface, \IteratorAggreg
                         ->getEntryIndex();
                 }
                 switch ($type) {
-                    case int8::class:
+                    case Int8::class:
                         $writer->writeByte($value);
                         break;
                     case Int16::class:

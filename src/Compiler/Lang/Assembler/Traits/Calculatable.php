@@ -8,7 +8,7 @@ use PHPJava\Compiler\Builder\Generator\Operation\ReplaceMarker;
 use PHPJava\Compiler\Builder\Types\Int16;
 use PHPJava\Compiler\Builder\Types\Int32;
 use PHPJava\Compiler\Builder\Types\Int64;
-use PHPJava\Compiler\Builder\Types\int8;
+use PHPJava\Compiler\Builder\Types\Int8;
 use PHPJava\Compiler\Builder\Types\TypeInterface;
 use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Builder\Types\Uint32;
