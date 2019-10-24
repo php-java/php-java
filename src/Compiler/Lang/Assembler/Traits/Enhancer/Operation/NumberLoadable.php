@@ -9,7 +9,7 @@ use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Builder\Types\Uint8;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
-use PHPJava\Exceptions\CoordinateStructureException;
+use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Byte;
 use PHPJava\Kernel\Types\_Int;
@@ -65,7 +65,7 @@ trait NumberLoadable
                     $value
                 );
         } else {
-            throw new CoordinateStructureException(
+            throw new AssembleStructureException(
                 sprintf(
                     'Unable to kind integer value: ' . $value
                 )
@@ -85,7 +85,7 @@ trait NumberLoadable
                     $size = Uint16::class;
                     break;
                 default:
-                    throw new CoordinateStructureException(
+                    throw new AssembleStructureException(
                         'Unsupported load operation: ' . $size
                     );
             }
@@ -97,10 +97,17 @@ trait NumberLoadable
         }
 
         // Add to operation
-        $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
-            $loadOperation,
-            $loadOperand
-        );
+
+        if ($loadOperand === null) {
+            $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                $loadOperation
+            );
+        } else {
+            $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                $loadOperation,
+                $loadOperand
+            );
+        }
 
         return $operations;
     }

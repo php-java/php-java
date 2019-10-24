@@ -6,7 +6,7 @@ use PHPJava\Compiler\Builder\Structures\Info\StringInfo;
 use PHPJava\Compiler\Builder\Types\Uint8;
 use PHPJava\Compiler\Lang\Assembler\Bundler\Packages\AbstractPackageBundler;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
-use PHPJava\Exceptions\CoordinateStructureException;
+use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 
 /**
@@ -48,7 +48,7 @@ trait MethodConstantValueReturnable
                 )
             );
         } else {
-            throw new CoordinateStructureException(
+            throw new AssembleStructureException(
                 'Unknown return type: ' . gettype($value)
             );
         }

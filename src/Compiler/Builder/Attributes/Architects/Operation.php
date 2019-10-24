@@ -2,6 +2,11 @@
 namespace PHPJava\Compiler\Builder\Attributes\Architects;
 
 use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;
+use PHPJava\Compiler\Builder\Generator\Operation\Operand;
+use PHPJava\Compiler\Builder\Types\Int16;
+use PHPJava\Compiler\Builder\Types\Int32;
+use PHPJava\Compiler\Builder\Types\Int64;
+use PHPJava\Compiler\Builder\Types\int8;
 use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Builder\Types\Uint32;
 use PHPJava\Compiler\Builder\Types\Uint64;
@@ -9,6 +14,11 @@ use PHPJava\Compiler\Builder\Types\Uint8;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
 use PHPJava\Exceptions\CompilerException;
 
+/**
+ * This class will be removed.
+ *
+ * @deprecated
+ */
 class Operation extends Architect implements ArchitectInterface, \IteratorAggregate
 {
     protected $calculateLDCWideOperationAutomatically = true;
@@ -40,6 +50,22 @@ class Operation extends Architect implements ArchitectInterface, \IteratorAggreg
         return new \ArrayIterator($this->codes);
     }
 
+    public function toArray(): array
+    {
+        $operations = [];
+        foreach ($this->codes as [$opcode, $arguments]) {
+            $operands = [];
+            foreach ($arguments as [$type, $argument]) {
+                $operands[] = Operand::factory($type, $argument);
+            }
+            $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                $opcode,
+                ...$operands
+            );
+        }
+        return $operations;
+    }
+
     public function make(): string
     {
         $writer = new BinaryWriter(fopen('php://memory', 'r+'));
@@ -52,6 +78,18 @@ class Operation extends Architect implements ArchitectInterface, \IteratorAggreg
                         ->getEntryIndex();
                 }
                 switch ($type) {
+                    case int8::class:
+                        $writer->writeByte($value);
+                        break;
+                    case Int16::class:
+                        $writer->writeShort($value);
+                        break;
+                    case Int32::class:
+                        $writer->writeInt($value);
+                        break;
+                    case Int64::class:
+                        $writer->writeLong($value);
+                        break;
                     case Uint8::class:
                         $writer->writeUnsignedByte($value);
                         break;

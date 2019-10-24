@@ -8,7 +8,8 @@ class Operand
 
     public static function factory(string $type, $value): self
     {
-        return new static($type, $value);
+        $scopedValue = $value;
+        return new static($type, $scopedValue);
     }
 
     public function getType(): string
@@ -21,7 +22,7 @@ class Operand
         return $this->value;
     }
 
-    public function __construct(string $type, $value)
+    public function __construct(string $type, &$value)
     {
         $this->type = $type;
         $this->value = $value;

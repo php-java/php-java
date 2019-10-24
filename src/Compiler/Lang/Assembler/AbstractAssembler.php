@@ -4,12 +4,15 @@ namespace PHPJava\Compiler\Lang\Assembler;
 use PHPJava\Compiler\Builder\Collection\ConstantPool;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
+use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
-use PHPJava\Exceptions\CoordinateStructureException;
+use PHPJava\Exceptions\AssembleStructureException;
 use PhpParser\Node;
 
 abstract class AbstractAssembler implements AssemblerInterface
 {
+    use StoreManageable;
+
     /**
      * @var ConstantPool
      */
@@ -52,7 +55,7 @@ abstract class AbstractAssembler implements AssemblerInterface
         $this->node = $node;
     }
 
-    abstract public function assemble(): void;
+    abstract public function assemble();
 
     public function setNamespace(?array $namespace): AssemblerInterface
     {
@@ -81,7 +84,7 @@ abstract class AbstractAssembler implements AssemblerInterface
     public function getConstantPool(): ConstantPool
     {
         if (!isset($this->constantPool)) {
-            throw new CoordinateStructureException(
+            throw new AssembleStructureException(
                 'The ConstantPool is not set. ' .
                 'You must to set the ConstantPool.'
             );
@@ -91,8 +94,8 @@ abstract class AbstractAssembler implements AssemblerInterface
 
     public function getConstantPoolFinder(): ConstantPoolFinder
     {
-        if (!isset($this->constantPool)) {
-            throw new CoordinateStructureException(
+        if (!isset($this->constantPoolFinder)) {
+            throw new AssembleStructureException(
                 'The ConstantPoolFinder is not set. ' .
                 'You must to set the ConstantPoolFinder.'
             );
@@ -111,14 +114,12 @@ abstract class AbstractAssembler implements AssemblerInterface
         return $this->streamReader;
     }
 
-    public function setStore(Store $store): AssemblerInterface
+    protected function bindRequired(AssemblerInterface $assembler): AssemblerInterface
     {
-        $this->store = $store;
-        return $this;
-    }
-
-    public function getStore(): Store
-    {
-        return $this->store;
+        return $assembler
+            ->setStore($this->getStore())
+            ->setOperation($this->getOperation())
+            ->setParentCoordinator($this)
+            ->setNamespace($this->getNamespace());
     }
 }

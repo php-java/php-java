@@ -59,14 +59,6 @@ class ClassAssembler extends AbstractAssembler implements AssemblerInterface
             (new ClassFileStructure())
                 ->setMinorVersion($minorVersion)
                 ->setMajorVersion($majorVersion)
-                ->setConstantPool(
-                    $this->constantPool
-                        ->add(Utf8Info::factory('Code'))
-                        ->add(Utf8Info::factory('PHPJavaSignature'))
-                        ->add(Utf8Info::factory('SourceFile'))
-                        ->add(Utf8Info::factory($this->className . '.php'))
-                        ->toArray()
-                )
                 ->setThisClass(
                     $this
                         ->getEnhancedConstantPool()
@@ -85,22 +77,15 @@ class ClassAssembler extends AbstractAssembler implements AssemblerInterface
                 ->setAttributes(
                     (new Attributes())
                         ->add(
-                            (new PHPJavaSignature(
-                                $this->getConstantPoolFinder()
-                                    ->find(
-                                        Utf8Info::class,
-                                        'PHPJavaSignature'
-                                    )
-                            ))
+                            (new PHPJavaSignature())
+                                ->setConstantPool($this->getConstantPool())
+                                ->setConstantPoolFinder($this->getConstantPoolFinder())
+                                ->beginPrepare()
                         )
                         ->add(
-                            (new SourceFile(
-                                $this->getConstantPoolFinder()
-                                    ->find(
-                                        Utf8Info::class,
-                                        'SourceFile'
-                                    )
-                            ))
+                            (new SourceFile())
+                                ->setConstantPool($this->getConstantPool())
+                                ->setConstantPoolFinder($this->getConstantPoolFinder())
                                 ->setFileNameIndexInConstantPool(
                                     $this->getConstantPoolFinder()
                                         ->find(
@@ -108,7 +93,13 @@ class ClassAssembler extends AbstractAssembler implements AssemblerInterface
                                             $this->className . '.php'
                                         )
                                 )
+                                ->beginPrepare()
                         )
+                        ->toArray()
+                )
+                ->setConstantPool(
+                    $this->constantPool
+                        ->add(Utf8Info::factory($this->className . '.php'))
                         ->toArray()
                 )
         );

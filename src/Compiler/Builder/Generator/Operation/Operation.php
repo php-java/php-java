@@ -1,10 +1,14 @@
 <?php
 namespace PHPJava\Compiler\Builder\Generator\Operation;
 
-class Operation
+use PHPJava\Kernel\Maps\OpCode;
+
+class Operation implements OperationGeneratorInterface
 {
     protected $opcode;
+    protected $mnemonic;
     protected $operands = [];
+    protected $enableEffectiveProgramCounter = false;
 
     public static function create(int $opcode, ?Operand ...$operands): self
     {
@@ -37,10 +41,39 @@ class Operation
         );
     }
 
+    public function enableEffectiveProgramCounter(bool $enable): self
+    {
+        $this->enableEffectiveProgramCounter = $enable;
+        return $this;
+    }
+
+    public function isEffectiveProgramCounter(): bool
+    {
+        return $this->enableEffectiveProgramCounter;
+    }
+
+    public function getOperandTypes(): array
+    {
+        return array_map(
+            static function (Operand $operand) {
+                // return type
+                return $operand
+                    ->getType();
+            },
+            $this->operands
+        );
+    }
+
+    public function getMnemonic()
+    {
+        return '_' . $this->mnemonic;
+    }
+
     public function __construct(int $opcode, ?Operand ...$operands)
     {
         $this->opcode = $opcode;
         $this->operands = $operands;
+        $this->mnemonic = ltrim((new OpCode())->getName($opcode), '_');
     }
 
     public function make(): array

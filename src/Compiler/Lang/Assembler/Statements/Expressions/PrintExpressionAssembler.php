@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Compiler\Lang\Assembler\Statements\Expressions;
 
+use PHPJava\Compiler\Builder\Generator\Operation\Operation;
 use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\EchoStatementAssembler;
 use PHPJava\Kernel\Maps\OpCode;
@@ -9,13 +10,15 @@ use PHPJava\Kernel\Maps\OpCode;
  * @method MethodAssembler getParentCoordinator()
  * @property \PhpParser\Node\Expr\Print_ $node
  */
-class PrintExpressionCoordinator extends EchoStatementAssembler
+class PrintExpressionAssembler extends EchoStatementAssembler
 {
     public function assemble(): void
     {
-        parent::coordinate();
+        $operations = parent::coordinate();
 
         // Returns 1 by the PHP feature.
-        $this->getOperation()->add(OpCode::_iconst_1);
+        $operations[] = Operation::create(OpCode::_iconst_1);
+
+        return $operations;
     }
 }

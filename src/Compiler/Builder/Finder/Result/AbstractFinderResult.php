@@ -44,5 +44,5 @@ abstract class AbstractFinderResult implements FinderResultInterface
         return $this->arguments;
     }
 
-    abstract public function getResult();
+    abstract public function getResult(bool $enableCache = true);
 }

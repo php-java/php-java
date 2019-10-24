@@ -19,11 +19,20 @@ trait LocalVariableAssignable
 {
     public function assembleAssignVariable(string $variableName, string $classType): array
     {
-        $operations = [];
         $localStorageNumber = $this->getStore()->store(
             $variableName,
             $classType
         );
+
+        return $this->assembleStoreOperation(
+            $localStorageNumber,
+            $classType
+        );
+    }
+
+    public function assembleStoreOperation(int $localStorageNumber, string $classType)
+    {
+        $operations = [];
 
         // Add to operation code
         $storeOperation = MnemonicResolver::resolveStoreByNumberAndType(

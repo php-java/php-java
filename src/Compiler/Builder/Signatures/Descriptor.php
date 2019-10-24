@@ -37,7 +37,6 @@ class Descriptor implements DescriptorInterface
     public function make(): string
     {
         $arguments = implode(
-            ';',
             array_map(
                 static function (array $argument) {
                     [$type, $deepArray] = $argument;

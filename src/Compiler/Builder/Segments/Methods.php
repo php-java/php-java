@@ -41,6 +41,10 @@ class Methods extends AbstractSegment implements SegmentInterface
                 $this->binaryWriter
             )->build();
 
+            if (count($method->getAttributes()) === 0) {
+                continue;
+            }
+
             // Build attributes
             Attributes::init(
                 $method->getAttributes(),

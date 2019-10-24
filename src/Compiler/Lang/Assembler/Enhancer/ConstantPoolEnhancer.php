@@ -113,7 +113,7 @@ class ConstantPoolEnhancer
         return $this;
     }
 
-    public function addNameAndType(string $name, string $descriptor)
+    public function addNameAndType(string $name, string $descriptor): self
     {
         // Add UTF8 strings.
         $this->constantPool
@@ -140,6 +140,7 @@ class ConstantPoolEnhancer
                         )
                 )
             );
+        return $this;
     }
 
     /**
@@ -208,6 +209,31 @@ class ConstantPoolEnhancer
         return $this;
     }
 
+    public function addUtf8(string $text): self
+    {
+        $this->constantPool
+            ->add(
+                Utf8Info::factory($text)
+            );
+        return $this;
+    }
+
+    public function findString(string $text): FinderResultInterface
+    {
+        return $this->constantPoolFinder->find(
+            StringInfo::class,
+            $text
+        );
+    }
+
+    public function findUtf8(string $text): FinderResultInterface
+    {
+        return $this->constantPoolFinder->find(
+            Utf8Info::class,
+            $text
+        );
+    }
+
     public function findClass(string $classPath): FinderResultInterface
     {
         return $this->constantPoolFinder->find(
@@ -223,6 +249,19 @@ class ConstantPoolEnhancer
     {
         return $this->constantPoolFinder->find(
             MethodrefInfo::class,
+            Formatter::convertPHPNamespacesToJava(
+                $classPath,
+                '/'
+            ),
+            $methodName,
+            $descriptor
+        );
+    }
+
+    public function findField(string $classPath, string $methodName, string $descriptor): FinderResultInterface
+    {
+        return $this->constantPoolFinder->find(
+            FieldrefInfo::class,
             Formatter::convertPHPNamespacesToJava(
                 $classPath,
                 '/'

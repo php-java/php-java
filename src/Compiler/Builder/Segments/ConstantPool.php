@@ -13,6 +13,7 @@ class ConstantPool extends AbstractSegment implements SegmentInterface
     public function build(): void
     {
         $readStructures = [];
+
         // Write constant_pool
         foreach ($this->classFileStructureBuilder->getConstantPool() as $index => $entry) {
             /**

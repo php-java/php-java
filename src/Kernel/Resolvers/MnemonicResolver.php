@@ -1,6 +1,7 @@
 <?php
 namespace PHPJava\Kernel\Resolvers;
 
+use PHPJava\Compiler\Builder\Generator\Operation\Operation;
 use PHPJava\Exceptions\ResolverException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Byte;
@@ -13,9 +14,9 @@ use PHPJava\Kernel\Types\_Short;
 
 class MnemonicResolver
 {
-    public static function resolveTypeByOpCode(int $opcode): string
+    public static function resolveTypeByOpCode(Operation $operation): string
     {
-        switch ($opcode) {
+        switch ($operation->getOpCode()) {
             case OpCode::_iload:
             case OpCode::_iload_1:
             case OpCode::_iload_2:
@@ -26,6 +27,11 @@ class MnemonicResolver
             case OpCode::_iconst_3:
             case OpCode::_iconst_4:
             case OpCode::_iconst_5:
+            case OpCode::_irem:
+            case OpCode::_iadd:
+            case OpCode::_isub:
+            case OpCode::_idiv:
+            case OpCode::_imul:
                 return _Int::class;
             case OpCode::_fload:
             case OpCode::_fload_1:
@@ -47,7 +53,7 @@ class MnemonicResolver
         throw new ResolverException(
             sprintf(
                 'Unable to resolve type by opcode: 0x%X',
-                $opcode
+                $operation->getOpCode()
             )
         );
     }

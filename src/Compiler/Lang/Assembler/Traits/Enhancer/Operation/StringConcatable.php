@@ -20,7 +20,7 @@ trait StringConcatable
                 return $this->assembleCastToString(
                     MnemonicResolver::isLDCOperation($arguments[0]->getOpCode())
                         ? $arguments[0]->getOperand(0)->getValue()->getType()
-                        : MnemonicResolver::resolveTypeByOpCode($arguments[0]->getOpCode()),
+                        : MnemonicResolver::resolveTypeByOpCode($arguments[0]),
                     ...$arguments
                 );
             } catch (ResolverException $e) {
@@ -58,7 +58,7 @@ trait StringConcatable
                 $convertedOperations = $this->assembleCastToString(
                     MnemonicResolver::isLDCOperation($operation->getOpCode())
                         ? $operation->getOperand(0)->getValue()->getType()
-                        : MnemonicResolver::resolveTypeByOpCode($operation->getOpCode()),
+                        : MnemonicResolver::resolveTypeByOpCode($operation),
                     $operation
                 );
             } catch (ResolverException $e) {
