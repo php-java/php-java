@@ -28,7 +28,7 @@ interface AssemblerInterface
      */
     public function assemble();
 
-    public function setParentCoordinator(AssemblerInterface $parentCoordinator): AssemblerInterface;
+    public function setParentAssembler(AssemblerInterface $parentAssembler): AssemblerInterface;
 
     public function getConstantPoolFinder(): ConstantPoolFinder;
 

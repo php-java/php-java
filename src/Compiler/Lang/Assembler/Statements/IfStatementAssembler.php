@@ -24,10 +24,10 @@ use PHPJava\Compiler\Lang\Assembler\Traits\StatementParseable;
 use PHPJava\Kernel\Maps\OpCode;
 
 /**
- * @method MethodAssembler getParentCoordinator()
+ * @method MethodAssembler getParentAssembler()
  * @property \PhpParser\Node\Stmt\If_ $node
  */
-class IfStatementAssembler extends AbstractAssembler implements StatementCoordinatorInterface, AssemblerInterface
+class IfStatementAssembler extends AbstractAssembler implements StatementAssemblerInterface, AssemblerInterface
 {
     use ConstantPoolEnhanceable;
     use StringConcatable;

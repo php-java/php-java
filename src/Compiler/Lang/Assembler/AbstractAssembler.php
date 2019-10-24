@@ -31,7 +31,7 @@ abstract class AbstractAssembler implements AssemblerInterface
     /**
      * @var AssemblerInterface
      */
-    protected $parentCoordinator;
+    protected $parentAssembler;
 
     /**
      * @var StreamReaderInterface
@@ -68,17 +68,17 @@ abstract class AbstractAssembler implements AssemblerInterface
         return $this->namespace;
     }
 
-    public function setParentCoordinator(AssemblerInterface $parentCoordinator): AssemblerInterface
+    public function setParentAssembler(AssemblerInterface $parentAssembler): AssemblerInterface
     {
-        $this->parentCoordinator = $parentCoordinator;
-        $this->constantPool = $this->parentCoordinator->getConstantPool();
-        $this->constantPoolFinder = $this->parentCoordinator->getConstantPoolFinder();
+        $this->parentAssembler = $parentAssembler;
+        $this->constantPool = $this->parentAssembler->getConstantPool();
+        $this->constantPoolFinder = $this->parentAssembler->getConstantPoolFinder();
         return $this;
     }
 
-    public function getParentCoordinator(): ?AssemblerInterface
+    public function getParentAssembler(): ?AssemblerInterface
     {
-        return $this->parentCoordinator;
+        return $this->parentAssembler;
     }
 
     public function getConstantPool(): ConstantPool
@@ -119,7 +119,7 @@ abstract class AbstractAssembler implements AssemblerInterface
         return $assembler
             ->setStore($this->getStore())
             ->setOperation($this->getOperation())
-            ->setParentCoordinator($this)
+            ->setParentAssembler($this)
             ->setNamespace($this->getNamespace());
     }
 }

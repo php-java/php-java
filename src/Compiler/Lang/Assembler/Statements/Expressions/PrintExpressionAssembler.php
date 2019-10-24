@@ -7,7 +7,7 @@ use PHPJava\Compiler\Lang\Assembler\Statements\EchoStatementAssembler;
 use PHPJava\Kernel\Maps\OpCode;
 
 /**
- * @method MethodAssembler getParentCoordinator()
+ * @method MethodAssembler getParentAssembler()
  * @property \PhpParser\Node\Expr\Print_ $node
  */
 class PrintExpressionAssembler extends EchoStatementAssembler

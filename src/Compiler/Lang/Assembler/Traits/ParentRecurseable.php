@@ -10,7 +10,7 @@ trait ParentRecurseable
         $currentClass = $this;
         do {
             $currentClass = $currentClass
-                ->getParentCoordinator();
+                ->getParentAssembler();
         } while ($currentClass === null || get_class($currentClass) !== $className);
 
         return $currentClass;

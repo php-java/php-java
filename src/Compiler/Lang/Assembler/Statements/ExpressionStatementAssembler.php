@@ -12,10 +12,10 @@ use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Exceptions\AssembleStructureException;
 
 /**
- * @method MethodAssembler getParentCoordinator()
+ * @method MethodAssembler getParentAssembler()
  * @property \PhpParser\Node\Stmt\Expression $node
  */
-class ExpressionStatementAssembler extends AbstractAssembler implements StatementCoordinatorInterface, AssemblerInterface
+class ExpressionStatementAssembler extends AbstractAssembler implements StatementAssemblerInterface, AssemblerInterface
 {
     use OperationManageable;
 

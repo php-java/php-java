@@ -16,7 +16,7 @@ use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Void;
 
 /**
- * @method ClassAssembler getParentCoordinator()
+ * @method ClassAssembler getParentAssembler()
  * @property \PhpParser\Node\Stmt\ClassMethod $node
  */
 class MethodAssembler extends AbstractAssembler implements AssemblerInterface
@@ -62,7 +62,7 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
 
         // Add to methods section
         $this
-            ->getParentCoordinator()
+            ->getParentAssembler()
             ->getMethods()
             ->add($method);
 
