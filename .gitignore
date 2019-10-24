@@ -7,5 +7,6 @@ composer.lock
 .phpunit.result.cache
 tests/Cases/caches/
 !tests/Cases/caches/.gitkeep
+!tests/Cases/caches/compiler/.gitkeep
 tools
 cghooks.lock
