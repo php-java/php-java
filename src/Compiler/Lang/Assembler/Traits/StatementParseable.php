@@ -78,7 +78,7 @@ trait StatementParseable
                     break;
                 default:
                     throw new AssembleStructureException(
-                        'Unknown statement: ' . get_class($this->node) . ' on ' . get_class($this)
+                        'Unknown statement: ' . get_class($statement) . ' on ' . get_class($this)
                     );
             }
         }

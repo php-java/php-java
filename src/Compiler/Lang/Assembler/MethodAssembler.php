@@ -112,12 +112,16 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
         $operations = [];
         $defaultLocalVariableOperations = $this->getStore()->getAll();
 
-        array_push(
-            $operations,
-            ...$this->parseStatement(
-                $this->node->getStmts()
-            )
+        $parsed = $this->parseStatement(
+            $this->node->getStmts()
         );
+
+        if (!empty($parsed)) {
+            array_push(
+                $operations,
+                ...$parsed
+            );
+        }
 
         $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
             OpCode::_return
