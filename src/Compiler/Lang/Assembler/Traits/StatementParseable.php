@@ -6,6 +6,7 @@ use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Statements\EchoStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\ExpressionStatementAssembler;
+use PHPJava\Compiler\Lang\Assembler\Statements\ForStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\IfStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
@@ -66,6 +67,21 @@ trait StatementParseable
                     array_push(
                         $operations,
                         ...ExpressionStatementAssembler::factory($statement)
+                            ->setOperation($this->getOperation())
+                            ->setStore($this->getStore())
+                            ->setParentAssembler($this)
+                            ->setStreamReader($this->getStreamReader())
+                            ->setNamespace($this->getNamespace())
+                            ->assemble()
+                    );
+                    break;
+                case \PhpParser\Node\Stmt\For_::class:
+                    /**
+                     * @var \PhpParser\Node\Stmt\For_ $statement
+                     */
+                    array_push(
+                        $operations,
+                        ...ForStatementAssembler::factory($statement)
                             ->setOperation($this->getOperation())
                             ->setStore($this->getStore())
                             ->setParentAssembler($this)
