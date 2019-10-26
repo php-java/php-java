@@ -9,6 +9,7 @@ use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;
 use PHPJava\Compiler\Lang\Assembler\AssemblerInterface;
 use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
 use PHPJava\Compiler\Lang\Assembler\Processors\ExpressionProcessor;
+use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Castable;
@@ -41,6 +42,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
     use Calculatable;
     use NumberLoadable;
     use Conditionable;
+    use Bindable;
 
     /**
      * @throws \PHPJava\Exceptions\AssembleStructureException
@@ -105,12 +107,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             // Add condition
             array_push(
                 $elseIfStatementOperations,
-                ...ExpressionProcessor::factory()
-                    ->setConstantPool($this->getConstantPool())
-                    ->setConstantPoolFinder($this->getConstantPoolFinder())
-                    ->setStore($this->getStore())
-                    ->setNamespace($this->getNamespace())
-                    ->setOperation($this->getOperation())
+                ...$this->bindRequired(ExpressionProcessor::factory())
                     ->execute(
                         [$elseif->cond]
                     )

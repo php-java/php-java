@@ -25,12 +25,7 @@ trait AssignableFromNode
         $operations = [];
         $expressionTypes = [];
 
-        $expressions = ExpressionProcessor::factory()
-            ->setStore($this->getStore())
-            ->setConstantPool($this->getConstantPool())
-            ->setConstantPoolFinder($this->getConstantPoolFinder())
-            ->setNamespace($this->getNamespace())
-            ->setOperation($this->getOperation())
+        $expressions = $this->bindRequired(ExpressionProcessor::factory())
             ->execute(
                 [$value],
                 function (array &$operations, string $nodeType, ?string $classType) use (&$expressionTypes) {

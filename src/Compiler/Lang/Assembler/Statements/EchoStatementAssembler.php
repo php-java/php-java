@@ -4,6 +4,7 @@ namespace PHPJava\Compiler\Lang\Assembler\Statements;
 use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;
 use PHPJava\Compiler\Lang\Assembler\AssemblerInterface;
 use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
+use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Castable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\ClassConstractable;
@@ -29,6 +30,7 @@ class EchoStatementAssembler extends AbstractAssembler implements StatementAssem
     use Castable;
     use Conditionable;
     use Outputable;
+    use Bindable;
 
     public function assemble(): array
     {

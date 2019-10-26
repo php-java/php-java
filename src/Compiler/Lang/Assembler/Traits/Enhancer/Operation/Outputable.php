@@ -46,10 +46,10 @@ trait Outputable
 
         // Concat string.
         $stringConcatOperations = $this->assembleConcatStringOperation(
-            ...ExpressionProcessor::factory()
+            ...$this->bindRequired(ExpressionProcessor::factory())
                 ->execute(
-                $expressions
-            )
+                    $expressions
+                )
         );
 
         array_push(

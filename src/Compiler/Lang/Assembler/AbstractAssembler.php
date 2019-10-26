@@ -113,13 +113,4 @@ abstract class AbstractAssembler implements AssemblerInterface
     {
         return $this->streamReader;
     }
-
-    protected function bindRequired(AssemblerInterface $assembler): AssemblerInterface
-    {
-        return $assembler
-            ->setStore($this->getStore())
-            ->setOperation($this->getOperation())
-            ->setParentAssembler($this)
-            ->setNamespace($this->getNamespace());
-    }
 }
