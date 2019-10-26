@@ -44,9 +44,8 @@
         "cs": "phpcs -n --standard=phpcs.xml src",
         "fix": "php-cs-fixer fix",
         "tests": [
-            "@test",
             "@cs",
-            "@fix"
+            "@test"
         ],
         "post-install-cmd": "[ \"$COMPOSER_DEV_MODE\" = 1 ] && cghooks add --ignore-lock",
         "post-update-cmd": "[ \"$COMPOSER_DEV_MODE\" = 1 ] && cghooks update"
