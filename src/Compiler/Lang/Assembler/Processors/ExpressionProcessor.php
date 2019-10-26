@@ -2,15 +2,23 @@
 namespace PHPJava\Compiler\Lang\Assembler\Processors;
 
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\AssignableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\ConstLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\MagicConstLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\OperationCalculatableFromNode;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\PostDecrementableFromNode;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\PostIncrementableFromNode;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\PrintableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\StringLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\VariableLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Conditionable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\MethodCallable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Outputable;
+use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ParentRecurseable;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
@@ -20,16 +28,24 @@ use PHPJava\Packages\java\lang\Integer;
 
 class ExpressionProcessor extends AbstractProcessor implements ProcessorInterface
 {
+    use OperationManageable;
     use OperationCalculatableFromNode;
     use ParentRecurseable;
     use ConstLoadableFromNode;
     use MagicConstLoadableFromNode;
     use StringLoadableFromNode;
     use VariableLoadableFromNode;
+    use AssignableFromNode;
+    use PostDecrementableFromNode;
+    use PostIncrementableFromNode;
+    use PrintableFromNode;
     use NumberLoadable;
     use MethodCallable;
     use Calculatable;
     use Conditionable;
+    use Outputable;
+    use LocalVariableAssignable;
+    use LocalVariableLoadable;
 
     public function execute(array $expressions, ?callable $callback = null): array
     {
@@ -38,32 +54,65 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
         foreach ($expressions as $expression) {
             $nodeType = get_class($expression);
             switch ($nodeType) {
+                case \PhpParser\Node\Expr\Assign::class:
+                    array_push(
+                        $operations,
+                        ...$this->assembleAssignFromNode($expression)
+                    );
+                    break;
+                case \PhpParser\Node\Expr\PostInc::class:
+                    array_push(
+                        $operations,
+                        ...$this->assemblePostIncFromNode($expression)
+                    );
+                    break;
+                case \PhpParser\Node\Expr\PostDec::class:
+                    array_push(
+                        $operations,
+                        ...$this->assemblePostDecFromNode($expression)
+                    );
+                    break;
+                case \PhpParser\Node\Expr\Print_::class:
+                    array_push(
+                        $operations,
+                        ...$this->assemblePrintFromNode($expression)
+                    );
+                    break;
                 case \PhpParser\Node\Scalar\String_::class:
-                    $operations = $this
-                        ->assembleLoadStringFromNode(
+                    array_push(
+                        $operations,
+                        ...$this->assembleLoadStringFromNode(
                             $expression,
                             $classType
-                        );
+                        )
+                    );
                     break;
                 case \PhpParser\Node\Scalar\LNumber::class:
-                    $operations = $this->assembleLoadNumber(
-                        $expression->value,
-                        $classType
+                    array_push(
+                        $operations,
+                        ...$this->assembleLoadNumber(
+                            $expression->value,
+                            $classType
+                        )
                     );
                     break;
                 case \PhpParser\Node\Expr\Variable::class:
-                    $operations = $this
-                        ->assembleLoadVariableFromNode(
+                    array_push(
+                        $operations,
+                        ...$this->assembleLoadVariableFromNode(
                             $expression,
                             $classType
-                        );
+                        )
+                    );
                     break;
                 case \PhpParser\Node\Expr\ConstFetch::class:
-                    $operations = $this
-                        ->assembleLoadConstFromNode(
+                    array_push(
+                        $operations,
+                        ...$this->assembleLoadConstFromNode(
                             $expression,
                             $classType
-                        );
+                        )
+                    );
                     break;
                 case \PhpParser\Node\Scalar\MagicConst\Class_::class: // __CLASS__
                 case \PhpParser\Node\Scalar\MagicConst\Method::class: // __METHOD__
@@ -73,11 +122,14 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                 case \PhpParser\Node\Scalar\MagicConst\Function_::class: // __FUNCTION__
                 case \PhpParser\Node\Scalar\MagicConst\Trait_::class: // __TRAIT__
                 case \PhpParser\Node\Scalar\MagicConst\Line::class: // __LINE__
-                    $operations = $this
-                        ->assembleLoadMagicConstFromNode(
-                            $expression,
-                            $classType
-                        );
+                    array_push(
+                        $operations,
+                        ...$this
+                            ->assembleLoadMagicConstFromNode(
+                                $expression,
+                                $classType
+                            )
+                    );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\Concat::class:
                     array_push(

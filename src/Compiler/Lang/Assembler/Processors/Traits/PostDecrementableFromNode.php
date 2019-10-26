@@ -1,36 +1,33 @@
 <?php
-namespace PHPJava\Compiler\Lang\Assembler\Statements\Expressions;
+namespace PHPJava\Compiler\Lang\Assembler\Processors\Traits;
 
+use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Builder\Generator\Operation\Operand;
 use PHPJava\Compiler\Builder\Generator\Operation\Operation;
 use PHPJava\Compiler\Builder\Types\Uint8;
-use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;
-use PHPJava\Compiler\Lang\Assembler\AssemblerInterface;
-use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
-use PHPJava\Compiler\Lang\Assembler\Statements\StatementAssemblerInterface;
-use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
-use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
-use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
+use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
+use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Byte;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Short;
+use PhpParser\Node;
 
 /**
- * @method MethodAssembler getParentAssembler()
- * @property \PhpParser\Node\Expr\Assign $node
+ * @method Store getStore()
+ * @method ConstantPoolEnhancer getEnhancedConstantPool()
+ * @method ConstantPoolFinder getConstantPoolFinder()
  */
-class PostDecrementExpressionAssembler extends AbstractAssembler implements StatementAssemblerInterface, AssemblerInterface
+trait PostDecrementableFromNode
 {
-    use OperationManageable;
-    use ConstantPoolEnhanceable;
-    use LocalVariableAssignable;
-
-    public function assemble(): array
+    private function assemblePostDecFromNode(Node $expression): array
     {
+        /**
+         * @var \PhpParser\Node\Expr\PostDec $expression
+         */
         $operations = [];
-        $name = $this->node->var->name;
+        $name = $expression->var->name;
 
         [$localStorageNumber, $classType] = $this->getStore()->get($name);
 
@@ -55,7 +52,5 @@ class PostDecrementExpressionAssembler extends AbstractAssembler implements Stat
                     'Unsupported decrease a value: ' . $classType
                 );
         }
-
-        return $operations;
     }
 }

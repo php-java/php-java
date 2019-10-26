@@ -6,6 +6,8 @@ use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Bindable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
 
@@ -20,6 +22,8 @@ abstract class AbstractProcessor implements ProcessorInterface
     use ConstantPoolManageable;
     use ConstantPoolEnhanceable;
     use StoreManageable;
+    use NamespaceManageable;
+    use Bindable;
 
     public static function factory(): ProcessorInterface
     {

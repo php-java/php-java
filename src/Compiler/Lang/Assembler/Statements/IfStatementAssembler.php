@@ -52,6 +52,8 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             ->setStore($this->getStore())
             ->setConstantPool($this->getConstantPool())
             ->setConstantPoolFinder($this->getConstantPoolFinder())
+            ->setNamespace($this->getNamespace())
+            ->setOperation($this->getOperation())
             ->execute(
                 [$this->node->cond]
             );
@@ -107,6 +109,8 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
                     ->setConstantPool($this->getConstantPool())
                     ->setConstantPoolFinder($this->getConstantPoolFinder())
                     ->setStore($this->getStore())
+                    ->setNamespace($this->getNamespace())
+                    ->setOperation($this->getOperation())
                     ->execute(
                         [$elseif->cond]
                     )
