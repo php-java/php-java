@@ -25,13 +25,13 @@ trait NodeConvertible
             case \PhpParser\Node\Expr\BinaryOp\BooleanOr::class:
                 return OpCode::_ior;
             case \PhpParser\Node\Expr\BinaryOp\Greater::class:
-                return OpCode::_iflt;
-            case \PhpParser\Node\Expr\BinaryOp\Smaller::class:
-                return OpCode::_ifgt;
-            case \PhpParser\Node\Expr\BinaryOp\GreaterOrEqual::class:
                 return OpCode::_ifle;
-            case \PhpParser\Node\Expr\BinaryOp\SmallerOrEqual::class:
+            case \PhpParser\Node\Expr\BinaryOp\Smaller::class:
                 return OpCode::_ifge;
+            case \PhpParser\Node\Expr\BinaryOp\GreaterOrEqual::class:
+                return OpCode::_iflt;
+            case \PhpParser\Node\Expr\BinaryOp\SmallerOrEqual::class:
+                return OpCode::_ifgt;
             case \PhpParser\Node\Expr\BinaryOp\Identical::class:
                 return OpCode::_ifne;
             case \PhpParser\Node\Expr\BinaryOp\NotIdentical::class:
