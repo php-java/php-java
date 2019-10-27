@@ -14,8 +14,11 @@ use PHPJava\Utilities\ArrayTool;
  */
 trait Conditionable
 {
-    public function assembleConditions(array $ifStatementOperations, array $elseStatementOperations): array
-    {
+    public function assembleConditions(
+        int $conditionalOpCode,
+        array $ifStatementOperations,
+        array $elseStatementOperations
+    ): array {
         $operations = [];
 
         // Decide start offset for finding.
@@ -26,7 +29,7 @@ trait Conditionable
         ArrayTool::concat(
             $operations,
             ...[
-                ReplaceMarker::create(OpCode::_ifne, Int16::class),
+                ReplaceMarker::create($conditionalOpCode, Int16::class),
             ],
             ...$ifStatementOperations,
             ...[
@@ -66,7 +69,7 @@ trait Conditionable
             );
 
             switch ($operation->getOpCode()) {
-                case OpCode::_ifne:
+                case $conditionalOpCode:
                     $operation = Operation::create(
                         $operation->getOpCode(),
                         Operand::factory(

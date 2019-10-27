@@ -15,7 +15,6 @@ trait OperationCalculatableFromNode
 {
     private function assembleCalculateOperationFromNode(Node $left, Node $right, int $calculateOpCode, ?callable $callback): array
     {
-        //
         // Right operator.
         $operations = [];
         ArrayTool::concat(
@@ -23,14 +22,10 @@ trait OperationCalculatableFromNode
             ...$this->execute(
                 [
                     // Left operator.
-                    $left,
-                ],
-                $callback
-            ),
-            ...$this->execute(
-                [
-                    // Left operator.
                     $right,
+
+                    // Left operator.
+                    $left,
                 ],
                 $callback
             ),

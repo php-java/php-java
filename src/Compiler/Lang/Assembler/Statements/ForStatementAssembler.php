@@ -1,12 +1,15 @@
 <?php
 namespace PHPJava\Compiler\Lang\Assembler\Statements;
 
+use PHPJava\Compiler\Builder\Generator\Operation\Operand;
+use PHPJava\Compiler\Builder\Generator\Operation\Operation;
 use PHPJava\Compiler\Builder\Generator\Operation\ReplaceMarker;
 use PHPJava\Compiler\Builder\Types\Int16;
 use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;
 use PHPJava\Compiler\Lang\Assembler\AssemblerInterface;
 use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
 use PHPJava\Compiler\Lang\Assembler\Processors\ExpressionProcessor;
+use PHPJava\Compiler\Lang\Assembler\Processors\StatementProcessor;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
@@ -27,6 +30,10 @@ class ForStatementAssembler extends AbstractAssembler implements StatementAssemb
     {
         $operations = [];
 
+        $startOffset = $this->calculateProgramCounterByOperationCodes(
+            $operations
+        );
+
         $initialize = $this->bindParameters(ExpressionProcessor::factory())
             ->execute($this->node->init);
 
@@ -35,41 +42,94 @@ class ForStatementAssembler extends AbstractAssembler implements StatementAssemb
             ...$initialize
         );
 
-        $startOffset = $this->calculateProgramCounterByOperationCodes(
+        $startConditionsOffset = $this->calculateProgramCounterByOperationCodes(
             $operations
         );
 
         $conditions = $this->bindParameters(ExpressionProcessor::factory())
             ->execute($this->node->cond);
 
-        $operations[] = ReplaceMarker::create(
-            OpCode::_ifeq,
-            Int16::class
-        );
-
-        var_dump($this->node->stmts);
-        exit();
         ArrayTool::concat(
             $operations,
-            $conditions
+            ...$conditions,
+            ...[
+                ReplaceMarker::create(
+                    OpCode::_ifeq,
+                    Int16::class
+                ),
+            ],
+            ...$this->bindParameters(StatementProcessor::factory())
+                ->execute($this->node->stmts)
         );
 
-        $conditionOffset = $this->calculateProgramCounterByOperationCodes(
+        $endConditionsOffset = $this->calculateProgramCounterByOperationCodes(
             $operations
         );
 
         $loops = $this->bindParameters(ExpressionProcessor::factory())
             ->execute($this->node->loop);
 
-        $operations[] = ReplaceMarker::create(
-            OpCode::_goto,
-            Int16::class
+        ArrayTool::concat(
+            $operations,
+            ...$loops
         );
 
+        $finallyOffset = $this->calculateProgramCounterByOperationCodes(
+            $operations
+        ) - $startOffset - $startConditionsOffset;
+
         ArrayTool::concat(
-            $opeations,
-            $loops
+            $operations,
+            ...[
+                ReplaceMarker::create(
+                    OpCode::_goto,
+                    Int16::class
+                ),
+            ]
         );
+
+        $nextStatementOffset = $this->calculateProgramCounterByOperationCodes(
+            $operations
+        );
+
+        $programCounter = 0;
+        // Replace with offset ReplaceMarker
+        foreach ($operations as &$operation) {
+            /**
+             * @var Operation|ReplaceMarker $operation
+             */
+            if (!($operation instanceof ReplaceMarker)) {
+                continue;
+            }
+
+            $programCounter = $this->calculateProgramCounterByOperationCodes(
+                $operations,
+                $operation->getOpCode(),
+                $programCounter
+            );
+
+            switch ($operation->getOpCode()) {
+                case OpCode::_ifeq:
+                    $operation = Operation::create(
+                        OpCode::_ifeq,
+                        Operand::factory(
+                            Int16::class,
+                            $nextStatementOffset - $programCounter
+                        )
+                    );
+                    break;
+                case OpCode::_goto:
+                    $operation = Operation::create(
+                        OpCode::_goto,
+                        Operand::factory(
+                            Int16::class,
+                            // Loop back
+                            -$finallyOffset
+                        )
+                    );
+                    break;
+            }
+        }
 
         return $operations;
     }

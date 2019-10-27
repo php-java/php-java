@@ -8,7 +8,6 @@ class ArrayTool
         if (empty($concatOperations)) {
             return;
         }
-
         array_push(
             $operations,
             ...$concatOperations

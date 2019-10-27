@@ -1,14 +1,17 @@
 <?php
 namespace PHPJava\Compiler\Emulator\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
-
 class _if_icmplt extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Compiler\Emulator\Traits\GeneralProcessor;
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->accumulator
+            ->popFromOperandStack();
+        $this->accumulator
+            ->popFromOperandStack();
+
+        $this->addFrame();
     }
 }

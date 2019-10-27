@@ -226,8 +226,21 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
                             $expression->right,
-                            OpCode::_if_icmplt,
+                            OpCode::_isub,
                             $callback
+                        ),
+                        ...$this->assembleConditions(
+                            OpCode::_iflt,
+                            [
+                                \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                                    OpCode::_iconst_1
+                                ),
+                            ],
+                            [
+                                \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                                    OpCode::_iconst_0
+                                ),
+                            ]
                         )
                     );
                     break;
@@ -273,6 +286,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                             ArrayTool::concat(
                                 $operations,
                                 ...$this->assembleConditions(
+                                    OpCode::_ifeq,
                                     [
                                         \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
                                             OpCode::_iconst_1
