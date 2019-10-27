@@ -29,7 +29,7 @@ class Store
      * @param $value
      * @return int the store method returns settled local storage number
      */
-    public function store(string $name, $value): int
+    public function store(string $name, $value, int $deepArray = 0): int
     {
         $availableLocalStorageNumber = $this->getAvailableLocalStorageNumber();
 
@@ -41,7 +41,7 @@ class Store
             $availableLocalStorageNumber = $this->getAvailableLocalStorageNumber();
         }
 
-        $this->hashTable[$name] = [$availableLocalStorageNumber, $value];
+        $this->hashTable[$name] = [$availableLocalStorageNumber, $value, $deepArray];
 
         // Use available localStorage number
         $this->fill(

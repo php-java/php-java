@@ -22,10 +22,10 @@ trait OperationCalculatableFromNode
             ...$this->execute(
                 [
                     // Left operator.
-                    $right,
-
-                    // Left operator.
                     $left,
+
+                    // Right operator.
+                    $right,
                 ],
                 $callback
             ),

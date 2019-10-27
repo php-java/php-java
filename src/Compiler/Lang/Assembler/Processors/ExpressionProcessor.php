@@ -18,6 +18,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableLoada
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\MethodCallable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Outputable;
+use PHPJava\Compiler\Lang\Assembler\Traits\NodeConvertible;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
@@ -31,6 +32,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
 {
     use OperationManageable;
     use OperationCalculatableFromNode;
+    use NodeConvertible;
     use ConstLoadableFromNode;
     use MagicConstLoadableFromNode;
     use StringLoadableFromNode;
@@ -141,12 +143,6 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                             [
                                 // Left operator.
                                 $expression->left,
-                            ],
-                            $callback
-                        ),
-                        ...$this->execute(
-                            [
-                                // Right operator.
                                 $expression->right,
                             ],
                             $callback
@@ -154,73 +150,26 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\BooleanAnd::class:
-                    ArrayTool::concat(
-                        $operations,
-                        ...$this->assembleCalculateOperationFromNode(
-                            $expression->left,
-                            $expression->right,
-                            OpCode::_iand,
-                            $callback
-                        )
-                    );
-                    break;
+                case \PhpParser\Node\Expr\BinaryOp\BooleanOr::class:
                 case \PhpParser\Node\Expr\BinaryOp\Mul::class:
-                    ArrayTool::concat(
-                        $operations,
-                        ...$this->assembleCalculateOperationFromNode(
-                            $expression->left,
-                            $expression->right,
-                            OpCode::_imul,
-                            $callback
-                        )
-                    );
-                    break;
                 case \PhpParser\Node\Expr\BinaryOp\Div::class:
-                    // TODO: Add float converter
-                    ArrayTool::concat(
-                        $operations,
-                        ...$this->assembleCalculateOperationFromNode(
-                            $expression->left,
-                            $expression->right,
-                            OpCode::_idiv,
-                            $callback
-                        )
-                    );
-                    break;
                 case \PhpParser\Node\Expr\BinaryOp\Minus::class:
-                    ArrayTool::concat(
-                        $operations,
-                        ...$this->assembleCalculateOperationFromNode(
-                            $expression->left,
-                            $expression->right,
-                            OpCode::_isub,
-                            $callback
-                        )
-                    );
-                    break;
                 case \PhpParser\Node\Expr\BinaryOp\Plus::class:
-                    ArrayTool::concat(
-                        $operations,
-                        ...$this->assembleCalculateOperationFromNode(
-                            $expression->left,
-                            $expression->right,
-                            OpCode::_iadd,
-                            $callback
-                        )
-                    );
-                    break;
                 case \PhpParser\Node\Expr\BinaryOp\Mod::class:
                     ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
                             $expression->right,
-                            OpCode::_irem,
+                            $this->convertNodeToOpCode($expression),
                             $callback
                         )
                     );
                     break;
+                case \PhpParser\Node\Expr\BinaryOp\Greater::class:
                 case \PhpParser\Node\Expr\BinaryOp\Smaller::class:
+                case \PhpParser\Node\Expr\BinaryOp\GreaterOrEqual::class:
+                case \PhpParser\Node\Expr\BinaryOp\SmallerOrEqual::class:
                     ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
@@ -230,7 +179,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                             $callback
                         ),
                         ...$this->assembleConditions(
-                            OpCode::_iflt,
+                            $this->convertNodeToOpCode($expression),
                             [
                                 \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
                                     OpCode::_iconst_1
@@ -244,6 +193,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                         )
                     );
                     break;
+                case \PhpParser\Node\Expr\BinaryOp\NotIdentical::class:
                 case \PhpParser\Node\Expr\BinaryOp\Identical::class:
                     /**
                      * @var \PhpParser\Node\Expr\BinaryOp\Identical $conditionNode
@@ -286,7 +236,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                             ArrayTool::concat(
                                 $operations,
                                 ...$this->assembleConditions(
-                                    OpCode::_ifeq,
+                                    $this->convertNodeToOpCode($expression),
                                     [
                                         \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
                                             OpCode::_iconst_1

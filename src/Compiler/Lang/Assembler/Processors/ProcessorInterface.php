@@ -4,8 +4,6 @@ namespace PHPJava\Compiler\Lang\Assembler\Processors;
 use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Collection\ConstantPool;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
-use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;
-use PHPJava\Compiler\Lang\Assembler\AssemblerInterface;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
@@ -22,8 +20,6 @@ use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
  * @method Store getStore()
  * @method AbstractProcessor setNamespace(?array $namespace)
  * @method AbstractProcessor setOperation(Operation $operation)
- * @method AbstractProcessor setParentAssembler(AssemblerInterface $parentAssembler)
- * @method AbstractAssembler getParentAssembler()
  */
 interface ProcessorInterface
 {

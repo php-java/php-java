@@ -92,9 +92,15 @@ class ForStatementAssembler extends AbstractAssembler implements StatementAssemb
             $operations
         );
 
-        $programCounter = 0;
+        $currentOffset = 0;
         // Replace with offset ReplaceMarker
         foreach ($operations as &$operation) {
+            $currentOffset = $this->calculateProgramCounterByOperationCodes(
+                $operations,
+                $operation->getOpCode(),
+                $currentOffset
+            );
+
             /**
              * @var Operation|ReplaceMarker $operation
              */
@@ -102,19 +108,13 @@ class ForStatementAssembler extends AbstractAssembler implements StatementAssemb
                 continue;
             }
 
-            $programCounter = $this->calculateProgramCounterByOperationCodes(
-                $operations,
-                $operation->getOpCode(),
-                $programCounter
-            );
-
             switch ($operation->getOpCode()) {
                 case OpCode::_ifeq:
                     $operation = Operation::create(
                         OpCode::_ifeq,
                         Operand::factory(
                             Int16::class,
-                            $nextStatementOffset - $programCounter
+                            $nextStatementOffset - $currentOffset
                         )
                     );
                     break;

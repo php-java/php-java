@@ -4,6 +4,7 @@ namespace PHPJava\Utilities;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\Runtime;
+use PHPJava\Exceptions\FormatterException;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
@@ -114,6 +115,21 @@ class Formatter
             $result[] = $signature;
         }
         return $result;
+    }
+
+    public static function buildSignature(string $type, int $deepArray): string
+    {
+        switch ($type) {
+            default:
+                return str_repeat('[', $deepArray) . 'L' . static::convertPHPNamespacesToJava($type) . ';';
+        }
+        throw new FormatterException(
+            sprintf(
+                'Cannot build a signature (type: %s, array depth: %s)',
+                $type,
+                $deepArray
+            )
+        );
     }
 
     public static function convertPHPNamespacesToJava(string $className, string $mergeChar = '.'): string

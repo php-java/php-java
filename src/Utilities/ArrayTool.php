@@ -3,14 +3,14 @@ namespace PHPJava\Utilities;
 
 class ArrayTool
 {
-    public static function concat(&$operations, ...$concatOperations): void
+    public static function concat(&$basedArray, ...$elements): void
     {
-        if (empty($concatOperations)) {
+        if (empty($elements)) {
             return;
         }
         array_push(
-            $operations,
-            ...$concatOperations
+            $basedArray,
+            ...$elements
         );
     }
 

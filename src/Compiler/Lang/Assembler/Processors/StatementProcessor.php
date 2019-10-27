@@ -60,6 +60,9 @@ class StatementProcessor extends AbstractProcessor
                         'Unknown statement: ' . get_class($statement) . ' on ' . get_class($this)
                     );
             }
+            if ($assembler === null) {
+                continue;
+            }
             /**
              * @var AbstractAssembler $assembler
              */

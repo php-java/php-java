@@ -17,6 +17,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Void;
 use PHPJava\Utilities\ArrayTool;
+use PHPJava\Utilities\Formatter;
 
 /**
  * @method ClassAssembler getParentAssembler()
@@ -97,16 +98,34 @@ class MethodAssembler extends AbstractAssembler
                     continue;
                 }
 
+                $type = (string) $documentParameter->getType();
+
                 // Update variable detail.
-                $parameters[$documentParameter->getVariableName()] = ltrim(
-                    (string) $documentParameter->getType(),
-                    '\\'
+                $parameters[$documentParameter->getVariableName()] = [
+                    'type' => str_replace(
+                        '[]',
+                        '',
+                        ltrim(
+                            $type,
+                            '\\'
+                        )
+                    ),
+                    'deep_array' => substr_count($type, '[]'),
+                ];
+
+                $className = Formatter::buildSignature(
+                    $parameters[$documentParameter->getVariableName()]['type'],
+                    $parameters[$documentParameter->getVariableName()]['deep_array']
                 );
+
+                $this->getEnhancedConstantPool()
+                    ->addClass($className);
 
                 // Fill local storage number.
                 $this->assembleAssignVariable(
                     $documentParameter->getVariableName(),
-                    $parameters[$documentParameter->getVariableName()]
+                    $parameters[$documentParameter->getVariableName()]['type'],
+                    $parameters[$documentParameter->getVariableName()]['deep_array']
                 );
             }
         }

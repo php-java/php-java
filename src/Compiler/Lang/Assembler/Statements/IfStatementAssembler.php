@@ -144,18 +144,18 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
         // Replace markers
         $currentOffset = 0;
         foreach ($operations as &$operation) {
+            $currentOffset = $this->calculateProgramCounterByOperationCodes(
+                $operations,
+                $operation->getOpCode(),
+                $currentOffset
+            );
+
             /**
              * @var Operation|ReplaceMarker $operation
              */
             if (!($operation instanceof ReplaceMarker)) {
                 continue;
             }
-
-            $currentOffset = $this->calculateProgramCounterByOperationCodes(
-                $operations,
-                $operation->getOpCode(),
-                $currentOffset
-            );
 
             switch ($operation->getOpCode()) {
                 case OpCode::_ifeq:
