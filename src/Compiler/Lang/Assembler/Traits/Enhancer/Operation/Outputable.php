@@ -12,6 +12,7 @@ use PHPJava\Compiler\Lang\Assembler\Processors\ExpressionProcessor;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Void;
+use PHPJava\Utilities\ArrayTool;
 use PHPJava\Utilities\Formatter;
 
 /**
@@ -52,7 +53,7 @@ trait Outputable
                 )
         );
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...$stringConcatOperations
         );

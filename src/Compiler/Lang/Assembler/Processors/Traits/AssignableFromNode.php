@@ -5,6 +5,7 @@ use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Processors\ExpressionProcessor;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
+use PHPJava\Utilities\ArrayTool;
 use PhpParser\Node;
 
 /**
@@ -41,7 +42,7 @@ trait AssignableFromNode
             current($expressionTypes)
         );
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...$expressions,
             ...$localVariableAssignOperation

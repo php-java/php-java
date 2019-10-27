@@ -23,6 +23,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ParentRecurseable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StatementParseable;
 use PHPJava\Kernel\Maps\OpCode;
+use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method MethodAssembler getParentAssembler()
@@ -65,7 +66,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             $operations
         );
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...[
                 ReplaceMarker::create(OpCode::_ifeq, Int16::class),
@@ -77,14 +78,14 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
                 ->stmts
         );
         if (!empty($nodes)) {
-            array_push(
+            ArrayTool::concat(
                 $operations,
                 ...$nodes
             );
         }
 
         // Jump to finish
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...[
                 ReplaceMarker::create(OpCode::_goto, Int16::class),
@@ -105,7 +106,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             $elseIfStatementOperations = [];
 
             // Add condition
-            array_push(
+            ArrayTool::concat(
                 $elseIfStatementOperations,
                 ...$this->bindRequired(ExpressionProcessor::factory())
                     ->execute(
@@ -118,7 +119,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
                 $elseIfStatementOperations
             );
 
-            array_push(
+            ArrayTool::concat(
                 $elseIfStatementOperations,
                 ...[
                     ReplaceMarker::create(OpCode::_ifeq, Int16::class),
@@ -133,7 +134,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
                 ]
             );
 
-            array_push(
+            ArrayTool::concat(
                 $operations,
                 ...$elseIfStatementOperations
             );
@@ -149,7 +150,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
                     ->else
                     ->stmts
             );
-            array_push(
+            ArrayTool::concat(
                 $operations,
                 ...$elseStatementOperations
             );

@@ -3,6 +3,18 @@ namespace PHPJava\Utilities;
 
 class ArrayTool
 {
+    public static function concat(&$operations, ...$concatOperations): void
+    {
+        if (empty($concatOperations)) {
+            return;
+        }
+
+        array_push(
+            $operations,
+            ...$concatOperations
+        );
+    }
+
     public static function stringify(array $array): string
     {
         return implode(

@@ -11,6 +11,7 @@ use PHPJava\Compiler\Lang\Assembler\Statements\IfStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
 use PHPJava\Exceptions\AssembleStructureException;
+use PHPJava\Utilities\ArrayTool;
 use PhpParser\Node;
 
 /**
@@ -34,7 +35,7 @@ trait StatementParseable
                     /**
                      * @var \PhpParser\Node\Stmt\If_ $statement
                      */
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...IfStatementAssembler::factory($statement)
                             ->setOperation($this->getOperation())
@@ -49,7 +50,7 @@ trait StatementParseable
                     /**
                      * @var \PhpParser\Node\Stmt\Echo_ $statement
                      */
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...EchoStatementAssembler::factory($statement)
                             ->setOperation($this->getOperation())
@@ -64,7 +65,7 @@ trait StatementParseable
                     /**
                      * @var \PhpParser\Node\Stmt\Expression $statement
                      */
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...ExpressionStatementAssembler::factory($statement)
                             ->setOperation($this->getOperation())
@@ -79,7 +80,7 @@ trait StatementParseable
                     /**
                      * @var \PhpParser\Node\Stmt\For_ $statement
                      */
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...ForStatementAssembler::factory($statement)
                             ->setOperation($this->getOperation())

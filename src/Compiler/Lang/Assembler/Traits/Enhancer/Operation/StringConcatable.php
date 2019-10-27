@@ -6,6 +6,7 @@ use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Exceptions\ResolverException;
 use PHPJava\Kernel\Resolvers\MnemonicResolver;
 use PHPJava\Kernel\Types\_Void;
+use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method array coordinateCastTypeOperation(string $classType)
@@ -40,7 +41,7 @@ trait StringConcatable
 
         $operations = [];
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...$this->assembleClassConstructor(
                 \PHPJava\Packages\java\lang\StringBuilder::class,
@@ -65,7 +66,7 @@ trait StringConcatable
                 $convertedOperations = [$operation];
             }
 
-            array_push(
+            ArrayTool::concat(
                 $operations,
                 // Load value.
                 ...$convertedOperations,
@@ -78,7 +79,7 @@ trait StringConcatable
             );
         }
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...$this->assembleCallMethodOperations(
                 \PHPJava\Packages\java\lang\StringBuilder::class,

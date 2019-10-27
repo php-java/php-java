@@ -14,6 +14,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StatementParseable;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Void;
+use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method ClassAssembler getParentAssembler()
@@ -117,7 +118,7 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
         );
 
         if (!empty($parsed)) {
-            array_push(
+            ArrayTool::concat(
                 $operations,
                 ...$parsed
             );

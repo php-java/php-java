@@ -6,6 +6,7 @@ use PHPJava\Compiler\Builder\Generator\Operation\Operation;
 use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Kernel\Maps\OpCode;
+use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method ConstantPoolEnhancer getEnhancedConstantPool()
@@ -43,12 +44,10 @@ trait ClassConstractable
             );
         }
 
-        if (!empty($arguments)) {
-            array_push(
-                $operations,
-                ...$arguments
-            );
-        }
+        ArrayTool::concat(
+            $operations,
+            ...$arguments
+        );
 
         // Call <init>
         $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(

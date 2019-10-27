@@ -25,6 +25,7 @@ use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\MnemonicResolver;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Packages\java\lang\Integer;
+use PHPJava\Utilities\ArrayTool;
 
 class ExpressionProcessor extends AbstractProcessor implements ProcessorInterface
 {
@@ -55,31 +56,31 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
             $nodeType = get_class($expression);
             switch ($nodeType) {
                 case \PhpParser\Node\Expr\Assign::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleAssignFromNode($expression)
                     );
                     break;
                 case \PhpParser\Node\Expr\PostInc::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assemblePostIncFromNode($expression)
                     );
                     break;
                 case \PhpParser\Node\Expr\PostDec::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assemblePostDecFromNode($expression)
                     );
                     break;
                 case \PhpParser\Node\Expr\Print_::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assemblePrintFromNode($expression)
                     );
                     break;
                 case \PhpParser\Node\Scalar\String_::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleLoadStringFromNode(
                             $expression,
@@ -88,7 +89,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Scalar\LNumber::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleLoadNumber(
                             $expression->value,
@@ -97,7 +98,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\Variable::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleLoadVariableFromNode(
                             $expression,
@@ -106,7 +107,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\ConstFetch::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleLoadConstFromNode(
                             $expression,
@@ -122,7 +123,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                 case \PhpParser\Node\Scalar\MagicConst\Function_::class: // __FUNCTION__
                 case \PhpParser\Node\Scalar\MagicConst\Trait_::class: // __TRAIT__
                 case \PhpParser\Node\Scalar\MagicConst\Line::class: // __LINE__
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this
                             ->assembleLoadMagicConstFromNode(
@@ -132,7 +133,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\Concat::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->execute(
                             [
@@ -151,7 +152,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\BooleanAnd::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
@@ -162,7 +163,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\Mul::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
@@ -174,7 +175,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\Div::class:
                     // TODO: Add float converter
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
@@ -185,7 +186,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\Minus::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
@@ -196,7 +197,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\Plus::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
@@ -207,7 +208,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\Mod::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
@@ -237,13 +238,13 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     $lastRightOperand = array_slice($rightOperands, -1, 1)[0];
                     switch ([MnemonicResolver::resolveTypeByOpCode($lastLeftOperand), MnemonicResolver::resolveTypeByOpCode($lastRightOperand)]) {
                         case [_Int::class, _Int::class]:
-                            array_push(
+                            ArrayTool::concat(
                                 $operations,
                                 ...$leftOperands,
                                 ...$rightOperands
                             );
 
-                            array_push(
+                            ArrayTool::concat(
                                 $operations,
                                 ...$this->assembleStaticCallMethodOperations(
                                     Integer::class,
@@ -256,7 +257,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                                 )
                             );
 
-                            array_push(
+                            ArrayTool::concat(
                                 $operations,
                                 ...$this->assembleConditions(
                                     [

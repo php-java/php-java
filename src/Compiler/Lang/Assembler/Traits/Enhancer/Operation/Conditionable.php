@@ -7,6 +7,7 @@ use PHPJava\Compiler\Builder\Generator\Operation\ReplaceMarker;
 use PHPJava\Compiler\Builder\Types\Int16;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Kernel\Maps\OpCode;
+use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method ConstantPoolEnhancer getEnhancedConstantPool()
@@ -22,7 +23,7 @@ trait Conditionable
             $operations
         );
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...[
                 ReplaceMarker::create(OpCode::_ifne, Int16::class),
@@ -39,7 +40,7 @@ trait Conditionable
             ) - $startOffset,
         ];
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...$elseStatementOperations
         );

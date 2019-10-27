@@ -23,7 +23,7 @@ final class Operands implements \ArrayAccess, \Countable
     {
         $operands = [];
         foreach ($this->operands as [, $operandParameters]) {
-            array_push($operands, ...$operandParameters);
+            ArrayTool::concat($operands, ...$operandParameters);
         }
         return $operands;
     }
