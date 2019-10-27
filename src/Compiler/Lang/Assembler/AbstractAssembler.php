@@ -1,27 +1,21 @@
 <?php
 namespace PHPJava\Compiler\Lang\Assembler;
 
-use PHPJava\Compiler\Builder\Collection\ConstantPool;
-use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
+use PHPJava\Compiler\Builder\Method;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
+use PHPJava\Compiler\Lang\Assembler\Traits\CollectionManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
-use PHPJava\Exceptions\AssembleStructureException;
 use PhpParser\Node;
 
-abstract class AbstractAssembler implements AssemblerInterface
+abstract class AbstractAssembler implements AssemblerInterface, ParameterServiceInterface
 {
+    use ConstantPoolManageable;
     use StoreManageable;
-
-    /**
-     * @var ConstantPool
-     */
-    protected $constantPool;
-
-    /**
-     * @var ConstantPoolFinder
-     */
-    protected $constantPoolFinder;
+    use NamespaceManageable;
+    use CollectionManageable;
 
     /**
      * @var Node
@@ -29,23 +23,21 @@ abstract class AbstractAssembler implements AssemblerInterface
     protected $node;
 
     /**
-     * @var AssemblerInterface
-     */
-    protected $parentAssembler;
-
-    /**
      * @var StreamReaderInterface
      */
     protected $streamReader;
-
-    protected $namespace;
 
     /**
      * @var Store
      */
     protected $store;
 
-    public static function factory(Node $node): AssemblerInterface
+    /**
+     * @var Method
+     */
+    protected $method;
+
+    public static function factory(Node $node): self
     {
         return new static($node);
     }
@@ -56,52 +48,6 @@ abstract class AbstractAssembler implements AssemblerInterface
     }
 
     abstract public function assemble();
-
-    public function setNamespace(?array $namespace): AssemblerInterface
-    {
-        $this->namespace = $namespace;
-        return $this;
-    }
-
-    public function getNamespace(): ?array
-    {
-        return $this->namespace;
-    }
-
-    public function setParentAssembler(AssemblerInterface $parentAssembler): AssemblerInterface
-    {
-        $this->parentAssembler = $parentAssembler;
-        $this->constantPool = $this->parentAssembler->getConstantPool();
-        $this->constantPoolFinder = $this->parentAssembler->getConstantPoolFinder();
-        return $this;
-    }
-
-    public function getParentAssembler(): ?AssemblerInterface
-    {
-        return $this->parentAssembler;
-    }
-
-    public function getConstantPool(): ConstantPool
-    {
-        if (!isset($this->constantPool)) {
-            throw new AssembleStructureException(
-                'The ConstantPool is not set. ' .
-                'You must to set the ConstantPool.'
-            );
-        }
-        return $this->constantPool;
-    }
-
-    public function getConstantPoolFinder(): ConstantPoolFinder
-    {
-        if (!isset($this->constantPoolFinder)) {
-            throw new AssembleStructureException(
-                'The ConstantPoolFinder is not set. ' .
-                'You must to set the ConstantPoolFinder.'
-            );
-        }
-        return $this->constantPoolFinder;
-    }
 
     public function setStreamReader(StreamReaderInterface $streamReader): AssemblerInterface
     {

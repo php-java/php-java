@@ -9,6 +9,7 @@ use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;
 use PHPJava\Compiler\Lang\Assembler\AssemblerInterface;
 use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
 use PHPJava\Compiler\Lang\Assembler\Processors\ExpressionProcessor;
+use PHPJava\Compiler\Lang\Assembler\Processors\StatementProcessor;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
@@ -20,8 +21,6 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\MethodCallable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\StringConcatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
-use PHPJava\Compiler\Lang\Assembler\Traits\ParentRecurseable;
-use PHPJava\Compiler\Lang\Assembler\Traits\StatementParseable;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Utilities\ArrayTool;
 
@@ -36,9 +35,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
     use MethodCallable;
     use ClassConstractable;
     use OperationManageable;
-    use ParentRecurseable;
     use Castable;
-    use StatementParseable;
     use LocalVariableAssignable;
     use Calculatable;
     use NumberLoadable;
@@ -51,12 +48,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
     public function assemble(): array
     {
         // proceed if statements
-        $operations = ExpressionProcessor::factory()
-            ->setStore($this->getStore())
-            ->setConstantPool($this->getConstantPool())
-            ->setConstantPoolFinder($this->getConstantPoolFinder())
-            ->setNamespace($this->getNamespace())
-            ->setOperation($this->getOperation())
+        $operations = $this->bindRequired(ExpressionProcessor::factory())
             ->execute(
                 [$this->node->cond]
             );
@@ -73,16 +65,11 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             ]
         );
 
-        $nodes = $this->parseStatement(
-            $this->node
-                ->stmts
+        ArrayTool::concat(
+            $operations,
+            ...$this->bindRequired(StatementProcessor::factory())
+                ->execute($this->node->stmts)
         );
-        if (!empty($nodes)) {
-            ArrayTool::concat(
-                $operations,
-                ...$nodes
-            );
-        }
 
         // Jump to finish
         ArrayTool::concat(
@@ -124,10 +111,8 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
                 ...[
                     ReplaceMarker::create(OpCode::_ifeq, Int16::class),
                 ],
-                ...$this->parseStatement(
-                    $elseif
-                        ->stmts
-                ),
+                ...$this->bindRequired(StatementProcessor::factory())
+                    ->execute($elseif->stmts),
                 // Jump to
                 ...[
                     ReplaceMarker::create(OpCode::_goto, Int16::class),
@@ -144,15 +129,11 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             ) - $startOffset;
         }
 
-        if (!empty($this->node->else->stmts)) {
-            $elseStatementOperations = $this->parseStatement(
-                $this->node
-                    ->else
-                    ->stmts
-            );
+        if (isset($this->node->else->stmts)) {
             ArrayTool::concat(
                 $operations,
-                ...$elseStatementOperations
+                ...$this->bindRequired(StatementProcessor::factory())
+                    ->execute($this->node->else->stmts)
             );
         }
 

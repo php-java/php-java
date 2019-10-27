@@ -13,7 +13,7 @@ use PhpParser\Node;
  */
 trait OperationCalculatableFromNode
 {
-    private function assembleCalculateOperationFromNode(Node $left, Node $right, int $calculateOpCode, callable $callback): array
+    private function assembleCalculateOperationFromNode(Node $left, Node $right, int $calculateOpCode, ?callable $callback): array
     {
         //
         // Right operator.

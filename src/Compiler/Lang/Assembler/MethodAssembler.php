@@ -5,28 +5,31 @@ use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Attributes\Code;
 use PHPJava\Compiler\Builder\Attributes\StackMapTable;
 use PHPJava\Compiler\Builder\Collection\Attributes;
+use PHPJava\Compiler\Builder\Collection\Methods;
 use PHPJava\Compiler\Builder\Method;
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
+use PHPJava\Compiler\Lang\Assembler\Processors\StatementProcessor;
+use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
-use PHPJava\Compiler\Lang\Assembler\Traits\StatementParseable;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Void;
 use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method ClassAssembler getParentAssembler()
+ * @method Methods getCollection()
  * @property \PhpParser\Node\Stmt\ClassMethod $node
  */
-class MethodAssembler extends AbstractAssembler implements AssemblerInterface
+class MethodAssembler extends AbstractAssembler
 {
     use OperationManageable;
-    use StatementParseable;
     use ConstantPoolEnhanceable;
     use LocalVariableAssignable;
     use LocalVariableLoadable;
+    use Bindable;
 
     protected $attribute;
 
@@ -62,9 +65,7 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
         ));
 
         // Add to methods section
-        $this
-            ->getParentAssembler()
-            ->getMethods()
+        $this->getCollection()
             ->add($method);
 
         $this->attribute = new Attributes();
@@ -113,16 +114,11 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
         $operations = [];
         $defaultLocalVariableOperations = $this->getStore()->getAll();
 
-        $parsed = $this->parseStatement(
-            $this->node->getStmts()
+        ArrayTool::concat(
+            $operations,
+            ...$this->bindRequired(StatementProcessor::factory())
+                ->execute($this->node->getStmts())
         );
-
-        if (!empty($parsed)) {
-            ArrayTool::concat(
-                $operations,
-                ...$parsed
-            );
-        }
 
         $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
             OpCode::_return

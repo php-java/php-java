@@ -13,7 +13,6 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\MethodCallable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Outputable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\StringConcatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
-use PHPJava\Compiler\Lang\Assembler\Traits\ParentRecurseable;
 
 /**
  * @method MethodAssembler getParentAssembler()
@@ -26,7 +25,6 @@ class EchoStatementAssembler extends AbstractAssembler implements StatementAssem
     use MethodCallable;
     use ClassConstractable;
     use OperationManageable;
-    use ParentRecurseable;
     use Castable;
     use Conditionable;
     use Outputable;

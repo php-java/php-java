@@ -12,17 +12,21 @@ use PHPJava\Compiler\Builder\Structures\ClassFileStructure;
 use PHPJava\Compiler\Builder\Structures\Info\Utf8Info;
 use PHPJava\Compiler\Compiler;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
+use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
+use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
 use PHPJava\Packages\java\lang\_Object;
 use PhpParser\Node;
 
 /**
- * @property  \PhpParser\Node\Stmt\Class_ $node
+ * @property \PhpParser\Node\Stmt\Class_ $node
  */
-class ClassAssembler extends AbstractAssembler implements AssemblerInterface
+class ClassAssembler extends AbstractAssembler
 {
+    use OperationManageable;
     use ConstantPoolEnhanceable;
+    use Bindable;
 
     /**
      * @var Methods
@@ -42,12 +46,10 @@ class ClassAssembler extends AbstractAssembler implements AssemblerInterface
         $this->methods = new Methods();
 
         foreach ($this->node->getMethods() as $method) {
-            MethodAssembler::factory($method)
+            $this->setOperation(new Operation())
                 ->setStore(new Store())
-                ->setOperation(new Operation())
-                ->setParentAssembler($this)
-                ->setStreamReader($this->getStreamReader())
-                ->setNamespace($this->getNamespace())
+                ->bindRequired(MethodAssembler::factory($method))
+                ->setCollection($this->methods)
                 ->assemble();
         }
 

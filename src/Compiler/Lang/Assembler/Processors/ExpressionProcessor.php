@@ -19,19 +19,18 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\MethodCallable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Outputable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
-use PHPJava\Compiler\Lang\Assembler\Traits\ParentRecurseable;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\MnemonicResolver;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Packages\java\lang\Integer;
 use PHPJava\Utilities\ArrayTool;
+use PhpParser\Node;
 
 class ExpressionProcessor extends AbstractProcessor implements ProcessorInterface
 {
     use OperationManageable;
     use OperationCalculatableFromNode;
-    use ParentRecurseable;
     use ConstLoadableFromNode;
     use MagicConstLoadableFromNode;
     use StringLoadableFromNode;
@@ -48,11 +47,14 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
     use LocalVariableAssignable;
     use LocalVariableLoadable;
 
-    public function execute(array $expressions, ?callable $callback = null): array
+    /**
+     * @param Node[] $nodes
+     */
+    public function execute(array $nodes, ?callable $callback = null): array
     {
         $operations = [];
         $classType = null;
-        foreach ($expressions as $expression) {
+        foreach ($nodes as $expression) {
             $nodeType = get_class($expression);
             switch ($nodeType) {
                 case \PhpParser\Node\Expr\Assign::class:
@@ -214,6 +216,17 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                             $expression->left,
                             $expression->right,
                             OpCode::_irem,
+                            $callback
+                        )
+                    );
+                    break;
+                case \PhpParser\Node\Expr\BinaryOp\Smaller::class:
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleCalculateOperationFromNode(
+                            $expression->left,
+                            $expression->right,
+                            OpCode::_if_icmplt,
                             $callback
                         )
                     );
