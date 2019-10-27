@@ -21,7 +21,7 @@ trait Bindable
      * @param AbstractAssembler|AbstractProcessor $from
      * @return AbstractAssembler|AbstractProcessor|ParameterServiceInterface
      */
-    protected function bindRequired(ParameterServiceInterface $from): ParameterServiceInterface
+    protected function bindParameters(ParameterServiceInterface $from): ParameterServiceInterface
     {
         return $from
             ->setNamespace($this->getNamespace())

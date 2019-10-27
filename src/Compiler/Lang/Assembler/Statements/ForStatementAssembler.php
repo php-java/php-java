@@ -27,7 +27,7 @@ class ForStatementAssembler extends AbstractAssembler implements StatementAssemb
     {
         $operations = [];
 
-        $initialize = $this->bindRequired(ExpressionProcessor::factory())
+        $initialize = $this->bindParameters(ExpressionProcessor::factory())
             ->execute($this->node->init);
 
         ArrayTool::concat(
@@ -39,7 +39,7 @@ class ForStatementAssembler extends AbstractAssembler implements StatementAssemb
             $operations
         );
 
-        $conditions = $this->bindRequired(ExpressionProcessor::factory())
+        $conditions = $this->bindParameters(ExpressionProcessor::factory())
             ->execute($this->node->cond);
 
         $operations[] = ReplaceMarker::create(
@@ -58,7 +58,7 @@ class ForStatementAssembler extends AbstractAssembler implements StatementAssemb
             $operations
         );
 
-        $loops = $this->bindRequired(ExpressionProcessor::factory())
+        $loops = $this->bindParameters(ExpressionProcessor::factory())
             ->execute($this->node->loop);
 
         $operations[] = ReplaceMarker::create(

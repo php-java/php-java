@@ -19,7 +19,7 @@ class ExpressionStatementAssembler extends AbstractAssembler implements Statemen
 
     public function assemble(): array
     {
-        return $this->bindRequired(ExpressionProcessor::factory())
+        return $this->bindParameters(ExpressionProcessor::factory())
             ->execute([$this->node->expr]);
     }
 }

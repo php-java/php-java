@@ -47,7 +47,7 @@ trait Outputable
 
         // Concat string.
         $stringConcatOperations = $this->assembleConcatStringOperation(
-            ...$this->bindRequired(ExpressionProcessor::factory())
+            ...$this->bindParameters(ExpressionProcessor::factory())
                 ->execute(
                     $expressions
                 )

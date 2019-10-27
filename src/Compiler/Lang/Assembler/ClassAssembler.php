@@ -48,7 +48,7 @@ class ClassAssembler extends AbstractAssembler
         foreach ($this->node->getMethods() as $method) {
             $this->setOperation(new Operation())
                 ->setStore(new Store())
-                ->bindRequired(MethodAssembler::factory($method))
+                ->bindParameters(MethodAssembler::factory($method))
                 ->setCollection($this->methods)
                 ->assemble();
         }

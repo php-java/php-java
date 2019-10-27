@@ -65,7 +65,7 @@ class StatementProcessor extends AbstractProcessor
              */
             ArrayTool::concat(
                 $operations,
-                ...$this->bindRequired($assembler)
+                ...$this->bindParameters($assembler)
                     ->assemble()
             );
         }

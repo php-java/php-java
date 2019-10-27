@@ -48,7 +48,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
     public function assemble(): array
     {
         // proceed if statements
-        $operations = $this->bindRequired(ExpressionProcessor::factory())
+        $operations = $this->bindParameters(ExpressionProcessor::factory())
             ->execute(
                 [$this->node->cond]
             );
@@ -67,7 +67,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
 
         ArrayTool::concat(
             $operations,
-            ...$this->bindRequired(StatementProcessor::factory())
+            ...$this->bindParameters(StatementProcessor::factory())
                 ->execute($this->node->stmts)
         );
 
@@ -95,7 +95,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             // Add condition
             ArrayTool::concat(
                 $elseIfStatementOperations,
-                ...$this->bindRequired(ExpressionProcessor::factory())
+                ...$this->bindParameters(ExpressionProcessor::factory())
                     ->execute(
                         [$elseif->cond]
                     )
@@ -111,7 +111,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
                 ...[
                     ReplaceMarker::create(OpCode::_ifeq, Int16::class),
                 ],
-                ...$this->bindRequired(StatementProcessor::factory())
+                ...$this->bindParameters(StatementProcessor::factory())
                     ->execute($elseif->stmts),
                 // Jump to
                 ...[
@@ -132,7 +132,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
         if (isset($this->node->else->stmts)) {
             ArrayTool::concat(
                 $operations,
-                ...$this->bindRequired(StatementProcessor::factory())
+                ...$this->bindParameters(StatementProcessor::factory())
                     ->execute($this->node->else->stmts)
             );
         }
