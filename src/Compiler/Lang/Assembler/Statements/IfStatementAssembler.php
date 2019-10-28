@@ -9,6 +9,8 @@ use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;
 use PHPJava\Compiler\Lang\Assembler\AssemblerInterface;
 use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
 use PHPJava\Compiler\Lang\Assembler\Processors\ExpressionProcessor;
+use PHPJava\Compiler\Lang\Assembler\Processors\StatementProcessor;
+use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Castable;
@@ -19,9 +21,8 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\MethodCallable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\StringConcatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
-use PHPJava\Compiler\Lang\Assembler\Traits\ParentRecurseable;
-use PHPJava\Compiler\Lang\Assembler\Traits\StatementParseable;
 use PHPJava\Kernel\Maps\OpCode;
+use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method MethodAssembler getParentAssembler()
@@ -34,13 +35,12 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
     use MethodCallable;
     use ClassConstractable;
     use OperationManageable;
-    use ParentRecurseable;
     use Castable;
-    use StatementParseable;
     use LocalVariableAssignable;
     use Calculatable;
     use NumberLoadable;
     use Conditionable;
+    use Bindable;
 
     /**
      * @throws \PHPJava\Exceptions\AssembleStructureException
@@ -48,10 +48,7 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
     public function assemble(): array
     {
         // proceed if statements
-        $operations = ExpressionProcessor::factory()
-            ->setStore($this->getStore())
-            ->setConstantPool($this->getConstantPool())
-            ->setConstantPoolFinder($this->getConstantPoolFinder())
+        $operations = $this->bindParameters(ExpressionProcessor::factory())
             ->execute(
                 [$this->node->cond]
             );
@@ -61,26 +58,21 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             $operations
         );
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...[
                 ReplaceMarker::create(OpCode::_ifeq, Int16::class),
             ]
         );
 
-        $nodes = $this->parseStatement(
-            $this->node
-                ->stmts
+        ArrayTool::concat(
+            $operations,
+            ...$this->bindParameters(StatementProcessor::factory())
+                ->execute($this->node->stmts)
         );
-        if (!empty($nodes)) {
-            array_push(
-                $operations,
-                ...$nodes
-            );
-        }
 
         // Jump to finish
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...[
                 ReplaceMarker::create(OpCode::_goto, Int16::class),
@@ -101,12 +93,9 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             $elseIfStatementOperations = [];
 
             // Add condition
-            array_push(
+            ArrayTool::concat(
                 $elseIfStatementOperations,
-                ...ExpressionProcessor::factory()
-                    ->setConstantPool($this->getConstantPool())
-                    ->setConstantPoolFinder($this->getConstantPoolFinder())
-                    ->setStore($this->getStore())
+                ...$this->bindParameters(ExpressionProcessor::factory())
                     ->execute(
                         [$elseif->cond]
                     )
@@ -117,22 +106,20 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
                 $elseIfStatementOperations
             );
 
-            array_push(
+            ArrayTool::concat(
                 $elseIfStatementOperations,
                 ...[
                     ReplaceMarker::create(OpCode::_ifeq, Int16::class),
                 ],
-                ...$this->parseStatement(
-                    $elseif
-                        ->stmts
-                ),
+                ...$this->bindParameters(StatementProcessor::factory())
+                    ->execute($elseif->stmts),
                 // Jump to
                 ...[
                     ReplaceMarker::create(OpCode::_goto, Int16::class),
                 ]
             );
 
-            array_push(
+            ArrayTool::concat(
                 $operations,
                 ...$elseIfStatementOperations
             );
@@ -142,15 +129,11 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
             ) - $startOffset;
         }
 
-        if (!empty($this->node->else->stmts)) {
-            $elseStatementOperations = $this->parseStatement(
-                $this->node
-                    ->else
-                    ->stmts
-            );
-            array_push(
+        if (isset($this->node->else->stmts)) {
+            ArrayTool::concat(
                 $operations,
-                ...$elseStatementOperations
+                ...$this->bindParameters(StatementProcessor::factory())
+                    ->execute($this->node->else->stmts)
             );
         }
 
@@ -161,18 +144,18 @@ class IfStatementAssembler extends AbstractAssembler implements StatementAssembl
         // Replace markers
         $currentOffset = 0;
         foreach ($operations as &$operation) {
+            $currentOffset = $this->calculateProgramCounterByOperationCodes(
+                $operations,
+                $operation->getOpCode(),
+                $currentOffset
+            );
+
             /**
              * @var Operation|ReplaceMarker $operation
              */
             if (!($operation instanceof ReplaceMarker)) {
                 continue;
             }
-
-            $currentOffset = $this->calculateProgramCounterByOperationCodes(
-                $operations,
-                $operation->getOpCode(),
-                $currentOffset
-            );
 
             switch ($operation->getOpCode()) {
                 case OpCode::_ifeq:

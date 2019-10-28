@@ -2,68 +2,122 @@
 namespace PHPJava\Compiler\Lang\Assembler\Processors;
 
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\AssignableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\ConstLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\MagicConstLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\OperationCalculatableFromNode;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\PostDecrementableFromNode;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\PostIncrementableFromNode;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\PrintableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\StringLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\VariableLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Conditionable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\MethodCallable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
-use PHPJava\Compiler\Lang\Assembler\Traits\ParentRecurseable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Outputable;
+use PHPJava\Compiler\Lang\Assembler\Traits\NodeConvertible;
+use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\MnemonicResolver;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Packages\java\lang\Integer;
+use PHPJava\Utilities\ArrayTool;
+use PhpParser\Node;
 
 class ExpressionProcessor extends AbstractProcessor implements ProcessorInterface
 {
+    use OperationManageable;
     use OperationCalculatableFromNode;
-    use ParentRecurseable;
+    use NodeConvertible;
     use ConstLoadableFromNode;
     use MagicConstLoadableFromNode;
     use StringLoadableFromNode;
     use VariableLoadableFromNode;
+    use AssignableFromNode;
+    use PostDecrementableFromNode;
+    use PostIncrementableFromNode;
+    use PrintableFromNode;
     use NumberLoadable;
     use MethodCallable;
     use Calculatable;
     use Conditionable;
+    use Outputable;
+    use LocalVariableAssignable;
+    use LocalVariableLoadable;
 
-    public function execute(array $expressions, ?callable $callback = null): array
+    /**
+     * @param Node[] $nodes
+     */
+    public function execute(array $nodes, ?callable $callback = null): array
     {
         $operations = [];
         $classType = null;
-        foreach ($expressions as $expression) {
+        foreach ($nodes as $expression) {
             $nodeType = get_class($expression);
             switch ($nodeType) {
+                case \PhpParser\Node\Expr\Assign::class:
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleAssignFromNode($expression)
+                    );
+                    break;
+                case \PhpParser\Node\Expr\PostInc::class:
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assemblePostIncFromNode($expression)
+                    );
+                    break;
+                case \PhpParser\Node\Expr\PostDec::class:
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assemblePostDecFromNode($expression)
+                    );
+                    break;
+                case \PhpParser\Node\Expr\Print_::class:
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assemblePrintFromNode($expression)
+                    );
+                    break;
                 case \PhpParser\Node\Scalar\String_::class:
-                    $operations = $this
-                        ->assembleLoadStringFromNode(
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleLoadStringFromNode(
                             $expression,
                             $classType
-                        );
+                        )
+                    );
                     break;
                 case \PhpParser\Node\Scalar\LNumber::class:
-                    $operations = $this->assembleLoadNumber(
-                        $expression->value,
-                        $classType
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleLoadNumber(
+                            $expression->value,
+                            $classType
+                        )
                     );
                     break;
                 case \PhpParser\Node\Expr\Variable::class:
-                    $operations = $this
-                        ->assembleLoadVariableFromNode(
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleLoadVariableFromNode(
                             $expression,
                             $classType
-                        );
+                        )
+                    );
                     break;
                 case \PhpParser\Node\Expr\ConstFetch::class:
-                    $operations = $this
-                        ->assembleLoadConstFromNode(
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleLoadConstFromNode(
                             $expression,
                             $classType
-                        );
+                        )
+                    );
                     break;
                 case \PhpParser\Node\Scalar\MagicConst\Class_::class: // __CLASS__
                 case \PhpParser\Node\Scalar\MagicConst\Method::class: // __METHOD__
@@ -73,25 +127,22 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                 case \PhpParser\Node\Scalar\MagicConst\Function_::class: // __FUNCTION__
                 case \PhpParser\Node\Scalar\MagicConst\Trait_::class: // __TRAIT__
                 case \PhpParser\Node\Scalar\MagicConst\Line::class: // __LINE__
-                    $operations = $this
-                        ->assembleLoadMagicConstFromNode(
-                            $expression,
-                            $classType
-                        );
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this
+                            ->assembleLoadMagicConstFromNode(
+                                $expression,
+                                $classType
+                            )
+                    );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\Concat::class:
-                    array_push(
+                    ArrayTool::concat(
                         $operations,
                         ...$this->execute(
                             [
                                 // Left operator.
                                 $expression->left,
-                            ],
-                            $callback
-                        ),
-                        ...$this->execute(
-                            [
-                                // Right operator.
                                 $expression->right,
                             ],
                             $callback
@@ -99,72 +150,50 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     );
                     break;
                 case \PhpParser\Node\Expr\BinaryOp\BooleanAnd::class:
-                    array_push(
-                        $operations,
-                        ...$this->assembleCalculateOperationFromNode(
-                            $expression->left,
-                            $expression->right,
-                            OpCode::_iand,
-                            $callback
-                        )
-                    );
-                    break;
+                case \PhpParser\Node\Expr\BinaryOp\BooleanOr::class:
                 case \PhpParser\Node\Expr\BinaryOp\Mul::class:
-                    array_push(
-                        $operations,
-                        ...$this->assembleCalculateOperationFromNode(
-                            $expression->left,
-                            $expression->right,
-                            OpCode::_imul,
-                            $callback
-                        )
-                    );
-                    break;
                 case \PhpParser\Node\Expr\BinaryOp\Div::class:
-                    // TODO: Add float converter
-                    array_push(
+                case \PhpParser\Node\Expr\BinaryOp\Minus::class:
+                case \PhpParser\Node\Expr\BinaryOp\Plus::class:
+                case \PhpParser\Node\Expr\BinaryOp\Mod::class:
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
                             $expression->right,
-                            OpCode::_idiv,
+                            $this->convertNodeToOpCode($expression),
                             $callback
                         )
                     );
                     break;
-                case \PhpParser\Node\Expr\BinaryOp\Minus::class:
-                    array_push(
+                case \PhpParser\Node\Expr\BinaryOp\Greater::class:
+                case \PhpParser\Node\Expr\BinaryOp\Smaller::class:
+                case \PhpParser\Node\Expr\BinaryOp\GreaterOrEqual::class:
+                case \PhpParser\Node\Expr\BinaryOp\SmallerOrEqual::class:
+                    ArrayTool::concat(
                         $operations,
                         ...$this->assembleCalculateOperationFromNode(
                             $expression->left,
                             $expression->right,
                             OpCode::_isub,
                             $callback
+                        ),
+                        ...$this->assembleConditions(
+                            $this->convertNodeToOpCode($expression),
+                            [
+                                \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                                    OpCode::_iconst_1
+                                ),
+                            ],
+                            [
+                                \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                                    OpCode::_iconst_0
+                                ),
+                            ]
                         )
                     );
                     break;
-                case \PhpParser\Node\Expr\BinaryOp\Plus::class:
-                    array_push(
-                        $operations,
-                        ...$this->assembleCalculateOperationFromNode(
-                            $expression->left,
-                            $expression->right,
-                            OpCode::_iadd,
-                            $callback
-                        )
-                    );
-                    break;
-                case \PhpParser\Node\Expr\BinaryOp\Mod::class:
-                    array_push(
-                        $operations,
-                        ...$this->assembleCalculateOperationFromNode(
-                            $expression->left,
-                            $expression->right,
-                            OpCode::_irem,
-                            $callback
-                        )
-                    );
-                    break;
+                case \PhpParser\Node\Expr\BinaryOp\NotIdentical::class:
                 case \PhpParser\Node\Expr\BinaryOp\Identical::class:
                     /**
                      * @var \PhpParser\Node\Expr\BinaryOp\Identical $conditionNode
@@ -185,13 +214,13 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     $lastRightOperand = array_slice($rightOperands, -1, 1)[0];
                     switch ([MnemonicResolver::resolveTypeByOpCode($lastLeftOperand), MnemonicResolver::resolveTypeByOpCode($lastRightOperand)]) {
                         case [_Int::class, _Int::class]:
-                            array_push(
+                            ArrayTool::concat(
                                 $operations,
                                 ...$leftOperands,
                                 ...$rightOperands
                             );
 
-                            array_push(
+                            ArrayTool::concat(
                                 $operations,
                                 ...$this->assembleStaticCallMethodOperations(
                                     Integer::class,
@@ -204,9 +233,10 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                                 )
                             );
 
-                            array_push(
+                            ArrayTool::concat(
                                 $operations,
                                 ...$this->assembleConditions(
+                                    $this->convertNodeToOpCode($expression),
                                     [
                                         \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
                                             OpCode::_iconst_1

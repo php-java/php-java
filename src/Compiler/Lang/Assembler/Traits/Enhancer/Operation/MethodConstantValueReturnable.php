@@ -8,6 +8,7 @@ use PHPJava\Compiler\Lang\Assembler\Bundler\Packages\AbstractPackageBundler;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
+use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method ConstantPoolEnhancer getEnhancedConstantPool()
@@ -41,7 +42,7 @@ trait MethodConstantValueReturnable
             );
         } elseif (is_int($value)) {
             $returnOperation = OpCode::_ireturn;
-            array_push(
+            ArrayTool::concat(
                 $operations,
                 ...$this->assembleLoadNumber(
                     $value

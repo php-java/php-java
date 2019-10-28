@@ -28,6 +28,7 @@ use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Kernel\Types\_Short;
 use PHPJava\Utilities\ArrayTool;
+use PHPJava\Utilities\Formatter;
 
 class StackMapTable extends Attribute
 {
@@ -125,6 +126,19 @@ class StackMapTable extends Attribute
         $emulatedAccumulator = new Accumulator();
         $currentOffset = 0;
 
+//        foreach ($this->localVariables as $variableName => $variable) {
+//            [$index, $classType] = $variable;
+//            $emulatedAccumulator
+//                ->setDefaultLocal(
+//                    $index,
+//                    [
+//                        VerificationTypeTag::ITEM_Object,
+//                        $this->getEnhancedConstantPool()
+//                            ->findClass($classType),
+//                    ]
+//                );
+//        }
+
         foreach ($this->operations as $operation) {
             $programCounter = $this->calculateProgramCounterByOperationCodes(
                 $this->operations,
@@ -163,7 +177,7 @@ class StackMapTable extends Attribute
         );
 
         /**
-         * Remove duplicated branch target.
+         * Remove duplicated branch target and frame type was zero.
          *
          * @var FullFrame $previousFrame
          */
@@ -186,7 +200,9 @@ class StackMapTable extends Attribute
             []
         );
 
-        // Build frame
+        /**
+         * @var FullFrame[] $frames
+         */
         $frames = [];
 
         $previousFrame = null;
@@ -206,15 +222,13 @@ class StackMapTable extends Attribute
                 $offsetDelta = $frame->getBranchTarget() - $previousFrame->getBranchTarget() - 1;
             }
 
-            if ((
-                $previousFrame !== null
-                    && ArrayTool::compare($previousFrame->getLocals(), $frame->getLocals())
-                    && ArrayTool::compare($previousFrame->getStacks(), $frame->getStacks())
-            )
-                || ($stacks === 0 && ($locals === 0 || $samePreviousLocalsAndCurrentLocals))
+            if ($stacks === 0
+                && ($locals === 0 || $samePreviousLocalsAndCurrentLocals)
             ) {
                 $entry = SameFrame::init();
-            } elseif ($stacks > 0 && ($locals === 0 || $samePreviousLocalsAndCurrentLocals)) {
+            } elseif ($stacks === 1
+                && ($locals === 0 || $samePreviousLocalsAndCurrentLocals)
+            ) {
                 $entry = SameLocals1StackItemFrame::init();
             } elseif ($stacks === 0 && $locals > 0) {
                 $entry = AppendFrame::init();
@@ -275,11 +289,26 @@ class StackMapTable extends Attribute
                      * @var FullFrame $entry
                      */
                     $writer->writeUnsignedShort($entry->getOffsetDelta());
+                    $locals = [];
+                    foreach ($this->localVariables as $variableName => $variable) {
+                        [$index, $classType, $deepArray] = $variable;
+                        $classType = Formatter::buildSignature($classType, $deepArray);
+                        $locals[$index] = [
+                            VerificationTypeTag::ITEM_Object,
+                            $this->getEnhancedConstantPool()
+                                ->findClass($classType),
+                        ];
+                    }
 
-                    $writer->writeUnsignedShort(count($entry->getLocals()));
+                    ArrayTool::concat(
+                        $locals,
+                        ...$entry->getLocals()
+                    );
+
+                    $writer->writeUnsignedShort(count($locals));
                     $this->writeStackMapTableVerificationSegment(
                         $writer,
-                        $entry->getLocals()
+                        $locals
                     );
 
                     $writer->writeUnsignedShort(count($entry->getStacks()));
@@ -319,7 +348,7 @@ class StackMapTable extends Attribute
                     // Nothing to do.
                     break;
                 case VerificationTypeTag::ITEM_Object:
-                    [$classEntry] = $segment[1];
+                    $classEntry = $segment[1];
                     /**
                      * @var ConstantPoolFinderResult $classEntry
                      */

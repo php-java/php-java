@@ -5,27 +5,32 @@ use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Attributes\Code;
 use PHPJava\Compiler\Builder\Attributes\StackMapTable;
 use PHPJava\Compiler\Builder\Collection\Attributes;
+use PHPJava\Compiler\Builder\Collection\Methods;
 use PHPJava\Compiler\Builder\Method;
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
+use PHPJava\Compiler\Lang\Assembler\Processors\StatementProcessor;
+use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
-use PHPJava\Compiler\Lang\Assembler\Traits\StatementParseable;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Void;
+use PHPJava\Utilities\ArrayTool;
+use PHPJava\Utilities\Formatter;
 
 /**
  * @method ClassAssembler getParentAssembler()
+ * @method Methods getCollection()
  * @property \PhpParser\Node\Stmt\ClassMethod $node
  */
-class MethodAssembler extends AbstractAssembler implements AssemblerInterface
+class MethodAssembler extends AbstractAssembler
 {
     use OperationManageable;
-    use StatementParseable;
     use ConstantPoolEnhanceable;
     use LocalVariableAssignable;
     use LocalVariableLoadable;
+    use Bindable;
 
     protected $attribute;
 
@@ -61,9 +66,7 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
         ));
 
         // Add to methods section
-        $this
-            ->getParentAssembler()
-            ->getMethods()
+        $this->getCollection()
             ->add($method);
 
         $this->attribute = new Attributes();
@@ -95,16 +98,34 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
                     continue;
                 }
 
+                $type = (string) $documentParameter->getType();
+
                 // Update variable detail.
-                $parameters[$documentParameter->getVariableName()] = ltrim(
-                    (string) $documentParameter->getType(),
-                    '\\'
+                $parameters[$documentParameter->getVariableName()] = [
+                    'type' => str_replace(
+                        '[]',
+                        '',
+                        ltrim(
+                            $type,
+                            '\\'
+                        )
+                    ),
+                    'deep_array' => substr_count($type, '[]'),
+                ];
+
+                $className = Formatter::buildSignature(
+                    $parameters[$documentParameter->getVariableName()]['type'],
+                    $parameters[$documentParameter->getVariableName()]['deep_array']
                 );
+
+                $this->getEnhancedConstantPool()
+                    ->addClass($className);
 
                 // Fill local storage number.
                 $this->assembleAssignVariable(
                     $documentParameter->getVariableName(),
-                    $parameters[$documentParameter->getVariableName()]
+                    $parameters[$documentParameter->getVariableName()]['type'],
+                    $parameters[$documentParameter->getVariableName()]['deep_array']
                 );
             }
         }
@@ -112,16 +133,11 @@ class MethodAssembler extends AbstractAssembler implements AssemblerInterface
         $operations = [];
         $defaultLocalVariableOperations = $this->getStore()->getAll();
 
-        $parsed = $this->parseStatement(
-            $this->node->getStmts()
+        ArrayTool::concat(
+            $operations,
+            ...$this->bindParameters(StatementProcessor::factory())
+                ->execute($this->node->getStmts())
         );
-
-        if (!empty($parsed)) {
-            array_push(
-                $operations,
-                ...$parsed
-            );
-        }
 
         $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
             OpCode::_return

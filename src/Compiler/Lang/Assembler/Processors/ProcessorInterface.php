@@ -18,10 +18,10 @@ use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
  * @method StreamReaderInterface getStreamReader()
  * @method ProcessorInterface setStore(Store $store)
  * @method Store getStore()
+ * @method AbstractProcessor setNamespace(?array $namespace)
+ * @method AbstractProcessor setOperation(Operation $operation)
  */
 interface ProcessorInterface
 {
-    public static function factory(): ProcessorInterface;
-
-    public function execute(array $expressions, ?callable $callback = null): array;
+    public function execute(array $nodes, ?callable $callback = null): array;
 }

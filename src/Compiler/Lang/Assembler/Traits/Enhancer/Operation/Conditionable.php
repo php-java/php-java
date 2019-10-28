@@ -7,14 +7,18 @@ use PHPJava\Compiler\Builder\Generator\Operation\ReplaceMarker;
 use PHPJava\Compiler\Builder\Types\Int16;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Kernel\Maps\OpCode;
+use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method ConstantPoolEnhancer getEnhancedConstantPool()
  */
 trait Conditionable
 {
-    public function assembleConditions(array $ifStatementOperations, array $elseStatementOperations): array
-    {
+    public function assembleConditions(
+        int $conditionalOpCode,
+        array $ifStatementOperations,
+        array $elseStatementOperations
+    ): array {
         $operations = [];
 
         // Decide start offset for finding.
@@ -22,10 +26,10 @@ trait Conditionable
             $operations
         );
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...[
-                ReplaceMarker::create(OpCode::_ifne, Int16::class),
+                ReplaceMarker::create($conditionalOpCode, Int16::class),
             ],
             ...$ifStatementOperations,
             ...[
@@ -39,7 +43,7 @@ trait Conditionable
             ) - $startOffset,
         ];
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...$elseStatementOperations
         );
@@ -65,7 +69,7 @@ trait Conditionable
             );
 
             switch ($operation->getOpCode()) {
-                case OpCode::_ifne:
+                case $conditionalOpCode:
                     $operation = Operation::create(
                         $operation->getOpCode(),
                         Operand::factory(

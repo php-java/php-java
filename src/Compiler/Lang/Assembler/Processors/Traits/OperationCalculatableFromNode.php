@@ -4,6 +4,7 @@ namespace PHPJava\Compiler\Lang\Assembler\Processors\Traits;
 use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
+use PHPJava\Utilities\ArrayTool;
 use PhpParser\Node;
 
 /**
@@ -12,23 +13,18 @@ use PhpParser\Node;
  */
 trait OperationCalculatableFromNode
 {
-    private function assembleCalculateOperationFromNode(Node $left, Node $right, int $calculateOpCode, callable $callback): array
+    private function assembleCalculateOperationFromNode(Node $left, Node $right, int $calculateOpCode, ?callable $callback): array
     {
-        //
         // Right operator.
         $operations = [];
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...$this->execute(
                 [
                     // Left operator.
                     $left,
-                ],
-                $callback
-            ),
-            ...$this->execute(
-                [
-                    // Left operator.
+
+                    // Right operator.
                     $right,
                 ],
                 $callback

@@ -3,7 +3,7 @@
 class TestIfStatementAvailableIf
 {
     /**
-     * @param \PHPJava\Packages\java\lang\_String $args
+     * @param \PHPJava\Packages\java\lang\_String[] $args
      */
     public function main($args)
     {

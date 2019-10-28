@@ -8,6 +8,7 @@ use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Void;
+use PHPJava\Utilities\ArrayTool;
 
 /**
  * @method ConstantPoolEnhancer getEnhancedConstantPool()
@@ -39,7 +40,7 @@ trait Castable
 
         $operations = [];
 
-        array_push(
+        ArrayTool::concat(
             $operations,
             ...$this->assembleClassConstructor(
                 $objectClass,

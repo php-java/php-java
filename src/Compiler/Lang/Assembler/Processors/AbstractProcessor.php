@@ -4,8 +4,11 @@ namespace PHPJava\Compiler\Lang\Assembler\Processors;
 use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
+use PHPJava\Compiler\Lang\Assembler\ParameterServiceInterface;
+use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
 
@@ -15,17 +18,19 @@ use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
  * @method ConstantPoolFinder getConstantPoolFinder()
  * @method StreamReaderInterface getStreamReader()
  */
-abstract class AbstractProcessor implements ProcessorInterface
+abstract class AbstractProcessor implements ProcessorInterface, ParameterServiceInterface
 {
     use ConstantPoolManageable;
     use ConstantPoolEnhanceable;
     use StoreManageable;
+    use NamespaceManageable;
+    use Bindable;
 
-    public static function factory(): ProcessorInterface
+    public static function factory(): self
     {
         static $instance;
         return $instance = $instance ?? new static();
     }
 
-    abstract public function execute(array $expressions, ?callable $callback = null): array;
+    abstract public function execute(array $nodes, ?callable $callback = null): array;
 }

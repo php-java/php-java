@@ -59,9 +59,6 @@ class BinaryWriter implements StreamWriterInterface
 
     public function writeShort(int $value): self
     {
-        if ($value < 0) {
-            $value += 0x8000;
-        }
         return $this->writeUnsignedShort($value);
     }
 
