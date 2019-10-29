@@ -192,8 +192,9 @@ class Code extends Attribute
                     ->getResult(false)
                     ->getEntryIndex()
             );
-            $writer->writeUnsignedInt(strlen($attribute->getValue()));
-            $writer->write($attribute->getValue());
+            $value = $attribute->getValue();
+            $writer->writeUnsignedInt(strlen($value));
+            $writer->write($value);
         }
 
         return $writer->getStreamContents();
