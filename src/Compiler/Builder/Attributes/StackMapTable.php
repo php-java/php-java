@@ -126,19 +126,6 @@ class StackMapTable extends Attribute
         $emulatedAccumulator = new Accumulator();
         $currentOffset = 0;
 
-//        foreach ($this->localVariables as $variableName => $variable) {
-//            [$index, $classType] = $variable;
-//            $emulatedAccumulator
-//                ->setDefaultLocal(
-//                    $index,
-//                    [
-//                        VerificationTypeTag::ITEM_Object,
-//                        $this->getEnhancedConstantPool()
-//                            ->findClass($classType),
-//                    ]
-//                );
-//        }
-
         foreach ($this->operations as $operation) {
             $programCounter = $this->calculateProgramCounterByOperationCodes(
                 $this->operations,

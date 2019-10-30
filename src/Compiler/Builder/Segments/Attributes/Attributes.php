@@ -14,21 +14,13 @@ class Attributes extends AbstractAttribute implements AttributeSegmentInterface
             // Write attribute_name_index
             $this->binaryWriter->writeUnsignedShort($attribute->getConstantPoolIndex());
 
+            $value = $attribute->getValue();
+
             // Write attribute_length
-            $this->binaryWriter->writeUnsignedInt(strlen($attribute->getValue()));
+            $this->binaryWriter->writeUnsignedInt(strlen($value));
 
             // Write attribute
-            $this->binaryWriter->write($attribute->getValue());
-
-            if (!$attribute->hasAttribute()) {
-                continue;
-            }
-
-            // Write attributes_count
-            AttributesCount::init($attribute->getAttributes(), $this->constantPool, $this->binaryWriter);
-
-            // Write attributes
-            Attributes::init($attribute->getAttributes(), $this->constantPool, $this->binaryWriter);
+            $this->binaryWriter->write($value);
         }
     }
 }
