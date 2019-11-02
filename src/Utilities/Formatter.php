@@ -132,9 +132,14 @@ class Formatter
         );
     }
 
+    public static function formatClassPath(string $className)
+    {
+        return str_replace('.', '/', $className);
+    }
+
     public static function convertPHPNamespacesToJava(string $className, string $mergeChar = '.'): string
     {
-        $className = str_replace('/', '\\', $className);
+        $className = Formatter::formatClassPath(str_replace('/', '\\', $className));
         $newClassName = explode(
             '.',
             str_replace(
@@ -253,5 +258,12 @@ class Formatter
         }
 
         return '[' . implode(', ', $formattedItems) . ']';
+    }
+
+    public static function getNamespaceAndClassName(string $classPath): array
+    {
+        $namespace = explode('.', $classPath);
+        $className = array_pop($namespace);
+        return [$namespace, $className];
     }
 }

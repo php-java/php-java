@@ -106,6 +106,12 @@ class PHPStandardClass extends AbstractBundler
             (new ClassFileStructure())
                 ->setMinorVersion($minorVersion)
                 ->setMajorVersion($majorVersion)
+                ->setAccessFlags(
+                    (new \PHPJava\Compiler\Builder\Signatures\ClassAccessFlag())
+                        ->enableSuper()
+                        ->enablePublic()
+                        ->make()
+                )
                 ->setThisClass(
                     $this->getEnhancedConstantPool()
                         ->findClass($className)
@@ -151,14 +157,9 @@ class PHPStandardClass extends AbstractBundler
         );
 
         $compiler->compile(
-            fopen(
-                sprintf(
-                    '%s/%s.class',
-                    $this->getStreamReader()->getDistributeDirectory(),
-                    $className
-                ),
-                'w+'
-            )
+            $this
+                ->getStreamReader()
+                ->getDistributeStreamByClassPath($className)
         );
     }
 }

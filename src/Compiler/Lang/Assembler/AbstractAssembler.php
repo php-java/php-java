@@ -2,12 +2,13 @@
 namespace PHPJava\Compiler\Lang\Assembler;
 
 use PHPJava\Compiler\Builder\Method;
-use PHPJava\Compiler\Lang\Assembler\Store\Store;
+use PHPJava\Compiler\Lang\Assembler\Traits\ClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\CollectionManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\MethodAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
-use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
+use PHPJava\Compiler\Lang\Assembler\Traits\StreamManageable;
 use PhpParser\Node;
 
 abstract class AbstractAssembler implements AssemblerInterface, ParameterServiceInterface
@@ -16,21 +17,14 @@ abstract class AbstractAssembler implements AssemblerInterface, ParameterService
     use StoreManageable;
     use NamespaceManageable;
     use CollectionManageable;
+    use StreamManageable;
+    use MethodAssemblerManageable;
+    use ClassAssemblerManageable;
 
     /**
      * @var Node
      */
     protected $node;
-
-    /**
-     * @var StreamReaderInterface
-     */
-    protected $streamReader;
-
-    /**
-     * @var Store
-     */
-    protected $store;
 
     /**
      * @var Method
@@ -48,15 +42,4 @@ abstract class AbstractAssembler implements AssemblerInterface, ParameterService
     }
 
     abstract public function assemble();
-
-    public function setStreamReader(StreamReaderInterface $streamReader): AssemblerInterface
-    {
-        $this->streamReader = $streamReader;
-        return $this;
-    }
-
-    public function getStreamReader(): StreamReaderInterface
-    {
-        return $this->streamReader;
-    }
 }

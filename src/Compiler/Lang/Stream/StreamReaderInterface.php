@@ -11,5 +11,8 @@ interface StreamReaderInterface
 
     public function setDistributeDirectory(string $path): StreamReaderInterface;
 
-    public function getDistributeDirectory(): string;
+    /**
+     * @return resource
+     */
+    public function getDistributeStreamByClassPath(string $classPath);
 }

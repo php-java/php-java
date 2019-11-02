@@ -18,6 +18,10 @@ use PHPJava\Compiler\Lang\Assembler\Store\Store;
  * @method AbstractAssembler|AbstractProcessor setOperation(Operation $operation)
  * @method AbstractAssembler|AbstractProcessor setConstantPoolFinder(ConstantPoolFinder $constantPoolFinder)
  * @method ConstantPoolFinder getConstantPoolFinder()
+ * @method AbstractAssembler|AbstractProcessor setMethodAssembler(MethodAssembler $methodAssembler)
+ * @method MethodAssembler getMethodAssembler()
+ * @method AbstractAssembler|AbstractProcessor setClassAssembler(ClassAssembler $methodAssembler)
+ * @method ClassAssembler getClassAssembler()
  */
 interface ParameterServiceInterface
 {

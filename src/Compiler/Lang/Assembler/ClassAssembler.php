@@ -37,7 +37,13 @@ class ClassAssembler extends AbstractAssembler
 
     public function assemble(): void
     {
-        $this->className = $this->node->name->name;
+        $this->className = implode(
+            '.',
+            array_merge(
+                $this->getNamespace() ?? [],
+                [$this->node->name->name]
+            )
+        );
         [$majorVersion, $minorVersion] = SDKVersionResolver::resolveByVersion(8);
 
         $this->constantPool = new ConstantPool();
@@ -92,7 +98,7 @@ class ClassAssembler extends AbstractAssembler
                                     $this->getConstantPoolFinder()
                                         ->find(
                                             Utf8Info::class,
-                                            $this->className . '.php'
+                                            $this->node->name->name . '.php'
                                         )
                                 )
                                 ->beginPrepare()
@@ -101,20 +107,17 @@ class ClassAssembler extends AbstractAssembler
                 )
                 ->setConstantPool(
                     $this->constantPool
-                        ->add(Utf8Info::factory($this->className . '.php'))
+                        ->add(Utf8Info::factory($this->node->name->name . '.php'))
                         ->toArray()
                 )
         );
 
         $compiler->compile(
-            fopen(
-                sprintf(
-                    '%s/%s.class',
-                    $this->getStreamReader()->getDistributeDirectory(),
+            $this
+                ->getStreamReader()
+                ->getDistributeStreamByClassPath(
                     $this->className
-                ),
-                'w+'
-            )
+                )
         );
     }
 
