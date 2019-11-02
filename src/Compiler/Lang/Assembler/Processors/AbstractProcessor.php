@@ -6,10 +6,13 @@ use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\ParameterServiceInterface;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
+use PHPJava\Compiler\Lang\Assembler\Traits\ClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\MethodAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\StreamManageable;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
 
 /**
@@ -25,6 +28,9 @@ abstract class AbstractProcessor implements ProcessorInterface, ParameterService
     use StoreManageable;
     use NamespaceManageable;
     use Bindable;
+    use StreamManageable;
+    use MethodAssemblerManageable;
+    use ClassAssemblerManageable;
 
     public static function factory(): self
     {

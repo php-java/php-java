@@ -4,7 +4,9 @@ namespace PHPJava\Compiler\Lang\Assembler\Traits;
 use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;
+use PHPJava\Compiler\Lang\Assembler\ClassAssembler;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
+use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
 use PHPJava\Compiler\Lang\Assembler\ParameterServiceInterface;
 use PHPJava\Compiler\Lang\Assembler\Processors\AbstractProcessor;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
@@ -28,6 +30,17 @@ trait Bindable
             ->setConstantPool($this->getConstantPool())
             ->setConstantPoolFinder($this->getConstantPoolFinder())
             ->setOperation($this->getOperation())
+            ->setStreamReader($this->getStreamReader())
+            ->setClassAssembler(
+                $this instanceof ClassAssembler
+                    ? $this
+                    : $this->getClassAssembler()
+            )
+            ->setMethodAssembler(
+                $this instanceof MethodAssembler
+                    ? $this
+                    : $this->getMethodAssembler()
+            )
             ->setStore($this->getStore());
     }
 }

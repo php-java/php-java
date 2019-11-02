@@ -2,6 +2,7 @@
 namespace PHPJava\Compiler\Lang\Stream;
 
 use PHPJava\Exceptions\AssembleStructureException;
+use PHPJava\Utilities\Formatter;
 
 abstract class AbstractStream implements StreamReaderInterface
 {
@@ -32,7 +33,10 @@ abstract class AbstractStream implements StreamReaderInterface
         return $this;
     }
 
-    public function getDistributeDirectory(): string
+    /**
+     * @return resource
+     */
+    public function getDistributeStreamByClassPath(string $classPath)
     {
         if (!isset($this->distributeDirectory)) {
             throw new AssembleStructureException(
@@ -40,6 +44,17 @@ abstract class AbstractStream implements StreamReaderInterface
                 'You must to set distribution directory with the `setDistributeDirectory` method on StreamInterface.'
             );
         }
-        return $this->distributeDirectory;
+
+        [$namespace, $className] = Formatter::getNamespaceAndClassName($classPath);
+        $path = $this->distributeDirectory . '/' . implode('/', $namespace);
+        @mkdir(
+            $path,
+            0777,
+            true
+        );
+        return fopen(
+            $path . '/' . $className . '.class',
+            'w+'
+        );
     }
 }

@@ -9,7 +9,6 @@ use PHPJava\Compiler\Builder\Attributes\Architects\Frames\SameFrame;
 use PHPJava\Compiler\Builder\Attributes\Architects\Frames\SameFrameExtended;
 use PHPJava\Compiler\Builder\Attributes\Architects\Frames\SameLocals1StackItemFrame;
 use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;
-use PHPJava\Compiler\Builder\Structures\Info\StringInfo;
 use PHPJava\Compiler\Emulator\Accumulator;
 use PHPJava\Compiler\Emulator\Mnemonics\AbstractOperationCode;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
@@ -18,9 +17,7 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
 use PHPJava\Core\PHPJava;
 use PHPJava\Exceptions\AssembleStructureException;
-use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Maps\VerificationTypeTag;
-use PHPJava\Kernel\Mnemonics\OperationCodeInterface;
 use PHPJava\Kernel\Types\_Byte;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Float;
@@ -74,38 +71,6 @@ class StackMapTable extends Attribute
                 default:
                     $this->getEnhancedConstantPool()
                         ->addClass($type);
-                    break;
-            }
-        }
-
-        foreach ($this->operations as $operation) {
-            $mnemonic = Runtime::MNEMONIC_NAMESPACE . '\\' . $operation->getMnemonic();
-            /**
-             * @var OperationCodeInterface $opcodeInstance
-             */
-            $opcodeInstance = new $mnemonic();
-
-            if (!$opcodeInstance->isStackingOperation()) {
-                continue;
-            }
-            switch ($operation->getOpCode()) {
-                case OpCode::_ldc:
-                case OpCode::_ldc_w:
-                case OpCode::_ldc2_w:
-                    /**
-                     * @var ConstantPoolFinderResult $finderResult
-                     */
-                    $finderResult = $operation->getOperand(0)->getValue();
-                    switch (get_class($finderResult->getResult(false)->getEntry())) {
-                        case StringInfo::class:
-                            $this->getEnhancedConstantPool()
-                                ->addClass(\PHPJava\Packages\java\lang\_String::class);
-                            break;
-                        default:
-                            throw new AssembleStructureException(
-                                'Unsupported entry type: ' . get_class($finderResult->getResult()->getEntry())
-                            );
-                    }
                     break;
             }
         }

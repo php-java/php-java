@@ -136,6 +136,8 @@ class MethodAssembler extends AbstractAssembler
         ArrayTool::concat(
             $operations,
             ...$this->bindParameters(StatementProcessor::factory())
+                ->setMethodAssembler($this)
+                ->setClassAssembler($this->getClassAssembler())
                 ->execute($this->node->getStmts())
         );
 

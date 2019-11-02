@@ -30,9 +30,7 @@ trait MagicConstLoadableFromNode
                 /**
                  * @var ClassAssembler $class
                  */
-                $class = $this->recurseParentUntilBy(
-                    ClassAssembler::class
-                );
+                $class = $this->getClassAssembler();
 
                 $this->getEnhancedConstantPool()
                     ->addString($class->getClassName());
@@ -52,16 +50,12 @@ trait MagicConstLoadableFromNode
                 /**
                  * @var ClassAssembler $class
                  */
-                $class = $this->recurseParentUntilBy(
-                    ClassAssembler::class
-                );
+                $class = $this->getClassAssembler();
 
                 /**
                  * @var MethodAssembler $method
                  */
-                $method = $this->recurseParentUntilBy(
-                    MethodAssembler::class
-                );
+                $method = $this->getMethodAssembler();
 
                 $methodName = $class->getClassName() . '::' . $method->getMethodName();
 
@@ -132,9 +126,7 @@ trait MagicConstLoadableFromNode
                 /**
                  * @var MethodAssembler $method
                  */
-                $method = $this->recurseParentUntilBy(
-                    MethodAssembler::class
-                );
+                $method = $this->getMethodAssembler();
 
                 $methodName = $method->getMethodName();
 
