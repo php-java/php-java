@@ -13,87 +13,75 @@ class Constants extends AbstractPackageBundler implements PackageBundlerInterfac
     use MethodConstantValueReturnable;
     use NumberLoadable;
 
-    public function getPHPVersion(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            PHP_VERSION
-        );
-    }
+    /**
+     * @var \PHPJava\Packages\java\lang\_String
+     * @export
+     */
+    const PHP_VERSION = PHP_VERSION;
 
-    public function getPHPMajorVersion(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            PHP_MAJOR_VERSION
-        );
-    }
+    /**
+     * @var \PHPJava\Kernel\Types\_Int
+     * @export
+     */
+    const PHP_MAJOR_VERSION = PHP_MAJOR_VERSION;
 
-    public function getPHPMinorVersion(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            PHP_MINOR_VERSION
-        );
-    }
+    /**
+     * @var \PHPJava\Kernel\Types\_Int
+     * @export
+     */
+    const PHP_MINOR_VERSION = PHP_MINOR_VERSION;
 
-    public function getPHPReleaseVersion(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            PHP_RELEASE_VERSION
-        );
-    }
+    /**
+     * @var \PHPJava\Kernel\Types\_Int
+     * @export
+     */
+    const PHP_RELEASE_VERSION = PHP_RELEASE_VERSION;
 
-    public function getPHPVersionID(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            PHP_VERSION_ID
-        );
-    }
+    /**
+     * @var \PHPJava\Kernel\Types\_Int
+     * @export
+     */
+    const PHP_VERSION_ID = PHP_VERSION_ID;
 
-    public function getPHPExtraVersion(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            PHP_EXTRA_VERSION
-        );
-    }
+    /**
+     * @var
+     * @export
+     */
+    const PHP_EXTRA_VERSION = PHP_EXTRA_VERSION;
 
-    public function getPHPEOL(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            PHP_EOL
-        );
-    }
+    /**
+     * @var \PHPJava\Packages\java\lang\_String
+     * @export
+     */
+    const PHP_EOL = PHP_EOL;
 
-    public function getPHPIntMax(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            (string) PHP_INT_MAX
-        );
-    }
+    /**
+     * @var \PHPJava\Packages\java\lang\_String
+     * @export
+     */
+    const PHP_INT_MAX = PHP_INT_MAX;
 
-    public function getPHPIntMin(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            (string) PHP_INT_MIN
-        );
-    }
+    /**
+     * @var \PHPJava\Packages\java\lang\_String
+     * @export
+     */
+    const PHP_INT_MIN = PHP_INT_MIN;
 
-    public function getPHPFloatEpsilon(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            (string) PHP_FLOAT_EPSILON
-        );
-    }
+    /**
+     * @var \PHPJava\Packages\java\lang\_String
+     * @export
+     */
+    const PHP_FLOAT_EPSILON = PHP_FLOAT_EPSILON;
 
-    public function getPHPFloatMin(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            (string) PHP_FLOAT_MIN
-        );
-    }
+    /**
+     * @var \PHPJava\Packages\java\lang\_String
+     * @export
+     */
+    const PHP_FLOAT_MIN = PHP_FLOAT_MIN;
 
-    public function getPHPFloatMax(): array
-    {
-        return $this->assembleSimpleMethodConstantValueReturn(
-            (string) PHP_FLOAT_MAX
-        );
-    }
+    /**
+     * @var \PHPJava\Packages\java\lang\_String
+     * @export
+     */
+    const PHP_FLOAT_MAX = PHP_FLOAT_MAX;
 }

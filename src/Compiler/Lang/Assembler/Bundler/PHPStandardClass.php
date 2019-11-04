@@ -1,19 +1,23 @@
 <?php
 namespace PHPJava\Compiler\Lang\Assembler\Bundler;
 
-use PHPJava\Compiler\Builder\Attributes\Code;
 use PHPJava\Compiler\Builder\Attributes\PHPJavaSignature;
 use PHPJava\Compiler\Builder\Attributes\SourceFile;
 use PHPJava\Compiler\Builder\Collection\Attributes;
 use PHPJava\Compiler\Builder\Collection\ConstantPool;
+use PHPJava\Compiler\Builder\Collection\Fields;
 use PHPJava\Compiler\Builder\Collection\Methods;
+use PHPJava\Compiler\Builder\Field;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
-use PHPJava\Compiler\Builder\Method;
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
+use PHPJava\Compiler\Builder\Signatures\FieldAccessFlag;
 use PHPJava\Compiler\Builder\Structures\ClassFileStructure;
 use PHPJava\Compiler\Builder\Structures\Info\Utf8Info;
 use PHPJava\Compiler\Compiler;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\FieldAssignable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
+use PHPJava\Compiler\Lang\Assembler\Traits\StaticInitializerAssignable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
 use PHPJava\Packages\java\lang\_Object;
@@ -21,6 +25,9 @@ use PHPJava\Packages\java\lang\_Object;
 class PHPStandardClass extends AbstractBundler
 {
     use ConstantPoolEnhanceable;
+    use NumberLoadable;
+    use FieldAssignable;
+    use StaticInitializerAssignable;
 
     const BUNDLE_PACKAGES = [
         \PHPJava\Compiler\Lang\Assembler\Bundler\Packages\Constants::class,
@@ -37,63 +44,39 @@ class PHPStandardClass extends AbstractBundler
         $this->constantPoolFinder = new ConstantPoolFinder($this->constantPool);
 
         $this->methods = new Methods();
+        $this->fields = new Fields();
 
         foreach (static::BUNDLE_PACKAGES as $package) {
             /**
              * @var PackageBundlerInterface $package
              */
-            $packageInstance = $package::factory($this);
-            foreach ($packageInstance->getDefinedMethods() as [$methodName, $argumentSignature, $returnSignature]) {
-                $defaultMethodName = $methodName;
-                $methodName = Runtime::PHP_STANDARD_CLASS_METHOD_PREFIX . $methodName;
+            $packageInstance = $package::factory()
+                ->setConstantPool($this->constantPool);
 
-                $descriptor = new Descriptor();
-                foreach ($argumentSignature as $argument) {
-                    $descriptor
-                        ->addArgument($argument);
-                }
-                $descriptor = $descriptor
-                    ->setReturn($returnSignature)
-                    ->make();
-
+            foreach ($packageInstance->getDefinedConstants() as [$name, $value, $returnSignature]) {
                 $this->getEnhancedConstantPool()
-                    ->addMethodref(
+                    ->addFieldref(
                         $className,
-                        $methodName,
-                        $descriptor
+                        $name,
+                        $descriptor = (new Descriptor())
+                            ->addArgument($returnSignature)
+                            ->make()
                     );
-
-                // Call functions
-                $functionOperationCodes = call_user_func([$packageInstance, $defaultMethodName]);
-
-                $this->methods
+                $this->fields
                     ->add(
-                        (new Method(
-                            (new \PHPJava\Compiler\Builder\Signatures\MethodAccessFlag())
+                        (new Field(
+                            (new FieldAccessFlag())
                                 ->enablePublic()
                                 ->enableStatic()
+                                ->enableFinal()
                                 ->make(),
-                            $this->getConstantPoolFinder()
-                                ->find(
-                                    Utf8Info::class,
-                                    $methodName
-                                ),
-                            $this->getConstantPoolFinder()->find(
-                                Utf8Info::class,
-                                $descriptor
-                            )
+                            $className,
+                            $name,
+                            $descriptor
                         ))
-                            ->setAttributes(
-                                (new Attributes())
-                                    ->add(
-                                        (new Code())
-                                            ->setConstantPool($this->getConstantPool())
-                                            ->setConstantPoolFinder($this->getConstantPoolFinder())
-                                            ->setCode($functionOperationCodes)
-                                            ->beginPrepare()
-                                    )
-                                    ->toArray()
-                            )
+                            ->setConstantPool($this->getConstantPool())
+                            ->setConstantPoolFinder($this->getConstantPoolFinder())
+                            ->setValue($value)
                     );
             }
         }
@@ -101,6 +84,8 @@ class PHPStandardClass extends AbstractBundler
         $this->getEnhancedConstantPool()
             ->addClass($className)
             ->addClass(_Object::class);
+
+        $this->assignStaticInitializer($className);
 
         $compiler = new Compiler(
             (new ClassFileStructure())
@@ -123,6 +108,11 @@ class PHPStandardClass extends AbstractBundler
                 ->setMethods(
                     $this
                         ->methods
+                        ->toArray()
+                )
+                ->setFields(
+                    $this
+                        ->fields
                         ->toArray()
                 )
                 ->setAttributes(

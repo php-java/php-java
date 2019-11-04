@@ -5,13 +5,14 @@ use PHPJava\Compiler\Builder\Maps\EntryMap;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 
-class Method implements BuilderInterface, EntryInterface
+class Field implements BuilderInterface, EntryInterface
 {
     use ConstantPoolManageable;
     use ConstantPoolEnhanceable;
 
     private $attributes = [];
     private $accessFlags = 0;
+    protected $value;
 
     /**
      * @var string
@@ -93,5 +94,16 @@ class Method implements BuilderInterface, EntryInterface
     {
         $this->attributes = $attributes;
         return $this;
+    }
+
+    public function setValue(string $value): self
+    {
+        $this->value = $value;
+        return $this;
+    }
+
+    public function getValue(): string
+    {
+        return $this->value;
     }
 }

@@ -23,7 +23,7 @@ use PHPJava\Kernel\Types\_Short;
  */
 trait NumberLoadable
 {
-    public function assembleLoadNumber(int $value, string &$type = null)
+    public function assembleLoadNumber(int $value, string &$type = null): array
     {
         $loadOperation = null;
         $loadOperand = null;

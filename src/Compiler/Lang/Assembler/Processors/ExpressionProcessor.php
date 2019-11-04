@@ -13,6 +13,7 @@ use PHPJava\Compiler\Lang\Assembler\Processors\Traits\StringLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\VariableLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Conditionable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\FieldLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\MethodCallable;
@@ -33,6 +34,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
     use OperationManageable;
     use OperationCalculatableFromNode;
     use NodeConvertible;
+    use FieldLoadable;
     use ConstLoadableFromNode;
     use MagicConstLoadableFromNode;
     use StringLoadableFromNode;

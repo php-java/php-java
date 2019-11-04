@@ -54,16 +54,19 @@ class MethodAssembler extends AbstractAssembler
                 $descriptor
             );
 
-        $method = (new Method(
-            (new \PHPJava\Compiler\Builder\Signatures\MethodAccessFlag())
-                ->enablePublic()
-                ->enableStatic()
-                ->make(),
-            $this->getEnhancedConstantPool()
-                ->findUtf8($this->methodName),
-            $this->getEnhancedConstantPool()
-                ->findUtf8($descriptor)
-        ));
+        $method = (
+            new Method(
+                (new \PHPJava\Compiler\Builder\Signatures\MethodAccessFlag())
+                    ->enablePublic()
+                    ->enableStatic()
+                    ->make(),
+                $this->getClassAssembler()->getClassName(),
+                $this->methodName,
+                $descriptor
+            )
+        )
+            ->setConstantPool($this->getConstantPool())
+            ->setConstantPoolFinder($this->getConstantPoolFinder());
 
         // Add to methods section
         $this->getCollection()

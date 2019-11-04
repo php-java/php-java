@@ -47,10 +47,12 @@ $enhancedConstantPool = ConstantPoolEnhancer::factory(
     $finder
 );
 
+$className = 'HelloWorld';
+
 $enhancedConstantPool
     ->addString('Hello PHPJava Compiler!')
     ->addClass(_Object::class)
-    ->addClass('HelloWorld')
+    ->addClass($className)
     ->addClass(System::class)
     ->addClass(PrintStream::class)
     ->addFieldref(
@@ -85,7 +87,7 @@ $compiler = new Compiler(
                 ->enableSuper()
                 ->make()
         )
-        ->setThisClass($enhancedConstantPool->findClass('HelloWorld'))
+        ->setThisClass($enhancedConstantPool->findClass($className))
         ->setSuperClass($enhancedConstantPool->findClass(_Object::class))
         ->setMethods(
             (new Methods())
@@ -95,14 +97,15 @@ $compiler = new Compiler(
                             ->enablePublic()
                             ->enableStatic()
                             ->make(),
-                        $enhancedConstantPool->findUtf8('main'),
-                        $enhancedConstantPool->findUtf8(
-                            (new Descriptor())
-                                ->addArgument(_String::class, 1)
-                                ->setReturn(_Void::class)
-                                ->make()
-                        )
+                        $className,
+                        'main',
+                        (new Descriptor())
+                            ->addArgument(_String::class, 1)
+                            ->setReturn(_Void::class)
+                            ->make()
                     ))
+                        ->setConstantPool($constantPool)
+                        ->setConstantPoolFinder($finder)
                         ->setAttributes(
                             (new Attributes())
                                 ->add(
@@ -160,7 +163,7 @@ $compiler = new Compiler(
         ->setConstantPool($constantPool->toArray())
 );
 
-$compiler->compile(fopen('HelloWorld.class', 'w+'));
+$compiler->compile(fopen($className . '.class', 'w+'));
 ```
 
 Run `java` command after the `HelloWorld.class` file is generated.

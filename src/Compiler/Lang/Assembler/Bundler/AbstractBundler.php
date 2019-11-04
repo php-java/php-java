@@ -3,6 +3,7 @@
 namespace PHPJava\Compiler\Lang\Assembler\Bundler;
 
 use PHPJava\Compiler\Builder\Collection\ConstantPool;
+use PHPJava\Compiler\Builder\Collection\Fields;
 use PHPJava\Compiler\Builder\Collection\Methods;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
@@ -26,6 +27,11 @@ abstract class AbstractBundler
      * @var Methods
      */
     protected $methods;
+
+    /**
+     * @var Fields
+     */
+    protected $fields;
 
     /**
      * @var StreamReaderInterface
