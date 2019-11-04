@@ -13,8 +13,12 @@ use PHPJava\Utilities\ArrayTool;
  */
 trait ClassConstractable
 {
-    public function assembleClassConstructor(string $classPath, string $descriptor, bool $returnClass = true, Operation ...$arguments)
-    {
+    public function assembleClassConstructor(
+        string $classPath,
+        string $descriptor,
+        bool $returnClass = true,
+        Operation ...$arguments
+    ): array {
         $this->getEnhancedConstantPool()
             ->addClass(
                 $classPath

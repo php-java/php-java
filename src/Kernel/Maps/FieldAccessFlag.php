@@ -9,7 +9,7 @@ class FieldAccessFlag extends Map
     const ACC_STATIC = 0x0008;
     const ACC_FINAL = 0x0010;
     const ACC_Volatile = 0x0040;
-    const ACC_Transient = 0x0080;
+    const ACC_TRANSIENT = 0x0080;
     const ACC_SYNTHETIC = 0x1000;
     const ACC_ENUM = 0x4000;
 }

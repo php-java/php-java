@@ -36,4 +36,19 @@ class ArrayTool
     {
         return static::stringify($array1) === static::stringify($array2);
     }
+
+    public static function containInMultipleDimension(array $array, $targetKey, $value): ?array
+    {
+        foreach ($array as $element) {
+            if (!is_array($element)) {
+                return false;
+            }
+            if (array_key_exists($targetKey, $element)
+                && $element[$targetKey] === $value
+            ) {
+                return $element;
+            }
+        }
+        return null;
+    }
 }

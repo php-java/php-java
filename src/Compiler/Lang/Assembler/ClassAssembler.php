@@ -6,6 +6,7 @@ use PHPJava\Compiler\Builder\Attributes\PHPJavaSignature;
 use PHPJava\Compiler\Builder\Attributes\SourceFile;
 use PHPJava\Compiler\Builder\Collection\Attributes;
 use PHPJava\Compiler\Builder\Collection\ConstantPool;
+use PHPJava\Compiler\Builder\Collection\Fields;
 use PHPJava\Compiler\Builder\Collection\Methods;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Builder\Structures\ClassFileStructure;
@@ -15,6 +16,8 @@ use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\StaticInitializerAssignable;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
 use PHPJava\Packages\java\lang\_Object;
 use PhpParser\Node;
@@ -27,11 +30,17 @@ class ClassAssembler extends AbstractAssembler
     use OperationManageable;
     use ConstantPoolEnhanceable;
     use Bindable;
+    use StaticInitializerAssignable;
 
     /**
      * @var Methods
      */
     protected $methods;
+
+    /**
+     * @var Fields
+     */
+    protected $fields;
 
     protected $className;
 
@@ -50,6 +59,7 @@ class ClassAssembler extends AbstractAssembler
         $this->constantPoolFinder = new ConstantPoolFinder($this->constantPool);
 
         $this->methods = new Methods();
+        $this->fields = new Fields();
 
         foreach ($this->node->getMethods() as $method) {
             $this->setOperation(new Operation())
@@ -61,7 +71,11 @@ class ClassAssembler extends AbstractAssembler
 
         $this->getEnhancedConstantPool()
             ->addClass($this->className)
-            ->addClass(_Object::class);
+            ->addClass(_Object::class)
+            ->addClass(Runtime::PHP_STANDARD_CLASS_NAME);
+
+        // TODO: Implement fields.
+        $this->assignStaticInitializer($this->className);
 
         $compiler = new Compiler(
             (new ClassFileStructure())
@@ -80,6 +94,11 @@ class ClassAssembler extends AbstractAssembler
                 ->setMethods(
                     $this
                         ->methods
+                        ->toArray()
+                )
+                ->setFields(
+                    $this
+                        ->fields
                         ->toArray()
                 )
                 ->setAttributes(

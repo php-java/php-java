@@ -47,11 +47,9 @@ abstract class AbstractStream implements StreamReaderInterface
 
         [$namespace, $className] = Formatter::getNamespaceAndClassName($classPath);
         $path = $this->distributeDirectory . '/' . implode('/', $namespace);
-        @mkdir(
-            $path,
-            0777,
-            true
-        );
+        if (!is_dir($path)) {
+            mkdir($path, 0777, true);
+        }
         return fopen(
             $path . '/' . $className . '.class',
             'w+'

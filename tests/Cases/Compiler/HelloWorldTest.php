@@ -45,10 +45,12 @@ class HelloWorldTest extends Base
             $finder
         );
 
+        $className = 'HelloWorld';
+
         $enhancedConstantPool
             ->addString('Hello PHPJava Compiler!')
             ->addClass(_Object::class)
-            ->addClass('HelloWorld')
+            ->addClass($className)
             ->addClass(System::class)
             ->addClass(PrintStream::class)
             ->addFieldref(
@@ -83,7 +85,7 @@ class HelloWorldTest extends Base
                         ->enableSuper()
                         ->make()
                 )
-                ->setThisClass($enhancedConstantPool->findClass('HelloWorld'))
+                ->setThisClass($enhancedConstantPool->findClass($className))
                 ->setSuperClass($enhancedConstantPool->findClass(_Object::class))
                 ->setMethods(
                     (new Methods())
@@ -93,14 +95,15 @@ class HelloWorldTest extends Base
                                     ->enablePublic()
                                     ->enableStatic()
                                     ->make(),
-                                $enhancedConstantPool->findUtf8('main'),
-                                $enhancedConstantPool->findUtf8(
-                                    (new Descriptor())
-                                        ->addArgument(_String::class, 1)
-                                        ->setReturn(_Void::class)
-                                        ->make()
-                                )
+                                $className,
+                                'main',
+                                (new Descriptor())
+                                    ->addArgument(_String::class, 1)
+                                    ->setReturn(_Void::class)
+                                    ->make()
                             ))
+                                ->setConstantPool($constantPool)
+                                ->setConstantPoolFinder($finder)
                                 ->setAttributes(
                                     (new Attributes())
                                         ->add(
@@ -164,7 +167,7 @@ class HelloWorldTest extends Base
         $javaClass = new JavaClass(
             new JavaCompiledClass(
                 new InlineReader(
-                    'HelloWorld',
+                    $className,
                     stream_get_contents($source)
                 )
             )
