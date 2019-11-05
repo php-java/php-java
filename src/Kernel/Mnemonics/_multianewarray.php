@@ -47,7 +47,7 @@ final class _multianewarray extends AbstractOperationCode implements OperationCo
         $multiDimensionArray = $this->makeMultiDimensionArray(
             $data,
             $counts,
-            $descriptor[0]['class_name'] ?? $descriptor[0]['type'],
+            $descriptor[0]['type'],
             0,
             $dimensions
         );

@@ -96,8 +96,7 @@ class JavaClass implements JavaClassInterface
     public static function load(string $classPath, array $options = [], bool $enableInstantiated = true): JavaClass
     {
         static $loaded = [];
-
-        $classPath = str_replace('/', '.', $classPath);
+        $classPath = str_replace('/', '.', Formatter::convertPHPNamespacesToJava($classPath));
 
         if (isset($loaded[$classPath]) && !$enableInstantiated) {
             return $loaded[$classPath];

@@ -10,6 +10,7 @@ use PHPJava\Kernel\Types\_Float;
 use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Long;
 use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\_Void;
 use PHPJava\Utilities\Formatter;
 
 class Descriptor implements DescriptorInterface
@@ -50,6 +51,7 @@ class Descriptor implements DescriptorInterface
                         case _Long::class:
                         case _Short::class:
                         case _Int::class:
+                        case _Void::class:
                             $string .= TypeResolver::resolveSignatureByType($type);
                             break;
                         default:

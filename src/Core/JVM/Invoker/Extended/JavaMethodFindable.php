@@ -66,9 +66,7 @@ trait JavaMethodFindable
             }
             if (($this->options['validation']['method']['arguments_count_only'] ?? GlobalOptions::get('validation.method.arguments_count_only') ?? Runtime::VALIDATION_METHOD_ARGUMENTS_COUNT_ONLY) === true) {
                 $size = count($formattedArguments);
-                $passedArgumentsSize = count(
-                    $arguments
-                );
+                $passedArgumentsSize = count($arguments);
 
                 if ($size === $passedArgumentsSize) {
                     return $methodReference;

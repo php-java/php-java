@@ -5,6 +5,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Resolvers\MethodNameResolver;
+use PHPJava\Kernel\Types\_Void;
 use PHPJava\Utilities\CompareTool;
 use PHPJava\Utilities\Formatter;
 
@@ -121,7 +122,7 @@ final class _invokespecial extends AbstractOperationCode implements OperationCod
             return;
         }
 
-        if ($parsedSignature[0]['type'] !== 'void') {
+        if ($parsedSignature[0]['type'] !== _Void::class) {
             $this->pushToOperandStack(
                 Normalizer::normalizeReturnValue(
                     $result,

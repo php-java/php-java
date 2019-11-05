@@ -8,6 +8,8 @@ use PHPJava\Compiler\Builder\Types\Uint8;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
+use PHPJava\Kernel\Resolvers\TypeResolver;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Utilities\ArrayTool;
 use PHPJava\Utilities\Formatter;
 
@@ -23,31 +25,32 @@ trait FieldAssignable
 
         $parsedSignature = Formatter::parseSignature($descriptor);
 
-        switch ($parsedSignature[0]['type']) {
-            case 'class':
-                $this->getEnhancedConstantPool()
-                    ->addString($value);
-                $operations[] = Operation::create(
-                    OpCode::_ldc,
-                    Operand::factory(
-                        Uint8::class,
-                        $this->getEnhancedConstantPool()
-                            ->findString($value)
-                    )
-                );
-                break;
-            case 'int':
-                ArrayTool::concat(
-                    $operations,
-                    ...$this->assembleLoadNumber(
-                        $value
-                    )
-                );
-                break;
-            default:
-                throw new AssembleStructureException(
-                    'Unsupported signature type: ' . $descriptor
-                );
+        if (!TypeResolver::isPrimitive($parsedSignature[0]['type'])) {
+            $this->getEnhancedConstantPool()
+                ->addString($value);
+            $operations[] = Operation::create(
+                OpCode::_ldc,
+                Operand::factory(
+                    Uint8::class,
+                    $this->getEnhancedConstantPool()
+                        ->findString($value)
+                )
+            );
+        } else {
+            switch ($parsedSignature[0]['type']) {
+                case _Int::class:
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleLoadNumber(
+                            $value
+                        )
+                    );
+                    break;
+                default:
+                    throw new AssembleStructureException(
+                        'Unsupported signature type: ' . $descriptor
+                    );
+            }
         }
 
         $operations[] = Operation::create(

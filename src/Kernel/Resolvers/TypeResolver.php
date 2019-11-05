@@ -36,24 +36,24 @@ class TypeResolver
     ];
 
     const AMBIGUOUS_TYPES_ON_PHP = [
-        'long' => 'int',
-        'double' => 'float',
+        _Long::class => _Int::class,
+        _Double::class => _Float::class,
         // Char is same as Int on Java, but strict mode cannot decide Int or String on PHPJava.
         // 'char'   => 'int',
-        'byte' => 'int',
-        'short' => 'int',
+        _Byte::class => _Int::class,
+        _Short::class => _Int::class,
     ];
 
     const SIGNATURE_MAP = [
-        'B' => 'byte',
-        'C' => 'char',
-        'D' => 'double',
-        'F' => 'float',
-        'I' => 'int',
-        'J' => 'long',
-        'S' => 'short',
-        'V' => 'void',
-        'Z' => 'boolean',
+        'B' => _Byte::class,
+        'C' => _Char::class,
+        'D' => _Double::class,
+        'F' => _Float::class,
+        'I' => _Int::class,
+        'J' => _Long::class,
+        'S' => _Short::class,
+        'V' => _Void::class,
+        'Z' => _Boolean::class,
         'L' => 'class',
     ];
 
@@ -78,10 +78,10 @@ class TypeResolver
     ];
 
     const PHP_TO_JAVA_MAP = [
-        'integer' => 'int',
-        'string' => 'java.lang.String',
-        'float' => 'double',
-        'double' => 'double',
+        'integer' => _Int::class,
+        'string' => _String::class,
+        'float' => _Double::class,
+        'double' => _Double::class,
     ];
 
     /**
@@ -97,19 +97,11 @@ class TypeResolver
 
     public static function resolveSignatureByType(string $classType): string
     {
-        $typesMap = array_flip(static::TYPES_MAP);
         $signatureMap = array_flip(static::SIGNATURE_MAP);
-
-        $typeName = $typesMap[$classType] ?? null;
-
-        if ($typeName === null) {
-            throw new TypeException('Unknown type name: ' . $typeName);
-        }
-
-        $signatureName = $signatureMap[$typeName] ?? null;
+        $signatureName = $signatureMap[$classType] ?? null;
 
         if ($signatureName === null) {
-            throw new TypeException('Unknown signature: ' . $typeName);
+            throw new TypeException('Unknown signature: ' . $classType);
         }
 
         return $signatureName;
@@ -151,11 +143,9 @@ class TypeResolver
      */
     public static function getType(array $signatureArray): array
     {
-        $type = $signatureArray['type'];
+        $typeName = $type = $signatureArray['type'];
         $signatureType = static::IS_PRIMITIVE;
-        $typeName = static::TYPES_MAP[strtolower($type)] ?? null;
-        if ($type === 'class') {
-            $typeName = Runtime::PHP_PACKAGES_NAMESPACE . '\\' . str_replace('/', '\\', $signatureArray['class_name']);
+        if (!static::isPrimitive($type)) {
             $signatureType = static::IS_CLASS;
         }
         if ($signatureArray['deep_array'] > 0) {
@@ -193,7 +183,7 @@ class TypeResolver
      * @throws TypeException
      * @return (int|string)[]
      */
-    public static function convertPHPtoJava($arguments, string $defaultJavaArgumentType = 'java.lang.String'): array
+    public static function convertPHPtoJava($arguments, string $defaultJavaArgumentType = _String::class): array
     {
         $phpType = gettype($arguments);
         $deepArray = 0;
@@ -206,10 +196,9 @@ class TypeResolver
             if (empty($getNestedValues)) {
                 $flipped = array_flip(static::PHP_TYPE_MAP);
                 $resolveType = static::SIGNATURE_MAP[static::resolve($defaultJavaArgumentType)[0]];
-                if ($resolveType === 'class') {
+                if (!static::isPrimitive($resolveType)) {
                     return [
-                        'type' => $resolveType,
-                        'class_name' => $defaultJavaArgumentType,
+                        'type' => $defaultJavaArgumentType,
                         'deep_array' => $deepArray,
                     ];
                 }
@@ -227,8 +216,7 @@ class TypeResolver
         if ($phpType === 'object') {
             if ($arguments instanceof JavaClassInterface) {
                 return [
-                    'type' => 'class',
-                    'class_name' => Formatter::convertPHPNamespacesToJava(
+                    'type' => Formatter::convertPHPNamespacesToJava(
                         $arguments->getClassName()
                     ),
                     'deep_array' => $deepArray,
@@ -236,7 +224,7 @@ class TypeResolver
             }
             if ($arguments instanceof PrimitiveValueInterface) {
                 return [
-                    'type' => $arguments->getTypeNameInJava(),
+                    'type' => get_class($arguments),
                     'deep_array' => $deepArray,
                 ];
             }
@@ -250,13 +238,13 @@ class TypeResolver
         }
         $resolveType = static::SIGNATURE_MAP[static::PHP_TYPE_MAP[$phpType][0]] ?? null;
 
-        if ($resolveType === 'class') {
+        if (!static::isPrimitive($resolveType)) {
             return [
-                'type' => $resolveType,
-                'class_name' => substr(static::PHP_TYPE_MAP[$phpType], 1),
+                'type' => substr(static::PHP_TYPE_MAP[$phpType], 1),
                 'deep_array' => $deepArray,
             ];
         }
+
         return [
             'type' => $resolveType,
             'deep_array' => $deepArray,
@@ -304,15 +292,15 @@ class TypeResolver
         static $loadedExtendedRoots = [];
         $result = [];
         foreach (Formatter::parseSignature($class) as $signature) {
-            if ($signature['type'] !== 'class') {
+            if (static::isPrimitive($signature['type'])) {
                 $result[] = [[$signature['type']], []];
                 continue;
             }
 
-            $javaClass = JavaClass::load($signature['class_name'], [], false);
+            $javaClass = JavaClass::load($signature['type'], [], false);
             $extendedClasses = $javaClass->getDefinedExtendedClasses();
             $interfaces = $javaClass->getDefinedInterfaceClasses();
-            $result[] = $loadedExtendedRoots[$signature['class_name']] = [$extendedClasses, $interfaces];
+            $result[] = $loadedExtendedRoots[$signature['type']] = [$extendedClasses, $interfaces];
         }
 
         array_walk_recursive($result, function (&$className) {
@@ -357,5 +345,14 @@ class TypeResolver
                 return new Collection($collectionData);
         }
         throw new TypeException('Cannot convert your definition');
+    }
+
+    public static function isPrimitive(string $value): bool
+    {
+        return in_array(
+            $value,
+            array_values(static::TYPES_MAP),
+            true
+        );
     }
 }

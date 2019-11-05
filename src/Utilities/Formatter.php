@@ -9,6 +9,7 @@ use PHPJava\Kernel\Maps\MethodAccessFlag;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
+use PHPJava\Packages\java\lang\_String;
 
 class Formatter
 {
@@ -47,10 +48,10 @@ class Formatter
                     for ($i++; $i < $size && $signature[$i] !== ';'; $i++) {
                         $build .= $signature[$i];
                     }
+                    [, $className] = Formatter::convertJavaNamespaceToPHP($build);
                     $data[] = [
-                        'type' => 'class',
+                        'type' => $className,
                         'deep_array' => $deepArray,
-                        'class_name' => $build,
                     ];
                     $deepArray = 0;
 
@@ -83,8 +84,8 @@ class Formatter
         $string = '';
         foreach ($signatures as $signature) {
             $build = str_repeat('[', $signature['deep_array']);
-            if ($signature['type'] === 'class') {
-                $build .= 'L' . str_replace('/', '.', $signature['class_name']);
+            if (!TypeResolver::isPrimitive($signature['type'])) {
+                $build .= 'L' . str_replace('/', '.', $signature['type']);
             } else {
                 $build .= TypeResolver::resolve($signature['type']);
             }
@@ -98,16 +99,15 @@ class Formatter
         $result = [];
         foreach ($signatures as $signature) {
             $type = $signature['type'];
-            if ($type === 'class') {
+            if (!TypeResolver::isPrimitive($type)) {
                 $result[] = $signature;
                 continue;
             }
             $type = TypeResolver::convertJavaTypeSimplyForPHP($type);
-            if ($type === 'java.lang.String') {
+            if ($type === _String::class) {
                 $result[] = [
-                    'type' => 'class',
+                    'type' => $type,
                     'deep_array' => $signature['deep_array'],
-                    'class_name' => $type,
                 ];
                 continue;
             }
@@ -140,6 +140,9 @@ class Formatter
     public static function convertPHPNamespacesToJava(string $className, string $mergeChar = '.'): string
     {
         $className = Formatter::formatClassPath(str_replace('/', '\\', $className));
+        if (TypeResolver::isPrimitive($className)) {
+            return $className;
+        }
         $newClassName = explode(
             '.',
             str_replace(
@@ -207,26 +210,24 @@ class Formatter
                 ', ',
                 array_map(
                     function ($argument) {
-                        $arrayBrackets = str_repeat('[]', $argument['deep_array']);
-                        if ($argument['type'] === 'class') {
-                            return $argument['class_name'] . $arrayBrackets;
-                        }
-                        return $argument['type'] . $arrayBrackets;
+                        return static::convertVisuallyJavaSignature($argument['type']) . str_repeat('[]', $argument['deep_array']);
                     },
                     $descriptor['arguments']
                 )
             )
         );
 
-        $type = $descriptor[0]['type'];
-        if ($type === 'class') {
-            $type = $descriptor[0]['class_name'];
-        }
-
-        $type = str_replace('/', '.', $type);
+        $type = str_replace('/', '.', static::convertVisuallyJavaSignature($descriptor[0]['type']));
         $methodAccessibility = implode(' ', $accessFlags);
 
         return ltrim("{$methodAccessibility} {$type} {$methodName}({$formattedArguments})");
+    }
+
+    public static function convertVisuallyJavaSignature(string $type): string
+    {
+        $convertedType = static::convertPHPNamespacesToJava($type);
+        $typeMap = array_flip(TypeResolver::TYPES_MAP);
+        return $typeMap[$convertedType] ?? $convertedType;
     }
 
     public static function beatifyOperandStackItems(array $operandStacks = []): string

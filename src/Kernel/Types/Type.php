@@ -23,9 +23,10 @@ abstract class Type
     protected $nameInPHP;
 
     /**
+     * @param null|mixed $value
      * @throws TypeException
      */
-    public function __construct($value)
+    public function __construct($value = null)
     {
         if (!($value instanceof self) &&
             $value !== null &&

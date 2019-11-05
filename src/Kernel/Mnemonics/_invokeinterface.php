@@ -6,6 +6,7 @@ use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NoSuchCodeAttributeException;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Internal\Lambda;
+use PHPJava\Kernel\Types\_Void;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Utilities\Formatter;
 
@@ -111,7 +112,7 @@ final class _invokeinterface extends AbstractOperationCode implements OperationC
             }
         }
 
-        if ($signature[0]['type'] !== 'void') {
+        if ($signature[0]['type'] !== _Void::class) {
             $this->pushToOperandStack(
                 Normalizer::normalizeReturnValue(
                     $result,
