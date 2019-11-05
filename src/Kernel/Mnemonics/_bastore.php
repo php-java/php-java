@@ -27,7 +27,7 @@ final class _bastore extends AbstractOperationCode implements OperationCodeInter
          * @var Collection $arrayref
          */
         $arrayref = $this->popFromOperandStack();
-        if ($arrayref->getType() === 'boolean') {
+        if ($arrayref->getType() === _Boolean::class) {
             $value = _Boolean::get(
                 Normalizer::getPrimitiveValue(
                     $value

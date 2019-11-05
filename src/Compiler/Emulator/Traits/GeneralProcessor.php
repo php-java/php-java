@@ -8,6 +8,9 @@ use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Maps\VerificationTypeTag;
+use PHPJava\Kernel\Resolvers\TypeResolver;
+use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\_Void;
 use PHPJava\Utilities\Formatter;
 
 /**
@@ -35,7 +38,7 @@ trait GeneralProcessor
 
     public function getClassName(): ?string
     {
-        return $this->getSignature(2)[0]['class_name'] ?? null;
+        return $this->getSignature(2)[0]['type'] ?? null;
     }
 
     public function getReturnType(): ?string
@@ -45,23 +48,24 @@ trait GeneralProcessor
 
     public function pushToOperandStackByType(string $type, string $className = null): void
     {
+        if (!TypeResolver::isPrimitive($type)) {
+            $this->accumulator->pushToOperandStack(
+                [
+                    VerificationTypeTag::ITEM_Object,
+                    $this->getEnhancedConstantPool()
+                        ->findClass($className),
+                ]
+            );
+            return;
+        }
         // TODO: Rename parseSignature
         switch ($type) {
-            case 'void':
+            case _Void::class:
                 break;
-            case 'int':
+            case _Int::class:
                 $this->accumulator->pushToOperandStack(
                     [
                         VerificationTypeTag::ITEM_Integer,
-                    ]
-                );
-                break;
-            case 'class':
-                $this->accumulator->pushToOperandStack(
-                    [
-                        VerificationTypeTag::ITEM_Object,
-                        $this->getEnhancedConstantPool()
-                            ->findClass($className),
                     ]
                 );
                 break;

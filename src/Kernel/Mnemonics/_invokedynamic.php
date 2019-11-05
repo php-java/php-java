@@ -10,6 +10,7 @@ use PHPJava\Kernel\Resolvers\AttributionResolver;
 use PHPJava\Kernel\Structures\_BootstrapMethod;
 use PHPJava\Kernel\Structures\MethodHandleInfo;
 use PHPJava\Kernel\Structures\NameAndTypeInfo;
+use PHPJava\Kernel\Types\_Void;
 use PHPJava\Packages\java\lang\invoke\MethodHandles;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 use PHPJava\Packages\java\lang\invoke\MethodType;
@@ -119,7 +120,7 @@ final class _invokedynamic extends AbstractOperationCode implements OperationCod
                 $methodHandledDescriptor = $cp[$methodHandleNameAndTypeConstant->getDescriptorIndex()]->getString();
 
                 // NOTE: Must be a class name.
-                $methodHandleType = MethodType::methodType($signature[0]['class_name']);
+                $methodHandleType = MethodType::methodType($signature[0]['type']);
 
                 $arguments = array_merge(
                     [
@@ -175,7 +176,7 @@ final class _invokedynamic extends AbstractOperationCode implements OperationCod
                 throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
         }
 
-        if ($signature[0]['type'] !== 'void') {
+        if ($signature[0]['type'] !== _Void::class) {
             $this->pushToOperandStack(
                 Normalizer::normalizeReturnValue(
                     $result,

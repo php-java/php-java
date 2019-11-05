@@ -8,6 +8,7 @@ use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
+use PHPJava\Packages\java\lang\_String;
 use PHPJava\Packages\java\lang\NullPointerException;
 
 // use PHPJava\Packages\java\io\Closeable;
@@ -158,7 +159,7 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
 
         [ $signatureType, $typeName ] = TypeResolver::getType($methodSignature['arguments'][0]);
 
-        if ($typeName === \PHPJava\Packages\java\lang\String::class) {
+        if ($typeName === _String::class) {
             Output::write('null');
             return;
         }

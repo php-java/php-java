@@ -43,11 +43,11 @@ class Normalizer
                 );
                 continue;
             }
-            if ($realType['type'] === 'class') {
+            if (!TypeResolver::isPrimitive($realType['type'])) {
                 // TODO: implements up-cast and down-cast
                 continue;
             }
-            $initiateClass = TypeResolver::TYPES_MAP[$realType['type']];
+            $initiateClass = $realType['type'];
             if ($value instanceof $initiateClass) {
                 continue;
             }
