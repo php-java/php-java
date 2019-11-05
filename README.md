@@ -1,4 +1,4 @@
-# PHPJava - JVM Emulator by PHP
+# PHPJava - The JVM on PHP
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 ![Compatibility](https://img.shields.io/badge/Compatibility-7.2%20and%20greater-green.svg) 
 [![Build Status](https://travis-ci.org/php-java/php-java.svg?branch=master)](https://travis-ci.org/php-java/php-java)
