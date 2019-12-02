@@ -1,16 +1,22 @@
 <?php
 namespace PHPJava\Compiler\Lang;
 
+use PHPJava\Compiler\Builder\Collection\ConstantPool;
+use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Bundler\PHPStandardClass;
-use PHPJava\Compiler\Lang\Assembler\ClassAssembler;
+use PHPJava\Compiler\Lang\Assembler\EntryPointClassAssembler;
+use PHPJava\Compiler\Lang\Assembler\Enum\NodeExtractorEnum;
+use PHPJava\Compiler\Lang\Assembler\Processors\StatementProcessor;
+use PHPJava\Compiler\Lang\Assembler\Traits\NodeExtractable;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
 use PHPJava\Exceptions\AssembleStructureException;
 use PhpParser\Error;
-use PhpParser\Node;
 use PhpParser\ParserFactory;
 
 class PackageAssembler
 {
+    use NodeExtractable;
+
     /**
      * @var null|\PhpParser\Node\Stmt[]
      */
@@ -46,47 +52,34 @@ class PackageAssembler
             ->setStreamReader($this->stream)
             ->assemble();
 
-        $namespace = null;
-        foreach ($this->abstractSyntaxTree as $node) {
-            $this->parseNode(
-                $node
-            );
-        }
-        return $this;
-    }
+        $modules = $this->extractNodes(
+            $this->abstractSyntaxTree,
+            NodeExtractorEnum::EXTRACT_MODULES
+        );
+        $outsides = $this->extractNodes(
+            $this->abstractSyntaxTree,
+            NodeExtractorEnum::EXTRACT_OUTSIDES
+        );
 
-    protected function parseNode(Node $node, ?array $namespace = null)
-    {
-        switch (get_class($node)) {
-            case \PhpParser\Node\Stmt\Namespace_::class:
-                /**
-                 * @var \PhpParser\Node\Stmt\Namespace_ $node
-                 */
-                foreach ($node->stmts as $stmt) {
-                    $this->parseNode(
-                        $stmt,
-                        $node->name->parts
-                    );
-                }
-                break;
-            case \PhpParser\Node\Stmt\Class_::class:
-                /**
-                 * @var \PhpParser\Node\Stmt\Class_ $node
-                 */
-                ClassAssembler::factory($node)
-                    ->setStreamReader($this->stream)
-                    ->setNamespace($namespace)
-                    ->assemble();
-                break;
-            case \PhpParser\Node\Stmt\Nop::class:
-                break;
-            default:
-                throw new AssembleStructureException(
-                    sprintf(
-                        'Compiler cannot parse %s',
-                        get_class($node)
-                    )
-                );
-        }
+        $entryPointConstantPool = new ConstantPool();
+        $entryPointConstantPoolFinder = new ConstantPoolFinder(
+            $entryPointConstantPool
+        );
+
+        $entryPointClassAssembler = EntryPointClassAssembler::factory(...$outsides)
+            ->setConstantPool($entryPointConstantPool)
+            ->setConstantPoolFinder($entryPointConstantPoolFinder)
+            ->setStreamReader($this->stream);
+
+        StatementProcessor::factory()
+            ->setStreamReader($this->stream)
+            ->setEntryPointClassAssembler($entryPointClassAssembler)
+            ->execute($modules);
+
+        // Assemble an entrypoint class.
+        $entryPointClassAssembler
+            ->assemble();
+
+        return $this;
     }
 }

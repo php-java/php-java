@@ -15,7 +15,6 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Validatable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
-use PHPJava\Core\PHPJava;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\VerificationTypeTag;
 use PHPJava\Kernel\Types\_Byte;
@@ -55,7 +54,7 @@ class StackMapTable extends Attribute
         return $this;
     }
 
-    public function beginPrepare(): Attribute
+    public function beginPreparation(): Attribute
     {
         foreach ($this->localVariables as $localVariable) {
             [, $type] = $localVariable;
@@ -74,7 +73,7 @@ class StackMapTable extends Attribute
                     break;
             }
         }
-        return parent::beginPrepare();
+        return parent::beginPreparation();
     }
 
     public function getValue(): string

@@ -82,7 +82,7 @@ class Attribute implements BuilderInterface, EntryInterface
         );
     }
 
-    public function beginPrepare(): Attribute
+    public function beginPreparation(): Attribute
     {
         $attributeName = $this->getName();
 

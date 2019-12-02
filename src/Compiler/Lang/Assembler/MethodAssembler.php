@@ -48,12 +48,6 @@ class MethodAssembler extends AbstractAssembler
             ->setReturn(_Void::class)
             ->make();
 
-        $this->getEnhancedConstantPool()
-            ->addNameAndType(
-                $this->methodName,
-                $descriptor
-            );
-
         $method = (
             new Method(
                 (new \PHPJava\Compiler\Builder\Signatures\MethodAccessFlag())
@@ -66,7 +60,8 @@ class MethodAssembler extends AbstractAssembler
             )
         )
             ->setConstantPool($this->getConstantPool())
-            ->setConstantPoolFinder($this->getConstantPoolFinder());
+            ->setConstantPoolFinder($this->getConstantPoolFinder())
+            ->beginPreparation();
 
         // Add to methods section
         $this->getCollection()
@@ -165,11 +160,11 @@ class MethodAssembler extends AbstractAssembler
                                     ->setOperation(
                                         $operations
                                     )
-                                    ->beginPrepare()
+                                    ->beginPreparation()
                             )
                             ->toArray()
                     )
-                    ->beginPrepare()
+                    ->beginPreparation()
             );
 
         $method

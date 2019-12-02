@@ -2,7 +2,6 @@
 namespace PHPJava\Compiler\Lang\Assembler;
 
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
-use PhpParser\Node;
 
 /**
  * <Only for use from `OperationManageable` trait>.
@@ -11,8 +10,6 @@ use PhpParser\Node;
  */
 interface AssemblerInterface
 {
-    public function __construct(Node $parser);
-
     /**
      * Must to set array or void.
      *

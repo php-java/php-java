@@ -38,7 +38,9 @@ class PHPStandardClass extends AbstractBundler
     {
         $className = Runtime::PHP_STANDARD_CLASS_NAME;
 
-        [$majorVersion, $minorVersion] = SDKVersionResolver::resolveByVersion(8);
+        [$majorVersion, $minorVersion] = SDKVersionResolver::resolveByVersion(
+            Runtime::PHP_COMPILER_JDK_VERSION
+        );
 
         $this->constantPool = new ConstantPool();
         $this->constantPoolFinder = new ConstantPoolFinder($this->constantPool);
@@ -121,7 +123,7 @@ class PHPStandardClass extends AbstractBundler
                             (new PHPJavaSignature())
                                 ->setConstantPool($this->getConstantPool())
                                 ->setConstantPoolFinder($this->getConstantPoolFinder())
-                                ->beginPrepare()
+                                ->beginPreparation()
                         )
                         ->add(
                             (new SourceFile())
@@ -134,7 +136,7 @@ class PHPStandardClass extends AbstractBundler
                                             $className . '.php'
                                         )
                                 )
-                                ->beginPrepare()
+                                ->beginPreparation()
                         )
                         ->toArray()
                 )

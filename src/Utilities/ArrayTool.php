@@ -51,4 +51,17 @@ class ArrayTool
         }
         return null;
     }
+
+    public static function deepCopy(array $array): array
+    {
+        array_walk_recursive(
+            $array,
+            static function (&$element) {
+                if (is_object($element)) {
+                    $element = clone $element;
+                }
+            }
+        );
+        return $array;
+    }
 }

@@ -79,6 +79,6 @@ abstract class AbstractEntryCollection implements EntryCollectionInterface, \Arr
 
     public function length(): int
     {
-        return count($this->entries);
+        return count($this->entries) - 1;
     }
 }

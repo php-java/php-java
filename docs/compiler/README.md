@@ -153,7 +153,7 @@ $compiler = new Compiler(
                                                 )
                                             ]
                                         )
-                                        ->beginPrepare()
+                                        ->beginPreparation()
                                 )
                                 ->toArray()
                         )
