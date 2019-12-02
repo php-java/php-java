@@ -44,11 +44,13 @@ final class Runtime
 
     const PHP_PACKAGES_NAMESPACE = 'PHPJava\\Packages';
     const MNEMONIC_NAMESPACE = 'PHPJava\\Kernel\\Mnemonics';
+
     const EMULATOR_MNEMONIC_NAMESPACE = 'PHPJava\\Compiler\\Emulator\\Mnemonics';
     const BUILD_PACKAGE_NAMESPACE = 'PHPJava\\Compiler\\Lang\\Assembler\\Bundler\\Packages\\';
-
     const PHP_STANDARD_CLASS_NAME = 'PHPRuntime.PHPStandard';
     const PHP_STANDARD_CLASS_METHOD_PREFIX = 'PHP_STANDARD@';
+    const PHP_ENTRY_POINT_CLASS_NAME = '__ENTRYPOINT__';
+    const PHP_COMPILER_JDK_VERSION = 8;
 
     const PREFIX_STATIC = 'static_';
     const PREFIX_DEFAULT = '__default_';

@@ -25,7 +25,7 @@ use PhpParser\Node;
 /**
  * @property \PhpParser\Node\Stmt\Class_ $node
  */
-class ClassAssembler extends AbstractAssembler
+class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterface
 {
     use OperationManageable;
     use ConstantPoolEnhanceable;
@@ -53,7 +53,9 @@ class ClassAssembler extends AbstractAssembler
                 [$this->node->name->name]
             )
         );
-        [$majorVersion, $minorVersion] = SDKVersionResolver::resolveByVersion(8);
+        [$majorVersion, $minorVersion] = SDKVersionResolver::resolveByVersion(
+            Runtime::PHP_COMPILER_JDK_VERSION
+        );
 
         $this->constantPool = new ConstantPool();
         $this->constantPoolFinder = new ConstantPoolFinder($this->constantPool);
@@ -107,7 +109,7 @@ class ClassAssembler extends AbstractAssembler
                             (new PHPJavaSignature())
                                 ->setConstantPool($this->getConstantPool())
                                 ->setConstantPoolFinder($this->getConstantPoolFinder())
-                                ->beginPrepare()
+                                ->beginPreparation()
                         )
                         ->add(
                             (new SourceFile())
@@ -120,7 +122,7 @@ class ClassAssembler extends AbstractAssembler
                                             $this->node->name->name . '.php'
                                         )
                                 )
-                                ->beginPrepare()
+                                ->beginPreparation()
                         )
                         ->toArray()
                 )

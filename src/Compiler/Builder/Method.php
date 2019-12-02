@@ -94,4 +94,15 @@ class Method implements BuilderInterface, EntryInterface
         $this->attributes = $attributes;
         return $this;
     }
+
+    public function beginPreparation(): self
+    {
+        $this->getEnhancedConstantPool()
+            ->addNameAndType(
+                $this->getName(),
+                $this->getDescriptor()
+            );
+
+        return $this;
+    }
 }

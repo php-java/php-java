@@ -22,6 +22,8 @@ use PHPJava\Compiler\Lang\Assembler\Store\Store;
  * @method MethodAssembler getMethodAssembler()
  * @method AbstractAssembler|AbstractProcessor setClassAssembler(ClassAssembler $methodAssembler)
  * @method ClassAssembler getClassAssembler()
+ * @emthod EntryPointClassAssembler getEntryPointClassAssembler()
+ * @emthod AbstractAssembler|AbstractProcessor setEntryPointClassAssembler(EntryPointClassAssembler $entryPointClassAssembler)
  */
 interface ParameterServiceInterface
 {

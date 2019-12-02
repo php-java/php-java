@@ -10,13 +10,13 @@ trait ConstantPoolManageable
     protected $constantPool;
     protected $constantPoolFinder;
 
-    public function setConstantPool(ConstantPool $constantPool): self
+    public function setConstantPool(?ConstantPool $constantPool): self
     {
         $this->constantPool = $constantPool;
         return $this;
     }
 
-    public function setConstantPoolFinder(ConstantPoolFinder $constantPoolFinder): self
+    public function setConstantPoolFinder(?ConstantPoolFinder $constantPoolFinder): self
     {
         $this->constantPoolFinder = $constantPoolFinder;
         return $this;

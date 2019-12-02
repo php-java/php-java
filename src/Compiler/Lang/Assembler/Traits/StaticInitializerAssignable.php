@@ -75,7 +75,7 @@ trait StaticInitializerAssignable
                                     ->setConstantPool($this->getConstantPool())
                                     ->setConstantPoolFinder($this->getConstantPoolFinder())
                                     ->setCode($staticInitializerOperations)
-                                    ->beginPrepare()
+                                    ->beginPreparation()
                             )
                             ->toArray()
                     )

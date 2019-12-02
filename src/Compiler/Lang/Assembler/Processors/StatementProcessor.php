@@ -1,12 +1,18 @@
 <?php
 namespace PHPJava\Compiler\Lang\Assembler\Processors;
 
+use PHPJava\Compiler\Builder\Collection\ConstantPool;
+use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;
+use PHPJava\Compiler\Lang\Assembler\ClassAssembler;
+use PHPJava\Compiler\Lang\Assembler\EntryPointClassAssembler;
+use PHPJava\Compiler\Lang\Assembler\Enum\NodeExtractorEnum;
 use PHPJava\Compiler\Lang\Assembler\Statements\EchoStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\ExpressionStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\ForStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\IfStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
+use PHPJava\Compiler\Lang\Assembler\Traits\NodeExtractable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Utilities\ArrayTool;
@@ -16,12 +22,15 @@ class StatementProcessor extends AbstractProcessor
 {
     use OperationManageable;
     use Bindable;
+    use NodeExtractable;
 
     /**
      * @param Node[] $nodes
      */
     public function execute(array $nodes, ?callable $callback = null): array
     {
+        parent::execute($nodes, $callback);
+
         $operations = [];
         foreach ($nodes as $statement) {
             $assembler = null;
@@ -29,6 +38,41 @@ class StatementProcessor extends AbstractProcessor
              * @var Node $statement
              */
             switch (get_class($statement)) {
+                case \PhpParser\Node\Stmt\Namespace_::class:
+                    /**
+                     * @var \PhpParser\Node\Stmt\Namespace_ $statement
+                     */
+                    $entryPointConstantPool = new ConstantPool();
+                    $entryPointConstantPoolFinder = new ConstantPoolFinder(
+                        $entryPointConstantPool
+                    );
+
+                    $entryPointClassAssembler = EntryPointClassAssembler::factory(...$this->extractNodes($statement->stmts, NodeExtractorEnum::EXTRACT_OUTSIDES))
+                        ->setNamespace($statement->name->parts)
+                        ->setConstantPool($entryPointConstantPool)
+                        ->setConstantPoolFinder($entryPointConstantPoolFinder)
+                        ->setStreamReader($this->getStreamReader());
+
+                    $this
+                        ->setNamespace($statement->name->parts)
+                        ->setConstantPool($entryPointConstantPool)
+                        ->setConstantPoolFinder($entryPointConstantPoolFinder)
+                        ->setStreamReader($this->getStreamReader())
+                        ->setEntryPointClassAssembler($entryPointClassAssembler)
+                        ->execute($statement->stmts);
+
+                    $entryPointClassAssembler
+                        ->assemble();
+                    break;
+                case \PhpParser\Node\Stmt\Class_::class:
+                    /**
+                     * @var \PhpParser\Node\Stmt\Class_ $statement
+                     */
+                    ClassAssembler::factory($statement)
+                        ->setStreamReader($this->getStreamReader())
+                        ->setNamespace($this->getNamespace())
+                        ->assemble();
+                    break;
                 case \PhpParser\Node\Stmt\If_::class:
                     /**
                      * @var \PhpParser\Node\Stmt\If_ $statement

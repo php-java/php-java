@@ -4,7 +4,6 @@ namespace PHPJava\Compiler\Builder\Attributes;
 use PHPJava\Compiler\Builder\Attribute;
 use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
-use PHPJava\Core\PHPJava;
 
 class SourceFile extends Attribute
 {

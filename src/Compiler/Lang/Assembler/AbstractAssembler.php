@@ -6,6 +6,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\ClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\CollectionManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\EntryPointClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\MethodAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StreamManageable;
@@ -20,6 +21,7 @@ abstract class AbstractAssembler implements AssemblerInterface, ParameterService
     use StreamManageable;
     use MethodAssemblerManageable;
     use ClassAssemblerManageable;
+    use EntryPointClassAssemblerManageable;
 
     /**
      * @var Node

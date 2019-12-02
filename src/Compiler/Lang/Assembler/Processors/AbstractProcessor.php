@@ -10,6 +10,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\ClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\EntryPointClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\MethodAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StreamManageable;
@@ -31,12 +32,33 @@ abstract class AbstractProcessor implements ProcessorInterface, ParameterService
     use StreamManageable;
     use MethodAssemblerManageable;
     use ClassAssemblerManageable;
+    use EntryPointClassAssemblerManageable;
 
     public static function factory(): self
     {
-        static $instance;
-        return $instance = $instance ?? new static();
+        return new static();
     }
 
-    abstract public function execute(array $nodes, ?callable $callback = null): array;
+    public function execute(array $nodes, ?callable $callback = null): array
+    {
+        // Set entrypoint dependencies.
+        $this->constantPool = $this->constantPool ?? $this
+            ->getEntryPointClassAssembler()
+            ->getConstantPool();
+
+        $this->constantPoolFinder = $this->constantPoolFinder ?? $this
+            ->getEntryPointClassAssembler()
+            ->getConstantPoolFinder();
+
+        $this->operation = $this->operation ?? $this
+            ->getEntryPointClassAssembler()
+            ->getOperation();
+
+        $this->store = $this->store ?? $this
+            ->getEntryPointClassAssembler()
+            ->getStore();
+
+        // Return an empty array
+        return [];
+    }
 }

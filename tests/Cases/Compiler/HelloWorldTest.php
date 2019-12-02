@@ -151,7 +151,7 @@ class HelloWorldTest extends Base
                                                         ),
                                                     ]
                                                 )
-                                                ->beginPrepare()
+                                                ->beginPreparation()
                                         )
                                         ->toArray()
                                 )
