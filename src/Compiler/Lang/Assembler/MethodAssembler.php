@@ -14,6 +14,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
+use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Void;
 use PHPJava\Utilities\ArrayTool;
@@ -124,6 +125,14 @@ class MethodAssembler extends AbstractAssembler
                     $documentParameter->getVariableName(),
                     $parameters[$documentParameter->getVariableName()]['type'],
                     $parameters[$documentParameter->getVariableName()]['deep_array']
+                );
+            }
+        }
+
+        foreach ($parameters as $keyName => $value) {
+            if ($value === null) {
+                throw new AssembleStructureException(
+                    'Parameter length are mismatch.'
                 );
             }
         }
