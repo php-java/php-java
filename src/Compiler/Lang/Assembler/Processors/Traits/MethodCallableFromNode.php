@@ -58,7 +58,6 @@ trait MethodCallableFromNode
 
         $callee = null;
 
-        var_dump($targetClass);
         if ($targetClass === 'self') {
             $callee = $this->getClassAssembler()->getClassName();
         } elseif ($targetClass === 'static') {
