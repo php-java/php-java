@@ -64,8 +64,15 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
         $this->fields = new Fields();
 
         foreach ($this->node->getMethods() as $method) {
+            $store = new Store();
+            if (!$method->isStatic()) {
+                $store->store(
+                    'this',
+                    $this->getClassName()
+                );
+            }
             $this->setOperation(new Operation())
-                ->setStore(new Store())
+                ->setStore($store)
                 ->bindParameters(MethodAssembler::factory($method))
                 ->setCollection($this->methods)
                 ->assemble();

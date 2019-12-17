@@ -5,7 +5,7 @@ class TestCallOutsideStatementOfClasses
     /**
      * @param \PHPJava\Packages\java\lang\_String[] $args
      */
-    public function main($args)
+    public static function main($args)
     {
         echo 'Dont show.';
     }
