@@ -5,6 +5,7 @@ use PHPJava\Compiler\Builder\Signatures\Descriptor;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\AssignableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\ConstLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\MagicConstLoadableFromNode;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\MethodCallableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\OperationCalculatableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\PostDecrementableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\PostIncrementableFromNode;
@@ -42,6 +43,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
     use AssignableFromNode;
     use PostDecrementableFromNode;
     use PostIncrementableFromNode;
+    use MethodCallableFromNode;
     use PrintableFromNode;
     use NumberLoadable;
     use MethodCallable;
@@ -257,6 +259,17 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                                 'Unsupported operation type'
                             );
                     }
+                    break;
+                case \PhpParser\Node\Expr\StaticCall::class:
+                    /**
+                     * @var \PhpParser\Node\Expr\StaticCall $expression
+                     */
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleStaticMethodCallFromNode(
+                            $expression
+                        )
+                    );
                     break;
                 default:
                     throw new AssembleStructureException(

@@ -5,7 +5,7 @@ class TestIfElseIfStatementAvailableElseIf
     /**
      * @param \PHPJava\Packages\java\lang\_String[] $args
      */
-    public function main($args)
+    public static function main($args)
     {
         if (false) {
             echo "Hello World 1\n";

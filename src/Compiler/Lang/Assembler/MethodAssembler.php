@@ -41,33 +41,6 @@ class MethodAssembler extends AbstractAssembler
     {
         $this->methodName = $this->node->name->name;
 
-        $descriptor = Descriptor::factory()
-            ->addArgument(
-                \PHPJava\Packages\java\lang\String::class,
-                1
-            )
-            ->setReturn(_Void::class)
-            ->make();
-
-        $method = (
-            new Method(
-                (new \PHPJava\Compiler\Builder\Signatures\MethodAccessFlag())
-                    ->enablePublic()
-                    ->enableStatic()
-                    ->make(),
-                $this->getClassAssembler()->getClassName(),
-                $this->methodName,
-                $descriptor
-            )
-        )
-            ->setConstantPool($this->getConstantPool())
-            ->setConstantPoolFinder($this->getConstantPoolFinder())
-            ->beginPreparation();
-
-        // Add to methods section
-        $this->getCollection()
-            ->add($method);
-
         $this->attribute = new Attributes();
 
         // Get parameters
@@ -81,7 +54,7 @@ class MethodAssembler extends AbstractAssembler
             $parameters[$parameter->var->name] = $parameter->type;
         }
 
-        foreach ($this->node->getAttribute('comments') as $commentAttribute) {
+        foreach (($this->node->getAttribute('comments') ?? []) as $commentAttribute) {
             /**
              * @var \PhpParser\Comment\Doc $commentAttribute
              */
@@ -129,13 +102,66 @@ class MethodAssembler extends AbstractAssembler
             }
         }
 
+        $descriptorObject = Descriptor::factory()
+            // TODO: All method returns void. Will implement return type.
+            ->setReturn(_Void::class);
+
         foreach ($parameters as $keyName => $value) {
             if ($value === null) {
                 throw new AssembleStructureException(
                     'Parameter length are mismatch.'
                 );
             }
+
+            $descriptorObject->addArgument(
+                $value['type'],
+                $value['deep_array']
+            );
         }
+
+        $descriptor = $descriptorObject->make();
+
+        $methodAccessFlag = (new \PHPJava\Compiler\Builder\Signatures\MethodAccessFlag());
+
+        if ($this->node->isPublic()) {
+            $methodAccessFlag->enablePublic();
+        }
+
+        if ($this->node->isPrivate()) {
+            $methodAccessFlag->enablePrivate();
+        }
+
+        if ($this->node->isStatic()) {
+            $methodAccessFlag->enableStatic();
+        }
+
+        if ($this->node->isFinal()) {
+            $methodAccessFlag->enableFinal();
+        }
+
+        if ($this->node->isProtected()) {
+            $methodAccessFlag->enableProtected();
+        }
+
+        if ($this->node->isAbstract()) {
+            $methodAccessFlag->enableAbstract();
+        }
+
+        $method = (
+        new Method(
+            $methodAccessFlag->make(),
+            $this->getClassAssembler()->getClassName(),
+            $this->methodName,
+            $descriptor
+        )
+        )
+            ->setConstantPool($this->getConstantPool())
+            ->setConstantPoolFinder($this->getConstantPoolFinder())
+            ->beginPreparation();
+
+        // Add to methods section
+        $this->getCollection()
+            ->add($method);
 
         $operations = [];
         $defaultLocalVariableOperations = $this->getStore()->getAll();
