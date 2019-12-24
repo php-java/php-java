@@ -67,7 +67,7 @@ or
 ## Quick start
 1) Install PHPJava in your project:
 ```
-$ composer require php-java/php-java
+$ composer require php-java/php-java:dev-master
 ```
 
 2) Write Java:

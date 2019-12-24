@@ -68,7 +68,7 @@ PHPJava は実行ファイルとして処理させることが可能です。
 ## クイックスタート
 1) PHPJava をインストールします。
 ```
-$ composer require php-java/php-java
+$ composer require php-java/php-java:dev-master
 ```
 
 2) Java を書きます。
