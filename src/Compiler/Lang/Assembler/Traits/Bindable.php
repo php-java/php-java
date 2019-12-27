@@ -43,6 +43,9 @@ trait Bindable
             ->setStreamReader(
                 $this->getStreamReader()
             )
+            ->setStructureAccessorsLocator(
+                $this->getStructureAccessorsLocator()
+            )
             ->setClassAssembler(
                 $this instanceof ClassAssembler
                     ? $this

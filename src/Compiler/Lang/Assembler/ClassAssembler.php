@@ -16,6 +16,7 @@ use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\ParameterParseable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StaticInitializerAssignable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
@@ -31,6 +32,7 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
     use ConstantPoolEnhanceable;
     use Bindable;
     use StaticInitializerAssignable;
+    use ParameterParseable;
 
     /**
      * @var Methods
@@ -71,7 +73,8 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
                     $this->getClassName()
                 );
             }
-            $this->setOperation(new Operation())
+            $this
+                ->setOperation(new Operation())
                 ->setStore($store)
                 ->bindParameters(MethodAssembler::factory($method))
                 ->setCollection($this->methods)

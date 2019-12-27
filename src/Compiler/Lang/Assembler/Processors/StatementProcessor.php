@@ -51,6 +51,7 @@ class StatementProcessor extends AbstractProcessor
                         ->setNamespace($statement->name->parts)
                         ->setConstantPool($entryPointConstantPool)
                         ->setConstantPoolFinder($entryPointConstantPoolFinder)
+                        ->setStructureAccessorsLocator($this->getStructureAccessorsLocator())
                         ->setStreamReader($this->getStreamReader());
 
                     $this
@@ -59,6 +60,7 @@ class StatementProcessor extends AbstractProcessor
                         ->setConstantPoolFinder($entryPointConstantPoolFinder)
                         ->setStreamReader($this->getStreamReader())
                         ->setEntryPointClassAssembler($entryPointClassAssembler)
+                        ->setStructureAccessorsLocator($this->getStructureAccessorsLocator())
                         ->execute($statement->stmts);
 
                     $entryPointClassAssembler
@@ -71,6 +73,7 @@ class StatementProcessor extends AbstractProcessor
                     ClassAssembler::factory($statement)
                         ->setStreamReader($this->getStreamReader())
                         ->setNamespace($this->getNamespace())
+                        ->setStructureAccessorsLocator($this->getStructureAccessorsLocator())
                         ->assemble();
                     break;
                 case \PhpParser\Node\Stmt\If_::class:

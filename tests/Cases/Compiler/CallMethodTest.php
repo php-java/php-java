@@ -12,4 +12,28 @@ class CallMethodTest extends Base
         [$output, $return] = $this->runJavaTest(__METHOD__);
         $this->assertSame('Hello World!', $output[0]);
     }
+
+    public function TestCallStaticMethodsWithArguments()
+    {
+        [$output, $return] = $this->runJavaTest(__METHOD__);
+        $this->assertSame('Hello World!', $output[0]);
+    }
+
+    public function testCallStaticMethodsWithNonArgumentsAndNamespace()
+    {
+        [$output, $return] = $this->runJavaTest(
+            __METHOD__,
+            'PHPJava.CompilerMethodCallTest'
+        );
+        $this->assertSame('Hello World!', $output[0]);
+    }
+
+    public function TestCallStaticMethodsWithArgumentsAndNamespace()
+    {
+        [$output, $return] = $this->runJavaTest(
+            __METHOD__,
+            'PHPJava.CompilerMethodCallTest'
+        );
+        $this->assertSame('Hello World!', $output[0]);
+    }
 }

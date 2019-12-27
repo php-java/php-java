@@ -16,14 +16,20 @@ use PhpParser\Node;
  */
 trait StringLoadableFromNode
 {
-    private function assembleLoadStringFromNode(Node $expression, ?string &$classType = null): array
+    public function assembleLoadStringFromNode(Node $expression, ?string &$classType = null): array
     {
-        $operations = [];
         /**
          * @var \PhpParser\Node\Scalar\String_ $expression
          */
-        $value = $expression->value;
+        $operations = $this->assembleLoadString($expression->value);
+        $classType = _String::class;
 
+        return $operations;
+    }
+
+    public function assembleLoadString(string $value): array
+    {
+        $operations = [];
         // Add to ConstantPool
         $this->getEnhancedConstantPool()
             ->addString($value);
@@ -38,8 +44,6 @@ trait StringLoadableFromNode
                 )
             )
         );
-
-        $classType = _String::class;
 
         return $operations;
     }

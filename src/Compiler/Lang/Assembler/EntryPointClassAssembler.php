@@ -28,6 +28,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StaticInitializerAssignable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StreamManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\StructureAccessorsLocatorManageable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
@@ -48,6 +49,7 @@ class EntryPointClassAssembler implements AssemblerInterface, ParameterServiceIn
     use ConstantPoolEnhanceable;
     use Bindable;
     use StaticInitializerAssignable;
+    use StructureAccessorsLocatorManageable;
 
     /**
      * @var Methods
@@ -111,6 +113,7 @@ class EntryPointClassAssembler implements AssemblerInterface, ParameterServiceIn
         $operations = StatementProcessor::factory()
             ->setStreamReader($this->getStreamReader())
             ->setEntryPointClassAssembler($this)
+            ->setStructureAccessorsLocator($this->getStructureAccessorsLocator())
             ->execute($this->nodes);
 
         $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(

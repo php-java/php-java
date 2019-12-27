@@ -267,4 +267,9 @@ class Formatter
         $className = array_pop($namespace);
         return [$namespace, $className];
     }
+
+    public static function convertStringifiedPrimitiveTypeToKernelType(string $type)
+    {
+        return TypeResolver::TYPES_MAP[strtolower($type)] ?? $type;
+    }
 }

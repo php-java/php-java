@@ -350,7 +350,7 @@ class TypeResolver
     public static function isPrimitive(string $value): bool
     {
         return in_array(
-            $value,
+            Formatter::convertStringifiedPrimitiveTypeToKernelType($value),
             array_values(static::TYPES_MAP),
             true
         );
