@@ -1,6 +1,6 @@
 <?php
 
-class TestCallStaticMethodsWithWithArguments
+class TestCallStaticMethodsWithArguments
 {
     /**
      * @param \PHPJava\Packages\java\lang\_String $string

@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\CompilerMethodCallTest;
 
-class TestCallStaticMethodsWithWithArgumentsAndNamespace
+class TestCallStaticMethodsWithArgumentsAndNamespace
 {
     /**
      * @param \PHPJava\Packages\java\lang\_String $string

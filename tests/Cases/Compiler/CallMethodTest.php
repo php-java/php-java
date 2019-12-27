@@ -13,7 +13,7 @@ class CallMethodTest extends Base
         $this->assertSame('Hello World!', $output[0]);
     }
 
-    public function testCallStaticMethodsWithWithArguments()
+    public function TestCallStaticMethodsWithArguments()
     {
         [$output, $return] = $this->runJavaTest(__METHOD__);
         $this->assertSame('Hello World!', $output[0]);
@@ -28,7 +28,7 @@ class CallMethodTest extends Base
         $this->assertSame('Hello World!', $output[0]);
     }
 
-    public function testCallStaticMethodsWithWithArgumentsAndNamespace()
+    public function TestCallStaticMethodsWithArgumentsAndNamespace()
     {
         [$output, $return] = $this->runJavaTest(
             __METHOD__,
