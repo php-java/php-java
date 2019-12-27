@@ -6,8 +6,13 @@ use PHPJava\Compiler\Builder\Signatures\Descriptor;
 use PHPJava\Compiler\Lang\Assembler\ClassAssemblerInterface;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
+use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\StructureAccessorsLocator;
 use PHPJava\Exceptions\AssembleStructureException;
+use PHPJava\Kernel\Types\_Int;
 use PHPJava\Kernel\Types\_Void;
+use PHPJava\Packages\java\lang\_String;
+use PHPJava\Utilities\ArrayTool;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Expr\Variable;
@@ -18,6 +23,7 @@ use PhpParser\Node\Identifier;
  * @method ConstantPoolEnhancer getEnhancedConstantPool()
  * @method ConstantPoolFinder getConstantPoolFinder()
  * @method ClassAssemblerInterface getClassAssembler()
+ * @method StructureAccessorsLocator getStructureAccessorsLocator()
  */
 trait MethodCallableFromNode
 {
@@ -67,13 +73,68 @@ trait MethodCallableFromNode
             $callee = $targetClass;
         }
 
-        // TODO: Parse arguments and PHPDocs.
-        return $this->assembleStaticCallMethodOperations(
-            $callee,
-            $methodName->name,
-            (new Descriptor())
-                ->setReturn(_Void::class)
-                ->make()
+        $descriptorObject = (new Descriptor())
+            ->setReturn(_Void::class);
+
+        $operations = [];
+
+        $methodStructure = $this->getStructureAccessorsLocator()
+            ->getClassesStructureAccessor()
+            ->find($this->getClassAssembler()->getClassName())
+            ->find($methodName);
+
+        $parameters = array_values(
+            $this->parseParameterFromNode(
+                $methodStructure
+            )
         );
+
+        foreach ($expression->args as $index => $arg) {
+            if (!($arg instanceof Arg)) {
+                throw new AssembleStructureException(
+                    'Does not support an argument type: ' . get_class($arg) . ' of #' . ($index + 1)
+                );
+            }
+            $argValue = $arg->value;
+
+            $descriptorObject->addArgument(
+                $parameters[$index]['type']
+            );
+
+            $appendOperations = [];
+            switch ($parameters[$index]['type']) {
+                case _String::class:
+                    $appendOperations = $this->assembleLoadString(
+                        $argValue->value
+                    );
+                    break;
+                case _Int::class:
+                    $appendOperations = $this->assembleLoadNumber(
+                        $argValue->value
+                    );
+                    break;
+                default:
+                    // TODO: support the other typed class.
+                    throw new AssembleStructureException(
+                        'Unsupported type ' . $parameters[$index]['type']
+                    );
+            }
+
+            ArrayTool::concat(
+                $operations,
+                ...$appendOperations
+            );
+        }
+
+        ArrayTool::concat(
+            $operations,
+            ...$this->assembleStaticCallMethodOperations(
+                $callee,
+                $methodName->name,
+                $descriptorObject->make()
+            )
+        );
+
+        return $operations;
     }
 }

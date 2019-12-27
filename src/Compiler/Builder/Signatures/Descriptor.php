@@ -42,7 +42,9 @@ class Descriptor implements DescriptorInterface
                 static function (array $argument) {
                     [$type, $deepArray] = $argument;
                     $string = str_repeat('[', $deepArray);
-                    $type = ltrim($type, '\\');
+                    $type = Formatter::convertStringifiedPrimitiveTypeToKernelType(
+                        ltrim($type, '\\')
+                    );
                     switch ($type) {
                         case _Char::class:
                         case _Byte::class:

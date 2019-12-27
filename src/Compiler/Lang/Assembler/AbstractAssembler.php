@@ -10,6 +10,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\EntryPointClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\MethodAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StreamManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\StructureAccessorsLocatorManageable;
 use PhpParser\Node;
 
 abstract class AbstractAssembler implements AssemblerInterface, ParameterServiceInterface
@@ -22,6 +23,7 @@ abstract class AbstractAssembler implements AssemblerInterface, ParameterService
     use MethodAssemblerManageable;
     use ClassAssemblerManageable;
     use EntryPointClassAssemblerManageable;
+    use StructureAccessorsLocatorManageable;
 
     /**
      * @var Node

@@ -7,6 +7,9 @@ use PHPJava\Compiler\Lang\Assembler\Bundler\PHPStandardClass;
 use PHPJava\Compiler\Lang\Assembler\EntryPointClassAssembler;
 use PHPJava\Compiler\Lang\Assembler\Enum\NodeExtractorEnum;
 use PHPJava\Compiler\Lang\Assembler\Processors\StatementProcessor;
+use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\Classes;
+use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\Functions;
+use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\StructureAccessorsLocator;
 use PHPJava\Compiler\Lang\Assembler\Traits\NodeExtractable;
 use PHPJava\Compiler\Lang\Stream\StreamReaderInterface;
 use PHPJava\Exceptions\AssembleStructureException;
@@ -66,14 +69,21 @@ class PackageAssembler
             $entryPointConstantPool
         );
 
+        $structureAccessorsLocator = new StructureAccessorsLocator(
+            new Classes($this->abstractSyntaxTree),
+            new Functions($this->abstractSyntaxTree)
+        );
+
         $entryPointClassAssembler = EntryPointClassAssembler::factory(...$outsides)
             ->setConstantPool($entryPointConstantPool)
             ->setConstantPoolFinder($entryPointConstantPoolFinder)
+            ->setStructureAccessorsLocator($structureAccessorsLocator)
             ->setStreamReader($this->stream);
 
         StatementProcessor::factory()
             ->setStreamReader($this->stream)
             ->setEntryPointClassAssembler($entryPointClassAssembler)
+            ->setStructureAccessorsLocator($structureAccessorsLocator)
             ->execute($modules);
 
         // Assemble an entrypoint class.

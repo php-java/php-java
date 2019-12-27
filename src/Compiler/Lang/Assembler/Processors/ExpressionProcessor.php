@@ -22,6 +22,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\Outputable;
 use PHPJava\Compiler\Lang\Assembler\Traits\NodeConvertible;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\ParameterParseable;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\MnemonicResolver;
@@ -52,6 +53,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
     use Outputable;
     use LocalVariableAssignable;
     use LocalVariableLoadable;
+    use ParameterParseable;
 
     /**
      * @param Node[] $nodes

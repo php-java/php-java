@@ -14,11 +14,10 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
-use PHPJava\Exceptions\AssembleStructureException;
+use PHPJava\Compiler\Lang\Assembler\Traits\ParameterParseable;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Types\_Void;
 use PHPJava\Utilities\ArrayTool;
-use PHPJava\Utilities\Formatter;
 
 /**
  * @method ClassAssembler getParentAssembler()
@@ -32,6 +31,7 @@ class MethodAssembler extends AbstractAssembler
     use LocalVariableAssignable;
     use LocalVariableLoadable;
     use Bindable;
+    use ParameterParseable;
 
     protected $attribute;
 
@@ -54,64 +54,22 @@ class MethodAssembler extends AbstractAssembler
             $parameters[$parameter->var->name] = $parameter->type;
         }
 
-        foreach (($this->node->getAttribute('comments') ?? []) as $commentAttribute) {
-            /**
-             * @var \PhpParser\Comment\Doc $commentAttribute
-             */
-            $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
-                ->create($commentAttribute->getText());
-
-            foreach ($documentBlock->getTagsByName('param') as $documentParameter) {
-                /**
-                 * @var \phpDocumentor\Reflection\DocBlock\Tags\Param $documentParameter
-                 */
-                if (!array_key_exists($documentParameter->getVariableName(), $parameters)) {
-                    // Does not add a variable detail and object ref if local variable parameter is not defined.
-                    continue;
-                }
-
-                $type = (string) $documentParameter->getType();
-
-                // Update variable detail.
-                $parameters[$documentParameter->getVariableName()] = [
-                    'type' => str_replace(
-                        '[]',
-                        '',
-                        ltrim(
-                            $type,
-                            '\\'
-                        )
-                    ),
-                    'deep_array' => substr_count($type, '[]'),
-                ];
-
-                $className = Formatter::buildSignature(
-                    $parameters[$documentParameter->getVariableName()]['type'],
-                    $parameters[$documentParameter->getVariableName()]['deep_array']
-                );
-
-                $this->getEnhancedConstantPool()
-                    ->addClass($className);
-
-                // Fill local storage number.
-                $this->assembleAssignVariable(
-                    $documentParameter->getVariableName(),
-                    $parameters[$documentParameter->getVariableName()]['type'],
-                    $parameters[$documentParameter->getVariableName()]['deep_array']
-                );
-            }
-        }
+        $parameters = $this->parseParameterFromNode(
+            $this->node,
+            $parameters
+        );
 
         $descriptorObject = Descriptor::factory()
             // TODO: All method returns void. Will implement return type.
             ->setReturn(_Void::class);
 
         foreach ($parameters as $keyName => $value) {
-            if ($value === null) {
-                throw new AssembleStructureException(
-                    'Parameter length are mismatch.'
-                );
-            }
+            // Fill local storage number.
+            $this->assembleAssignVariable(
+                $keyName,
+                $value['type'],
+                $value['deep_array']
+            );
 
             $descriptorObject->addArgument(
                 $value['type'],
@@ -148,12 +106,12 @@ class MethodAssembler extends AbstractAssembler
         }
 
         $method = (
-        new Method(
-            $methodAccessFlag->make(),
-            $this->getClassAssembler()->getClassName(),
-            $this->methodName,
-            $descriptor
-        )
+            new Method(
+                $methodAccessFlag->make(),
+                $this->getClassAssembler()->getClassName(),
+                $this->methodName,
+                $descriptor
+            )
         )
             ->setConstantPool($this->getConstantPool())
             ->setConstantPoolFinder($this->getConstantPoolFinder())
