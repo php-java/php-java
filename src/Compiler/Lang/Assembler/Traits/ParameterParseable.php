@@ -80,16 +80,6 @@ trait ParameterParseable
 
                 $definedType = $parameters[$variableName]['type'];
                 $definedTypeDimensionsOfArray = $parameters[$variableName]['dimensions_of_array'];
-
-                if (!\PHPJava\Kernel\Resolvers\TypeResolver::isPrimitive($definedType)) {
-                    $className = Formatter::buildSignature(
-                        $definedType,
-                        $definedTypeDimensionsOfArray
-                    );
-
-                    $this->getEnhancedConstantPool()
-                        ->addClass($className);
-                }
             }
         }
 

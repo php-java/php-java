@@ -4,7 +4,6 @@ namespace PHPJava\Utilities;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\Runtime;
-use PHPJava\Exceptions\FormatterException;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
@@ -119,17 +118,8 @@ class Formatter
 
     public static function buildSignature(string $type, int $dimensionsOfArray): string
     {
-        switch ($type) {
-            default:
-                return str_repeat('[', $dimensionsOfArray) . 'L' . static::convertPHPNamespacesToJava($type) . ';';
-        }
-        throw new FormatterException(
-            sprintf(
-                'Cannot build a signature (type: %s, array depth: %s)',
-                $type,
-                $dimensionsOfArray
-            )
-        );
+        $hasSignatureType = array_flip(TypeResolver::SIGNATURE_MAP)[$type] ?? null;
+        return str_repeat('[', $dimensionsOfArray) . ($hasSignatureType ?? 'L' . static::convertPHPNamespacesToJava($type) . ';');
     }
 
     public static function formatClassPath(string $className)

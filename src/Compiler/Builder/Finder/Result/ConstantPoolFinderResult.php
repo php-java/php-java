@@ -117,6 +117,14 @@ class ConstantPoolFinderResult extends AbstractFinderResult implements FinderRes
         throw new FinderException('The entry is not found. (arguments: ' . implode(', ', $this->arguments) . ')');
     }
 
+    public function __debugInfo()
+    {
+        // Omit infos.
+        return [
+            '(omitted)',
+        ];
+    }
+
     public function getType(): string
     {
         return $this->type;

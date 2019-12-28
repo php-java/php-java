@@ -43,6 +43,11 @@ class StackMapTable extends Attribute
      */
     protected $localVariables;
 
+    /**
+     * @var FullFrame[]
+     */
+    protected $entries = [];
+
     public function setOperation(array $operations): self
     {
         $this->validateOperationArray($operations);
@@ -75,16 +80,8 @@ class StackMapTable extends Attribute
                     break;
             }
         }
-        return parent::beginPreparation();
-    }
 
-    public function getValue(): string
-    {
-        $writer = new BinaryWriter(
-            fopen('php://memory', 'r+')
-        );
-
-        $entries = [];
+        $this->entries = [];
 
         $programCounter = 0;
         $effectiveProgramCounter = null;
@@ -110,7 +107,7 @@ class StackMapTable extends Attribute
              * @var AbstractOperationCode $mnemonic
              */
             $mnemonic = Runtime::EMULATOR_MNEMONIC_NAMESPACE . '\\' . $operation->getMnemonic();
-            $executor = (new  $mnemonic($operation, $emulatedAccumulator, $programCounter));
+            $executor = (new $mnemonic($operation, $emulatedAccumulator, $programCounter));
 
             // Execute emulated operation.
             $executor
@@ -119,7 +116,27 @@ class StackMapTable extends Attribute
                 ->execute();
         }
 
-        $entries = $emulatedAccumulator->getFrames();
+        $this->entries = $emulatedAccumulator->getFrames();
+
+        if (!empty($this->entries)) {
+            foreach ($this->getStore()->getAll() as $variableName => $variable) {
+                [$index, $classType, $dimensionsOfArray] = $variable;
+                $classType = Formatter::buildSignature($classType, $dimensionsOfArray);
+                $this->getEnhancedConstantPool()
+                    ->addClass($classType);
+            }
+        }
+
+        return parent::beginPreparation();
+    }
+
+    public function getValue(): string
+    {
+        $writer = new BinaryWriter(
+            fopen('php://memory', 'r+')
+        );
+
+        $entries = $this->entries;
 
         // Set verified entries
         usort(
