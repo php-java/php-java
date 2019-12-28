@@ -40,8 +40,8 @@ class Descriptor implements DescriptorInterface
         $arguments = implode(
             array_map(
                 static function (array $argument) {
-                    [$type, $deepArray] = $argument;
-                    $string = str_repeat('[', $deepArray);
+                    [$type, $dimensionsOfArray] = $argument;
+                    $string = str_repeat('[', $dimensionsOfArray);
                     $type = Formatter::convertStringifiedPrimitiveTypeToKernelType(
                         ltrim($type, '\\')
                     );

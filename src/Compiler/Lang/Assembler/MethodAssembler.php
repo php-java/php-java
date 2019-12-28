@@ -68,12 +68,12 @@ class MethodAssembler extends AbstractAssembler
             $this->assembleAssignVariable(
                 $keyName,
                 $value['type'],
-                $value['deep_array']
+                $value['dimensions_of_array']
             );
 
             $descriptorObject->addArgument(
                 $value['type'],
-                $value['deep_array']
+                $value['dimensions_of_array']
             );
         }
 
