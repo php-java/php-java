@@ -18,7 +18,6 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\VerificationTypeTag;
-use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Types\_Byte;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Float;
@@ -93,21 +92,6 @@ class StackMapTable extends Attribute
         $emulatedAccumulator = new Accumulator();
         $currentOffset = 0;
 
-        foreach ($this->getStore()->getAll() as $localStorage) {
-            [$localStorageIndex, $type] = $localStorage;
-            [$verificationTypeTag, $objectClassType] = TypeResolver::getVerificationTypeTagByKernelType($type);
-            $emulatedAccumulator->setToLocal(
-                $localStorageIndex,
-                [
-                    $verificationTypeTag,
-                    $objectClassType !== null
-                        ? $this->getEnhancedConstantPool()
-                            ->findClass($objectClassType)
-                        : null,
-                ]
-            );
-        }
-
         foreach ($this->operations as $operation) {
             $programCounter = $this->calculateProgramCounterByOperationCodes(
                 $this->operations,
@@ -141,7 +125,7 @@ class StackMapTable extends Attribute
         usort(
             $entries,
             static function (FullFrame $a, FullFrame $b) {
-                return $a->getBranchTarget() - $b->getBranchTarget();
+                return $a->getBranchTarget() <=> $b->getBranchTarget();
             }
         );
 

@@ -54,13 +54,13 @@ abstract class Frame extends Architect implements ArchitectInterface
 
     public function addLocal(int $verificationType, ...$arguments): self
     {
-        $this->locals[] = [$verificationType, $arguments];
+        $this->locals[] = array_merge([$verificationType], $arguments);
         return $this;
     }
 
     public function addStack(int $verificationType, ...$arguments): self
     {
-        $this->stacks[] = [$verificationType, $arguments];
+        $this->stacks[] = array_merge([$verificationType], $arguments);
         return $this;
     }
 

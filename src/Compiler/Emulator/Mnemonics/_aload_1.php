@@ -1,6 +1,8 @@
 <?php
 namespace PHPJava\Compiler\Emulator\Mnemonics;
 
+use PHPJava\Kernel\Maps\VerificationTypeTag;
+
 class _aload_1 extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Compiler\Emulator\Traits\GeneralProcessor;
@@ -8,8 +10,11 @@ class _aload_1 extends AbstractOperationCode implements OperationCodeInterface
     public function execute(): void
     {
         $this->accumulator->pushToOperandStack(
-            $this->accumulator
-                ->getFromLocal(0)
+            [
+                VerificationTypeTag::ITEM_Object,
+                $this->getEnhancedConstantPool()
+                    ->findClass(\PHPJava\Packages\java\lang\_String::class),
+            ]
         );
     }
 }
