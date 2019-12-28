@@ -72,7 +72,7 @@ class Normalizer
              */
             $cp = $value->getConstantPool();
             $descriptor = Formatter::parseSignature($cp[$value->getDescriptorIndex()]->getString());
-            [$type, $class, $deepArray] = TypeResolver::getType($descriptor[0]);
+            [$type, $class, $dimensionsOfArray] = TypeResolver::getType($descriptor[0]);
 
             switch ($type) {
                 case TypeResolver::IS_PRIMITIVE:

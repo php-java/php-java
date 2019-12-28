@@ -22,7 +22,7 @@ class Formatter
     public static function parseSignature(string $signature, int $i = 0): array
     {
         $data = [];
-        $deepArray = 0;
+        $dimensionsOfArray = 0;
 
         for ($size = strlen($signature); $i < $size;) {
             switch ($signature[$i]) {
@@ -37,9 +37,9 @@ class Formatter
                 case 'Z':
                     $data[] = [
                         'type' => TypeResolver::getMappedSignatureType($signature[$i]),
-                        'deep_array' => $deepArray,
+                        'dimensions_of_array' => $dimensionsOfArray,
                     ];
-                    $deepArray = 0;
+                    $dimensionsOfArray = 0;
                     break;
                 case 'L':
                     // class name
@@ -51,16 +51,16 @@ class Formatter
                     [, $className] = Formatter::convertJavaNamespaceToPHP($build);
                     $data[] = [
                         'type' => $className,
-                        'deep_array' => $deepArray,
+                        'dimensions_of_array' => $dimensionsOfArray,
                     ];
-                    $deepArray = 0;
+                    $dimensionsOfArray = 0;
 
                     break;
                 case '[':
                     // array
-                    $deepArray++;
+                    $dimensionsOfArray++;
                     for ($i++; $signature[$i] === '['; $i++) {
-                        $deepArray++;
+                        $dimensionsOfArray++;
                     }
                     // loop
                     continue 2;
@@ -83,7 +83,7 @@ class Formatter
     {
         $string = '';
         foreach ($signatures as $signature) {
-            $build = str_repeat('[', $signature['deep_array']);
+            $build = str_repeat('[', $signature['dimensions_of_array']);
             if (!TypeResolver::isPrimitive($signature['type'])) {
                 $build .= 'L' . str_replace('/', '.', $signature['type']);
             } else {
@@ -107,7 +107,7 @@ class Formatter
             if ($type === _String::class) {
                 $result[] = [
                     'type' => $type,
-                    'deep_array' => $signature['deep_array'],
+                    'dimensions_of_array' => $signature['dimensions_of_array'],
                 ];
                 continue;
             }
@@ -117,17 +117,17 @@ class Formatter
         return $result;
     }
 
-    public static function buildSignature(string $type, int $deepArray): string
+    public static function buildSignature(string $type, int $dimensionsOfArray): string
     {
         switch ($type) {
             default:
-                return str_repeat('[', $deepArray) . 'L' . static::convertPHPNamespacesToJava($type) . ';';
+                return str_repeat('[', $dimensionsOfArray) . 'L' . static::convertPHPNamespacesToJava($type) . ';';
         }
         throw new FormatterException(
             sprintf(
                 'Cannot build a signature (type: %s, array depth: %s)',
                 $type,
-                $deepArray
+                $dimensionsOfArray
             )
         );
     }
@@ -210,7 +210,7 @@ class Formatter
                 ', ',
                 array_map(
                     function ($argument) {
-                        return static::convertVisuallyJavaSignature($argument['type']) . str_repeat('[]', $argument['deep_array']);
+                        return static::convertVisuallyJavaSignature($argument['type']) . str_repeat('[]', $argument['dimensions_of_array']);
                     },
                     $descriptor['arguments']
                 )

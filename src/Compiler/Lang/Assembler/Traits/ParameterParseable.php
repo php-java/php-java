@@ -64,12 +64,12 @@ trait ParameterParseable
                             )
                         )
                     ),
-                    'deep_array' => substr_count($type, '[]'),
+                    'dimensions_of_array' => substr_count($type, '[]'),
                     'order' => $paramOrdersTable[$variableName],
                 ];
 
                 $definedType = $parameters[$variableName]['type'];
-                $definedTypeDimensionsOfArray = $parameters[$variableName]['deep_array'];
+                $definedTypeDimensionsOfArray = $parameters[$variableName]['dimensions_of_array'];
 
                 if (!\PHPJava\Kernel\Resolvers\TypeResolver::isPrimitive($definedType)) {
                     $className = Formatter::buildSignature(

@@ -148,7 +148,7 @@ class TypeResolver
         if (!static::isPrimitive($type)) {
             $signatureType = static::IS_CLASS;
         }
-        if ($signatureArray['deep_array'] > 0) {
+        if ($signatureArray['dimensions_of_array'] > 0) {
             $signatureType = static::IS_ARRAY;
         }
         if ($typeName === null) {
@@ -157,7 +157,7 @@ class TypeResolver
         return [
             $signatureType,
             $typeName,
-            $signatureArray['deep_array'],
+            $signatureArray['dimensions_of_array'],
         ];
     }
 
@@ -186,9 +186,9 @@ class TypeResolver
     public static function convertPHPtoJava($arguments, string $defaultJavaArgumentType = _String::class): array
     {
         $phpType = gettype($arguments);
-        $deepArray = 0;
+        $dimensionsOfArray = 0;
         if ($phpType === 'array') {
-            $deepArray++;
+            $dimensionsOfArray++;
             $getNestedValues = [];
             foreach ($arguments as $argument) {
                 $getNestedValues[] = static::convertPHPtoJava($argument, $defaultJavaArgumentType);
@@ -199,18 +199,18 @@ class TypeResolver
                 if (!static::isPrimitive($resolveType)) {
                     return [
                         'type' => $defaultJavaArgumentType,
-                        'deep_array' => $deepArray,
+                        'dimensions_of_array' => $dimensionsOfArray,
                     ];
                 }
                 return [
                     'type' => $resolveType,
-                    'deep_array' => $deepArray,
+                    'dimensions_of_array' => $dimensionsOfArray,
                 ];
             }
             $firstParameter = $getNestedValues[0];
 
             // TODO: Validate Parameters
-            $firstParameter['deep_array'] += $deepArray;
+            $firstParameter['dimensions_of_array'] += $dimensionsOfArray;
             return $firstParameter;
         }
         if ($phpType === 'object') {
@@ -219,19 +219,19 @@ class TypeResolver
                     'type' => Formatter::convertPHPNamespacesToJava(
                         $arguments->getClassName()
                     ),
-                    'deep_array' => $deepArray,
+                    'dimensions_of_array' => $dimensionsOfArray,
                 ];
             }
             if ($arguments instanceof PrimitiveValueInterface) {
                 return [
                     'type' => get_class($arguments),
-                    'deep_array' => $deepArray,
+                    'dimensions_of_array' => $dimensionsOfArray,
                 ];
             }
             if ($arguments instanceof Collection) {
                 return [
                     'type' => $arguments->getType($defaultJavaArgumentType),
-                    'deep_array' => $deepArray,
+                    'dimensions_of_array' => $dimensionsOfArray,
                 ];
             }
             throw new TypeException(get_class($arguments) . ' does not supported to convert to Java\'s argument.');
@@ -241,13 +241,13 @@ class TypeResolver
         if (!static::isPrimitive($resolveType)) {
             return [
                 'type' => substr(static::PHP_TYPE_MAP[$phpType], 1),
-                'deep_array' => $deepArray,
+                'dimensions_of_array' => $dimensionsOfArray,
             ];
         }
 
         return [
             'type' => $resolveType,
-            'deep_array' => $deepArray,
+            'dimensions_of_array' => $dimensionsOfArray,
         ];
     }
 

@@ -242,8 +242,8 @@ class StackMapTable extends Attribute
                     $writer->writeUnsignedShort($entry->getOffsetDelta());
                     $locals = [];
                     foreach ($this->localVariables as $variableName => $variable) {
-                        [$index, $classType, $deepArray] = $variable;
-                        $classType = Formatter::buildSignature($classType, $deepArray);
+                        [$index, $classType, $dimensionsOfArray] = $variable;
+                        $classType = Formatter::buildSignature($classType, $dimensionsOfArray);
                         $locals[$index] = [
                             VerificationTypeTag::ITEM_Object,
                             $this->getEnhancedConstantPool()

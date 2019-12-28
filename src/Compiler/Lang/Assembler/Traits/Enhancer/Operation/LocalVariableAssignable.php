@@ -17,12 +17,12 @@ use PHPJava\Kernel\Resolvers\MnemonicResolver;
  */
 trait LocalVariableAssignable
 {
-    public function assembleAssignVariable(string $variableName, string $classType, int $deepArray = 0): array
+    public function assembleAssignVariable(string $variableName, string $classType, int $dimensionsOfArray = 0): array
     {
         $localStorageNumber = $this->getStore()->store(
             $variableName,
             $classType,
-            $deepArray
+            $dimensionsOfArray
         );
 
         return $this->assembleStoreOperation(
