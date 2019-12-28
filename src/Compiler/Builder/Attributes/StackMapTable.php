@@ -12,11 +12,13 @@ use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;
 use PHPJava\Compiler\Emulator\Accumulator;
 use PHPJava\Compiler\Emulator\Mnemonics\AbstractOperationCode;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
+use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Validatable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\VerificationTypeTag;
+use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Types\_Byte;
 use PHPJava\Kernel\Types\_Char;
 use PHPJava\Kernel\Types\_Float;
@@ -30,6 +32,7 @@ class StackMapTable extends Attribute
 {
     use Calculatable;
     use Validatable;
+    use StoreManageable;
 
     /**
      * @var \PHPJava\Compiler\Builder\Generator\Operation\Operation[]
@@ -89,6 +92,21 @@ class StackMapTable extends Attribute
 
         $emulatedAccumulator = new Accumulator();
         $currentOffset = 0;
+
+        foreach ($this->getStore()->getAll() as $localStorage) {
+            [$localStorageIndex, $type] = $localStorage;
+            [$verificationTypeTag, $objectClassType] = TypeResolver::getVerificationTypeTagByKernelType($type);
+            $emulatedAccumulator->setToLocal(
+                $localStorageIndex,
+                [
+                    $verificationTypeTag,
+                    $objectClassType !== null
+                        ? $this->getEnhancedConstantPool()
+                            ->findClass($objectClassType)
+                        : null,
+                ]
+            );
+        }
 
         foreach ($this->operations as $operation) {
             $programCounter = $this->calculateProgramCounterByOperationCodes(

@@ -42,7 +42,7 @@ class Descriptor implements DescriptorInterface
                 static function (array $argument) {
                     [$type, $dimensionsOfArray] = $argument;
                     $string = str_repeat('[', $dimensionsOfArray);
-                    $type = Formatter::convertStringifiedPrimitiveTypeToKernelType(
+                    $type = Formatter::convertPHPPrimitiveTypeToJavaType(
                         ltrim($type, '\\')
                     );
                     switch ($type) {

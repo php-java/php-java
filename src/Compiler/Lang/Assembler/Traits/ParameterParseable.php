@@ -19,8 +19,19 @@ use PhpParser\Node;
  */
 trait ParameterParseable
 {
-    public function parseParameterFromNode(Node $node, array $defaultParameters = []): array
+    public function parseParameterFromNode(Node $node): array
     {
+        // Get parameters
+        $parameters = [
+            // variable name => literal type
+        ];
+        foreach ($node->getParams() as $parameter) {
+            /**
+             * @var \PhpParser\Node\Param $parameter
+             */
+            $parameters[$parameter->var->name] = $parameter->type;
+        }
+
         $paramOrdersTable = [];
 
         foreach ($node->params as $index => $param) {
@@ -30,7 +41,6 @@ trait ParameterParseable
             $paramOrdersTable[$param->var->name] = $index;
         }
 
-        $parameters = $defaultParameters;
         foreach (($node->getAttribute('comments') ?? []) as $commentAttribute) {
             /**
              * @var \PhpParser\Comment\Doc $commentAttribute
@@ -54,7 +64,7 @@ trait ParameterParseable
 
                 // Update variable detail.
                 $parameters[$variableName] = [
-                    'type' => Formatter::convertStringifiedPrimitiveTypeToKernelType(
+                    'type' => Formatter::convertPHPPrimitiveTypeToJavaType(
                         str_replace(
                             '[]',
                             '',
@@ -83,18 +93,21 @@ trait ParameterParseable
             }
         }
 
-        $parameters = array_filter(
-            $parameters,
-            static function ($parameter, $name) {
-                if ($parameter === null) {
-                    throw new AssembleStructureException(
-                        'Parameter length are mismatch or $' . $name . ' is not defined parameter type.'
-                    );
-                }
-                return true;
-            },
-            ARRAY_FILTER_USE_BOTH
-        );
+        foreach ($parameters as $variableName => $parameter) {
+            if ($parameter === null) {
+                throw new AssembleStructureException(
+                    'Parameter length are mismatch or $' . $variableName . ' is not defined parameter type.'
+                );
+            }
+            if ($parameter instanceof Node\Identifier) {
+                $type = $parameter->name;
+                $parameters[$variableName] = [
+                    'type' => Formatter::convertPHPPrimitiveTypeToJavaType($type),
+                    'dimensions_of_array' => 0,
+                    'order' => $paramOrdersTable[$variableName],
+                ];
+            }
+        }
 
         uasort(
             $parameters,

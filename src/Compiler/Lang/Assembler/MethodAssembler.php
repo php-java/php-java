@@ -43,21 +43,7 @@ class MethodAssembler extends AbstractAssembler
 
         $this->attribute = new Attributes();
 
-        // Get parameters
-        $parameters = [
-            // variable name => literal type
-        ];
-        foreach ($this->node->getParams() as $parameter) {
-            /**
-             * @var \PhpParser\Node\Param $parameter
-             */
-            $parameters[$parameter->var->name] = $parameter->type;
-        }
-
-        $parameters = $this->parseParameterFromNode(
-            $this->node,
-            $parameters
-        );
+        $parameters = $this->parseParameterFromNode($this->node);
 
         $descriptorObject = Descriptor::factory()
             // TODO: All method returns void. Will implement return type.
@@ -147,6 +133,7 @@ class MethodAssembler extends AbstractAssembler
                         (new Attributes())
                             ->add(
                                 (new StackMapTable())
+                                    ->setStore($this->getStore())
                                     ->setConstantPool($this->getConstantPool())
                                     ->setConstantPoolFinder($this->getConstantPoolFinder())
                                     ->setDefaultLocalVariables($defaultLocalVariableOperations)

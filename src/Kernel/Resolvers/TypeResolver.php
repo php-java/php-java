@@ -6,6 +6,7 @@ use PHPJava\Core\JavaClassInterface;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
+use PHPJava\Kernel\Maps\VerificationTypeTag;
 use PHPJava\Kernel\Types\_Array\Collection;
 use PHPJava\Kernel\Types\_Boolean;
 use PHPJava\Kernel\Types\_Byte;
@@ -67,6 +68,16 @@ class TypeResolver
         'short' => _Short::class,
         'boolean' => _Boolean::class,
         'void' => _Void::class,
+    ];
+
+    const VERIFICATION_TYPE_TAG_MAPS = [
+        _Int::class => VerificationTypeTag::ITEM_Integer,
+        _Float::class => VerificationTypeTag::ITEM_Float,
+        _Double::class => VerificationTypeTag::ITEM_Double,
+        _Char::class => VerificationTypeTag::ITEM_Integer,
+        _Short::class => VerificationTypeTag::ITEM_Integer,
+        _Long::class => VerificationTypeTag::ITEM_Long,
+        null => VerificationTypeTag::ITEM_Null,
     ];
 
     const PHP_SCALAR_MAP = [
@@ -354,5 +365,14 @@ class TypeResolver
             array_values(static::TYPES_MAP),
             true
         );
+    }
+
+    public static function getVerificationTypeTagByKernelType(string $kernelType): array
+    {
+        $verificationTypeTag = static::VERIFICATION_TYPE_TAG_MAPS[$kernelType] ?? null;
+        if ($verificationTypeTag !== null) {
+            return [$verificationTypeTag, null];
+        }
+        return [VerificationTypeTag::ITEM_Object, $kernelType];
     }
 }
