@@ -12,6 +12,7 @@ use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;
 use PHPJava\Compiler\Emulator\Accumulator;
 use PHPJava\Compiler\Emulator\Mnemonics\AbstractOperationCode;
 use PHPJava\Compiler\Lang\Assembler\Traits\Calculatable;
+use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Validatable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
@@ -30,6 +31,7 @@ class StackMapTable extends Attribute
 {
     use Calculatable;
     use Validatable;
+    use StoreManageable;
 
     /**
      * @var \PHPJava\Compiler\Builder\Generator\Operation\Operation[]
@@ -123,7 +125,7 @@ class StackMapTable extends Attribute
         usort(
             $entries,
             static function (FullFrame $a, FullFrame $b) {
-                return $a->getBranchTarget() - $b->getBranchTarget();
+                return $a->getBranchTarget() <=> $b->getBranchTarget();
             }
         );
 

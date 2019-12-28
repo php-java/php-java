@@ -272,4 +272,19 @@ class Formatter
     {
         return TypeResolver::TYPES_MAP[strtolower($type)] ?? $type;
     }
+
+    public static function convertPHPPrimitiveTypeToJavaType(string $phpPrimitiveType)
+    {
+        $convertedPrimitiveType = static::convertStringifiedPrimitiveTypeToKernelType(
+            $phpPrimitiveType
+        );
+        if ($phpPrimitiveType !== $convertedPrimitiveType) {
+            return $convertedPrimitiveType;
+        }
+        switch ($phpPrimitiveType) {
+            case 'string':
+                return _String::class;
+        }
+        return $phpPrimitiveType;
+    }
 }
