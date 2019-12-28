@@ -1,7 +1,7 @@
 <?php
 namespace PHPJava\Compiler\Emulator\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
+use PHPJava\Kernel\Maps\VerificationTypeTag;
 
 class _sipush extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -9,6 +9,10 @@ class _sipush extends AbstractOperationCode implements OperationCodeInterface
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->accumulator->pushToOperandStack(
+            [
+                VerificationTypeTag::ITEM_Integer,
+            ]
+        );
     }
 }

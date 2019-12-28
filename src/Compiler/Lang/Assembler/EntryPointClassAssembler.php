@@ -161,6 +161,7 @@ class EntryPointClassAssembler implements AssemblerInterface, ParameterServiceIn
                                             (new Code())
                                                 ->setConstantPool($this->getConstantPool())
                                                 ->setConstantPoolFinder($this->getConstantPoolFinder())
+                                                ->setDefaultLocals(1)
                                                 ->setCode($operations)
                                                 ->setAttributes(
                                                     (new Attributes())

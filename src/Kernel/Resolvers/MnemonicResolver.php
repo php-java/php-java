@@ -18,6 +18,7 @@ class MnemonicResolver
     {
         switch ($operation->getOpCode()) {
             case OpCode::_iload:
+            case OpCode::_iload_0:
             case OpCode::_iload_1:
             case OpCode::_iload_2:
             case OpCode::_iload_3:
@@ -34,16 +35,19 @@ class MnemonicResolver
             case OpCode::_imul:
                 return _Int::class;
             case OpCode::_fload:
+            case OpCode::_fload_0:
             case OpCode::_fload_1:
             case OpCode::_fload_2:
             case OpCode::_fload_3:
                 return _Float::class;
             case OpCode::_dload:
+            case OpCode::_dload_0:
             case OpCode::_dload_1:
             case OpCode::_dload_2:
             case OpCode::_dload_3:
                 return _Double::class;
             case OpCode::_lload:
+            case OpCode::_lload_0:
             case OpCode::_lload_1:
             case OpCode::_lload_2:
             case OpCode::_lload_3:

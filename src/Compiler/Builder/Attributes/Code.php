@@ -25,10 +25,21 @@ class Code extends Attribute
     protected $operations = [];
     protected $exceptionTables = [];
 
+    /**
+     * @var int
+     */
+    protected $defaultLocals = 0;
+
     public function setCode(array $operations): self
     {
         $this->validateOperationArray($operations);
         $this->operations = $operations;
+        return $this;
+    }
+
+    public function setDefaultLocals(int $defaultLocals): self
+    {
+        $this->defaultLocals = $defaultLocals;
         return $this;
     }
 
@@ -45,7 +56,7 @@ class Code extends Attribute
         );
 
         $maxStacks = 0;
-        $maxLocals = 1;
+        $maxLocals = $this->defaultLocals;
         $countableMaxLocals = $maxLocals;
 
         // Calculate max stack size from operations

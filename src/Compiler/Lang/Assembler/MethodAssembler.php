@@ -108,7 +108,7 @@ class MethodAssembler extends AbstractAssembler
             ->add($method);
 
         $operations = [];
-        $defaultLocalVariableOperations = $this->getStore()->getAll();
+        $defaultLocalVariables = $this->getStore()->getAll();
 
         ArrayTool::concat(
             $operations,
@@ -128,6 +128,9 @@ class MethodAssembler extends AbstractAssembler
                 (new Code())
                     ->setConstantPool($this->getConstantPool())
                     ->setConstantPoolFinder($this->getConstantPoolFinder())
+                    ->setDefaultLocals(
+                        count($defaultLocalVariables)
+                    )
                     ->setCode($operations)
                     ->setAttributes(
                         (new Attributes())
@@ -136,7 +139,7 @@ class MethodAssembler extends AbstractAssembler
                                     ->setStore($this->getStore())
                                     ->setConstantPool($this->getConstantPool())
                                     ->setConstantPoolFinder($this->getConstantPoolFinder())
-                                    ->setDefaultLocalVariables($defaultLocalVariableOperations)
+                                    ->setDefaultLocalVariables($defaultLocalVariables)
                                     ->setOperation(
                                         $operations
                                     )

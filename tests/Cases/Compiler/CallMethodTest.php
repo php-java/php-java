@@ -28,12 +28,42 @@ class CallMethodTest extends Base
         $this->assertSame('Hello World!', $output[0]);
     }
 
-    public function TestCallStaticMethodsWithArgumentsAndNamespace()
+    public function testCallStaticMethodsWithArgumentsAndNamespace()
     {
         [$output, $return] = $this->runJavaTest(
             __METHOD__,
             'PHPJava.CompilerMethodCallTest'
         );
+        $this->assertSame('Hello World!', $output[0]);
+    }
+
+    public function testCallStaticMethodsWithTypeHintedArguments()
+    {
+        [$output, $return] = $this->runJavaTest(__METHOD__);
+        $this->assertSame('Hello World!', $output[0]);
+    }
+
+    public function testCallStaticMethodsWithPrimitiveTypeHintedArguments()
+    {
+        [$output, $return] = $this->runJavaTest(__METHOD__);
+        $this->assertSame('1234', $output[0]);
+    }
+
+    public function testCallStaticMethodsMultiplePattern1()
+    {
+        [$output, $return] = $this->runJavaTest(__METHOD__);
+        $this->assertSame('Hello World!', $output[0]);
+    }
+
+    public function testCallStaticMethodsMultiplePattern2()
+    {
+        [$output, $return] = $this->runJavaTest(__METHOD__);
+        $this->assertSame('Hello World!', $output[0]);
+    }
+
+    public function testCallStaticMethodsWithMultipleArguments()
+    {
+        [$output, $return] = $this->runJavaTest(__METHOD__);
         $this->assertSame('Hello World!', $output[0]);
     }
 }
