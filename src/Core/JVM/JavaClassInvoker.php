@@ -10,8 +10,8 @@ use PHPJava\Core\JVM\Invoker\JavaClassStaticMethodInvoker;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Maps\FieldAccessFlag;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
-use PHPJava\Kernel\Structures\_FieldInfo;
-use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\FieldInfo;
+use PHPJava\Kernel\Structures\MethodInfo;
 
 class JavaClassInvoker implements ClassInvokerInterface
 {
@@ -21,22 +21,22 @@ class JavaClassInvoker implements ClassInvokerInterface
     use Extended\StaticAccessorProvidable;
 
     /**
-     * @var _MethodInfo[]
+     * @var MethodInfo[]
      */
     private $dynamicMethods = [];
 
     /**
-     * @var _MethodInfo[]
+     * @var MethodInfo[]
      */
     private $staticMethods = [];
 
     /**
-     * @var _FieldInfo[]
+     * @var FieldInfo[]
      */
     private $dynamicFields = [];
 
     /**
-     * @var _FieldInfo[]
+     * @var FieldInfo[]
      */
     private $staticFields = [];
 
@@ -61,7 +61,7 @@ class JavaClassInvoker implements ClassInvokerInterface
 
         foreach ($this->javaClass->getDefinedMethods() as $methodInfo) {
             /**
-             * @var _MethodInfo $methodInfo
+             * @var MethodInfo $methodInfo
              */
             $methodName = $cpInfo[$methodInfo->getNameIndex()]->getString();
 
@@ -74,7 +74,7 @@ class JavaClassInvoker implements ClassInvokerInterface
 
         foreach ($this->javaClass->getDefinedFields() as $fieldInfo) {
             /**
-             * @var _FieldInfo $fieldInfo
+             * @var FieldInfo $fieldInfo
              */
             $fieldName = $cpInfo[$fieldInfo->getNameIndex()]->getString();
 

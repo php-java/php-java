@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Kernel\Structures\_ParameterAnnotation;
+use PHPJava\Kernel\Structures\ParameterAnnotation;
 
 final class RuntimeInvisibleParameterAnnotationsAttribute implements AttributeInterface
 {
@@ -17,7 +17,7 @@ final class RuntimeInvisibleParameterAnnotationsAttribute implements AttributeIn
     private $numParameters;
 
     /**
-     * @var _ParameterAnnotation[]
+     * @var ParameterAnnotation[]
      */
     private $annotations = [];
 
@@ -26,7 +26,7 @@ final class RuntimeInvisibleParameterAnnotationsAttribute implements AttributeIn
         $this->numParameters = $this->readUnsignedByte();
 
         for ($i = 0; $i < $this->numParameters; $i++) {
-            $annotation = new _ParameterAnnotation($this->reader);
+            $annotation = new ParameterAnnotation($this->reader);
             $annotation->setConstantPool($this->getConstantPool());
             $annotation->setDebugTool($this->getDebugTool());
             $annotation->execute();

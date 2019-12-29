@@ -40,7 +40,7 @@ final class CodeAttribute implements AttributeInterface
     private $exceptionTableLength;
 
     /**
-     * @var \PHPJava\Kernel\Structures\_ExceptionTable[]
+     * @var \PHPJava\Kernel\Structures\ExceptionTable[]
      */
     private $exceptionTables = [];
 
@@ -70,7 +70,7 @@ final class CodeAttribute implements AttributeInterface
         // read exception table
         $this->exceptionTableLength = $this->readUnsignedShort();
         for ($i = 0; $i < $this->exceptionTableLength; $i++) {
-            $exceptionTable = new \PHPJava\Kernel\Structures\_ExceptionTable($this->reader);
+            $exceptionTable = new \PHPJava\Kernel\Structures\ExceptionTable($this->reader);
             $exceptionTable->setConstantPool($this->getConstantPool());
             $exceptionTable->setDebugTool($this->getDebugTool());
             $exceptionTable->execute();
@@ -88,7 +88,7 @@ final class CodeAttribute implements AttributeInterface
     }
 
     /**
-     * @return \PHPJava\Kernel\Structures\_ExceptionTable[]
+     * @return \PHPJava\Kernel\Structures\ExceptionTable[]
      */
     public function getExceptionTables(): array
     {

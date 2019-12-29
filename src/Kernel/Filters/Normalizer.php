@@ -6,7 +6,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NormalizerException;
 use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Structures\_FieldInfo;
+use PHPJava\Kernel\Structures\FieldInfo;
 use PHPJava\Kernel\Types\Array_\Collection;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
 use PHPJava\Kernel\Types\Type;
@@ -69,7 +69,7 @@ class Normalizer
         $newFields = [];
         foreach ($fields as $name => $value) {
             /**
-             * @var _FieldInfo $value
+             * @var FieldInfo $value
              */
             $cp = $value->getConstantPool();
             $descriptor = Formatter::parseSignature($cp[$value->getDescriptorIndex()]->getString());

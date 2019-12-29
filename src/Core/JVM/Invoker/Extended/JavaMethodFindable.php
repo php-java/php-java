@@ -7,7 +7,7 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\UndefinedMethodException;
 use PHPJava\Kernel\Resolvers\SuperClassResolver;
 use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\MethodInfo;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Utilities\Formatter;
 
@@ -19,7 +19,7 @@ trait JavaMethodFindable
      * @throws \PHPJava\Exceptions\TypeException
      * @throws \ReflectionException
      */
-    protected function findMethod(string $name, ...$arguments): _MethodInfo
+    protected function findMethod(string $name, ...$arguments): MethodInfo
     {
         $superClassMethods = $this->isDynamic()
             ? SuperClassResolver::resolveDynamicMethods($name, $this->javaClassInvoker->getJavaClass())
@@ -54,7 +54,7 @@ trait JavaMethodFindable
             }
 
             /**
-             * @var _MethodInfo $methodReference
+             * @var MethodInfo $methodReference
              */
             $methodSignature = Formatter::buildArgumentsSignature($formattedArguments);
 

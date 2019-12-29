@@ -7,7 +7,7 @@ use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Maps\MethodAccessFlag;
 use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\MethodInfo;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
 use PHPJava\Packages\java\lang\String_;
 
@@ -180,7 +180,7 @@ class Formatter
     /**
      * @throws \PHPJava\Exceptions\TypeException
      */
-    public static function beatifyMethodFromConstantPool(_MethodInfo $method, ConstantPool $constantPool): string
+    public static function beatifyMethodFromConstantPool(MethodInfo $method, ConstantPool $constantPool): string
     {
         $cpInfo = $constantPool->getEntries();
         $methodAccessFlags = $method->getAccessFlag();

@@ -115,7 +115,7 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
     }
 
     /**
-     * @return PHPJava\Core\JVM\_FieldInfo[]
+     * @return PHPJava\Core\JVM\FieldInfo[]
      */
     public function getDefinedFields(): array
     {
@@ -127,7 +127,7 @@ class JavaSimpleClass implements JavaGenericClassInterface, JavaClassInterface
     }
 
     /**
-     * @return PHPJava\Core\JVM\_MethodInfo[]
+     * @return PHPJava\Core\JVM\MethodInfo[]
      */
     public function getDefinedMethods(): array
     {

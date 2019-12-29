@@ -4,7 +4,7 @@ namespace PHPJava\Kernel\Structures;
 
 use PHPJava\Kernel\Structures\Annotations\Annotation;
 
-class _ParameterAnnotation implements StructureInterface
+class ParameterAnnotation implements StructureInterface
 {
     use \PHPJava\Kernel\Core\BinaryReader;
     use \PHPJava\Kernel\Core\ConstantPool;

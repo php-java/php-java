@@ -22,8 +22,8 @@ use PHPJava\Kernel\Attributes\AttributeInfo;
 use PHPJava\Kernel\Attributes\InnerClassesAttribute;
 use PHPJava\Kernel\Resolvers\ClassResolver;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
-use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Structures\InnerClasses;
+use PHPJava\Kernel\Structures\MethodInfo;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Utilities\DebugTool;
 use PHPJava\Utilities\Formatter;
@@ -269,7 +269,7 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
             'name' => str_replace('/', '.', $this->getClassName()),
             'super' => str_replace('/', '.', $this->getSuperClass() ? $this->getSuperClass()->getClassName() : null),
             'methods' => array_map(
-                function (_MethodInfo $method) {
+                function (MethodInfo $method) {
                     return Formatter::beatifyMethodFromConstantPool(
                         $method,
                         $this->constantPool
@@ -300,7 +300,7 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
     }
 
     /**
-     * @return PHPJava\Core\JVM\_FieldInfo[]
+     * @return PHPJava\Core\JVM\FieldInfo[]
      */
     public function getDefinedFields(): array
     {
@@ -308,7 +308,7 @@ class JavaCompiledClass implements JavaGenericClassInterface, JavaClassInterface
     }
 
     /**
-     * @return PHPJava\Core\JVM\_MethodInfo[]
+     * @return PHPJava\Core\JVM\MethodInfo[]
      */
     public function getDefinedMethods(): array
     {

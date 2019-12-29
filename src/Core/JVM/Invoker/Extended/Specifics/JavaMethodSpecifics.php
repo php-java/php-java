@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Core\JVM\Invoker\Extended\Specifics;
 
 use PHPJava\Kernel\Maps\MethodAccessFlag;
-use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\MethodInfo;
 
 class JavaMethodSpecifics implements MethodSpecificsInterface
 {
     /**
-     * @var _MethodInfo
+     * @var MethodInfo
      */
     private $methodInfo;
 
-    public function __construct(_MethodInfo $methodInfo)
+    public function __construct(MethodInfo $methodInfo)
     {
         $this->methodInfo = $methodInfo;
     }
