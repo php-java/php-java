@@ -11,7 +11,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `EnumMap` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\util\AbstractMap
  */
 class EnumMap extends AbstractMap // implements Serializable, Cloneable, Map

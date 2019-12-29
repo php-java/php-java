@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Cloneable;
@@ -12,9 +12,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `BitSet` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class BitSet extends _Object // implements Serializable, Cloneable, IntStream
+class BitSet extends Object_ // implements Serializable, Cloneable, IntStream
 {
     /**
      * Performs a logical AND of this target bit set with the argument bit set.

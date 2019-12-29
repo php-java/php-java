@@ -6,7 +6,7 @@ use PHPJava\Compiler\Builder\Signatures\Descriptor;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Exceptions\ResolverException;
 use PHPJava\Kernel\Resolvers\MnemonicResolver;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Utilities\ArrayTool;
 
 /**
@@ -48,7 +48,7 @@ trait StringConcatable
                 \PHPJava\Packages\java\lang\StringBuilder::class,
                 Descriptor::factory()
                     ->setReturn(
-                        _Void::class
+                        Void_::class
                     )
                     ->make(),
                 true

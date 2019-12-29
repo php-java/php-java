@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\Float_;
 
 final class _d2f extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -25,6 +25,6 @@ final class _d2f extends AbstractOperationCode implements OperationCodeInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(_Float::get($value));
+        $this->pushToOperandStack(Float_::get($value));
     }
 }

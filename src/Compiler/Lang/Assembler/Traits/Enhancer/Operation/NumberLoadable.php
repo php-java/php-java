@@ -12,9 +12,9 @@ use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\Byte_;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Short_;
 
 /**
  * @method Store getStore()
@@ -30,35 +30,35 @@ trait NumberLoadable
         $loadOperand = null;
 
         if ($value === 0) {
-            $type = _Byte::class;
+            $type = Byte_::class;
             $loadOperation = OpCode::_iconst_0;
         } elseif ($value === 1) {
-            $type = _Byte::class;
+            $type = Byte_::class;
             $loadOperation = OpCode::_iconst_1;
         } elseif ($value === 2) {
-            $type = _Byte::class;
+            $type = Byte_::class;
             $loadOperation = OpCode::_iconst_2;
         } elseif ($value === 3) {
-            $type = _Byte::class;
+            $type = Byte_::class;
             $loadOperation = OpCode::_iconst_3;
         } elseif ($value === 4) {
-            $type = _Byte::class;
+            $type = Byte_::class;
             $loadOperation = OpCode::_iconst_4;
         } elseif ($value === 5) {
-            $type = _Byte::class;
+            $type = Byte_::class;
             $loadOperation = OpCode::_iconst_5;
-        } elseif ($value >= _Byte::MIN && $value <= _Byte::MAX) {
-            $type = _Byte::class;
+        } elseif ($value >= Byte_::MIN && $value <= Byte_::MAX) {
+            $type = Byte_::class;
             $loadOperation = OpCode::_bipush;
             $loadOperand = $value;
-        } elseif ($value >= _Short::MIN && $value <= _Short::MAX) {
-            $type = _Short::class;
+        } elseif ($value >= Short_::MIN && $value <= Short_::MAX) {
+            $type = Short_::class;
             $loadOperation = OpCode::_sipush;
             $loadOperand = $value;
-        } elseif ($value >= _Int::MIN && $value <= _Int::MAX) {
+        } elseif ($value >= Int_::MIN && $value <= Int_::MAX) {
             $this->getEnhancedConstantPool()
                 ->addInteger($value);
-            $type = _Int::class;
+            $type = Int_::class;
             $loadOperation = OpCode::_ldc;
             $loadOperand = $this->getConstantPoolFinder()
                 ->find(

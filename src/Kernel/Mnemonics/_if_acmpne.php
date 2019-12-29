@@ -4,7 +4,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Kernel\Structures\Utf8Info;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Packages\java\lang\String_;
 
 final class _if_acmpne extends AbstractOperationCode implements OperationCodeInterface
 {

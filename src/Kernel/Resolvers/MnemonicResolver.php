@@ -5,13 +5,13 @@ namespace PHPJava\Kernel\Resolvers;
 use PHPJava\Compiler\Builder\Generator\Operation\Operation;
 use PHPJava\Exceptions\ResolverException;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Char;
-use PHPJava\Kernel\Types\_Double;
-use PHPJava\Kernel\Types\_Float;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Long;
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\Byte_;
+use PHPJava\Kernel\Types\Char_;
+use PHPJava\Kernel\Types\Double_;
+use PHPJava\Kernel\Types\Float_;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Long_;
+use PHPJava\Kernel\Types\Short_;
 
 class MnemonicResolver
 {
@@ -34,25 +34,25 @@ class MnemonicResolver
             case OpCode::_isub:
             case OpCode::_idiv:
             case OpCode::_imul:
-                return _Int::class;
+                return Int_::class;
             case OpCode::_fload:
             case OpCode::_fload_0:
             case OpCode::_fload_1:
             case OpCode::_fload_2:
             case OpCode::_fload_3:
-                return _Float::class;
+                return Float_::class;
             case OpCode::_dload:
             case OpCode::_dload_0:
             case OpCode::_dload_1:
             case OpCode::_dload_2:
             case OpCode::_dload_3:
-                return _Double::class;
+                return Double_::class;
             case OpCode::_lload:
             case OpCode::_lload_0:
             case OpCode::_lload_1:
             case OpCode::_lload_2:
             case OpCode::_lload_3:
-                return _Long::class;
+                return Long_::class;
         }
 
         throw new ResolverException(
@@ -99,19 +99,19 @@ class MnemonicResolver
     {
         $prefix = 'a';
         switch ($classType) {
-            case _Int::class:
-            case _Short::class:
-            case _Byte::class:
-            case _Char::class:
+            case Int_::class:
+            case Short_::class:
+            case Byte_::class:
+            case Char_::class:
                 $prefix = 'i';
                 break;
-            case _Long::class:
+            case Long_::class:
                 $prefix = 'l';
                 break;
-            case _Float::class:
+            case Float_::class:
                 $prefix = 'f';
                 break;
-            case _Double::class:
+            case Double_::class:
                 $prefix = 'd';
                 break;
         }

@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\nio;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `Buffer` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Buffer extends _Object
+class Buffer extends Object_
 {
     /**
      * Returns the array that backs this buffer&nbsp;&nbsp;(optional operation).

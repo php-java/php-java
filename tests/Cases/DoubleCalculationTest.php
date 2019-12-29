@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\Double_;
 
 class DoubleCalculationTest extends Base
 {
@@ -28,8 +28,8 @@ class DoubleCalculationTest extends Base
             '30',
             $this->call(
                 'doubleAdd',
-                _Double::get(10),
-                _Double::get(20)
+                Double_::get(10),
+                Double_::get(20)
             )
         );
     }
@@ -40,8 +40,8 @@ class DoubleCalculationTest extends Base
             '5',
             $this->call(
                 'doubleSub',
-                _Double::get(10),
-                _Double::get(5)
+                Double_::get(10),
+                Double_::get(5)
             )
         );
     }
@@ -52,8 +52,8 @@ class DoubleCalculationTest extends Base
             '-10',
             $this->call(
                 'doubleSub',
-                _Double::get(10),
-                _Double::get(20)
+                Double_::get(10),
+                Double_::get(20)
             )
         );
     }
@@ -64,8 +64,8 @@ class DoubleCalculationTest extends Base
             '50',
             $this->call(
                 'doubleMul',
-                _Double::get(10),
-                _Double::get(5)
+                Double_::get(10),
+                Double_::get(5)
             )
         );
     }
@@ -76,8 +76,8 @@ class DoubleCalculationTest extends Base
             '30',
             $this->call(
                 'doubleAddFromOtherMethod',
-                _Double::get(10),
-                _Double::get(20)
+                Double_::get(10),
+                Double_::get(20)
             )
         );
     }
@@ -88,8 +88,8 @@ class DoubleCalculationTest extends Base
             '5',
             $this->call(
                 'doubleSubFromOtherMethod',
-                _Double::get(10),
-                _Double::get(5)
+                Double_::get(10),
+                Double_::get(5)
             )
         );
     }
@@ -100,8 +100,8 @@ class DoubleCalculationTest extends Base
             '-10',
             $this->call(
                 'doubleSubFromOtherMethod',
-                _Double::get(10),
-                _Double::get(20)
+                Double_::get(10),
+                Double_::get(20)
             )
         );
     }
@@ -112,8 +112,8 @@ class DoubleCalculationTest extends Base
             '50',
             $this->call(
                 'doubleMulFromOtherMethod',
-                _Double::get(10),
-                _Double::get(5)
+                Double_::get(10),
+                Double_::get(5)
             )
         );
     }
@@ -124,8 +124,8 @@ class DoubleCalculationTest extends Base
             '3.0',
             $this->call(
                 'doubleAdd',
-                _Double::get(1.5),
-                _Double::get(1.5)
+                Double_::get(1.5),
+                Double_::get(1.5)
             )
         );
     }
@@ -136,8 +136,8 @@ class DoubleCalculationTest extends Base
             '0.0',
             $this->call(
                 'doubleSub',
-                _Double::get(1.5),
-                _Double::get(1.5)
+                Double_::get(1.5),
+                Double_::get(1.5)
             )
         );
     }
@@ -148,8 +148,8 @@ class DoubleCalculationTest extends Base
             '-1.0',
             $this->call(
                 'doubleSub',
-                _Double::get(1.5),
-                _Double::get(2.5)
+                Double_::get(1.5),
+                Double_::get(2.5)
             )
         );
     }
@@ -160,8 +160,8 @@ class DoubleCalculationTest extends Base
             '7.5',
             $this->call(
                 'doubleMul',
-                _Double::get(5),
-                _Double::get(1.5)
+                Double_::get(5),
+                Double_::get(1.5)
             )
         );
     }
@@ -172,8 +172,8 @@ class DoubleCalculationTest extends Base
             '3.0',
             $this->call(
                 'doubleAddFromOtherMethod',
-                _Double::get(1.5),
-                _Double::get(1.5)
+                Double_::get(1.5),
+                Double_::get(1.5)
             )
         );
     }
@@ -184,8 +184,8 @@ class DoubleCalculationTest extends Base
             '0.0',
             $this->call(
                 'doubleSubFromOtherMethod',
-                _Double::get(1.5),
-                _Double::get(1.5)
+                Double_::get(1.5),
+                Double_::get(1.5)
             )
         );
     }
@@ -196,8 +196,8 @@ class DoubleCalculationTest extends Base
             '-1.0',
             $this->call(
                 'doubleSubFromOtherMethod',
-                _Double::get(1.5),
-                _Double::get(2.5)
+                Double_::get(1.5),
+                Double_::get(2.5)
             )
         );
     }
@@ -208,8 +208,8 @@ class DoubleCalculationTest extends Base
             '7.5',
             $this->call(
                 'doubleMulFromOtherMethod',
-                _Double::get(5),
-                _Double::get(1.5)
+                Double_::get(5),
+                Double_::get(1.5)
             )
         );
     }

@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\Short_;
 
 final class _i2s extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -25,6 +25,6 @@ final class _i2s extends AbstractOperationCode implements OperationCodeInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(_Short::get($value));
+        $this->pushToOperandStack(Short_::get($value));
     }
 }

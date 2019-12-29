@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
 use PHPJava\IO\Standard\Output;
-use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\Float_;
 
 class FloatOfTypesComparingTest extends Base
 {
@@ -19,7 +19,7 @@ class FloatOfTypesComparingTest extends Base
             ->getMethods()
             ->call(
                 'l',
-                new _Float(-1.0)
+                new Float_(-1.0)
             );
         $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
@@ -33,7 +33,7 @@ class FloatOfTypesComparingTest extends Base
             ->getMethods()
             ->call(
                 'le',
-                new _Float(0)
+                new Float_(0)
             );
         $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
@@ -47,7 +47,7 @@ class FloatOfTypesComparingTest extends Base
             ->getMethods()
             ->call(
                 'g',
-                new _Float(2.0)
+                new Float_(2.0)
             );
         $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
@@ -61,7 +61,7 @@ class FloatOfTypesComparingTest extends Base
             ->getMethods()
             ->call(
                 'ge',
-                new _Float(0)
+                new Float_(0)
             );
         $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);

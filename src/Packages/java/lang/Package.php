@@ -10,9 +10,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Package` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Package extends _Object // implements AnnotatedElement, Annotation
+class Package extends Object_ // implements AnnotatedElement, Annotation
 {
     /**
      * Returns this element's annotation for the specified type if such an annotation is present, else null.

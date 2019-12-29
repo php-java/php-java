@@ -9,7 +9,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `MappedByteBuffer` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\nio\Buffer
  * @parent \PHPJava\Packages\java\nio\ByteBuffer
  */

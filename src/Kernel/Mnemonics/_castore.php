@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Char;
+use PHPJava\Kernel\Types\Char_;
 use PHPJava\Kernel\Types\Type;
 
 final class _castore extends AbstractOperationCode implements OperationCodeInterface
@@ -29,6 +29,6 @@ final class _castore extends AbstractOperationCode implements OperationCodeInter
         $arrayref = $this->popFromOperandStack();
 
         // The value is a ref.
-        $arrayref[$index] = _Char::get($value);
+        $arrayref[$index] = Char_::get($value);
     }
 }

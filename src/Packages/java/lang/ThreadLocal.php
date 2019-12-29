@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Packages\java\lang;
 
-class ThreadLocal extends _Object
+class ThreadLocal extends Object_
 {
     // TODO: Implement here
 }

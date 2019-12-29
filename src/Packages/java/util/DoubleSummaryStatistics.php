@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\function\DoubleConsumer;
 // use PHPJava\Packages\java\util\stream\stream;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `DoubleSummaryStatistics` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class DoubleSummaryStatistics extends _Object // implements DoubleConsumer, stream
+class DoubleSummaryStatistics extends Object_ // implements DoubleConsumer, stream
 {
     /**
      * Records another value into the summary information.

@@ -11,7 +11,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `LinkedHashSet` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\util\AbstractCollection
  * @parent \PHPJava\Packages\java\util\AbstractSet
  * @parent \PHPJava\Packages\java\util\HashSet

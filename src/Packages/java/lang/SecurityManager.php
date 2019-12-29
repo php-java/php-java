@@ -7,9 +7,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `SecurityManager` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class SecurityManager extends _Object
+class SecurityManager extends Object_
 {
     /**
      * Throws a SecurityException if the calling thread is not permitted to accept a socket connection from the specified host and port number.

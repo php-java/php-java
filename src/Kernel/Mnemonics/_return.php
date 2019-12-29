@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Void_;
 
 final class _return extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -18,6 +18,6 @@ final class _return extends AbstractOperationCode implements OperationCodeInterf
     public function execute(): void
     {
         parent::execute();
-        $this->returnValue = new _Void();
+        $this->returnValue = new Void_();
     }
 }

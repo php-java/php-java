@@ -301,7 +301,7 @@ The example will return `16`.
 - For example, you may want to call a method that accepts a `long` parameter in Java from PHP.
 In this case, you can call that method as follows:
 
-#### e.g., [Recommended] Wrap with `\PHPJava\Kernel\Types\_Long`.
+#### e.g., [Recommended] Wrap with `\PHPJava\Kernel\Types\Long_ `.
 ##### In Java
 ```java
 class Test
@@ -318,7 +318,7 @@ class Test
 <?php
 $javaClass->getInvoker()->getStatic()->getMethods()->call(
     'includingLongTypeParameter',
-    new \PHPJava\Kernel\Types\_Long(1234)
+    new \PHPJava\Kernel\Types\Long_ (1234)
 );
 ```
 
@@ -474,14 +474,14 @@ public static void main(java.lang.String[])
 | Java | PHPJava |
 |:-----|:--------|
 | null | null |
-| boolean | \PHPJava\Kernel\Types\\_Boolean (including `__toString`) |
-| char | \PHPJava\Kernel\Types\\_Char (including `__toString`) |
-| byte | \PHPJava\Kernel\Types\\_Byte (including `__toString`) |
-| short | \PHPJava\Kernel\Types\\_Short (including `__toString`) |
-| int | \PHPJava\Kernel\Types\\_Int (including `__toString`) |
-| long | \PHPJava\Kernel\Types\\_Long (including `__toString`) |
-| float | \PHPJava\Kernel\Types\\_Float (including `__toString`) |
-| double | \PHPJava\Kernel\Types\\_Double (including `__toString`) |
+| boolean | \PHPJava\Kernel\Types\\Boolean_  (including `__toString`) |
+| char | \PHPJava\Kernel\Types\\Char_  (including `__toString`) |
+| byte | \PHPJava\Kernel\Types\\Byte_  (including `__toString`) |
+| short | \PHPJava\Kernel\Types\\Short_  (including `__toString`) |
+| int | \PHPJava\Kernel\Types\\Int_  (including `__toString`) |
+| long | \PHPJava\Kernel\Types\\Long_  (including `__toString`) |
+| float | \PHPJava\Kernel\Types\\Float_  (including `__toString`) |
+| double | \PHPJava\Kernel\Types\\Double_  (including `__toString`) |
 
 ## Run Kotlin on the PHPJava
 Do you wanna run Kotlin on the PHPJava? Are you serious?

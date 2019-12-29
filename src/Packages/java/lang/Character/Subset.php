@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\Character;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `Subset` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Subset extends _Object
+class Subset extends Object_
 {
     /**
      * Compares two Subset objects for equality.

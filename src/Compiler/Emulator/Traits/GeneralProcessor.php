@@ -10,8 +10,8 @@ use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Maps\VerificationTypeTag;
 use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Utilities\Formatter;
 
 /**
@@ -52,7 +52,7 @@ trait GeneralProcessor
         if (!TypeResolver::isPrimitive($type)) {
             $this->accumulator->pushToOperandStack(
                 [
-                    VerificationTypeTag::ITEM_Object,
+                    VerificationTypeTag::ITEMObject_,
                     $this->getEnhancedConstantPool()
                         ->findClass($className),
                 ]
@@ -61,9 +61,9 @@ trait GeneralProcessor
         }
         // TODO: Rename parseSignature
         switch ($type) {
-            case _Void::class:
+            case Void_::class:
                 break;
-            case _Int::class:
+            case Int_::class:
                 $this->accumulator->pushToOperandStack(
                     [
                         VerificationTypeTag::ITEM_Integer,

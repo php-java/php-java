@@ -9,7 +9,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `PropertyResourceBundle` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\util\ResourceBundle
  */
 class PropertyResourceBundle extends ResourceBundle // implements Set

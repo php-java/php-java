@@ -10,9 +10,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Process` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Process extends _Object // implements Stream, ProcessHandle
+class Process extends Object_ // implements Stream, ProcessHandle
 {
     /**
      * Returns a snapshot of the direct children of the process.

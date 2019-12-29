@@ -7,7 +7,7 @@ namespace PHPJava\Packages\java\lang;
 /**
  * The `BootstrapMethodError` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Throwable
  * @parent \PHPJava\Packages\java\lang\Error
  * @parent \PHPJava\Packages\java\lang\LinkageError

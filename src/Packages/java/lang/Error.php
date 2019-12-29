@@ -7,7 +7,7 @@ namespace PHPJava\Packages\java\lang;
 /**
  * The `Error` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Throwable
  */
 class Error extends Throwable // implements Serializable

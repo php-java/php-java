@@ -19,12 +19,12 @@ use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\JVM\Stream\BinaryWriter;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\VerificationTypeTag;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Char;
-use PHPJava\Kernel\Types\_Float;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Long;
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\Byte_;
+use PHPJava\Kernel\Types\Char_;
+use PHPJava\Kernel\Types\Float_;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Long_;
+use PHPJava\Kernel\Types\Short_;
 use PHPJava\Utilities\ArrayTool;
 use PHPJava\Utilities\Formatter;
 
@@ -67,12 +67,12 @@ class StackMapTable extends Attribute
         foreach ($this->localVariables as $localVariable) {
             [, $type] = $localVariable;
             switch ($type) {
-                case _Int::class:
-                case _Long::class:
-                case _Float::class:
-                case _Short::class:
-                case _Byte::class:
-                case _Char::class:
+                case Int_::class:
+                case Long_::class:
+                case Float_::class:
+                case Short_::class:
+                case Byte_::class:
+                case Char_::class:
                     // Nothing to do...
                     break;
                 default:
@@ -265,7 +265,7 @@ class StackMapTable extends Attribute
                         [$index, $classType, $dimensionsOfArray] = $variable;
                         $classType = Formatter::buildSignature($classType, $dimensionsOfArray);
                         $locals[$index] = [
-                            VerificationTypeTag::ITEM_Object,
+                            VerificationTypeTag::ITEMObject_,
                             $this->getEnhancedConstantPool()
                                 ->findClass($classType),
                         ];
@@ -318,7 +318,7 @@ class StackMapTable extends Attribute
                 case VerificationTypeTag::ITEM_Double:
                     // Nothing to do.
                     break;
-                case VerificationTypeTag::ITEM_Object:
+                case VerificationTypeTag::ITEMObject_:
                     $classEntry = $segment[1];
                     /**
                      * @var ConstantPoolFinderResult $classEntry

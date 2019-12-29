@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util\Spliterators;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Spliterator;
 // use PHPJava\Packages\java\util\function\IntConsumer;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `AbstractIntSpliterator` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class AbstractIntSpliterator extends _Object // implements Spliterator, IntConsumer
+class AbstractIntSpliterator extends Object_ // implements Spliterator, IntConsumer
 {
     /**
      * Returns a set of characteristics of this Spliterator and its elements.

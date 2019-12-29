@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Long_;
 
 final class _lload_2 extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -21,7 +21,7 @@ final class _lload_2 extends AbstractOperationCode implements OperationCodeInter
     {
         parent::execute();
         $this->pushToOperandStack(
-            _Long::get(
+            Long_::get(
                 $this->getLocalStorage(2)
             )
         );

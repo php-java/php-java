@@ -11,7 +11,7 @@ use PHPJava\Packages\java\lang\Enum;
 /**
  * The `Option` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Enum
  */
 class Option extends Enum // implements Serializable, stack frame

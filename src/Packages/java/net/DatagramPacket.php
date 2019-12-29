@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `DatagramPacket` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class DatagramPacket extends _Object
+class DatagramPacket extends Object_
 {
     /**
      * Returns the IP address of the machine to which this datagram is being sent or from which the datagram was received.

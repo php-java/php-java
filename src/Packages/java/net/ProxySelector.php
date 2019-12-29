@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\_List;
 
 /**
  * The `ProxySelector` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ProxySelector extends _Object // implements _List
+class ProxySelector extends Object_ // implements _List
 {
     /**
      * Called to indicate that a connection could not be established to a proxy/socks server.

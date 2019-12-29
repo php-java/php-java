@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io\ObjectInputFilter;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\ObjectInputFilter;
 
 /**
  * The `Config` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Config extends _Object // implements ObjectInputFilter
+class Config extends Object_ // implements ObjectInputFilter
 {
     /**
      * Returns an ObjectInputFilter from a string of patterns.

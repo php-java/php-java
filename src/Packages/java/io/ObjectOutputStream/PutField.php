@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io\ObjectOutputStream;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\ObjectOutput;
 
 /**
  * The `PutField` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class PutField extends _Object // implements ObjectOutput
+class PutField extends Object_ // implements ObjectOutput
 {
     /**
      * Put the value of the named boolean field into the persistent field.

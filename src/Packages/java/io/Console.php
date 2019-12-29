@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Flushable;
 
 /**
  * The `Console` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Console extends _Object // implements Flushable
+class Console extends Object_ // implements Flushable
 {
     /**
      * Flushes the console and forces any buffered output to be written immediately .

@@ -22,7 +22,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\ParameterParseable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StaticInitializerAssignable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 use PhpParser\Node;
 
 /**
@@ -85,7 +85,7 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
 
         $this->getEnhancedConstantPool()
             ->addClass($this->className)
-            ->addClass(_Object::class)
+            ->addClass(Object_::class)
             ->addClass(Runtime::PHP_STANDARD_CLASS_NAME);
 
         // TODO: Implement fields.
@@ -103,7 +103,7 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
                 ->setSuperClass(
                     $this
                         ->getEnhancedConstantPool()
-                        ->findClass(_Object::class)
+                        ->findClass(Object_::class)
                 )
                 ->setMethods(
                     $this

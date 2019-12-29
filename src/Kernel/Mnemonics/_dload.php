@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\Double_;
 
 final class _dload extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -29,7 +29,7 @@ final class _dload extends AbstractOperationCode implements OperationCodeInterfa
         parent::execute();
         $index = $this->getOperands()['index'];
         $this->pushToOperandStack(
-            _Double::get(
+            Double_::get(
                 $this->getLocalStorage($index)
             )
         );

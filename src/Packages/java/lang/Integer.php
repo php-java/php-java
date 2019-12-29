@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\Int_;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Comparable;
@@ -11,7 +11,7 @@ use PHPJava\Kernel\Types\_Int;
 /**
  * The `IntegerInfo` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Number
  */
 class Integer extends Number // implements Serializable, Comparable
@@ -319,7 +319,7 @@ class Integer extends Number // implements Serializable, Comparable
         if ($radix !== null) {
             $number = base_convert($number, $radix, 10);
         }
-        return new _Int((string) $number);
+        return new Int_((string) $number);
     }
 
     /**

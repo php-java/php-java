@@ -7,9 +7,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Runtime` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Runtime extends _Object
+class Runtime extends Object_
 {
     /**
      * Registers a new virtual-machine shutdown hook.

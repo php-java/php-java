@@ -4,7 +4,7 @@ namespace PHPJava\Packages\java\util;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Comparator;
 // use PHPJava\Packages\java\util\function\Supplier;
@@ -12,9 +12,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `Objects` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Objects extends _Object // implements Comparator, Supplier
+class Objects extends Object_ // implements Comparator, Supplier
 {
     /**
      * Checks if the sub-range from fromIndex (inclusive) to fromIndex + size (exclusive) is within the bounds of range from 0 (inclusive) to length (exclusive).

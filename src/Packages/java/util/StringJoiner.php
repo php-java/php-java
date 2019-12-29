@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\lang\CharSequence;
 
 /**
  * The `StringJoiner` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class StringJoiner extends _Object // implements CharSequence
+class StringJoiner extends Object_ // implements CharSequence
 {
     /**
      * Adds a copy of the given CharSequence value as the next element of the StringJoiner value.

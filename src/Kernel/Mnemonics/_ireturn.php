@@ -2,11 +2,11 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Boolean;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Char;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\Boolean_;
+use PHPJava\Kernel\Types\Byte_;
+use PHPJava\Kernel\Types\Char_;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Short_;
 
 final class _ireturn extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -24,11 +24,11 @@ final class _ireturn extends AbstractOperationCode implements OperationCodeInter
     {
         parent::execute();
         $value = $this->popFromOperandStack();
-        $isIntegerValue = $value instanceof _Int ||
-            $value instanceof _Char ||
-            $value instanceof _Short ||
-            $value instanceof _Byte ||
+        $isIntegerValue = $value instanceof Int_ ||
+            $value instanceof Char_ ||
+            $value instanceof Short_ ||
+            $value instanceof Byte_ ||
             $value instanceof _Boolean;
-        $this->returnValue = $isIntegerValue ? $value : _Int::get($value);
+        $this->returnValue = $isIntegerValue ? $value : Int_::get($value);
     }
 }

@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\ModuleLayer;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `Controller` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Controller extends _Object
+class Controller extends Object_
 {
     /**
      * Updates module source in the layer to export a package to module target.

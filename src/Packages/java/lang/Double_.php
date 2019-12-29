@@ -10,10 +10,10 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `DoubleInfo` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Number
  */
-class _Double extends Number // implements Serializable, Comparable
+class Double_ extends Number // implements Serializable, Comparable
 {
     /**
      * The number of bytes used to represent a double value.

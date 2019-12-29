@@ -7,9 +7,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Compiler` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Compiler extends _Object
+class Compiler extends Object_
 {
     /**
      * Deprecated, for removal: This API element is subject to removal in a future version.Examines the argument type and its fields and perform some documented operation.

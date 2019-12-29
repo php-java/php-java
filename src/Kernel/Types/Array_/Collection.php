@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace PHPJava\Kernel\Types\_Array;
+namespace PHPJava\Kernel\Types\Array_;
 
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Resolvers\TypeResolver;

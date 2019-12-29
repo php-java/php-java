@@ -4,7 +4,7 @@ namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 
 // use PHPJava\Packages\java\util\_List;
@@ -13,9 +13,9 @@ use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 /**
  * The `MethodHandles` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class MethodHandles extends _Object // implements _List, Member
+class MethodHandles extends Object_ // implements _List, Member
 {
     /**
      * Produces a method handle constructing arrays of a desired type, as if by the anewarray bytecode.

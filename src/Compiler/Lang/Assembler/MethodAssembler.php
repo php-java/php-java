@@ -18,7 +18,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\ImportManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ParameterParseable;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Utilities\ArrayTool;
 
 /**
@@ -49,7 +49,7 @@ class MethodAssembler extends AbstractAssembler
 
         $descriptorObject = Descriptor::factory()
             // TODO: All method returns void. Will implement return type.
-            ->setReturn(_Void::class);
+            ->setReturn(Void_::class);
 
         foreach ($parameters as $keyName => $value) {
             // Fill local storage number.

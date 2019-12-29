@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Types;
 
-class _Void extends Type implements PrimitiveValueInterface
+class Void_ extends Type implements PrimitiveValueInterface
 {
     const DEFAULT_VALUE = null;
     protected $nameInJava = 'void';

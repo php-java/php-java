@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\_List;
 
 /**
  * The `ResponseCache` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ResponseCache extends _Object // implements _List
+class ResponseCache extends Object_ // implements _List
 {
     /**
      * Retrieve the cached response based on the requesting uri, request method and request headers.

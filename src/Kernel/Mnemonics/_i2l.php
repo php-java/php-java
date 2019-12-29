@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Long_;
 
 final class _i2l extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -25,6 +25,6 @@ final class _i2l extends AbstractOperationCode implements OperationCodeInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(_Long::get($value));
+        $this->pushToOperandStack(Long_::get($value));
     }
 }

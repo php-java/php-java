@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Byte;
+use PHPJava\Kernel\Types\Byte_;
 
 final class _i2b extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -25,6 +25,6 @@ final class _i2b extends AbstractOperationCode implements OperationCodeInterface
             $this->popFromOperandStack()
         );
 
-        $this->pushToOperandStack(_Byte::get($value));
+        $this->pushToOperandStack(Byte_::get($value));
     }
 }

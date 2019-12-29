@@ -8,7 +8,7 @@ use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Resolvers\MnemonicResolver;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Packages\java\lang\String_;
 
 /**
  * @method Store getStore()
@@ -28,7 +28,7 @@ trait LocalVariableLoadable
         $operations = [];
 
         switch ($classType) {
-            case _String::class:
+            case String_::class:
                 $loadOperation = MnemonicResolver::resolveLoadByNumberAndType($localStorageNumber, $classType);
                 $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
                     $loadOperation

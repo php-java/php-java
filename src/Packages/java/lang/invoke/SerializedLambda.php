@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Serializable;
 
 /**
  * The `SerializedLambda` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class SerializedLambda extends _Object // implements Serializable
+class SerializedLambda extends Object_ // implements Serializable
 {
     /**
      * Get a dynamic argument to the lambda capture site.

@@ -12,7 +12,7 @@ use PHPJava\Packages\java\lang\Enum;
 /**
  * The `StandardProtocolFamily` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Enum
  */
 class StandardProtocolFamily extends Enum // implements Serializable, Comparable, ProtocolFamily

@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\function\IntConsumer;
 // use PHPJava\Packages\java\util\stream\stream;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `IntSummaryStatistics` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class IntSummaryStatistics extends _Object // implements IntConsumer, stream
+class IntSummaryStatistics extends Object_ // implements IntConsumer, stream
 {
     /**
      * Records a new value into the summary information.

@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Comparator;
 // use PHPJava\Packages\java\lang\Comparable;
@@ -13,9 +13,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `Arrays` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Arrays extends _Object // implements Comparator, Comparable, IntToDoubleFunction, DoubleStream
+class Arrays extends Object_ // implements Comparator, Comparable, IntToDoubleFunction, DoubleStream
 {
     /**
      * Returns a fixed-size list backed by the specified array.

@@ -4,7 +4,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use Brick\Math\BigInteger;
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Long_;
 
 final class _lsub extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -28,6 +28,6 @@ final class _lsub extends AbstractOperationCode implements OperationCodeInterfac
         $result = (string) BigInteger::of($value1)
             ->minus(BigInteger::of($value2));
 
-        $this->pushToOperandStack(_Long::get($result));
+        $this->pushToOperandStack(Long_::get($result));
     }
 }

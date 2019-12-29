@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util\Calendar;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `Builder` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Builder extends _Object
+class Builder extends Object_
 {
     /**
      * Returns a Calendar built from the parameters set by the setter methods.

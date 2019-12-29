@@ -11,7 +11,7 @@ use PHPJava\Packages\java\security\Permission;
 /**
  * The `SocketPermission` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\security\Permission
  */
 class SocketPermission extends Permission // implements Serializable, Guard

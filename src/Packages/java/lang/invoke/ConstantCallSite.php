@@ -7,7 +7,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `ConstantCallSite` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\invoke\CallSite
  */
 class ConstantCallSite extends CallSite

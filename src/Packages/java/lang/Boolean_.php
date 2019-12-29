@@ -10,9 +10,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `_Boolean` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class _Boolean extends _Object // implements Serializable, Comparable
+class Boolean_ extends Object_ // implements Serializable, Comparable
 {
     /**
      * The Boolean object corresponding to the primitive value false.

@@ -12,7 +12,7 @@ use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Processors\ExpressionProcessor;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Utilities\ArrayTool;
 use PHPJava\Utilities\Formatter;
 
@@ -62,7 +62,7 @@ trait Outputable
         $descriptor = Descriptor::factory()
             ->addArgument(\PHPJava\Packages\java\lang\String::class)
             ->setReturn(
-                _Void::class
+                Void_::class
             )
             ->make();
 

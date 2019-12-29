@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util\Spliterators;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Spliterator;
 // use PHPJava\Packages\java\util\function\LongConsumer;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `AbstractLongSpliterator` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class AbstractLongSpliterator extends _Object // implements Spliterator, LongConsumer
+class AbstractLongSpliterator extends Object_ // implements Spliterator, LongConsumer
 {
     /**
      * Returns a set of characteristics of this Spliterator and its elements.

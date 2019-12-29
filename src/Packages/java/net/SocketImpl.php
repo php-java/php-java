@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\net\SocketOption;
 // use PHPJava\Packages\java\util\Set;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `SocketImpl` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class SocketImpl extends _Object // implements SocketOption, Set
+class SocketImpl extends Object_ // implements SocketOption, Set
 {
     /**
      * The IP address of the remote end of this socket.

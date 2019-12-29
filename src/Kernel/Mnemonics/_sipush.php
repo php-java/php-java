@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\Short_;
 
 final class _sipush extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -24,6 +24,6 @@ final class _sipush extends AbstractOperationCode implements OperationCodeInterf
     public function execute(): void
     {
         parent::execute();
-        $this->pushToOperandStack(_Short::get($this->getOperands()['byte']));
+        $this->pushToOperandStack(Short_::get($this->getOperands()['byte']));
     }
 }

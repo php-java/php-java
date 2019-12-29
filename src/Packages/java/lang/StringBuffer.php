@@ -11,9 +11,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `StringBuffer` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class StringBuffer extends _Object // implements Serializable, CharSequence, IntStream
+class StringBuffer extends Object_ // implements Serializable, CharSequence, IntStream
 {
     /**
      * Appends the string representation of the boolean argument to the sequence.

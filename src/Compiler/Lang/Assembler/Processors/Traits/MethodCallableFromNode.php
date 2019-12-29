@@ -9,9 +9,9 @@ use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\StructureAccessorsLocator;
 use PHPJava\Exceptions\AssembleStructureException;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Void;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Void_;
+use PHPJava\Packages\java\lang\String_;
 use PHPJava\Utilities\ArrayTool;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
@@ -75,7 +75,7 @@ trait MethodCallableFromNode
         }
 
         $descriptorObject = (new Descriptor())
-            ->setReturn(_Void::class);
+            ->setReturn(Void_::class);
 
         $operations = [];
 
@@ -104,12 +104,12 @@ trait MethodCallableFromNode
 
             $appendOperations = [];
             switch ($parameters[$index]['type']) {
-                case _String::class:
+                case String_::class:
                     $appendOperations = $this->assembleLoadString(
                         $argValue->value
                     );
                     break;
-                case _Int::class:
+                case Int_::class:
                     $appendOperations = $this->assembleLoadNumber(
                         $argValue->value
                     );

@@ -10,10 +10,10 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `IntegerInfo` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Number
  */
-class _Integer extends Number // implements Serializable, Comparable
+class Integer_ extends Number // implements Serializable, Comparable
 {
     /**
      * The number of bytes used to represent an int value in two's complement binary form.

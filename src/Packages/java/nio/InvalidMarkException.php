@@ -9,7 +9,7 @@ use PHPJava\Packages\java\lang\IllegalStateException;
 /**
  * The `InvalidMarkException` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Throwable
  * @parent \PHPJava\Packages\java\lang\Exception
  * @parent \PHPJava\Packages\java\lang\RuntimeException

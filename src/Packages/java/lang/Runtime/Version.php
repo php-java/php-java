@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\Runtime;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\lang\Comparable;
 // use PHPJava\Packages\java\util\_List;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `Version` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Version extends _Object // implements Comparable, _List
+class Version extends Object_ // implements Comparable, _List
 {
     /**
      * Returns the build number.

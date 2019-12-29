@@ -11,7 +11,7 @@ use PHPJava\Kernel\Resolvers\AttributionResolver;
 use PHPJava\Kernel\Structures\_BootstrapMethod;
 use PHPJava\Kernel\Structures\MethodHandleInfo;
 use PHPJava\Kernel\Structures\NameAndTypeInfo;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Packages\java\lang\invoke\MethodHandles;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
 use PHPJava\Packages\java\lang\invoke\MethodType;
@@ -177,7 +177,7 @@ final class _invokedynamic extends AbstractOperationCode implements OperationCod
                 throw new NotImplementedException($methodHandle->getReferenceKind() . ' is not implemented in ' . __METHOD__);
         }
 
-        if ($signature[0]['type'] !== _Void::class) {
+        if ($signature[0]['type'] !== Void_::class) {
             $this->pushToOperandStack(
                 Normalizer::normalizeReturnValue(
                     $result,

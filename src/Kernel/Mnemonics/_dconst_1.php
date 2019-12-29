@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\Double_;
 
 final class _dconst_1 extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -21,7 +21,7 @@ final class _dconst_1 extends AbstractOperationCode implements OperationCodeInte
     {
         parent::execute();
         $this->pushToOperandStack(
-            _Double::get(1)
+            Double_::get(1)
         );
     }
 }

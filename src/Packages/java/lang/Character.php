@@ -10,9 +10,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Character` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Character extends _Object // implements Serializable, Comparable
+class Character extends Object_ // implements Serializable, Comparable
 {
     /**
      * The number of bytes used to represent a char value in unsigned binary form.

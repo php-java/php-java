@@ -9,7 +9,7 @@ use PHPJava\Core\JVM\Field\PHPDynamicField;
 use PHPJava\Core\JVM\Field\PHPStaticField;
 use PHPJava\Core\JVM\Invoker\PHPClassDynamicMethodInvoker;
 use PHPJava\Core\JVM\Invoker\PHPClassStaticMethodInvoker;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 class PHPClassInvoker implements ClassInvokerInterface
 {
@@ -44,7 +44,7 @@ class PHPClassInvoker implements ClassInvokerInterface
     private $options = [];
 
     /**
-     * @var _Object
+     * @var Object_
      */
     private $classObject;
 

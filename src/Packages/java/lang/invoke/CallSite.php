@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `CallSite` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class CallSite extends _Object
+class CallSite extends Object_
 {
     /**
      * Produces a method handle equivalent to an invokedynamic instruction which has been linked to this call site.

@@ -10,9 +10,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `ClassLoader` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ClassLoader extends _Object // implements Enumeration, Stream
+class ClassLoader extends Object_ // implements Enumeration, Stream
 {
     /**
      * Sets the default assertion status for this class loader to false and discards any package defaults or class assertion status settings associated with the class loader.

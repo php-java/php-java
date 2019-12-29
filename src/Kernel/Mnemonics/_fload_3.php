@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\Float_;
 
 final class _fload_3 extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -21,7 +21,7 @@ final class _fload_3 extends AbstractOperationCode implements OperationCodeInter
     {
         parent::execute();
         $this->pushToOperandStack(
-            _Float::get(
+            Float_::get(
                 $this->getLocalStorage(3)
             )
         );

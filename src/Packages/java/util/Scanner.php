@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -16,9 +16,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `Scanner` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Scanner extends _Object // implements Closeable, AutoCloseable, Iterator, ReadableByteChannel, Path, Stream, MatchResult
+class Scanner extends Object_ // implements Closeable, AutoCloseable, Iterator, ReadableByteChannel, Path, Stream, MatchResult
 {
     /**
      * Closes this scanner.

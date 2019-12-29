@@ -10,9 +10,9 @@ use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\Byte_;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Short_;
 use PhpParser\Node;
 
 /**
@@ -36,9 +36,9 @@ trait PostIncrementableFromNode
             );
 
         switch ($classType) {
-            case _Byte::class:
-            case _Short::class:
-            case _Int::class:
+            case Byte_::class:
+            case Short_::class:
+            case Int_::class:
                 $operations[] = Operation::create(
                     OpCode::_iinc,
                     Operand::factory(

@@ -7,9 +7,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `ClassValue` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ClassValue extends _Object
+class ClassValue extends Object_
 {
     /**
      * Computes the given class's derived value for this ClassValue.

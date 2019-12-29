@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util\Base64;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `Encoder` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Encoder extends _Object
+class Encoder extends Object_
 {
     /**
      * Encodes all bytes from the specified byte array into a newly-allocated byte array using the Base64 encoding scheme.

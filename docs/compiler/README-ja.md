@@ -19,11 +19,11 @@ use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 use PHPJava\Packages\java\io\PrintStream;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Packages\java\lang\String_ ;
 use PHPJava\Packages\java\lang\System;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Void_ ;
 use PHPJava\Compiler\Compiler;
 use PHPJava\Compiler\Builder\Structures\ClassFileStructure;
 use PHPJava\Compiler\Builder\Signatures\ClassAccessFlag;
@@ -49,7 +49,7 @@ $enhancedConstantPool = ConstantPoolEnhancer::factory(
 
 $enhancedConstantPool
     ->addString('Hello PHPJava Compiler!')
-    ->addClass(_Object::class)
+    ->addClass(Object_::class)
     ->addClass('HelloWorld')
     ->addClass(System::class)
     ->addClass(PrintStream::class)
@@ -64,15 +64,15 @@ $enhancedConstantPool
         PrintStream::class,
         'println',
         (new Descriptor())
-            ->addArgument(_String::class)
-            ->setReturn(_Void::class)
+            ->addArgument(String_::class)
+            ->setReturn(Void_::class)
             ->make()
     )
     ->addNameAndType(
         'main',
         (new Descriptor())
-            ->addArgument(_String::class, 1)
-            ->setReturn(_Void::class)
+            ->addArgument(String_::class, 1)
+            ->setReturn(Void_::class)
             ->make()
     );
 
@@ -86,7 +86,7 @@ $compiler = new Compiler(
                 ->make()
         )
         ->setThisClass($enhancedConstantPool->findClass('HelloWorld'))
-        ->setSuperClass($enhancedConstantPool->findClass(_Object::class))
+        ->setSuperClass($enhancedConstantPool->findClass(Object_::class))
         ->setMethods(
             (new Methods())
                 ->add(
@@ -98,8 +98,8 @@ $compiler = new Compiler(
                         $enhancedConstantPool->findUtf8('main'),
                         $enhancedConstantPool->findUtf8(
                             (new Descriptor())
-                                ->addArgument(_String::class, 1)
-                                ->setReturn(_Void::class)
+                                ->addArgument(String_::class, 1)
+                                ->setReturn(Void_::class)
                                 ->make()
                         )
                     ))
@@ -139,8 +139,8 @@ $compiler = new Compiler(
                                                             PrintStream::class,
                                                             'println',
                                                             (new Descriptor())
-                                                                ->addArgument(_String::class)
-                                                                ->setReturn(_Void::class)
+                                                                ->addArgument(String_::class)
+                                                                ->setReturn(Void_::class)
                                                                 ->make()
                                                         )
                                                     )
@@ -248,8 +248,8 @@ try {
 | Utf8Info        | 1     | `$finder->find(Utf8Info::class, 'Hello World!')` |
 | ClassInfo       | 1     | `$finder->find(ClassInfo::class, 'HelloWorld')` |
 | StringInfo      | 1     | `$finder->find(StringInfo::class, 'Hello World!')`  |
-| NameAndTypeInfo | 2     | `$finder->find(NameAndTypeInfo::class, '<init>', (new Descriptor())->setReturn(_Void::class)->make())`  |
-| MethodrefInfo   | 3     | `$finder->find(MethodrefInfo::class, 'java/io/PrintStream', 'println', (new Descriptor())->addArgument(_String::class)->setReturn(_Void::class)->make())`  |
+| NameAndTypeInfo | 2     | `$finder->find(NameAndTypeInfo::class, '<init>', (new Descriptor())->setReturn(Void_::class)->make())`  |
+| MethodrefInfo   | 3     | `$finder->find(MethodrefInfo::class, 'java/io/PrintStream', 'println', (new Descriptor())->addArgument(String_::class)->setReturn(Void_::class)->make())`  |
 | FieldrefInfo    | 3     | `$finder->find(FieldrefInfo::class, 'java/lang/System', 'out', (new Descriptor())->addArgument(PrintStream::class)->make())`  |
 
 
@@ -349,21 +349,21 @@ var_dump(
 require __DIR__ . '/../vendor/autoload.php';
 
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
-use PHPJava\Kernel\Types\_Void;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Kernel\Types\Void_ ;
+use PHPJava\Packages\java\lang\String_ ;
 
 (new Descriptor())
     // 引数を追加します。 addArgument は何回でも呼ぶことが可能です。
     ->addArgument(
         // 第一引数は java.lang.String
-        _String::class,
+        String_::class,
         // 配列の深さを指定する。デフォルトは 0
         1
     )
     // 返り値をセットする
     ->setReturn(
         // 返り値は void 型
-        _Void::class
+        Void_::class
     )
     ->make();
 
@@ -417,8 +417,8 @@ $compiler = new Compiler(
                         $finder->find(
                             Utf8Info::class,
                             (new Descriptor())
-                                ->addArgument(_String::class, 1)
-                                ->setReturn(_Void::class)
+                                ->addArgument(String_::class, 1)
+                                ->setReturn(Void_::class)
                                 ->make()
                         )
                     )
@@ -507,8 +507,8 @@ use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Builder\Types\Uint8;
 use PHPJava\Kernel\Maps\OpCode;
 
-use PHPJava\Kernel\Types\_Void;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Kernel\Types\Void_ ;
+use PHPJava\Packages\java\lang\String_ ;
 
 use PHPJava\Packages\java\io\PrintStream;
 
@@ -557,8 +557,8 @@ use PHPJava\Packages\java\io\PrintStream;
                     'java/io/PrintStream',
                     'println',
                     (new Descriptor())
-                        ->addArgument(_String::class)
-                        ->setReturn(_Void::class)
+                        ->addArgument(String_::class)
+                        ->setReturn(Void_::class)
                         ->make()
                 ),
             ],

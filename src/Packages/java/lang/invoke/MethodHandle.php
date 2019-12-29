@@ -4,17 +4,17 @@ namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Kernel\Types\_Void;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Kernel\Types\Void_;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\_List;
 
 /**
  * The `MethodHandle` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class MethodHandle extends _Object // implements _List
+class MethodHandle extends Object_ // implements _List
 {
     /**
      * Makes an array-collecting method handle, which accepts a given number of positional arguments starting at a given position, and collects them into an array argument.
@@ -142,7 +142,7 @@ class MethodHandle extends _Object // implements _List
                 'returnType'
             );
 
-        if ($returnType instanceof _Void) {
+        if ($returnType instanceof Void_) {
             return null;
         }
         return $result;

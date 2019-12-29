@@ -300,7 +300,7 @@ echo JavaClass::load('java.lang.Math')
 - PHP は Java と比べると型がだいぶ曖昧です。そのため、 PHPJava では正確にメソッドを呼び出すための手段をいくつか用意しています。
 - 以下は、 `long` パラメータを受け取るメソッドを呼び出す場合の例です。
 
-#### [推奨] パラメータを `\PHPJava\Kernel\Types\_Long` にする。
+#### [推奨] パラメータを `\PHPJava\Kernel\Types\Long_ ` にする。
 ##### Java
 ```java
 class Test
@@ -317,7 +317,7 @@ class Test
 <?php
 $javaClass->getInvoker()->getStatic()->getMethods()->call(
     'includingLongTypeParameter',
-    new \PHPJava\Kernel\Types\_Long(1234)
+    new \PHPJava\Kernel\Types\Long_ (1234)
 );
 ```
 
@@ -474,14 +474,14 @@ public static void main(java.lang.String[])
 | Java | PHPJava |
 |:-----|:--------|
 | null | null |
-| boolean | \PHPJava\Kernel\Types\\_Boolean (`__toString` を含む) |
-| char | \PHPJava\Kernel\Types\\_Char (`__toString` を含む) |
-| byte | \PHPJava\Kernel\Types\\_Byte (`__toString` を含む) |
-| short | \PHPJava\Kernel\Types\\_Short (`__toString` を含む) |
-| int | \PHPJava\Kernel\Types\\_Int (`__toString` を含む) |
-| long | \PHPJava\Kernel\Types\\_Long (`__toString` を含む) |
-| float | \PHPJava\Kernel\Types\\_Float (`__toString` を含む) |
-| double | \PHPJava\Kernel\Types\\_Double (`__toString` を含む) |
+| boolean | \PHPJava\Kernel\Types\\Boolean_  (`__toString` を含む) |
+| char | \PHPJava\Kernel\Types\\Char_  (`__toString` を含む) |
+| byte | \PHPJava\Kernel\Types\\Byte_  (`__toString` を含む) |
+| short | \PHPJava\Kernel\Types\\Short_  (`__toString` を含む) |
+| int | \PHPJava\Kernel\Types\\Int_  (`__toString` を含む) |
+| long | \PHPJava\Kernel\Types\\Long_  (`__toString` を含む) |
+| float | \PHPJava\Kernel\Types\\Float_  (`__toString` を含む) |
+| double | \PHPJava\Kernel\Types\\Double_  (`__toString` を含む) |
 
 ## Run Kotlin on the PHPJava
 ## Kotlin を PHPJava で動かす。

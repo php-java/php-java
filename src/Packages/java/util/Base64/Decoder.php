@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util\Base64;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `Decoder` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Decoder extends _Object
+class Decoder extends Object_
 {
     /**
      * Decodes all bytes from the input byte array using the Base64 encoding scheme, writing the results into a newly-allocated output byte array.

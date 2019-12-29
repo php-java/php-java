@@ -50,7 +50,7 @@ class VerificationTypeInfo implements StructureInterface
             case VerificationTypeTag::ITEM_UninitializedThis:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\UninitializedThisVariableInfo($this->reader);
                 break;
-            case VerificationTypeTag::ITEM_Object:
+            case VerificationTypeTag::ITEMObject_:
                 $this->variableInfo = new \PHPJava\Kernel\Variables\ObjectVariableInfo($this->reader);
                 break;
             case VerificationTypeTag::ITEM_Uninitialized:

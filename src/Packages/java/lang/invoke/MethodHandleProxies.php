@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `MethodHandleProxies` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class MethodHandleProxies extends _Object
+class MethodHandleProxies extends Object_
 {
     /**
      * Produces an instance of the given single-method interface which redirects its calls to the given method handle.

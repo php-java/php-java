@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
 use Brick\Math\BigInteger;
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Long_;
 
 class BigNumberCalculationTest extends Base
 {
@@ -24,8 +24,8 @@ class BigNumberCalculationTest extends Base
     {
         $result = $this->call(
             explode('::', __METHOD__)[1],
-            _Long::get(PHP_INT_MAX - 1),
-            _Long::get(1)
+            Long_::get(PHP_INT_MAX - 1),
+            Long_::get(1)
         );
 
         $this->assertEquals('9223372036854775807', (string) $result);
@@ -35,8 +35,8 @@ class BigNumberCalculationTest extends Base
     {
         $result = $this->call(
             explode('::', __METHOD__)[1],
-            _Long::get((string) BigInteger::of(PHP_INT_MAX)),
-            _Long::get(1)
+            Long_::get((string) BigInteger::of(PHP_INT_MAX)),
+            Long_::get(1)
         );
 
         $this->assertEquals('9223372036854775806', (string) $result);
@@ -46,8 +46,8 @@ class BigNumberCalculationTest extends Base
     {
         $result = $this->call(
             explode('::', __METHOD__)[1],
-            _Long::get(2147483647),
-            _Long::get(3)
+            Long_::get(2147483647),
+            Long_::get(3)
         );
 
         $this->assertEquals('6442450941', (string) $result);
@@ -57,8 +57,8 @@ class BigNumberCalculationTest extends Base
     {
         $result = $this->call(
             explode('::', __METHOD__)[1],
-            _Long::get(6442450947),
-            _Long::get(2147483649)
+            Long_::get(6442450947),
+            Long_::get(2147483649)
         );
 
         $this->assertEquals('3', (string) $result);

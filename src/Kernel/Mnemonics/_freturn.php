@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\Float_;
 
 final class _freturn extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -19,8 +19,8 @@ final class _freturn extends AbstractOperationCode implements OperationCodeInter
     {
         parent::execute();
         $value = $this->popFromOperandStack();
-        $this->returnValue = ($value instanceof _Float)
+        $this->returnValue = ($value instanceof Float_)
             ? $value
-            : _Float::get($value);
+            : Float_::get($value);
     }
 }

@@ -11,9 +11,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Module` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Module extends _Object // implements AnnotatedElement, Annotation, Set
+class Module extends Object_ // implements AnnotatedElement, Annotation, Set
 {
     /**
      * If the caller's module is this module then update this module to export the given package to the given module.

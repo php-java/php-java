@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\DataOutput;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `RandomAccessFile` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class RandomAccessFile extends _Object // implements DataOutput, AutoCloseable
+class RandomAccessFile extends Object_ // implements DataOutput, AutoCloseable
 {
     /**
      * Closes this random access file stream and releases any system resources associated with the stream.

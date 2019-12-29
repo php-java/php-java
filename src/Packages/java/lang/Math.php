@@ -8,9 +8,9 @@ use PHPJava\Kernel\Filters\Normalizer;
 /**
  * The `Math` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Math extends _Object
+class Math extends Object_
 {
     /**
      * The double value that is closer than any other to e, the base of the natural logarithms.

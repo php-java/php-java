@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\Int_;
 
 final class _iand extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -24,6 +24,6 @@ final class _iand extends AbstractOperationCode implements OperationCodeInterfac
         $value2 = (int) Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $value1 = (int) Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
-        $this->pushToOperandStack(_Int::get($value1 & $value2));
+        $this->pushToOperandStack(Int_::get($value1 & $value2));
     }
 }

@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\Float_;
 
 final class _fsub extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -24,6 +24,6 @@ final class _fsub extends AbstractOperationCode implements OperationCodeInterfac
         $value2 = (float) Normalizer::getPrimitiveValue($this->popFromOperandStack());
         $value1 = (float) Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
-        $this->pushToOperandStack(_Float::get($value1 - $value2));
+        $this->pushToOperandStack(Float_::get($value1 - $value2));
     }
 }

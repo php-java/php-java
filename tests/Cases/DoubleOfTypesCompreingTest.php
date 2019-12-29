@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
 use PHPJava\IO\Standard\Output;
-use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\Double_;
 
 class DoubleOfTypesComparingTest extends Base
 {
@@ -19,7 +19,7 @@ class DoubleOfTypesComparingTest extends Base
             ->getMethods()
             ->call(
                 'l',
-                new _Double(-1.0)
+                new Double_(-1.0)
             );
         $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
@@ -33,7 +33,7 @@ class DoubleOfTypesComparingTest extends Base
             ->getMethods()
             ->call(
                 'le',
-                new _Double(0)
+                new Double_(0)
             );
         $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
@@ -47,7 +47,7 @@ class DoubleOfTypesComparingTest extends Base
             ->getMethods()
             ->call(
                 'g',
-                new _Double(2.0)
+                new Double_(2.0)
             );
         $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);
@@ -61,7 +61,7 @@ class DoubleOfTypesComparingTest extends Base
             ->getMethods()
             ->call(
                 'ge',
-                new _Double(0)
+                new Double_(0)
             );
         $result = Output::getHeapspace();
         $this->assertEquals("Hello World!\n", $result);

@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\Spliterators;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Spliterator;
 
 /**
  * The `AbstractSpliterator` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class AbstractSpliterator extends _Object // implements Spliterator
+class AbstractSpliterator extends Object_ // implements Spliterator
 {
     /**
      * Returns a set of characteristics of this Spliterator and its elements.
