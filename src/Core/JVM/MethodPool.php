@@ -4,13 +4,13 @@ namespace PHPJava\Core\JVM;
 
 use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\ReadOnlyException;
-use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\MethodInfo;
 use PHPJava\Utilities\DebugTool;
 
 class MethodPool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     /**
-     * @var _MethodInfo[]
+     * @var MethodInfo[]
      */
     private $entries = [];
 
@@ -27,7 +27,7 @@ class MethodPool implements \ArrayAccess, \Countable, \IteratorAggregate
     ) {
         $this->reader = $reader;
         for ($i = 0; $i < $entries; $i++) {
-            $this->entries[$i] = new _MethodInfo($reader);
+            $this->entries[$i] = new MethodInfo($reader);
             $this->entries[$i]->setConstantPool($constantPool);
             $this->entries[$i]->setDebugTool($debugTool);
             $this->entries[$i]->execute();
@@ -35,7 +35,7 @@ class MethodPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @return _MethodInfo[]
+     * @return MethodInfo[]
      */
     public function getEntries()
     {
@@ -53,7 +53,7 @@ class MethodPool implements \ArrayAccess, \Countable, \IteratorAggregate
 
     /**
      * @param int $offset
-     * @return _MethodInfo
+     * @return MethodInfo
      */
     public function offsetGet($offset)
     {
@@ -85,7 +85,7 @@ class MethodPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @return \ArrayIterator<_MethodInfo>
+     * @return \ArrayIterator<MethodInfo>
      */
     public function getIterator()
     {

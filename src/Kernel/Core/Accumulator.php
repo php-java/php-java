@@ -6,7 +6,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ClassInvokerInterface;
 use PHPJava\Exceptions\IllegalOperationException;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
-use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\MethodInfo;
 
 trait Accumulator
 {
@@ -51,7 +51,7 @@ trait Accumulator
     protected $options;
 
     /**
-     * @var _MethodInfo $method
+     * @var MethodInfo $method
      */
     protected $method;
 
@@ -65,7 +65,7 @@ trait Accumulator
     protected $pushedOperandStacks = [];
 
     public function setParameters(
-        _MethodInfo $method,
+        MethodInfo $method,
         ClassInvokerInterface $javaClassInvoker,
         \PHPJava\Core\JVM\Stream\BinaryReader $reader,
         array &$localStorage,

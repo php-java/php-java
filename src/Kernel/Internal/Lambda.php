@@ -4,7 +4,7 @@ namespace PHPJava\Kernel\Internal;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
-use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\MethodInfo;
 
 class Lambda implements JavaClassInterface
 {
@@ -24,7 +24,7 @@ class Lambda implements JavaClassInterface
     private $class;
 
     /**
-     * @var _MethodInfo|\ReflectionMethod
+     * @var MethodInfo|\ReflectionMethod
      */
     private $methodEntity;
 

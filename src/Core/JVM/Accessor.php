@@ -20,7 +20,7 @@ class Accessor implements AccessorInterface
     private $methodAccessor;
 
     /**
-     * @param PHPJava\Kernel\Structures\_MethodInfo[] $methods
+     * @param PHPJava\Kernel\Structures\MethodInfo[] $methods
      */
     public function __construct(
         ClassInvokerInterface $invoker,

@@ -4,13 +4,13 @@ namespace PHPJava\Core\JVM;
 
 use PHPJava\Core\Stream\Reader\ReaderInterface;
 use PHPJava\Exceptions\ReadOnlyException;
-use PHPJava\Kernel\Structures\_FieldInfo;
+use PHPJava\Kernel\Structures\FieldInfo;
 use PHPJava\Utilities\DebugTool;
 
 class FieldPool implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     /**
-     * @var _FieldInfo[]
+     * @var FieldInfo[]
      */
     private $entries = [];
 
@@ -27,7 +27,7 @@ class FieldPool implements \ArrayAccess, \Countable, \IteratorAggregate
     ) {
         $this->reader = $reader;
         for ($i = 0; $i < $entries; $i++) {
-            $this->entries[$i] = new _FieldInfo($reader);
+            $this->entries[$i] = new FieldInfo($reader);
             $this->entries[$i]->setConstantPool($constantPool);
             $this->entries[$i]->setDebugTool($debugTool);
             $this->entries[$i]->execute();
@@ -35,7 +35,7 @@ class FieldPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @return _FieldInfo[]
+     * @return FieldInfo[]
      */
     public function getEntries()
     {
@@ -53,7 +53,7 @@ class FieldPool implements \ArrayAccess, \Countable, \IteratorAggregate
 
     /**
      * @param int $offset
-     * @return _FieldInfo
+     * @return FieldInfo
      */
     public function offsetGet($offset)
     {
@@ -85,7 +85,7 @@ class FieldPool implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @return \ArrayIterator<_FieldInfo>
+     * @return \ArrayIterator<FieldInfo>
      */
     public function getIterator()
     {

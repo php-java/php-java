@@ -15,7 +15,7 @@ final class LineNumberTableAttribute implements AttributeInterface
     private $lineNumberTableLength;
 
     /**
-     * @var \PHPJava\Kernel\Structures\_LineNumberTable[]
+     * @var \PHPJava\Kernel\Structures\LineNumberTable[]
      */
     private $lineNumberTables = [];
 
@@ -23,7 +23,7 @@ final class LineNumberTableAttribute implements AttributeInterface
     {
         $this->lineNumberTableLength = $this->readUnsignedShort();
         for ($i = 0; $i < $this->lineNumberTableLength; $i++) {
-            $lineNumberTable = new \PHPJava\Kernel\Structures\_LineNumberTable($this->reader);
+            $lineNumberTable = new \PHPJava\Kernel\Structures\LineNumberTable($this->reader);
             $lineNumberTable->setConstantPool($this->getConstantPool());
             $lineNumberTable->setDebugTool($this->getDebugTool());
             $lineNumberTable->execute();
@@ -32,7 +32,7 @@ final class LineNumberTableAttribute implements AttributeInterface
     }
 
     /**
-     * @return \PHPJava\Kernel\Structures\_LineNumberTable[]
+     * @return \PHPJava\Kernel\Structures\LineNumberTable[]
      */
     public function getLineNumberTables(): array
     {

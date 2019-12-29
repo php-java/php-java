@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Kernel\Structures\_LocalVariableTable;
+use PHPJava\Kernel\Structures\LocalVariableTable;
 
 final class LocalVariableTableAttribute implements AttributeInterface
 {
@@ -17,7 +17,7 @@ final class LocalVariableTableAttribute implements AttributeInterface
     private $localVariableTableLength;
 
     /**
-     * @var _LocalVariableTable[]
+     * @var LocalVariableTable[]
      */
     private $localVariableTables = [];
 
@@ -25,7 +25,7 @@ final class LocalVariableTableAttribute implements AttributeInterface
     {
         $this->localVariableTableLength = $this->readUnsignedShort();
         for ($i = 0; $i < $this->localVariableTableLength; $i++) {
-            $localVariableTable = new _LocalVariableTable($this->reader);
+            $localVariableTable = new LocalVariableTable($this->reader);
             $localVariableTable->execute();
             $this->localVariableTables[] = $localVariableTable;
         }

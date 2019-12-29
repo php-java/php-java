@@ -6,7 +6,7 @@ use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\UncaughtException;
 use PHPJava\Kernel\Attributes\CodeAttribute;
 use PHPJava\Kernel\Resolvers\AttributionResolver;
-use PHPJava\Kernel\Structures\_ExceptionTable;
+use PHPJava\Kernel\Structures\ExceptionTable;
 use PHPJava\Packages\java\lang\NullPointerException;
 use PHPJava\Utilities\Formatter;
 
@@ -37,7 +37,7 @@ trait ExceptionTableInspectable
 
         foreach ($codeAttribute->getExceptionTables() as $exception) {
             /**
-             * @var _ExceptionTable $exception
+             * @var ExceptionTable $exception
              */
             if ($exception->getStartPc() > $this->getProgramCounter() ||
                 $exception->getEndPc() < $this->getProgramCounter()

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Attributes;
 
-use PHPJava\Kernel\Structures\_BootstrapMethod;
+use PHPJava\Kernel\Structures\BootstrapMethod;
 
 final class BootstrapMethodsAttribute implements AttributeInterface
 {
@@ -12,7 +12,7 @@ final class BootstrapMethodsAttribute implements AttributeInterface
     use \PHPJava\Kernel\Core\DebugTool;
 
     /**
-     * @var _BootstrapMethod[]
+     * @var BootstrapMethod[]
      */
     private $bootstrapMethods = [];
 
@@ -21,7 +21,7 @@ final class BootstrapMethodsAttribute implements AttributeInterface
         $numBootstrapMethods = $this->readUnsignedShort();
 
         for ($i = 0; $i < $numBootstrapMethods; $i++) {
-            $bootstrapMethod = new _BootstrapMethod($this->reader);
+            $bootstrapMethod = new BootstrapMethod($this->reader);
             $bootstrapMethod
                 ->setDebugTool($this->getDebugTool())
                 ->setConstantPool($this->getConstantPool())
@@ -31,7 +31,7 @@ final class BootstrapMethodsAttribute implements AttributeInterface
     }
 
     /**
-     * @return _BootstrapMethod[]
+     * @return BootstrapMethod[]
      */
     public function getBootstrapMethods(): array
     {

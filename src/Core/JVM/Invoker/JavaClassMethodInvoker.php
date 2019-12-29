@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Core\JVM\Invoker;
 
 use PHPJava\Core\JVM\ClassInvokerInterface;
-use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\MethodInfo;
 use PHPJava\Utilities\DebugTool;
 
 class JavaClassMethodInvoker implements InvokerInterface
@@ -23,7 +23,7 @@ class JavaClassMethodInvoker implements InvokerInterface
     private $javaClassInvoker;
 
     /**
-     * @var _MethodInfo[]
+     * @var MethodInfo[]
      */
     private $methods = [];
 
@@ -38,7 +38,7 @@ class JavaClassMethodInvoker implements InvokerInterface
     private $debugTool;
 
     /**
-     * @param _MethodInfo[] $methods
+     * @param MethodInfo[] $methods
      */
     public function __construct(ClassInvokerInterface $javaClassInvoker, array $methods, array $options = [])
     {

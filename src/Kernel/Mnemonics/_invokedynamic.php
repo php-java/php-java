@@ -8,7 +8,7 @@ use PHPJava\Kernel\Attributes\BootstrapMethodsAttribute;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Maps\MethodHandleKind;
 use PHPJava\Kernel\Resolvers\AttributionResolver;
-use PHPJava\Kernel\Structures\_BootstrapMethod;
+use PHPJava\Kernel\Structures\BootstrapMethod;
 use PHPJava\Kernel\Structures\MethodHandleInfo;
 use PHPJava\Kernel\Structures\NameAndTypeInfo;
 use PHPJava\Kernel\Types\Void_;
@@ -89,7 +89,7 @@ final class _invokedynamic extends AbstractOperationCode implements OperationCod
         );
 
         /**
-         * @var _BootstrapMethod $bootstrapMethod
+         * @var BootstrapMethod $bootstrapMethod
          */
         $bootstrapMethod = $bootstrapMethodAttribute->getBootstrapMethods()[$invokeDynamicStructure->getBootstrapMethodAttrIndex()];
         $bootstrapMethodArguments = $bootstrapMethod->getBootstrapArguments();

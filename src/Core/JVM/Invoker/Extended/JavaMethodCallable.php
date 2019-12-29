@@ -21,7 +21,7 @@ use PHPJava\Kernel\Mnemonics\OperationCodeInterface;
 use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Resolvers\AttributionResolver;
 use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Structures\_MethodInfo;
+use PHPJava\Kernel\Structures\MethodInfo;
 use PHPJava\Kernel\Types\Char_;
 use PHPJava\Kernel\Types\Double_;
 use PHPJava\Kernel\Types\Long_;
@@ -65,7 +65,7 @@ trait JavaMethodCallable
         $convertedPassedArguments = $this->stringifyArguments(...$arguments);
 
         /**
-         * @var _MethodInfo $method
+         * @var MethodInfo $method
          */
         $method = $operationCache->fetchOrPush(
             "{$name}.{$convertedPassedArguments}",

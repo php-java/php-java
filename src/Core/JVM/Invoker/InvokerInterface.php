@@ -8,7 +8,7 @@ use PHPJava\Core\JVM\Invoker\Extended\Specifics\MethodSpecificsInterface;
 interface InvokerInterface
 {
     /**
-     * @param PHPJava\Kernel\Structures\_MethodInfo[] $methods
+     * @param PHPJava\Kernel\Structures\MethodInfo[] $methods
      */
     public function __construct(ClassInvokerInterface $javaClassInvoker, array $methods);
 
@@ -17,7 +17,7 @@ interface InvokerInterface
     public function isDynamic(): bool;
 
     /**
-     * @return PHPJava\Kernel\Structures\_MethodInfo[]
+     * @return PHPJava\Kernel\Structures\MethodInfo[]
      */
     public function getList(): array;
 
