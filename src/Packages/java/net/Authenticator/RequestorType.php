@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Packages\java\net\Authenticator;
 
 use PHPJava\Exceptions\NotImplementedException;

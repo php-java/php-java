@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Core\JavaClass;
@@ -34,7 +35,7 @@ final class _instanceof extends AbstractOperationCode implements OperationCodeIn
 
         $targetClass = $cp[$cp[$this->getOperands()['indexbyte']]->getClassIndex()];
 
-        [, $className] = Formatter::convertJavaNamespaceToPHP($targetClass);
+        [, $className] = Formatter::convertJavaNamespaceToPHP((string) $targetClass);
 
         if ($objectref->is($className)) {
             $this->pushToOperandStack(

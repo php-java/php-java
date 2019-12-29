@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Packages\java\util\Spliterator;
 
 use PHPJava\Exceptions\NotImplementedException;

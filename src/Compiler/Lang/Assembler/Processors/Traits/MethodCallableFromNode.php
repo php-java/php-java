@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Compiler\Lang\Assembler\Processors\Traits;
 
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
@@ -81,7 +82,7 @@ trait MethodCallableFromNode
         $methodStructure = $this->getStructureAccessorsLocator()
             ->getClassesStructureAccessor()
             ->find($this->getClassAssembler()->getClassName())
-            ->find($methodName);
+            ->find((string) $methodName);
 
         $parameters = array_values(
             $this->parseParameterFromNode(

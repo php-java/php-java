@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Kernel\Types;
 
 class _Char extends Type implements PrimitiveValueInterface
@@ -17,7 +18,7 @@ class _Char extends Type implements PrimitiveValueInterface
             return false;
         }
 
-        if (ctype_alpha($value) && strlen($value) === 1) {
+        if (ctype_alpha($value) && strlen((string) $value) === 1) {
             $value = ord($value);
         }
 
@@ -30,7 +31,7 @@ class _Char extends Type implements PrimitiveValueInterface
 
     protected static function filter($value)
     {
-        if (ctype_alpha($value) && strlen($value) === 1) {
+        if (ctype_alpha($value) && strlen((string) $value) === 1) {
             return ord($value);
         }
         return $value;

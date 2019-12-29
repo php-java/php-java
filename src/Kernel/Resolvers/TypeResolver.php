@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Kernel\Resolvers;
 
 use PHPJava\Core\JavaClass;
@@ -315,7 +316,7 @@ class TypeResolver
         }
 
         array_walk_recursive($result, function (&$className) {
-            $className = Formatter::convertPHPNamespacesToJava($className);
+            $className = Formatter::convertPHPNamespacesToJava((string) $className);
         });
 
         return $result;

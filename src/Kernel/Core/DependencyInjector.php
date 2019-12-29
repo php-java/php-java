@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Kernel\Core;
 
 trait DependencyInjector
@@ -38,7 +39,7 @@ trait DependencyInjector
         // Native annotation will inject a dependency.
         $injections = [];
         foreach (($annotations['depended-info'] ?? []) as $info) {
-            switch (strtolower(trim($info))) {
+            switch (strtolower(trim((string) $info))) {
                 case 'signature':
                     $injections[] = $this->methodSignature;
                     break;
@@ -63,9 +64,7 @@ trait DependencyInjector
         $injections = [];
         foreach (($annotations['native'] ?? []) as $native) {
             $injections[] = $this->dependencyInjectionProvider
-                ->get(
-                    trim($native)
-                );
+                ->get(trim((string) $native));
         }
         return $injections;
     }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Kernel\Types;
 
 class _Long extends Type implements PrimitiveValueInterface

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Compiler\Lang\Assembler\Statements;
 
 use PHPJava\Compiler\Lang\Assembler\AbstractAssembler;

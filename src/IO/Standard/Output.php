@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\IO\Standard;
 
 use PHPJava\Core\JVM\Parameters\GlobalOptions;

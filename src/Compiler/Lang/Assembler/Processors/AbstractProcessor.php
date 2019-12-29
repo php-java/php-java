@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Compiler\Lang\Assembler\Processors;
 
 use PHPJava\Compiler\Builder\Attributes\Architects\Operation;

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Core\JVM\Field;
 
 use PHPJava\Packages\java\lang\NoSuchFieldException;
