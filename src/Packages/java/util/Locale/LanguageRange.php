@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util\Locale;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\_List;
 
 /**
  * The `LanguageRange` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class LanguageRange extends _Object // implements _List
+class LanguageRange extends Object_ // implements _List
 {
     /**
      * A constant holding the maximum value of weight, 1.0, which indicates that the language range is a good fit for the user.

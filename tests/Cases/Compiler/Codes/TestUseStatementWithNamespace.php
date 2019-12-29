@@ -1,11 +1,12 @@
 <?php
 namespace PHPJava\UseStatement;
-use \PHPJava\Packages\java\lang\_String;
+
+use PHPJava\Packages\java\lang\String_;
 
 class TestUseStatementWithNamespace
 {
     /**
-     * @param _String[] $args
+     * @param String_[] $args
      */
     public static function main($args)
     {

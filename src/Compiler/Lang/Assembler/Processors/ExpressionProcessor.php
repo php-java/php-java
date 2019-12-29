@@ -27,7 +27,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\ParameterParseable;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\MnemonicResolver;
-use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\Int_;
 use PHPJava\Packages\java\lang\Integer;
 use PHPJava\Utilities\ArrayTool;
 use PhpParser\Node;
@@ -220,7 +220,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     $lastLeftOperand = array_slice($leftOperands, -1, 1)[0];
                     $lastRightOperand = array_slice($rightOperands, -1, 1)[0];
                     switch ([MnemonicResolver::resolveTypeByOpCode($lastLeftOperand), MnemonicResolver::resolveTypeByOpCode($lastRightOperand)]) {
-                        case [_Int::class, _Int::class]:
+                        case [Int_::class, Int_::class]:
                             ArrayTool::concat(
                                 $operations,
                                 ...$leftOperands,
@@ -233,9 +233,9 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                                     Integer::class,
                                     'compare',
                                     Descriptor::factory()
-                                        ->addArgument(_Int::class)
-                                        ->addArgument(_Int::class)
-                                        ->setReturn(_Int::class)
+                                        ->addArgument(Int_::class)
+                                        ->addArgument(Int_::class)
+                                        ->setReturn(Int_::class)
                                         ->make()
                                 )
                             );

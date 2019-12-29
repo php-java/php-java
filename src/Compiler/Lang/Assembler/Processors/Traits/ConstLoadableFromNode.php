@@ -9,7 +9,7 @@ use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Types\_Byte;
+use PHPJava\Kernel\Types\Byte_;
 use PHPJava\Utilities\ArrayTool;
 use PhpParser\Node;
 
@@ -33,7 +33,7 @@ trait ConstLoadableFromNode
         $constName = $expression->name->parts[0];
 
         if (strtolower($constName) === 'true') {
-            $classType = _Byte::class;
+            $classType = Byte_::class;
             return [
                 \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
                     OpCode::_iconst_1
@@ -41,7 +41,7 @@ trait ConstLoadableFromNode
             ];
         }
         if (strtolower($constName) === 'false') {
-            $classType = _Byte::class;
+            $classType = Byte_::class;
             return [
                 \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
                     OpCode::_iconst_0

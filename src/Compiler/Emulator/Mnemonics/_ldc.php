@@ -31,13 +31,13 @@ class _ldc extends AbstractOperationCode implements OperationCodeInterface
                 break;
             case StringInfo::class:
                 $this->getEnhancedConstantPool()
-                    ->addClass(\PHPJava\Packages\java\lang\_String::class);
+                    ->addClass(\PHPJava\Packages\java\lang\String_::class);
 
                 $this->accumulator->pushToOperandStack(
                     [
                         VerificationTypeTag::ITEM_Object,
                         $this->getEnhancedConstantPool()
-                            ->findClass(\PHPJava\Packages\java\lang\_String::class),
+                            ->findClass(\PHPJava\Packages\java\lang\String_::class),
                     ]
                 );
                 break;

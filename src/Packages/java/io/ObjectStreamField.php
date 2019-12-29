@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\lang\Comparable;
 
 /**
  * The `ObjectStreamField` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ObjectStreamField extends _Object // implements Comparable
+class ObjectStreamField extends Object_ // implements Comparable
 {
     /**
      * Compare this field with another ObjectStreamField.

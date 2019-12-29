@@ -12,9 +12,9 @@ use PHPJava\Packages\java\io\InputStream;
 /**
  * The `ClassInfo` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class _Class extends _Object // implements Serializable, AnnotatedType, Annotation
+class Class_ extends Object_ // implements Serializable, AnnotatedType, Annotation
 {
     /**
      * Casts this Class object to represent a subclass of the class represented by the specified class object.

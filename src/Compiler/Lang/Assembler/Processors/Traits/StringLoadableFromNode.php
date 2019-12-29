@@ -8,7 +8,7 @@ use PHPJava\Compiler\Builder\Structures\Info\StringInfo;
 use PHPJava\Compiler\Builder\Types\Uint8;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Packages\java\lang\String_;
 use PhpParser\Node;
 
 /**
@@ -23,7 +23,7 @@ trait StringLoadableFromNode
          * @var \PhpParser\Node\Scalar\String_ $expression
          */
         $operations = $this->assembleLoadString($expression->value);
-        $classType = _String::class;
+        $classType = String_::class;
 
         return $operations;
     }

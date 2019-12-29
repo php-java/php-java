@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Long_;
 
 final class _lreturn extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -19,8 +19,8 @@ final class _lreturn extends AbstractOperationCode implements OperationCodeInter
     {
         parent::execute();
         $value = $this->popFromOperandStack();
-        $this->returnValue = ($value instanceof _Long)
+        $this->returnValue = ($value instanceof Long_)
             ? $value
-            : _Long::get($value);
+            : Long_::get($value);
     }
 }

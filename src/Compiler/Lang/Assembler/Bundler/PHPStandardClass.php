@@ -21,7 +21,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NumberLoadable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StaticInitializerAssignable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 class PHPStandardClass extends AbstractBundler
 {
@@ -32,7 +32,7 @@ class PHPStandardClass extends AbstractBundler
 
     const BUNDLE_PACKAGES = [
         \PHPJava\Compiler\Lang\Assembler\Bundler\Packages\Constants::class,
-        \PHPJava\Compiler\Lang\Assembler\Bundler\Packages\_String::class,
+        \PHPJava\Compiler\Lang\Assembler\Bundler\Packages\String_::class,
     ];
 
     public function assemble(): void
@@ -86,7 +86,7 @@ class PHPStandardClass extends AbstractBundler
 
         $this->getEnhancedConstantPool()
             ->addClass($className)
-            ->addClass(_Object::class);
+            ->addClass(Object_::class);
 
         $this->assignStaticInitializer($className);
 
@@ -106,7 +106,7 @@ class PHPStandardClass extends AbstractBundler
                 )
                 ->setSuperClass(
                     $this->getEnhancedConstantPool()
-                        ->findClass(_Object::class)
+                        ->findClass(Object_::class)
                 )
                 ->setMethods(
                     $this

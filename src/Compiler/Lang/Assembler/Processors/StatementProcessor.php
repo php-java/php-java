@@ -14,7 +14,6 @@ use PHPJava\Compiler\Lang\Assembler\Statements\ForStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\IfStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\Imports;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
-use PHPJava\Compiler\Lang\Assembler\Traits\ImportManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\NodeExtractable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Exceptions\AssembleStructureException;

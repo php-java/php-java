@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\function\LongConsumer;
 // use PHPJava\Packages\java\util\stream\stream;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `LongSummaryStatistics` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class LongSummaryStatistics extends _Object // implements LongConsumer, stream
+class LongSummaryStatistics extends Object_ // implements LongConsumer, stream
 {
     /**
      * Records a new int value into the summary information.

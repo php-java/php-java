@@ -10,7 +10,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `PipedWriter` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\io\Writer
  */
 class PipedWriter extends Writer // implements Closeable, AutoCloseable

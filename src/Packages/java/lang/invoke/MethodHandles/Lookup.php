@@ -5,17 +5,17 @@ namespace PHPJava\Packages\java\lang\invoke\MethodHandles;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\invoke\MethodType;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\lang\invoke\MethodHandleInfo;
 
 /**
  * The `Lookup` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Lookup extends _Object // implements MethodHandleInfo
+class Lookup extends Object_ // implements MethodHandleInfo
 {
     /**
      * A single-bit mask representing module access (default access),  which may contribute to the result of lookupModes.

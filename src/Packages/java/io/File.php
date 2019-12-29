@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\FileFilter;
 // use PHPJava\Packages\java\lang\Comparable;
@@ -12,9 +12,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `File` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class File extends _Object // implements FileFilter, Comparable, Path
+class File extends Object_ // implements FileFilter, Comparable, Path
 {
     /**
      * The system-dependent path-separator character, represented as a string for convenience.

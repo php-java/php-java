@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Long_;
 
 class BranchIfTest extends Base
 {
@@ -71,25 +71,25 @@ class BranchIfTest extends Base
 
     public function testIfLcmpGraterThan()
     {
-        $actual = $this->call('ifLcmpGraterThan', _Long::get(5), _Long::get(3));
+        $actual = $this->call('ifLcmpGraterThan', Long_::get(5), Long_::get(3));
         $this->assertEquals(0, $actual);
     }
 
     public function testIfLcmpLessThan()
     {
-        $actual = $this->call('ifLcmpLessThan', _Long::get(5), _Long::get(3));
+        $actual = $this->call('ifLcmpLessThan', Long_::get(5), Long_::get(3));
         $this->assertEquals(1, $actual);
     }
 
     public function testIfLcmpNotEqualsTo()
     {
-        $actual = $this->call('ifLcmpEqualsTo', _Long::get(5), _Long::get(3));
+        $actual = $this->call('ifLcmpEqualsTo', Long_::get(5), Long_::get(3));
         $this->assertEquals(1, $actual);
     }
 
     public function testIfLcmpEqualsTo()
     {
-        $actual = $this->call('ifLcmpEqualsTo', _Long::get(5), _Long::get(5));
+        $actual = $this->call('ifLcmpEqualsTo', Long_::get(5), Long_::get(5));
         $this->assertEquals(0, $actual);
     }
 }

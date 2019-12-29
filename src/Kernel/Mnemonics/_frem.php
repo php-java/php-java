@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\Float_;
 
 final class _frem extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -25,7 +25,7 @@ final class _frem extends AbstractOperationCode implements OperationCodeInterfac
         $leftOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(
-            _Float::get(
+            Float_::get(
                 $leftOperand % $rightOperand
             )
         );

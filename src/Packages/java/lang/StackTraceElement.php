@@ -9,9 +9,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `StackTraceElement` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class StackTraceElement extends _Object // implements Serializable
+class StackTraceElement extends Object_ // implements Serializable
 {
     /**
      * Returns true if the specified object is another StackTraceElement instance representing the same execution point as this instance.

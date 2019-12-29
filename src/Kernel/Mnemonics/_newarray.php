@@ -4,7 +4,7 @@ namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Exceptions\RuntimeException;
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Array\Collection;
+use PHPJava\Kernel\Types\Array_\Collection;
 
 final class _newarray extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -36,28 +36,28 @@ final class _newarray extends AbstractOperationCode implements OperationCodeInte
 
         switch ($atype) {
             case 4: // T_BOOLEAN
-                $className = '_Boolean';
+                $className = 'Boolean_';
                 break;
             case 5: // T_CHAR
-                $className = '_Char';
+                $className = 'Char_';
                 break;
             case 6: // T_FLOAT
-                $className = '_Float';
+                $className = 'Float_';
                 break;
             case 7: // T_DOUBLE
-                $className = '_Double';
+                $className = 'Double_';
                 break;
             case 8: // T_BYTE
-                $className = '_Byte';
+                $className = 'Byte_';
                 break;
             case 9: // T_SHORT
-                $className = '_Short';
+                $className = 'Short_';
                 break;
             case 10: // T_INT
-                $className = '_Int';
+                $className = 'Int_';
                 break;
             case 11: // T_LONG
-                $className = '_Long';
+                $className = 'Long_';
                 break;
             default:
                 throw new RuntimeException('Unknown array type ' . $atype);

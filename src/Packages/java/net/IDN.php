@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `IDN` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class IDN extends _Object
+class IDN extends Object_
 {
     /**
      * Flag to allow processing of unassigned code points.

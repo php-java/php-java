@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Enumeration;
 // use PHPJava\Packages\java\util\stream\Stream;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `NetworkInterface` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class NetworkInterface extends _Object // implements Enumeration, Stream
+class NetworkInterface extends Object_ // implements Enumeration, Stream
 {
     /**
      * Compares this object against the specified object.

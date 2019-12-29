@@ -8,19 +8,19 @@ use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Exceptions\TypeException;
 use PHPJava\Kernel\Maps\VerificationTypeTag;
-use PHPJava\Kernel\Types\_Array\Collection;
-use PHPJava\Kernel\Types\_Boolean;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Char;
-use PHPJava\Kernel\Types\_Double;
-use PHPJava\Kernel\Types\_Float;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Long;
-use PHPJava\Kernel\Types\_Short;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Array_\Collection;
+use PHPJava\Kernel\Types\Boolean_;
+use PHPJava\Kernel\Types\Byte_;
+use PHPJava\Kernel\Types\Char_;
+use PHPJava\Kernel\Types\Double_;
+use PHPJava\Kernel\Types\Float_;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Long_;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
+use PHPJava\Kernel\Types\Short_;
 use PHPJava\Kernel\Types\Type;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Kernel\Types\Void_;
+use PHPJava\Packages\java\lang\String_;
 use PHPJava\Utilities\Formatter;
 
 class TypeResolver
@@ -38,62 +38,62 @@ class TypeResolver
     ];
 
     const AMBIGUOUS_TYPES_ON_PHP = [
-        _Long::class => _Int::class,
-        _Double::class => _Float::class,
+        Long_::class => Int_::class,
+        Double_::class => Float_::class,
         // Char is same as Int on Java, but strict mode cannot decide Int or String on PHPJava.
         // 'char'   => 'int',
-        _Byte::class => _Int::class,
-        _Short::class => _Int::class,
+        Byte_::class => Int_::class,
+        Short_::class => Int_::class,
     ];
 
     const SIGNATURE_MAP = [
-        'B' => _Byte::class,
-        'C' => _Char::class,
-        'D' => _Double::class,
-        'F' => _Float::class,
-        'I' => _Int::class,
-        'J' => _Long::class,
-        'S' => _Short::class,
-        'V' => _Void::class,
-        'Z' => _Boolean::class,
+        'B' => Byte_::class,
+        'C' => Char_::class,
+        'D' => Double_::class,
+        'F' => Float_::class,
+        'I' => Int_::class,
+        'J' => Long_::class,
+        'S' => Short_::class,
+        'V' => Void_::class,
+        'Z' => Boolean_::class,
         'L' => 'class',
     ];
 
     const TYPES_MAP = [
-        'byte' => _Byte::class,
-        'char' => _Char::class,
-        'double' => _Double::class,
-        'float' => _Float::class,
-        'int' => _Int::class,
-        'long' => _Long::class,
-        'short' => _Short::class,
-        'boolean' => _Boolean::class,
-        'void' => _Void::class,
+        'byte' => Byte_::class,
+        'char' => Char_::class,
+        'double' => Double_::class,
+        'float' => Float_::class,
+        'int' => Int_::class,
+        'long' => Long_::class,
+        'short' => Short_::class,
+        'boolean' => Boolean_::class,
+        'void' => Void_::class,
     ];
 
     const VERIFICATION_TYPE_TAG_MAPS = [
-        _Int::class => VerificationTypeTag::ITEM_Integer,
-        _Float::class => VerificationTypeTag::ITEM_Float,
-        _Double::class => VerificationTypeTag::ITEM_Double,
-        _Char::class => VerificationTypeTag::ITEM_Integer,
-        _Short::class => VerificationTypeTag::ITEM_Integer,
-        _Long::class => VerificationTypeTag::ITEM_Long,
+        Int_::class => VerificationTypeTag::ITEM_Integer,
+        Float_::class => VerificationTypeTag::ITEM_Float,
+        Double_::class => VerificationTypeTag::ITEM_Double,
+        Char_::class => VerificationTypeTag::ITEM_Integer,
+        Short_::class => VerificationTypeTag::ITEM_Integer,
+        Long_::class => VerificationTypeTag::ITEM_Long,
         null => VerificationTypeTag::ITEM_Null,
     ];
 
     const PHP_SCALAR_MAP = [
         // [ TypeClass, Instantiation ]
-        'float' => [_Float::class, false],
-        'double' => [_Float::class, false],
-        'integer' => [_Int::class, false],
-        'boolean' => [_Boolean::class, false],
+        'float' => [Float_::class, false],
+        'double' => [Float_::class, false],
+        'integer' => [Int_::class, false],
+        'boolean' => [Boolean_::class, false],
     ];
 
     const PHP_TO_JAVA_MAP = [
-        'integer' => _Int::class,
-        'string' => _String::class,
-        'float' => _Double::class,
-        'double' => _Double::class,
+        'integer' => Int_::class,
+        'string' => String_::class,
+        'float' => Double_::class,
+        'double' => Double_::class,
     ];
 
     /**
@@ -135,13 +135,13 @@ class TypeResolver
     public static function extractPrimitiveValueFromType(Type $value)
     {
         $extractedValue = (string) $value->getValue();
-        if ($value instanceof _Int || $value instanceof _Long || $value instanceof _Byte) {
+        if ($value instanceof Int_ || $value instanceof Long_ || $value instanceof Byte_) {
             return (int) $extractedValue;
         }
-        if ($value instanceof _Float || $value instanceof _Double) {
+        if ($value instanceof Float_ || $value instanceof Double_) {
             return (float) $extractedValue;
         }
-        if ($value instanceof _Boolean) {
+        if ($value instanceof Boolean_) {
             return $extractedValue === 'true' ? true : false;
         }
 
@@ -195,7 +195,7 @@ class TypeResolver
      * @throws TypeException
      * @return (int|string)[]
      */
-    public static function convertPHPtoJava($arguments, string $defaultJavaArgumentType = _String::class): array
+    public static function convertPHPtoJava($arguments, string $defaultJavaArgumentType = String_::class): array
     {
         $phpType = gettype($arguments);
         $dimensionsOfArray = 0;
@@ -324,7 +324,7 @@ class TypeResolver
 
     /**
      * @throws TypeException
-     * @return _Boolean|_Double|_Float|_Int|_String|Collection
+     * @return Collection|Type
      */
     public static function convertPHPTypeToJavaType($value)
     {

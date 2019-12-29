@@ -2,15 +2,15 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Types;
 
-class _Long extends Type implements PrimitiveValueInterface
+class Byte_ extends Type implements PrimitiveValueInterface
 {
     const DEFAULT_VALUE = 0;
 
-    protected $nameInJava = 'long';
-    protected $nameInPHP = 'integer';
+    protected $nameInJava = 'byte';
+    protected $nameInPHP = 'int';
 
-    const MIN = PHP_INT_MIN;
-    const MAX = PHP_INT_MAX;
+    const MIN = -128;
+    const MAX = 127;
 
     public static function isValid($value): bool
     {
@@ -18,13 +18,10 @@ class _Long extends Type implements PrimitiveValueInterface
             return false;
         }
 
-        // Adjustment negative value for PHP problems
-        if ($value === static::MIN) {
-            $value++;
-        }
         if (!ctype_digit((string) abs($value))) {
             return false;
         }
+
         return $value >= static::MIN && $value <= static::MAX;
     }
 

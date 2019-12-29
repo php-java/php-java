@@ -7,9 +7,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `StrictMath` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class StrictMath extends _Object
+class StrictMath extends Object_
 {
     /**
      * The double value that is closer than any other to e, the base of the natural logarithms.

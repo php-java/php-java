@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\net\ContentHandlerFactory;
 // use PHPJava\Packages\java\util\_List;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `URLConnection` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class URLConnection extends _Object // implements ContentHandlerFactory, _List
+class URLConnection extends Object_ // implements ContentHandlerFactory, _List
 {
     /**
      * If true, this URL is being examined in a context in which it makes sense to allow user interactions such as popping up an authentication dialog.

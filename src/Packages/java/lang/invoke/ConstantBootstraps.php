@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `ConstantBootstraps` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ConstantBootstraps extends _Object
+class ConstantBootstraps extends Object_
 {
     /**
      * Finds a VarHandle for an array type.

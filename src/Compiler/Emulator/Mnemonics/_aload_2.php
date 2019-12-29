@@ -14,7 +14,7 @@ class _aload_2 extends AbstractOperationCode implements OperationCodeInterface
             [
                 VerificationTypeTag::ITEM_Object,
                 $this->getEnhancedConstantPool()
-                    ->findClass(\PHPJava\Packages\java\lang\_String::class),
+                    ->findClass(\PHPJava\Packages\java\lang\String_::class),
             ]
         );
     }

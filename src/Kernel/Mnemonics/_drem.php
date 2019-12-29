@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\Double_;
 
 final class _drem extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -25,7 +25,7 @@ final class _drem extends AbstractOperationCode implements OperationCodeInterfac
         $leftOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(
-            _Double::get(
+            Double_::get(
                 $leftOperand % $rightOperand
             )
         );

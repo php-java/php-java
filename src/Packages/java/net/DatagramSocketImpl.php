@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\net\SocketOption;
 // use PHPJava\Packages\java\util\Set;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `DatagramSocketImpl` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class DatagramSocketImpl extends _Object // implements SocketOption, Set
+class DatagramSocketImpl extends Object_ // implements SocketOption, Set
 {
     /**
      * The file descriptor object.

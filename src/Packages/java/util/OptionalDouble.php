@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\function\Supplier;
 // use PHPJava\Packages\java\lang\Runnable;
@@ -12,9 +12,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `OptionalDouble` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class OptionalDouble extends _Object // implements Supplier, Runnable, DoubleStream
+class OptionalDouble extends Object_ // implements Supplier, Runnable, DoubleStream
 {
     /**
      * Returns an empty OptionalDouble instance.

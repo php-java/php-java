@@ -9,7 +9,7 @@ use PHPJava\Kernel\Maps\MethodAccessFlag;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Packages\java\lang\String_;
 
 class Formatter
 {
@@ -104,7 +104,7 @@ class Formatter
                 continue;
             }
             $type = TypeResolver::convertJavaTypeSimplyForPHP($type);
-            if ($type === _String::class) {
+            if ($type === String_::class) {
                 $result[] = [
                     'type' => $type,
                     'dimensions_of_array' => $signature['dimensions_of_array'],
@@ -274,7 +274,7 @@ class Formatter
         }
         switch ($phpPrimitiveType) {
             case 'string':
-                return _String::class;
+                return String_::class;
         }
         return $phpPrimitiveType;
     }

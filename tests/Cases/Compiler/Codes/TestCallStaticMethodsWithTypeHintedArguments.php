@@ -8,7 +8,7 @@ class TestCallStaticMethodsWithTypeHintedArguments
     }
 
     /**
-     * @param \PHPJava\Packages\java\lang\_String[] $args
+     * @param \PHPJava\Packages\java\lang\String_[] $args
      */
     public static function main($args)
     {

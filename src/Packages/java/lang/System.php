@@ -13,9 +13,9 @@ use PHPJava\Packages\PHPJava\Kernel\Behavior\System as SystemBehavior;
 /**
  * The `System` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class System extends _Object // implements Logger, Map, Channel
+class System extends Object_ // implements Logger, Map, Channel
 {
     /**
      * The "standard" error output stream.
@@ -34,7 +34,7 @@ class System extends _Object // implements Logger, Map, Channel
     /**
      * The "standard" output stream.
      *
-     * @var _Object $out
+     * @var Object_ $out
      */
     public static $out = null;
 

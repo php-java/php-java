@@ -11,7 +11,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `LinkedHashMap` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\util\AbstractMap
  * @parent \PHPJava\Packages\java\util\HashMap
  */

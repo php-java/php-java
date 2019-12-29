@@ -9,9 +9,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `ProcessBuilder` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ProcessBuilder extends _Object // implements _List
+class ProcessBuilder extends Object_ // implements _List
 {
     /**
      * Returns this process builder's operating system program and arguments.

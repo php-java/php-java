@@ -7,7 +7,7 @@ use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NormalizerException;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_FieldInfo;
-use PHPJava\Kernel\Types\_Array\Collection;
+use PHPJava\Kernel\Types\Array_\Collection;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
 use PHPJava\Kernel\Types\Type;
 use PHPJava\Utilities\Formatter;

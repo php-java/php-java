@@ -34,8 +34,8 @@ use PHPJava\Compiler\Lang\Assembler\Traits\StructureAccessorsLocatorManageable;
 use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
-use PHPJava\Kernel\Types\_Void;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Kernel\Types\Void_;
+use PHPJava\Packages\java\lang\Object_;
 use PhpParser\Node;
 
 class EntryPointClassAssembler implements AssemblerInterface, ParameterServiceInterface, ClassAssemblerInterface
@@ -109,7 +109,7 @@ class EntryPointClassAssembler implements AssemblerInterface, ParameterServiceIn
 
         $this->getEnhancedConstantPool()
             ->addClass($this->className)
-            ->addClass(_Object::class)
+            ->addClass(Object_::class)
             ->addClass(Runtime::PHP_STANDARD_CLASS_NAME);
 
         // Get operations in outside statements.
@@ -135,7 +135,7 @@ class EntryPointClassAssembler implements AssemblerInterface, ParameterServiceIn
                 ->setSuperClass(
                     $this
                         ->getEnhancedConstantPool()
-                        ->findClass(_Object::class)
+                        ->findClass(Object_::class)
                 )
                 ->setMethods(
                     $this
@@ -153,7 +153,7 @@ class EntryPointClassAssembler implements AssemblerInterface, ParameterServiceIn
                                         \PHPJava\Packages\java\lang\String::class,
                                         1
                                     )
-                                    ->setReturn(_Void::class)
+                                    ->setReturn(Void_::class)
                                     ->make()
                             ))
                                 ->setConstantPool($this->getConstantPool())

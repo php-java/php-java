@@ -12,9 +12,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `StackWalker` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class StackWalker extends _Object // implements StackFrame, Consumer, Set, Stream
+class StackWalker extends Object_ // implements StackFrame, Consumer, Set, Stream
 {
     /**
      * Performs the given action on each element of StackFrame stream of the current thread, traversing from the top frame of the stack, which is the method calling this forEach method.

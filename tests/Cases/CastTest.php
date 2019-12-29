@@ -2,13 +2,13 @@
 declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Char;
-use PHPJava\Kernel\Types\_Double;
-use PHPJava\Kernel\Types\_Float;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Long;
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\Byte_;
+use PHPJava\Kernel\Types\Char_;
+use PHPJava\Kernel\Types\Double_;
+use PHPJava\Kernel\Types\Float_;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Long_;
+use PHPJava\Kernel\Types\Short_;
 
 class CastTest extends Base
 {
@@ -24,10 +24,10 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testIntToShort',
-                new _Int(1234)
+                new Int_(1234)
             );
 
-        $this->assertInstanceOf(_Short::class, $result);
+        $this->assertInstanceOf(Short_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -39,11 +39,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testIntToDouble',
-                new _Int(1234)
+                new Int_(1234)
             );
 
         // check type
-        $this->assertInstanceOf(_Double::class, $result);
+        $this->assertInstanceOf(Double_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -55,11 +55,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testIntToFloat',
-                new _Int(1234)
+                new Int_(1234)
             );
 
         // check type
-        $this->assertInstanceOf(_Float::class, $result);
+        $this->assertInstanceOf(Float_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -72,11 +72,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testIntToByte',
-                new _Int(123)
+                new Int_(123)
             );
 
         // check type
-        $this->assertInstanceOf(_Byte::class, $result);
+        $this->assertInstanceOf(Byte_::class, $result);
         $this->assertEquals(123, $result->getValue());
     }
 
@@ -89,11 +89,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testIntToChar',
-                new _Int(123)
+                new Int_(123)
             );
 
         // check type
-        $this->assertInstanceOf(_Char::class, $result);
+        $this->assertInstanceOf(Char_::class, $result);
         $this->assertEquals('{', (string) $result);
     }
 
@@ -105,10 +105,10 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testLongToDouble',
-                new _Long(1234)
+                new Long_(1234)
             );
 
-        $this->assertInstanceOf(_Double::class, $result);
+        $this->assertInstanceOf(Double_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -120,11 +120,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testLongToFloat',
-                new _Long(1234)
+                new Long_(1234)
             );
 
         // check type
-        $this->assertInstanceOf(_Float::class, $result);
+        $this->assertInstanceOf(Float_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -136,11 +136,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testLongToInt',
-                new _Long(1234)
+                new Long_(1234)
             );
 
         // check type
-        $this->assertInstanceOf(_Int::class, $result);
+        $this->assertInstanceOf(Int_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -152,10 +152,10 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testDoubleToFloat',
-                new _Double(1234)
+                new Double_(1234)
             );
 
-        $this->assertInstanceOf(_Float::class, $result);
+        $this->assertInstanceOf(Float_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -167,11 +167,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testDoubleToInt',
-                new _Double(1234)
+                new Double_(1234)
             );
 
         // check type
-        $this->assertInstanceOf(_Int::class, $result);
+        $this->assertInstanceOf(Int_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -183,11 +183,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testDoubleToLong',
-                new _Double(1234)
+                new Double_(1234)
             );
 
         // check type
-        $this->assertInstanceOf(_Long::class, $result);
+        $this->assertInstanceOf(Long_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -199,10 +199,10 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testFloatToDouble',
-                new _Float(1234)
+                new Float_(1234)
             );
 
-        $this->assertInstanceOf(_Double::class, $result);
+        $this->assertInstanceOf(Double_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -214,11 +214,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testFloatToInt',
-                new _Float(1234)
+                new Float_(1234)
             );
 
         // check type
-        $this->assertInstanceOf(_Int::class, $result);
+        $this->assertInstanceOf(Int_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 
@@ -230,11 +230,11 @@ class CastTest extends Base
             ->getMethods()
             ->call(
                 'testFloatToLong',
-                new _Float(1234)
+                new Float_(1234)
             );
 
         // check type
-        $this->assertInstanceOf(_Long::class, $result);
+        $this->assertInstanceOf(Long_::class, $result);
         $this->assertEquals(1234, $result->getValue());
     }
 }

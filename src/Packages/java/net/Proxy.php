@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `Proxy` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Proxy extends _Object
+class Proxy extends Object_
 {
     /**
      * A proxy setting that represents a DIRECT connection, basically telling the protocol handler not to use any proxying.

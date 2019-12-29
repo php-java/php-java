@@ -2,10 +2,10 @@
 declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Kernel\Types\_Double;
-use PHPJava\Kernel\Types\_Float;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Double_;
+use PHPJava\Kernel\Types\Float_;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Long_;
 
 class NegationTest extends Base
 {
@@ -31,7 +31,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateInt',
-            _Int::get(123)
+            Int_::get(123)
         );
         $this->assertEquals('-123', $actual);
     }
@@ -40,7 +40,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateInt',
-            _Int::get(-123)
+            Int_::get(-123)
         );
         $this->assertEquals('123', $actual);
     }
@@ -49,7 +49,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateDouble',
-            _Double::get(123)
+            Double_::get(123)
         );
         $this->assertEquals('-123', $actual);
     }
@@ -58,7 +58,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateDouble',
-            _Double::get(-123)
+            Double_::get(-123)
         );
         $this->assertEquals('123', $actual);
     }
@@ -67,7 +67,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateDouble',
-            _Double::get(123.5)
+            Double_::get(123.5)
         );
         $this->assertEquals('-123.5', $actual);
     }
@@ -76,7 +76,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateDouble',
-            _Double::get(-123.5)
+            Double_::get(-123.5)
         );
         $this->assertEquals('123.5', $actual);
     }
@@ -85,7 +85,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateFloat',
-            _Float::get(123)
+            Float_::get(123)
         );
         $this->assertEquals('-123', $actual);
     }
@@ -94,7 +94,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateFloat',
-            _Float::get(-123)
+            Float_::get(-123)
         );
         $this->assertEquals('123', $actual);
     }
@@ -103,7 +103,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateFloat',
-            _Float::get(123.5)
+            Float_::get(123.5)
         );
         $this->assertEquals('-123.5', $actual);
     }
@@ -112,7 +112,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateFloat',
-            _Float::get(-123.5)
+            Float_::get(-123.5)
         );
         $this->assertEquals('123.5', $actual);
     }
@@ -121,7 +121,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateLong',
-            _Long::get(123)
+            Long_::get(123)
         );
         $this->assertEquals('-123', $actual);
     }
@@ -130,7 +130,7 @@ class NegationTest extends Base
     {
         $actual = $this->call(
             'negateLong',
-            _Long::get(-123)
+            Long_::get(-123)
         );
         $this->assertEquals('123', $actual);
     }

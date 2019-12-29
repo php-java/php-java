@@ -7,7 +7,7 @@ use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Filters\Normalizer;
 use PHPJava\Kernel\Structures\Utf8Info;
-use PHPJava\Kernel\Types\_Char;
+use PHPJava\Kernel\Types\Char_;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\util\Comparator;
@@ -16,9 +16,9 @@ use PHPJava\Kernel\Types\_Char;
 /**
  * The `String` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class _String extends _Object implements CharSequence
+class String_ extends Object_ implements CharSequence
 {
     private $hash = 0;
     private $object;
@@ -56,7 +56,7 @@ class _String extends _Object implements CharSequence
             throw new IndexOutOfBoundsException("String index out of range: {$index}");
         }
 
-        return new _Char($this->toString()[$index]);
+        return new Char_($this->toString()[$index]);
     }
 
     /**
@@ -221,7 +221,7 @@ class _String extends _Object implements CharSequence
         if (!($this->object instanceof Utf8Info)) {
             return false;
         }
-        if ($a instanceof _String) {
+        if ($a instanceof String_) {
             return $this->toString() === $a->toString();
         }
         return $this->toString() === $a;

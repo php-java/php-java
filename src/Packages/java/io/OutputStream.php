@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\AutoCloseable;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `OutputStream` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class OutputStream extends _Object // implements Closeable, AutoCloseable
+class OutputStream extends Object_ // implements Closeable, AutoCloseable
 {
     /**
      * Closes this output stream and releases any system resources associated with this stream.

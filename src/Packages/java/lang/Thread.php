@@ -10,9 +10,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Thread` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Thread extends _Object // implements UncaughtExceptionHandler, Map
+class Thread extends Object_ // implements UncaughtExceptionHandler, Map
 {
     /**
      * The maximum priority that a thread can have.

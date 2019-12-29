@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Observer;
 
 /**
  * The `Observable` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Observable extends _Object // implements Observer
+class Observable extends Object_ // implements Observer
 {
     /**
      * Deprecated.Adds an observer to the set of observers for this object, provided that it is not the same as some observer already in the set.

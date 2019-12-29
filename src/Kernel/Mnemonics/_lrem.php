@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Long_;
 
 final class _lrem extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -25,7 +25,7 @@ final class _lrem extends AbstractOperationCode implements OperationCodeInterfac
         $leftOperand = Normalizer::getPrimitiveValue($this->popFromOperandStack());
 
         $this->pushToOperandStack(
-            _Long::get(
+            Long_::get(
                 $leftOperand % $rightOperand
             )
         );

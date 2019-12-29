@@ -5,8 +5,8 @@ namespace PHPJava\Kernel\Mnemonics;
 use PHPJava\Kernel\Structures\IntegerInfo;
 use PHPJava\Kernel\Structures\StringInfo;
 use PHPJava\Kernel\Structures\Utf8Info;
-use PHPJava\Kernel\Types\_Float;
-use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\Float_;
+use PHPJava\Kernel\Types\Int_;
 
 final class _ldc_w extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -40,9 +40,9 @@ final class _ldc_w extends AbstractOperationCode implements OperationCodeInterfa
                 $value = $value->getStringObject();
             }
         } elseif (($data instanceof IntegerInfo)) {
-            $value = _Int::get($data->getBytes());
-        } elseif ($data instanceof _Float) {
-            $value = \PHPJava\Kernel\Types\_Float::get($data->getBytes());
+            $value = Int_::get($data->getBytes());
+        } elseif ($data instanceof Float_) {
+            $value = \PHPJava\Kernel\Types\Float_::get($data->getBytes());
         } else {
             $value = $cpInfo[$data->getStringIndex()];
         }

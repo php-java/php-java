@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Long_;
 
 class BinaryOperatorTest extends Base
 {
@@ -29,8 +29,8 @@ class BinaryOperatorTest extends Base
             ->getMethods()
             ->call(
                 $method,
-                _Long::get($value1),
-                _Long::get($value2)
+                Long_::get($value1),
+                Long_::get($value2)
             );
 
         return $calculatedValue->getValue();

@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Cloneable;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `TimeZone` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class TimeZone extends _Object // implements Serializable, Cloneable
+class TimeZone extends Object_ // implements Serializable, Cloneable
 {
     /**
      * A style specifier for getDisplayName() indicating a long name, such as "Pacific Standard Time.".

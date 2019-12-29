@@ -7,8 +7,8 @@ use PHPJava\Compiler\Builder\Structures\Info\IntegerInfo;
 use PHPJava\Compiler\Builder\Structures\Info\StringInfo;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Exceptions\AssembleStructureException;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Utilities\ArrayTool;
 
 /**
@@ -22,9 +22,9 @@ trait Castable
     ): array {
         $objectClass = null;
         switch ($classType) {
-            case _Int::class:
+            case Int_::class:
             case IntegerInfo::class:
-                $classType = _Int::class;
+                $classType = Int_::class;
                 $objectClass = \PHPJava\Packages\java\lang\Integer::class;
                 break;
             case StringInfo::class:
@@ -47,7 +47,7 @@ trait Castable
                 $objectClass,
                 Descriptor::factory()
                     ->addArgument($classType)
-                    ->setReturn(_Void::class)
+                    ->setReturn(Void_::class)
                     ->make(),
                 true,
                 ...$arguments

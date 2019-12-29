@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\lang\Comparable;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `Date` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Date extends _Object // implements Serializable, Comparable
+class Date extends Object_ // implements Serializable, Comparable
 {
     /**
      * Tests if this date is after the specified date.

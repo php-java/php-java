@@ -9,7 +9,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `ShortBuffer` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\nio\Buffer
  */
 class ShortBuffer extends Buffer // implements Comparable

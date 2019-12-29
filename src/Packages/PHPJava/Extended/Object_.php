@@ -8,7 +8,7 @@ use PHPJava\Packages\java\lang\CloneNotSupportedException;
 use PHPJava\Packages\java\lang\NoSuchMethodException;
 use PHPJava\Packages\PHPJava\Kernel\Behavior\System;
 
-trait _Object
+trait Object_
 {
     protected $parameters;
 

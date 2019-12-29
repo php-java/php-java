@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Double;
+use PHPJava\Kernel\Types\Double_;
 
 final class _dreturn extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -19,8 +19,8 @@ final class _dreturn extends AbstractOperationCode implements OperationCodeInter
     {
         parent::execute();
         $value = $this->popFromOperandStack();
-        $this->returnValue = ($value instanceof _Double)
+        $this->returnValue = ($value instanceof Double_)
             ? $value
-            : _Double::get($value);
+            : Double_::get($value);
     }
 }

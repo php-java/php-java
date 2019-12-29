@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\_List;
 
 /**
  * The `CookieHandler` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class CookieHandler extends _Object // implements _List
+class CookieHandler extends Object_ // implements _List
 {
     /**
      * Gets all the applicable cookies from a cookie cache for the specified uri in the request header.

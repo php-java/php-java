@@ -10,7 +10,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Byte` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Number
  */
 class Byte extends Number // implements Serializable, Comparable

@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Serializable;
 
 /**
  * The `EventObject` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class EventObject extends _Object // implements Serializable
+class EventObject extends Object_ // implements Serializable
 {
     /**
      * The object on which the Event initially occurred.

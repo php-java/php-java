@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\Float_;
 use PHPJava\Kernel\Types\Type;
 
 final class _fastore extends AbstractOperationCode implements OperationCodeInterface
@@ -29,6 +29,6 @@ final class _fastore extends AbstractOperationCode implements OperationCodeInter
         $arrayref = $this->popFromOperandStack();
 
         // The value is a ref.
-        $arrayref[$index] = _Float::get($value);
+        $arrayref[$index] = Float_::get($value);
     }
 }

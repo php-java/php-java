@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\stream\DoubleStream;
 
 /**
  * The `SplittableRandom` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class SplittableRandom extends _Object // implements DoubleStream
+class SplittableRandom extends Object_ // implements DoubleStream
 {
     /**
      * Returns an effectively unlimited stream of pseudorandom  double values from this generator and/or one split from it; each value is between zero (inclusive) and one (exclusive).

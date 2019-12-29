@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Array\Collection;
+use PHPJava\Kernel\Types\Array_\Collection;
 use PHPJava\Utilities\Formatter;
 
 final class _multianewarray extends AbstractOperationCode implements OperationCodeInterface

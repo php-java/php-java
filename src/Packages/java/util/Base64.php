@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `Base64` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Base64 extends _Object
+class Base64 extends Object_
 {
     /**
      * Returns a Base64.Decoder that decodes using the Basic type base64 encoding scheme.

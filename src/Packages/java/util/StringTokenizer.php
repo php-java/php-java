@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Enumeration;
 
 /**
  * The `StringTokenizer` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class StringTokenizer extends _Object // implements Enumeration
+class StringTokenizer extends Object_ // implements Enumeration
 {
     /**
      * Calculates the number of times that this tokenizer's nextToken method can be called before it generates an exception.

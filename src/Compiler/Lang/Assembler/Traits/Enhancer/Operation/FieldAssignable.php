@@ -10,7 +10,7 @@ use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\Int_;
 use PHPJava\Utilities\ArrayTool;
 use PHPJava\Utilities\Formatter;
 
@@ -39,7 +39,7 @@ trait FieldAssignable
             );
         } else {
             switch ($parsedSignature[0]['type']) {
-                case _Int::class:
+                case Int_::class:
                     ArrayTool::concat(
                         $operations,
                         ...$this->assembleLoadNumber(

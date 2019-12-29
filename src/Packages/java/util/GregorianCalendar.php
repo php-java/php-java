@@ -10,7 +10,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `GregorianCalendar` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\util\Calendar
  */
 class GregorianCalendar extends Calendar // implements Serializable, Comparable

@@ -12,7 +12,7 @@ use PHPJava\Compiler\Builder\Signatures\Descriptor;
 use PHPJava\Compiler\Builder\Signatures\MethodAccessFlag;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Utilities\ArrayTool;
 
 /**
@@ -32,7 +32,7 @@ trait StaticInitializerAssignable
             ->addUtf8('<clinit>')
             ->addUtf8(
                 $descriptor = (new Descriptor())
-                    ->setReturn(_Void::class)
+                    ->setReturn(Void_::class)
                     ->make()
             );
 

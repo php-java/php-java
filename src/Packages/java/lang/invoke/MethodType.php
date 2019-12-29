@@ -4,7 +4,7 @@ namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\util\_List;
@@ -12,9 +12,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `MethodType` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class MethodType extends _Object // implements Serializable, _List
+class MethodType extends Object_ // implements Serializable, _List
 {
     protected $parameters = [];
 

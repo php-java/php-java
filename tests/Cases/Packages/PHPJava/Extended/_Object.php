@@ -1,16 +1,16 @@
 <?php
-namespace PHPJava\Tests\Packages\PHPJava\Extended\_Object;
+namespace PHPJava\Tests\Packages\PHPJava\Extended\Object_;
 
 use PHPJava\Packages\java\lang\CloneNotSupportedException;
 
-class _ObjectTest extends Base
+class Object_Test extends Base
 {
     public function testClone()
     {
         $this->expectException(CloneNotSupportedException::class);
 
         clone new class() {
-            use \PHPJava\Packages\PHPJava\Extended\_Object;
+            use \PHPJava\Packages\PHPJava\Extended\Object_;
         };
     }
 }

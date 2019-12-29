@@ -7,10 +7,10 @@ use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\IO\Standard\Output;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\Utf8Info;
-use PHPJava\Kernel\Types\_Array\Collection;
+use PHPJava\Kernel\Types\Array_\Collection;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
-use PHPJava\Packages\java\lang\_String;
 use PHPJava\Packages\java\lang\NullPointerException;
+use PHPJava\Packages\java\lang\String_;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\Appendable;
@@ -18,7 +18,7 @@ use PHPJava\Packages\java\lang\NullPointerException;
 /**
  * The `PrintStream` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\io\OutputStream
  * @parent \PHPJava\Packages\java\io\FilterOutputStream
  */
@@ -160,7 +160,7 @@ class PrintStream extends FilterOutputStream // implements Closeable, Appendable
 
         [ $signatureType, $typeName ] = TypeResolver::getType($methodSignature['arguments'][0]);
 
-        if ($typeName === _String::class) {
+        if ($typeName === String_::class) {
             Output::write('null');
             return;
         }

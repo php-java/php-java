@@ -7,7 +7,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `InheritableThreadLocal` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\ThreadLocal
  */
 class InheritableThreadLocal extends ThreadLocal

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Types;
 
-class _Short extends Type implements PrimitiveValueInterface
+class Short_ extends Type implements PrimitiveValueInterface
 {
     const DEFAULT_VALUE = 0;
 

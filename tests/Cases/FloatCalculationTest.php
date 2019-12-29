@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Kernel\Types\_Float;
+use PHPJava\Kernel\Types\Float_;
 
 class FloatCalculationTest extends Base
 {
@@ -28,8 +28,8 @@ class FloatCalculationTest extends Base
             '30',
             $this->call(
                 'floatAdd',
-                _Float::get(10),
-                _Float::get(20)
+                Float_::get(10),
+                Float_::get(20)
             )
         );
     }
@@ -40,8 +40,8 @@ class FloatCalculationTest extends Base
             '5',
             $this->call(
                 'floatSub',
-                _Float::get(10),
-                _Float::get(5)
+                Float_::get(10),
+                Float_::get(5)
             )
         );
     }
@@ -52,8 +52,8 @@ class FloatCalculationTest extends Base
             '-10',
             $this->call(
                 'floatSub',
-                _Float::get(10),
-                _Float::get(20)
+                Float_::get(10),
+                Float_::get(20)
             )
         );
     }
@@ -64,8 +64,8 @@ class FloatCalculationTest extends Base
             '50',
             $this->call(
                 'floatMul',
-                _Float::get(10),
-                _Float::get(5)
+                Float_::get(10),
+                Float_::get(5)
             )
         );
     }
@@ -76,8 +76,8 @@ class FloatCalculationTest extends Base
             '30',
             $this->call(
                 'floatAddFromOtherMethod',
-                _Float::get(10),
-                _Float::get(20)
+                Float_::get(10),
+                Float_::get(20)
             )
         );
     }
@@ -88,8 +88,8 @@ class FloatCalculationTest extends Base
             '5',
             $this->call(
                 'floatSubFromOtherMethod',
-                _Float::get(10),
-                _Float::get(5)
+                Float_::get(10),
+                Float_::get(5)
             )
         );
     }
@@ -100,8 +100,8 @@ class FloatCalculationTest extends Base
             '-10',
             $this->call(
                 'floatSubFromOtherMethod',
-                _Float::get(10),
-                _Float::get(20)
+                Float_::get(10),
+                Float_::get(20)
             )
         );
     }
@@ -112,8 +112,8 @@ class FloatCalculationTest extends Base
             '50',
             $this->call(
                 'floatMulFromOtherMethod',
-                _Float::get(10),
-                _Float::get(5)
+                Float_::get(10),
+                Float_::get(5)
             )
         );
     }
@@ -124,8 +124,8 @@ class FloatCalculationTest extends Base
             '3',
             $this->call(
                 'floatAdd',
-                _Float::get(1.5),
-                _Float::get(1.5)
+                Float_::get(1.5),
+                Float_::get(1.5)
             )
         );
     }
@@ -136,8 +136,8 @@ class FloatCalculationTest extends Base
             '0',
             $this->call(
                 'floatSub',
-                _Float::get(1.5),
-                _Float::get(1.5)
+                Float_::get(1.5),
+                Float_::get(1.5)
             )
         );
     }
@@ -148,8 +148,8 @@ class FloatCalculationTest extends Base
             '-1',
             $this->call(
                 'floatSub',
-                _Float::get(1.5),
-                _Float::get(2.5)
+                Float_::get(1.5),
+                Float_::get(2.5)
             )
         );
     }
@@ -160,8 +160,8 @@ class FloatCalculationTest extends Base
             '7.5',
             $this->call(
                 'floatMul',
-                _Float::get(5),
-                _Float::get(1.5)
+                Float_::get(5),
+                Float_::get(1.5)
             )
         );
     }
@@ -172,8 +172,8 @@ class FloatCalculationTest extends Base
             '3',
             $this->call(
                 'floatAddFromOtherMethod',
-                _Float::get(1.5),
-                _Float::get(1.5)
+                Float_::get(1.5),
+                Float_::get(1.5)
             )
         );
     }
@@ -184,8 +184,8 @@ class FloatCalculationTest extends Base
             '0',
             $this->call(
                 'floatSubFromOtherMethod',
-                _Float::get(1.5),
-                _Float::get(1.5)
+                Float_::get(1.5),
+                Float_::get(1.5)
             )
         );
     }
@@ -196,8 +196,8 @@ class FloatCalculationTest extends Base
             '-1',
             $this->call(
                 'floatSubFromOtherMethod',
-                _Float::get(1.5),
-                _Float::get(2.5)
+                Float_::get(1.5),
+                Float_::get(2.5)
             )
         );
     }
@@ -208,8 +208,8 @@ class FloatCalculationTest extends Base
             '7.5',
             $this->call(
                 'floatMulFromOtherMethod',
-                _Float::get(5),
-                _Float::get(1.5)
+                Float_::get(5),
+                Float_::get(1.5)
             )
         );
     }

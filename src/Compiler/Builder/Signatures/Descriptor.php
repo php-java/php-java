@@ -4,14 +4,14 @@ declare(strict_types=1);
 namespace PHPJava\Compiler\Builder\Signatures;
 
 use PHPJava\Kernel\Resolvers\TypeResolver;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Char;
-use PHPJava\Kernel\Types\_Double;
-use PHPJava\Kernel\Types\_Float;
-use PHPJava\Kernel\Types\_Int;
-use PHPJava\Kernel\Types\_Long;
-use PHPJava\Kernel\Types\_Short;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Byte_;
+use PHPJava\Kernel\Types\Char_;
+use PHPJava\Kernel\Types\Double_;
+use PHPJava\Kernel\Types\Float_;
+use PHPJava\Kernel\Types\Int_;
+use PHPJava\Kernel\Types\Long_;
+use PHPJava\Kernel\Types\Short_;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Utilities\Formatter;
 
 class Descriptor implements DescriptorInterface
@@ -47,14 +47,14 @@ class Descriptor implements DescriptorInterface
                         ltrim($type, '\\')
                     );
                     switch ($type) {
-                        case _Char::class:
-                        case _Byte::class:
-                        case _Double::class:
-                        case _Float::class:
-                        case _Long::class:
-                        case _Short::class:
-                        case _Int::class:
-                        case _Void::class:
+                        case Char_::class:
+                        case Byte_::class:
+                        case Double_::class:
+                        case Float_::class:
+                        case Long_::class:
+                        case Short_::class:
+                        case Int_::class:
+                        case Void_::class:
                             $string .= TypeResolver::resolveSignatureByType($type);
                             break;
                         default:

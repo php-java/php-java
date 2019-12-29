@@ -13,7 +13,7 @@ use PHPJava\Packages\java\security\SecureClassLoader;
 /**
  * The `URLClassLoader` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\ClassLoader
  * @parent \PHPJava\Packages\java\security\SecureClassLoader
  */

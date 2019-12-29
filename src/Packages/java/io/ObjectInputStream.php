@@ -10,7 +10,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `ObjectInputStream` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\io\InputStream
  */
 class ObjectInputStream extends InputStream // implements ObjectInputFilter, AutoCloseable

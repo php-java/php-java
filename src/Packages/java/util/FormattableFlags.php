@@ -2,16 +2,16 @@
 declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Formattables;
 
 /**
  * The `FormattableFlags` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class FormattableFlags extends _Object // implements Formattables
+class FormattableFlags extends Object_ // implements Formattables
 {
     /**
      * Requires the output to use an alternate form.

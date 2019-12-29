@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\nio;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `ByteOrder` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ByteOrder extends _Object
+class ByteOrder extends Object_
 {
     /**
      * Constant denoting big-endian byte order.

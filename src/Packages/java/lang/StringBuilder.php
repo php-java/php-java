@@ -12,9 +12,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `StringBuilder` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class StringBuilder extends _Object // implements Serializable, CharSequence, IntStream
+class StringBuilder extends Object_ // implements Serializable, CharSequence, IntStream
 {
     private $sequence = '';
 
@@ -41,7 +41,7 @@ class StringBuilder extends _Object // implements Serializable, CharSequence, In
      */
     public function append($a = null, $b = null, $c = null)
     {
-        if ($a instanceof _String) {
+        if ($a instanceof String_) {
             $this->sequence .= $a->toString();
         } else {
             if (is_array($a)) {

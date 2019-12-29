@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\net;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\lang\Cloneable;
 // use PHPJava\Packages\java\util\_List;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `HttpCookie` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class HttpCookie extends _Object // implements Cloneable, _List
+class HttpCookie extends Object_ // implements Cloneable, _List
 {
     /**
      * Create and return a copy of this object.

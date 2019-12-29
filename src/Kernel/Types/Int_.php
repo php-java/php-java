@@ -2,26 +2,26 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Types;
 
-class _Char extends Type implements PrimitiveValueInterface
+class Int_ extends Type implements PrimitiveValueInterface
 {
     const DEFAULT_VALUE = 0;
 
-    protected $nameInJava = 'char';
-    protected $nameInPHP = 'string';
+    protected $nameInJava = 'int';
+    protected $nameInPHP = 'integer';
 
-    const MIN = 0;
-    const MAX = 65535;
+    const MIN = -2147483648;
+    const MAX = 2147483647;
 
     public static function isValid($value): bool
     {
         if (!is_scalar($value)) {
             return false;
         }
-
         if (ctype_alpha($value) && strlen((string) $value) === 1) {
             $value = ord($value);
         }
 
+        $value = ($value << 32) >> 32;
         if (!ctype_digit((string) abs($value))) {
             return false;
         }
@@ -34,11 +34,7 @@ class _Char extends Type implements PrimitiveValueInterface
         if (ctype_alpha($value) && strlen((string) $value) === 1) {
             return ord($value);
         }
-        return $value;
-    }
 
-    public function __toString(): string
-    {
-        return json_decode(sprintf('"\\u%04X"', $this->value));
+        return ($value << 32) >> 32;
     }
 }

@@ -9,9 +9,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Number` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Number extends _Object // implements Serializable
+class Number extends Object_ // implements Serializable
 {
     /**
      * Returns the value of the specified number as a byte.

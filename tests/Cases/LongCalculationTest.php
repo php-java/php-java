@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Tests\Cases;
 
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Long_;
 
 class LongCalculationTest extends Base
 {
@@ -28,8 +28,8 @@ class LongCalculationTest extends Base
             '30',
             $this->call(
                 'longAdd',
-                _Long::get(10),
-                _Long::get(20)
+                Long_::get(10),
+                Long_::get(20)
             )
         );
     }
@@ -40,8 +40,8 @@ class LongCalculationTest extends Base
             '5',
             $this->call(
                 'longSub',
-                _Long::get(10),
-                _Long::get(5)
+                Long_::get(10),
+                Long_::get(5)
             )
         );
     }
@@ -52,8 +52,8 @@ class LongCalculationTest extends Base
             '-10',
             $this->call(
                 'longSub',
-                _Long::get(10),
-                _Long::get(20)
+                Long_::get(10),
+                Long_::get(20)
             )
         );
     }
@@ -64,8 +64,8 @@ class LongCalculationTest extends Base
             '50',
             $this->call(
                 'longMul',
-                _Long::get(10),
-                _Long::get(5)
+                Long_::get(10),
+                Long_::get(5)
             )
         );
     }
@@ -76,8 +76,8 @@ class LongCalculationTest extends Base
             '30',
             $this->call(
                 'longAddFromOtherMethod',
-                _Long::get(10),
-                _Long::get(20)
+                Long_::get(10),
+                Long_::get(20)
             )
         );
     }
@@ -88,8 +88,8 @@ class LongCalculationTest extends Base
             '5',
             $this->call(
                 'longSubFromOtherMethod',
-                _Long::get(10),
-                _Long::get(5)
+                Long_::get(10),
+                Long_::get(5)
             )
         );
     }
@@ -100,8 +100,8 @@ class LongCalculationTest extends Base
             '-10',
             $this->call(
                 'longSubFromOtherMethod',
-                _Long::get(10),
-                _Long::get(20)
+                Long_::get(10),
+                Long_::get(20)
             )
         );
     }
@@ -112,8 +112,8 @@ class LongCalculationTest extends Base
             '50',
             $this->call(
                 'longMulFromOtherMethod',
-                _Long::get(10),
-                _Long::get(5)
+                Long_::get(10),
+                Long_::get(5)
             )
         );
     }

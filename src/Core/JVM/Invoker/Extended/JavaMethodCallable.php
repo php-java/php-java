@@ -22,9 +22,9 @@ use PHPJava\Kernel\Provider\DependencyInjectionProvider;
 use PHPJava\Kernel\Resolvers\AttributionResolver;
 use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\_MethodInfo;
-use PHPJava\Kernel\Types\_Char;
-use PHPJava\Kernel\Types\_Double;
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Char_;
+use PHPJava\Kernel\Types\Double_;
+use PHPJava\Kernel\Types\Long_;
 use PHPJava\Packages\java\lang\UnsupportedOperationException;
 use PHPJava\Utilities\Formatter;
 
@@ -57,7 +57,7 @@ trait JavaMethodCallable
         // Wrap _Char
         foreach ($arguments as &$argument) {
             if (is_string($argument) && strlen($argument) === 1) {
-                $argument = new _Char($argument);
+                $argument = new Char_($argument);
             }
         }
 
@@ -144,7 +144,7 @@ trait JavaMethodCallable
         $localStorage = [];
         foreach ($arguments as $argument) {
             $localStorage[] = $argument;
-            if ($argument instanceof _Double || $argument instanceof _Long) {
+            if ($argument instanceof Double_ || $argument instanceof Long_) {
                 // Double and Long have a problem of skipping the next storage.
                 $localStorage[] = null;
             }

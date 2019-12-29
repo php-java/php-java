@@ -8,15 +8,15 @@ use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Internal\Lambda;
 use PHPJava\Kernel\Structures\MethodHandleInfo;
-use PHPJava\Packages\java\lang\_Object;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `LambdaMetafactory` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class LambdaMetafactory extends _Object
+class LambdaMetafactory extends Object_
 {
     /**
      * Flag for alternate metafactories indicating the lambda object requires additional bridge methods.

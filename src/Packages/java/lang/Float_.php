@@ -10,10 +10,10 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `FloatInfo` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\lang\Number
  */
-class _Float extends Number // implements Serializable, Comparable
+class Float_ extends Number // implements Serializable, Comparable
 {
     /**
      * The number of bytes used to represent a float value.

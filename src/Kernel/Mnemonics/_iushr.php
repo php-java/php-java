@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\Int_;
 
 final class _iushr extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -26,7 +26,7 @@ final class _iushr extends AbstractOperationCode implements OperationCodeInterfa
 
         // See: https://stackoverflow.com/questions/14428193/php-unsigned-right-shift-malfunctioning
         $this->pushToOperandStack(
-            _Int::get(($value1 >> $value2) & ~(1 << (8 * PHP_INT_SIZE - 1) >> ($value2 - 1)))
+            Int_::get(($value1 >> $value2) & ~(1 << (8 * PHP_INT_SIZE - 1) >> ($value2 - 1)))
         );
     }
 }

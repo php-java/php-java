@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Serializable;
 
 /**
  * The `ObjectStreamClass` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ObjectStreamClass extends _Object // implements Serializable
+class ObjectStreamClass extends Object_ // implements Serializable
 {
     /**
      * serialPersistentFields value indicating no serializable fields.

@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Short;
+use PHPJava\Kernel\Types\Short_;
 use PHPJava\Kernel\Types\Type;
 
 final class _sastore extends AbstractOperationCode implements OperationCodeInterface
@@ -29,6 +29,6 @@ final class _sastore extends AbstractOperationCode implements OperationCodeInter
         $arrayref = $this->popFromOperandStack();
 
         // The value is a ref.
-        $arrayref[$index] = _Short::get($value);
+        $arrayref[$index] = Short_::get($value);
     }
 }

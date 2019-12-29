@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\_Int;
+use PHPJava\Kernel\Types\Int_;
 
 final class _iload_3 extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -21,7 +21,7 @@ final class _iload_3 extends AbstractOperationCode implements OperationCodeInter
     {
         parent::execute();
         $this->pushToOperandStack(
-            _Int::get(
+            Int_::get(
                 $this->getLocalStorage(3)
             )
         );

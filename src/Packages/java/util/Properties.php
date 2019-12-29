@@ -11,7 +11,7 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `Properties` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  * @parent \PHPJava\Packages\java\util\Dictionary
  * @parent \PHPJava\Packages\java\util\Hashtable
  */

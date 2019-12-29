@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\AbstractMap;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\io\Serializable;
 // use PHPJava\Packages\java\util\Map\Entry;
@@ -11,9 +11,9 @@ use PHPJava\Packages\java\lang\_Object;
 /**
  * The `SimpleImmutableEntry` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class SimpleImmutableEntry extends _Object // implements Serializable, Entry
+class SimpleImmutableEntry extends Object_ // implements Serializable, Entry
 {
     /**
      * Compares the specified object with this entry for equality.

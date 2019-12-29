@@ -10,9 +10,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `ModuleLayer` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ModuleLayer extends _Object // implements _Function, Set
+class ModuleLayer extends Object_ // implements _Function, Set
 {
     /**
      * Returns the boot layer.

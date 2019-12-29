@@ -5,17 +5,16 @@ namespace PHPJava\Packages\java\lang\invoke;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
-use PHPJava\Packages\java\lang\_String;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
+use PHPJava\Packages\java\lang\Object_;
 use PHPJava\Utilities\Formatter;
 
 /**
  * The `StringConcatFactory` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class StringConcatFactory extends _Object
+class StringConcatFactory extends Object_
 {
     /**
      * Facilitates the creation of optimized String concatenation methods, that can be used to efficiently concatenate a known number of arguments of known types, possibly after type adaptation and partial evaluation of arguments.
@@ -46,7 +45,7 @@ class StringConcatFactory extends _Object
          * @var JavaClass $concatType
          * @var null|_String $name
          * @var string recipe
-         * @var _Object[] $constants
+         * @var Object_[] $constants
          */
         $lookup = $a;
         $name = $b;

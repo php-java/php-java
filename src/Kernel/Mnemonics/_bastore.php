@@ -3,9 +3,9 @@ declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 use PHPJava\Kernel\Filters\Normalizer;
-use PHPJava\Kernel\Types\_Array\Collection;
-use PHPJava\Kernel\Types\_Boolean;
-use PHPJava\Kernel\Types\_Byte;
+use PHPJava\Kernel\Types\Array_\Collection;
+use PHPJava\Kernel\Types\Boolean_;
+use PHPJava\Kernel\Types\Byte_;
 
 final class _bastore extends AbstractOperationCode implements OperationCodeInterface
 {
@@ -28,14 +28,14 @@ final class _bastore extends AbstractOperationCode implements OperationCodeInter
          * @var Collection $arrayref
          */
         $arrayref = $this->popFromOperandStack();
-        if ($arrayref->getType() === _Boolean::class) {
-            $value = _Boolean::get(
+        if ($arrayref->getType() === Boolean_::class) {
+            $value = Boolean_::get(
                 Normalizer::getPrimitiveValue(
                     $value
                 )
             );
         } else {
-            $value = _Byte::get(
+            $value = Byte_::get(
                 Normalizer::getPrimitiveValue(
                     $value
                 )

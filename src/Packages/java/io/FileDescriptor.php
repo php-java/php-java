@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `FileDescriptor` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class FileDescriptor extends _Object
+class FileDescriptor extends Object_
 {
     /**
      * A handle to the standard error stream.

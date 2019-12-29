@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\util;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\Enumeration;
 
 /**
  * The `Dictionary` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class Dictionary extends _Object // implements Enumeration
+class Dictionary extends Object_ // implements Enumeration
 {
     /**
      * Returns an enumeration of the values in this dictionary.

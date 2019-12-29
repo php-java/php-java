@@ -5,10 +5,10 @@ namespace PHPJava\Tests\Cases;
 use PHPJava\Core\JavaCompiledClass;
 use PHPJava\Core\JVM\Parameters\GlobalOptions;
 use PHPJava\IO\Standard\Output;
-use PHPJava\Kernel\Types\_Byte;
-use PHPJava\Kernel\Types\_Char;
-use PHPJava\Kernel\Types\_Double;
-use PHPJava\Kernel\Types\_Long;
+use PHPJava\Kernel\Types\Byte_;
+use PHPJava\Kernel\Types\Char_;
+use PHPJava\Kernel\Types\Double_;
+use PHPJava\Kernel\Types\Long_;
 
 class CallToAmbiguousMethodsTest extends Base
 {
@@ -63,7 +63,7 @@ class CallToAmbiguousMethodsTest extends Base
     {
         $this->call(
             'longMethod',
-            new _Long(1234)
+            new Long_(1234)
         );
 
         $result = (int) Output::getHeapspace();
@@ -74,7 +74,7 @@ class CallToAmbiguousMethodsTest extends Base
     {
         $this->call(
             'byteMethod',
-            new _Byte(32)
+            new Byte_(32)
         );
 
         $result = (int) Output::getHeapspace();
@@ -85,7 +85,7 @@ class CallToAmbiguousMethodsTest extends Base
     {
         $this->call(
             'charMethod',
-            new _Char('a')
+            new Char_('a')
         );
 
         $result = rtrim(Output::getHeapspace());
@@ -96,7 +96,7 @@ class CallToAmbiguousMethodsTest extends Base
     {
         $this->call(
             'doubleMethod',
-            new _Double(0.01)
+            new Double_(0.01)
         );
 
         $result = rtrim(Output::getHeapspace());

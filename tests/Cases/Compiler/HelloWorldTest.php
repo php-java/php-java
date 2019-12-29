@@ -24,10 +24,10 @@ use PHPJava\Core\Stream\Reader\InlineReader;
 use PHPJava\IO\Standard\Output;
 use PHPJava\Kernel\Maps\OpCode;
 use PHPJava\Kernel\Resolvers\SDKVersionResolver;
-use PHPJava\Kernel\Types\_Void;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Packages\java\io\PrintStream;
-use PHPJava\Packages\java\lang\_Object;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Packages\java\lang\Object_;
+use PHPJava\Packages\java\lang\String_;
 use PHPJava\Packages\java\lang\System;
 use PHPJava\Tests\Cases\Base;
 
@@ -53,7 +53,7 @@ class HelloWorldTest extends Base
 
         $enhancedConstantPool
             ->addString('Hello PHPJava Compiler!')
-            ->addClass(_Object::class)
+            ->addClass(Object_::class)
             ->addClass($className)
             ->addClass(System::class)
             ->addClass(PrintStream::class)
@@ -68,15 +68,15 @@ class HelloWorldTest extends Base
                 PrintStream::class,
                 'println',
                 (new Descriptor())
-                    ->addArgument(_String::class)
-                    ->setReturn(_Void::class)
+                    ->addArgument(String_::class)
+                    ->setReturn(Void_::class)
                     ->make()
             )
             ->addNameAndType(
                 'main',
                 (new Descriptor())
-                    ->addArgument(_String::class, 1)
-                    ->setReturn(_Void::class)
+                    ->addArgument(String_::class, 1)
+                    ->setReturn(Void_::class)
                     ->make()
             );
 
@@ -90,7 +90,7 @@ class HelloWorldTest extends Base
                         ->make()
                 )
                 ->setThisClass($enhancedConstantPool->findClass($className))
-                ->setSuperClass($enhancedConstantPool->findClass(_Object::class))
+                ->setSuperClass($enhancedConstantPool->findClass(Object_::class))
                 ->setMethods(
                     (new Methods())
                         ->add(
@@ -102,8 +102,8 @@ class HelloWorldTest extends Base
                                 $className,
                                 'main',
                                 (new Descriptor())
-                                    ->addArgument(_String::class, 1)
-                                    ->setReturn(_Void::class)
+                                    ->addArgument(String_::class, 1)
+                                    ->setReturn(Void_::class)
                                     ->make()
                             ))
                                 ->setConstantPool($constantPool)
@@ -144,8 +144,8 @@ class HelloWorldTest extends Base
                                                                     PrintStream::class,
                                                                     'println',
                                                                     (new Descriptor())
-                                                                        ->addArgument(_String::class)
-                                                                        ->setReturn(_Void::class)
+                                                                        ->addArgument(String_::class)
+                                                                        ->setReturn(Void_::class)
                                                                         ->make()
                                                                 )
                                                             )

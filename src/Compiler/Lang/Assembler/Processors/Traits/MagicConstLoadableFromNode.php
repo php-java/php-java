@@ -13,7 +13,7 @@ use PHPJava\Compiler\Lang\Assembler\MethodAssembler;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Exceptions\AssembleStructureException;
 use PHPJava\Kernel\Maps\OpCode;
-use PHPJava\Packages\java\lang\_String;
+use PHPJava\Packages\java\lang\String_;
 use PhpParser\Node;
 
 /**
@@ -168,7 +168,7 @@ trait MagicConstLoadableFromNode
                 break;
         }
 
-        $classType = _String::class;
+        $classType = String_::class;
 
         return $operations;
     }

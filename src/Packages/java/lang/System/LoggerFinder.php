@@ -3,16 +3,16 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\System;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\lang\System\Logger;
 
 /**
  * The `LoggerFinder` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class LoggerFinder extends _Object // implements Logger
+class LoggerFinder extends Object_ // implements Logger
 {
     /**
      * Returns a localizable instance of Logger for the given module.

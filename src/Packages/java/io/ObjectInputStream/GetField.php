@@ -3,14 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Packages\java\io\ObjectInputStream;
 
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\_Object;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `GetField` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class GetField extends _Object
+class GetField extends Object_
 {
     /**
      * Return true if the named field is defaulted and has no value in this stream.

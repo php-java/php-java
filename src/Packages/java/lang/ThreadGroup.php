@@ -9,9 +9,9 @@ use PHPJava\Exceptions\NotImplementedException;
 /**
  * The `ThreadGroup` class was auto generated.
  *
- * @parent \PHPJava\Packages\java\lang\_Object
+ * @parent \PHPJava\Packages\java\lang\Object_
  */
-class ThreadGroup extends _Object // implements UncaughtExceptionHandler
+class ThreadGroup extends Object_ // implements UncaughtExceptionHandler
 {
     /**
      * Returns an estimate of the number of active threads in this thread group and its subgroups.
