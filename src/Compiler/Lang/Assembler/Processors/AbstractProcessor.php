@@ -11,6 +11,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\EntryPointClassAssemblerManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\ImportManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\MethodAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StreamManageable;
@@ -35,6 +36,7 @@ abstract class AbstractProcessor implements ProcessorInterface, ParameterService
     use ClassAssemblerManageable;
     use EntryPointClassAssemblerManageable;
     use StructureAccessorsLocatorManageable;
+    use ImportManageable;
 
     public static function factory(): self
     {

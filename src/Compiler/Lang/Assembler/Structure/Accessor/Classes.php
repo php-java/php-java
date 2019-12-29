@@ -25,6 +25,9 @@ class Classes extends AbstractAccessor implements AccessorInterface
     protected function findOnNode(Node $node, string $path, array $tracedPath = []): ?Node\Stmt\Class_
     {
         switch (get_class($node)) {
+            case \PhpParser\Node\Stmt\Use_::class:
+                // Nothing to do
+                break;
             case \PhpParser\Node\Stmt\Namespace_::class:
                 /**
                  * @var \PhpParser\Node\Stmt\Namespace_ $node
@@ -53,7 +56,7 @@ class Classes extends AbstractAccessor implements AccessorInterface
                 break;
             default:
                 throw new AssembleStructureException(
-                    'Cannot find structure on class.'
+                    'Cannot find structure on class or ' . get_class($node) . ' is not supported statement.'
                 );
         }
         return null;

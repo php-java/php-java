@@ -11,7 +11,9 @@ use PHPJava\Compiler\Lang\Assembler\Statements\EchoStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\ExpressionStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\ForStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\IfStatementAssembler;
+use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\Imports;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
+use PHPJava\Compiler\Lang\Assembler\Traits\ImportManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\NodeExtractable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Exceptions\AssembleStructureException;
@@ -23,6 +25,8 @@ class StatementProcessor extends AbstractProcessor
     use OperationManageable;
     use Bindable;
     use NodeExtractable;
+
+    protected $imports = [];
 
     /**
      * @param Node[] $nodes
@@ -66,6 +70,12 @@ class StatementProcessor extends AbstractProcessor
                     $entryPointClassAssembler
                         ->assemble();
                     break;
+                case \PhpParser\Node\Stmt\Use_::class:
+                    /**
+                     * @var \PhpParser\Node\Stmt\Use_ $statement
+                     */
+                    $this->imports[] = $statement;
+                    break;
                 case \PhpParser\Node\Stmt\Class_::class:
                     /**
                      * @var \PhpParser\Node\Stmt\Class_ $statement
@@ -74,6 +84,7 @@ class StatementProcessor extends AbstractProcessor
                         ->setStreamReader($this->getStreamReader())
                         ->setNamespace($this->getNamespace())
                         ->setStructureAccessorsLocator($this->getStructureAccessorsLocator())
+                        ->setImportsAccessor($this->getImportsAccessor() ?? new Imports($this->imports))
                         ->assemble();
                     break;
                 case \PhpParser\Node\Stmt\If_::class:

@@ -24,6 +24,7 @@ trait NodeExtractable
                 case \PhpParser\Node\Stmt\Namespace_::class:
                     $this->filterExtractingNodes($node->stmts, $extractType);
                     break;
+                case \PhpParser\Node\Stmt\Use_::class:
                 case \PhpParser\Node\Stmt\Class_::class:
                     if ($extractType !== NodeExtractorEnum::EXTRACT_MODULES) {
                         unset($nodes[$key]);

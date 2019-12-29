@@ -14,7 +14,7 @@ final class Output
         if ($outputHandle === null) {
             $outputHandle = fopen(
                 GlobalOptions::get('output.handler') ?? Runtime::OUTPUT_HANDLER,
-                'rw'
+                'rw+'
             );
         }
         return $outputHandle;

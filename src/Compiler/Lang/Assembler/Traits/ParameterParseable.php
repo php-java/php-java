@@ -51,8 +51,32 @@ trait ParameterParseable
             foreach ($documentBlock->getTagsByName('param') as $documentParameter) {
                 /**
                  * @var \phpDocumentor\Reflection\DocBlock\Tags\Param $documentParameter
+                 * @var \phpDocumentor\Reflection\Types\Object_|null $typeObject
                  */
-                $type = (string) $documentParameter->getType();
+                $typeObject = $documentParameter
+                    ->getType();
+                $stringifiedType = (string) $typeObject;
+
+                $type = $stringifiedType;
+
+                if ($typeObject instanceof \phpDocumentor\Reflection\Types\Array_) {
+                    $typeObject = $typeObject
+                        ->getValueType();
+                }
+
+                if ($typeObject instanceof \phpDocumentor\Reflection\Types\Object_) {
+                    $fullPath = (string) $typeObject->getFqsen();
+
+                    $type = $typeObject
+                        ->getFqsen()
+                        ->getName();
+
+                    // FIXED: phpDocumentor has an omitted path completion problem
+                    // This statement fix it.
+                    if ($fullPath !== '\\' . ((string) $type)) {
+                        $type = $fullPath;
+                    }
+                }
 
                 $variableName = $documentParameter->getVariableName();
 
@@ -64,17 +88,19 @@ trait ParameterParseable
 
                 // Update variable detail.
                 $parameters[$variableName] = [
-                    'type' => Formatter::convertPHPPrimitiveTypeToJavaType(
-                        str_replace(
-                            '[]',
-                            '',
-                            ltrim(
-                                $type,
-                                '\\'
+                    'type' => $this->convertWithImport(
+                        Formatter::convertPHPPrimitiveTypeToJavaType(
+                            str_replace(
+                                '[]',
+                                '',
+                                $type
                             )
                         )
                     ),
-                    'dimensions_of_array' => substr_count($type, '[]'),
+                    'dimensions_of_array' => substr_count(
+                        $stringifiedType,
+                        '[]'
+                    ),
                     'order' => $paramOrdersTable[$variableName],
                 ];
 
@@ -92,7 +118,9 @@ trait ParameterParseable
             if ($parameter instanceof Node\Identifier) {
                 $type = $parameter->name;
                 $parameters[$variableName] = [
-                    'type' => Formatter::convertPHPPrimitiveTypeToJavaType($type),
+                    'type' => $this->convertWithImport(
+                        Formatter::convertPHPPrimitiveTypeToJavaType($type)
+                    ),
                     'dimensions_of_array' => 0,
                     'order' => $paramOrdersTable[$variableName],
                 ];
