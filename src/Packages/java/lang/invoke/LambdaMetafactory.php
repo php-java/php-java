@@ -8,8 +8,8 @@ use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
 use PHPJava\Kernel\Internal\Lambda;
 use PHPJava\Kernel\Structures\MethodHandleInfo;
-use PHPJava\Packages\java\lang\Object_;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
+use PHPJava\Packages\java\lang\Object_;
 
 /**
  * The `LambdaMetafactory` class was auto generated.

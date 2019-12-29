@@ -52,7 +52,7 @@ trait ParameterParseable
             foreach ($documentBlock->getTagsByName('param') as $documentParameter) {
                 /**
                  * @var \phpDocumentor\Reflection\DocBlock\Tags\Param $documentParameter
-                 * @var \phpDocumentor\Reflection\Types\Object_|null $typeObject
+                 * @var null|\phpDocumentor\Reflection\Types\Object_ $typeObject
                  */
                 $typeObject = $documentParameter
                     ->getType();

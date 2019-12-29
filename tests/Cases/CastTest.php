@@ -6,7 +6,7 @@ use PHPJava\Kernel\Types\Byte_;
 use PHPJava\Kernel\Types\Char_;
 use PHPJava\Kernel\Types\Double_;
 use PHPJava\Kernel\Types\Float_;
-use PHPJava\Kernel\Types\Int_ ;
+use PHPJava\Kernel\Types\Int_;
 use PHPJava\Kernel\Types\Long_;
 use PHPJava\Kernel\Types\Short_;
 

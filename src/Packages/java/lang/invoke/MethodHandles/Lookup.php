@@ -5,8 +5,8 @@ namespace PHPJava\Packages\java\lang\invoke\MethodHandles;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaClassInterface;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\Object_;
 use PHPJava\Packages\java\lang\invoke\MethodType;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\lang\invoke\MethodHandleInfo;
 

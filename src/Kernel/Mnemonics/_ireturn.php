@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
-use PHPJava\Kernel\Types\Boolean_;
 use PHPJava\Kernel\Types\Byte_;
 use PHPJava\Kernel\Types\Char_;
 use PHPJava\Kernel\Types\Int_;

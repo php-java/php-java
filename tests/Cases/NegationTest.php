@@ -4,7 +4,7 @@ namespace PHPJava\Tests\Cases;
 
 use PHPJava\Kernel\Types\Double_;
 use PHPJava\Kernel\Types\Float_;
-use PHPJava\Kernel\Types\Int_ ;
+use PHPJava\Kernel\Types\Int_;
 use PHPJava\Kernel\Types\Long_;
 
 class NegationTest extends Base

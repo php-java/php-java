@@ -1,5 +1,5 @@
 <?php
-use \PHPJava\Packages\java\lang\String_;
+use PHPJava\Packages\java\lang\String_;
 
 class TestUseStatement
 {

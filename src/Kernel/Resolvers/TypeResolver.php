@@ -16,10 +16,10 @@ use PHPJava\Kernel\Types\Double_;
 use PHPJava\Kernel\Types\Float_;
 use PHPJava\Kernel\Types\Int_;
 use PHPJava\Kernel\Types\Long_;
-use PHPJava\Kernel\Types\Short_;
-use PHPJava\Kernel\Types\Void_;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
+use PHPJava\Kernel\Types\Short_;
 use PHPJava\Kernel\Types\Type;
+use PHPJava\Kernel\Types\Void_;
 use PHPJava\Packages\java\lang\String_;
 use PHPJava\Utilities\Formatter;
 
@@ -324,7 +324,7 @@ class TypeResolver
 
     /**
      * @throws TypeException
-     * @return Type|Collection
+     * @return Collection|Type
      */
     public static function convertPHPTypeToJavaType($value)
     {

@@ -5,9 +5,8 @@ namespace PHPJava\Packages\java\lang\invoke;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JVM\ConstantPool;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\Object_;
-use PHPJava\Packages\java\lang\String_;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
+use PHPJava\Packages\java\lang\Object_;
 use PHPJava\Utilities\Formatter;
 
 /**

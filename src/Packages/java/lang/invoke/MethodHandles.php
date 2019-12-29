@@ -4,8 +4,8 @@ namespace PHPJava\Packages\java\lang\invoke;
 
 use PHPJava\Core\JavaClass;
 use PHPJava\Exceptions\NotImplementedException;
-use PHPJava\Packages\java\lang\Object_;
 use PHPJava\Packages\java\lang\invoke\MethodHandles\Lookup;
+use PHPJava\Packages\java\lang\Object_;
 
 // use PHPJava\Packages\java\util\_List;
 // use PHPJava\Packages\java\lang\reflect\Member;

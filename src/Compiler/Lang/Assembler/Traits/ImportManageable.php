@@ -5,7 +5,6 @@ namespace PHPJava\Compiler\Lang\Assembler\Traits;
 use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
-use PHPJava\Compiler\Lang\Assembler\EntryPointClassAssembler;
 use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\Imports;
 use PHPJava\Exceptions\NotFoundImportException;
 

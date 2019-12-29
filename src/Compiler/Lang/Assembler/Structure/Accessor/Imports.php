@@ -40,11 +40,11 @@ class Imports extends AbstractAccessor implements AccessorInterface
 
     protected function compareAtFirst(string $path, string $target): bool
     {
-        return !!preg_match('/\A' . preg_quote($path, '/') . '/', $target);
+        return (bool) preg_match('/\A' . preg_quote($path, '/') . '/', $target);
     }
 
     protected function compareAtLast(string $path, string $target): bool
     {
-        return !!preg_match('/' . preg_quote($path, '/') . '\z/', $target);
+        return (bool) preg_match('/' . preg_quote($path, '/') . '\z/', $target);
     }
 }

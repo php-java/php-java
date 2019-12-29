@@ -9,8 +9,8 @@ use PHPJava\Kernel\Resolvers\TypeResolver;
 use PHPJava\Kernel\Structures\Utf8Info;
 use PHPJava\Kernel\Types\Array_\Collection;
 use PHPJava\Kernel\Types\PrimitiveValueInterface;
-use PHPJava\Packages\java\lang\String_;
 use PHPJava\Packages\java\lang\NullPointerException;
+use PHPJava\Packages\java\lang\String_;
 
 // use PHPJava\Packages\java\io\Closeable;
 // use PHPJava\Packages\java\lang\Appendable;
