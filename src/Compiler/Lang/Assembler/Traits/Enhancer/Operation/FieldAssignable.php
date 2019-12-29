@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation;
 
 use PHPJava\Compiler\Builder\Generator\Operation\Operand;
@@ -42,7 +43,7 @@ trait FieldAssignable
                     ArrayTool::concat(
                         $operations,
                         ...$this->assembleLoadNumber(
-                            $value
+                            (int) $value
                         )
                     );
                     break;

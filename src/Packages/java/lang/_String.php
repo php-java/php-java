@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Packages\java\lang;
 
 use PHPJava\Core\JavaClass;
@@ -647,7 +648,7 @@ class _String extends _Object implements CharSequence
         return JavaClass::load('java.lang.String', $this->javaClass->getOptions())
             ->getInvoker()
             ->construct(
-                strtolower($this)
+                strtolower((string) $this)
             )
             ->getJavaClass();
     }
@@ -681,7 +682,7 @@ class _String extends _Object implements CharSequence
 
         return JavaClass::load('java.lang.String', $this->javaClass->getOptions())
             ->getInvoker()
-            ->construct(strtoupper($this))
+            ->construct(strtoupper((string) $this))
             ->getJavaClass();
     }
 

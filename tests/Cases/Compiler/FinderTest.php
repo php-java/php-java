@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Tests\Cases\Compiler;
 
 use PHPJava\Compiler\Builder\Collection\ConstantPool;

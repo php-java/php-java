@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Compiler\Emulator\Mnemonics;
 
 class _ifgt extends AbstractOperationCode implements OperationCodeInterface

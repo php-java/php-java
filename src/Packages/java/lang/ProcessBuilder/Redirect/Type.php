@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\ProcessBuilder\Redirect;
 
 use PHPJava\Exceptions\NotImplementedException;

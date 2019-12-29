@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Kernel\Mnemonics;
 
 final class _fstore_2 extends AbstractOperationCode implements OperationCodeInterface

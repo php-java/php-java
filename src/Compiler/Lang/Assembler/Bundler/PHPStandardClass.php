@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Compiler\Lang\Assembler\Bundler;
 
 use PHPJava\Compiler\Builder\Attributes\PHPJavaSignature;
@@ -78,7 +79,7 @@ class PHPStandardClass extends AbstractBundler
                         ))
                             ->setConstantPool($this->getConstantPool())
                             ->setConstantPoolFinder($this->getConstantPoolFinder())
-                            ->setValue($value)
+                            ->setValue((string) $value)
                     );
             }
         }

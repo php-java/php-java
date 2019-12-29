@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Core;
 
 use PHPJava\Core\Extended\ClassInvokable;
@@ -77,7 +78,7 @@ class JavaClass implements JavaClassInterface
 
     public function __toString(): string
     {
-        return $this
+        return (string) $this
             ->genericClass
             ->getInvoker()
             ->getDynamic()

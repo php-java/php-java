@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Tests\Cases\Compiler;
 
 use PHPJava\Compiler\Builder\Attributes\Code;
@@ -18,6 +19,7 @@ use PHPJava\Compiler\Compiler;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Core\JavaClass;
 use PHPJava\Core\JavaCompiledClass;
+use PHPJava\Core\JVM\Parameters\Runtime;
 use PHPJava\Core\Stream\Reader\InlineReader;
 use PHPJava\IO\Standard\Output;
 use PHPJava\Kernel\Maps\OpCode;
@@ -38,7 +40,9 @@ class HelloWorldTest extends Base
 
         $constantPool = new ConstantPool();
         $finder = new ConstantPoolFinder($constantPool);
-        [$majorVersion, $minorVersion] = SDKVersionResolver::resolveByVersion(8);
+        [$majorVersion, $minorVersion] = SDKVersionResolver::resolveByVersion(
+            Runtime::PHP_COMPILER_JDK_VERSION
+        );
 
         $enhancedConstantPool = ConstantPoolEnhancer::factory(
             $constantPool,

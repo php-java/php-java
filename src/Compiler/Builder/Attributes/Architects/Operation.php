@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Compiler\Builder\Attributes\Architects;
 
 use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;

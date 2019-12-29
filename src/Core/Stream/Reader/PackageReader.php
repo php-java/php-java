@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Core\Stream\Reader;
 
 use PHPJava\Core\JVM\Stream\ReflectionClassReader;

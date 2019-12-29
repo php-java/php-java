@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Kernel\Maps;
 
 class MethodHandleKind extends Map

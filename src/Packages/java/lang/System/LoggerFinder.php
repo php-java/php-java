@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Packages\java\lang\System;
 
 use PHPJava\Exceptions\NotImplementedException;

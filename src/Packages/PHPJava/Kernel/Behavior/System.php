@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Packages\PHPJava\Kernel\Behavior;
 
 use PHPJava\Core\JavaClass;

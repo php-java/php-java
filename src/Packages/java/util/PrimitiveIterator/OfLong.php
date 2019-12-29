@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace PHPJava\Packages\java\util\PrimitiveIterator;
 
 use PHPJava\Exceptions\NotImplementedException;
