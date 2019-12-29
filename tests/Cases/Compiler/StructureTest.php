@@ -27,4 +27,24 @@ class StructureTest extends Base
             $output[0]
         );
     }
+
+    public function testDeclareStatement()
+    {
+        [$output, $return] = $this->runJavaTest(__METHOD__);
+
+        $this->assertSame(
+            'Hello World!',
+            $output[0]
+        );
+    }
+
+    public function testDeclareStatementWithNamespace()
+    {
+        [$output, $return] = $this->runJavaTest(__METHOD__, 'PHPJava.DeclareStatement');
+
+        $this->assertSame(
+            'Hello World!',
+            $output[0]
+        );
+    }
 }
