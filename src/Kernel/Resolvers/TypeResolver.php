@@ -374,6 +374,6 @@ class TypeResolver
         if ($verificationTypeTag !== null) {
             return [$verificationTypeTag, null];
         }
-        return [VerificationTypeTag::ITEMObject_, $kernelType];
+        return [VerificationTypeTag::ITEM_Object, $kernelType];
     }
 }

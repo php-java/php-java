@@ -12,7 +12,7 @@ class _aload_0 extends AbstractOperationCode implements OperationCodeInterface
     {
         $this->accumulator->pushToOperandStack(
             [
-                VerificationTypeTag::ITEMObject_,
+                VerificationTypeTag::ITEM_Object,
                 $this->getEnhancedConstantPool()
                     ->findClass(\PHPJava\Packages\java\lang\String_::class),
             ]

@@ -265,7 +265,7 @@ class StackMapTable extends Attribute
                         [$index, $classType, $dimensionsOfArray] = $variable;
                         $classType = Formatter::buildSignature($classType, $dimensionsOfArray);
                         $locals[$index] = [
-                            VerificationTypeTag::ITEMObject_,
+                            VerificationTypeTag::ITEM_Object,
                             $this->getEnhancedConstantPool()
                                 ->findClass($classType),
                         ];
@@ -318,7 +318,7 @@ class StackMapTable extends Attribute
                 case VerificationTypeTag::ITEM_Double:
                     // Nothing to do.
                     break;
-                case VerificationTypeTag::ITEMObject_:
+                case VerificationTypeTag::ITEM_Object:
                     $classEntry = $segment[1];
                     /**
                      * @var ConstantPoolFinderResult $classEntry

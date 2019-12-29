@@ -52,7 +52,7 @@ trait GeneralProcessor
         if (!TypeResolver::isPrimitive($type)) {
             $this->accumulator->pushToOperandStack(
                 [
-                    VerificationTypeTag::ITEMObject_,
+                    VerificationTypeTag::ITEM_Object,
                     $this->getEnhancedConstantPool()
                         ->findClass($className),
                 ]
