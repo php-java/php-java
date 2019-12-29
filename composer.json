@@ -13,7 +13,7 @@
         "PHPJava"
     ],
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.3",
         "ext-zip": "*",
         "monolog/monolog": "^1.24",
         "gabrielelana/byte-units": "^0.5.0",
