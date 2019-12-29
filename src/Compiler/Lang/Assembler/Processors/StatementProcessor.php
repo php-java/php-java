@@ -12,6 +12,7 @@ use PHPJava\Compiler\Lang\Assembler\Statements\EchoStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\ExpressionStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\ForStatementAssembler;
 use PHPJava\Compiler\Lang\Assembler\Statements\IfStatementAssembler;
+use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\Declares;
 use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\Imports;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\NodeExtractable;
@@ -27,6 +28,7 @@ class StatementProcessor extends AbstractProcessor
     use NodeExtractable;
 
     protected $imports = [];
+    protected $declares = [];
 
     /**
      * @param Node[] $nodes
@@ -51,10 +53,13 @@ class StatementProcessor extends AbstractProcessor
                         $entryPointConstantPool
                     );
 
+                    $declares = $this->getDeclaresAccessor() ?? new Declares($this->declares);
+
                     $entryPointClassAssembler = EntryPointClassAssembler::factory(...$this->extractNodes($statement->stmts, NodeExtractorEnum::EXTRACT_OUTSIDES))
                         ->setNamespace($statement->name->parts)
                         ->setConstantPool($entryPointConstantPool)
                         ->setConstantPoolFinder($entryPointConstantPoolFinder)
+                        ->setDeclaresAccessor($declares)
                         ->setStructureAccessorsLocator($this->getStructureAccessorsLocator())
                         ->setStreamReader($this->getStreamReader());
 
@@ -63,6 +68,7 @@ class StatementProcessor extends AbstractProcessor
                         ->setConstantPool($entryPointConstantPool)
                         ->setConstantPoolFinder($entryPointConstantPoolFinder)
                         ->setStreamReader($this->getStreamReader())
+                        ->setDeclaresAccessor($declares)
                         ->setEntryPointClassAssembler($entryPointClassAssembler)
                         ->setStructureAccessorsLocator($this->getStructureAccessorsLocator())
                         ->execute($statement->stmts);
@@ -75,15 +81,24 @@ class StatementProcessor extends AbstractProcessor
                      * @var \PhpParser\Node\Stmt\Use_ $statement
                      */
                     $this->imports[] = $statement;
+                    // no break
+                case \PhpParser\Node\Stmt\Declare_::class:
+                    /**
+                     * @var \PhpParser\Node\Stmt\Declare_ $statement
+                     */
+                    $this->declares[] = $statement;
                     break;
                 case \PhpParser\Node\Stmt\Class_::class:
                     /**
                      * @var \PhpParser\Node\Stmt\Class_ $statement
                      */
+                    $declares = $this->getDeclaresAccessor() ?? new Declares($this->declares);
+
                     ClassAssembler::factory($statement)
                         ->setStreamReader($this->getStreamReader())
                         ->setNamespace($this->getNamespace())
                         ->setStructureAccessorsLocator($this->getStructureAccessorsLocator())
+                        ->setDeclaresAccessor($declares)
                         ->setImportsAccessor($this->getImportsAccessor() ?? new Imports($this->imports))
                         ->assemble();
                     break;
