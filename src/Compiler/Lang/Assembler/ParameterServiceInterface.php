@@ -6,6 +6,7 @@ use PHPJava\Compiler\Builder\Collection\ConstantPool;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Processors\AbstractProcessor;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
+use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\Imports;
 use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\StructureAccessorsLocator;
 
 /**
@@ -21,9 +22,11 @@ use PHPJava\Compiler\Lang\Assembler\Structure\Accessor\StructureAccessorsLocator
  * @method ConstantPoolFinder getConstantPoolFinder()
  * @method AbstractAssembler|AbstractProcessor setMethodAssembler(MethodAssembler $methodAssembler)
  * @method MethodAssembler getMethodAssembler()
- * @method AbstractAssembler|AbstractProcessor setClassAssembler(ClassAssembler $methodAssembler)
+ * @method AbstractAssembler|AbstractProcessor setClassAssembler(ClassAssembler $classAssembler)
  * @method ClassAssembler getClassAssembler()
  * @method StructureAccessorsLocator getStructureAccessorsLocator()
+ * @method Imports getImportsAccessor()
+ * @method AbstractAssembler|AbstractProcessor setImportsAccessor(Imports $importsAccessor)
  * @emthod EntryPointClassAssembler getEntryPointClassAssembler()
  * @emthod AbstractAssembler|AbstractProcessor setEntryPointClassAssembler(EntryPointClassAssembler $entryPointClassAssembler)
  */

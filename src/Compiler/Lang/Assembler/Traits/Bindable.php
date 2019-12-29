@@ -46,6 +46,9 @@ trait Bindable
             ->setStructureAccessorsLocator(
                 $this->getStructureAccessorsLocator()
             )
+            ->setImportsAccessor(
+                $this->getImportsAccessor()
+            )
             ->setClassAssembler(
                 $this instanceof ClassAssembler
                     ? $this
