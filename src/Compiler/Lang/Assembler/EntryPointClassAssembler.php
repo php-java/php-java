@@ -22,6 +22,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\CollectionManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\DeclareManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ImportManageable;
@@ -53,6 +54,7 @@ class EntryPointClassAssembler implements AssemblerInterface, ParameterServiceIn
     use StaticInitializerAssignable;
     use StructureAccessorsLocatorManageable;
     use ImportManageable;
+    use DeclareManageable;
 
     /**
      * @var Methods

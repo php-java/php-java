@@ -6,6 +6,7 @@ use PHPJava\Compiler\Builder\Method;
 use PHPJava\Compiler\Lang\Assembler\Traits\ClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\CollectionManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ConstantPoolManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\DeclareManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\EntryPointClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ImportManageable;
@@ -27,6 +28,7 @@ abstract class AbstractAssembler implements AssemblerInterface, ParameterService
     use EntryPointClassAssemblerManageable;
     use StructureAccessorsLocatorManageable;
     use ImportManageable;
+    use DeclareManageable;
 
     /**
      * @var Node

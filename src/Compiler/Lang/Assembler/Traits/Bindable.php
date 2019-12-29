@@ -29,27 +29,14 @@ trait Bindable
     protected function bindParameters(ParameterServiceInterface $from): ParameterServiceInterface
     {
         return $from
-            ->setNamespace(
-                $this->getNamespace()
-            )
-            ->setConstantPool(
-                $this->getConstantPool()
-            )
-            ->setConstantPoolFinder(
-                $this->getConstantPoolFinder()
-            )
-            ->setOperation(
-                $this->getOperation()
-            )
-            ->setStreamReader(
-                $this->getStreamReader()
-            )
-            ->setStructureAccessorsLocator(
-                $this->getStructureAccessorsLocator()
-            )
-            ->setImportsAccessor(
-                $this->getImportsAccessor()
-            )
+            ->setNamespace($this->getNamespace())
+            ->setConstantPool($this->getConstantPool())
+            ->setConstantPoolFinder($this->getConstantPoolFinder())
+            ->setOperation($this->getOperation())
+            ->setStreamReader($this->getStreamReader())
+            ->setStructureAccessorsLocator($this->getStructureAccessorsLocator())
+            ->setImportsAccessor($this->getImportsAccessor())
+            ->setDeclaresAccessor($this->getDeclaresAccessor())
             ->setClassAssembler(
                 $this instanceof ClassAssembler
                     ? $this
@@ -60,11 +47,7 @@ trait Bindable
                     ? $this
                     : $this->getMethodAssembler()
             )
-            ->setStore(
-                $this->getStore()
-            )
-            ->setEntryPointClassAssembler(
-                $this->getEntryPointClassAssembler()
-            );
+            ->setStore($this->getStore())
+            ->setEntryPointClassAssembler($this->getEntryPointClassAssembler());
     }
 }
