@@ -2,6 +2,8 @@
 declare(strict_types=1);
 namespace PHPJava\Compiler\Lang\Assembler\Traits;
 
+use phpDocumentor\Reflection\DocBlock\Tags\Param;
+use phpDocumentor\Reflection\DocBlock\Tags\TagWithType;
 use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
@@ -49,37 +51,11 @@ trait ParameterParseable
             $documentBlock = \phpDocumentor\Reflection\DocBlockFactory::createInstance()
                 ->create($commentAttribute->getText());
 
-            foreach ($documentBlock->getTagsByName('param') as $documentParameter) {
+            foreach ($documentBlock->getTagsByName('param') as $documentedParameter) {
                 /**
-                 * @var \phpDocumentor\Reflection\DocBlock\Tags\Param $documentParameter
-                 * @var null|\phpDocumentor\Reflection\Types\Object_ $typeObject
+                 * @var Param $documentedParameter
                  */
-                $typeObject = $documentParameter
-                    ->getType();
-                $stringifiedType = (string) $typeObject;
-
-                $type = $stringifiedType;
-
-                if ($typeObject instanceof \phpDocumentor\Reflection\Types\Array_) {
-                    $typeObject = $typeObject
-                        ->getValueType();
-                }
-
-                if ($typeObject instanceof \phpDocumentor\Reflection\Types\Object_) {
-                    $fullPath = (string) $typeObject->getFqsen();
-
-                    $type = $typeObject
-                        ->getFqsen()
-                        ->getName();
-
-                    // FIXED: phpDocumentor has an omitted path completion problem
-                    // This statement fix it.
-                    if ($fullPath !== '\\' . ((string) $type)) {
-                        $type = $fullPath;
-                    }
-                }
-
-                $variableName = $documentParameter->getVariableName();
+                [$variableName, $parameterInfo] = $this->parseFromDocument($documentedParameter);
 
                 if (!isset($paramOrdersTable[$variableName])) {
                     throw new AssembleStructureException(
@@ -88,25 +64,9 @@ trait ParameterParseable
                 }
 
                 // Update variable detail.
-                $parameters[$variableName] = [
-                    'type' => $this->convertWithImport(
-                        Formatter::convertPHPPrimitiveTypeToJavaType(
-                            str_replace(
-                                '[]',
-                                '',
-                                $type
-                            )
-                        )
-                    ),
-                    'dimensions_of_array' => substr_count(
-                        $stringifiedType,
-                        '[]'
-                    ),
+                $parameters[$variableName] = $parameterInfo + [
                     'order' => $paramOrdersTable[$variableName],
                 ];
-
-                $definedType = $parameters[$variableName]['type'];
-                $definedTypeDimensionsOfArray = $parameters[$variableName]['dimensions_of_array'];
             }
         }
 
@@ -136,5 +96,60 @@ trait ParameterParseable
         );
 
         return $parameters;
+    }
+
+    public function parseFromDocument(TagWithType $documentedParameter): array
+    {
+        /**
+         * @var null|\phpDocumentor\Reflection\Types\Object_ $typeObject
+         */
+        $typeObject = $documentedParameter
+            ->getType();
+        $stringifiedType = (string) $typeObject;
+
+        $type = $stringifiedType;
+
+        if ($typeObject instanceof \phpDocumentor\Reflection\Types\Array_) {
+            $typeObject = $typeObject
+                ->getValueType();
+        }
+
+        if ($typeObject instanceof \phpDocumentor\Reflection\Types\Object_) {
+            $fullPath = (string) $typeObject->getFqsen();
+
+            $type = $typeObject
+                ->getFqsen()
+                ->getName();
+
+            // FIXED: phpDocumentor has an omitted path completion problem
+            // This statement fix it.
+            if ($fullPath !== '\\' . ((string) $type)) {
+                $type = $fullPath;
+            }
+        }
+
+        $variableName = $documentedParameter->getVariableName();
+
+        // Update variable detail.
+        return [
+            $variableName === ''
+                ? null
+                : $variableName,
+            [
+                'type' => $this->convertWithImport(
+                    Formatter::convertPHPPrimitiveTypeToJavaType(
+                        str_replace(
+                            '[]',
+                            '',
+                            $type
+                        )
+                    )
+                ),
+                'dimensions_of_array' => substr_count(
+                    $stringifiedType,
+                    '[]'
+                ),
+            ],
+        ];
     }
 }

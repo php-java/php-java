@@ -15,13 +15,13 @@ trait OperationManageable
      */
     protected $operation;
 
-    public function setOperation(Operation $operation): self
+    public function setOperation(?Operation $operation): self
     {
         $this->operation = $operation;
         return $this;
     }
 
-    public function getOperation(): Operation
+    public function getOperation(): ?Operation
     {
         return $this->operation;
     }

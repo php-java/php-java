@@ -16,6 +16,7 @@ use PHPJava\Compiler\Compiler;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
+use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\FieldAssignable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ParameterParseable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StaticInitializerAssignable;
@@ -34,6 +35,7 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
     use Bindable;
     use StaticInitializerAssignable;
     use ParameterParseable;
+    use FieldAssignable;
 
     /**
      * @var Methods
@@ -66,6 +68,13 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
         $this->methods = new Methods();
         $this->fields = new Fields();
 
+        foreach ($this->node->getProperties() as $property) {
+            $this
+                ->bindParameters(FieldAssembler::factory($property))
+                ->setCollection($this->fields)
+                ->assemble();
+        }
+
         foreach ($this->node->getMethods() as $method) {
             $store = new Store();
             if (!$method->isStatic()) {
@@ -87,7 +96,6 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
             ->addClass(Object_::class)
             ->addClass(Runtime::PHP_STANDARD_CLASS_NAME);
 
-        // TODO: Implement fields.
         $this->assignStaticInitializer($this->className);
 
         $compiler = new Compiler(
