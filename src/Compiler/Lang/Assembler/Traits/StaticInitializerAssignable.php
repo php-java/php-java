@@ -27,13 +27,15 @@ trait StaticInitializerAssignable
         if ($this->fields->length() === 0) {
             return $this;
         }
+        $descriptor = (new Descriptor())
+            ->setReturn(Void_::class)
+            ->make();
 
         $this->getEnhancedConstantPool()
-            ->addUtf8('<clinit>')
-            ->addUtf8(
-                $descriptor = (new Descriptor())
-                    ->setReturn(Void_::class)
-                    ->make()
+            ->addMethodref(
+                $className,
+                '<clinit>',
+                $descriptor
             );
 
         $staticInitializerOperations = [];
@@ -61,6 +63,7 @@ trait StaticInitializerAssignable
             ->add(
                 (new Method(
                     (new MethodAccessFlag())
+                        ->enablePrivate()
                         ->enableStatic()
                         ->make(),
                     $className,

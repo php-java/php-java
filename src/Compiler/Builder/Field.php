@@ -107,4 +107,14 @@ class Field implements BuilderInterface, EntryInterface
     {
         return $this->value;
     }
+
+    public function beginPreparation(): self
+    {
+        $this->getEnhancedConstantPool()
+            ->addNameAndType(
+                $this->getName(),
+                $this->getDescriptor()
+            );
+        return $this;
+    }
 }

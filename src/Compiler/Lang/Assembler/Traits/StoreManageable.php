@@ -18,13 +18,13 @@ trait StoreManageable
 {
     protected $store;
 
-    public function setStore(Store $store): self
+    public function setStore(?Store $store): self
     {
         $this->store = $store;
         return $this;
     }
 
-    public function getStore(): Store
+    public function getStore(): ?Store
     {
         return $this->store;
     }
