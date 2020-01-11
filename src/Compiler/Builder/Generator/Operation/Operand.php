@@ -3,6 +3,9 @@ declare(strict_types=1);
 namespace PHPJava\Compiler\Builder\Generator\Operation;
 
 use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;
+use PHPJava\Compiler\Builder\Types\Int16;
+use PHPJava\Compiler\Builder\Types\Int32;
+use PHPJava\Compiler\Builder\Types\Int8;
 use PHPJava\Compiler\Builder\Types\Uint16;
 use PHPJava\Compiler\Builder\Types\Uint32;
 use PHPJava\Compiler\Builder\Types\Uint8;
@@ -15,7 +18,18 @@ class Operand
 
     public static function factory(string $type, $value): self
     {
-        if (!in_array($type, [Uint8::class, Uint16::class, Uint32::class], true)) {
+        if (!in_array(
+            $type,
+            [
+                Uint8::class,
+                Uint16::class,
+                Uint32::class,
+                Int8::class,
+                Int16::class,
+                Int32::class,
+            ],
+            true
+        )) {
             throw new AssembleStructureException(
                 'Invalid class type: ' . $type
             );
