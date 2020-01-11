@@ -2,6 +2,12 @@
 declare(strict_types=1);
 namespace PHPJava\Compiler\Builder\Generator\Operation;
 
+use PHPJava\Compiler\Builder\Finder\Result\ConstantPoolFinderResult;
+use PHPJava\Compiler\Builder\Types\Uint16;
+use PHPJava\Compiler\Builder\Types\Uint32;
+use PHPJava\Compiler\Builder\Types\Uint8;
+use PHPJava\Exceptions\AssembleStructureException;
+
 class Operand
 {
     protected $type;
@@ -9,6 +15,18 @@ class Operand
 
     public static function factory(string $type, $value): self
     {
+        if (!in_array($type, [Uint8::class, Uint16::class, Uint32::class], true)) {
+            throw new AssembleStructureException(
+                'Invalid class type: ' . $type
+            );
+        }
+        if (!($value instanceof ConstantPoolFinderResult)
+            && !is_int($value)
+        ) {
+            throw new AssembleStructureException(
+                'Passed parameter is not initiated a ConstantPoolFinderResult'
+            );
+        }
         $scopedValue = $value;
         return new static($type, $scopedValue);
     }
