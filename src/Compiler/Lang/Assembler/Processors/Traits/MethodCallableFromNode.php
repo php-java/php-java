@@ -45,11 +45,30 @@ trait MethodCallableFromNode
             );
         }
 
-        [, $callFrom] = $this->getStore()->get($var->name);
+        $descriptorObject = (new Descriptor())
+            ->setReturn(Void_::class);
 
-        throw new AssembleStructureException(
-            'The dynamic method call is not implemented.'
+        [, $callFromClass] = $this->getStore()
+            ->get(
+                $var->name,
+                false
+            );
+
+        $operations = [];
+
+        ArrayTool::concat(
+            $operations,
+            ...$this->assembleLoadLocalVariable(
+                $var->name
+            ),
+            ...$this->assembleCallMethodOperations(
+                $callFromClass,
+                $methodName->name,
+                $descriptorObject->make()
+            )
         );
+
+        return $operations;
     }
 
     private function assembleStaticMethodCallFromNode(StaticCall $expression): array

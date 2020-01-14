@@ -2,14 +2,17 @@
 declare(strict_types=1);
 namespace PHPJava\Compiler\Emulator\Mnemonics;
 
-use PHPJava\Exceptions\NotImplementedException;
-
 class _astore_1 extends AbstractOperationCode implements OperationCodeInterface
 {
     use \PHPJava\Compiler\Emulator\Traits\GeneralProcessor;
 
     public function execute(): void
     {
-        throw new NotImplementedException(__CLASS__);
+        $this->accumulator
+            ->setToLocal(
+                1,
+                $this->accumulator
+                    ->popFromOperandStack()
+            );
     }
 }

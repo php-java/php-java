@@ -2,17 +2,21 @@
 declare(strict_types=1);
 namespace PHPJava\Compiler\Lang\Assembler\Processors\Traits;
 
+use PHPJava\Compiler\Builder\Attributes\Architects\Operation;
 use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Lang\Assembler\Enhancer\ConstantPoolEnhancer;
 use PHPJava\Compiler\Lang\Assembler\Processors\ExpressionProcessor;
+use PHPJava\Compiler\Lang\Assembler\Store\ReferenceCounter;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Utilities\ArrayTool;
 use PhpParser\Node;
 
 /**
  * @method Store getStore()
+ * @method Operation getOperation()
  * @method ConstantPoolEnhancer getEnhancedConstantPool()
  * @method ConstantPoolFinder getConstantPoolFinder()
+ * @method ReferenceCounter getReferenceCounter()
  */
 trait AssignableFromNode
 {
@@ -38,9 +42,11 @@ trait AssignableFromNode
                 }
             );
 
+        $type = current($expressionTypes);
+
         $localVariableAssignOperation = $this->assembleAssignVariable(
             $name,
-            current($expressionTypes)
+            $type
         );
 
         ArrayTool::concat(

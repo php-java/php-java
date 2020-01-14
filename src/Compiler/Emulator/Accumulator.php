@@ -3,11 +3,14 @@ declare(strict_types=1);
 namespace PHPJava\Compiler\Emulator;
 
 use PHPJava\Compiler\Builder\Attributes\Architects\Frames\Frame;
+use PHPJava\Compiler\Builder\Generator\Operation\Operation;
 use PHPJava\Exceptions\EmulatorException;
 use PHPJava\Utilities\DebugTool;
 
 class Accumulator
 {
+    protected $backtraces = [];
+
     protected $stacks = [];
     protected $locals = [];
     protected $frames = [];
@@ -36,8 +39,24 @@ class Accumulator
         );
 
         if ((count($this->stacks) - 1) < 0) {
+            // Build backtrace
+            $backtrace = '';
+            foreach ($this->backtraces as [$programCounter, $operation]) {
+                /**
+                 * @var Operation $operation
+                 */
+                $backtrace .= sprintf(
+                    "%004s\t0x%02X\t%d\t%s\n",
+                    $programCounter,
+                    $operation->getOpCode(),
+                    count($operation->getOperands()),
+                    ltrim($operation->getMnemonic(), '_')
+                );
+            }
             throw new EmulatorException(
-                'Cannot pop an item because stack is underflow.'
+                'Cannot pop an item because stack is underflow.' . "\n" .
+                'Backtraces: ' . "\n" .
+                $backtrace
             );
         }
 
@@ -126,5 +145,11 @@ class Accumulator
     public function getFrames(): array
     {
         return $this->frames;
+    }
+
+    public function addBacktrace(int $programCounter, Operation $operation): self
+    {
+        $this->backtraces[] = [$programCounter, $operation];
+        return $this;
     }
 }

@@ -7,9 +7,11 @@ use PHPJava\Compiler\Builder\Attributes\Code;
 use PHPJava\Compiler\Builder\Attributes\StackMapTable;
 use PHPJava\Compiler\Builder\Collection\Attributes;
 use PHPJava\Compiler\Builder\Collection\Methods;
+use PHPJava\Compiler\Builder\Generator\Operation\Concat;
 use PHPJava\Compiler\Builder\Method;
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
 use PHPJava\Compiler\Lang\Assembler\Processors\StatementProcessor;
+use PHPJava\Compiler\Lang\Assembler\Store\ReferenceCounter;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\LocalVariableAssignable;
@@ -122,6 +124,56 @@ class MethodAssembler extends AbstractAssembler
         $operations[] = \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
             OpCode::_return
         );
+
+        // Start to add `dup` command
+        $referenceCounter = $this->getReferenceCounter();
+
+        foreach (($referenceCounter->get(ReferenceCounter::CLASS_HASH_MAP) ?? []) as $className => $info) {
+            $tmpOperations = array_slice(
+                $operations,
+                0,
+                $info['frame_index']
+            );
+
+            $operationConcatenater = Concat::factory($operations[$info['frame_index']]);
+
+            foreach ($info['frames'] as $frame) {
+                $operationConcatenater
+                    ->append(
+                        \PHPJava\Compiler\Builder\Generator\Operation\Operation::create(
+                            OpCode::_dup
+                        )
+                    );
+            }
+
+            $operations = array_merge(
+                $tmpOperations,
+                [$operationConcatenater],
+                array_slice(
+                    $operations,
+                    ($info['frame_index'] + 1)
+                )
+            );
+        }
+
+        // expand operations
+        foreach ($operations as $index => $operation) {
+            if (!($operation instanceof Concat)) {
+                continue;
+            }
+            $operations = array_merge(
+                array_slice(
+                    $operations,
+                    0,
+                    $index
+                ),
+                $operation->expand(),
+                array_slice(
+                    $operations,
+                    $index + 1
+                ),
+            );
+        }
 
         // Add operation codes for print expressions.
         $this->getAttribute()

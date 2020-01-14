@@ -31,12 +31,12 @@ trait StaticInitializerAssignable
             ->setReturn(Void_::class)
             ->make();
 
+        // The <clinit> is not required methodref, it is not possible to invoke in the class.
+        // But it need a method name and descriptor info in UTF-8 format.
+        // See: https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-2.html#jvms-2.9
         $this->getEnhancedConstantPool()
-            ->addMethodref(
-                $className,
-                '<clinit>',
-                $descriptor
-            );
+            ->addUtf8('<clinit>')
+            ->addUtf8($descriptor);
 
         $staticInitializerOperations = [];
         foreach ($this->fields as $field) {
@@ -63,7 +63,6 @@ trait StaticInitializerAssignable
             ->add(
                 (new Method(
                     (new MethodAccessFlag())
-                        ->enablePrivate()
                         ->enableStatic()
                         ->make(),
                     $className,

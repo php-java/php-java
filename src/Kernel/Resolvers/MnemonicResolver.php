@@ -73,7 +73,7 @@ class MnemonicResolver
 
         $operationName = $prefix . 'store' . $suffix;
 
-        return (new OpCode())
+        return (int) (new OpCode())
             ->getValue(
                 '_' . $operationName
             );
@@ -89,7 +89,7 @@ class MnemonicResolver
 
         $operationName = $prefix . 'load' . $suffix;
 
-        return (new OpCode())
+        return (int) (new OpCode())
             ->getValue(
                 '_' . $operationName
             );

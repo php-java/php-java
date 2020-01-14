@@ -48,6 +48,7 @@ trait Bindable
                     : $this->getMethodAssembler()
             )
             ->setStore($this->getStore())
+            ->setReferenceCounter($this->getReferenceCounter())
             ->setEntryPointClassAssembler($this->getEntryPointClassAssembler());
     }
 }
