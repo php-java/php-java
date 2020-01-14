@@ -29,9 +29,17 @@ class Operation extends Architect implements ArchitectInterface, \IteratorAggreg
      */
     protected $codes = [];
 
+    protected $currentIndex = 0;
+
+    public function getCurrentIndex(): int
+    {
+        return $this->currentIndex;
+    }
+
     public function add(int $opcode, array $arguments = []): self
     {
         $this->codes[] = [$opcode, $arguments];
+        $this->currentIndex++;
         return $this;
     }
 

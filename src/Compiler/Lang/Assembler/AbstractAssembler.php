@@ -11,6 +11,7 @@ use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\NamespaceManageabl
 use PHPJava\Compiler\Lang\Assembler\Traits\EntryPointClassAssemblerManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\ImportManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\MethodAssemblerManageable;
+use PHPJava\Compiler\Lang\Assembler\Traits\ReferenceCounterManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StoreManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StreamManageable;
 use PHPJava\Compiler\Lang\Assembler\Traits\StructureAccessorsLocatorManageable;
@@ -29,6 +30,7 @@ abstract class AbstractAssembler implements AssemblerInterface, ParameterService
     use StructureAccessorsLocatorManageable;
     use ImportManageable;
     use DeclareManageable;
+    use ReferenceCounterManageable;
 
     /**
      * @var Node

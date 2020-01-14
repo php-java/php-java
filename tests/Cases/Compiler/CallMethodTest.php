@@ -67,4 +67,10 @@ class CallMethodTest extends Base
         [$output, $return] = $this->runJavaTest(__METHOD__);
         $this->assertSame('Hello World!', $output[0]);
     }
+
+    public function testCallDynamicMethodsWithNonArguments()
+    {
+        [$output, $return] = $this->runJavaTest(__METHOD__);
+        $this->assertSame('Hello World!', $output[0]);
+    }
 }

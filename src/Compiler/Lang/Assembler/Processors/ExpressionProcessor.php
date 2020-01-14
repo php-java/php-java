@@ -5,6 +5,7 @@ namespace PHPJava\Compiler\Lang\Assembler\Processors;
 use PHPJava\Compiler\Builder\Signatures\Descriptor;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\AssignableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\ConstLoadableFromNode;
+use PHPJava\Compiler\Lang\Assembler\Processors\Traits\ConstractableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\MagicConstLoadableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\MethodCallableFromNode;
 use PHPJava\Compiler\Lang\Assembler\Processors\Traits\OperationCalculatableFromNode;
@@ -55,6 +56,7 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
     use LocalVariableAssignable;
     use LocalVariableLoadable;
     use ParameterParseable;
+    use ConstractableFromNode;
 
     /**
      * @param Node[] $nodes
@@ -121,6 +123,15 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                     ArrayTool::concat(
                         $operations,
                         ...$this->assembleLoadConstFromNode(
+                            $expression,
+                            $classType
+                        )
+                    );
+                    break;
+                case \PhpParser\Node\Expr\New_::class:
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleConstructorFromNode(
                             $expression,
                             $classType
                         )
@@ -262,6 +273,17 @@ class ExpressionProcessor extends AbstractProcessor implements ProcessorInterfac
                                 'Unsupported operation type'
                             );
                     }
+                    break;
+                case \PhpParser\Node\Expr\MethodCall::class:
+                    /**
+                     * @var \PhpParser\Node\Expr\MethodCall $expression
+                     */
+                    ArrayTool::concat(
+                        $operations,
+                        ...$this->assembleDynamicMethodCallFromNode(
+                            $expression
+                        )
+                    );
                     break;
                 case \PhpParser\Node\Expr\StaticCall::class:
                     /**

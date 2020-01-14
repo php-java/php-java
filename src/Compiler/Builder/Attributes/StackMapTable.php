@@ -97,6 +97,8 @@ class StackMapTable extends Attribute
                 $programCounter
             );
 
+            $emulatedAccumulator->addBacktrace($programCounter, $operation);
+
             if ($emulatedAccumulator->getEffectiveProgramCounter() !== null
                 && $programCounter >= $emulatedAccumulator->getEffectiveProgramCounter()
             ) {

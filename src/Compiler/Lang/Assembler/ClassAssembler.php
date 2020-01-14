@@ -13,8 +13,10 @@ use PHPJava\Compiler\Builder\Finder\ConstantPoolFinder;
 use PHPJava\Compiler\Builder\Structures\ClassFileStructure;
 use PHPJava\Compiler\Builder\Structures\Info\Utf8Info;
 use PHPJava\Compiler\Compiler;
+use PHPJava\Compiler\Lang\Assembler\Store\ReferenceCounter;
 use PHPJava\Compiler\Lang\Assembler\Store\Store;
 use PHPJava\Compiler\Lang\Assembler\Traits\Bindable;
+use PHPJava\Compiler\Lang\Assembler\Traits\DynamicInitializerAssignable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\ConstantPoolEnhanceable;
 use PHPJava\Compiler\Lang\Assembler\Traits\Enhancer\Operation\FieldAssignable;
 use PHPJava\Compiler\Lang\Assembler\Traits\OperationManageable;
@@ -34,6 +36,7 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
     use ConstantPoolEnhanceable;
     use Bindable;
     use StaticInitializerAssignable;
+    use DynamicInitializerAssignable;
     use ParameterParseable;
     use FieldAssignable;
 
@@ -86,6 +89,7 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
             $this
                 ->setOperation(new Operation())
                 ->setStore($store)
+                ->setReferenceCounter(new ReferenceCounter())
                 ->bindParameters(MethodAssembler::factory($method))
                 ->setCollection($this->methods)
                 ->assemble();
@@ -97,6 +101,7 @@ class ClassAssembler extends AbstractAssembler implements ClassAssemblerInterfac
             ->addClass(Runtime::PHP_STANDARD_CLASS_NAME);
 
         $this->assignStaticInitializer($this->className);
+        $this->assignDynamicInitializer($this->className);
 
         $compiler = new Compiler(
             (new ClassFileStructure())
