@@ -18,7 +18,7 @@ jobs:
           php-version: ${{ matrix.php }}
       - run: |
           curl -s https://get.sdkman.io | bash
-          source "/home/travis/.sdkman/bin/sdkman-init.sh"
+          source "${HOME}/.sdkman/bin/sdkman-init.sh"
           sdk install kotlin
           composer install
           composer run tests
