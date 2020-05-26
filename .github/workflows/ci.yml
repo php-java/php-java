@@ -1,14 +1,18 @@
+name: php-java test
+on: push
 jobs:
-  build:
+  test:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [ ubuntu-18.04, windows-2019 ]
+        operating-system: [ ubuntu-18.04 ]
         php: [ '7.3', '7.4' ]
-    name: PHP ${{ matrix.php }} sample
+    name: PHP ${{ matrix.php }}
     steps:
-      - uses: actions/checkout@master
-      - name: Setup PHP
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup PHP and Run test
         uses: nanasess/setup-php@master
         with:
           php-version: ${{ matrix.php }}
