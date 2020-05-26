@@ -1,0 +1,22 @@
+jobs:
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-18.04, windows-2019 ]
+        php: [ '7.3', '7.4' ]
+    name: PHP ${{ matrix.php }} sample
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup PHP
+        uses: nanasess/setup-php@master
+        with:
+          php-version: ${{ matrix.php }}
+        run: composer install
+      - name: Setup Kotlin
+        run: |
+          curl -s https://get.sdkman.io | bash
+          source "/home/travis/.sdkman/bin/sdkman-init.sh"
+          sdk install kotlin
+      - name: Run test
+        run: composer run tests
