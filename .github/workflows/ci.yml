@@ -12,11 +12,9 @@ jobs:
         uses: nanasess/setup-php@master
         with:
           php-version: ${{ matrix.php }}
-        run: composer install
-      - name: Setup Kotlin
-        run: |
+      - run: |
           curl -s https://get.sdkman.io | bash
           source "/home/travis/.sdkman/bin/sdkman-init.sh"
           sdk install kotlin
-      - name: Run test
-        run: composer run tests
+          composer install
+          composer run tests
