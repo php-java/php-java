@@ -1,0 +1,24 @@
+name: php-java test
+on: push
+jobs:
+  test:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-18.04 ]
+        php: [ '7.3', '7.4' ]
+    name: PHP ${{ matrix.php }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup PHP and Run test
+        uses: nanasess/setup-php@master
+        with:
+          php-version: ${{ matrix.php }}
+      - run: |
+          curl -s https://get.sdkman.io | bash
+          source "${HOME}/.sdkman/bin/sdkman-init.sh"
+          sdk install kotlin
+          composer install
+          composer run tests
