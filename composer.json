@@ -15,12 +15,12 @@
     "require": {
         "php": ">=7.3",
         "ext-zip": "*",
-        "monolog/monolog": "^1.24",
+        "monolog/monolog": "^2.2",
         "gabrielelana/byte-units": "^0.5.0",
         "symfony/console": "^5.2",
         "phpdocumentor/reflection-docblock": "^5.2",
-        "brick/math": "^0.8.8",
-        "nikic/php-parser": "^4.2",
+        "brick/math": "^0.9.1",
+        "nikic/php-parser": "^4.10",
         "phpunit/phpunit": "^9.5"
     },
     "autoload": {
@@ -35,9 +35,9 @@
         }
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.4",
-        "friendsofphp/php-cs-fixer": "^2.14",
-        "brainmaestro/composer-git-hooks": "^2.6"
+        "squizlabs/php_codesniffer": "^3.5",
+        "friendsofphp/php-cs-fixer": "^2.17",
+        "brainmaestro/composer-git-hooks": "^2.8"
     },
     "scripts": {
         "test": "phpunit",
