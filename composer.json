@@ -3,7 +3,7 @@
     "description": "Implement JVM by PHP",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.9.0-dev",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "memory"
