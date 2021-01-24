@@ -110,7 +110,7 @@ class JavaArchive
             if (empty($attribute)) {
                 continue;
             }
-            if (!strpos($attribute, ':')) {
+            if (strpos($attribute, ':') === false) {
                 continue;
             }
             [$name, $value] = explode(':', $attribute);
