@@ -2,6 +2,7 @@
 old
 .idea
 vendor
+composer.lock
 .php_cs.cache
 .phpunit.result.cache
 tests/Cases/caches/
