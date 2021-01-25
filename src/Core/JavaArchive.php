@@ -110,6 +110,9 @@ class JavaArchive
             if (empty($attribute)) {
                 continue;
             }
+            if (strpos($attribute, ':') === false) {
+                continue;
+            }
             [$name, $value] = explode(':', $attribute);
             $this->manifestData[strtolower($name)] = trim($value);
         }

@@ -44,7 +44,7 @@ final class _ldc_w extends AbstractOperationCode implements OperationCodeInterfa
         } elseif ($data instanceof Float_) {
             $value = \PHPJava\Kernel\Types\Float_::get($data->getBytes());
         } else {
-            $value = $cpInfo[$data->getStringIndex()];
+            $value = $cpInfo[$data->getClassIndex()];
         }
 
         $this->pushToOperandStack($value);

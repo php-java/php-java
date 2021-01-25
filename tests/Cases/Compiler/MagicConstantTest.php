@@ -42,7 +42,7 @@ class MagicConstantTest extends Base
     {
         [$output, $return] = $this->runJavaTest(__METHOD__);
 
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             '#php-java/tests/Cases/Compiler/Codes$#',
             $output[0]
         );
@@ -52,7 +52,7 @@ class MagicConstantTest extends Base
     {
         [$output, $return] = $this->runJavaTest(__METHOD__);
 
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             '#php-java/tests/Cases/Compiler/Codes/TestMagicConstFile.php$#',
             $output[0]
         );

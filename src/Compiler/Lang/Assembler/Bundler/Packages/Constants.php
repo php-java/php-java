@@ -45,12 +45,6 @@ class Constants extends AbstractPackageBundler implements PackageBundlerInterfac
     const PHP_VERSION_ID = PHP_VERSION_ID;
 
     /**
-     * @var
-     * @export
-     */
-    const PHP_EXTRA_VERSION = PHP_EXTRA_VERSION;
-
-    /**
      * @var \PHPJava\Packages\java\lang\String_
      * @export
      */
